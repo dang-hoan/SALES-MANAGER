@@ -1,0 +1,8 @@
+D:\Code\vs data\SalesMangerabc\SalesMangerabc\obj\Debug\net6.0-windows\SalesMangerabc.vbproj.AssemblyReference.cache
+D:\Code\vs data\SalesMangerabc\SalesMangerabc\obj\Debug\net6.0-windows\SalesMangerabc.CustomerCategory.resources
+D:\Code\vs data\SalesMangerabc\SalesMangerabc\obj\Debug\net6.0-windows\SalesMangerabc.Form1.resources
+D:\Code\vs data\SalesMangerabc\SalesMangerabc\obj\Debug\net6.0-windows\SalesMangerabc.vbproj.GenerateResource.cache
+D:\Code\vs data\SalesMangerabc\SalesMangerabc\obj\Debug\net6.0-windows\SalesMangerabc.GeneratedMSBuildEditorConfig.editorconfig
+D:\Code\vs data\SalesMangerabc\SalesMangerabc\obj\Debug\net6.0-windows\SalesMangerabc.AssemblyInfoInputs.cache
+D:\Code\vs data\SalesMangerabc\SalesMangerabc\obj\Debug\net6.0-windows\SalesMangerabc.AssemblyInfo.vb
+D:\Code\vs data\SalesMangerabc\SalesMangerabc\obj\Debug\net6.0-windows\SalesMangerabc.vbproj.CoreCompileInputs.cache
