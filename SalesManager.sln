@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SalesManager", "WindowsApp1\SalesManager.vbproj", "{4BC43727-5229-401D-90DF-E947CE17DC31}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LibraryDataset", "LibraryDataset\LibraryDataset.vbproj", "{1DB2112D-423A-40AD-A340-37C5524608FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4BC43727-5229-401D-90DF-E947CE17DC31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BC43727-5229-401D-90DF-E947CE17DC31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BC43727-5229-401D-90DF-E947CE17DC31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BC43727-5229-401D-90DF-E947CE17DC31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DB2112D-423A-40AD-A340-37C5524608FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DB2112D-423A-40AD-A340-37C5524608FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DB2112D-423A-40AD-A340-37C5524608FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DB2112D-423A-40AD-A340-37C5524608FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {23A9AD40-DC69-4BE5-8DE9-00B84AC768A3}
+	EndGlobalSection
+EndGlobal
