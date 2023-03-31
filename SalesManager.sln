@@ -7,6 +7,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SalesManager", "WindowsApp1
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LibraryDataset", "LibraryDataset\LibraryDataset.vbproj", "{1DB2112D-423A-40AD-A340-37C5524608FC}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LibraryCommon", "LibraryCommon\LibraryCommon.vbproj", "{128A6576-76EC-4E0A-88C8-DA70AD743F8D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1DB2112D-423A-40AD-A340-37C5524608FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DB2112D-423A-40AD-A340-37C5524608FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DB2112D-423A-40AD-A340-37C5524608FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{128A6576-76EC-4E0A-88C8-DA70AD743F8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{128A6576-76EC-4E0A-88C8-DA70AD743F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{128A6576-76EC-4E0A-88C8-DA70AD743F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{128A6576-76EC-4E0A-88C8-DA70AD743F8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

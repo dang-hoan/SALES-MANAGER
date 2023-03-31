@@ -1,8 +1,9 @@
 ﻿Imports LibraryDataset
+Imports LibraryCommon
 
 Public Class LoginForm
-    Dim conn As String = "Data Source=DESKTOP-DKTP37G\CSDL;Initial Catalog=SalesManagerDB;User ID=sa;Password=123456"
-    Dim clsPMSAnalysis As New LibraryDataset.clsAccount(conn)
+    Dim conn As New connCommon()
+    Dim clsPMSAnalysis As New clsAccount(conn.connSales.ConnectionString)
 
     Private Sub bLogin_Click(sender As Object, e As EventArgs) Handles bLogin.Click
         Dim data = clsPMSAnalysis.GetUserByUsername(txtUsername.Text, txtPassword.Text)

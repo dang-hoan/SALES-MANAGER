@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{860A1301-79D3-49B0-95B3-D5F4603F340A}</ProjectGuid>
+    <ProjectGuid>{128A6576-76EC-4E0A-88C8-DA70AD743F8D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>LibraryCommon</RootNamespace>
     <AssemblyName>LibraryCommon</AssemblyName>
@@ -64,7 +64,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.vb" />
+    <Compile Include="connCommon.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
