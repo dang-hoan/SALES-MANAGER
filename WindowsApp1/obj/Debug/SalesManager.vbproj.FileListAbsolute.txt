@@ -15,7 +15,6 @@ D:\Code\vs data\WindowsApp1\WindowsApp1\bin\Debug\WindowsApp1.exe
 D:\Code\vs data\WindowsApp1\WindowsApp1\bin\Debug\WindowsApp1.pdb
 D:\Code\vs data\WindowsApp1\WindowsApp1\bin\Debug\WindowsApp1.xml
 D:\Code\vs data\WindowsApp1\WindowsApp1\bin\Debug\LibraryCommon.dll
-D:\Code\vs data\WindowsApp1\WindowsApp1\bin\Debug\LibraryDataset.dll
 D:\Code\vs data\WindowsApp1\WindowsApp1\bin\Debug\LibraryCommon.pdb
 D:\Code\vs data\WindowsApp1\WindowsApp1\bin\Debug\LibraryCommon.xml
 D:\Code\vs data\WindowsApp1\WindowsApp1\bin\Debug\LibraryDataset.pdb
@@ -25,3 +24,4 @@ D:\Code\vs data\WindowsApp1\WindowsApp1\obj\Debug\SalesManager.vbproj.CopyComple
 D:\Code\vs data\WindowsApp1\WindowsApp1\obj\Debug\WindowsApp1.exe
 D:\Code\vs data\WindowsApp1\WindowsApp1\obj\Debug\WindowsApp1.xml
 D:\Code\vs data\WindowsApp1\WindowsApp1\obj\Debug\WindowsApp1.pdb
+D:\Code\vs data\WindowsApp1\WindowsApp1\bin\Debug\LibraryDataset.dll

@@ -1,4 +1,6 @@
 ﻿Partial Class Person
+    Partial Public Class PersonDataTable
+    End Class
 End Class
 
 Namespace PersonTableAdapters

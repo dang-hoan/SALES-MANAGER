@@ -6,7 +6,7 @@ Public Class ProductCategory
     Private Sub CustomerCategory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim data = clsPMSAnalysis.GetAllProduct()
         dgvCategory.DataSource = data._Product
-
+        setEnable(False)
     End Sub
 
     Private Sub bEdit_Click(sender As Object, e As EventArgs) Handles bEdit.Click
@@ -14,7 +14,6 @@ Public Class ProductCategory
     End Sub
 
     Private Sub setEnable(valBoolean As Boolean)
-        txtCode.Enabled = valBoolean
         txtName.Enabled = valBoolean
         cbbCategory.Enabled = valBoolean
         txtPrice.Enabled = valBoolean
@@ -28,11 +27,10 @@ Public Class ProductCategory
     End Sub
 
     Private Sub dgvCategory_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCategory.CellClick
-        'Dim dgv As sender As DataGridView
-        Dim row As DataGridViewRow = dgvCategory.CurrentRow
         If dgvCategory Is Nothing Then
             Return
         Else
+            Dim row As DataGridViewRow = dgvCategory.CurrentRow
             txtCode.Text = row.Cells(0).Value.ToString
             txtName.Text = row.Cells(1).Value.ToString
             cbbCategory.Text = row.Cells(3).Value.ToString

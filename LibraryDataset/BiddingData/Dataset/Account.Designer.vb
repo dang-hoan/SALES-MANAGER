@@ -475,7 +475,7 @@ Partial Public Class Account
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddAccountRow(ByVal Username As String, ByVal Password As String, ByVal StatusId As Integer, ByVal RoleId As Integer, ByVal CreateDate As Date, ByVal CreateBy As Date, ByVal UpdateDate As String, ByVal UpdateBy As String, ByVal DeleteDate As Date, ByVal DeleteBy As Date, ByVal IsDelete As Boolean) As AccountRow
+        Public Overloads Function AddAccountRow(ByVal Username As String, ByVal Password As String, ByVal StatusId As Integer, ByVal RoleId As Integer, ByVal CreateDate As Date, ByVal CreateBy As String, ByVal UpdateDate As Date, ByVal UpdateBy As String, ByVal DeleteDate As Date, ByVal DeleteBy As String, ByVal IsDelete As Boolean) As AccountRow
             Dim rowAccountRow As AccountRow = CType(Me.NewRow,AccountRow)
             Dim columnValuesArray() As Object = New Object() {Nothing, Username, Password, StatusId, RoleId, CreateDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete}
             rowAccountRow.ItemArray = columnValuesArray
@@ -535,15 +535,15 @@ Partial Public Class Account
             MyBase.Columns.Add(Me.columnRoleId)
             Me.columnCreateDate = New Global.System.Data.DataColumn("CreateDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCreateDate)
-            Me.columnCreateBy = New Global.System.Data.DataColumn("CreateBy", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnCreateBy = New Global.System.Data.DataColumn("CreateBy", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCreateBy)
-            Me.columnUpdateDate = New Global.System.Data.DataColumn("UpdateDate", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnUpdateDate = New Global.System.Data.DataColumn("UpdateDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnUpdateDate)
             Me.columnUpdateBy = New Global.System.Data.DataColumn("UpdateBy", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnUpdateBy)
             Me.columnDeleteDate = New Global.System.Data.DataColumn("DeleteDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDeleteDate)
-            Me.columnDeleteBy = New Global.System.Data.DataColumn("DeleteBy", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnDeleteBy = New Global.System.Data.DataColumn("DeleteBy", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDeleteBy)
             Me.columnIsDelete = New Global.System.Data.DataColumn("IsDelete", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnIsDelete)
@@ -560,7 +560,6 @@ Partial Public Class Account
             Me.columnPassword.MaxLength = 20
             Me.columnStatusId.AllowDBNull = false
             Me.columnRoleId.AllowDBNull = false
-            Me.columnUpdateDate.MaxLength = 50
             Me.columnUpdateBy.MaxLength = 50
             Me.ExtendedProperties.Add("Generator_TablePropName", "_Account")
             Me.ExtendedProperties.Add("Generator_UserTableName", "Account")
@@ -780,10 +779,10 @@ Partial Public Class Account
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property CreateBy() As Date
+        Public Property CreateBy() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableAccount.CreateByColumn),Date)
+                    Return CType(Me(Me.tableAccount.CreateByColumn),String)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'CreateBy' in table 'Account' is DBNull.", e)
                 End Try
@@ -795,10 +794,10 @@ Partial Public Class Account
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property UpdateDate() As String
+        Public Property UpdateDate() As Date
             Get
                 Try 
-                    Return CType(Me(Me.tableAccount.UpdateDateColumn),String)
+                    Return CType(Me(Me.tableAccount.UpdateDateColumn),Date)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'UpdateDate' in table 'Account' is DBNull.", e)
                 End Try
@@ -840,10 +839,10 @@ Partial Public Class Account
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property DeleteBy() As Date
+        Public Property DeleteBy() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableAccount.DeleteByColumn),Date)
+                    Return CType(Me(Me.tableAccount.DeleteByColumn),String)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'DeleteBy' in table 'Account' is DBNull.", e)
                 End Try

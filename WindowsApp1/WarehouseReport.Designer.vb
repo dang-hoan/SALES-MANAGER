@@ -22,32 +22,35 @@ Partial Class WarehouseReport
     'Do not modify it using the code editor.
 
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(WarehouseReport))
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.label1 = New System.Windows.Forms.Label()
-        Me.comboBox1 = New System.Windows.Forms.ComboBox()
+        Me.cbbWarehouse = New System.Windows.Forms.ComboBox()
         Me.pictureBox1 = New System.Windows.Forms.PictureBox()
         Me.pictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.comboBox2 = New System.Windows.Forms.ComboBox()
+        Me.cbbProduct = New System.Windows.Forms.ComboBox()
         Me.label2 = New System.Windows.Forms.Label()
         Me.label3 = New System.Windows.Forms.Label()
-        Me.label4 = New System.Windows.Forms.Label()
+        Me.labTotalProducts = New System.Windows.Forms.Label()
         Me.panel1 = New System.Windows.Forms.Panel()
         Me.panel2 = New System.Windows.Forms.Panel()
-        Me.label9 = New System.Windows.Forms.Label()
+        Me.labRemainProducts = New System.Windows.Forms.Label()
         Me.label10 = New System.Windows.Forms.Label()
         Me.panel3 = New System.Windows.Forms.Panel()
-        Me.label11 = New System.Windows.Forms.Label()
+        Me.labTotalSales = New System.Windows.Forms.Label()
         Me.label12 = New System.Windows.Forms.Label()
-        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.chartReport = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.CBBWareHouseProductTableAdapterBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.pictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panel1.SuspendLayout()
         Me.panel2.SuspendLayout()
         Me.panel3.SuspendLayout()
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chartReport, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CBBWareHouseProductTableAdapterBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'label1
@@ -59,13 +62,14 @@ Partial Class WarehouseReport
         Me.label1.TabIndex = 0
         Me.label1.Text = "Warehouse"
         '
-        'comboBox1
+        'cbbWarehouse
         '
-        Me.comboBox1.FormattingEnabled = True
-        Me.comboBox1.Location = New System.Drawing.Point(309, 59)
-        Me.comboBox1.Name = "comboBox1"
-        Me.comboBox1.Size = New System.Drawing.Size(121, 28)
-        Me.comboBox1.TabIndex = 1
+        Me.cbbWarehouse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbWarehouse.FormattingEnabled = True
+        Me.cbbWarehouse.Location = New System.Drawing.Point(309, 59)
+        Me.cbbWarehouse.Name = "cbbWarehouse"
+        Me.cbbWarehouse.Size = New System.Drawing.Size(188, 28)
+        Me.cbbWarehouse.TabIndex = 1
         '
         'pictureBox1
         '
@@ -87,13 +91,14 @@ Partial Class WarehouseReport
         Me.pictureBox2.TabIndex = 7
         Me.pictureBox2.TabStop = False
         '
-        'comboBox2
+        'cbbProduct
         '
-        Me.comboBox2.FormattingEnabled = True
-        Me.comboBox2.Location = New System.Drawing.Point(651, 59)
-        Me.comboBox2.Name = "comboBox2"
-        Me.comboBox2.Size = New System.Drawing.Size(121, 28)
-        Me.comboBox2.TabIndex = 6
+        Me.cbbProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbProduct.FormattingEnabled = True
+        Me.cbbProduct.Location = New System.Drawing.Point(651, 59)
+        Me.cbbProduct.Name = "cbbProduct"
+        Me.cbbProduct.Size = New System.Drawing.Size(196, 28)
+        Me.cbbProduct.TabIndex = 6
         '
         'label2
         '
@@ -115,22 +120,22 @@ Partial Class WarehouseReport
         Me.label3.TabIndex = 8
         Me.label3.Text = "Total products"
         '
-        'label4
+        'labTotalProducts
         '
-        Me.label4.AutoSize = True
-        Me.label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.0!, System.Drawing.FontStyle.Bold)
-        Me.label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.label4.Location = New System.Drawing.Point(74, 19)
-        Me.label4.Name = "label4"
-        Me.label4.Size = New System.Drawing.Size(91, 64)
-        Me.label4.TabIndex = 9
-        Me.label4.Text = "17"
+        Me.labTotalProducts.AutoSize = True
+        Me.labTotalProducts.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.0!, System.Drawing.FontStyle.Bold)
+        Me.labTotalProducts.ForeColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.labTotalProducts.Location = New System.Drawing.Point(74, 19)
+        Me.labTotalProducts.Name = "labTotalProducts"
+        Me.labTotalProducts.Size = New System.Drawing.Size(91, 64)
+        Me.labTotalProducts.TabIndex = 9
+        Me.labTotalProducts.Text = "17"
         '
         'panel1
         '
         Me.panel1.BackColor = System.Drawing.Color.AntiqueWhite
         Me.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.panel1.Controls.Add(Me.label4)
+        Me.panel1.Controls.Add(Me.labTotalProducts)
         Me.panel1.Controls.Add(Me.label3)
         Me.panel1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.panel1.Location = New System.Drawing.Point(68, 152)
@@ -142,7 +147,7 @@ Partial Class WarehouseReport
         '
         Me.panel2.BackColor = System.Drawing.Color.AntiqueWhite
         Me.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.panel2.Controls.Add(Me.label9)
+        Me.panel2.Controls.Add(Me.labRemainProducts)
         Me.panel2.Controls.Add(Me.label10)
         Me.panel2.Cursor = System.Windows.Forms.Cursors.Hand
         Me.panel2.Location = New System.Drawing.Point(371, 152)
@@ -150,16 +155,16 @@ Partial Class WarehouseReport
         Me.panel2.Size = New System.Drawing.Size(238, 129)
         Me.panel2.TabIndex = 15
         '
-        'label9
+        'labRemainProducts
         '
-        Me.label9.AutoSize = True
-        Me.label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.0!, System.Drawing.FontStyle.Bold)
-        Me.label9.ForeColor = System.Drawing.Color.Red
-        Me.label9.Location = New System.Drawing.Point(74, 19)
-        Me.label9.Name = "label9"
-        Me.label9.Size = New System.Drawing.Size(91, 64)
-        Me.label9.TabIndex = 9
-        Me.label9.Text = "17"
+        Me.labRemainProducts.AutoSize = True
+        Me.labRemainProducts.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.0!, System.Drawing.FontStyle.Bold)
+        Me.labRemainProducts.ForeColor = System.Drawing.Color.Red
+        Me.labRemainProducts.Location = New System.Drawing.Point(74, 19)
+        Me.labRemainProducts.Name = "labRemainProducts"
+        Me.labRemainProducts.Size = New System.Drawing.Size(91, 64)
+        Me.labRemainProducts.TabIndex = 9
+        Me.labRemainProducts.Text = "17"
         '
         'label10
         '
@@ -176,7 +181,7 @@ Partial Class WarehouseReport
         '
         Me.panel3.BackColor = System.Drawing.Color.AntiqueWhite
         Me.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.panel3.Controls.Add(Me.label11)
+        Me.panel3.Controls.Add(Me.labTotalSales)
         Me.panel3.Controls.Add(Me.label12)
         Me.panel3.Cursor = System.Windows.Forms.Cursors.Hand
         Me.panel3.Location = New System.Drawing.Point(663, 152)
@@ -184,16 +189,16 @@ Partial Class WarehouseReport
         Me.panel3.Size = New System.Drawing.Size(238, 129)
         Me.panel3.TabIndex = 15
         '
-        'label11
+        'labTotalSales
         '
-        Me.label11.AutoSize = True
-        Me.label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.0!, System.Drawing.FontStyle.Bold)
-        Me.label11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.label11.Location = New System.Drawing.Point(74, 19)
-        Me.label11.Name = "label11"
-        Me.label11.Size = New System.Drawing.Size(91, 64)
-        Me.label11.TabIndex = 9
-        Me.label11.Text = "17"
+        Me.labTotalSales.AutoSize = True
+        Me.labTotalSales.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.0!, System.Drawing.FontStyle.Bold)
+        Me.labTotalSales.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.labTotalSales.Location = New System.Drawing.Point(74, 19)
+        Me.labTotalSales.Name = "labTotalSales"
+        Me.labTotalSales.Size = New System.Drawing.Size(91, 64)
+        Me.labTotalSales.TabIndex = 9
+        Me.labTotalSales.Text = "17"
         '
         'label12
         '
@@ -206,36 +211,40 @@ Partial Class WarehouseReport
         Me.label12.TabIndex = 8
         Me.label12.Text = "Total sales"
         '
-        'Chart1
+        'chartReport
         '
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend1)
-        Me.Chart1.Location = New System.Drawing.Point(68, 322)
-        Me.Chart1.Name = "Chart1"
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.Chart1.Series.Add(Series1)
-        Me.Chart1.Size = New System.Drawing.Size(833, 388)
-        Me.Chart1.TabIndex = 16
-        Me.Chart1.Text = "Chart1"
+        ChartArea2.Name = "ChartArea1"
+        Me.chartReport.ChartAreas.Add(ChartArea2)
+        Legend2.Name = "Legend1"
+        Me.chartReport.Legends.Add(Legend2)
+        Me.chartReport.Location = New System.Drawing.Point(68, 322)
+        Me.chartReport.Name = "chartReport"
+        Series2.ChartArea = "ChartArea1"
+        Series2.Legend = "Legend1"
+        Series2.Name = "Series1"
+        Me.chartReport.Series.Add(Series2)
+        Me.chartReport.Size = New System.Drawing.Size(833, 388)
+        Me.chartReport.TabIndex = 16
+        Me.chartReport.Text = "Chart1"
+        '
+        'CBBWareHouseProductTableAdapterBindingSource
+        '
+        Me.CBBWareHouseProductTableAdapterBindingSource.DataSource = GetType(LibraryDataset.CBBTableAdapters.CBBWareHouseProductTableAdapter)
         '
         'WarehouseReport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(969, 766)
-        Me.Controls.Add(Me.Chart1)
+        Me.Controls.Add(Me.chartReport)
         Me.Controls.Add(Me.panel3)
         Me.Controls.Add(Me.panel2)
         Me.Controls.Add(Me.panel1)
         Me.Controls.Add(Me.pictureBox2)
-        Me.Controls.Add(Me.comboBox2)
+        Me.Controls.Add(Me.cbbProduct)
         Me.Controls.Add(Me.label2)
         Me.Controls.Add(Me.pictureBox1)
-        Me.Controls.Add(Me.comboBox1)
+        Me.Controls.Add(Me.cbbWarehouse)
         Me.Controls.Add(Me.label1)
         Me.Name = "WarehouseReport"
         Me.Text = "Warehouse report"
@@ -247,26 +256,28 @@ Partial Class WarehouseReport
         Me.panel2.PerformLayout()
         Me.panel3.ResumeLayout(False)
         Me.panel3.PerformLayout()
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chartReport, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CBBWareHouseProductTableAdapterBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Private label1 As System.Windows.Forms.Label
-    Private comboBox1 As System.Windows.Forms.ComboBox
+    Private cbbWarehouse As System.Windows.Forms.ComboBox
     Private pictureBox1 As System.Windows.Forms.PictureBox
     Private pictureBox2 As System.Windows.Forms.PictureBox
-    Private comboBox2 As System.Windows.Forms.ComboBox
+    Private cbbProduct As System.Windows.Forms.ComboBox
     Private label2 As System.Windows.Forms.Label
     Private label3 As System.Windows.Forms.Label
-    Private label4 As System.Windows.Forms.Label
+    Private labTotalProducts As System.Windows.Forms.Label
     Private panel1 As System.Windows.Forms.Panel
     Private panel2 As System.Windows.Forms.Panel
-    Private label9 As System.Windows.Forms.Label
+    Private labRemainProducts As System.Windows.Forms.Label
     Private label10 As System.Windows.Forms.Label
     Private panel3 As System.Windows.Forms.Panel
-    Private label11 As System.Windows.Forms.Label
+    Private labTotalSales As System.Windows.Forms.Label
     Private label12 As System.Windows.Forms.Label
-    Friend WithEvents Chart1 As DataVisualization.Charting.Chart
+    Friend WithEvents chartReport As DataVisualization.Charting.Chart
+    Friend WithEvents CBBWareHouseProductTableAdapterBindingSource As BindingSource
 End Class

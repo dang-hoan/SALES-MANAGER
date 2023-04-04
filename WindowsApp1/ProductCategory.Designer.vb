@@ -189,8 +189,10 @@ Partial Class ProductCategory
         Me.dgvCategory.DataSource = Me.ProductBindingSource
         Me.dgvCategory.Location = New System.Drawing.Point(54, 302)
         Me.dgvCategory.Name = "dgvCategory"
+        Me.dgvCategory.ReadOnly = True
         Me.dgvCategory.RowHeadersWidth = 62
         Me.dgvCategory.RowTemplate.Height = 28
+        Me.dgvCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvCategory.Size = New System.Drawing.Size(853, 370)
         Me.dgvCategory.TabIndex = 1
         '
@@ -209,6 +211,7 @@ Partial Class ProductCategory
         Me.ProductNameDataGridViewTextBoxColumn.HeaderText = "ProductName"
         Me.ProductNameDataGridViewTextBoxColumn.MinimumWidth = 8
         Me.ProductNameDataGridViewTextBoxColumn.Name = "ProductNameDataGridViewTextBoxColumn"
+        Me.ProductNameDataGridViewTextBoxColumn.ReadOnly = True
         Me.ProductNameDataGridViewTextBoxColumn.Width = 150
         '
         'SupplierIdDataGridViewTextBoxColumn
@@ -217,6 +220,7 @@ Partial Class ProductCategory
         Me.SupplierIdDataGridViewTextBoxColumn.HeaderText = "SupplierId"
         Me.SupplierIdDataGridViewTextBoxColumn.MinimumWidth = 8
         Me.SupplierIdDataGridViewTextBoxColumn.Name = "SupplierIdDataGridViewTextBoxColumn"
+        Me.SupplierIdDataGridViewTextBoxColumn.ReadOnly = True
         Me.SupplierIdDataGridViewTextBoxColumn.Width = 150
         '
         'CategoryIdDataGridViewTextBoxColumn
@@ -225,6 +229,7 @@ Partial Class ProductCategory
         Me.CategoryIdDataGridViewTextBoxColumn.HeaderText = "CategoryId"
         Me.CategoryIdDataGridViewTextBoxColumn.MinimumWidth = 8
         Me.CategoryIdDataGridViewTextBoxColumn.Name = "CategoryIdDataGridViewTextBoxColumn"
+        Me.CategoryIdDataGridViewTextBoxColumn.ReadOnly = True
         Me.CategoryIdDataGridViewTextBoxColumn.Width = 150
         '
         'ProductPriceDataGridViewTextBoxColumn
@@ -233,6 +238,7 @@ Partial Class ProductCategory
         Me.ProductPriceDataGridViewTextBoxColumn.HeaderText = "ProductPrice"
         Me.ProductPriceDataGridViewTextBoxColumn.MinimumWidth = 8
         Me.ProductPriceDataGridViewTextBoxColumn.Name = "ProductPriceDataGridViewTextBoxColumn"
+        Me.ProductPriceDataGridViewTextBoxColumn.ReadOnly = True
         Me.ProductPriceDataGridViewTextBoxColumn.Width = 150
         '
         'UnitPriceDataGridViewTextBoxColumn
@@ -241,6 +247,7 @@ Partial Class ProductCategory
         Me.UnitPriceDataGridViewTextBoxColumn.HeaderText = "UnitPrice"
         Me.UnitPriceDataGridViewTextBoxColumn.MinimumWidth = 8
         Me.UnitPriceDataGridViewTextBoxColumn.Name = "UnitPriceDataGridViewTextBoxColumn"
+        Me.UnitPriceDataGridViewTextBoxColumn.ReadOnly = True
         Me.UnitPriceDataGridViewTextBoxColumn.Width = 150
         '
         'ProductStatusIdDataGridViewTextBoxColumn
@@ -249,6 +256,7 @@ Partial Class ProductCategory
         Me.ProductStatusIdDataGridViewTextBoxColumn.HeaderText = "ProductStatusId"
         Me.ProductStatusIdDataGridViewTextBoxColumn.MinimumWidth = 8
         Me.ProductStatusIdDataGridViewTextBoxColumn.Name = "ProductStatusIdDataGridViewTextBoxColumn"
+        Me.ProductStatusIdDataGridViewTextBoxColumn.ReadOnly = True
         Me.ProductStatusIdDataGridViewTextBoxColumn.Width = 150
         '
         'DiscountPercentDataGridViewTextBoxColumn
@@ -257,6 +265,7 @@ Partial Class ProductCategory
         Me.DiscountPercentDataGridViewTextBoxColumn.HeaderText = "DiscountPercent"
         Me.DiscountPercentDataGridViewTextBoxColumn.MinimumWidth = 8
         Me.DiscountPercentDataGridViewTextBoxColumn.Name = "DiscountPercentDataGridViewTextBoxColumn"
+        Me.DiscountPercentDataGridViewTextBoxColumn.ReadOnly = True
         Me.DiscountPercentDataGridViewTextBoxColumn.Width = 150
         '
         'RatingDataGridViewTextBoxColumn
@@ -265,6 +274,7 @@ Partial Class ProductCategory
         Me.RatingDataGridViewTextBoxColumn.HeaderText = "Rating"
         Me.RatingDataGridViewTextBoxColumn.MinimumWidth = 8
         Me.RatingDataGridViewTextBoxColumn.Name = "RatingDataGridViewTextBoxColumn"
+        Me.RatingDataGridViewTextBoxColumn.ReadOnly = True
         Me.RatingDataGridViewTextBoxColumn.Width = 150
         '
         'ImageIdDataGridViewTextBoxColumn
@@ -273,6 +283,7 @@ Partial Class ProductCategory
         Me.ImageIdDataGridViewTextBoxColumn.HeaderText = "ImageId"
         Me.ImageIdDataGridViewTextBoxColumn.MinimumWidth = 8
         Me.ImageIdDataGridViewTextBoxColumn.Name = "ImageIdDataGridViewTextBoxColumn"
+        Me.ImageIdDataGridViewTextBoxColumn.ReadOnly = True
         Me.ImageIdDataGridViewTextBoxColumn.Width = 150
         '
         'ProductBindingSource
@@ -382,7 +393,7 @@ Partial Class ProductCategory
 
     End Sub
 
-        Private WithEvents bAdd As System.Windows.Forms.Button
+    Private WithEvents bAdd As System.Windows.Forms.Button
         Private WithEvents bEdit As System.Windows.Forms.Button
         Private WithEvents bSave As System.Windows.Forms.Button
         Private WithEvents bDelete As System.Windows.Forms.Button

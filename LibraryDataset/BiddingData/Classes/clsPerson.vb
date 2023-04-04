@@ -22,4 +22,17 @@ Public Class clsPerson
         Return ds1
     End Function
 
+    Public Function EditCustomer(userName As String, lastName As String, firstName As String,
+                                gender As Boolean, birthDate As DateTime, phone As String,
+                                email As String, address As String, updateUser As String) As Integer
+        ta.Connection = conn
+        Return ta.UpdateCustomer(lastName, firstName, gender, birthDate, phone, email, address, DateTime.Now, updateUser, userName)
+    End Function
+
+    Public Function AddCustomer(userName As String, lastName As String, firstName As String,
+                                gender As Boolean, birthDate As Date, phone As String,
+                                email As String, address As String, createrUser As String) As Integer
+        ta.Connection = conn
+        Return ta.InsertCustomer(userName, lastName, firstName, gender, birthDate, phone, email, address, DateTime.Now, createrUser, False)
+    End Function
 End Class

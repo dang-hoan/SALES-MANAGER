@@ -19,7 +19,7 @@ Partial Class MainForm
 
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
-        Me.menuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.menuStrip = New System.Windows.Forms.MenuStrip()
         Me.btnHome = New System.Windows.Forms.ToolStripMenuItem()
         Me.toolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnCategory = New System.Windows.Forms.ToolStripMenuItem()
@@ -30,33 +30,39 @@ Partial Class MainForm
         Me.orderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.supplierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnTool = New System.Windows.Forms.ToolStripMenuItem()
-        Me.searchToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.searchClientToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.searchProductToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.searchToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem8 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem9 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem10 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem11 = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnStatistic = New System.Windows.Forms.ToolStripMenuItem()
-        Me.inventoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.salesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnExit = New System.Windows.Forms.ToolStripMenuItem()
         Me.srcMain = New System.Windows.Forms.Panel()
-        Me.menuStrip1.SuspendLayout()
+        Me.pictureMain = New System.Windows.Forms.PictureBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.panelWelcome = New System.Windows.Forms.Panel()
+        Me.menuStrip.SuspendLayout()
+        Me.srcMain.SuspendLayout()
+        CType(Me.pictureMain, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.panelWelcome.SuspendLayout()
         Me.SuspendLayout()
         '
-        'menuStrip1
+        'menuStrip
         '
-        Me.menuStrip1.AutoSize = False
-        Me.menuStrip1.BackColor = System.Drawing.Color.MediumAquamarine
-        Me.menuStrip1.Dock = System.Windows.Forms.DockStyle.Left
-        Me.menuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.menuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnHome, Me.btnCategory, Me.btnTool, Me.btnStatistic, Me.btnExit})
-        Me.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow
-        Me.menuStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.menuStrip1.Name = "menuStrip1"
-        Me.menuStrip1.Padding = New System.Windows.Forms.Padding(6, 20, 0, 2)
-        Me.menuStrip1.Size = New System.Drawing.Size(109, 825)
-        Me.menuStrip1.Stretch = False
-        Me.menuStrip1.TabIndex = 2
-        Me.menuStrip1.Text = "menuStrip1"
+        Me.menuStrip.AutoSize = False
+        Me.menuStrip.BackColor = System.Drawing.Color.MediumAquamarine
+        Me.menuStrip.Dock = System.Windows.Forms.DockStyle.Left
+        Me.menuStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.menuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnHome, Me.btnCategory, Me.btnTool, Me.btnStatistic, Me.btnExit})
+        Me.menuStrip.Location = New System.Drawing.Point(0, 0)
+        Me.menuStrip.Name = "menuStrip"
+        Me.menuStrip.Padding = New System.Windows.Forms.Padding(6, 6, 0, 2)
+        Me.menuStrip.Size = New System.Drawing.Size(109, 825)
+        Me.menuStrip.Stretch = False
+        Me.menuStrip.TabIndex = 2
+        Me.menuStrip.Text = "menuStrip1"
         '
         'btnHome
         '
@@ -65,16 +71,16 @@ Partial Class MainForm
         Me.btnHome.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolStripSeparator1})
         Me.btnHome.Image = CType(resources.GetObject("btnHome.Image"), System.Drawing.Image)
         Me.btnHome.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.btnHome.Margin = New System.Windows.Forms.Padding(15)
         Me.btnHome.Name = "btnHome"
-        Me.btnHome.Size = New System.Drawing.Size(70, 80)
+        Me.btnHome.Size = New System.Drawing.Size(80, 100)
         Me.btnHome.Text = "Home"
+        Me.btnHome.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
         'toolStripSeparator1
         '
         Me.toolStripSeparator1.Name = "toolStripSeparator1"
-        Me.toolStripSeparator1.Size = New System.Drawing.Size(87, 6)
+        Me.toolStripSeparator1.Size = New System.Drawing.Size(267, 6)
         '
         'btnCategory
         '
@@ -83,10 +89,10 @@ Partial Class MainForm
         Me.btnCategory.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnCategoryCustomer, Me.ToolStripMenuItem2, Me.toolStripMenuItem1, Me.productToolStripMenuItem, Me.orderToolStripMenuItem, Me.supplierToolStripMenuItem})
         Me.btnCategory.Image = CType(resources.GetObject("btnCategory.Image"), System.Drawing.Image)
         Me.btnCategory.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.btnCategory.Margin = New System.Windows.Forms.Padding(15)
         Me.btnCategory.Name = "btnCategory"
-        Me.btnCategory.Size = New System.Drawing.Size(70, 80)
+        Me.btnCategory.Size = New System.Drawing.Size(80, 100)
         Me.btnCategory.Text = "Category"
+        Me.btnCategory.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
         'btnCategoryCustomer
@@ -128,64 +134,64 @@ Partial Class MainForm
         '
         Me.btnTool.AutoSize = False
         Me.btnTool.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnTool.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.searchToolStripMenuItem})
+        Me.btnTool.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem8})
         Me.btnTool.Image = CType(resources.GetObject("btnTool.Image"), System.Drawing.Image)
         Me.btnTool.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.btnTool.Margin = New System.Windows.Forms.Padding(15)
         Me.btnTool.Name = "btnTool"
-        Me.btnTool.Size = New System.Drawing.Size(70, 80)
+        Me.btnTool.Size = New System.Drawing.Size(80, 100)
         Me.btnTool.Text = "Tool"
+        Me.btnTool.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnTool.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
-        'searchToolStripMenuItem
+        'ToolStripMenuItem8
         '
-        Me.searchToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.searchClientToolStripMenuItem, Me.searchProductToolStripMenuItem, Me.searchToolStripMenuItem1})
-        Me.searchToolStripMenuItem.Name = "searchToolStripMenuItem"
-        Me.searchToolStripMenuItem.Size = New System.Drawing.Size(166, 34)
-        Me.searchToolStripMenuItem.Text = "Search"
+        Me.ToolStripMenuItem8.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem9, Me.ToolStripMenuItem10, Me.ToolStripMenuItem11})
+        Me.ToolStripMenuItem8.Name = "ToolStripMenuItem8"
+        Me.ToolStripMenuItem8.Size = New System.Drawing.Size(166, 34)
+        Me.ToolStripMenuItem8.Text = "Search"
         '
-        'searchClientToolStripMenuItem
+        'ToolStripMenuItem9
         '
-        Me.searchClientToolStripMenuItem.Name = "searchClientToolStripMenuItem"
-        Me.searchClientToolStripMenuItem.Size = New System.Drawing.Size(234, 34)
-        Me.searchClientToolStripMenuItem.Text = "Search client"
+        Me.ToolStripMenuItem9.Name = "ToolStripMenuItem9"
+        Me.ToolStripMenuItem9.Size = New System.Drawing.Size(234, 34)
+        Me.ToolStripMenuItem9.Text = "Search client"
         '
-        'searchProductToolStripMenuItem
+        'ToolStripMenuItem10
         '
-        Me.searchProductToolStripMenuItem.Name = "searchProductToolStripMenuItem"
-        Me.searchProductToolStripMenuItem.Size = New System.Drawing.Size(234, 34)
-        Me.searchProductToolStripMenuItem.Text = "Search product"
+        Me.ToolStripMenuItem10.Name = "ToolStripMenuItem10"
+        Me.ToolStripMenuItem10.Size = New System.Drawing.Size(234, 34)
+        Me.ToolStripMenuItem10.Text = "Search product"
         '
-        'searchToolStripMenuItem1
+        'ToolStripMenuItem11
         '
-        Me.searchToolStripMenuItem1.Name = "searchToolStripMenuItem1"
-        Me.searchToolStripMenuItem1.Size = New System.Drawing.Size(234, 34)
-        Me.searchToolStripMenuItem1.Text = "Search order "
+        Me.ToolStripMenuItem11.Name = "ToolStripMenuItem11"
+        Me.ToolStripMenuItem11.Size = New System.Drawing.Size(234, 34)
+        Me.ToolStripMenuItem11.Text = "Search order "
         '
         'btnStatistic
         '
         Me.btnStatistic.AutoSize = False
         Me.btnStatistic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnStatistic.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.inventoryToolStripMenuItem, Me.salesToolStripMenuItem})
+        Me.btnStatistic.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem4, Me.ToolStripMenuItem5})
         Me.btnStatistic.Image = CType(resources.GetObject("btnStatistic.Image"), System.Drawing.Image)
         Me.btnStatistic.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.btnStatistic.Margin = New System.Windows.Forms.Padding(15)
         Me.btnStatistic.Name = "btnStatistic"
-        Me.btnStatistic.Size = New System.Drawing.Size(70, 80)
+        Me.btnStatistic.Size = New System.Drawing.Size(80, 100)
         Me.btnStatistic.Text = "Statistic"
+        Me.btnStatistic.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnStatistic.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
-        'inventoryToolStripMenuItem
+        'ToolStripMenuItem4
         '
-        Me.inventoryToolStripMenuItem.Name = "inventoryToolStripMenuItem"
-        Me.inventoryToolStripMenuItem.Size = New System.Drawing.Size(189, 34)
-        Me.inventoryToolStripMenuItem.Text = "Inventory"
+        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(189, 34)
+        Me.ToolStripMenuItem4.Text = "Inventory"
         '
-        'salesToolStripMenuItem
+        'ToolStripMenuItem5
         '
-        Me.salesToolStripMenuItem.Name = "salesToolStripMenuItem"
-        Me.salesToolStripMenuItem.Size = New System.Drawing.Size(189, 34)
-        Me.salesToolStripMenuItem.Text = "Sales"
+        Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
+        Me.ToolStripMenuItem5.Size = New System.Drawing.Size(189, 34)
+        Me.ToolStripMenuItem5.Text = "Sales"
         '
         'btnExit
         '
@@ -194,20 +200,62 @@ Partial Class MainForm
         Me.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnExit.Image = CType(resources.GetObject("btnExit.Image"), System.Drawing.Image)
         Me.btnExit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.btnExit.Margin = New System.Windows.Forms.Padding(15, 90, 15, 15)
         Me.btnExit.Name = "btnExit"
-        Me.btnExit.Padding = New System.Windows.Forms.Padding(30)
-        Me.btnExit.Size = New System.Drawing.Size(70, 80)
+        Me.btnExit.Size = New System.Drawing.Size(80, 100)
         Me.btnExit.Text = "Exit"
+        Me.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
         'srcMain
         '
         Me.srcMain.AutoSize = True
+        Me.srcMain.Controls.Add(Me.panelWelcome)
         Me.srcMain.Location = New System.Drawing.Point(112, 0)
         Me.srcMain.Name = "srcMain"
-        Me.srcMain.Size = New System.Drawing.Size(991, 822)
+        Me.srcMain.Size = New System.Drawing.Size(995, 828)
         Me.srcMain.TabIndex = 3
+        '
+        'pictureMain
+        '
+        Me.pictureMain.Image = CType(resources.GetObject("pictureMain.Image"), System.Drawing.Image)
+        Me.pictureMain.Location = New System.Drawing.Point(130, 173)
+        Me.pictureMain.Name = "pictureMain"
+        Me.pictureMain.Size = New System.Drawing.Size(725, 586)
+        Me.pictureMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.pictureMain.TabIndex = 2
+        Me.pictureMain.TabStop = False
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Georgia", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.Green
+        Me.Label2.Location = New System.Drawing.Point(42, 41)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(204, 38)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Hello Hoan"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Lemon", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.Tomato
+        Me.Label1.Location = New System.Drawing.Point(37, 86)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(942, 63)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Welcome to sales manager app!!"
+        '
+        'panelWelcome
+        '
+        Me.panelWelcome.Controls.Add(Me.pictureMain)
+        Me.panelWelcome.Controls.Add(Me.Label2)
+        Me.panelWelcome.Controls.Add(Me.Label1)
+        Me.panelWelcome.Location = New System.Drawing.Point(0, 0)
+        Me.panelWelcome.Name = "panelWelcome"
+        Me.panelWelcome.Size = New System.Drawing.Size(992, 825)
+        Me.panelWelcome.TabIndex = 3
         '
         'MainForm
         '
@@ -218,36 +266,44 @@ Partial Class MainForm
         Me.BackColor = System.Drawing.Color.White
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(1106, 825)
-        Me.Controls.Add(Me.menuStrip1)
+        Me.Controls.Add(Me.menuStrip)
         Me.Controls.Add(Me.srcMain)
         Me.Name = "MainForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Home"
-        Me.menuStrip1.ResumeLayout(False)
-        Me.menuStrip1.PerformLayout()
+        Me.menuStrip.ResumeLayout(False)
+        Me.menuStrip.PerformLayout()
+        Me.srcMain.ResumeLayout(False)
+        CType(Me.pictureMain, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.panelWelcome.ResumeLayout(False)
+        Me.panelWelcome.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Private menuStrip1 As System.Windows.Forms.MenuStrip
-    Private btnHome As System.Windows.Forms.ToolStripMenuItem
+    Private menuStrip As System.Windows.Forms.MenuStrip
+    Private WithEvents btnHome As System.Windows.Forms.ToolStripMenuItem
     Private toolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Private btnCategory As System.Windows.Forms.ToolStripMenuItem
     Private toolStripMenuItem1 As System.Windows.Forms.ToolStripSeparator
-    Private productToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Private orderToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Private WithEvents productToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Private supplierToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Private btnTool As System.Windows.Forms.ToolStripMenuItem
-    Private searchToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Private searchClientToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Private searchProductToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Private searchToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
-    Private btnStatistic As System.Windows.Forms.ToolStripMenuItem
-    Private inventoryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Private salesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Private btnExit As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents srcMain As Panel
     Private WithEvents btnCategoryCustomer As ToolStripMenuItem
     Private WithEvents ToolStripMenuItem2 As ToolStripMenuItem
+    Private WithEvents orderToolStripMenuItem As ToolStripMenuItem
+    Private WithEvents btnTool As ToolStripMenuItem
+    Private WithEvents ToolStripMenuItem8 As ToolStripMenuItem
+    Private WithEvents ToolStripMenuItem9 As ToolStripMenuItem
+    Private WithEvents ToolStripMenuItem10 As ToolStripMenuItem
+    Private WithEvents ToolStripMenuItem11 As ToolStripMenuItem
+    Private WithEvents btnStatistic As ToolStripMenuItem
+    Private WithEvents ToolStripMenuItem4 As ToolStripMenuItem
+    Private WithEvents ToolStripMenuItem5 As ToolStripMenuItem
+    Private WithEvents btnExit As ToolStripMenuItem
+    Friend WithEvents Label1 As Label
+    Friend WithEvents pictureMain As PictureBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents panelWelcome As Panel
 End Class
