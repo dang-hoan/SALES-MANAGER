@@ -21,6 +21,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>LibraryDataset.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <CodeAnalysisRuleSet>SecurityRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -122,19 +123,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RolePermission.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BiddingData\Dataset\SalesDetail.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SalesDetail.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="BiddingData\Dataset\SalesDetail.vb">
-      <DependentUpon>SalesDetail.xsd</DependentUpon>
+    <Compile Include="BiddingData\Dataset\RolePermission.vb">
+      <DependentUpon>RolePermission.xsd</DependentUpon>
     </Compile>
     <Compile Include="BiddingData\Dataset\Supplier.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Supplier.xsd</DependentUpon>
     </Compile>
+    <Compile Include="CBBCategory.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -248,17 +245,6 @@
     </None>
     <None Include="BiddingData\Dataset\RolePermission.xss">
       <DependentUpon>RolePermission.xsd</DependentUpon>
-    </None>
-    <None Include="BiddingData\Dataset\SalesDetail.xsc">
-      <DependentUpon>SalesDetail.xsd</DependentUpon>
-    </None>
-    <None Include="BiddingData\Dataset\SalesDetail.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SalesDetail.Designer.vb</LastGenOutput>
-    </None>
-    <None Include="BiddingData\Dataset\SalesDetail.xss">
-      <DependentUpon>SalesDetail.xsd</DependentUpon>
     </None>
     <None Include="BiddingData\Dataset\Supplier.xsc">
       <DependentUpon>Supplier.xsd</DependentUpon>

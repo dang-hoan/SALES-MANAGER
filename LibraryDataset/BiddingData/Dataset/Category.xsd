@@ -115,46 +115,40 @@ SELECT Id, CategoryName, Description, CreateDate, CreateBy, UpdateDate, UpdateBy
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="Category" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="Category" msprop:Generator_DataSetName="Category">
+  <xs:element name="Category" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="Category" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Category">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Category" msprop:Generator_RowEvHandlerName="CategoryRowChangeEventHandler" msprop:Generator_RowDeletedName="CategoryRowDeleted" msprop:Generator_RowDeletingName="CategoryRowDeleting" msprop:Generator_RowEvArgName="CategoryRowChangeEvent" msprop:Generator_TablePropName="_Category" msprop:Generator_RowChangedName="CategoryRowChanged" msprop:Generator_RowChangingName="CategoryRowChanging" msprop:Generator_TableClassName="CategoryDataTable" msprop:Generator_RowClassName="CategoryRow" msprop:Generator_TableVarName="tableCategory" msprop:Generator_UserTableName="Category">
+        <xs:element name="Category" msprop:Generator_RowEvHandlerName="CategoryRowChangeEventHandler" msprop:Generator_RowDeletedName="CategoryRowDeleted" msprop:Generator_RowDeletingName="CategoryRowDeleting" msprop:Generator_RowEvArgName="CategoryRowChangeEvent" msprop:Generator_TablePropName="_Category" msprop:Generator_RowChangedName="CategoryRowChanged" msprop:Generator_UserTableName="Category" msprop:Generator_RowChangingName="CategoryRowChanging" msprop:Generator_RowClassName="CategoryRow" msprop:Generator_TableClassName="CategoryDataTable" msprop:Generator_TableVarName="tableCategory">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_UserColumnName="Id" type="xs:long" />
-              <xs:element name="CategoryName" msprop:Generator_ColumnPropNameInRow="CategoryName" msprop:Generator_ColumnPropNameInTable="CategoryNameColumn" msprop:Generator_ColumnVarNameInTable="columnCategoryName" msprop:Generator_UserColumnName="CategoryName">
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_UserColumnName="Id" msprop:Generator_ColumnVarNameInTable="columnId" type="xs:long" />
+              <xs:element name="CategoryName" msprop:Generator_ColumnPropNameInTable="CategoryNameColumn" msprop:Generator_ColumnPropNameInRow="CategoryName" msprop:Generator_UserColumnName="CategoryName" msprop:Generator_ColumnVarNameInTable="columnCategoryName">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="30" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Description" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_UserColumnName="Description" minOccurs="0">
+              <xs:element name="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_UserColumnName="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="CreateDate" msprop:Generator_ColumnPropNameInRow="CreateDate" msprop:Generator_ColumnPropNameInTable="CreateDateColumn" msprop:Generator_ColumnVarNameInTable="columnCreateDate" msprop:Generator_UserColumnName="CreateDate" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="CreateBy" msprop:Generator_ColumnPropNameInRow="CreateBy" msprop:Generator_ColumnPropNameInTable="CreateByColumn" msprop:Generator_ColumnVarNameInTable="columnCreateBy" msprop:Generator_UserColumnName="CreateBy" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="UpdateDate" msprop:Generator_ColumnPropNameInRow="UpdateDate" msprop:Generator_ColumnPropNameInTable="UpdateDateColumn" msprop:Generator_ColumnVarNameInTable="columnUpdateDate" msprop:Generator_UserColumnName="UpdateDate" minOccurs="0">
+              <xs:element name="CreateDate" msprop:Generator_ColumnPropNameInTable="CreateDateColumn" msprop:Generator_ColumnPropNameInRow="CreateDate" msprop:Generator_UserColumnName="CreateDate" msprop:Generator_ColumnVarNameInTable="columnCreateDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CreateBy" msprop:Generator_ColumnPropNameInTable="CreateByColumn" msprop:Generator_ColumnPropNameInRow="CreateBy" msprop:Generator_UserColumnName="CreateBy" msprop:Generator_ColumnVarNameInTable="columnCreateBy" type="xs:string" minOccurs="0" />
+              <xs:element name="UpdateDate" msprop:Generator_ColumnPropNameInTable="UpdateDateColumn" msprop:Generator_ColumnPropNameInRow="UpdateDate" msprop:Generator_UserColumnName="UpdateDate" msprop:Generator_ColumnVarNameInTable="columnUpdateDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="UpdateBy" msprop:Generator_ColumnPropNameInTable="UpdateByColumn" msprop:Generator_ColumnPropNameInRow="UpdateBy" msprop:Generator_UserColumnName="UpdateBy" msprop:Generator_ColumnVarNameInTable="columnUpdateBy" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="UpdateBy" msprop:Generator_ColumnPropNameInRow="UpdateBy" msprop:Generator_ColumnPropNameInTable="UpdateByColumn" msprop:Generator_ColumnVarNameInTable="columnUpdateBy" msprop:Generator_UserColumnName="UpdateBy" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="DeleteDate" msprop:Generator_ColumnPropNameInRow="DeleteDate" msprop:Generator_ColumnPropNameInTable="DeleteDateColumn" msprop:Generator_ColumnVarNameInTable="columnDeleteDate" msprop:Generator_UserColumnName="DeleteDate" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="DeleteBy" msprop:Generator_ColumnPropNameInRow="DeleteBy" msprop:Generator_ColumnPropNameInTable="DeleteByColumn" msprop:Generator_ColumnVarNameInTable="columnDeleteBy" msprop:Generator_UserColumnName="DeleteBy" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="IsDelete" msprop:Generator_ColumnPropNameInRow="IsDelete" msprop:Generator_ColumnPropNameInTable="IsDeleteColumn" msprop:Generator_ColumnVarNameInTable="columnIsDelete" msprop:Generator_UserColumnName="IsDelete" type="xs:boolean" minOccurs="0" />
+              <xs:element name="DeleteDate" msprop:Generator_ColumnPropNameInTable="DeleteDateColumn" msprop:Generator_ColumnPropNameInRow="DeleteDate" msprop:Generator_UserColumnName="DeleteDate" msprop:Generator_ColumnVarNameInTable="columnDeleteDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DeleteBy" msprop:Generator_ColumnPropNameInTable="DeleteByColumn" msprop:Generator_ColumnPropNameInRow="DeleteBy" msprop:Generator_UserColumnName="DeleteBy" msprop:Generator_ColumnVarNameInTable="columnDeleteBy" type="xs:string" minOccurs="0" />
+              <xs:element name="IsDelete" msprop:Generator_ColumnPropNameInTable="IsDeleteColumn" msprop:Generator_ColumnPropNameInRow="IsDelete" msprop:Generator_UserColumnName="IsDelete" msprop:Generator_ColumnVarNameInTable="columnIsDelete" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

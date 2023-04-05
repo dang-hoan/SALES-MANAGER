@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class ProductCategory
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -21,12 +21,7 @@ Partial Class ProductCategory
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ProductCategory))
-        Me.bSave = New System.Windows.Forms.Button()
-        Me.bDelete = New System.Windows.Forms.Button()
-        Me.bEdit = New System.Windows.Forms.Button()
-        Me.bAdd = New System.Windows.Forms.Button()
         Me.label1 = New System.Windows.Forms.Label()
         Me.label2 = New System.Windows.Forms.Label()
         Me.label3 = New System.Windows.Forms.Label()
@@ -35,90 +30,34 @@ Partial Class ProductCategory
         Me.label6 = New System.Windows.Forms.Label()
         Me.label7 = New System.Windows.Forms.Label()
         Me.dgvCategory = New System.Windows.Forms.DataGridView()
-        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProductNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SupplierIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CategoryIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProductPriceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UnitPriceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProductStatusIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DiscountPercentDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.RatingDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ImageIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProductBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.groupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtUnitDiscount = New System.Windows.Forms.TextBox()
+        Me.txtNumber = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.cbbWarehouse = New System.Windows.Forms.ComboBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.cbbSupplier = New System.Windows.Forms.ComboBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.cbbStatus = New System.Windows.Forms.ComboBox()
         Me.cbbCategory = New System.Windows.Forms.ComboBox()
         Me.txtPrice = New System.Windows.Forms.TextBox()
+        Me.txtUnitPrice = New System.Windows.Forms.TextBox()
         Me.txtDiscount = New System.Windows.Forms.TextBox()
-        Me.txtStatus = New System.Windows.Forms.TextBox()
         Me.txtName = New System.Windows.Forms.TextBox()
         Me.txtCode = New System.Windows.Forms.TextBox()
-        Me.txtUnitPrice = New System.Windows.Forms.TextBox()
+        Me.btnRestore = New System.Windows.Forms.Button()
+        Me.bSave = New System.Windows.Forms.Button()
+        Me.bDelete = New System.Windows.Forms.Button()
+        Me.bEdit = New System.Windows.Forms.Button()
+        Me.bAdd = New System.Windows.Forms.Button()
         CType(Me.dgvCategory, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ProductBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.groupBox1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'bSave
-        '
-        Me.bSave.BackColor = System.Drawing.Color.SandyBrown
-        Me.bSave.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.bSave.Image = CType(resources.GetObject("bSave.Image"), System.Drawing.Image)
-        Me.bSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bSave.Location = New System.Drawing.Point(724, 693)
-        Me.bSave.Name = "bSave"
-        Me.bSave.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.bSave.Size = New System.Drawing.Size(139, 48)
-        Me.bSave.TabIndex = 5
-        Me.bSave.Text = "Save"
-        Me.bSave.UseVisualStyleBackColor = False
-        '
-        'bDelete
-        '
-        Me.bDelete.BackColor = System.Drawing.Color.SandyBrown
-        Me.bDelete.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.bDelete.Image = CType(resources.GetObject("bDelete.Image"), System.Drawing.Image)
-        Me.bDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bDelete.Location = New System.Drawing.Point(298, 693)
-        Me.bDelete.Name = "bDelete"
-        Me.bDelete.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.bDelete.Size = New System.Drawing.Size(139, 48)
-        Me.bDelete.TabIndex = 3
-        Me.bDelete.Text = "Delete"
-        Me.bDelete.UseVisualStyleBackColor = False
-        '
-        'bEdit
-        '
-        Me.bEdit.BackColor = System.Drawing.Color.SandyBrown
-        Me.bEdit.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.bEdit.Image = CType(resources.GetObject("bEdit.Image"), System.Drawing.Image)
-        Me.bEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bEdit.Location = New System.Drawing.Point(511, 693)
-        Me.bEdit.Name = "bEdit"
-        Me.bEdit.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.bEdit.Size = New System.Drawing.Size(139, 48)
-        Me.bEdit.TabIndex = 4
-        Me.bEdit.Text = "Edit"
-        Me.bEdit.UseVisualStyleBackColor = False
-        '
-        'bAdd
-        '
-        Me.bAdd.BackColor = System.Drawing.Color.SandyBrown
-        Me.bAdd.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.bAdd.Image = CType(resources.GetObject("bAdd.Image"), System.Drawing.Image)
-        Me.bAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bAdd.Location = New System.Drawing.Point(105, 693)
-        Me.bAdd.Name = "bAdd"
-        Me.bAdd.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.bAdd.Size = New System.Drawing.Size(119, 48)
-        Me.bAdd.TabIndex = 2
-        Me.bAdd.Text = "Add"
-        Me.bAdd.UseVisualStyleBackColor = False
         '
         'label1
         '
         Me.label1.AutoSize = True
-        Me.label1.Location = New System.Drawing.Point(28, 88)
+        Me.label1.Location = New System.Drawing.Point(35, 81)
         Me.label1.Name = "label1"
         Me.label1.Size = New System.Drawing.Size(108, 20)
         Me.label1.TabIndex = 5
@@ -127,7 +66,7 @@ Partial Class ProductCategory
         'label2
         '
         Me.label2.AutoSize = True
-        Me.label2.Location = New System.Drawing.Point(28, 45)
+        Me.label2.Location = New System.Drawing.Point(35, 38)
         Me.label2.Name = "label2"
         Me.label2.Size = New System.Drawing.Size(103, 20)
         Me.label2.TabIndex = 1
@@ -136,7 +75,7 @@ Partial Class ProductCategory
         'label3
         '
         Me.label3.AutoSize = True
-        Me.label3.Location = New System.Drawing.Point(439, 51)
+        Me.label3.Location = New System.Drawing.Point(429, 64)
         Me.label3.Name = "label3"
         Me.label3.Size = New System.Drawing.Size(102, 20)
         Me.label3.TabIndex = 3
@@ -145,7 +84,7 @@ Partial Class ProductCategory
         'label4
         '
         Me.label4.AutoSize = True
-        Me.label4.Location = New System.Drawing.Point(28, 134)
+        Me.label4.Location = New System.Drawing.Point(35, 127)
         Me.label4.Name = "label4"
         Me.label4.Size = New System.Drawing.Size(73, 20)
         Me.label4.TabIndex = 9
@@ -154,7 +93,7 @@ Partial Class ProductCategory
         'label5
         '
         Me.label5.AutoSize = True
-        Me.label5.Location = New System.Drawing.Point(439, 94)
+        Me.label5.Location = New System.Drawing.Point(429, 107)
         Me.label5.Name = "label5"
         Me.label5.Size = New System.Drawing.Size(112, 20)
         Me.label5.TabIndex = 7
@@ -163,7 +102,7 @@ Partial Class ProductCategory
         'label6
         '
         Me.label6.AutoSize = True
-        Me.label6.Location = New System.Drawing.Point(439, 134)
+        Me.label6.Location = New System.Drawing.Point(429, 147)
         Me.label6.Name = "label6"
         Me.label6.Size = New System.Drawing.Size(130, 20)
         Me.label6.TabIndex = 12
@@ -182,11 +121,10 @@ Partial Class ProductCategory
         '
         'dgvCategory
         '
-        Me.dgvCategory.AutoGenerateColumns = False
+        Me.dgvCategory.AllowUserToAddRows = False
+        Me.dgvCategory.AllowUserToDeleteRows = False
         Me.dgvCategory.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.dgvCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvCategory.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn, Me.ProductNameDataGridViewTextBoxColumn, Me.SupplierIdDataGridViewTextBoxColumn, Me.CategoryIdDataGridViewTextBoxColumn, Me.ProductPriceDataGridViewTextBoxColumn, Me.UnitPriceDataGridViewTextBoxColumn, Me.ProductStatusIdDataGridViewTextBoxColumn, Me.DiscountPercentDataGridViewTextBoxColumn, Me.RatingDataGridViewTextBoxColumn, Me.ImageIdDataGridViewTextBoxColumn})
-        Me.dgvCategory.DataSource = Me.ProductBindingSource
         Me.dgvCategory.Location = New System.Drawing.Point(54, 302)
         Me.dgvCategory.Name = "dgvCategory"
         Me.dgvCategory.ReadOnly = True
@@ -196,107 +134,20 @@ Partial Class ProductCategory
         Me.dgvCategory.Size = New System.Drawing.Size(853, 370)
         Me.dgvCategory.TabIndex = 1
         '
-        'IdDataGridViewTextBoxColumn
-        '
-        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "Id"
-        Me.IdDataGridViewTextBoxColumn.HeaderText = "Id"
-        Me.IdDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
-        Me.IdDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IdDataGridViewTextBoxColumn.Width = 150
-        '
-        'ProductNameDataGridViewTextBoxColumn
-        '
-        Me.ProductNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName"
-        Me.ProductNameDataGridViewTextBoxColumn.HeaderText = "ProductName"
-        Me.ProductNameDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.ProductNameDataGridViewTextBoxColumn.Name = "ProductNameDataGridViewTextBoxColumn"
-        Me.ProductNameDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ProductNameDataGridViewTextBoxColumn.Width = 150
-        '
-        'SupplierIdDataGridViewTextBoxColumn
-        '
-        Me.SupplierIdDataGridViewTextBoxColumn.DataPropertyName = "SupplierId"
-        Me.SupplierIdDataGridViewTextBoxColumn.HeaderText = "SupplierId"
-        Me.SupplierIdDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.SupplierIdDataGridViewTextBoxColumn.Name = "SupplierIdDataGridViewTextBoxColumn"
-        Me.SupplierIdDataGridViewTextBoxColumn.ReadOnly = True
-        Me.SupplierIdDataGridViewTextBoxColumn.Width = 150
-        '
-        'CategoryIdDataGridViewTextBoxColumn
-        '
-        Me.CategoryIdDataGridViewTextBoxColumn.DataPropertyName = "CategoryId"
-        Me.CategoryIdDataGridViewTextBoxColumn.HeaderText = "CategoryId"
-        Me.CategoryIdDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.CategoryIdDataGridViewTextBoxColumn.Name = "CategoryIdDataGridViewTextBoxColumn"
-        Me.CategoryIdDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CategoryIdDataGridViewTextBoxColumn.Width = 150
-        '
-        'ProductPriceDataGridViewTextBoxColumn
-        '
-        Me.ProductPriceDataGridViewTextBoxColumn.DataPropertyName = "ProductPrice"
-        Me.ProductPriceDataGridViewTextBoxColumn.HeaderText = "ProductPrice"
-        Me.ProductPriceDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.ProductPriceDataGridViewTextBoxColumn.Name = "ProductPriceDataGridViewTextBoxColumn"
-        Me.ProductPriceDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ProductPriceDataGridViewTextBoxColumn.Width = 150
-        '
-        'UnitPriceDataGridViewTextBoxColumn
-        '
-        Me.UnitPriceDataGridViewTextBoxColumn.DataPropertyName = "UnitPrice"
-        Me.UnitPriceDataGridViewTextBoxColumn.HeaderText = "UnitPrice"
-        Me.UnitPriceDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.UnitPriceDataGridViewTextBoxColumn.Name = "UnitPriceDataGridViewTextBoxColumn"
-        Me.UnitPriceDataGridViewTextBoxColumn.ReadOnly = True
-        Me.UnitPriceDataGridViewTextBoxColumn.Width = 150
-        '
-        'ProductStatusIdDataGridViewTextBoxColumn
-        '
-        Me.ProductStatusIdDataGridViewTextBoxColumn.DataPropertyName = "ProductStatusId"
-        Me.ProductStatusIdDataGridViewTextBoxColumn.HeaderText = "ProductStatusId"
-        Me.ProductStatusIdDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.ProductStatusIdDataGridViewTextBoxColumn.Name = "ProductStatusIdDataGridViewTextBoxColumn"
-        Me.ProductStatusIdDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ProductStatusIdDataGridViewTextBoxColumn.Width = 150
-        '
-        'DiscountPercentDataGridViewTextBoxColumn
-        '
-        Me.DiscountPercentDataGridViewTextBoxColumn.DataPropertyName = "DiscountPercent"
-        Me.DiscountPercentDataGridViewTextBoxColumn.HeaderText = "DiscountPercent"
-        Me.DiscountPercentDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.DiscountPercentDataGridViewTextBoxColumn.Name = "DiscountPercentDataGridViewTextBoxColumn"
-        Me.DiscountPercentDataGridViewTextBoxColumn.ReadOnly = True
-        Me.DiscountPercentDataGridViewTextBoxColumn.Width = 150
-        '
-        'RatingDataGridViewTextBoxColumn
-        '
-        Me.RatingDataGridViewTextBoxColumn.DataPropertyName = "Rating"
-        Me.RatingDataGridViewTextBoxColumn.HeaderText = "Rating"
-        Me.RatingDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.RatingDataGridViewTextBoxColumn.Name = "RatingDataGridViewTextBoxColumn"
-        Me.RatingDataGridViewTextBoxColumn.ReadOnly = True
-        Me.RatingDataGridViewTextBoxColumn.Width = 150
-        '
-        'ImageIdDataGridViewTextBoxColumn
-        '
-        Me.ImageIdDataGridViewTextBoxColumn.DataPropertyName = "ImageId"
-        Me.ImageIdDataGridViewTextBoxColumn.HeaderText = "ImageId"
-        Me.ImageIdDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.ImageIdDataGridViewTextBoxColumn.Name = "ImageIdDataGridViewTextBoxColumn"
-        Me.ImageIdDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ImageIdDataGridViewTextBoxColumn.Width = 150
-        '
-        'ProductBindingSource
-        '
-        Me.ProductBindingSource.DataMember = "Product"
-        Me.ProductBindingSource.DataSource = GetType(LibraryDataset.Product)
-        '
         'groupBox1
         '
+        Me.groupBox1.Controls.Add(Me.txtUnitDiscount)
+        Me.groupBox1.Controls.Add(Me.txtNumber)
+        Me.groupBox1.Controls.Add(Me.Label10)
+        Me.groupBox1.Controls.Add(Me.cbbWarehouse)
+        Me.groupBox1.Controls.Add(Me.Label9)
+        Me.groupBox1.Controls.Add(Me.cbbSupplier)
+        Me.groupBox1.Controls.Add(Me.Label8)
+        Me.groupBox1.Controls.Add(Me.cbbStatus)
         Me.groupBox1.Controls.Add(Me.cbbCategory)
         Me.groupBox1.Controls.Add(Me.txtPrice)
+        Me.groupBox1.Controls.Add(Me.txtUnitPrice)
         Me.groupBox1.Controls.Add(Me.txtDiscount)
-        Me.groupBox1.Controls.Add(Me.txtStatus)
         Me.groupBox1.Controls.Add(Me.txtName)
         Me.groupBox1.Controls.Add(Me.txtCode)
         Me.groupBox1.Controls.Add(Me.label2)
@@ -305,17 +156,88 @@ Partial Class ProductCategory
         Me.groupBox1.Controls.Add(Me.label6)
         Me.groupBox1.Controls.Add(Me.label3)
         Me.groupBox1.Controls.Add(Me.label5)
-        Me.groupBox1.Location = New System.Drawing.Point(54, 97)
+        Me.groupBox1.Location = New System.Drawing.Point(54, 76)
         Me.groupBox1.Name = "groupBox1"
-        Me.groupBox1.Size = New System.Drawing.Size(853, 188)
+        Me.groupBox1.Size = New System.Drawing.Size(853, 209)
         Me.groupBox1.TabIndex = 0
         Me.groupBox1.TabStop = False
         Me.groupBox1.Text = "Detail"
         '
+        'txtUnitDiscount
+        '
+        Me.txtUnitDiscount.Enabled = False
+        Me.txtUnitDiscount.Location = New System.Drawing.Point(756, 144)
+        Me.txtUnitDiscount.Name = "txtUnitDiscount"
+        Me.txtUnitDiscount.Size = New System.Drawing.Size(53, 26)
+        Me.txtUnitDiscount.TabIndex = 22
+        '
+        'txtNumber
+        '
+        Me.txtNumber.Enabled = False
+        Me.txtNumber.Location = New System.Drawing.Point(576, 173)
+        Me.txtNumber.Name = "txtNumber"
+        Me.txtNumber.Size = New System.Drawing.Size(164, 26)
+        Me.txtNumber.TabIndex = 21
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(429, 173)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(65, 20)
+        Me.Label10.TabIndex = 20
+        Me.Label10.Text = "Number"
+        '
+        'cbbWarehouse
+        '
+        Me.cbbWarehouse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbWarehouse.FormattingEnabled = True
+        Me.cbbWarehouse.Location = New System.Drawing.Point(576, 25)
+        Me.cbbWarehouse.Name = "cbbWarehouse"
+        Me.cbbWarehouse.Size = New System.Drawing.Size(164, 28)
+        Me.cbbWarehouse.TabIndex = 19
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(429, 28)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(91, 20)
+        Me.Label9.TabIndex = 18
+        Me.Label9.Text = "Warehouse"
+        '
+        'cbbSupplier
+        '
+        Me.cbbSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbSupplier.FormattingEnabled = True
+        Me.cbbSupplier.Location = New System.Drawing.Point(164, 164)
+        Me.cbbSupplier.Name = "cbbSupplier"
+        Me.cbbSupplier.Size = New System.Drawing.Size(172, 28)
+        Me.cbbSupplier.TabIndex = 17
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(35, 167)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(67, 20)
+        Me.Label8.TabIndex = 16
+        Me.Label8.Text = "Supplier"
+        '
+        'cbbStatus
+        '
+        Me.cbbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbStatus.FormattingEnabled = True
+        Me.cbbStatus.Location = New System.Drawing.Point(576, 101)
+        Me.cbbStatus.Name = "cbbStatus"
+        Me.cbbStatus.Size = New System.Drawing.Size(164, 28)
+        Me.cbbStatus.TabIndex = 15
+        '
         'cbbCategory
         '
+        Me.cbbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbbCategory.FormattingEnabled = True
-        Me.cbbCategory.Location = New System.Drawing.Point(142, 131)
+        Me.cbbCategory.Location = New System.Drawing.Point(164, 124)
         Me.cbbCategory.Name = "cbbCategory"
         Me.cbbCategory.Size = New System.Drawing.Size(172, 28)
         Me.cbbCategory.TabIndex = 14
@@ -323,31 +245,31 @@ Partial Class ProductCategory
         'txtPrice
         '
         Me.txtPrice.Enabled = False
-        Me.txtPrice.Location = New System.Drawing.Point(586, 51)
+        Me.txtPrice.Location = New System.Drawing.Point(576, 64)
         Me.txtPrice.Name = "txtPrice"
         Me.txtPrice.Size = New System.Drawing.Size(164, 26)
         Me.txtPrice.TabIndex = 13
         '
+        'txtUnitPrice
+        '
+        Me.txtUnitPrice.Enabled = False
+        Me.txtUnitPrice.Location = New System.Drawing.Point(756, 64)
+        Me.txtUnitPrice.Name = "txtUnitPrice"
+        Me.txtUnitPrice.Size = New System.Drawing.Size(53, 26)
+        Me.txtUnitPrice.TabIndex = 15
+        '
         'txtDiscount
         '
         Me.txtDiscount.Enabled = False
-        Me.txtDiscount.Location = New System.Drawing.Point(586, 128)
+        Me.txtDiscount.Location = New System.Drawing.Point(576, 141)
         Me.txtDiscount.Name = "txtDiscount"
-        Me.txtDiscount.Size = New System.Drawing.Size(233, 26)
+        Me.txtDiscount.Size = New System.Drawing.Size(164, 26)
         Me.txtDiscount.TabIndex = 0
-        '
-        'txtStatus
-        '
-        Me.txtStatus.Enabled = False
-        Me.txtStatus.Location = New System.Drawing.Point(586, 88)
-        Me.txtStatus.Name = "txtStatus"
-        Me.txtStatus.Size = New System.Drawing.Size(233, 26)
-        Me.txtStatus.TabIndex = 8
         '
         'txtName
         '
         Me.txtName.Enabled = False
-        Me.txtName.Location = New System.Drawing.Point(142, 88)
+        Me.txtName.Location = New System.Drawing.Point(164, 81)
         Me.txtName.Name = "txtName"
         Me.txtName.Size = New System.Drawing.Size(233, 26)
         Me.txtName.TabIndex = 6
@@ -355,18 +277,80 @@ Partial Class ProductCategory
         'txtCode
         '
         Me.txtCode.Enabled = False
-        Me.txtCode.Location = New System.Drawing.Point(142, 45)
+        Me.txtCode.Location = New System.Drawing.Point(164, 38)
         Me.txtCode.Name = "txtCode"
         Me.txtCode.Size = New System.Drawing.Size(103, 26)
         Me.txtCode.TabIndex = 2
         '
-        'txtUnitPrice
+        'btnRestore
         '
-        Me.txtUnitPrice.Enabled = False
-        Me.txtUnitPrice.Location = New System.Drawing.Point(820, 148)
-        Me.txtUnitPrice.Name = "txtUnitPrice"
-        Me.txtUnitPrice.Size = New System.Drawing.Size(53, 26)
-        Me.txtUnitPrice.TabIndex = 15
+        Me.btnRestore.BackColor = System.Drawing.Color.SandyBrown
+        Me.btnRestore.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnRestore.Image = CType(resources.GetObject("btnRestore.Image"), System.Drawing.Image)
+        Me.btnRestore.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnRestore.Location = New System.Drawing.Point(573, 689)
+        Me.btnRestore.Name = "btnRestore"
+        Me.btnRestore.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnRestore.Size = New System.Drawing.Size(150, 55)
+        Me.btnRestore.TabIndex = 20
+        Me.btnRestore.Text = " Restore"
+        Me.btnRestore.UseVisualStyleBackColor = False
+        '
+        'bSave
+        '
+        Me.bSave.BackColor = System.Drawing.Color.SandyBrown
+        Me.bSave.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.bSave.Image = CType(resources.GetObject("bSave.Image"), System.Drawing.Image)
+        Me.bSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.bSave.Location = New System.Drawing.Point(737, 689)
+        Me.bSave.Name = "bSave"
+        Me.bSave.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.bSave.Size = New System.Drawing.Size(150, 55)
+        Me.bSave.TabIndex = 19
+        Me.bSave.Text = "Save"
+        Me.bSave.UseVisualStyleBackColor = False
+        '
+        'bDelete
+        '
+        Me.bDelete.BackColor = System.Drawing.Color.SandyBrown
+        Me.bDelete.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.bDelete.Image = CType(resources.GetObject("bDelete.Image"), System.Drawing.Image)
+        Me.bDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.bDelete.Location = New System.Drawing.Point(409, 689)
+        Me.bDelete.Name = "bDelete"
+        Me.bDelete.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.bDelete.Size = New System.Drawing.Size(150, 55)
+        Me.bDelete.TabIndex = 17
+        Me.bDelete.Text = "Delete"
+        Me.bDelete.UseVisualStyleBackColor = False
+        '
+        'bEdit
+        '
+        Me.bEdit.BackColor = System.Drawing.Color.SandyBrown
+        Me.bEdit.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.bEdit.Image = CType(resources.GetObject("bEdit.Image"), System.Drawing.Image)
+        Me.bEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.bEdit.Location = New System.Drawing.Point(245, 689)
+        Me.bEdit.Name = "bEdit"
+        Me.bEdit.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.bEdit.Size = New System.Drawing.Size(150, 55)
+        Me.bEdit.TabIndex = 18
+        Me.bEdit.Text = "Edit"
+        Me.bEdit.UseVisualStyleBackColor = False
+        '
+        'bAdd
+        '
+        Me.bAdd.BackColor = System.Drawing.Color.SandyBrown
+        Me.bAdd.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.bAdd.Image = CType(resources.GetObject("bAdd.Image"), System.Drawing.Image)
+        Me.bAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.bAdd.Location = New System.Drawing.Point(81, 689)
+        Me.bAdd.Name = "bAdd"
+        Me.bAdd.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.bAdd.Size = New System.Drawing.Size(150, 55)
+        Me.bAdd.TabIndex = 16
+        Me.bAdd.Text = "Add"
+        Me.bAdd.UseVisualStyleBackColor = False
         '
         'ProductCategory
         '
@@ -374,54 +358,49 @@ Partial Class ProductCategory
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(969, 766)
-        Me.Controls.Add(Me.txtUnitPrice)
+        Me.Controls.Add(Me.btnRestore)
         Me.Controls.Add(Me.bSave)
         Me.Controls.Add(Me.bDelete)
-        Me.Controls.Add(Me.groupBox1)
         Me.Controls.Add(Me.bEdit)
-        Me.Controls.Add(Me.dgvCategory)
         Me.Controls.Add(Me.bAdd)
+        Me.Controls.Add(Me.groupBox1)
+        Me.Controls.Add(Me.dgvCategory)
         Me.Controls.Add(Me.label7)
         Me.Name = "ProductCategory"
         Me.Text = "Product Category"
         CType(Me.dgvCategory, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ProductBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.groupBox1.ResumeLayout(False)
         Me.groupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Private WithEvents bAdd As System.Windows.Forms.Button
-        Private WithEvents bEdit As System.Windows.Forms.Button
-        Private WithEvents bSave As System.Windows.Forms.Button
-        Private WithEvents bDelete As System.Windows.Forms.Button
-        Private label1 As System.Windows.Forms.Label
-        Private label2 As System.Windows.Forms.Label
-        Private label3 As System.Windows.Forms.Label
-        Private label4 As System.Windows.Forms.Label
-        Private label5 As System.Windows.Forms.Label
-        Private label6 As System.Windows.Forms.Label
-        Private label7 As System.Windows.Forms.Label
-        Private WithEvents dgvCategory As System.Windows.Forms.DataGridView
-        Private groupBox1 As System.Windows.Forms.GroupBox
-        Private txtDiscount As System.Windows.Forms.TextBox
-        Private txtStatus As System.Windows.Forms.TextBox
-        Private txtName As System.Windows.Forms.TextBox
-        Private txtCode As System.Windows.Forms.TextBox
-        Private cbbCategory As System.Windows.Forms.ComboBox
-        Private txtPrice As System.Windows.Forms.TextBox
-    Friend WithEvents IdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ProductNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents SupplierIdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents CategoryIdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ProductPriceDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents UnitPriceDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ProductStatusIdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DiscountPercentDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents RatingDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ImageIdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ProductBindingSource As BindingSource
+    Private label1 As System.Windows.Forms.Label
+    Private label2 As System.Windows.Forms.Label
+    Private label3 As System.Windows.Forms.Label
+    Private label4 As System.Windows.Forms.Label
+    Private label5 As System.Windows.Forms.Label
+    Private label6 As System.Windows.Forms.Label
+    Private label7 As System.Windows.Forms.Label
+    Private WithEvents dgvCategory As System.Windows.Forms.DataGridView
+    Private groupBox1 As System.Windows.Forms.GroupBox
+    Private txtDiscount As System.Windows.Forms.TextBox
+    Private txtName As System.Windows.Forms.TextBox
+    Private txtCode As System.Windows.Forms.TextBox
+    Private cbbCategory As System.Windows.Forms.ComboBox
+    Private txtPrice As System.Windows.Forms.TextBox
     Private WithEvents txtUnitPrice As TextBox
+    Private WithEvents cbbStatus As ComboBox
+    Private WithEvents btnRestore As Button
+    Private WithEvents bSave As Button
+    Private WithEvents bDelete As Button
+    Private WithEvents bEdit As Button
+    Private WithEvents bAdd As Button
+    Private WithEvents cbbSupplier As ComboBox
+    Private WithEvents Label8 As Label
+    Private WithEvents txtNumber As TextBox
+    Private WithEvents Label10 As Label
+    Private WithEvents cbbWarehouse As ComboBox
+    Private WithEvents Label9 As Label
+    Private WithEvents txtUnitDiscount As TextBox
 End Class

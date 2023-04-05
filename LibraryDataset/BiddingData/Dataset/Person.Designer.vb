@@ -20,10 +20,12 @@ Option Explicit On
  Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
  Global.System.ComponentModel.ToolboxItem(true),  _
  Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema"),  _
- Global.System.Xml.Serialization.XmlRootAttribute("Person"),  _
+ Global.System.Xml.Serialization.XmlRootAttribute("_Person"),  _
  Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")>  _
-Partial Public Class Person
+Partial Public Class _Person
     Inherits Global.System.Data.DataSet
+    
+    Private tableRole As RoleDataTable
     
     Private tablePerson As PersonDataTable
     
@@ -56,6 +58,9 @@ Partial Public Class Person
         If (Me.DetermineSchemaSerializationMode(info, context) = Global.System.Data.SchemaSerializationMode.IncludeSchema) Then
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXmlSchema(New Global.System.Xml.XmlTextReader(New Global.System.IO.StringReader(strSchema)))
+            If (Not (ds.Tables("Role")) Is Nothing) Then
+                MyBase.Tables.Add(New RoleDataTable(ds.Tables("Role")))
+            End If
             If (Not (ds.Tables("Person")) Is Nothing) Then
                 MyBase.Tables.Add(New PersonDataTable(ds.Tables("Person")))
             End If
@@ -80,7 +85,17 @@ Partial Public Class Person
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property _Person() As PersonDataTable
+    Public ReadOnly Property Role() As RoleDataTable
+        Get
+            Return Me.tableRole
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property Person() As PersonDataTable
         Get
             Return Me.tablePerson
         End Get
@@ -128,7 +143,7 @@ Partial Public Class Person
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
     Public Overrides Function Clone() As Global.System.Data.DataSet
-        Dim cln As Person = CType(MyBase.Clone,Person)
+        Dim cln As _Person = CType(MyBase.Clone,_Person)
         cln.InitVars
         cln.SchemaSerializationMode = Me.SchemaSerializationMode
         Return cln
@@ -153,6 +168,9 @@ Partial Public Class Person
             Me.Reset
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXml(reader)
+            If (Not (ds.Tables("Role")) Is Nothing) Then
+                MyBase.Tables.Add(New RoleDataTable(ds.Tables("Role")))
+            End If
             If (Not (ds.Tables("Person")) Is Nothing) Then
                 MyBase.Tables.Add(New PersonDataTable(ds.Tables("Person")))
             End If
@@ -188,6 +206,12 @@ Partial Public Class Person
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
     Friend Overloads Sub InitVars(ByVal initTable As Boolean)
+        Me.tableRole = CType(MyBase.Tables("Role"),RoleDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableRole) Is Nothing) Then
+                Me.tableRole.InitVars
+            End If
+        End If
         Me.tablePerson = CType(MyBase.Tables("Person"),PersonDataTable)
         If (initTable = true) Then
             If (Not (Me.tablePerson) Is Nothing) Then
@@ -204,13 +228,23 @@ Partial Public Class Person
         Me.Namespace = "http://tempuri.org/Person.xsd"
         Me.EnforceConstraints = true
         Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
+        Me.tableRole = New RoleDataTable()
+        MyBase.Tables.Add(Me.tableRole)
         Me.tablePerson = New PersonDataTable()
         MyBase.Tables.Add(Me.tablePerson)
+        Me.ExtendedProperties.Add("Generator_DataSetName", "_Person")
+        Me.ExtendedProperties.Add("Generator_UserDSName", "Person")
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Private Function ShouldSerialize_Person() As Boolean
+    Private Function ShouldSerializeRole() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+    Private Function ShouldSerializePerson() As Boolean
         Return false
     End Function
     
@@ -225,7 +259,7 @@ Partial Public Class Person
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
     Public Shared Function GetTypedDataSetSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-        Dim ds As Person = New Person()
+        Dim ds As _Person = New _Person()
         Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
         Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
         Dim any As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
@@ -273,7 +307,275 @@ Partial Public Class Person
     End Function
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+    Public Delegate Sub RoleRowChangeEventHandler(ByVal sender As Object, ByVal e As RoleRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
     Public Delegate Sub PersonRowChangeEventHandler(ByVal sender As Object, ByVal e As PersonRowChangeEvent)
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class RoleDataTable
+        Inherits Global.System.Data.TypedTableBase(Of RoleRow)
+        
+        Private columnId As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "Role"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property IdColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnId
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As RoleRow
+            Get
+                Return CType(Me.Rows(index),RoleRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Event RoleRowChanging As RoleRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Event RoleRowChanged As RoleRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Event RoleRowDeleting As RoleRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Event RoleRowDeleted As RoleRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Overloads Sub AddRoleRow(ByVal row As RoleRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Overloads Function AddRoleRow() As RoleRow
+            Dim rowRoleRow As RoleRow = CType(Me.NewRow,RoleRow)
+            Dim columnValuesArray() As Object = New Object() {Nothing}
+            rowRoleRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowRoleRow)
+            Return rowRoleRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function FindById(ByVal Id As Integer) As RoleRow
+            Return CType(Me.Rows.Find(New Object() {Id}),RoleRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As RoleDataTable = CType(MyBase.Clone,RoleDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New RoleDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnId = MyBase.Columns("Id")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnId = New Global.System.Data.DataColumn("Id", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnId)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnId}, true))
+            Me.columnId.AutoIncrement = true
+            Me.columnId.AutoIncrementSeed = -1
+            Me.columnId.AutoIncrementStep = -1
+            Me.columnId.AllowDBNull = false
+            Me.columnId.ReadOnly = true
+            Me.columnId.Unique = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function NewRoleRow() As RoleRow
+            Return CType(Me.NewRow,RoleRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New RoleRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(RoleRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.RoleRowChangedEvent) Is Nothing) Then
+                RaiseEvent RoleRowChanged(Me, New RoleRowChangeEvent(CType(e.Row,RoleRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.RoleRowChangingEvent) Is Nothing) Then
+                RaiseEvent RoleRowChanging(Me, New RoleRowChangeEvent(CType(e.Row,RoleRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.RoleRowDeletedEvent) Is Nothing) Then
+                RaiseEvent RoleRowDeleted(Me, New RoleRowChangeEvent(CType(e.Row,RoleRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.RoleRowDeletingEvent) Is Nothing) Then
+                RaiseEvent RoleRowDeleting(Me, New RoleRowChangeEvent(CType(e.Row,RoleRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub RemoveRoleRow(ByVal row As RoleRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As _Person = New _Person()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "RoleDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -298,6 +600,8 @@ Partial Public Class Person
         Private columnEmail As Global.System.Data.DataColumn
         
         Private columnAddress As Global.System.Data.DataColumn
+        
+        Private columnRoleId As Global.System.Data.DataColumn
         
         Private columnCreateDate As Global.System.Data.DataColumn
         
@@ -414,6 +718,14 @@ Partial Public Class Person
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property RoleIdColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRoleId
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public ReadOnly Property CreateDateColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnCreateDate
@@ -505,9 +817,25 @@ Partial Public Class Person
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddPersonRow(ByVal Username As String, ByVal LastName As String, ByVal FirstName As String, ByVal Gender As Boolean, ByVal BirthDate As Date, ByVal Phone As String, ByVal Email As String, ByVal Address As String, ByVal CreateDate As Date, ByVal CreateBy As String, ByVal UpdateDate As Date, ByVal UpdateBy As String, ByVal DeleteDate As Date, ByVal DeleteBy As String, ByVal IsDelete As Boolean) As PersonRow
+        Public Overloads Function AddPersonRow( _
+                    ByVal Username As String,  _
+                    ByVal LastName As String,  _
+                    ByVal FirstName As String,  _
+                    ByVal Gender As Boolean,  _
+                    ByVal BirthDate As Date,  _
+                    ByVal Phone As String,  _
+                    ByVal Email As String,  _
+                    ByVal Address As String,  _
+                    ByVal RoleId As Integer,  _
+                    ByVal CreateDate As Date,  _
+                    ByVal CreateBy As String,  _
+                    ByVal UpdateDate As Date,  _
+                    ByVal UpdateBy As String,  _
+                    ByVal DeleteDate As Date,  _
+                    ByVal DeleteBy As String,  _
+                    ByVal IsDelete As Boolean) As PersonRow
             Dim rowPersonRow As PersonRow = CType(Me.NewRow,PersonRow)
-            Dim columnValuesArray() As Object = New Object() {Username, LastName, FirstName, Gender, BirthDate, Phone, Email, Address, CreateDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete}
+            Dim columnValuesArray() As Object = New Object() {Username, LastName, FirstName, Gender, BirthDate, Phone, Email, Address, RoleId, CreateDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete}
             rowPersonRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowPersonRow)
             Return rowPersonRow
@@ -544,6 +872,7 @@ Partial Public Class Person
             Me.columnPhone = MyBase.Columns("Phone")
             Me.columnEmail = MyBase.Columns("Email")
             Me.columnAddress = MyBase.Columns("Address")
+            Me.columnRoleId = MyBase.Columns("RoleId")
             Me.columnCreateDate = MyBase.Columns("CreateDate")
             Me.columnCreateBy = MyBase.Columns("CreateBy")
             Me.columnUpdateDate = MyBase.Columns("UpdateDate")
@@ -572,6 +901,8 @@ Partial Public Class Person
             MyBase.Columns.Add(Me.columnEmail)
             Me.columnAddress = New Global.System.Data.DataColumn("Address", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnAddress)
+            Me.columnRoleId = New Global.System.Data.DataColumn("RoleId", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRoleId)
             Me.columnCreateDate = New Global.System.Data.DataColumn("CreateDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCreateDate)
             Me.columnCreateBy = New Global.System.Data.DataColumn("CreateBy", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -598,9 +929,10 @@ Partial Public Class Person
             Me.columnPhone.MaxLength = 20
             Me.columnEmail.MaxLength = 40
             Me.columnAddress.MaxLength = 100
-            Me.columnUpdateBy.MaxLength = 50
-            Me.ExtendedProperties.Add("Generator_TablePropName", "_Person")
-            Me.ExtendedProperties.Add("Generator_UserTableName", "Person")
+            Me.columnRoleId.AllowDBNull = false
+            Me.columnCreateBy.MaxLength = 40
+            Me.columnUpdateBy.MaxLength = 40
+            Me.columnDeleteBy.MaxLength = 40
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -668,7 +1000,7 @@ Partial Public Class Person
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As Person = New Person()
+            Dim ds As _Person = New _Person()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -728,6 +1060,33 @@ Partial Public Class Person
             xs.Add(dsSchema)
             Return type
         End Function
+    End Class
+    
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class RoleRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableRole As RoleDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableRole = CType(Me.Table,RoleDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property Id() As Integer
+            Get
+                Return CType(Me(Me.tableRole.IdColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableRole.IdColumn) = value
+            End Set
+        End Property
     End Class
     
     '''<summary>
@@ -846,6 +1205,17 @@ Partial Public Class Person
             End Get
             Set
                 Me(Me.tablePerson.AddressColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property RoleId() As Integer
+            Get
+                Return CType(Me(Me.tablePerson.RoleIdColumn),Integer)
+            End Get
+            Set
+                Me(Me.tablePerson.RoleIdColumn) = value
             End Set
         End Property
         
@@ -1091,6 +1461,42 @@ Partial Public Class Person
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+    Public Class RoleRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As RoleRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub New(ByVal row As RoleRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property Row() As RoleRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
     Public Class PersonRowChangeEvent
         Inherits Global.System.EventArgs
         
@@ -1124,7 +1530,234 @@ Partial Public Class Person
     End Class
 End Class
 
-Namespace PersonTableAdapters
+Namespace _PersonTableAdapters
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class RoleTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _transaction As Global.System.Data.SqlClient.SqlTransaction
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Protected Friend ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Friend Property Transaction() As Global.System.Data.SqlClient.SqlTransaction
+            Get
+                Return Me._transaction
+            End Get
+            Set
+                Me._transaction = value
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    Me.CommandCollection(i).Transaction = Me._transaction
+                    i = (i + 1)
+                Loop
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
+                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
+                    Me.Adapter.InsertCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
+                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
+                End If
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "Role"
+            tableMapping.ColumnMappings.Add("Id", "Id")
+            Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.DeleteCommand.Connection = Me.Connection
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Role] WHERE (([Id] = @Original_Id))"
+            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
+            Me._connection.ConnectionString = Global.LibraryDataset.My.MySettings.Default.SalesManagerDBConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT Id"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   Role"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (RoleName = N'Customer')"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function FillByRoleId(ByVal dataTable As _Person.RoleDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetIdCustomer() As _Person.RoleDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As _Person.RoleDataTable = New _Person.RoleDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataTable As _Person.RoleDataTable) As Integer
+            Return Me.Adapter.Update(dataTable)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataSet As _Person) As Integer
+            Return Me.Adapter.Update(dataSet, "Role")
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(dataRows)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete(ByVal Original_Id As Integer) As Integer
+            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Id,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.DeleteCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.DeleteCommand.Connection.Close
+                End If
+            End Try
+        End Function
+    End Class
     
     '''<summary>
     '''Represents the connection and commands used to retrieve and save data.
@@ -1261,6 +1894,7 @@ Namespace PersonTableAdapters
             tableMapping.ColumnMappings.Add("Phone", "Phone")
             tableMapping.ColumnMappings.Add("Email", "Email")
             tableMapping.ColumnMappings.Add("Address", "Address")
+            tableMapping.ColumnMappings.Add("RoleId", "RoleId")
             tableMapping.ColumnMappings.Add("CreateDate", "CreateDate")
             tableMapping.ColumnMappings.Add("CreateBy", "CreateBy")
             tableMapping.ColumnMappings.Add("UpdateDate", "UpdateDate")
@@ -1271,21 +1905,21 @@ Namespace PersonTableAdapters
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Person] WHERE (([Username] = @Original_Username) AND ([LastNam"& _ 
-                "e] = @Original_LastName) AND ([FirstName] = @Original_FirstName) AND ((@IsNull_G"& _ 
-                "ender = 1 AND [Gender] IS NULL) OR ([Gender] = @Original_Gender)) AND ((@IsNull_"& _ 
-                "BirthDate = 1 AND [BirthDate] IS NULL) OR ([BirthDate] = @Original_BirthDate)) A"& _ 
-                "ND ([Phone] = @Original_Phone) AND ((@IsNull_Email = 1 AND [Email] IS NULL) OR ("& _ 
-                "[Email] = @Original_Email)) AND ((@IsNull_Address = 1 AND [Address] IS NULL) OR "& _ 
-                "([Address] = @Original_Address)) AND ((@IsNull_CreateDate = 1 AND [CreateDate] I"& _ 
-                "S NULL) OR ([CreateDate] = @Original_CreateDate)) AND ((@IsNull_CreateBy = 1 AND"& _ 
-                " [CreateBy] IS NULL) OR ([CreateBy] = @Original_CreateBy)) AND ((@IsNull_UpdateD"& _ 
-                "ate = 1 AND [UpdateDate] IS NULL) OR ([UpdateDate] = @Original_UpdateDate)) AND "& _ 
-                "((@IsNull_UpdateBy = 1 AND [UpdateBy] IS NULL) OR ([UpdateBy] = @Original_Update"& _ 
-                "By)) AND ((@IsNull_DeleteDate = 1 AND [DeleteDate] IS NULL) OR ([DeleteDate] = @"& _ 
-                "Original_DeleteDate)) AND ((@IsNull_DeleteBy = 1 AND [DeleteBy] IS NULL) OR ([De"& _ 
-                "leteBy] = @Original_DeleteBy)) AND ((@IsNull_IsDelete = 1 AND [IsDelete] IS NULL"& _ 
-                ") OR ([IsDelete] = @Original_IsDelete)))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Person] WHERE (([Username] = @Original_Username) AND ([LastName] = @"& _ 
+                "Original_LastName) AND ([FirstName] = @Original_FirstName) AND ((@IsNull_Gender "& _ 
+                "= 1 AND [Gender] IS NULL) OR ([Gender] = @Original_Gender)) AND ((@IsNull_BirthD"& _ 
+                "ate = 1 AND [BirthDate] IS NULL) OR ([BirthDate] = @Original_BirthDate)) AND ([P"& _ 
+                "hone] = @Original_Phone) AND ((@IsNull_Email = 1 AND [Email] IS NULL) OR ([Email"& _ 
+                "] = @Original_Email)) AND ((@IsNull_Address = 1 AND [Address] IS NULL) OR ([Addr"& _ 
+                "ess] = @Original_Address)) AND ([RoleId] = @Original_RoleId) AND ((@IsNull_Creat"& _ 
+                "eDate = 1 AND [CreateDate] IS NULL) OR ([CreateDate] = @Original_CreateDate)) AN"& _ 
+                "D ((@IsNull_CreateBy = 1 AND [CreateBy] IS NULL) OR ([CreateBy] = @Original_Crea"& _ 
+                "teBy)) AND ((@IsNull_UpdateDate = 1 AND [UpdateDate] IS NULL) OR ([UpdateDate] ="& _ 
+                " @Original_UpdateDate)) AND ((@IsNull_UpdateBy = 1 AND [UpdateBy] IS NULL) OR (["& _ 
+                "UpdateBy] = @Original_UpdateBy)) AND ((@IsNull_DeleteDate = 1 AND [DeleteDate] I"& _ 
+                "S NULL) OR ([DeleteDate] = @Original_DeleteDate)) AND ((@IsNull_DeleteBy = 1 AND"& _ 
+                " [DeleteBy] IS NULL) OR ([DeleteBy] = @Original_DeleteBy)) AND ((@IsNull_IsDelet"& _ 
+                "e = 1 AND [IsDelete] IS NULL) OR ([IsDelete] = @Original_IsDelete)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Username", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Username", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -1299,30 +1933,31 @@ Namespace PersonTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Email", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Email", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Address", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Address", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Address", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Address", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RoleId", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RoleId", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_CreateDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CreateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_CreateBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CreateBy", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CreateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_UpdateDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UpdateDate", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_UpdateBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UpdateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DeleteDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DeleteDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DeleteBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DeleteBy", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DeleteBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_IsDelete", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IsDelete", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IsDelete", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IsDelete", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Person] ([Username], [LastName], [FirstName], [Gender], [Birth"& _ 
-                "Date], [Phone], [Email], [Address], [CreateDate], [CreateBy], [UpdateDate], [Upd"& _ 
-                "ateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (@Username, @LastName, @Fir"& _ 
-                "stName, @Gender, @BirthDate, @Phone, @Email, @Address, @CreateDate, @CreateBy, @"& _ 
-                "UpdateDate, @UpdateBy, @DeleteDate, @DeleteBy, @IsDelete);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Username, Las"& _ 
-                "tName, FirstName, Gender, BirthDate, Phone, Email, Address, CreateDate, CreateBy"& _ 
-                ", UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete FROM Person WHERE (Userna"& _ 
-                "me = @Username)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [Person] ([Username], [LastName], [FirstName], [Gender], [BirthDate],"& _ 
+                " [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], "& _ 
+                "[UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (@Username, @LastName, "& _ 
+                "@FirstName, @Gender, @BirthDate, @Phone, @Email, @Address, @RoleId, @CreateDate,"& _ 
+                " @CreateBy, @UpdateDate, @UpdateBy, @DeleteDate, @DeleteBy, @IsDelete);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT "& _ 
+                "Username, LastName, FirstName, Gender, BirthDate, Phone, Email, Address, RoleId,"& _ 
+                " CreateDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete FROM"& _ 
+                " Person WHERE (Username = @Username)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Username", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Username", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -1332,37 +1967,39 @@ Namespace PersonTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Phone", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Phone", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Email", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Email", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Address", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Address", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RoleId", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RoleId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateBy", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateDate", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeleteDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeleteBy", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeleteBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsDelete", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IsDelete", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Person] SET [Username] = @Username, [LastName] = @LastName, [FirstN"& _ 
-                "ame] = @FirstName, [Gender] = @Gender, [BirthDate] = @BirthDate, [Phone] = @Phon"& _ 
-                "e, [Email] = @Email, [Address] = @Address, [CreateDate] = @CreateDate, [CreateBy"& _ 
-                "] = @CreateBy, [UpdateDate] = @UpdateDate, [UpdateBy] = @UpdateBy, [DeleteDate] "& _ 
-                "= @DeleteDate, [DeleteBy] = @DeleteBy, [IsDelete] = @IsDelete WHERE (([Username]"& _ 
-                " = @Original_Username) AND ([LastName] = @Original_LastName) AND ([FirstName] = "& _ 
-                "@Original_FirstName) AND ((@IsNull_Gender = 1 AND [Gender] IS NULL) OR ([Gender]"& _ 
-                " = @Original_Gender)) AND ((@IsNull_BirthDate = 1 AND [BirthDate] IS NULL) OR (["& _ 
-                "BirthDate] = @Original_BirthDate)) AND ([Phone] = @Original_Phone) AND ((@IsNull"& _ 
-                "_Email = 1 AND [Email] IS NULL) OR ([Email] = @Original_Email)) AND ((@IsNull_Ad"& _ 
-                "dress = 1 AND [Address] IS NULL) OR ([Address] = @Original_Address)) AND ((@IsNu"& _ 
-                "ll_CreateDate = 1 AND [CreateDate] IS NULL) OR ([CreateDate] = @Original_CreateD"& _ 
-                "ate)) AND ((@IsNull_CreateBy = 1 AND [CreateBy] IS NULL) OR ([CreateBy] = @Origi"& _ 
-                "nal_CreateBy)) AND ((@IsNull_UpdateDate = 1 AND [UpdateDate] IS NULL) OR ([Updat"& _ 
-                "eDate] = @Original_UpdateDate)) AND ((@IsNull_UpdateBy = 1 AND [UpdateBy] IS NUL"& _ 
-                "L) OR ([UpdateBy] = @Original_UpdateBy)) AND ((@IsNull_DeleteDate = 1 AND [Delet"& _ 
-                "eDate] IS NULL) OR ([DeleteDate] = @Original_DeleteDate)) AND ((@IsNull_DeleteBy"& _ 
-                " = 1 AND [DeleteBy] IS NULL) OR ([DeleteBy] = @Original_DeleteBy)) AND ((@IsNull"& _ 
-                "_IsDelete = 1 AND [IsDelete] IS NULL) OR ([IsDelete] = @Original_IsDelete)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"S"& _ 
-                "ELECT Username, LastName, FirstName, Gender, BirthDate, Phone, Email, Address, C"& _ 
-                "reateDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete FROM P"& _ 
-                "erson WHERE (Username = @Username)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [Person] SET [Username] = @Username, [LastName] = @LastName, [FirstName] ="& _ 
+                " @FirstName, [Gender] = @Gender, [BirthDate] = @BirthDate, [Phone] = @Phone, [Em"& _ 
+                "ail] = @Email, [Address] = @Address, [RoleId] = @RoleId, [CreateDate] = @CreateD"& _ 
+                "ate, [CreateBy] = @CreateBy, [UpdateDate] = @UpdateDate, [UpdateBy] = @UpdateBy,"& _ 
+                " [DeleteDate] = @DeleteDate, [DeleteBy] = @DeleteBy, [IsDelete] = @IsDelete WHER"& _ 
+                "E (([Username] = @Original_Username) AND ([LastName] = @Original_LastName) AND ("& _ 
+                "[FirstName] = @Original_FirstName) AND ((@IsNull_Gender = 1 AND [Gender] IS NULL"& _ 
+                ") OR ([Gender] = @Original_Gender)) AND ((@IsNull_BirthDate = 1 AND [BirthDate] "& _ 
+                "IS NULL) OR ([BirthDate] = @Original_BirthDate)) AND ([Phone] = @Original_Phone)"& _ 
+                " AND ((@IsNull_Email = 1 AND [Email] IS NULL) OR ([Email] = @Original_Email)) AN"& _ 
+                "D ((@IsNull_Address = 1 AND [Address] IS NULL) OR ([Address] = @Original_Address"& _ 
+                ")) AND ([RoleId] = @Original_RoleId) AND ((@IsNull_CreateDate = 1 AND [CreateDat"& _ 
+                "e] IS NULL) OR ([CreateDate] = @Original_CreateDate)) AND ((@IsNull_CreateBy = 1"& _ 
+                " AND [CreateBy] IS NULL) OR ([CreateBy] = @Original_CreateBy)) AND ((@IsNull_Upd"& _ 
+                "ateDate = 1 AND [UpdateDate] IS NULL) OR ([UpdateDate] = @Original_UpdateDate)) "& _ 
+                "AND ((@IsNull_UpdateBy = 1 AND [UpdateBy] IS NULL) OR ([UpdateBy] = @Original_Up"& _ 
+                "dateBy)) AND ((@IsNull_DeleteDate = 1 AND [DeleteDate] IS NULL) OR ([DeleteDate]"& _ 
+                " = @Original_DeleteDate)) AND ((@IsNull_DeleteBy = 1 AND [DeleteBy] IS NULL) OR "& _ 
+                "([DeleteBy] = @Original_DeleteBy)) AND ((@IsNull_IsDelete = 1 AND [IsDelete] IS "& _ 
+                "NULL) OR ([IsDelete] = @Original_IsDelete)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Username, LastName, FirstN"& _ 
+                "ame, Gender, BirthDate, Phone, Email, Address, RoleId, CreateDate, CreateBy, Upd"& _ 
+                "ateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete FROM Person WHERE (Username = "& _ 
+                "@Username)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Username", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Username", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -1372,12 +2009,13 @@ Namespace PersonTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Phone", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Phone", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Email", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Email", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Address", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Address", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RoleId", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RoleId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateBy", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateDate", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeleteDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeleteBy", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeleteBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsDelete", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IsDelete", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Username", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Username", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -1391,18 +2029,19 @@ Namespace PersonTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Email", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Email", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Address", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Address", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Address", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Address", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RoleId", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RoleId", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_CreateDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CreateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_CreateBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CreateBy", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CreateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_UpdateDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UpdateDate", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_UpdateBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UpdateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DeleteDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DeleteDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DeleteBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DeleteBy", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DeleteBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_IsDelete", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IsDelete", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IsDelete", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IsDelete", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
@@ -1417,68 +2056,104 @@ Namespace PersonTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(3) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(8) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT Username, LastName, FirstName, Gender, BirthDate, Phone, Email, Address, C"& _ 
-                "reateDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete FROM d"& _ 
-                "bo.Person"
+            Me._commandCollection(0).CommandText = "SELECT Person.*"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   Person"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT Person.Username, Person.LastName, Person.FirstName, Person.Gender, Person."& _ 
-                "BirthDate, Person.Phone, Person.Email, Person.Address, Person.CreateDate, Person"& _ 
-                ".CreateBy, Person.UpdateDate, Person.UpdateBy, Person.DeleteDate, Person.DeleteB"& _ 
-                "y, Person.IsDelete"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   Person INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             Account ON Person.Use"& _ 
-                "rname = Account.Username INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             Role ON Account.RoleId = Role."& _ 
-                "Id"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Role.RoleName = 'Customer')"
+            Me._commandCollection(1).CommandText = "DELETE FROM Person"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Username = @Username)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Username", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "Username", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "INSERT INTO Person"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             (Username, LastName, FirstName, Gender, BirthDat"& _ 
-                "e, Phone, Email, Address, CreateDate, CreateBy, IsDelete)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES (@Username,@La"& _ 
-                "stName,@FirstName,@Gender,@BirthDate,@Phone,@Email,@Address,@CreateDate,@CreateB"& _ 
-                "y,@IsDelete); "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Username, LastName, FirstName, Gender, BirthDate, Phone, "& _ 
-                "Email, Address, CreateDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy"& _ 
-                ", IsDelete FROM Person WHERE (Username = @Username)"
+            Me._commandCollection(2).CommandText = "UPDATE Person"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET       DeleteDate = @DeleteDate, DeleteBy = @DeleteUser, IsDele"& _ 
+                "te = 'True'"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Username = @Username); "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Username, LastName, FirstNam"& _ 
+                "e, Gender, BirthDate, Phone, Email, Address, RoleId, CreateDate, CreateBy, Updat"& _ 
+                "eDate, UpdateBy, DeleteDate, DeleteBy, IsDelete FROM Person WHERE (Username = @U"& _ 
+                "sername)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Username", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "Username", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastName", Global.System.Data.SqlDbType.NVarChar, 30, Global.System.Data.ParameterDirection.Input, 0, 0, "LastName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FirstName", Global.System.Data.SqlDbType.NVarChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, "FirstName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Gender", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Gender", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BirthDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "BirthDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Phone", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Phone", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Email", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "Email", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Address", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "Address", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateBy", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsDelete", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "IsDelete", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeleteDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeleteUser", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Username", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "Username", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "UPDATE Person"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET       LastName = @LastName, FirstName = @FirstName, Gender = @"& _ 
+            Me._commandCollection(3).CommandText = "SELECT Username, LastName, FirstName, Gender, BirthDate, Phone, Email, Address, R"& _ 
+                "oleId, CreateDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelet"& _ 
+                "e"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   Person"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Username = @Username) AND (IsDelete = 'True')"
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Username", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "Username", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(4).Connection = Me.Connection
+            Me._commandCollection(4).CommandText = "SELECT Person.Username, Person.LastName, Person.FirstName, Person.Gender, Person."& _ 
+                "BirthDate, Person.Phone, Person.Email, Person.Address, Person.CreateDate, Person"& _ 
+                ".CreateBy, Person.UpdateDate, Person.UpdateBy, Person.DeleteDate, Person.DeleteB"& _ 
+                "y, Person.IsDelete, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             Person.RoleId"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   Person INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"    "& _ 
+                "         Role ON Person.RoleId = Role.Id"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Role.RoleName = 'Customer')"
+            Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(5).Connection = Me.Connection
+            Me._commandCollection(5).CommandText = "SELECT Username, LastName, FirstName, Gender, BirthDate, Phone, Email, Address, R"& _ 
+                "oleId, CreateDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelet"& _ 
+                "e"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   Person"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Username = @Username)"
+            Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Username", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "Username", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(6).Connection = Me.Connection
+            Me._commandCollection(6).CommandText = "INSERT INTO Person"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             (Username, LastName, FirstName, Gender, BirthDat"& _ 
+                "e, Phone, Email, Address, RoleId, CreateDate, CreateBy, IsDelete)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES (@User"& _ 
+                "name,@LastName,@FirstName,@Gender,@BirthDate,@Phone,@Email,@Address,@RoleId,@Cre"& _ 
+                "ateDate,@CreateBy,@IsDelete); "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Username, LastName, FirstName, Gender, Bi"& _ 
+                "rthDate, Phone, Email, Address, RoleId, CreateDate, CreateBy, UpdateDate, Update"& _ 
+                "By, DeleteDate, DeleteBy, IsDelete FROM Person WHERE (Username = @Username)"
+            Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Username", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "Username", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastName", Global.System.Data.SqlDbType.NVarChar, 30, Global.System.Data.ParameterDirection.Input, 0, 0, "LastName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FirstName", Global.System.Data.SqlDbType.NVarChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, "FirstName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Gender", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Gender", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BirthDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "BirthDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Phone", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Phone", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Email", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "Email", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Address", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "Address", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RoleId", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "RoleId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateBy", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsDelete", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "IsDelete", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(7) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(7).Connection = Me.Connection
+            Me._commandCollection(7).CommandText = "UPDATE Person"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET       IsDelete = 'False'"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Username = @Username); "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELE"& _ 
+                "CT Username, LastName, FirstName, Gender, BirthDate, Phone, Email, Address, Role"& _ 
+                "Id, CreateDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete F"& _ 
+                "ROM Person WHERE (Username = @Username)"
+            Me._commandCollection(7).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Username", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "Username", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(8) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(8).Connection = Me.Connection
+            Me._commandCollection(8).CommandText = "UPDATE Person"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET       LastName = @LastName, FirstName = @FirstName, Gender = @"& _ 
                 "Gender, BirthDate = @BirthDate, Phone = @Phone, Email = @Email, Address = @Addre"& _ 
                 "ss, UpdateDate = @UpdateDate, UpdateBy = @UpdateBy"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Username = @Username)"& _ 
-                ";  "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Username, LastName, FirstName, Gender, BirthDate, Phone, Email, Addr"& _ 
-                "ess, CreateDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete "& _ 
-                "FROM Person WHERE (Username = @Username)"
-            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastName", Global.System.Data.SqlDbType.NVarChar, 30, Global.System.Data.ParameterDirection.Input, 0, 0, "LastName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FirstName", Global.System.Data.SqlDbType.NVarChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, "FirstName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Gender", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Gender", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BirthDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "BirthDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Phone", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Phone", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Email", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "Email", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Address", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "Address", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateBy", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Username", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "Username", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+                "; "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Username, LastName, FirstName, Gender, BirthDate, Phone, Email, Addre"& _ 
+                "ss, RoleId, CreateDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, Is"& _ 
+                "Delete FROM Person WHERE (Username = @Username)"
+            Me._commandCollection(8).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastName", Global.System.Data.SqlDbType.NVarChar, 30, Global.System.Data.ParameterDirection.Input, 0, 0, "LastName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FirstName", Global.System.Data.SqlDbType.NVarChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, "FirstName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Gender", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Gender", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BirthDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "BirthDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Phone", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Phone", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Email", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "Email", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Address", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "Address", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateBy", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Username", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "Username", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As Person.PersonDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As _Person.PersonDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -1491,9 +2166,9 @@ Namespace PersonTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As Person.PersonDataTable
+        Public Overloads Overridable Function GetData() As _Person.PersonDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As Person.PersonDataTable = New Person.PersonDataTable()
+            Dim dataTable As _Person.PersonDataTable = New _Person.PersonDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -1502,8 +2177,13 @@ Namespace PersonTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByCustomers(ByVal dataTable As Person.PersonDataTable) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+        Public Overloads Overridable Function FillBy(ByVal dataTable As _Person.PersonDataTable, ByVal Username As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            If (Username Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Username")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Username,String)
+            End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -1515,9 +2195,72 @@ Namespace PersonTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetCustomers() As Person.PersonDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
-            Dim dataTable As Person.PersonDataTable = New Person.PersonDataTable()
+        Public Overloads Overridable Function CheckUserWasDeleted(ByVal Username As String) As _Person.PersonDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            If (Username Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Username")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Username,String)
+            End If
+            Dim dataTable As _Person.PersonDataTable = New _Person.PersonDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByCustomers(ByVal dataTable As _Person.PersonDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(4)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataBy2() As _Person.PersonDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(4)
+            Dim dataTable As _Person.PersonDataTable = New _Person.PersonDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByUsernameMatch(ByVal dataTable As _Person.PersonDataTable, ByVal Username As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(5)
+            If (Username Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Username")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Username,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetUsernameMatch(ByVal Username As String) As _Person.PersonDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(5)
+            If (Username Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Username")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Username,String)
+            End If
+            Dim dataTable As _Person.PersonDataTable = New _Person.PersonDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -1525,14 +2268,14 @@ Namespace PersonTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As Person.PersonDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As _Person.PersonDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As Person) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As _Person) As Integer
             Return Me.Adapter.Update(dataSet, "Person")
         End Function
         
@@ -1554,7 +2297,23 @@ Namespace PersonTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_Username As String, ByVal Original_LastName As String, ByVal Original_FirstName As String, ByVal Original_Gender As Global.System.Nullable(Of Boolean), ByVal Original_BirthDate As Global.System.Nullable(Of Date), ByVal Original_Phone As String, ByVal Original_Email As String, ByVal Original_Address As String, ByVal Original_CreateDate As Global.System.Nullable(Of Date), ByVal Original_CreateBy As Global.System.Nullable(Of Date), ByVal Original_UpdateDate As String, ByVal Original_UpdateBy As String, ByVal Original_DeleteDate As Global.System.Nullable(Of Date), ByVal Original_DeleteBy As Global.System.Nullable(Of Date), ByVal Original_IsDelete As Global.System.Nullable(Of Boolean)) As Integer
+        Public Overloads Overridable Function Delete( _
+                    ByVal Original_Username As String,  _
+                    ByVal Original_LastName As String,  _
+                    ByVal Original_FirstName As String,  _
+                    ByVal Original_Gender As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_BirthDate As Global.System.Nullable(Of Date),  _
+                    ByVal Original_Phone As String,  _
+                    ByVal Original_Email As String,  _
+                    ByVal Original_Address As String,  _
+                    ByVal Original_RoleId As Integer,  _
+                    ByVal Original_CreateDate As Global.System.Nullable(Of Date),  _
+                    ByVal Original_CreateBy As String,  _
+                    ByVal Original_UpdateDate As Global.System.Nullable(Of Date),  _
+                    ByVal Original_UpdateBy As String,  _
+                    ByVal Original_DeleteDate As Global.System.Nullable(Of Date),  _
+                    ByVal Original_DeleteBy As String,  _
+                    ByVal Original_IsDelete As Global.System.Nullable(Of Boolean)) As Integer
             If (Original_Username Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Username")
             Else
@@ -1603,54 +2362,55 @@ Namespace PersonTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(10).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(11).Value = CType(Original_Address,String)
             End If
+            Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_RoleId,Integer)
             If (Original_CreateDate.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(Original_CreateDate.Value,Date)
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_CreateDate.Value,Date)
             Else
-                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(13).Value = Global.System.DBNull.Value
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
             End If
-            If (Original_CreateBy.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(Original_CreateBy.Value,Date)
+            If (Original_CreateBy Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(15).Value = Global.System.DBNull.Value
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_CreateBy,String)
             End If
-            If (Original_UpdateDate Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(17).Value = Global.System.DBNull.Value
+            If (Original_UpdateDate.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_UpdateDate.Value,Date)
             Else
-                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(Original_UpdateDate,String)
+                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(18).Value = Global.System.DBNull.Value
             End If
             If (Original_UpdateBy Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(19).Value = Global.System.DBNull.Value
+                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(20).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(Original_UpdateBy,String)
+                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_UpdateBy,String)
             End If
             If (Original_DeleteDate.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(Original_DeleteDate.Value,Date)
+                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_DeleteDate.Value,Date)
             Else
-                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(21).Value = Global.System.DBNull.Value
+                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(22).Value = Global.System.DBNull.Value
             End If
-            If (Original_DeleteBy.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(Original_DeleteBy.Value,Date)
+            If (Original_DeleteBy Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(24).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(23).Value = Global.System.DBNull.Value
+                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(24).Value = CType(Original_DeleteBy,String)
             End If
             If (Original_IsDelete.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(24).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(Original_IsDelete.Value,Boolean)
+                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(26).Value = CType(Original_IsDelete.Value,Boolean)
             Else
-                Me.Adapter.DeleteCommand.Parameters(24).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(25).Value = Global.System.DBNull.Value
+                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(26).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -1671,7 +2431,23 @@ Namespace PersonTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Username As String, ByVal LastName As String, ByVal FirstName As String, ByVal Gender As Global.System.Nullable(Of Boolean), ByVal BirthDate As Global.System.Nullable(Of Date), ByVal Phone As String, ByVal Email As String, ByVal Address As String, ByVal CreateDate As Global.System.Nullable(Of Date), ByVal CreateBy As Global.System.Nullable(Of Date), ByVal UpdateDate As String, ByVal UpdateBy As String, ByVal DeleteDate As Global.System.Nullable(Of Date), ByVal DeleteBy As Global.System.Nullable(Of Date), ByVal IsDelete As Global.System.Nullable(Of Boolean)) As Integer
+        Public Overloads Overridable Function Insert( _
+                    ByVal Username As String,  _
+                    ByVal LastName As String,  _
+                    ByVal FirstName As String,  _
+                    ByVal Gender As Global.System.Nullable(Of Boolean),  _
+                    ByVal BirthDate As Global.System.Nullable(Of Date),  _
+                    ByVal Phone As String,  _
+                    ByVal Email As String,  _
+                    ByVal Address As String,  _
+                    ByVal RoleId As Integer,  _
+                    ByVal CreateDate As Global.System.Nullable(Of Date),  _
+                    ByVal CreateBy As String,  _
+                    ByVal UpdateDate As Global.System.Nullable(Of Date),  _
+                    ByVal UpdateBy As String,  _
+                    ByVal DeleteDate As Global.System.Nullable(Of Date),  _
+                    ByVal DeleteBy As String,  _
+                    ByVal IsDelete As Global.System.Nullable(Of Boolean)) As Integer
             If (Username Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Username")
             Else
@@ -1712,40 +2488,41 @@ Namespace PersonTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(7).Value = CType(Address,String)
             End If
+            Me.Adapter.InsertCommand.Parameters(8).Value = CType(RoleId,Integer)
             If (CreateDate.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(8).Value = CType(CreateDate.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
-            End If
-            If (CreateBy.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(9).Value = CType(CreateBy.Value,Date)
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(CreateDate.Value,Date)
             Else
                 Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
             End If
-            If (UpdateDate Is Nothing) Then
+            If (CreateBy Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(10).Value = CType(UpdateDate,String)
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(CreateBy,String)
+            End If
+            If (UpdateDate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(11).Value = CType(UpdateDate.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
             End If
             If (UpdateBy Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(11).Value = CType(UpdateBy,String)
+                Me.Adapter.InsertCommand.Parameters(12).Value = CType(UpdateBy,String)
             End If
             If (DeleteDate.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(12).Value = CType(DeleteDate.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            If (DeleteBy.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(13).Value = CType(DeleteBy.Value,Date)
+                Me.Adapter.InsertCommand.Parameters(13).Value = CType(DeleteDate.Value,Date)
             Else
                 Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
             End If
-            If (IsDelete.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(14).Value = CType(IsDelete.Value,Boolean)
-            Else
+            If (DeleteBy Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(14).Value = CType(DeleteBy,String)
+            End If
+            If (IsDelete.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(15).Value = CType(IsDelete.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -1775,12 +2552,13 @@ Namespace PersonTableAdapters
                     ByVal Phone As String,  _
                     ByVal Email As String,  _
                     ByVal Address As String,  _
+                    ByVal RoleId As Integer,  _
                     ByVal CreateDate As Global.System.Nullable(Of Date),  _
-                    ByVal CreateBy As Global.System.Nullable(Of Date),  _
-                    ByVal UpdateDate As String,  _
+                    ByVal CreateBy As String,  _
+                    ByVal UpdateDate As Global.System.Nullable(Of Date),  _
                     ByVal UpdateBy As String,  _
                     ByVal DeleteDate As Global.System.Nullable(Of Date),  _
-                    ByVal DeleteBy As Global.System.Nullable(Of Date),  _
+                    ByVal DeleteBy As String,  _
                     ByVal IsDelete As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_Username As String,  _
                     ByVal Original_LastName As String,  _
@@ -1790,12 +2568,13 @@ Namespace PersonTableAdapters
                     ByVal Original_Phone As String,  _
                     ByVal Original_Email As String,  _
                     ByVal Original_Address As String,  _
+                    ByVal Original_RoleId As Integer,  _
                     ByVal Original_CreateDate As Global.System.Nullable(Of Date),  _
-                    ByVal Original_CreateBy As Global.System.Nullable(Of Date),  _
-                    ByVal Original_UpdateDate As String,  _
+                    ByVal Original_CreateBy As String,  _
+                    ByVal Original_UpdateDate As Global.System.Nullable(Of Date),  _
                     ByVal Original_UpdateBy As String,  _
                     ByVal Original_DeleteDate As Global.System.Nullable(Of Date),  _
-                    ByVal Original_DeleteBy As Global.System.Nullable(Of Date),  _
+                    ByVal Original_DeleteBy As String,  _
                     ByVal Original_IsDelete As Global.System.Nullable(Of Boolean)) As Integer
             If (Username Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Username")
@@ -1837,137 +2616,139 @@ Namespace PersonTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Address,String)
             End If
+            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(RoleId,Integer)
             If (CreateDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(CreateDate.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
-            End If
-            If (CreateBy.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(CreateBy.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(CreateDate.Value,Date)
             Else
                 Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
             End If
-            If (UpdateDate Is Nothing) Then
+            If (CreateBy Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(UpdateDate,String)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(CreateBy,String)
+            End If
+            If (UpdateDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(UpdateDate.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
             End If
             If (UpdateBy Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(UpdateBy,String)
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(UpdateBy,String)
             End If
             If (DeleteDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(DeleteDate.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            If (DeleteBy.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(DeleteBy.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(DeleteDate.Value,Date)
             Else
                 Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
             End If
-            If (IsDelete.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(IsDelete.Value,Boolean)
-            Else
+            If (DeleteBy Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(DeleteBy,String)
+            End If
+            If (IsDelete.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(IsDelete.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
             End If
             If (Original_Username Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Username")
             Else
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_Username,String)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_Username,String)
             End If
             If (Original_LastName Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_LastName")
             Else
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_LastName,String)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_LastName,String)
             End If
             If (Original_FirstName Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_FirstName")
             Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_FirstName,String)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_FirstName,String)
             End If
             If (Original_Gender.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_Gender.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_Gender.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
             End If
             If (Original_BirthDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_BirthDate.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_BirthDate.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
             End If
             If (Original_Phone Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Phone")
             Else
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_Phone,String)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_Phone,String)
             End If
             If (Original_Email Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_Email,String)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_Email,String)
             End If
             If (Original_Address Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_Address,String)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_Address,String)
             End If
+            Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_RoleId,Integer)
             If (Original_CreateDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_CreateDate.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
-            End If
-            If (Original_CreateBy.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(29).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_CreateBy.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_CreateDate.Value,Date)
             Else
                 Me.Adapter.UpdateCommand.Parameters(29).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
             End If
-            If (Original_UpdateDate Is Nothing) Then
+            If (Original_CreateBy Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(31).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(31).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_UpdateDate,String)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_CreateBy,String)
             End If
-            If (Original_UpdateBy Is Nothing) Then
+            If (Original_UpdateDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_UpdateDate.Value,Date)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_UpdateBy,String)
             End If
-            If (Original_DeleteDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_DeleteDate.Value,Date)
-            Else
+            If (Original_UpdateBy Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_UpdateBy,String)
             End If
-            If (Original_DeleteBy.HasValue = true) Then
+            If (Original_DeleteDate.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_DeleteBy.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_DeleteDate.Value,Date)
             Else
                 Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
             End If
-            If (Original_IsDelete.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_IsDelete.Value,Boolean)
-            Else
+            If (Original_DeleteBy Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(39).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_DeleteBy,String)
+            End If
+            If (Original_IsDelete.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_IsDelete.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -1996,12 +2777,13 @@ Namespace PersonTableAdapters
                     ByVal Phone As String,  _
                     ByVal Email As String,  _
                     ByVal Address As String,  _
+                    ByVal RoleId As Integer,  _
                     ByVal CreateDate As Global.System.Nullable(Of Date),  _
-                    ByVal CreateBy As Global.System.Nullable(Of Date),  _
-                    ByVal UpdateDate As String,  _
+                    ByVal CreateBy As String,  _
+                    ByVal UpdateDate As Global.System.Nullable(Of Date),  _
                     ByVal UpdateBy As String,  _
                     ByVal DeleteDate As Global.System.Nullable(Of Date),  _
-                    ByVal DeleteBy As Global.System.Nullable(Of Date),  _
+                    ByVal DeleteBy As String,  _
                     ByVal IsDelete As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_Username As String,  _
                     ByVal Original_LastName As String,  _
@@ -2011,22 +2793,87 @@ Namespace PersonTableAdapters
                     ByVal Original_Phone As String,  _
                     ByVal Original_Email As String,  _
                     ByVal Original_Address As String,  _
+                    ByVal Original_RoleId As Integer,  _
                     ByVal Original_CreateDate As Global.System.Nullable(Of Date),  _
-                    ByVal Original_CreateBy As Global.System.Nullable(Of Date),  _
-                    ByVal Original_UpdateDate As String,  _
+                    ByVal Original_CreateBy As String,  _
+                    ByVal Original_UpdateDate As Global.System.Nullable(Of Date),  _
                     ByVal Original_UpdateBy As String,  _
                     ByVal Original_DeleteDate As Global.System.Nullable(Of Date),  _
-                    ByVal Original_DeleteBy As Global.System.Nullable(Of Date),  _
+                    ByVal Original_DeleteBy As String,  _
                     ByVal Original_IsDelete As Global.System.Nullable(Of Boolean)) As Integer
-            Return Me.Update(Original_Username, LastName, FirstName, Gender, BirthDate, Phone, Email, Address, CreateDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete, Original_Username, Original_LastName, Original_FirstName, Original_Gender, Original_BirthDate, Original_Phone, Original_Email, Original_Address, Original_CreateDate, Original_CreateBy, Original_UpdateDate, Original_UpdateBy, Original_DeleteDate, Original_DeleteBy, Original_IsDelete)
+            Return Me.Update(Original_Username, LastName, FirstName, Gender, BirthDate, Phone, Email, Address, RoleId, CreateDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete, Original_Username, Original_LastName, Original_FirstName, Original_Gender, Original_BirthDate, Original_Phone, Original_Email, Original_Address, Original_RoleId, Original_CreateDate, Original_CreateBy, Original_UpdateDate, Original_UpdateBy, Original_DeleteDate, Original_DeleteBy, Original_IsDelete)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteCompletelyUser(ByVal Username As String) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            If (Username Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Username")
+            Else
+                command.Parameters(0).Value = CType(Username,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
+        Public Overloads Overridable Function DeleteUser(ByVal DeleteDate As Global.System.Nullable(Of Date), ByVal DeleteUser1 As String, ByVal Username As String) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
+            If (DeleteDate.HasValue = true) Then
+                command.Parameters(0).Value = CType(DeleteDate.Value,Date)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (DeleteUser1 Is Nothing) Then
+                command.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(1).Value = CType(DeleteUser1,String)
+            End If
+            If (Username Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Username")
+            Else
+                command.Parameters(2).Value = CType(Username,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, false)>  _
-        Public Overloads Overridable Function InsertCustomer(ByVal Username As String, ByVal LastName As String, ByVal FirstName As String, ByVal Gender As Global.System.Nullable(Of Boolean), ByVal BirthDate As Global.System.Nullable(Of Date), ByVal Phone As String, ByVal Email As String, ByVal Address As String, ByVal CreateDate As Global.System.Nullable(Of Date), ByVal CreateBy As String, ByVal IsDelete As Global.System.Nullable(Of Boolean)) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
+        Public Overloads Overridable Function InsertUser(ByVal Username As String, ByVal LastName As String, ByVal FirstName As String, ByVal Gender As Global.System.Nullable(Of Boolean), ByVal BirthDate As Global.System.Nullable(Of Date), ByVal Phone As String, ByVal Email As String, ByVal Address As String, ByVal RoleId As Integer, ByVal CreateDate As Global.System.Nullable(Of Date), ByVal CreateBy As String, ByVal IsDelete As Global.System.Nullable(Of Boolean)) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(6)
             If (Username Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Username")
             Else
@@ -2067,20 +2914,21 @@ Namespace PersonTableAdapters
             Else
                 command.Parameters(7).Value = CType(Address,String)
             End If
+            command.Parameters(8).Value = CType(RoleId,Integer)
             If (CreateDate.HasValue = true) Then
-                command.Parameters(8).Value = CType(CreateDate.Value,Date)
+                command.Parameters(9).Value = CType(CreateDate.Value,Date)
             Else
-                command.Parameters(8).Value = Global.System.DBNull.Value
+                command.Parameters(9).Value = Global.System.DBNull.Value
             End If
             If (CreateBy Is Nothing) Then
-                command.Parameters(9).Value = Global.System.DBNull.Value
+                command.Parameters(10).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(9).Value = CType(CreateBy,String)
+                command.Parameters(10).Value = CType(CreateBy,String)
             End If
             If (IsDelete.HasValue = true) Then
-                command.Parameters(10).Value = CType(IsDelete.Value,Boolean)
+                command.Parameters(11).Value = CType(IsDelete.Value,Boolean)
             Else
-                command.Parameters(10).Value = Global.System.DBNull.Value
+                command.Parameters(11).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -2102,8 +2950,35 @@ Namespace PersonTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
-        Public Overloads Overridable Function UpdateCustomer(ByVal LastName As String, ByVal FirstName As String, ByVal Gender As Global.System.Nullable(Of Boolean), ByVal BirthDate As Global.System.Nullable(Of Date), ByVal Phone As String, ByVal Email As String, ByVal Address As String, ByVal UpdateDate As Global.System.Nullable(Of Date), ByVal UpdateBy As String, ByVal Username As String) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
+        Public Overloads Overridable Function RestoreUser(ByVal Username As String) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(7)
+            If (Username Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Username")
+            Else
+                command.Parameters(0).Value = CType(Username,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
+        Public Overloads Overridable Function UpdateUser(ByVal LastName As String, ByVal FirstName As String, ByVal Gender As Global.System.Nullable(Of Boolean), ByVal BirthDate As Global.System.Nullable(Of Date), ByVal Phone As String, ByVal Email As String, ByVal Address As String, ByVal UpdateDate As Global.System.Nullable(Of Date), ByVal UpdateBy As String, ByVal Username As String) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(8)
             If (LastName Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("LastName")
             Else
@@ -2184,6 +3059,8 @@ Namespace PersonTableAdapters
         
         Private _updateOrder As UpdateOrderOption
         
+        Private _roleTableAdapter As RoleTableAdapter
+        
         Private _personTableAdapter As PersonTableAdapter
         
         Private _backupDataSetBeforeUpdate As Boolean
@@ -2198,6 +3075,20 @@ Namespace PersonTableAdapters
             End Get
             Set
                 Me._updateOrder = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
+            "a", "System.Drawing.Design.UITypeEditor")>  _
+        Public Property RoleTableAdapter() As RoleTableAdapter
+            Get
+                Return Me._roleTableAdapter
+            End Get
+            Set
+                Me._roleTableAdapter = value
             End Set
         End Property
         
@@ -2234,6 +3125,10 @@ Namespace PersonTableAdapters
                 If (Not (Me._connection) Is Nothing) Then
                     Return Me._connection
                 End If
+                If ((Not (Me._roleTableAdapter) Is Nothing)  _
+                            AndAlso (Not (Me._roleTableAdapter.Connection) Is Nothing)) Then
+                    Return Me._roleTableAdapter.Connection
+                End If
                 If ((Not (Me._personTableAdapter) Is Nothing)  _
                             AndAlso (Not (Me._personTableAdapter.Connection) Is Nothing)) Then
                     Return Me._personTableAdapter.Connection
@@ -2251,6 +3146,9 @@ Namespace PersonTableAdapters
         Public ReadOnly Property TableAdapterInstanceCount() As Integer
             Get
                 Dim count As Integer = 0
+                If (Not (Me._roleTableAdapter) Is Nothing) Then
+                    count = (count + 1)
+                End If
                 If (Not (Me._personTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
@@ -2263,10 +3161,19 @@ Namespace PersonTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Private Function UpdateUpdatedRows(ByVal dataSet As Person, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateUpdatedRows(ByVal dataSet As _Person, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
+            If (Not (Me._roleTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.Role.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._roleTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
             If (Not (Me._personTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet._Person.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.Person.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
                 If ((Not (updatedRows) Is Nothing)  _
                             AndAlso (0 < updatedRows.Length)) Then
@@ -2282,10 +3189,18 @@ Namespace PersonTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Private Function UpdateInsertedRows(ByVal dataSet As Person, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateInsertedRows(ByVal dataSet As _Person, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
+            If (Not (Me._roleTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.Role.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._roleTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
             If (Not (Me._personTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet._Person.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.Person.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
                             AndAlso (0 < addedRows.Length)) Then
                     result = (result + Me._personTableAdapter.Update(addedRows))
@@ -2300,13 +3215,21 @@ Namespace PersonTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Private Function UpdateDeletedRows(ByVal dataSet As Person, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateDeletedRows(ByVal dataSet As _Person, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
             If (Not (Me._personTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet._Person.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.Person.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
                             AndAlso (0 < deletedRows.Length)) Then
                     result = (result + Me._personTableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
+            If (Not (Me._roleTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.Role.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._roleTableAdapter.Update(deletedRows))
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
@@ -2344,12 +3267,17 @@ Namespace PersonTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overridable Function UpdateAll(ByVal dataSet As Person) As Integer
+        Public Overridable Function UpdateAll(ByVal dataSet As _Person) As Integer
             If (dataSet Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("dataSet")
             End If
             If (dataSet.HasChanges = false) Then
                 Return 0
+            End If
+            If ((Not (Me._roleTableAdapter) Is Nothing)  _
+                        AndAlso (Me.MatchTableAdapterConnection(Me._roleTableAdapter.Connection) = false)) Then
+                Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
+                        "tring.")
             End If
             If ((Not (Me._personTableAdapter) Is Nothing)  _
                         AndAlso (Me.MatchTableAdapterConnection(Me._personTableAdapter.Connection) = false)) Then
@@ -2388,6 +3316,15 @@ Namespace PersonTableAdapters
             Try 
                 '---- Prepare for update -----------
                 '
+                If (Not (Me._roleTableAdapter) Is Nothing) Then
+                    revertConnections.Add(Me._roleTableAdapter, Me._roleTableAdapter.Connection)
+                    Me._roleTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
+                    Me._roleTableAdapter.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
+                    If Me._roleTableAdapter.Adapter.AcceptChangesDuringUpdate Then
+                        Me._roleTableAdapter.Adapter.AcceptChangesDuringUpdate = false
+                        adaptersWithAcceptChangesDuringUpdate.Add(Me._roleTableAdapter.Adapter)
+                    End If
+                End If
                 If (Not (Me._personTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._personTableAdapter, Me._personTableAdapter.Connection)
                     Me._personTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
@@ -2456,6 +3393,10 @@ Namespace PersonTableAdapters
             Finally
                 If workConnOpened Then
                     workConnection.Close
+                End If
+                If (Not (Me._roleTableAdapter) Is Nothing) Then
+                    Me._roleTableAdapter.Connection = CType(revertConnections(Me._roleTableAdapter),Global.System.Data.SqlClient.SqlConnection)
+                    Me._roleTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._personTableAdapter) Is Nothing) Then
                     Me._personTableAdapter.Connection = CType(revertConnections(Me._personTableAdapter),Global.System.Data.SqlClient.SqlConnection)

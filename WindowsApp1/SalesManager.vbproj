@@ -66,7 +66,9 @@
     <Reference Include="LibraryDataset">
       <HintPath>..\LibraryDataset\bin\Debug\LibraryDataset.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -110,8 +112,7 @@
     <Compile Include="MainForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Model\CBBProduct.vb" />
-    <Compile Include="Model\CBBWareHouse.vb" />
+    <Compile Include="Model\CBBItem.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -191,6 +192,9 @@
     <None Include="My Project\DataSources\LibraryDataset.OrderDetailTableAdapters.SalesOrderTableAdapter.datasource" />
     <None Include="My Project\DataSources\LibraryDataset.Person.datasource" />
     <None Include="My Project\DataSources\LibraryDataset.Product.datasource" />
+    <None Include="My Project\DataSources\LibraryDataset.ProductTableAdapters.ProductTableAdapter.datasource" />
+    <None Include="My Project\DataSources\LibraryDataset.ProductTableAdapters.TableAdapterManager+UpdateOrderOption.datasource" />
+    <None Include="My Project\DataSources\LibraryDataset.ProductTableAdapters.TableAdapterManager.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>

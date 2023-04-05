@@ -1,11 +1,11 @@
-D:\Code\vs data\WindowsApp1\LibraryDataset\obj\Debug\LibraryDataset.vbproj.AssemblyReference.cache
-D:\Code\vs data\WindowsApp1\LibraryDataset\obj\Debug\LibraryDataset.Resources.resources
-D:\Code\vs data\WindowsApp1\LibraryDataset\obj\Debug\LibraryDataset.vbproj.GenerateResource.cache
-D:\Code\vs data\WindowsApp1\LibraryDataset\obj\Debug\LibraryDataset.vbproj.CoreCompileInputs.cache
 D:\Code\vs data\WindowsApp1\LibraryDataset\bin\Debug\LibraryDataset.dll.config
 D:\Code\vs data\WindowsApp1\LibraryDataset\bin\Debug\LibraryDataset.dll
 D:\Code\vs data\WindowsApp1\LibraryDataset\bin\Debug\LibraryDataset.pdb
 D:\Code\vs data\WindowsApp1\LibraryDataset\bin\Debug\LibraryDataset.xml
+D:\Code\vs data\WindowsApp1\LibraryDataset\obj\Debug\LibraryDataset.vbproj.AssemblyReference.cache
+D:\Code\vs data\WindowsApp1\LibraryDataset\obj\Debug\LibraryDataset.Resources.resources
+D:\Code\vs data\WindowsApp1\LibraryDataset\obj\Debug\LibraryDataset.vbproj.GenerateResource.cache
+D:\Code\vs data\WindowsApp1\LibraryDataset\obj\Debug\LibraryDataset.vbproj.CoreCompileInputs.cache
 D:\Code\vs data\WindowsApp1\LibraryDataset\obj\Debug\LibraryDataset.dll
 D:\Code\vs data\WindowsApp1\LibraryDataset\obj\Debug\LibraryDataset.xml
 D:\Code\vs data\WindowsApp1\LibraryDataset\obj\Debug\LibraryDataset.pdb

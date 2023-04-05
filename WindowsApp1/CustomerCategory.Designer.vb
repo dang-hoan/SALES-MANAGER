@@ -17,7 +17,6 @@ Partial Class CustomerCategory
     Private components As System.ComponentModel.IContainer = Nothing
 
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CustomerCategory))
         Me.bSave = New System.Windows.Forms.Button()
         Me.bDelete = New System.Windows.Forms.Button()
@@ -31,6 +30,7 @@ Partial Class CustomerCategory
         Me.label6 = New System.Windows.Forms.Label()
         Me.label7 = New System.Windows.Forms.Label()
         Me.groupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtCustomerLastName = New System.Windows.Forms.TextBox()
         Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.dtBirthDay = New System.Windows.Forms.DateTimePicker()
@@ -42,26 +42,10 @@ Partial Class CustomerCategory
         Me.rdFemale = New System.Windows.Forms.RadioButton()
         Me.rdMale = New System.Windows.Forms.RadioButton()
         Me.dgvCategory = New System.Windows.Forms.DataGridView()
-        Me.PersonBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.PersonBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.PersonBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.txtCustomerLastName = New System.Windows.Forms.TextBox()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PersonBindingSource3 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.btnRestore = New System.Windows.Forms.Button()
         Me.groupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.dgvCategory, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PersonBindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PersonBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PersonBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PersonBindingSource3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'bSave
@@ -70,10 +54,10 @@ Partial Class CustomerCategory
         Me.bSave.Cursor = System.Windows.Forms.Cursors.Hand
         Me.bSave.Image = CType(resources.GetObject("bSave.Image"), System.Drawing.Image)
         Me.bSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bSave.Location = New System.Drawing.Point(724, 693)
+        Me.bSave.Location = New System.Drawing.Point(737, 693)
         Me.bSave.Name = "bSave"
         Me.bSave.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.bSave.Size = New System.Drawing.Size(139, 48)
+        Me.bSave.Size = New System.Drawing.Size(150, 55)
         Me.bSave.TabIndex = 5
         Me.bSave.Text = "Save"
         Me.bSave.UseVisualStyleBackColor = False
@@ -84,10 +68,10 @@ Partial Class CustomerCategory
         Me.bDelete.Cursor = System.Windows.Forms.Cursors.Hand
         Me.bDelete.Image = CType(resources.GetObject("bDelete.Image"), System.Drawing.Image)
         Me.bDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bDelete.Location = New System.Drawing.Point(298, 693)
+        Me.bDelete.Location = New System.Drawing.Point(409, 693)
         Me.bDelete.Name = "bDelete"
         Me.bDelete.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.bDelete.Size = New System.Drawing.Size(139, 48)
+        Me.bDelete.Size = New System.Drawing.Size(150, 55)
         Me.bDelete.TabIndex = 3
         Me.bDelete.Text = "Delete"
         Me.bDelete.UseVisualStyleBackColor = False
@@ -98,10 +82,10 @@ Partial Class CustomerCategory
         Me.bEdit.Cursor = System.Windows.Forms.Cursors.Hand
         Me.bEdit.Image = CType(resources.GetObject("bEdit.Image"), System.Drawing.Image)
         Me.bEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bEdit.Location = New System.Drawing.Point(511, 693)
+        Me.bEdit.Location = New System.Drawing.Point(245, 693)
         Me.bEdit.Name = "bEdit"
         Me.bEdit.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.bEdit.Size = New System.Drawing.Size(139, 48)
+        Me.bEdit.Size = New System.Drawing.Size(150, 55)
         Me.bEdit.TabIndex = 4
         Me.bEdit.Text = "Edit"
         Me.bEdit.UseVisualStyleBackColor = False
@@ -112,10 +96,10 @@ Partial Class CustomerCategory
         Me.bAdd.Cursor = System.Windows.Forms.Cursors.Hand
         Me.bAdd.Image = CType(resources.GetObject("bAdd.Image"), System.Drawing.Image)
         Me.bAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bAdd.Location = New System.Drawing.Point(105, 693)
+        Me.bAdd.Location = New System.Drawing.Point(81, 693)
         Me.bAdd.Name = "bAdd"
         Me.bAdd.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.bAdd.Size = New System.Drawing.Size(119, 48)
+        Me.bAdd.Size = New System.Drawing.Size(150, 55)
         Me.bAdd.TabIndex = 2
         Me.bAdd.Text = "Add"
         Me.bAdd.UseVisualStyleBackColor = False
@@ -215,6 +199,14 @@ Partial Class CustomerCategory
         Me.groupBox1.TabStop = False
         Me.groupBox1.Text = "Detail"
         '
+        'txtCustomerLastName
+        '
+        Me.txtCustomerLastName.Enabled = False
+        Me.txtCustomerLastName.Location = New System.Drawing.Point(354, 103)
+        Me.txtCustomerLastName.Name = "txtCustomerLastName"
+        Me.txtCustomerLastName.Size = New System.Drawing.Size(147, 26)
+        Me.txtCustomerLastName.TabIndex = 16
+        '
         'txtEmail
         '
         Me.txtEmail.Enabled = False
@@ -313,11 +305,8 @@ Partial Class CustomerCategory
         '
         Me.dgvCategory.AllowUserToAddRows = False
         Me.dgvCategory.AllowUserToDeleteRows = False
-        Me.dgvCategory.AutoGenerateColumns = False
         Me.dgvCategory.BackgroundColor = System.Drawing.Color.White
         Me.dgvCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvCategory.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewCheckBoxColumn1, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7})
-        Me.dgvCategory.DataSource = Me.PersonBindingSource3
         Me.dgvCategory.Location = New System.Drawing.Point(54, 307)
         Me.dgvCategory.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.dgvCategory.Name = "dgvCategory"
@@ -328,90 +317,19 @@ Partial Class CustomerCategory
         Me.dgvCategory.Size = New System.Drawing.Size(853, 354)
         Me.dgvCategory.TabIndex = 9
         '
-        'txtCustomerLastName
+        'btnRestore
         '
-        Me.txtCustomerLastName.Enabled = False
-        Me.txtCustomerLastName.Location = New System.Drawing.Point(354, 103)
-        Me.txtCustomerLastName.Name = "txtCustomerLastName"
-        Me.txtCustomerLastName.Size = New System.Drawing.Size(147, 26)
-        Me.txtCustomerLastName.TabIndex = 16
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "Username"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Username"
-        Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Width = 150
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "LastName"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "LastName"
-        Me.DataGridViewTextBoxColumn2.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Width = 150
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "FirstName"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "FirstName"
-        Me.DataGridViewTextBoxColumn3.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        Me.DataGridViewTextBoxColumn3.Width = 150
-        '
-        'DataGridViewCheckBoxColumn1
-        '
-        Me.DataGridViewCheckBoxColumn1.DataPropertyName = "Gender"
-        Me.DataGridViewCheckBoxColumn1.HeaderText = "Gender"
-        Me.DataGridViewCheckBoxColumn1.MinimumWidth = 8
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
-        Me.DataGridViewCheckBoxColumn1.ReadOnly = True
-        Me.DataGridViewCheckBoxColumn1.Width = 150
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "BirthDate"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "BirthDate"
-        Me.DataGridViewTextBoxColumn4.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        Me.DataGridViewTextBoxColumn4.Width = 150
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "Phone"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Phone"
-        Me.DataGridViewTextBoxColumn5.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        Me.DataGridViewTextBoxColumn5.Width = 150
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "Email"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Email"
-        Me.DataGridViewTextBoxColumn6.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
-        Me.DataGridViewTextBoxColumn6.Width = 150
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "Address"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "Address"
-        Me.DataGridViewTextBoxColumn7.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.ReadOnly = True
-        Me.DataGridViewTextBoxColumn7.Width = 150
-        '
-        'PersonBindingSource3
-        '
-        Me.PersonBindingSource3.DataMember = "Person"
-        Me.PersonBindingSource3.DataSource = GetType(LibraryDataset.Person)
+        Me.btnRestore.BackColor = System.Drawing.Color.SandyBrown
+        Me.btnRestore.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnRestore.Image = CType(resources.GetObject("btnRestore.Image"), System.Drawing.Image)
+        Me.btnRestore.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnRestore.Location = New System.Drawing.Point(573, 693)
+        Me.btnRestore.Name = "btnRestore"
+        Me.btnRestore.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnRestore.Size = New System.Drawing.Size(150, 55)
+        Me.btnRestore.TabIndex = 10
+        Me.btnRestore.Text = " Restore"
+        Me.btnRestore.UseVisualStyleBackColor = False
         '
         'CustomerCategory
         '
@@ -419,6 +337,7 @@ Partial Class CustomerCategory
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(969, 766)
+        Me.Controls.Add(Me.btnRestore)
         Me.Controls.Add(Me.dgvCategory)
         Me.Controls.Add(Me.bSave)
         Me.Controls.Add(Me.bDelete)
@@ -434,10 +353,6 @@ Partial Class CustomerCategory
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         CType(Me.dgvCategory, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PersonBindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PersonBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PersonBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PersonBindingSource3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -446,7 +361,7 @@ Partial Class CustomerCategory
     Private WithEvents bAdd As System.Windows.Forms.Button
     Private WithEvents bEdit As System.Windows.Forms.Button
     Private WithEvents bSave As System.Windows.Forms.Button
-    Private bDelete As System.Windows.Forms.Button
+    Private WithEvents bDelete As System.Windows.Forms.Button
     Private label1 As System.Windows.Forms.Label
     Private label2 As System.Windows.Forms.Label
     Private label3 As System.Windows.Forms.Label
@@ -463,7 +378,6 @@ Partial Class CustomerCategory
     Private txtCustomerCode As System.Windows.Forms.TextBox
     Private dtBirthDay As System.Windows.Forms.DateTimePicker
     Friend WithEvents dgvCategory As DataGridView
-    Friend WithEvents PersonBindingSource As BindingSource
     Friend WithEvents UsernameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents LastNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents FirstNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
@@ -472,19 +386,9 @@ Partial Class CustomerCategory
     Friend WithEvents PhoneDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents EmailDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents AddressDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PersonBindingSource1 As BindingSource
-    Friend WithEvents PersonBindingSource2 As BindingSource
     Private WithEvents txtEmail As TextBox
     Private WithEvents Label8 As Label
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
-    Friend WithEvents PersonBindingSource3 As BindingSource
     Friend WithEvents GroupBox2 As GroupBox
     Private WithEvents txtCustomerLastName As TextBox
+    Private WithEvents btnRestore As Button
 End Class

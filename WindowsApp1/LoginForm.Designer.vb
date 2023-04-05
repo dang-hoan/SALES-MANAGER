@@ -31,6 +31,7 @@ Partial Class LoginForm
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtPassword = New System.Windows.Forms.TextBox()
         Me.linkRegister = New System.Windows.Forms.LinkLabel()
+        Me.labShowPassword = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -104,7 +105,6 @@ Partial Class LoginForm
         '
         Me.txtPassword.Location = New System.Drawing.Point(194, 277)
         Me.txtPassword.Name = "txtPassword"
-        Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPassword.Size = New System.Drawing.Size(247, 26)
         Me.txtPassword.TabIndex = 3
         Me.txtPassword.UseSystemPasswordChar = True
@@ -123,6 +123,15 @@ Partial Class LoginForm
         Me.linkRegister.TabStop = True
         Me.linkRegister.Text = "Register a new account"
         '
+        'labShowPassword
+        '
+        Me.labShowPassword.BackColor = System.Drawing.Color.White
+        Me.labShowPassword.Image = CType(resources.GetObject("labShowPassword.Image"), System.Drawing.Image)
+        Me.labShowPassword.Location = New System.Drawing.Point(398, 280)
+        Me.labShowPassword.Name = "labShowPassword"
+        Me.labShowPassword.Size = New System.Drawing.Size(33, 22)
+        Me.labShowPassword.TabIndex = 7
+        '
         'LoginForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -130,6 +139,7 @@ Partial Class LoginForm
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(498, 530)
+        Me.Controls.Add(Me.labShowPassword)
         Me.Controls.Add(Me.linkRegister)
         Me.Controls.Add(Me.txtPassword)
         Me.Controls.Add(Me.Label2)
@@ -156,4 +166,5 @@ Partial Class LoginForm
     Friend WithEvents Label2 As Label
     Friend WithEvents txtPassword As TextBox
     Friend WithEvents linkRegister As LinkLabel
+    Friend WithEvents labShowPassword As Label
 End Class

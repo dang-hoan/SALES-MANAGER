@@ -455,7 +455,7 @@ Partial Public Class Category
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddCategoryRow(ByVal CategoryName As String, ByVal Description As String, ByVal CreateDate As Date, ByVal CreateBy As Date, ByVal UpdateDate As String, ByVal UpdateBy As String, ByVal DeleteDate As Date, ByVal DeleteBy As Date, ByVal IsDelete As Boolean) As CategoryRow
+        Public Overloads Function AddCategoryRow(ByVal CategoryName As String, ByVal Description As String, ByVal CreateDate As Date, ByVal CreateBy As String, ByVal UpdateDate As Date, ByVal UpdateBy As String, ByVal DeleteDate As Date, ByVal DeleteBy As String, ByVal IsDelete As Boolean) As CategoryRow
             Dim rowCategoryRow As CategoryRow = CType(Me.NewRow,CategoryRow)
             Dim columnValuesArray() As Object = New Object() {Nothing, CategoryName, Description, CreateDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete}
             rowCategoryRow.ItemArray = columnValuesArray
@@ -509,15 +509,15 @@ Partial Public Class Category
             MyBase.Columns.Add(Me.columnDescription)
             Me.columnCreateDate = New Global.System.Data.DataColumn("CreateDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCreateDate)
-            Me.columnCreateBy = New Global.System.Data.DataColumn("CreateBy", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnCreateBy = New Global.System.Data.DataColumn("CreateBy", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCreateBy)
-            Me.columnUpdateDate = New Global.System.Data.DataColumn("UpdateDate", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnUpdateDate = New Global.System.Data.DataColumn("UpdateDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnUpdateDate)
             Me.columnUpdateBy = New Global.System.Data.DataColumn("UpdateBy", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnUpdateBy)
             Me.columnDeleteDate = New Global.System.Data.DataColumn("DeleteDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDeleteDate)
-            Me.columnDeleteBy = New Global.System.Data.DataColumn("DeleteBy", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnDeleteBy = New Global.System.Data.DataColumn("DeleteBy", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDeleteBy)
             Me.columnIsDelete = New Global.System.Data.DataColumn("IsDelete", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnIsDelete)
@@ -531,7 +531,6 @@ Partial Public Class Category
             Me.columnCategoryName.AllowDBNull = false
             Me.columnCategoryName.MaxLength = 30
             Me.columnDescription.MaxLength = 100
-            Me.columnUpdateDate.MaxLength = 50
             Me.columnUpdateBy.MaxLength = 50
             Me.ExtendedProperties.Add("Generator_TablePropName", "_Category")
             Me.ExtendedProperties.Add("Generator_UserTableName", "Category")
@@ -733,10 +732,10 @@ Partial Public Class Category
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property CreateBy() As Date
+        Public Property CreateBy() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableCategory.CreateByColumn),Date)
+                    Return CType(Me(Me.tableCategory.CreateByColumn),String)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'CreateBy' in table 'Category' is DBNull.", e)
                 End Try
@@ -748,10 +747,10 @@ Partial Public Class Category
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property UpdateDate() As String
+        Public Property UpdateDate() As Date
             Get
                 Try 
-                    Return CType(Me(Me.tableCategory.UpdateDateColumn),String)
+                    Return CType(Me(Me.tableCategory.UpdateDateColumn),Date)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'UpdateDate' in table 'Category' is DBNull.", e)
                 End Try
@@ -793,10 +792,10 @@ Partial Public Class Category
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property DeleteBy() As Date
+        Public Property DeleteBy() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableCategory.DeleteByColumn),Date)
+                    Return CType(Me(Me.tableCategory.DeleteByColumn),String)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'DeleteBy' in table 'Category' is DBNull.", e)
                 End Try

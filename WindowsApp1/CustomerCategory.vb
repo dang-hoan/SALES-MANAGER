@@ -10,7 +10,7 @@ Public Class CustomerCategory
 
     Private Sub Reload()
         Dim data = clsPMSAnalysis.GetCustomers()
-        dgvCategory.DataSource = data._Person
+        dgvCategory.DataSource = data.Person
         setEnable(False)
         setValue()
     End Sub
@@ -81,13 +81,13 @@ Public Class CustomerCategory
             Dim result As Integer
             Dim type As String = "Update"
             If txtCustomerCode.Enabled = False Then          'Edit
-                result = clsPMSAnalysis.EditCustomer(txtCustomerCode.Text, txtCustomerLastName.Text,
+                result = clsPMSAnalysis.EditUser(txtCustomerCode.Text, txtCustomerLastName.Text,
                                             txtCustomerFirstName.Text, rdMale.Checked, dtBirthDay.Value,
-                                            txtPhone.Text, txtEmail.Text, txtAddress.Text, LoginForm.ProbUsername)
+                                            txtPhone.Text, txtEmail.Text, txtAddress.Text, LoginForm.PropUsername)
             Else                                             'Add new
                 result = clsPMSAnalysis.AddCustomer(txtCustomerCode.Text, txtCustomerLastName.Text,
                                             txtCustomerFirstName.Text, rdMale.Checked, dtBirthDay.Value,
-                                            txtPhone.Text, txtEmail.Text, txtAddress.Text, LoginForm.ProbUsername)
+                                            txtPhone.Text, txtEmail.Text, txtAddress.Text, LoginForm.PropUsername)
                 type = "Add"
             End If
 
@@ -102,7 +102,11 @@ Public Class CustomerCategory
     End Sub
 
     Private Function checkLogicData() As Boolean
-        If txtCustomerFirstName.Text = "" Or txtPhone.Text = "" Or txtAddress.Text = "" Or
+        If clsPMSAnalysis.CheckUsernameExits(txtCustomerCode.Text) And txtCustomerCode.Enabled = True Then
+            MsgBox("CustomerCode already exists in the system! Let enter other CustomerCode")
+            Return False
+
+        ElseIf txtCustomerCode.Text = "" Or txtCustomerFirstName.Text = "" Or txtCustomerLastName.Text = "" Or txtPhone.Text = "" Or txtAddress.Text = "" Or
             txtEmail.Text = "" Then
 
             MsgBox("You need to enter all the fields!")
@@ -139,4 +143,37 @@ Public Class CustomerCategory
 
     End Function
 
+    Private Sub bDelete_Click(sender As Object, e As EventArgs) Handles bDelete.Click
+        Dim username As String = dgvCategory.CurrentRow.Cells(0).Value.ToString
+        Dim isDelete = clsPMSAnalysis.CheckUserWasDeleted(username)
+        If Not isDelete Then
+            Dim result = clsPMSAnalysis.DeleteUser(LoginForm.PropUsername, username)
+            If result = 1 Then
+                setEnable(False)
+                MsgBox("Delete customer information successful!")
+                Reload()
+            Else
+                MsgBox("There is an error when interact with database!")
+            End If
+        Else
+            MsgBox("User was deleted before!")
+        End If
+    End Sub
+
+    Private Sub btnRestore_Click(sender As Object, e As EventArgs) Handles btnRestore.Click
+        Dim username As String = dgvCategory.CurrentRow.Cells(0).Value.ToString
+        Dim isDelete = clsPMSAnalysis.CheckUserWasDeleted(username)
+        If isDelete Then
+            Dim result = clsPMSAnalysis.RestoreUser(username)
+            If result = 1 Then
+                setEnable(False)
+                MsgBox("Restore customer information successful!")
+                Reload()
+            Else
+                MsgBox("There is an error when interact with database!")
+            End If
+        Else
+            MsgBox("The user hasn't been deleted yet, you don't need restore!")
+        End If
+    End Sub
 End Class

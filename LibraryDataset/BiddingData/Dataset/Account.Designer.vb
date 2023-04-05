@@ -291,8 +291,6 @@ Partial Public Class Account
         
         Private columnStatusId As Global.System.Data.DataColumn
         
-        Private columnRoleId As Global.System.Data.DataColumn
-        
         Private columnCreateDate As Global.System.Data.DataColumn
         
         Private columnCreateBy As Global.System.Data.DataColumn
@@ -371,14 +369,6 @@ Partial Public Class Account
         Public ReadOnly Property StatusIdColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnStatusId
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property RoleIdColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnRoleId
             End Get
         End Property
         
@@ -475,9 +465,9 @@ Partial Public Class Account
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddAccountRow(ByVal Username As String, ByVal Password As String, ByVal StatusId As Integer, ByVal RoleId As Integer, ByVal CreateDate As Date, ByVal CreateBy As String, ByVal UpdateDate As Date, ByVal UpdateBy As String, ByVal DeleteDate As Date, ByVal DeleteBy As String, ByVal IsDelete As Boolean) As AccountRow
+        Public Overloads Function AddAccountRow(ByVal Username As String, ByVal Password As String, ByVal StatusId As Integer, ByVal CreateDate As Date, ByVal CreateBy As String, ByVal UpdateDate As Date, ByVal UpdateBy As String, ByVal DeleteDate As Date, ByVal DeleteBy As String, ByVal IsDelete As Boolean) As AccountRow
             Dim rowAccountRow As AccountRow = CType(Me.NewRow,AccountRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Username, Password, StatusId, RoleId, CreateDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Username, Password, StatusId, CreateDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete}
             rowAccountRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAccountRow)
             Return rowAccountRow
@@ -510,7 +500,6 @@ Partial Public Class Account
             Me.columnUsername = MyBase.Columns("Username")
             Me.columnPassword = MyBase.Columns("Password")
             Me.columnStatusId = MyBase.Columns("StatusId")
-            Me.columnRoleId = MyBase.Columns("RoleId")
             Me.columnCreateDate = MyBase.Columns("CreateDate")
             Me.columnCreateBy = MyBase.Columns("CreateBy")
             Me.columnUpdateDate = MyBase.Columns("UpdateDate")
@@ -531,8 +520,6 @@ Partial Public Class Account
             MyBase.Columns.Add(Me.columnPassword)
             Me.columnStatusId = New Global.System.Data.DataColumn("StatusId", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnStatusId)
-            Me.columnRoleId = New Global.System.Data.DataColumn("RoleId", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnRoleId)
             Me.columnCreateDate = New Global.System.Data.DataColumn("CreateDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCreateDate)
             Me.columnCreateBy = New Global.System.Data.DataColumn("CreateBy", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -559,7 +546,6 @@ Partial Public Class Account
             Me.columnPassword.AllowDBNull = false
             Me.columnPassword.MaxLength = 20
             Me.columnStatusId.AllowDBNull = false
-            Me.columnRoleId.AllowDBNull = false
             Me.columnUpdateBy.MaxLength = 50
             Me.ExtendedProperties.Add("Generator_TablePropName", "_Account")
             Me.ExtendedProperties.Add("Generator_UserTableName", "Account")
@@ -748,17 +734,6 @@ Partial Public Class Account
             End Get
             Set
                 Me(Me.tableAccount.StatusIdColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property RoleId() As Integer
-            Get
-                Return CType(Me(Me.tableAccount.RoleIdColumn),Integer)
-            End Get
-            Set
-                Me(Me.tableAccount.RoleIdColumn) = value
             End Set
         End Property
         
@@ -1122,7 +1097,6 @@ Namespace AccountTableAdapters
             tableMapping.ColumnMappings.Add("Username", "Username")
             tableMapping.ColumnMappings.Add("Password", "Password")
             tableMapping.ColumnMappings.Add("StatusId", "StatusId")
-            tableMapping.ColumnMappings.Add("RoleId", "RoleId")
             tableMapping.ColumnMappings.Add("CreateDate", "CreateDate")
             tableMapping.ColumnMappings.Add("CreateBy", "CreateBy")
             tableMapping.ColumnMappings.Add("UpdateDate", "UpdateDate")
@@ -1133,104 +1107,100 @@ Namespace AccountTableAdapters
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Account] WHERE (([Id] = @Original_Id) AND ([Username] = @Origi"& _ 
-                "nal_Username) AND ([Password] = @Original_Password) AND ([StatusId] = @Original_"& _ 
-                "StatusId) AND ([RoleId] = @Original_RoleId) AND ((@IsNull_CreateDate = 1 AND [Cr"& _ 
-                "eateDate] IS NULL) OR ([CreateDate] = @Original_CreateDate)) AND ((@IsNull_Creat"& _ 
-                "eBy = 1 AND [CreateBy] IS NULL) OR ([CreateBy] = @Original_CreateBy)) AND ((@IsN"& _ 
-                "ull_UpdateDate = 1 AND [UpdateDate] IS NULL) OR ([UpdateDate] = @Original_Update"& _ 
-                "Date)) AND ((@IsNull_UpdateBy = 1 AND [UpdateBy] IS NULL) OR ([UpdateBy] = @Orig"& _ 
-                "inal_UpdateBy)) AND ((@IsNull_DeleteDate = 1 AND [DeleteDate] IS NULL) OR ([Dele"& _ 
-                "teDate] = @Original_DeleteDate)) AND ((@IsNull_DeleteBy = 1 AND [DeleteBy] IS NU"& _ 
-                "LL) OR ([DeleteBy] = @Original_DeleteBy)) AND ((@IsNull_IsDelete = 1 AND [IsDele"& _ 
-                "te] IS NULL) OR ([IsDelete] = @Original_IsDelete)))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Account] WHERE (([Id] = @Original_Id) AND ([Username] = @Original_Us"& _ 
+                "ername) AND ([Password] = @Original_Password) AND ([StatusId] = @Original_Status"& _ 
+                "Id) AND ((@IsNull_CreateDate = 1 AND [CreateDate] IS NULL) OR ([CreateDate] = @O"& _ 
+                "riginal_CreateDate)) AND ((@IsNull_CreateBy = 1 AND [CreateBy] IS NULL) OR ([Cre"& _ 
+                "ateBy] = @Original_CreateBy)) AND ((@IsNull_UpdateDate = 1 AND [UpdateDate] IS N"& _ 
+                "ULL) OR ([UpdateDate] = @Original_UpdateDate)) AND ((@IsNull_UpdateBy = 1 AND [U"& _ 
+                "pdateBy] IS NULL) OR ([UpdateBy] = @Original_UpdateBy)) AND ((@IsNull_DeleteDate"& _ 
+                " = 1 AND [DeleteDate] IS NULL) OR ([DeleteDate] = @Original_DeleteDate)) AND ((@"& _ 
+                "IsNull_DeleteBy = 1 AND [DeleteBy] IS NULL) OR ([DeleteBy] = @Original_DeleteBy)"& _ 
+                ") AND ((@IsNull_IsDelete = 1 AND [IsDelete] IS NULL) OR ([IsDelete] = @Original_"& _ 
+                "IsDelete)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Id", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Username", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Username", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Password", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Password", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_StatusId", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "StatusId", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RoleId", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RoleId", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_CreateDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CreateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_CreateBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CreateBy", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CreateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_UpdateDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UpdateDate", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_UpdateBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UpdateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DeleteDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DeleteDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DeleteBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DeleteBy", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DeleteBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_IsDelete", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IsDelete", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IsDelete", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IsDelete", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Account] ([Username], [Password], [StatusId], [RoleId], [Creat"& _ 
-                "eDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelet"& _ 
-                "e]) VALUES (@Username, @Password, @StatusId, @RoleId, @CreateDate, @CreateBy, @U"& _ 
-                "pdateDate, @UpdateBy, @DeleteDate, @DeleteBy, @IsDelete);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, Username, "& _ 
-                "Password, StatusId, RoleId, CreateDate, CreateBy, UpdateDate, UpdateBy, DeleteDa"& _ 
-                "te, DeleteBy, IsDelete FROM Account WHERE (Id = SCOPE_IDENTITY())"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [Account] ([Username], [Password], [StatusId], [CreateDate], [CreateB"& _ 
+                "y], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (@Use"& _ 
+                "rname, @Password, @StatusId, @CreateDate, @CreateBy, @UpdateDate, @UpdateBy, @De"& _ 
+                "leteDate, @DeleteBy, @IsDelete);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, Username, Password, StatusId, Creat"& _ 
+                "eDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete FROM Accou"& _ 
+                "nt WHERE (Id = SCOPE_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Username", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Username", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Password", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Password", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@StatusId", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "StatusId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RoleId", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RoleId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateBy", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateDate", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeleteDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeleteBy", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeleteBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsDelete", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IsDelete", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Account] SET [Username] = @Username, [Password] = @Password, [Statu"& _ 
-                "sId] = @StatusId, [RoleId] = @RoleId, [CreateDate] = @CreateDate, [CreateBy] = @"& _ 
-                "CreateBy, [UpdateDate] = @UpdateDate, [UpdateBy] = @UpdateBy, [DeleteDate] = @De"& _ 
-                "leteDate, [DeleteBy] = @DeleteBy, [IsDelete] = @IsDelete WHERE (([Id] = @Origina"& _ 
-                "l_Id) AND ([Username] = @Original_Username) AND ([Password] = @Original_Password"& _ 
-                ") AND ([StatusId] = @Original_StatusId) AND ([RoleId] = @Original_RoleId) AND (("& _ 
-                "@IsNull_CreateDate = 1 AND [CreateDate] IS NULL) OR ([CreateDate] = @Original_Cr"& _ 
-                "eateDate)) AND ((@IsNull_CreateBy = 1 AND [CreateBy] IS NULL) OR ([CreateBy] = @"& _ 
-                "Original_CreateBy)) AND ((@IsNull_UpdateDate = 1 AND [UpdateDate] IS NULL) OR (["& _ 
-                "UpdateDate] = @Original_UpdateDate)) AND ((@IsNull_UpdateBy = 1 AND [UpdateBy] I"& _ 
-                "S NULL) OR ([UpdateBy] = @Original_UpdateBy)) AND ((@IsNull_DeleteDate = 1 AND ["& _ 
-                "DeleteDate] IS NULL) OR ([DeleteDate] = @Original_DeleteDate)) AND ((@IsNull_Del"& _ 
-                "eteBy = 1 AND [DeleteBy] IS NULL) OR ([DeleteBy] = @Original_DeleteBy)) AND ((@I"& _ 
-                "sNull_IsDelete = 1 AND [IsDelete] IS NULL) OR ([IsDelete] = @Original_IsDelete))"& _ 
-                ");"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, Username, Password, StatusId, RoleId, CreateDate, CreateBy, Updat"& _ 
-                "eDate, UpdateBy, DeleteDate, DeleteBy, IsDelete FROM Account WHERE (Id = @Id)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [Account] SET [Username] = @Username, [Password] = @Password, [StatusId] ="& _ 
+                " @StatusId, [CreateDate] = @CreateDate, [CreateBy] = @CreateBy, [UpdateDate] = @"& _ 
+                "UpdateDate, [UpdateBy] = @UpdateBy, [DeleteDate] = @DeleteDate, [DeleteBy] = @De"& _ 
+                "leteBy, [IsDelete] = @IsDelete WHERE (([Id] = @Original_Id) AND ([Username] = @O"& _ 
+                "riginal_Username) AND ([Password] = @Original_Password) AND ([StatusId] = @Origi"& _ 
+                "nal_StatusId) AND ((@IsNull_CreateDate = 1 AND [CreateDate] IS NULL) OR ([Create"& _ 
+                "Date] = @Original_CreateDate)) AND ((@IsNull_CreateBy = 1 AND [CreateBy] IS NULL"& _ 
+                ") OR ([CreateBy] = @Original_CreateBy)) AND ((@IsNull_UpdateDate = 1 AND [Update"& _ 
+                "Date] IS NULL) OR ([UpdateDate] = @Original_UpdateDate)) AND ((@IsNull_UpdateBy "& _ 
+                "= 1 AND [UpdateBy] IS NULL) OR ([UpdateBy] = @Original_UpdateBy)) AND ((@IsNull_"& _ 
+                "DeleteDate = 1 AND [DeleteDate] IS NULL) OR ([DeleteDate] = @Original_DeleteDate"& _ 
+                ")) AND ((@IsNull_DeleteBy = 1 AND [DeleteBy] IS NULL) OR ([DeleteBy] = @Original"& _ 
+                "_DeleteBy)) AND ((@IsNull_IsDelete = 1 AND [IsDelete] IS NULL) OR ([IsDelete] = "& _ 
+                "@Original_IsDelete)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, Username, Password, StatusId, CreateDate, Cre"& _ 
+                "ateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete FROM Account WHERE ("& _ 
+                "Id = @Id)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Username", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Username", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Password", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Password", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@StatusId", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "StatusId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RoleId", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RoleId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateBy", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateDate", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeleteDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeleteBy", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeleteBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsDelete", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IsDelete", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Id", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Username", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Username", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Password", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Password", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_StatusId", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "StatusId", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RoleId", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RoleId", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_CreateDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CreateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_CreateBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CreateBy", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CreateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_UpdateDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UpdateDate", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_UpdateBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UpdateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DeleteDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DeleteDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DeleteBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DeleteBy", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DeleteBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_IsDelete", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IsDelete", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IsDelete", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IsDelete", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -1249,14 +1219,14 @@ Namespace AccountTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT Id, Username, Password, StatusId, RoleId, CreateDate, CreateBy, UpdateDate"& _ 
-                ", UpdateBy, DeleteDate, DeleteBy, IsDelete FROM dbo.Account"
+            Me._commandCollection(0).CommandText = "SELECT Id, Username, Password, StatusId, CreateDate, CreateBy, UpdateDate, Update"& _ 
+                "By, DeleteDate, DeleteBy, IsDelete"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   Account"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT Id, Username, Password, StatusId, RoleId, CreateDate, CreateBy, UpdateDate"& _ 
-                ", UpdateBy, DeleteDate, DeleteBy, IsDelete"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   Account"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Username = @U"& _ 
-                "sername AND Password = @Password)"
+            Me._commandCollection(1).CommandText = "SELECT CreateBy, CreateDate, DeleteBy, DeleteDate, Id, IsDelete, Password, Status"& _ 
+                "Id, UpdateBy, UpdateDate, Username FROM Account WHERE (Username = @Username) AND"& _ 
+                " (Password = @Password)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Username", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "Username", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Password", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Password", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -1362,7 +1332,7 @@ Namespace AccountTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_Id As Long, ByVal Original_Username As String, ByVal Original_Password As String, ByVal Original_StatusId As Integer, ByVal Original_RoleId As Integer, ByVal Original_CreateDate As Global.System.Nullable(Of Date), ByVal Original_CreateBy As Global.System.Nullable(Of Date), ByVal Original_UpdateDate As String, ByVal Original_UpdateBy As String, ByVal Original_DeleteDate As Global.System.Nullable(Of Date), ByVal Original_DeleteBy As Global.System.Nullable(Of Date), ByVal Original_IsDelete As Global.System.Nullable(Of Boolean)) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_Id As Long, ByVal Original_Username As String, ByVal Original_Password As String, ByVal Original_StatusId As Integer, ByVal Original_CreateDate As Global.System.Nullable(Of Date), ByVal Original_CreateBy As String, ByVal Original_UpdateDate As Global.System.Nullable(Of Date), ByVal Original_UpdateBy As String, ByVal Original_DeleteDate As Global.System.Nullable(Of Date), ByVal Original_DeleteBy As String, ByVal Original_IsDelete As Global.System.Nullable(Of Boolean)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Id,Long)
             If (Original_Username Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Username")
@@ -1375,55 +1345,54 @@ Namespace AccountTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_Password,String)
             End If
             Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_StatusId,Integer)
-            Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_RoleId,Integer)
             If (Original_CreateDate.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_CreateDate.Value,Date)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_CreateDate.Value,Date)
             Else
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(5).Value = Global.System.DBNull.Value
             End If
-            If (Original_CreateBy.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_CreateBy.Value,Date)
+            If (Original_CreateBy Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(7).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(Original_CreateBy,String)
             End If
-            If (Original_UpdateDate Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
+            If (Original_UpdateDate.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(Original_UpdateDate.Value,Date)
             Else
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_UpdateDate,String)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(9).Value = Global.System.DBNull.Value
             End If
             If (Original_UpdateBy Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(11).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_UpdateBy,String)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(Original_UpdateBy,String)
             End If
             If (Original_DeleteDate.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_DeleteDate.Value,Date)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(Original_DeleteDate.Value,Date)
             Else
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(13).Value = Global.System.DBNull.Value
             End If
-            If (Original_DeleteBy.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_DeleteBy.Value,Date)
+            If (Original_DeleteBy Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(15).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(16).Value = Global.System.DBNull.Value
+                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(Original_DeleteBy,String)
             End If
             If (Original_IsDelete.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_IsDelete.Value,Boolean)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(Original_IsDelete.Value,Boolean)
             Else
-                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(18).Value = Global.System.DBNull.Value
+                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(17).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -1444,7 +1413,7 @@ Namespace AccountTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Username As String, ByVal Password As String, ByVal StatusId As Integer, ByVal RoleId As Integer, ByVal CreateDate As Global.System.Nullable(Of Date), ByVal CreateBy As Global.System.Nullable(Of Date), ByVal UpdateDate As String, ByVal UpdateBy As String, ByVal DeleteDate As Global.System.Nullable(Of Date), ByVal DeleteBy As Global.System.Nullable(Of Date), ByVal IsDelete As Global.System.Nullable(Of Boolean)) As Integer
+        Public Overloads Overridable Function Insert(ByVal Username As String, ByVal Password As String, ByVal StatusId As Integer, ByVal CreateDate As Global.System.Nullable(Of Date), ByVal CreateBy As String, ByVal UpdateDate As Global.System.Nullable(Of Date), ByVal UpdateBy As String, ByVal DeleteDate As Global.System.Nullable(Of Date), ByVal DeleteBy As String, ByVal IsDelete As Global.System.Nullable(Of Boolean)) As Integer
             If (Username Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Username")
             Else
@@ -1456,41 +1425,40 @@ Namespace AccountTableAdapters
                 Me.Adapter.InsertCommand.Parameters(1).Value = CType(Password,String)
             End If
             Me.Adapter.InsertCommand.Parameters(2).Value = CType(StatusId,Integer)
-            Me.Adapter.InsertCommand.Parameters(3).Value = CType(RoleId,Integer)
             If (CreateDate.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(4).Value = CType(CreateDate.Value,Date)
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(CreateDate.Value,Date)
             Else
-                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
             End If
-            If (CreateBy.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(5).Value = CType(CreateBy.Value,Date)
+            If (CreateBy Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(4).Value = CType(CreateBy,String)
+            End If
+            If (UpdateDate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(UpdateDate.Value,Date)
             Else
                 Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
             End If
-            If (UpdateDate Is Nothing) Then
+            If (UpdateBy Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(6).Value = CType(UpdateDate,String)
-            End If
-            If (UpdateBy Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(7).Value = CType(UpdateBy,String)
+                Me.Adapter.InsertCommand.Parameters(6).Value = CType(UpdateBy,String)
             End If
             If (DeleteDate.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(8).Value = CType(DeleteDate.Value,Date)
+                Me.Adapter.InsertCommand.Parameters(7).Value = CType(DeleteDate.Value,Date)
             Else
-                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
             End If
-            If (DeleteBy.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(9).Value = CType(DeleteBy.Value,Date)
+            If (DeleteBy Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(DeleteBy,String)
             End If
             If (IsDelete.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(10).Value = CType(IsDelete.Value,Boolean)
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(IsDelete.Value,Boolean)
             Else
-                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -1515,25 +1483,23 @@ Namespace AccountTableAdapters
                     ByVal Username As String,  _
                     ByVal Password As String,  _
                     ByVal StatusId As Integer,  _
-                    ByVal RoleId As Integer,  _
                     ByVal CreateDate As Global.System.Nullable(Of Date),  _
-                    ByVal CreateBy As Global.System.Nullable(Of Date),  _
-                    ByVal UpdateDate As String,  _
+                    ByVal CreateBy As String,  _
+                    ByVal UpdateDate As Global.System.Nullable(Of Date),  _
                     ByVal UpdateBy As String,  _
                     ByVal DeleteDate As Global.System.Nullable(Of Date),  _
-                    ByVal DeleteBy As Global.System.Nullable(Of Date),  _
+                    ByVal DeleteBy As String,  _
                     ByVal IsDelete As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_Id As Long,  _
                     ByVal Original_Username As String,  _
                     ByVal Original_Password As String,  _
                     ByVal Original_StatusId As Integer,  _
-                    ByVal Original_RoleId As Integer,  _
                     ByVal Original_CreateDate As Global.System.Nullable(Of Date),  _
-                    ByVal Original_CreateBy As Global.System.Nullable(Of Date),  _
-                    ByVal Original_UpdateDate As String,  _
+                    ByVal Original_CreateBy As String,  _
+                    ByVal Original_UpdateDate As Global.System.Nullable(Of Date),  _
                     ByVal Original_UpdateBy As String,  _
                     ByVal Original_DeleteDate As Global.System.Nullable(Of Date),  _
-                    ByVal Original_DeleteBy As Global.System.Nullable(Of Date),  _
+                    ByVal Original_DeleteBy As String,  _
                     ByVal Original_IsDelete As Global.System.Nullable(Of Boolean),  _
                     ByVal Id As Long) As Integer
             If (Username Is Nothing) Then
@@ -1547,105 +1513,103 @@ Namespace AccountTableAdapters
                 Me.Adapter.UpdateCommand.Parameters(1).Value = CType(Password,String)
             End If
             Me.Adapter.UpdateCommand.Parameters(2).Value = CType(StatusId,Integer)
-            Me.Adapter.UpdateCommand.Parameters(3).Value = CType(RoleId,Integer)
             If (CreateDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(CreateDate.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(CreateDate.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
             End If
-            If (CreateBy.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(CreateBy.Value,Date)
+            If (CreateBy Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(CreateBy,String)
+            End If
+            If (UpdateDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(UpdateDate.Value,Date)
             Else
                 Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
             End If
-            If (UpdateDate Is Nothing) Then
+            If (UpdateBy Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(UpdateDate,String)
-            End If
-            If (UpdateBy Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(UpdateBy,String)
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(UpdateBy,String)
             End If
             If (DeleteDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(DeleteDate.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(DeleteDate.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
             End If
-            If (DeleteBy.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(DeleteBy.Value,Date)
+            If (DeleteBy Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(DeleteBy,String)
+            End If
+            If (IsDelete.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(IsDelete.Value,Boolean)
             Else
                 Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
             End If
-            If (IsDelete.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(IsDelete.Value,Boolean)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
-            End If
-            Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_Id,Long)
+            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_Id,Long)
             If (Original_Username Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Username")
             Else
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_Username,String)
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_Username,String)
             End If
             If (Original_Password Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Password")
             Else
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_Password,String)
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_Password,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_StatusId,Integer)
-            Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_RoleId,Integer)
+            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_StatusId,Integer)
             If (Original_CreateDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_CreateDate.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_CreateDate.Value,Date)
             Else
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
+            End If
+            If (Original_CreateBy Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(16).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_CreateBy,String)
             End If
-            If (Original_CreateBy.HasValue = true) Then
+            If (Original_UpdateDate.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_CreateBy.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_UpdateDate.Value,Date)
             Else
                 Me.Adapter.UpdateCommand.Parameters(18).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
             End If
-            If (Original_UpdateDate Is Nothing) Then
+            If (Original_UpdateBy Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_UpdateDate,String)
-            End If
-            If (Original_UpdateBy Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_UpdateBy,String)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_UpdateBy,String)
             End If
             If (Original_DeleteDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_DeleteDate.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_DeleteDate.Value,Date)
             Else
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
+            End If
+            If (Original_DeleteBy Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_DeleteBy,String)
             End If
-            If (Original_DeleteBy.HasValue = true) Then
+            If (Original_IsDelete.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_DeleteBy.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_IsDelete.Value,Boolean)
             Else
                 Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
             End If
-            If (Original_IsDelete.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_IsDelete.Value,Boolean)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
-            End If
-            Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Id,Long)
+            Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Id,Long)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -1669,27 +1633,25 @@ Namespace AccountTableAdapters
                     ByVal Username As String,  _
                     ByVal Password As String,  _
                     ByVal StatusId As Integer,  _
-                    ByVal RoleId As Integer,  _
                     ByVal CreateDate As Global.System.Nullable(Of Date),  _
-                    ByVal CreateBy As Global.System.Nullable(Of Date),  _
-                    ByVal UpdateDate As String,  _
+                    ByVal CreateBy As String,  _
+                    ByVal UpdateDate As Global.System.Nullable(Of Date),  _
                     ByVal UpdateBy As String,  _
                     ByVal DeleteDate As Global.System.Nullable(Of Date),  _
-                    ByVal DeleteBy As Global.System.Nullable(Of Date),  _
+                    ByVal DeleteBy As String,  _
                     ByVal IsDelete As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_Id As Long,  _
                     ByVal Original_Username As String,  _
                     ByVal Original_Password As String,  _
                     ByVal Original_StatusId As Integer,  _
-                    ByVal Original_RoleId As Integer,  _
                     ByVal Original_CreateDate As Global.System.Nullable(Of Date),  _
-                    ByVal Original_CreateBy As Global.System.Nullable(Of Date),  _
-                    ByVal Original_UpdateDate As String,  _
+                    ByVal Original_CreateBy As String,  _
+                    ByVal Original_UpdateDate As Global.System.Nullable(Of Date),  _
                     ByVal Original_UpdateBy As String,  _
                     ByVal Original_DeleteDate As Global.System.Nullable(Of Date),  _
-                    ByVal Original_DeleteBy As Global.System.Nullable(Of Date),  _
+                    ByVal Original_DeleteBy As String,  _
                     ByVal Original_IsDelete As Global.System.Nullable(Of Boolean)) As Integer
-            Return Me.Update(Username, Password, StatusId, RoleId, CreateDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete, Original_Id, Original_Username, Original_Password, Original_StatusId, Original_RoleId, Original_CreateDate, Original_CreateBy, Original_UpdateDate, Original_UpdateBy, Original_DeleteDate, Original_DeleteBy, Original_IsDelete, Original_Id)
+            Return Me.Update(Username, Password, StatusId, CreateDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete, Original_Id, Original_Username, Original_Password, Original_StatusId, Original_CreateDate, Original_CreateBy, Original_UpdateDate, Original_UpdateBy, Original_DeleteDate, Original_DeleteBy, Original_IsDelete, Original_Id)
         End Function
     End Class
     

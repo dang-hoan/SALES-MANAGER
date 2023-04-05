@@ -3,6 +3,8 @@ Imports System.Data.SqlClient
 
 Public Class clsProduct
     Dim ta As New ProductTableAdapters.ProductTableAdapter
+    Dim taSalesDetail As New ProductTableAdapters.SalesDetailTableAdapter
+    Dim taProductSalesDetail As New ProductTableAdapters.ProductSalesDetailTableAdapter
 
 
     Private strConnTrans As String
@@ -18,16 +20,66 @@ Public Class clsProduct
 
     Public Function GetAllProduct() As Product
         Dim ds1 As New Product
-        ta.Connection = conn
-        ta.Fill(ds1._Product)
+        taProductSalesDetail.Connection = conn
+        taProductSalesDetail.Fill(ds1.ProductSalesDetail)
         Return ds1
     End Function
 
-    Public Function GetCBBProduct() As Product
-        Dim ds1 As New Product
+    Public Function CheckProductExits(productId As Long) As Boolean
         ta.Connection = conn
-        ta.FillBy(ds1._Product)
-        Return ds1
+        Dim result = ta.CheckProductExists(productId).Count
+        If result = 1 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Public Function EditProduct(productCode As Long, productName As String, supplierId As Long, categoryId As Long,
+                                productPrice As Double, unitPrice As String, productStatus As Integer,
+                                discountPercent As Double, rating As Integer, imageId As Long, wareHouseId As Long, total As Long, updateUser As String) As Integer
+        ta.Connection = conn
+        taSalesDetail.Connection = conn
+        Dim result1 = ta.UpdateProduct(productName, supplierId, categoryId, productPrice, unitPrice, productStatus, discountPercent, rating, imageId, DateTime.Now, updateUser, productCode)
+        Dim result2 = taSalesDetail.UpdateSalesDetail(wareHouseId, total, productCode)
+        If result1 = 1 And result2 = 1 Then
+            Return 1
+        Else
+            Return -1
+        End If
+    End Function
+    Public Function AddProduct(productName As String, supplierId As Long, categoryId As Long,
+                                productPrice As Double, unitPrice As String, productStatus As Integer,
+                                discountPercent As Double, rating As Integer, imageId As Long, wareHouseId As Long, total As Long, createUser As String) As Integer
+        ta.Connection = conn
+        taSalesDetail.Connection = conn
+
+        Dim productId = ta.InsertProduct(productName, supplierId, categoryId, productPrice, unitPrice, productStatus, discountPercent, rating, imageId, DateTime.Now, createUser, False)
+        Dim result = taSalesDetail.InsertSalesDetail(wareHouseId, productId, total)
+
+        If result = 1 Then
+            Return 1
+        Else
+            Return -1
+        End If
+    End Function
+
+    Public Function DeleteProduct(ByVal deleteUsername As String, ByVal productId As Long) As Integer
+        ta.Connection = conn
+        Return ta.DeleteProduct(DateTime.Now, deleteUsername, productId)
+    End Function
+    Public Function RestoreProduct(ByVal productId As Long) As Integer
+        ta.Connection = conn
+        Return ta.RestoreProduct(productId)
+    End Function
+    Public Function CheckProductWasDeleted(ByVal productId As Long) As Integer
+        ta.Connection = conn
+        Dim result = ta.CheckProductWasDeleted(productId).Count
+        If result > 0 Then
+            Return True
+        Else
+            Return False
+        End If
     End Function
 
 

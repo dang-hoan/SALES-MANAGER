@@ -8,14 +8,17 @@ Public Class WarehouseReport
         Dim dataProduct = clsPMSAnalysis.GetCBBProduct().CBBProduct
         Dim dataWareHouse = clsPMSAnalysis.GetCBBWareHouse().CBBWareHouse
 
+        cbbWarehouse.Items.Clear()
+        cbbProduct.Items.Clear()
+
         cbbWarehouse.Items.Add("")
         cbbProduct.Items.Add("")
         For Each row As DataRow In dataWareHouse.Rows
-            cbbWarehouse.Items.Add(New CBBWareHouse(row(0), row(1)))
+            cbbWarehouse.Items.Add(New CBBItem(row(0), row(1)))
         Next
 
         For Each row As DataRow In dataProduct.Rows
-            cbbProduct.Items.Add(New CBBProduct(row(0), row(1)))
+            cbbProduct.Items.Add(New CBBItem(row(0), row(1)))
         Next
 
     End Sub
