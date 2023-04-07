@@ -89,11 +89,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CBB.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BiddingData\Dataset\Order.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Order.xsd</DependentUpon>
-    </Compile>
     <Compile Include="BiddingData\Dataset\OrderDetail.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -190,17 +185,6 @@
     </None>
     <None Include="BiddingData\Dataset\CBB.xss">
       <DependentUpon>CBB.xsd</DependentUpon>
-    </None>
-    <None Include="BiddingData\Dataset\Order.xsc">
-      <DependentUpon>Order.xsd</DependentUpon>
-    </None>
-    <None Include="BiddingData\Dataset\Order.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Order.Designer.vb</LastGenOutput>
-    </None>
-    <None Include="BiddingData\Dataset\Order.xss">
-      <DependentUpon>Order.xsd</DependentUpon>
     </None>
     <None Include="BiddingData\Dataset\OrderDetail.xsc">
       <DependentUpon>OrderDetail.xsd</DependentUpon>

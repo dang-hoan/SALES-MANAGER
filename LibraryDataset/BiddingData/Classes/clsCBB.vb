@@ -7,6 +7,7 @@ Public Class clsCBB
     Dim taCategory As New CBBTableAdapters.CBBCategoryTableAdapter
     Dim taSupplier As New CBBTableAdapters.CBBSupplierTableAdapter
     Dim taStatus As New CBBTableAdapters.CBBStatusTableAdapter
+    Dim taPerson As New CBBTableAdapters.CBBPersonTableAdapter
     Private conn As New SqlConnection
 
     Public Sub New(ByVal strConn As String, Optional ByVal strConnTransaction As String = Nothing)
@@ -48,6 +49,18 @@ Public Class clsCBB
         Dim ds1 As New CBB
         taStatus.Connection = conn
         taStatus.Fill(ds1.CBBStatus, "Product")
+        Return ds1
+    End Function
+    Public Function GetCBBShipper() As CBB
+        Dim ds1 As New CBB
+        taPerson.Connection = conn
+        taPerson.FillByShipper(ds1.CBBPerson)
+        Return ds1
+    End Function
+    Public Function GetCBBStatusOfOrder() As CBB
+        Dim ds1 As New CBB
+        taStatus.Connection = conn
+        taStatus.Fill(ds1.CBBStatus, "Order")
         Return ds1
     End Function
 

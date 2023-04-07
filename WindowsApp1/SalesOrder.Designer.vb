@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class SalesOrder
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -21,13 +21,11 @@ Partial Class SalesOrder
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SalesOrder))
         Me.bSave = New System.Windows.Forms.Button()
-        Me.bCancel = New System.Windows.Forms.Button()
+        Me.bDelete = New System.Windows.Forms.Button()
         Me.bPrint = New System.Windows.Forms.Button()
         Me.bAdd = New System.Windows.Forms.Button()
-        Me.label1 = New System.Windows.Forms.Label()
         Me.label2 = New System.Windows.Forms.Label()
         Me.label3 = New System.Windows.Forms.Label()
         Me.label4 = New System.Windows.Forms.Label()
@@ -35,7 +33,9 @@ Partial Class SalesOrder
         Me.label6 = New System.Windows.Forms.Label()
         Me.label7 = New System.Windows.Forms.Label()
         Me.groupBox1 = New System.Windows.Forms.GroupBox()
-        Me.cbbEmployeeCode = New System.Windows.Forms.ComboBox()
+        Me.txtShipFee = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.cbbShipper = New System.Windows.Forms.ComboBox()
         Me.label15 = New System.Windows.Forms.Label()
         Me.dtOrderDate = New System.Windows.Forms.DateTimePicker()
         Me.label14 = New System.Windows.Forms.Label()
@@ -43,30 +43,30 @@ Partial Class SalesOrder
         Me.cbbShipStatus = New System.Windows.Forms.ComboBox()
         Me.dtShipDate = New System.Windows.Forms.DateTimePicker()
         Me.txtShipAddress = New System.Windows.Forms.TextBox()
-        Me.txtCustomerCode = New System.Windows.Forms.TextBox()
         Me.txtOrderCode = New System.Windows.Forms.TextBox()
         Me.groupBox2 = New System.Windows.Forms.GroupBox()
-        Me.cbbProductCode = New System.Windows.Forms.ComboBox()
-        Me.cbbNumber = New System.Windows.Forms.ComboBox()
-        Me.txtProductPrice = New System.Windows.Forms.TextBox()
+        Me.txtNumber = New System.Windows.Forms.TextBox()
+        Me.listBuyProduct = New System.Windows.Forms.ListView()
+        Me.labRemove = New System.Windows.Forms.Label()
+        Me.labUpdate = New System.Windows.Forms.Label()
+        Me.pictureAdd = New System.Windows.Forms.PictureBox()
+        Me.cbbProduct = New System.Windows.Forms.ComboBox()
+        Me.label8 = New System.Windows.Forms.Label()
+        Me.label10 = New System.Windows.Forms.Label()
+        Me.pictureRemove = New System.Windows.Forms.PictureBox()
         Me.txtDiscount = New System.Windows.Forms.TextBox()
         Me.txtTotalPrice = New System.Windows.Forms.TextBox()
-        Me.txtProductName = New System.Windows.Forms.TextBox()
-        Me.label8 = New System.Windows.Forms.Label()
-        Me.label9 = New System.Windows.Forms.Label()
-        Me.label10 = New System.Windows.Forms.Label()
         Me.label11 = New System.Windows.Forms.Label()
-        Me.label12 = New System.Windows.Forms.Label()
         Me.label13 = New System.Windows.Forms.Label()
         Me.dgvOrder = New System.Windows.Forms.DataGridView()
         Me.bEdit = New System.Windows.Forms.Button()
-        Me.SalesOrderTableAdapterBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.SalesOrderTableAdapterBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.groupBox1.SuspendLayout()
         Me.groupBox2.SuspendLayout()
+        CType(Me.pictureAdd, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pictureRemove, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvOrder, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SalesOrderTableAdapterBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SalesOrderTableAdapterBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'bSave
@@ -83,19 +83,19 @@ Partial Class SalesOrder
         Me.bSave.Text = "Save"
         Me.bSave.UseVisualStyleBackColor = False
         '
-        'bCancel
+        'bDelete
         '
-        Me.bCancel.BackColor = System.Drawing.Color.SandyBrown
-        Me.bCancel.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.bCancel.Image = CType(resources.GetObject("bCancel.Image"), System.Drawing.Image)
-        Me.bCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bCancel.Location = New System.Drawing.Point(243, 693)
-        Me.bCancel.Name = "bCancel"
-        Me.bCancel.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.bCancel.Size = New System.Drawing.Size(139, 48)
-        Me.bCancel.TabIndex = 3
-        Me.bCancel.Text = "Cancel"
-        Me.bCancel.UseVisualStyleBackColor = False
+        Me.bDelete.BackColor = System.Drawing.Color.SandyBrown
+        Me.bDelete.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.bDelete.Image = CType(resources.GetObject("bDelete.Image"), System.Drawing.Image)
+        Me.bDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.bDelete.Location = New System.Drawing.Point(243, 693)
+        Me.bDelete.Name = "bDelete"
+        Me.bDelete.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.bDelete.Size = New System.Drawing.Size(139, 48)
+        Me.bDelete.TabIndex = 3
+        Me.bDelete.Text = "Delete"
+        Me.bDelete.UseVisualStyleBackColor = False
         '
         'bPrint
         '
@@ -125,17 +125,6 @@ Partial Class SalesOrder
         Me.bAdd.Text = "Add"
         Me.bAdd.UseVisualStyleBackColor = False
         '
-        'label1
-        '
-        Me.label1.AutoSize = True
-        Me.label1.BackColor = System.Drawing.Color.White
-        Me.label1.ForeColor = System.Drawing.Color.Blue
-        Me.label1.Location = New System.Drawing.Point(28, 91)
-        Me.label1.Name = "label1"
-        Me.label1.Size = New System.Drawing.Size(117, 20)
-        Me.label1.TabIndex = 5
-        Me.label1.Text = "Customer code"
-        '
         'label2
         '
         Me.label2.AutoSize = True
@@ -163,7 +152,7 @@ Partial Class SalesOrder
         Me.label4.AutoSize = True
         Me.label4.BackColor = System.Drawing.Color.White
         Me.label4.ForeColor = System.Drawing.Color.Blue
-        Me.label4.Location = New System.Drawing.Point(453, 91)
+        Me.label4.Location = New System.Drawing.Point(453, 88)
         Me.label4.Name = "label4"
         Me.label4.Size = New System.Drawing.Size(77, 20)
         Me.label4.TabIndex = 9
@@ -174,7 +163,7 @@ Partial Class SalesOrder
         Me.label5.AutoSize = True
         Me.label5.BackColor = System.Drawing.Color.White
         Me.label5.ForeColor = System.Drawing.Color.Blue
-        Me.label5.Location = New System.Drawing.Point(28, 134)
+        Me.label5.Location = New System.Drawing.Point(28, 88)
         Me.label5.Name = "label5"
         Me.label5.Size = New System.Drawing.Size(122, 20)
         Me.label5.TabIndex = 7
@@ -204,7 +193,9 @@ Partial Class SalesOrder
         '
         'groupBox1
         '
-        Me.groupBox1.Controls.Add(Me.cbbEmployeeCode)
+        Me.groupBox1.Controls.Add(Me.txtShipFee)
+        Me.groupBox1.Controls.Add(Me.Label1)
+        Me.groupBox1.Controls.Add(Me.cbbShipper)
         Me.groupBox1.Controls.Add(Me.label15)
         Me.groupBox1.Controls.Add(Me.dtOrderDate)
         Me.groupBox1.Controls.Add(Me.label14)
@@ -212,10 +203,8 @@ Partial Class SalesOrder
         Me.groupBox1.Controls.Add(Me.cbbShipStatus)
         Me.groupBox1.Controls.Add(Me.dtShipDate)
         Me.groupBox1.Controls.Add(Me.txtShipAddress)
-        Me.groupBox1.Controls.Add(Me.txtCustomerCode)
         Me.groupBox1.Controls.Add(Me.txtOrderCode)
         Me.groupBox1.Controls.Add(Me.label2)
-        Me.groupBox1.Controls.Add(Me.label1)
         Me.groupBox1.Controls.Add(Me.label4)
         Me.groupBox1.Controls.Add(Me.label6)
         Me.groupBox1.Controls.Add(Me.label3)
@@ -227,29 +216,49 @@ Partial Class SalesOrder
         Me.groupBox1.TabStop = False
         Me.groupBox1.Text = "Detail order"
         '
-        'cbbEmployeeCode
+        'txtShipFee
         '
-        Me.cbbEmployeeCode.Enabled = False
-        Me.cbbEmployeeCode.FormattingEnabled = True
-        Me.cbbEmployeeCode.Location = New System.Drawing.Point(164, 174)
-        Me.cbbEmployeeCode.Name = "cbbEmployeeCode"
-        Me.cbbEmployeeCode.Size = New System.Drawing.Size(150, 28)
-        Me.cbbEmployeeCode.TabIndex = 21
+        Me.txtShipFee.Enabled = False
+        Me.txtShipFee.Location = New System.Drawing.Point(587, 39)
+        Me.txtShipFee.Name = "txtShipFee"
+        Me.txtShipFee.Size = New System.Drawing.Size(155, 26)
+        Me.txtShipFee.TabIndex = 23
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.White
+        Me.Label1.ForeColor = System.Drawing.Color.Blue
+        Me.Label1.Location = New System.Drawing.Point(453, 45)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(68, 20)
+        Me.Label1.TabIndex = 22
+        Me.Label1.Text = "Ship fee"
+        '
+        'cbbShipper
+        '
+        Me.cbbShipper.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbShipper.Enabled = False
+        Me.cbbShipper.FormattingEnabled = True
+        Me.cbbShipper.Location = New System.Drawing.Point(164, 130)
+        Me.cbbShipper.Name = "cbbShipper"
+        Me.cbbShipper.Size = New System.Drawing.Size(150, 28)
+        Me.cbbShipper.TabIndex = 21
         '
         'label15
         '
         Me.label15.AutoSize = True
         Me.label15.BackColor = System.Drawing.Color.White
         Me.label15.ForeColor = System.Drawing.Color.Blue
-        Me.label15.Location = New System.Drawing.Point(28, 177)
+        Me.label15.Location = New System.Drawing.Point(28, 130)
         Me.label15.Name = "label15"
-        Me.label15.Size = New System.Drawing.Size(118, 20)
+        Me.label15.Size = New System.Drawing.Size(64, 20)
         Me.label15.TabIndex = 20
-        Me.label15.Text = "Employee code"
+        Me.label15.Text = "Shipper"
         '
         'dtOrderDate
         '
-        Me.dtOrderDate.Location = New System.Drawing.Point(586, 39)
+        Me.dtOrderDate.Location = New System.Drawing.Point(164, 175)
         Me.dtOrderDate.Name = "dtOrderDate"
         Me.dtOrderDate.Size = New System.Drawing.Size(233, 26)
         Me.dtOrderDate.TabIndex = 19
@@ -259,7 +268,7 @@ Partial Class SalesOrder
         Me.label14.AutoSize = True
         Me.label14.BackColor = System.Drawing.Color.White
         Me.label14.ForeColor = System.Drawing.Color.Blue
-        Me.label14.Location = New System.Drawing.Point(453, 45)
+        Me.label14.Location = New System.Drawing.Point(28, 174)
         Me.label14.Name = "label14"
         Me.label14.Size = New System.Drawing.Size(85, 20)
         Me.label14.TabIndex = 18
@@ -268,13 +277,14 @@ Partial Class SalesOrder
         'txtCustomerName
         '
         Me.txtCustomerName.Enabled = False
-        Me.txtCustomerName.Location = New System.Drawing.Point(164, 134)
+        Me.txtCustomerName.Location = New System.Drawing.Point(164, 85)
         Me.txtCustomerName.Name = "txtCustomerName"
-        Me.txtCustomerName.Size = New System.Drawing.Size(150, 26)
+        Me.txtCustomerName.Size = New System.Drawing.Size(233, 26)
         Me.txtCustomerName.TabIndex = 17
         '
         'cbbShipStatus
         '
+        Me.cbbShipStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbbShipStatus.FormattingEnabled = True
         Me.cbbShipStatus.Location = New System.Drawing.Point(586, 173)
         Me.cbbShipStatus.Name = "cbbShipStatus"
@@ -283,7 +293,7 @@ Partial Class SalesOrder
         '
         'dtShipDate
         '
-        Me.dtShipDate.Location = New System.Drawing.Point(586, 87)
+        Me.dtShipDate.Location = New System.Drawing.Point(586, 85)
         Me.dtShipDate.Name = "dtShipDate"
         Me.dtShipDate.Size = New System.Drawing.Size(233, 26)
         Me.dtShipDate.TabIndex = 15
@@ -296,91 +306,93 @@ Partial Class SalesOrder
         Me.txtShipAddress.Size = New System.Drawing.Size(233, 26)
         Me.txtShipAddress.TabIndex = 8
         '
-        'txtCustomerCode
-        '
-        Me.txtCustomerCode.Enabled = False
-        Me.txtCustomerCode.Location = New System.Drawing.Point(164, 88)
-        Me.txtCustomerCode.Name = "txtCustomerCode"
-        Me.txtCustomerCode.Size = New System.Drawing.Size(150, 26)
-        Me.txtCustomerCode.TabIndex = 6
-        '
         'txtOrderCode
         '
         Me.txtOrderCode.Enabled = False
-        Me.txtOrderCode.Location = New System.Drawing.Point(164, 45)
+        Me.txtOrderCode.Location = New System.Drawing.Point(164, 39)
         Me.txtOrderCode.Name = "txtOrderCode"
         Me.txtOrderCode.Size = New System.Drawing.Size(150, 26)
         Me.txtOrderCode.TabIndex = 2
         '
         'groupBox2
         '
-        Me.groupBox2.Controls.Add(Me.cbbProductCode)
-        Me.groupBox2.Controls.Add(Me.cbbNumber)
-        Me.groupBox2.Controls.Add(Me.txtProductPrice)
-        Me.groupBox2.Controls.Add(Me.txtDiscount)
-        Me.groupBox2.Controls.Add(Me.txtTotalPrice)
-        Me.groupBox2.Controls.Add(Me.txtProductName)
+        Me.groupBox2.Controls.Add(Me.txtNumber)
+        Me.groupBox2.Controls.Add(Me.listBuyProduct)
+        Me.groupBox2.Controls.Add(Me.labRemove)
+        Me.groupBox2.Controls.Add(Me.labUpdate)
+        Me.groupBox2.Controls.Add(Me.pictureAdd)
+        Me.groupBox2.Controls.Add(Me.cbbProduct)
         Me.groupBox2.Controls.Add(Me.label8)
-        Me.groupBox2.Controls.Add(Me.label9)
         Me.groupBox2.Controls.Add(Me.label10)
-        Me.groupBox2.Controls.Add(Me.label11)
-        Me.groupBox2.Controls.Add(Me.label12)
-        Me.groupBox2.Controls.Add(Me.label13)
-        Me.groupBox2.Location = New System.Drawing.Point(54, 325)
+        Me.groupBox2.Controls.Add(Me.pictureRemove)
+        Me.groupBox2.Location = New System.Drawing.Point(54, 317)
         Me.groupBox2.Name = "groupBox2"
-        Me.groupBox2.Size = New System.Drawing.Size(853, 125)
+        Me.groupBox2.Size = New System.Drawing.Size(573, 140)
         Me.groupBox2.TabIndex = 15
         Me.groupBox2.TabStop = False
         Me.groupBox2.Text = "Detail products"
         '
-        'cbbProductCode
+        'txtNumber
         '
-        Me.cbbProductCode.Enabled = False
-        Me.cbbProductCode.FormattingEnabled = True
-        Me.cbbProductCode.Location = New System.Drawing.Point(138, 33)
-        Me.cbbProductCode.Name = "cbbProductCode"
-        Me.cbbProductCode.Size = New System.Drawing.Size(89, 28)
-        Me.cbbProductCode.TabIndex = 15
+        Me.txtNumber.Enabled = False
+        Me.txtNumber.Location = New System.Drawing.Point(88, 81)
+        Me.txtNumber.Name = "txtNumber"
+        Me.txtNumber.Size = New System.Drawing.Size(89, 26)
+        Me.txtNumber.TabIndex = 22
         '
-        'cbbNumber
+        'listBuyProduct
         '
-        Me.cbbNumber.FormattingEnabled = True
-        Me.cbbNumber.Location = New System.Drawing.Point(138, 79)
-        Me.cbbNumber.Name = "cbbNumber"
-        Me.cbbNumber.Size = New System.Drawing.Size(89, 28)
-        Me.cbbNumber.TabIndex = 14
+        Me.listBuyProduct.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.listBuyProduct.FullRowSelect = True
+        Me.listBuyProduct.GridLines = True
+        Me.listBuyProduct.HideSelection = False
+        Me.listBuyProduct.Location = New System.Drawing.Point(280, 17)
+        Me.listBuyProduct.Name = "listBuyProduct"
+        Me.listBuyProduct.Size = New System.Drawing.Size(275, 117)
+        Me.listBuyProduct.TabIndex = 21
+        Me.listBuyProduct.UseCompatibleStateImageBehavior = False
+        Me.listBuyProduct.View = System.Windows.Forms.View.Details
         '
-        'txtProductPrice
+        'labRemove
         '
-        Me.txtProductPrice.Enabled = False
-        Me.txtProductPrice.Location = New System.Drawing.Point(679, 36)
-        Me.txtProductPrice.Name = "txtProductPrice"
-        Me.txtProductPrice.Size = New System.Drawing.Size(148, 26)
-        Me.txtProductPrice.TabIndex = 13
+        Me.labRemove.AutoSize = True
+        Me.labRemove.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labRemove.Location = New System.Drawing.Point(177, 120)
+        Me.labRemove.Name = "labRemove"
+        Me.labRemove.Size = New System.Drawing.Size(99, 15)
+        Me.labRemove.TabIndex = 20
+        Me.labRemove.Text = "Remove from list"
         '
-        'txtDiscount
+        'labUpdate
         '
-        Me.txtDiscount.Enabled = False
-        Me.txtDiscount.Location = New System.Drawing.Point(382, 79)
-        Me.txtDiscount.Name = "txtDiscount"
-        Me.txtDiscount.Size = New System.Drawing.Size(148, 26)
-        Me.txtDiscount.TabIndex = 0
+        Me.labUpdate.AutoSize = True
+        Me.labUpdate.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labUpdate.Location = New System.Drawing.Point(186, 12)
+        Me.labUpdate.Name = "labUpdate"
+        Me.labUpdate.Size = New System.Drawing.Size(88, 15)
+        Me.labUpdate.TabIndex = 18
+        Me.labUpdate.Text = "Update into list"
         '
-        'txtTotalPrice
+        'pictureAdd
         '
-        Me.txtTotalPrice.Enabled = False
-        Me.txtTotalPrice.Location = New System.Drawing.Point(679, 79)
-        Me.txtTotalPrice.Name = "txtTotalPrice"
-        Me.txtTotalPrice.Size = New System.Drawing.Size(148, 26)
-        Me.txtTotalPrice.TabIndex = 8
+        Me.pictureAdd.BackColor = System.Drawing.Color.Transparent
+        Me.pictureAdd.Image = CType(resources.GetObject("pictureAdd.Image"), System.Drawing.Image)
+        Me.pictureAdd.Location = New System.Drawing.Point(199, 25)
+        Me.pictureAdd.Name = "pictureAdd"
+        Me.pictureAdd.Size = New System.Drawing.Size(48, 50)
+        Me.pictureAdd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.pictureAdd.TabIndex = 17
+        Me.pictureAdd.TabStop = False
         '
-        'txtProductName
+        'cbbProduct
         '
-        Me.txtProductName.Enabled = False
-        Me.txtProductName.Location = New System.Drawing.Point(382, 36)
-        Me.txtProductName.Name = "txtProductName"
-        Me.txtProductName.Size = New System.Drawing.Size(148, 26)
-        Me.txtProductName.TabIndex = 6
+        Me.cbbProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbProduct.Enabled = False
+        Me.cbbProduct.FormattingEnabled = True
+        Me.cbbProduct.Location = New System.Drawing.Point(88, 39)
+        Me.cbbProduct.Name = "cbbProduct"
+        Me.cbbProduct.Size = New System.Drawing.Size(89, 28)
+        Me.cbbProduct.TabIndex = 15
         '
         'label8
         '
@@ -389,20 +401,9 @@ Partial Class SalesOrder
         Me.label8.ForeColor = System.Drawing.Color.Blue
         Me.label8.Location = New System.Drawing.Point(18, 39)
         Me.label8.Name = "label8"
-        Me.label8.Size = New System.Drawing.Size(103, 20)
+        Me.label8.Size = New System.Drawing.Size(64, 20)
         Me.label8.TabIndex = 1
-        Me.label8.Text = "Product code"
-        '
-        'label9
-        '
-        Me.label9.AutoSize = True
-        Me.label9.BackColor = System.Drawing.Color.White
-        Me.label9.ForeColor = System.Drawing.Color.Blue
-        Me.label9.Location = New System.Drawing.Point(268, 39)
-        Me.label9.Name = "label9"
-        Me.label9.Size = New System.Drawing.Size(108, 20)
-        Me.label9.TabIndex = 5
-        Me.label9.Text = "Product name"
+        Me.label8.Text = "Product"
         '
         'label10
         '
@@ -415,34 +416,50 @@ Partial Class SalesOrder
         Me.label10.TabIndex = 9
         Me.label10.Text = "Number"
         '
+        'pictureRemove
+        '
+        Me.pictureRemove.BackColor = System.Drawing.Color.Transparent
+        Me.pictureRemove.Image = CType(resources.GetObject("pictureRemove.Image"), System.Drawing.Image)
+        Me.pictureRemove.Location = New System.Drawing.Point(199, 67)
+        Me.pictureRemove.Name = "pictureRemove"
+        Me.pictureRemove.Size = New System.Drawing.Size(48, 50)
+        Me.pictureRemove.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.pictureRemove.TabIndex = 19
+        Me.pictureRemove.TabStop = False
+        '
+        'txtDiscount
+        '
+        Me.txtDiscount.Enabled = False
+        Me.txtDiscount.Location = New System.Drawing.Point(109, 41)
+        Me.txtDiscount.Name = "txtDiscount"
+        Me.txtDiscount.Size = New System.Drawing.Size(139, 26)
+        Me.txtDiscount.TabIndex = 0
+        '
+        'txtTotalPrice
+        '
+        Me.txtTotalPrice.Enabled = False
+        Me.txtTotalPrice.Location = New System.Drawing.Point(109, 87)
+        Me.txtTotalPrice.Name = "txtTotalPrice"
+        Me.txtTotalPrice.Size = New System.Drawing.Size(139, 26)
+        Me.txtTotalPrice.TabIndex = 8
+        '
         'label11
         '
         Me.label11.AutoSize = True
         Me.label11.BackColor = System.Drawing.Color.White
         Me.label11.ForeColor = System.Drawing.Color.Blue
-        Me.label11.Location = New System.Drawing.Point(268, 82)
+        Me.label11.Location = New System.Drawing.Point(15, 41)
         Me.label11.Name = "label11"
         Me.label11.Size = New System.Drawing.Size(72, 20)
         Me.label11.TabIndex = 12
         Me.label11.Text = "Discount"
-        '
-        'label12
-        '
-        Me.label12.AutoSize = True
-        Me.label12.BackColor = System.Drawing.Color.White
-        Me.label12.ForeColor = System.Drawing.Color.Blue
-        Me.label12.Location = New System.Drawing.Point(570, 36)
-        Me.label12.Name = "label12"
-        Me.label12.Size = New System.Drawing.Size(102, 20)
-        Me.label12.TabIndex = 3
-        Me.label12.Text = "Product price"
         '
         'label13
         '
         Me.label13.AutoSize = True
         Me.label13.BackColor = System.Drawing.Color.White
         Me.label13.ForeColor = System.Drawing.Color.Blue
-        Me.label13.Location = New System.Drawing.Point(570, 79)
+        Me.label13.Location = New System.Drawing.Point(15, 87)
         Me.label13.Name = "label13"
         Me.label13.Size = New System.Drawing.Size(82, 20)
         Me.label13.TabIndex = 7
@@ -452,7 +469,7 @@ Partial Class SalesOrder
         '
         Me.dgvOrder.BackgroundColor = System.Drawing.Color.White
         Me.dgvOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvOrder.Location = New System.Drawing.Point(54, 471)
+        Me.dgvOrder.Location = New System.Drawing.Point(54, 477)
         Me.dgvOrder.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.dgvOrder.Name = "dgvOrder"
         Me.dgvOrder.ReadOnly = True
@@ -476,13 +493,17 @@ Partial Class SalesOrder
         Me.bEdit.Text = "Edit"
         Me.bEdit.UseVisualStyleBackColor = False
         '
-        'SalesOrderTableAdapterBindingSource
+        'GroupBox3
         '
-        Me.SalesOrderTableAdapterBindingSource.DataSource = GetType(LibraryDataset.OrderDetailTableAdapters.SalesOrderTableAdapter)
-        '
-        'SalesOrderTableAdapterBindingSource1
-        '
-        Me.SalesOrderTableAdapterBindingSource1.DataSource = GetType(LibraryDataset.OrderDetailTableAdapters.SalesOrderTableAdapter)
+        Me.GroupBox3.Controls.Add(Me.txtDiscount)
+        Me.GroupBox3.Controls.Add(Me.txtTotalPrice)
+        Me.GroupBox3.Controls.Add(Me.label13)
+        Me.GroupBox3.Controls.Add(Me.label11)
+        Me.GroupBox3.Location = New System.Drawing.Point(641, 317)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(266, 140)
+        Me.GroupBox3.TabIndex = 23
+        Me.GroupBox3.TabStop = False
         '
         'SalesOrder
         '
@@ -490,11 +511,12 @@ Partial Class SalesOrder
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(969, 766)
+        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.bEdit)
         Me.Controls.Add(Me.dgvOrder)
         Me.Controls.Add(Me.groupBox2)
         Me.Controls.Add(Me.bSave)
-        Me.Controls.Add(Me.bCancel)
+        Me.Controls.Add(Me.bDelete)
         Me.Controls.Add(Me.groupBox1)
         Me.Controls.Add(Me.bPrint)
         Me.Controls.Add(Me.bAdd)
@@ -505,30 +527,30 @@ Partial Class SalesOrder
         Me.groupBox1.PerformLayout()
         Me.groupBox2.ResumeLayout(False)
         Me.groupBox2.PerformLayout()
+        CType(Me.pictureAdd, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pictureRemove, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvOrder, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SalesOrderTableAdapterBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SalesOrderTableAdapterBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Private bAdd As System.Windows.Forms.Button
-        Private bPrint As System.Windows.Forms.Button
-        Private WithEvents bSave As System.Windows.Forms.Button
-        Private bCancel As System.Windows.Forms.Button
-        Private label1 As System.Windows.Forms.Label
-        Private label2 As System.Windows.Forms.Label
-        Private label3 As System.Windows.Forms.Label
-        Private label4 As System.Windows.Forms.Label
-        Private label5 As System.Windows.Forms.Label
-        Private label6 As System.Windows.Forms.Label
-        Private label7 As System.Windows.Forms.Label
+    Private WithEvents bAdd As System.Windows.Forms.Button
+    Private bPrint As System.Windows.Forms.Button
+    Private WithEvents bSave As System.Windows.Forms.Button
+    Private WithEvents bDelete As System.Windows.Forms.Button
+    Private label2 As System.Windows.Forms.Label
+    Private label3 As System.Windows.Forms.Label
+    Private label4 As System.Windows.Forms.Label
+    Private label5 As System.Windows.Forms.Label
+    Private label6 As System.Windows.Forms.Label
+    Private label7 As System.Windows.Forms.Label
     Private groupBox1 As System.Windows.Forms.GroupBox
     Private txtShipAddress As System.Windows.Forms.TextBox
-    Private txtCustomerCode As System.Windows.Forms.TextBox
     Private txtOrderCode As System.Windows.Forms.TextBox
-    Private cbbEmployeeCode As System.Windows.Forms.ComboBox
+    Private cbbShipper As System.Windows.Forms.ComboBox
     Private label15 As System.Windows.Forms.Label
     Private dtOrderDate As System.Windows.Forms.DateTimePicker
     Private label14 As System.Windows.Forms.Label
@@ -536,20 +558,22 @@ Partial Class SalesOrder
     Private cbbShipStatus As System.Windows.Forms.ComboBox
     Private dtShipDate As System.Windows.Forms.DateTimePicker
     Private groupBox2 As System.Windows.Forms.GroupBox
-    Private cbbNumber As System.Windows.Forms.ComboBox
-    Private txtProductPrice As System.Windows.Forms.TextBox
     Private txtDiscount As System.Windows.Forms.TextBox
     Private txtTotalPrice As System.Windows.Forms.TextBox
-    Private txtProductName As System.Windows.Forms.TextBox
     Private label8 As System.Windows.Forms.Label
-    Private label9 As System.Windows.Forms.Label
     Private label10 As System.Windows.Forms.Label
     Private label11 As System.Windows.Forms.Label
-    Private label12 As System.Windows.Forms.Label
     Private label13 As System.Windows.Forms.Label
-    Private cbbProductCode As System.Windows.Forms.ComboBox
+    Private WithEvents cbbProduct As System.Windows.Forms.ComboBox
     Friend WithEvents dgvOrder As DataGridView
     Private WithEvents bEdit As Button
-    Friend WithEvents SalesOrderTableAdapterBindingSource As BindingSource
-    Friend WithEvents SalesOrderTableAdapterBindingSource1 As BindingSource
+    Friend WithEvents labUpdate As Label
+    Friend WithEvents pictureAdd As PictureBox
+    Friend WithEvents pictureRemove As PictureBox
+    Friend WithEvents labRemove As Label
+    Friend WithEvents listBuyProduct As ListView
+    Private WithEvents txtNumber As TextBox
+    Private WithEvents Label1 As Label
+    Friend WithEvents GroupBox3 As GroupBox
+    Private WithEvents txtShipFee As TextBox
 End Class

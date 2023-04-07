@@ -39,14 +39,14 @@ Partial Class MainForm
         Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnExit = New System.Windows.Forms.ToolStripMenuItem()
         Me.srcMain = New System.Windows.Forms.Panel()
+        Me.panelWelcome = New System.Windows.Forms.Panel()
         Me.pictureMain = New System.Windows.Forms.PictureBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.panelWelcome = New System.Windows.Forms.Panel()
         Me.menuStrip.SuspendLayout()
         Me.srcMain.SuspendLayout()
-        CType(Me.pictureMain, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelWelcome.SuspendLayout()
+        CType(Me.pictureMain, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'menuStrip
@@ -54,6 +54,7 @@ Partial Class MainForm
         Me.menuStrip.AutoSize = False
         Me.menuStrip.BackColor = System.Drawing.Color.MediumAquamarine
         Me.menuStrip.Dock = System.Windows.Forms.DockStyle.Left
+        Me.menuStrip.GripMargin = New System.Windows.Forms.Padding(2, 2, 0, 2)
         Me.menuStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.menuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnHome, Me.btnCategory, Me.btnTool, Me.btnStatistic, Me.btnExit})
         Me.menuStrip.Location = New System.Drawing.Point(0, 0)
@@ -80,7 +81,7 @@ Partial Class MainForm
         'toolStripSeparator1
         '
         Me.toolStripSeparator1.Name = "toolStripSeparator1"
-        Me.toolStripSeparator1.Size = New System.Drawing.Size(267, 6)
+        Me.toolStripSeparator1.Size = New System.Drawing.Size(87, 6)
         '
         'btnCategory
         '
@@ -215,6 +216,16 @@ Partial Class MainForm
         Me.srcMain.Size = New System.Drawing.Size(995, 828)
         Me.srcMain.TabIndex = 3
         '
+        'panelWelcome
+        '
+        Me.panelWelcome.Controls.Add(Me.pictureMain)
+        Me.panelWelcome.Controls.Add(Me.Label2)
+        Me.panelWelcome.Controls.Add(Me.Label1)
+        Me.panelWelcome.Location = New System.Drawing.Point(0, 0)
+        Me.panelWelcome.Name = "panelWelcome"
+        Me.panelWelcome.Size = New System.Drawing.Size(992, 825)
+        Me.panelWelcome.TabIndex = 3
+        '
         'pictureMain
         '
         Me.pictureMain.Image = CType(resources.GetObject("pictureMain.Image"), System.Drawing.Image)
@@ -247,16 +258,6 @@ Partial Class MainForm
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Welcome to sales manager app!!"
         '
-        'panelWelcome
-        '
-        Me.panelWelcome.Controls.Add(Me.pictureMain)
-        Me.panelWelcome.Controls.Add(Me.Label2)
-        Me.panelWelcome.Controls.Add(Me.Label1)
-        Me.panelWelcome.Location = New System.Drawing.Point(0, 0)
-        Me.panelWelcome.Name = "panelWelcome"
-        Me.panelWelcome.Size = New System.Drawing.Size(992, 825)
-        Me.panelWelcome.TabIndex = 3
-        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -268,15 +269,16 @@ Partial Class MainForm
         Me.ClientSize = New System.Drawing.Size(1106, 825)
         Me.Controls.Add(Me.menuStrip)
         Me.Controls.Add(Me.srcMain)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "MainForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Home"
         Me.menuStrip.ResumeLayout(False)
         Me.menuStrip.PerformLayout()
         Me.srcMain.ResumeLayout(False)
-        CType(Me.pictureMain, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelWelcome.ResumeLayout(False)
         Me.panelWelcome.PerformLayout()
+        CType(Me.pictureMain, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

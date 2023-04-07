@@ -245,6 +245,28 @@ SELECT Id, StatusName FROM Status WHERE (Id = @Id)</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CBBPersonTableAdapter" GeneratorDataComponentClassName="CBBPersonTableAdapter" Name="CBBPerson" UserDataComponentName="CBBPersonTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByShipper" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetShipper" GeneratorSourceName="FillByShipper" GetMethodModifier="Public" GetMethodName="GetShipper" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetShipper" UserSourceName="FillByShipper">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Person.Username, Person.LastName, Person.FirstName, Role.RoleName
+FROM   Person INNER JOIN
+             Role ON Person.RoleId = Role.Id
+WHERE (Role.RoleName = N'Shipper')</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Username" DataSetColumn="Username" />
+              <Mapping SourceColumn="LastName" DataSetColumn="LastName" />
+              <Mapping SourceColumn="FirstName" DataSetColumn="FirstName" />
+              <Mapping SourceColumn="RoleName" DataSetColumn="RoleName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -275,11 +297,11 @@ SELECT Id, StatusName FROM Status WHERE (Id = @Id)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CBBWareHouse" msprop:Generator_RowClassName="CBBWareHouseRow" msprop:Generator_RowEvHandlerName="CBBWareHouseRowChangeEventHandler" msprop:Generator_RowDeletedName="CBBWareHouseRowDeleted" msprop:Generator_RowDeletingName="CBBWareHouseRowDeleting" msprop:Generator_RowEvArgName="CBBWareHouseRowChangeEvent" msprop:Generator_TablePropName="CBBWareHouse" msprop:Generator_RowChangedName="CBBWareHouseRowChanged" msprop:Generator_UserTableName="CBBWareHouse" msprop:Generator_RowChangingName="CBBWareHouseRowChanging" msprop:Generator_TableClassName="CBBWareHouseDataTable" msprop:Generator_TableVarName="tableCBBWareHouse">
+        <xs:element name="CBBWareHouse" msprop:Generator_RowEvHandlerName="CBBWareHouseRowChangeEventHandler" msprop:Generator_RowDeletedName="CBBWareHouseRowDeleted" msprop:Generator_RowDeletingName="CBBWareHouseRowDeleting" msprop:Generator_RowEvArgName="CBBWareHouseRowChangeEvent" msprop:Generator_TablePropName="CBBWareHouse" msprop:Generator_RowChangedName="CBBWareHouseRowChanged" msprop:Generator_UserTableName="CBBWareHouse" msprop:Generator_RowChangingName="CBBWareHouseRowChanging" msprop:Generator_RowClassName="CBBWareHouseRow" msprop:Generator_TableClassName="CBBWareHouseDataTable" msprop:Generator_TableVarName="tableCBBWareHouse">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnVarNameInTable="columnId" type="xs:long" />
-              <xs:element name="WareHouseName" msprop:Generator_UserColumnName="WareHouseName" msprop:Generator_ColumnPropNameInTable="WareHouseNameColumn" msprop:Generator_ColumnPropNameInRow="WareHouseName" msprop:Generator_ColumnVarNameInTable="columnWareHouseName">
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_UserColumnName="Id" msprop:Generator_ColumnVarNameInTable="columnId" type="xs:long" />
+              <xs:element name="WareHouseName" msprop:Generator_ColumnPropNameInTable="WareHouseNameColumn" msprop:Generator_ColumnPropNameInRow="WareHouseName" msprop:Generator_UserColumnName="WareHouseName" msprop:Generator_ColumnVarNameInTable="columnWareHouseName">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="40" />
@@ -289,11 +311,11 @@ SELECT Id, StatusName FROM Status WHERE (Id = @Id)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CBBProduct" msprop:Generator_RowClassName="CBBProductRow" msprop:Generator_RowEvHandlerName="CBBProductRowChangeEventHandler" msprop:Generator_RowDeletedName="CBBProductRowDeleted" msprop:Generator_RowDeletingName="CBBProductRowDeleting" msprop:Generator_RowEvArgName="CBBProductRowChangeEvent" msprop:Generator_TablePropName="CBBProduct" msprop:Generator_RowChangedName="CBBProductRowChanged" msprop:Generator_UserTableName="CBBProduct" msprop:Generator_RowChangingName="CBBProductRowChanging" msprop:Generator_TableClassName="CBBProductDataTable" msprop:Generator_TableVarName="tableCBBProduct">
+        <xs:element name="CBBProduct" msprop:Generator_RowEvHandlerName="CBBProductRowChangeEventHandler" msprop:Generator_RowDeletedName="CBBProductRowDeleted" msprop:Generator_RowDeletingName="CBBProductRowDeleting" msprop:Generator_RowEvArgName="CBBProductRowChangeEvent" msprop:Generator_TablePropName="CBBProduct" msprop:Generator_RowChangedName="CBBProductRowChanged" msprop:Generator_UserTableName="CBBProduct" msprop:Generator_RowChangingName="CBBProductRowChanging" msprop:Generator_RowClassName="CBBProductRow" msprop:Generator_TableClassName="CBBProductDataTable" msprop:Generator_TableVarName="tableCBBProduct">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnVarNameInTable="columnId" type="xs:long" />
-              <xs:element name="ProductName" msprop:Generator_UserColumnName="ProductName" msprop:Generator_ColumnPropNameInTable="ProductNameColumn" msprop:Generator_ColumnPropNameInRow="ProductName" msprop:Generator_ColumnVarNameInTable="columnProductName">
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_UserColumnName="Id" msprop:Generator_ColumnVarNameInTable="columnId" type="xs:long" />
+              <xs:element name="ProductName" msprop:Generator_ColumnPropNameInTable="ProductNameColumn" msprop:Generator_ColumnPropNameInRow="ProductName" msprop:Generator_UserColumnName="ProductName" msprop:Generator_ColumnVarNameInTable="columnProductName">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="40" />
@@ -303,11 +325,11 @@ SELECT Id, StatusName FROM Status WHERE (Id = @Id)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CBBCategory" msprop:Generator_RowEvHandlerName="CBBCategoryRowChangeEventHandler" msprop:Generator_RowDeletedName="CBBCategoryRowDeleted" msprop:Generator_RowDeletingName="CBBCategoryRowDeleting" msprop:Generator_RowEvArgName="CBBCategoryRowChangeEvent" msprop:Generator_TablePropName="CBBCategory" msprop:Generator_RowChangedName="CBBCategoryRowChanged" msprop:Generator_RowChangingName="CBBCategoryRowChanging" msprop:Generator_TableClassName="CBBCategoryDataTable" msprop:Generator_RowClassName="CBBCategoryRow" msprop:Generator_TableVarName="tableCBBCategory" msprop:Generator_UserTableName="CBBCategory">
+        <xs:element name="CBBCategory" msprop:Generator_RowClassName="CBBCategoryRow" msprop:Generator_RowEvHandlerName="CBBCategoryRowChangeEventHandler" msprop:Generator_RowDeletedName="CBBCategoryRowDeleted" msprop:Generator_RowDeletingName="CBBCategoryRowDeleting" msprop:Generator_RowEvArgName="CBBCategoryRowChangeEvent" msprop:Generator_TablePropName="CBBCategory" msprop:Generator_RowChangedName="CBBCategoryRowChanged" msprop:Generator_UserTableName="CBBCategory" msprop:Generator_RowChangingName="CBBCategoryRowChanging" msprop:Generator_TableClassName="CBBCategoryDataTable" msprop:Generator_TableVarName="tableCBBCategory">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_UserColumnName="Id" type="xs:long" />
-              <xs:element name="CategoryName" msprop:Generator_ColumnPropNameInRow="CategoryName" msprop:Generator_ColumnPropNameInTable="CategoryNameColumn" msprop:Generator_ColumnVarNameInTable="columnCategoryName" msprop:Generator_UserColumnName="CategoryName">
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnVarNameInTable="columnId" type="xs:long" />
+              <xs:element name="CategoryName" msprop:Generator_UserColumnName="CategoryName" msprop:Generator_ColumnPropNameInTable="CategoryNameColumn" msprop:Generator_ColumnPropNameInRow="CategoryName" msprop:Generator_ColumnVarNameInTable="columnCategoryName">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="30" />
@@ -317,11 +339,11 @@ SELECT Id, StatusName FROM Status WHERE (Id = @Id)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CBBSupplier" msprop:Generator_RowEvHandlerName="CBBSupplierRowChangeEventHandler" msprop:Generator_RowDeletedName="CBBSupplierRowDeleted" msprop:Generator_RowDeletingName="CBBSupplierRowDeleting" msprop:Generator_RowEvArgName="CBBSupplierRowChangeEvent" msprop:Generator_TablePropName="CBBSupplier" msprop:Generator_RowChangedName="CBBSupplierRowChanged" msprop:Generator_RowChangingName="CBBSupplierRowChanging" msprop:Generator_TableClassName="CBBSupplierDataTable" msprop:Generator_RowClassName="CBBSupplierRow" msprop:Generator_TableVarName="tableCBBSupplier" msprop:Generator_UserTableName="CBBSupplier">
+        <xs:element name="CBBSupplier" msprop:Generator_RowClassName="CBBSupplierRow" msprop:Generator_RowEvHandlerName="CBBSupplierRowChangeEventHandler" msprop:Generator_RowDeletedName="CBBSupplierRowDeleted" msprop:Generator_RowDeletingName="CBBSupplierRowDeleting" msprop:Generator_RowEvArgName="CBBSupplierRowChangeEvent" msprop:Generator_TablePropName="CBBSupplier" msprop:Generator_RowChangedName="CBBSupplierRowChanged" msprop:Generator_UserTableName="CBBSupplier" msprop:Generator_RowChangingName="CBBSupplierRowChanging" msprop:Generator_TableClassName="CBBSupplierDataTable" msprop:Generator_TableVarName="tableCBBSupplier">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_UserColumnName="Id" type="xs:long" />
-              <xs:element name="CompanyName" msprop:Generator_ColumnPropNameInRow="CompanyName" msprop:Generator_ColumnPropNameInTable="CompanyNameColumn" msprop:Generator_ColumnVarNameInTable="columnCompanyName" msprop:Generator_UserColumnName="CompanyName">
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnVarNameInTable="columnId" type="xs:long" />
+              <xs:element name="CompanyName" msprop:Generator_UserColumnName="CompanyName" msprop:Generator_ColumnPropNameInTable="CompanyNameColumn" msprop:Generator_ColumnPropNameInRow="CompanyName" msprop:Generator_ColumnVarNameInTable="columnCompanyName">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
@@ -331,14 +353,48 @@ SELECT Id, StatusName FROM Status WHERE (Id = @Id)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CBBStatus" msprop:Generator_RowEvHandlerName="CBBStatusRowChangeEventHandler" msprop:Generator_RowDeletedName="CBBStatusRowDeleted" msprop:Generator_RowDeletingName="CBBStatusRowDeleting" msprop:Generator_RowEvArgName="CBBStatusRowChangeEvent" msprop:Generator_TablePropName="CBBStatus" msprop:Generator_RowChangedName="CBBStatusRowChanged" msprop:Generator_RowChangingName="CBBStatusRowChanging" msprop:Generator_TableClassName="CBBStatusDataTable" msprop:Generator_RowClassName="CBBStatusRow" msprop:Generator_TableVarName="tableCBBStatus" msprop:Generator_UserTableName="CBBStatus">
+        <xs:element name="CBBStatus" msprop:Generator_RowClassName="CBBStatusRow" msprop:Generator_RowEvHandlerName="CBBStatusRowChangeEventHandler" msprop:Generator_RowDeletedName="CBBStatusRowDeleted" msprop:Generator_RowDeletingName="CBBStatusRowDeleting" msprop:Generator_RowEvArgName="CBBStatusRowChangeEvent" msprop:Generator_TablePropName="CBBStatus" msprop:Generator_RowChangedName="CBBStatusRowChanged" msprop:Generator_UserTableName="CBBStatus" msprop:Generator_RowChangingName="CBBStatusRowChanging" msprop:Generator_TableClassName="CBBStatusDataTable" msprop:Generator_TableVarName="tableCBBStatus">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_UserColumnName="Id" type="xs:int" />
-              <xs:element name="StatusName" msprop:Generator_ColumnPropNameInRow="StatusName" msprop:Generator_ColumnPropNameInTable="StatusNameColumn" msprop:Generator_ColumnVarNameInTable="columnStatusName" msprop:Generator_UserColumnName="StatusName">
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnVarNameInTable="columnId" type="xs:int" />
+              <xs:element name="StatusName" msprop:Generator_UserColumnName="StatusName" msprop:Generator_ColumnPropNameInTable="StatusNameColumn" msprop:Generator_ColumnPropNameInRow="StatusName" msprop:Generator_ColumnVarNameInTable="columnStatusName">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CBBPerson" msprop:Generator_RowEvHandlerName="CBBPersonRowChangeEventHandler" msprop:Generator_RowDeletedName="CBBPersonRowDeleted" msprop:Generator_RowDeletingName="CBBPersonRowDeleting" msprop:Generator_RowEvArgName="CBBPersonRowChangeEvent" msprop:Generator_TablePropName="CBBPerson" msprop:Generator_RowChangedName="CBBPersonRowChanged" msprop:Generator_RowChangingName="CBBPersonRowChanging" msprop:Generator_TableClassName="CBBPersonDataTable" msprop:Generator_RowClassName="CBBPersonRow" msprop:Generator_TableVarName="tableCBBPerson" msprop:Generator_UserTableName="CBBPerson">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Username" msprop:Generator_ColumnPropNameInRow="Username" msprop:Generator_ColumnPropNameInTable="UsernameColumn" msprop:Generator_ColumnVarNameInTable="columnUsername" msprop:Generator_UserColumnName="Username">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LastName" msprop:Generator_ColumnPropNameInRow="LastName" msprop:Generator_ColumnPropNameInTable="LastNameColumn" msprop:Generator_ColumnVarNameInTable="columnLastName" msprop:Generator_UserColumnName="LastName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FirstName" msprop:Generator_ColumnPropNameInRow="FirstName" msprop:Generator_ColumnPropNameInTable="FirstNameColumn" msprop:Generator_ColumnVarNameInTable="columnFirstName" msprop:Generator_UserColumnName="FirstName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RoleName" msprop:Generator_ColumnPropNameInRow="RoleName" msprop:Generator_ColumnPropNameInTable="RoleNameColumn" msprop:Generator_ColumnVarNameInTable="columnRoleName" msprop:Generator_UserColumnName="RoleName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -366,6 +422,10 @@ SELECT Id, StatusName FROM Status WHERE (Id = @Id)</CommandText>
     <xs:unique name="CBBStatus_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:CBBStatus" />
       <xs:field xpath="mstns:Id" />
+    </xs:unique>
+    <xs:unique name="CBBPerson_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CBBPerson" />
+      <xs:field xpath="mstns:Username" />
     </xs:unique>
   </xs:element>
 </xs:schema>

@@ -1,17 +1,17 @@
-﻿Public Class CBBItem
-    Private itemId As Long
+﻿Public Class CBBPerson
+    Private itemId As String
     Private itemName As String
 
-    Public Sub New(itemId As Long, itemName As String)
+    Public Sub New(itemId As String, itemName As String)
         Me.itemId = itemId
         Me.itemName = itemName
     End Sub
 
-    Public Property PropItemId As Long
+    Public Property PropItemId As String
         Get
             Return itemId
         End Get
-        Set(value As Long)
+        Set(value As String)
             itemId = value
         End Set
     End Property
