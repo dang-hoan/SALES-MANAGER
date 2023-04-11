@@ -159,7 +159,13 @@ Public Class SalesOrder
         End If
     End Sub
     Private Sub bEdit_Click(sender As Object, e As EventArgs) Handles bEdit.Click
-        setEnable(True)
+        If cbbShipStatus.SelectedItem IsNot Nothing Then
+            If CType(cbbShipStatus.SelectedItem, CBBItem).PropItemId <> clsCBB.GetDeleveredId().Rows(0)(0) Then
+                setEnable(True)
+            Else
+                MsgBox("Order was delevered to customer, you can't edit it!")
+            End If
+        End If
     End Sub
     Private Sub setEnable(valBoolean As Boolean)
         txtCustomerName.Enabled = valBoolean
@@ -212,69 +218,154 @@ Public Class SalesOrder
 
     Private Sub bSave_Click(sender As Object, e As EventArgs) Handles bSave.Click
         If checkLogicData() Then
-            Dim result As Integer
-            Dim type As String = "Update"
-            Dim shipperId = CType(cbbShipper.SelectedItem, CBBPerson).PropItemId
-            Dim statusId = CType(cbbShipStatus.SelectedItem, CBBItem).PropItemId
-
-            If txtOrderCode.Text <> "" Then             'Edit
-                result = clsPMSAnalysis.UpdateOrder(txtOrderCode.Text, txtCustomerName.Text,
-                                            dtOrderDate.Value, shipperId, dtShipDate.Value, txtShipAddress.Text, txtShipFee.Text, statusId,
-                                             txtDiscount.Text, txtTotalPrice.Text, txtPaymentMethod.Text, "", LoginForm.PropUsername)
-
-
-                For Each product In listBuyProduct.Items
-                    If result = 1 Then
-                        If Not clsPMSAnalysis.CheckIfOrderDetailExists(txtOrderCode.Text, product.SubItems(0).Text) Then
-                            result = clsPMSAnalysis.AddOrderDetail(txtOrderCode.Text, product.SubItems(0).Text, product.SubItems(2).Text)
-                        Else
-                            result = clsPMSAnalysis.UpdateOrderDetail(txtOrderCode.Text, product.SubItems(0).Text, product.SubItems(2).Text)
-                        End If
+            Dim hasDelevered = False
+            If cbbShipStatus.SelectedItem IsNot Nothing Then
+                If CType(cbbShipStatus.SelectedItem, CBBItem).PropItemId = clsCBB.GetDeleveredId().Rows(0)(0) Then
+                    Dim ask As MsgBoxResult = MsgBox("Once the order is updated to delivered, you won't be able to edit it in the future! Are you sure to save the order?", MsgBoxStyle.YesNo)
+                    If ask = MsgBoxResult.No Then
+                        Exit Sub
                     Else
-                        Exit For
+                        hasDelevered = True
                     End If
-                Next
+                End If
+            End If
 
-                Dim id = dgvOrder.CurrentRow.Cells(11).Value.ToString.Split(",")
-                For Each oldProduct In id
-                    If result = 1 Then
-                        Dim isExist = False
-                        For Each product In listBuyProduct.Items
-                            If product.SubItems(0).Text = oldProduct Then
-                                isExist = True
+            Dim result As Integer
+
+            'Add data sale to SalesDetail table
+            Dim stockId = -1
+            Dim number = -1
+            If hasDelevered Then
+                Dim dataSalesDetail = clsPMSAnalysis.GetAllSalesDetail()
+                For Each item In listBuyProduct.Items
+                    result = 123
+                    Dim cost As Double = 0
+                    Dim costItem = clsProduct.GetCostOfProduct(item.SubItems(0).Text)
+                    cost += (costItem(0)(0) * (1 - costItem(0)(1) / 100)) * item.SubItems(2).Text
+
+                    For Each row In dataSalesDetail.Rows
+                        If row(1) = item.SubItems(0).Text Then
+                            If row(2) >= (item.SubItems(2).Text + row(3)) Then
+                                result = 1
+                                clsPMSAnalysis.UpdateSalesDetail(row(0), row(1), row(2), item.SubItems(2).Text + row(3), cost)
                                 Exit For
                             End If
-                        Next
-
-                        If Not isExist Then
-                            result = clsPMSAnalysis.DeleteOrderDetail(txtOrderCode.Text, oldProduct)
+                            number = row(2) - row(3)
                         End If
+                    Next
 
+                    If result = 123 Then
+                        stockId = item.SubItems(0).Text
+                        Exit For
                     End If
+
                 Next
-            Else                                        'Add new
-                Dim orderId = clsPMSAnalysis.AddOrder(txtCustomerName.Text,
+
+            Else
+                Dim dataSalesDetail = clsPMSAnalysis.GetAllSalesDetail()
+                For Each item In listBuyProduct.Items
+                    result = 123
+
+                    For Each row In dataSalesDetail.Rows
+                        If row(1) = item.SubItems(0).Text Then
+                            If row(2) >= (item.SubItems(2).Text + row(3)) Then
+                                result = 1
+                                Exit For
+                            End If
+                            number = row(2) - row(3)
+                        End If
+                    Next
+
+                    If result = 123 Then
+                        stockId = item.SubItems(0).Text
+                        Exit For
+                    End If
+
+                Next
+
+            End If
+
+            Dim type As String = "Update"
+            If result = 1 Then
+                Dim shipperId = CType(cbbShipper.SelectedItem, CBBPerson).PropItemId
+                Dim statusId = CType(cbbShipStatus.SelectedItem, CBBItem).PropItemId
+
+                If txtOrderCode.Text <> "" Then             'Edit
+                    result = clsPMSAnalysis.UpdateOrder(txtOrderCode.Text, txtCustomerName.Text,
                                             dtOrderDate.Value, shipperId, dtShipDate.Value, txtShipAddress.Text, txtShipFee.Text, statusId,
                                              txtDiscount.Text, txtTotalPrice.Text, txtPaymentMethod.Text, "", LoginForm.PropUsername)
 
-                result = 1
-                For Each product In listBuyProduct.Items
-                    If result = 1 Then
-                        If Not clsPMSAnalysis.CheckIfOrderDetailExists(orderId, product.SubItems(0).Text) Then
-                            result = clsPMSAnalysis.AddOrderDetail(orderId, product.SubItems(0).Text, product.SubItems(2).Text)
-                        End If
-                    Else
-                        Exit For
-                    End If
-                Next
 
-                type = "Add"
+                    For Each product In listBuyProduct.Items
+                        If result = 1 Then
+                            Dim totalPrice As Double = 0
+                            Dim costItem = clsProduct.GetCostOfProduct(product.SubItems(0).Text)
+                            totalPrice += (costItem(0)(0) * (1 - costItem(0)(1) / 100)) * product.SubItems(2).Text
+
+                            If Not clsPMSAnalysis.CheckIfOrderDetailExists(txtOrderCode.Text, product.SubItems(0).Text) Then
+                                result = clsPMSAnalysis.AddOrderDetail(txtOrderCode.Text, product.SubItems(0).Text, product.SubItems(2).Text, totalPrice)
+                            Else
+                                result = clsPMSAnalysis.UpdateOrderDetail(txtOrderCode.Text, product.SubItems(0).Text, product.SubItems(2).Text, totalPrice)
+                            End If
+                        Else
+                            Exit For
+                        End If
+                    Next
+
+                    Dim id = dgvOrder.CurrentRow.Cells(11).Value.ToString.Split(",")
+                    For Each oldProduct In id
+                        If result = 1 Then
+                            Dim isExist = False
+                            For Each product In listBuyProduct.Items
+                                If product.SubItems(0).Text = oldProduct Then
+                                    isExist = True
+                                    Exit For
+                                End If
+                            Next
+
+                            If Not isExist Then
+                                result = clsPMSAnalysis.DeleteOrderDetail(txtOrderCode.Text, oldProduct)
+                            End If
+
+                        End If
+                    Next
+
+                Else                                        'Add new
+                    Dim orderId = clsPMSAnalysis.AddOrder(txtCustomerName.Text,
+                                            dtOrderDate.Value, shipperId, dtShipDate.Value, txtShipAddress.Text, txtShipFee.Text, statusId,
+                                             txtDiscount.Text, txtTotalPrice.Text, txtPaymentMethod.Text, "", LoginForm.PropUsername)
+
+                    result = 1
+                    For Each product In listBuyProduct.Items
+                        If result = 1 Then
+                            Dim totalPrice As Double = 0
+                            Dim costItem = clsProduct.GetCostOfProduct(product.SubItems(0).Text)
+                            totalPrice += (costItem(0)(0) * (1 - costItem(0)(1) / 100)) * product.SubItems(2).Text
+
+                            If Not clsPMSAnalysis.CheckIfOrderDetailExists(orderId, product.SubItems(0).Text) Then
+                                result = clsPMSAnalysis.AddOrderDetail(orderId, product.SubItems(0).Text, product.SubItems(2).Text, totalPrice)
+                            End If
+
+                        Else
+                            Exit For
+                        End If
+                    Next
+
+                    type = "Add"
+                End If
+
             End If
 
             If result = 1 Then
                 setEnable(False)
                 MsgBox(type & " order information successful!")
                 Reload()
+            ElseIf result = 123 Then
+                If number <= 0 Then
+                    MsgBox("The item has id " & stockId & " is out of stock!")
+                Else
+                    MsgBox("The item has id " & stockId & " only " & number & " left!")
+                End If
             Else
                 MsgBox("There is an error when interact with database!")
             End If

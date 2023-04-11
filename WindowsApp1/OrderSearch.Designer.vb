@@ -23,261 +23,283 @@ Partial Class OrderSearch
 
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(OrderSearch))
-        Me.bSave = New System.Windows.Forms.Button()
-        Me.label1 = New System.Windows.Forms.Label()
-        Me.label2 = New System.Windows.Forms.Label()
-        Me.label3 = New System.Windows.Forms.Label()
-        Me.label4 = New System.Windows.Forms.Label()
-        Me.label5 = New System.Windows.Forms.Label()
-        Me.label6 = New System.Windows.Forms.Label()
+        Me.btnSearch = New System.Windows.Forms.Button()
         Me.groupBox1 = New System.Windows.Forms.GroupBox()
-        Me.dateTimePicker2 = New System.Windows.Forms.DateTimePicker()
-        Me.dateTimePicker1 = New System.Windows.Forms.DateTimePicker()
-        Me.textBox7 = New System.Windows.Forms.TextBox()
-        Me.label8 = New System.Windows.Forms.Label()
-        Me.label7 = New System.Windows.Forms.Label()
-        Me.comboBox1 = New System.Windows.Forms.ComboBox()
-        Me.textBox6 = New System.Windows.Forms.TextBox()
-        Me.textBox5 = New System.Windows.Forms.TextBox()
-        Me.textBox3 = New System.Windows.Forms.TextBox()
-        Me.textBox1 = New System.Windows.Forms.TextBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.cbSearchByDate = New System.Windows.Forms.CheckBox()
+        Me.txtPaymentMethod = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.cbbShipper = New System.Windows.Forms.ComboBox()
+        Me.label15 = New System.Windows.Forms.Label()
+        Me.dtOrderDate = New System.Windows.Forms.DateTimePicker()
+        Me.label14 = New System.Windows.Forms.Label()
+        Me.txtCustomerName = New System.Windows.Forms.TextBox()
+        Me.cbbShipStatus = New System.Windows.Forms.ComboBox()
+        Me.dtShipDate = New System.Windows.Forms.DateTimePicker()
+        Me.txtShipAddress = New System.Windows.Forms.TextBox()
+        Me.txtOrderCode = New System.Windows.Forms.TextBox()
+        Me.label2 = New System.Windows.Forms.Label()
+        Me.label4 = New System.Windows.Forms.Label()
+        Me.label6 = New System.Windows.Forms.Label()
+        Me.label3 = New System.Windows.Forms.Label()
+        Me.label5 = New System.Windows.Forms.Label()
+        Me.dgvOrderSearch = New System.Windows.Forms.DataGridView()
         Me.groupBox1.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvOrderSearch, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'bSave
+        'btnSearch
         '
-        Me.bSave.BackColor = System.Drawing.Color.SandyBrown
-        Me.bSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.bSave.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.bSave.Image = CType(resources.GetObject("bSave.Image"), System.Drawing.Image)
-        Me.bSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bSave.Location = New System.Drawing.Point(393, 284)
-        Me.bSave.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.bSave.Name = "bSave"
-        Me.bSave.Padding = New System.Windows.Forms.Padding(11, 0, 0, 0)
-        Me.bSave.Size = New System.Drawing.Size(154, 60)
-        Me.bSave.TabIndex = 5
-        Me.bSave.Text = "Search"
-        Me.bSave.UseVisualStyleBackColor = False
-        '
-        'label1
-        '
-        Me.label1.AutoSize = True
-        Me.label1.Location = New System.Drawing.Point(31, 110)
-        Me.label1.Name = "label1"
-        Me.label1.Size = New System.Drawing.Size(123, 25)
-        Me.label1.TabIndex = 5
-        Me.label1.Text = "Product name"
-        '
-        'label2
-        '
-        Me.label2.AutoSize = True
-        Me.label2.Location = New System.Drawing.Point(31, 56)
-        Me.label2.Name = "label2"
-        Me.label2.Size = New System.Drawing.Size(102, 25)
-        Me.label2.TabIndex = 1
-        Me.label2.Text = "Order code"
-        '
-        'label3
-        '
-        Me.label3.AutoSize = True
-        Me.label3.Location = New System.Drawing.Point(488, 64)
-        Me.label3.Name = "label3"
-        Me.label3.Size = New System.Drawing.Size(138, 25)
-        Me.label3.TabIndex = 3
-        Me.label3.Text = "Customer name"
-        '
-        'label4
-        '
-        Me.label4.AutoSize = True
-        Me.label4.Location = New System.Drawing.Point(31, 168)
-        Me.label4.Name = "label4"
-        Me.label4.Size = New System.Drawing.Size(84, 25)
-        Me.label4.TabIndex = 9
-        Me.label4.Text = "Category"
-        '
-        'label5
-        '
-        Me.label5.AutoSize = True
-        Me.label5.Location = New System.Drawing.Point(488, 118)
-        Me.label5.Name = "label5"
-        Me.label5.Size = New System.Drawing.Size(98, 25)
-        Me.label5.TabIndex = 7
-        Me.label5.Text = "Order date"
-        '
-        'label6
-        '
-        Me.label6.AutoSize = True
-        Me.label6.Location = New System.Drawing.Point(488, 225)
-        Me.label6.Name = "label6"
-        Me.label6.Size = New System.Drawing.Size(99, 25)
-        Me.label6.TabIndex = 12
-        Me.label6.Text = "Ship status"
+        Me.btnSearch.BackColor = System.Drawing.Color.SandyBrown
+        Me.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnSearch.Image = CType(resources.GetObject("btnSearch.Image"), System.Drawing.Image)
+        Me.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnSearch.Location = New System.Drawing.Point(347, 253)
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnSearch.Size = New System.Drawing.Size(139, 48)
+        Me.btnSearch.TabIndex = 5
+        Me.btnSearch.Text = "Search"
+        Me.btnSearch.UseVisualStyleBackColor = False
         '
         'groupBox1
         '
-        Me.groupBox1.Controls.Add(Me.dateTimePicker2)
-        Me.groupBox1.Controls.Add(Me.dateTimePicker1)
-        Me.groupBox1.Controls.Add(Me.textBox7)
-        Me.groupBox1.Controls.Add(Me.bSave)
-        Me.groupBox1.Controls.Add(Me.label8)
-        Me.groupBox1.Controls.Add(Me.label7)
-        Me.groupBox1.Controls.Add(Me.comboBox1)
-        Me.groupBox1.Controls.Add(Me.textBox6)
-        Me.groupBox1.Controls.Add(Me.textBox5)
-        Me.groupBox1.Controls.Add(Me.textBox3)
-        Me.groupBox1.Controls.Add(Me.textBox1)
+        Me.groupBox1.Controls.Add(Me.cbSearchByDate)
+        Me.groupBox1.Controls.Add(Me.txtPaymentMethod)
+        Me.groupBox1.Controls.Add(Me.Label12)
+        Me.groupBox1.Controls.Add(Me.cbbShipper)
+        Me.groupBox1.Controls.Add(Me.label15)
+        Me.groupBox1.Controls.Add(Me.dtOrderDate)
+        Me.groupBox1.Controls.Add(Me.label14)
+        Me.groupBox1.Controls.Add(Me.txtCustomerName)
+        Me.groupBox1.Controls.Add(Me.cbbShipStatus)
+        Me.groupBox1.Controls.Add(Me.dtShipDate)
+        Me.groupBox1.Controls.Add(Me.txtShipAddress)
+        Me.groupBox1.Controls.Add(Me.txtOrderCode)
         Me.groupBox1.Controls.Add(Me.label2)
-        Me.groupBox1.Controls.Add(Me.label1)
         Me.groupBox1.Controls.Add(Me.label4)
         Me.groupBox1.Controls.Add(Me.label6)
         Me.groupBox1.Controls.Add(Me.label3)
         Me.groupBox1.Controls.Add(Me.label5)
-        Me.groupBox1.Location = New System.Drawing.Point(60, 49)
-        Me.groupBox1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.groupBox1.Controls.Add(Me.btnSearch)
+        Me.groupBox1.Location = New System.Drawing.Point(54, 41)
         Me.groupBox1.Name = "groupBox1"
-        Me.groupBox1.Padding = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.groupBox1.Size = New System.Drawing.Size(948, 369)
+        Me.groupBox1.Size = New System.Drawing.Size(853, 323)
         Me.groupBox1.TabIndex = 0
         Me.groupBox1.TabStop = False
         Me.groupBox1.Text = "Search"
         '
-        'dateTimePicker2
+        'cbSearchByDate
         '
-        Me.dateTimePicker2.Location = New System.Drawing.Point(651, 168)
-        Me.dateTimePicker2.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.dateTimePicker2.Name = "dateTimePicker2"
-        Me.dateTimePicker2.Size = New System.Drawing.Size(242, 31)
-        Me.dateTimePicker2.TabIndex = 19
+        Me.cbSearchByDate.AutoSize = True
+        Me.cbSearchByDate.Location = New System.Drawing.Point(458, 30)
+        Me.cbSearchByDate.Name = "cbSearchByDate"
+        Me.cbSearchByDate.Size = New System.Drawing.Size(142, 24)
+        Me.cbSearchByDate.TabIndex = 40
+        Me.cbSearchByDate.Text = "Search by date"
+        Me.cbSearchByDate.UseVisualStyleBackColor = True
         '
-        'dateTimePicker1
+        'txtPaymentMethod
         '
-        Me.dateTimePicker1.Location = New System.Drawing.Point(651, 118)
-        Me.dateTimePicker1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.dateTimePicker1.Name = "dateTimePicker1"
-        Me.dateTimePicker1.Size = New System.Drawing.Size(242, 31)
-        Me.dateTimePicker1.TabIndex = 2
+        Me.txtPaymentMethod.Location = New System.Drawing.Point(165, 203)
+        Me.txtPaymentMethod.Name = "txtPaymentMethod"
+        Me.txtPaymentMethod.Size = New System.Drawing.Size(233, 26)
+        Me.txtPaymentMethod.TabIndex = 39
         '
-        'textBox7
+        'Label12
         '
-        Me.textBox7.Enabled = False
-        Me.textBox7.Location = New System.Drawing.Point(180, 218)
-        Me.textBox7.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.textBox7.Name = "textBox7"
-        Me.textBox7.Size = New System.Drawing.Size(241, 31)
-        Me.textBox7.TabIndex = 18
+        Me.Label12.AutoSize = True
+        Me.Label12.BackColor = System.Drawing.Color.White
+        Me.Label12.ForeColor = System.Drawing.Color.Blue
+        Me.Label12.Location = New System.Drawing.Point(29, 206)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(129, 20)
+        Me.Label12.TabIndex = 38
+        Me.Label12.Text = "Payment method"
         '
-        'label8
+        'cbbShipper
         '
-        Me.label8.AutoSize = True
-        Me.label8.Location = New System.Drawing.Point(488, 171)
-        Me.label8.Name = "label8"
-        Me.label8.Size = New System.Drawing.Size(87, 25)
-        Me.label8.TabIndex = 16
-        Me.label8.Text = "Ship date"
+        Me.cbbShipper.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbShipper.FormattingEnabled = True
+        Me.cbbShipper.Location = New System.Drawing.Point(165, 162)
+        Me.cbbShipper.Name = "cbbShipper"
+        Me.cbbShipper.Size = New System.Drawing.Size(150, 28)
+        Me.cbbShipper.TabIndex = 37
         '
-        'label7
+        'label15
         '
-        Me.label7.AutoSize = True
-        Me.label7.Location = New System.Drawing.Point(31, 225)
-        Me.label7.Name = "label7"
-        Me.label7.Size = New System.Drawing.Size(139, 25)
-        Me.label7.TabIndex = 15
-        Me.label7.Text = "Employee name"
+        Me.label15.AutoSize = True
+        Me.label15.BackColor = System.Drawing.Color.White
+        Me.label15.ForeColor = System.Drawing.Color.Blue
+        Me.label15.Location = New System.Drawing.Point(29, 162)
+        Me.label15.Name = "label15"
+        Me.label15.Size = New System.Drawing.Size(64, 20)
+        Me.label15.TabIndex = 36
+        Me.label15.Text = "Shipper"
         '
-        'comboBox1
+        'dtOrderDate
         '
-        Me.comboBox1.FormattingEnabled = True
-        Me.comboBox1.Location = New System.Drawing.Point(180, 164)
-        Me.comboBox1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.comboBox1.Name = "comboBox1"
-        Me.comboBox1.Size = New System.Drawing.Size(191, 33)
-        Me.comboBox1.TabIndex = 14
+        Me.dtOrderDate.Enabled = False
+        Me.dtOrderDate.Location = New System.Drawing.Point(587, 72)
+        Me.dtOrderDate.Name = "dtOrderDate"
+        Me.dtOrderDate.Size = New System.Drawing.Size(233, 26)
+        Me.dtOrderDate.TabIndex = 35
         '
-        'textBox6
+        'label14
         '
-        Me.textBox6.Enabled = False
-        Me.textBox6.Location = New System.Drawing.Point(651, 218)
-        Me.textBox6.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.textBox6.Name = "textBox6"
-        Me.textBox6.Size = New System.Drawing.Size(242, 31)
-        Me.textBox6.TabIndex = 0
+        Me.label14.AutoSize = True
+        Me.label14.BackColor = System.Drawing.Color.White
+        Me.label14.ForeColor = System.Drawing.Color.Blue
+        Me.label14.Location = New System.Drawing.Point(454, 74)
+        Me.label14.Name = "label14"
+        Me.label14.Size = New System.Drawing.Size(85, 20)
+        Me.label14.TabIndex = 34
+        Me.label14.Text = "Order date"
         '
-        'textBox5
+        'txtCustomerName
         '
-        Me.textBox5.Enabled = False
-        Me.textBox5.Location = New System.Drawing.Point(651, 64)
-        Me.textBox5.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.textBox5.Name = "textBox5"
-        Me.textBox5.Size = New System.Drawing.Size(242, 31)
-        Me.textBox5.TabIndex = 8
+        Me.txtCustomerName.Location = New System.Drawing.Point(165, 117)
+        Me.txtCustomerName.Name = "txtCustomerName"
+        Me.txtCustomerName.Size = New System.Drawing.Size(233, 26)
+        Me.txtCustomerName.TabIndex = 33
         '
-        'textBox3
+        'cbbShipStatus
         '
-        Me.textBox3.Enabled = False
-        Me.textBox3.Location = New System.Drawing.Point(180, 110)
-        Me.textBox3.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.textBox3.Name = "textBox3"
-        Me.textBox3.Size = New System.Drawing.Size(241, 31)
-        Me.textBox3.TabIndex = 6
+        Me.cbbShipStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbShipStatus.FormattingEnabled = True
+        Me.cbbShipStatus.Location = New System.Drawing.Point(587, 205)
+        Me.cbbShipStatus.Name = "cbbShipStatus"
+        Me.cbbShipStatus.Size = New System.Drawing.Size(156, 28)
+        Me.cbbShipStatus.TabIndex = 32
         '
-        'textBox1
+        'dtShipDate
         '
-        Me.textBox1.Enabled = False
-        Me.textBox1.Location = New System.Drawing.Point(180, 56)
-        Me.textBox1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.textBox1.Name = "textBox1"
-        Me.textBox1.Size = New System.Drawing.Size(114, 31)
-        Me.textBox1.TabIndex = 2
+        Me.dtShipDate.Enabled = False
+        Me.dtShipDate.Location = New System.Drawing.Point(587, 117)
+        Me.dtShipDate.Name = "dtShipDate"
+        Me.dtShipDate.Size = New System.Drawing.Size(233, 26)
+        Me.dtShipDate.TabIndex = 31
         '
-        'DataGridView1
+        'txtShipAddress
         '
-        Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(60, 446)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowHeadersWidth = 62
-        Me.DataGridView1.RowTemplate.Height = 33
-        Me.DataGridView1.Size = New System.Drawing.Size(948, 461)
-        Me.DataGridView1.TabIndex = 1
+        Me.txtShipAddress.Location = New System.Drawing.Point(587, 162)
+        Me.txtShipAddress.Name = "txtShipAddress"
+        Me.txtShipAddress.Size = New System.Drawing.Size(233, 26)
+        Me.txtShipAddress.TabIndex = 28
+        '
+        'txtOrderCode
+        '
+        Me.txtOrderCode.Location = New System.Drawing.Point(165, 71)
+        Me.txtOrderCode.Name = "txtOrderCode"
+        Me.txtOrderCode.Size = New System.Drawing.Size(150, 26)
+        Me.txtOrderCode.TabIndex = 25
+        '
+        'label2
+        '
+        Me.label2.AutoSize = True
+        Me.label2.BackColor = System.Drawing.Color.White
+        Me.label2.ForeColor = System.Drawing.Color.Blue
+        Me.label2.Location = New System.Drawing.Point(29, 77)
+        Me.label2.Name = "label2"
+        Me.label2.Size = New System.Drawing.Size(88, 20)
+        Me.label2.TabIndex = 24
+        Me.label2.Text = "Order code"
+        '
+        'label4
+        '
+        Me.label4.AutoSize = True
+        Me.label4.BackColor = System.Drawing.Color.White
+        Me.label4.ForeColor = System.Drawing.Color.Blue
+        Me.label4.Location = New System.Drawing.Point(454, 120)
+        Me.label4.Name = "label4"
+        Me.label4.Size = New System.Drawing.Size(77, 20)
+        Me.label4.TabIndex = 29
+        Me.label4.Text = "Ship date"
+        '
+        'label6
+        '
+        Me.label6.AutoSize = True
+        Me.label6.BackColor = System.Drawing.Color.White
+        Me.label6.ForeColor = System.Drawing.Color.Blue
+        Me.label6.Location = New System.Drawing.Point(454, 206)
+        Me.label6.Name = "label6"
+        Me.label6.Size = New System.Drawing.Size(89, 20)
+        Me.label6.TabIndex = 30
+        Me.label6.Text = "Ship status"
+        '
+        'label3
+        '
+        Me.label3.AutoSize = True
+        Me.label3.BackColor = System.Drawing.Color.White
+        Me.label3.ForeColor = System.Drawing.Color.Blue
+        Me.label3.Location = New System.Drawing.Point(454, 165)
+        Me.label3.Name = "label3"
+        Me.label3.Size = New System.Drawing.Size(102, 20)
+        Me.label3.TabIndex = 26
+        Me.label3.Text = "Ship address"
+        '
+        'label5
+        '
+        Me.label5.AutoSize = True
+        Me.label5.BackColor = System.Drawing.Color.White
+        Me.label5.ForeColor = System.Drawing.Color.Blue
+        Me.label5.Location = New System.Drawing.Point(29, 120)
+        Me.label5.Name = "label5"
+        Me.label5.Size = New System.Drawing.Size(122, 20)
+        Me.label5.TabIndex = 27
+        Me.label5.Text = "Customer name"
+        '
+        'dgvOrderSearch
+        '
+        Me.dgvOrderSearch.AllowUserToAddRows = False
+        Me.dgvOrderSearch.AllowUserToDeleteRows = False
+        Me.dgvOrderSearch.BackgroundColor = System.Drawing.Color.White
+        Me.dgvOrderSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvOrderSearch.Location = New System.Drawing.Point(54, 401)
+        Me.dgvOrderSearch.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.dgvOrderSearch.Name = "dgvOrderSearch"
+        Me.dgvOrderSearch.ReadOnly = True
+        Me.dgvOrderSearch.RowHeadersWidth = 62
+        Me.dgvOrderSearch.RowTemplate.Height = 33
+        Me.dgvOrderSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvOrderSearch.Size = New System.Drawing.Size(853, 369)
+        Me.dgvOrderSearch.TabIndex = 1
         '
         'OrderSearch
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1077, 958)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.ClientSize = New System.Drawing.Size(969, 818)
+        Me.Controls.Add(Me.dgvOrderSearch)
         Me.Controls.Add(Me.groupBox1)
-        Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "OrderSearch"
         Me.Text = "Search Order"
         Me.groupBox1.ResumeLayout(False)
         Me.groupBox1.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvOrderSearch, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
-    Private bSave As System.Windows.Forms.Button
-        Private label1 As System.Windows.Forms.Label
-        Private label2 As System.Windows.Forms.Label
-        Private label3 As System.Windows.Forms.Label
-        Private label4 As System.Windows.Forms.Label
-        Private label5 As System.Windows.Forms.Label
-        Private label6 As System.Windows.Forms.Label
+    Private WithEvents btnSearch As System.Windows.Forms.Button
     Private groupBox1 As System.Windows.Forms.GroupBox
-    Private textBox6 As System.Windows.Forms.TextBox
-    Private textBox3 As System.Windows.Forms.TextBox
-    Private textBox1 As System.Windows.Forms.TextBox
-    Private comboBox1 As System.Windows.Forms.ComboBox
-    Private label8 As System.Windows.Forms.Label
-    Private label7 As System.Windows.Forms.Label
-    Private textBox7 As System.Windows.Forms.TextBox
-    Private dateTimePicker2 As System.Windows.Forms.DateTimePicker
-    Private dateTimePicker1 As System.Windows.Forms.DateTimePicker
-    Private textBox5 As System.Windows.Forms.TextBox
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents dgvOrderSearch As DataGridView
+    Private WithEvents txtPaymentMethod As TextBox
+    Private WithEvents Label12 As Label
+    Private WithEvents cbbShipper As ComboBox
+    Private WithEvents label15 As Label
+    Private WithEvents dtOrderDate As DateTimePicker
+    Private WithEvents label14 As Label
+    Private WithEvents txtCustomerName As TextBox
+    Private WithEvents cbbShipStatus As ComboBox
+    Private WithEvents dtShipDate As DateTimePicker
+    Private WithEvents txtShipAddress As TextBox
+    Private WithEvents txtOrderCode As TextBox
+    Private WithEvents label2 As Label
+    Private WithEvents label4 As Label
+    Private WithEvents label6 As Label
+    Private WithEvents label3 As Label
+    Private WithEvents label5 As Label
+    Friend WithEvents cbSearchByDate As CheckBox
 End Class

@@ -51,4 +51,8 @@
     Private Sub btnHome_Click(sender As Object, e As EventArgs) Handles btnHome.Click
         ShowForm(Nothing)
     End Sub
+
+    Private Sub btnSearchOrder_Click(sender As Object, e As EventArgs) Handles btnSearchOrder.Click
+        ShowForm(New OrderSearch)
+    End Sub
 End Class

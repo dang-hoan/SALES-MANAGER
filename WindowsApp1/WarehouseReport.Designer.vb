@@ -32,16 +32,17 @@ Partial Class WarehouseReport
         Me.pictureBox2 = New System.Windows.Forms.PictureBox()
         Me.cbbProduct = New System.Windows.Forms.ComboBox()
         Me.label2 = New System.Windows.Forms.Label()
-        Me.label3 = New System.Windows.Forms.Label()
+        Me.labelTotal = New System.Windows.Forms.Label()
         Me.labTotalProducts = New System.Windows.Forms.Label()
         Me.panel1 = New System.Windows.Forms.Panel()
         Me.panel2 = New System.Windows.Forms.Panel()
         Me.labRemainProducts = New System.Windows.Forms.Label()
-        Me.label10 = New System.Windows.Forms.Label()
+        Me.labelRemain = New System.Windows.Forms.Label()
         Me.panel3 = New System.Windows.Forms.Panel()
         Me.labTotalSales = New System.Windows.Forms.Label()
-        Me.label12 = New System.Windows.Forms.Label()
+        Me.labelSales = New System.Windows.Forms.Label()
         Me.chartReport = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.Label3 = New System.Windows.Forms.Label()
         CType(Me.pictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panel1.SuspendLayout()
@@ -106,34 +107,35 @@ Partial Class WarehouseReport
         Me.label2.TabIndex = 5
         Me.label2.Text = "Product"
         '
-        'label3
+        'labelTotal
         '
-        Me.label3.AutoSize = True
-        Me.label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.label3.Location = New System.Drawing.Point(37, 83)
-        Me.label3.Name = "label3"
-        Me.label3.Size = New System.Drawing.Size(162, 26)
-        Me.label3.TabIndex = 8
-        Me.label3.Text = "Total products"
+        Me.labelTotal.AutoSize = True
+        Me.labelTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.labelTotal.ForeColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.labelTotal.Location = New System.Drawing.Point(37, 74)
+        Me.labelTotal.Name = "labelTotal"
+        Me.labelTotal.Size = New System.Drawing.Size(162, 26)
+        Me.labelTotal.TabIndex = 8
+        Me.labelTotal.Text = "Total products"
         '
         'labTotalProducts
         '
         Me.labTotalProducts.AutoSize = True
-        Me.labTotalProducts.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.0!, System.Drawing.FontStyle.Bold)
+        Me.labTotalProducts.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.labTotalProducts.ForeColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.labTotalProducts.Location = New System.Drawing.Point(74, 19)
         Me.labTotalProducts.Name = "labTotalProducts"
-        Me.labTotalProducts.Size = New System.Drawing.Size(91, 64)
+        Me.labTotalProducts.Size = New System.Drawing.Size(66, 46)
         Me.labTotalProducts.TabIndex = 9
         Me.labTotalProducts.Text = "17"
+        Me.labTotalProducts.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'panel1
         '
         Me.panel1.BackColor = System.Drawing.Color.AntiqueWhite
         Me.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.panel1.Controls.Add(Me.labTotalProducts)
-        Me.panel1.Controls.Add(Me.label3)
+        Me.panel1.Controls.Add(Me.labelTotal)
         Me.panel1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.panel1.Location = New System.Drawing.Point(68, 152)
         Me.panel1.Name = "panel1"
@@ -145,7 +147,7 @@ Partial Class WarehouseReport
         Me.panel2.BackColor = System.Drawing.Color.AntiqueWhite
         Me.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.panel2.Controls.Add(Me.labRemainProducts)
-        Me.panel2.Controls.Add(Me.label10)
+        Me.panel2.Controls.Add(Me.labelRemain)
         Me.panel2.Cursor = System.Windows.Forms.Cursors.Hand
         Me.panel2.Location = New System.Drawing.Point(371, 152)
         Me.panel2.Name = "panel2"
@@ -155,31 +157,32 @@ Partial Class WarehouseReport
         'labRemainProducts
         '
         Me.labRemainProducts.AutoSize = True
-        Me.labRemainProducts.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.0!, System.Drawing.FontStyle.Bold)
+        Me.labRemainProducts.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.labRemainProducts.ForeColor = System.Drawing.Color.Red
         Me.labRemainProducts.Location = New System.Drawing.Point(74, 19)
         Me.labRemainProducts.Name = "labRemainProducts"
-        Me.labRemainProducts.Size = New System.Drawing.Size(91, 64)
+        Me.labRemainProducts.Size = New System.Drawing.Size(66, 46)
         Me.labRemainProducts.TabIndex = 9
         Me.labRemainProducts.Text = "17"
+        Me.labRemainProducts.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'label10
+        'labelRemain
         '
-        Me.label10.AutoSize = True
-        Me.label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.label10.ForeColor = System.Drawing.Color.Red
-        Me.label10.Location = New System.Drawing.Point(23, 83)
-        Me.label10.Name = "label10"
-        Me.label10.Size = New System.Drawing.Size(192, 26)
-        Me.label10.TabIndex = 8
-        Me.label10.Text = "Remain products"
+        Me.labelRemain.AutoSize = True
+        Me.labelRemain.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.labelRemain.ForeColor = System.Drawing.Color.Red
+        Me.labelRemain.Location = New System.Drawing.Point(22, 74)
+        Me.labelRemain.Name = "labelRemain"
+        Me.labelRemain.Size = New System.Drawing.Size(192, 26)
+        Me.labelRemain.TabIndex = 8
+        Me.labelRemain.Text = "Remain products"
         '
         'panel3
         '
         Me.panel3.BackColor = System.Drawing.Color.AntiqueWhite
         Me.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.panel3.Controls.Add(Me.labTotalSales)
-        Me.panel3.Controls.Add(Me.label12)
+        Me.panel3.Controls.Add(Me.labelSales)
         Me.panel3.Cursor = System.Windows.Forms.Cursors.Hand
         Me.panel3.Location = New System.Drawing.Point(663, 152)
         Me.panel3.Name = "panel3"
@@ -189,24 +192,25 @@ Partial Class WarehouseReport
         'labTotalSales
         '
         Me.labTotalSales.AutoSize = True
-        Me.labTotalSales.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.0!, System.Drawing.FontStyle.Bold)
+        Me.labTotalSales.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.labTotalSales.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.labTotalSales.Location = New System.Drawing.Point(74, 19)
         Me.labTotalSales.Name = "labTotalSales"
-        Me.labTotalSales.Size = New System.Drawing.Size(91, 64)
+        Me.labTotalSales.Size = New System.Drawing.Size(66, 46)
         Me.labTotalSales.TabIndex = 9
         Me.labTotalSales.Text = "17"
+        Me.labTotalSales.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'label12
+        'labelSales
         '
-        Me.label12.AutoSize = True
-        Me.label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.label12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.label12.Location = New System.Drawing.Point(56, 83)
-        Me.label12.Name = "label12"
-        Me.label12.Size = New System.Drawing.Size(127, 26)
-        Me.label12.TabIndex = 8
-        Me.label12.Text = "Total sales"
+        Me.labelSales.AutoSize = True
+        Me.labelSales.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.labelSales.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.labelSales.Location = New System.Drawing.Point(55, 74)
+        Me.labelSales.Name = "labelSales"
+        Me.labelSales.Size = New System.Drawing.Size(127, 26)
+        Me.labelSales.TabIndex = 8
+        Me.labelSales.Text = "Total sales"
         '
         'chartReport
         '
@@ -224,11 +228,23 @@ Partial Class WarehouseReport
         Me.chartReport.TabIndex = 16
         Me.chartReport.Text = "Chart1"
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Red
+        Me.Label3.Location = New System.Drawing.Point(240, 725)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(488, 32)
+        Me.Label3.TabIndex = 17
+        Me.Label3.Text = "Chart showing sales over the years"
+        '
         'WarehouseReport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(969, 766)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.chartReport)
         Me.Controls.Add(Me.panel3)
         Me.Controls.Add(Me.panel2)
@@ -261,14 +277,15 @@ Partial Class WarehouseReport
     Private pictureBox2 As System.Windows.Forms.PictureBox
     Private WithEvents cbbProduct As System.Windows.Forms.ComboBox
     Private label2 As System.Windows.Forms.Label
-    Private label3 As System.Windows.Forms.Label
+    Private labelTotal As System.Windows.Forms.Label
     Private labTotalProducts As System.Windows.Forms.Label
     Private panel1 As System.Windows.Forms.Panel
     Private panel2 As System.Windows.Forms.Panel
     Private labRemainProducts As System.Windows.Forms.Label
-    Private label10 As System.Windows.Forms.Label
+    Private labelRemain As System.Windows.Forms.Label
     Private panel3 As System.Windows.Forms.Panel
     Private labTotalSales As System.Windows.Forms.Label
-    Private label12 As System.Windows.Forms.Label
+    Private labelSales As System.Windows.Forms.Label
     Friend WithEvents chartReport As DataVisualization.Charting.Chart
+    Friend WithEvents Label3 As Label
 End Class

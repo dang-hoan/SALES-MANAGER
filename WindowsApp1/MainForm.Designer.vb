@@ -33,7 +33,7 @@ Partial Class MainForm
         Me.ToolStripMenuItem8 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem9 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem10 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem11 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnSearchOrder = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnStatistic = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem()
@@ -146,28 +146,28 @@ Partial Class MainForm
         '
         'ToolStripMenuItem8
         '
-        Me.ToolStripMenuItem8.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem9, Me.ToolStripMenuItem10, Me.ToolStripMenuItem11})
+        Me.ToolStripMenuItem8.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem9, Me.ToolStripMenuItem10, Me.btnSearchOrder})
         Me.ToolStripMenuItem8.Name = "ToolStripMenuItem8"
-        Me.ToolStripMenuItem8.Size = New System.Drawing.Size(166, 34)
+        Me.ToolStripMenuItem8.Size = New System.Drawing.Size(270, 34)
         Me.ToolStripMenuItem8.Text = "Search"
         '
         'ToolStripMenuItem9
         '
         Me.ToolStripMenuItem9.Name = "ToolStripMenuItem9"
-        Me.ToolStripMenuItem9.Size = New System.Drawing.Size(234, 34)
+        Me.ToolStripMenuItem9.Size = New System.Drawing.Size(270, 34)
         Me.ToolStripMenuItem9.Text = "Search client"
         '
         'ToolStripMenuItem10
         '
         Me.ToolStripMenuItem10.Name = "ToolStripMenuItem10"
-        Me.ToolStripMenuItem10.Size = New System.Drawing.Size(234, 34)
+        Me.ToolStripMenuItem10.Size = New System.Drawing.Size(270, 34)
         Me.ToolStripMenuItem10.Text = "Search product"
         '
-        'ToolStripMenuItem11
+        'btnSearchOrder
         '
-        Me.ToolStripMenuItem11.Name = "ToolStripMenuItem11"
-        Me.ToolStripMenuItem11.Size = New System.Drawing.Size(234, 34)
-        Me.ToolStripMenuItem11.Text = "Search order "
+        Me.btnSearchOrder.Name = "btnSearchOrder"
+        Me.btnSearchOrder.Size = New System.Drawing.Size(270, 34)
+        Me.btnSearchOrder.Text = "Search order "
         '
         'btnStatistic
         '
@@ -299,7 +299,7 @@ Partial Class MainForm
     Private WithEvents ToolStripMenuItem8 As ToolStripMenuItem
     Private WithEvents ToolStripMenuItem9 As ToolStripMenuItem
     Private WithEvents ToolStripMenuItem10 As ToolStripMenuItem
-    Private WithEvents ToolStripMenuItem11 As ToolStripMenuItem
+    Private WithEvents btnSearchOrder As ToolStripMenuItem
     Private WithEvents btnStatistic As ToolStripMenuItem
     Private WithEvents ToolStripMenuItem4 As ToolStripMenuItem
     Private WithEvents ToolStripMenuItem5 As ToolStripMenuItem

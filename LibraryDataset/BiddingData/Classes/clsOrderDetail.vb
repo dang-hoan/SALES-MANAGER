@@ -4,7 +4,10 @@ Imports System.Data.SqlClient
 Public Class clsOrderDetail
     Dim ta As New OrderDetailTableAdapters.SalesOrderTableAdapter
     Dim taOrder As New OrderDetailTableAdapters.OrderTableAdapter
+    Dim taOrderView As New OrderDetailTableAdapters.OrderViewTableAdapter
     Dim taOrderDetail As New OrderDetailTableAdapters.OrderDetailTableAdapter
+    Dim taOrderDetailView As New OrderDetailTableAdapters.OrderDetailViewTableAdapter
+    Dim taSalesDetail As New OrderDetailTableAdapters.SalesDetailTableAdapter
     Private conn As New SqlConnection
 
     Public Sub New(ByVal strConn As String, Optional ByVal strConnTransaction As String = Nothing)
@@ -40,13 +43,13 @@ Public Class clsOrderDetail
         Return taOrder.UpdateOrderStatus(statusId, DateTime.Now, updateUser, orderId)
     End Function
 
-    Public Function AddOrderDetail(orderId As Long, productId As Long, numberOfProduct As Integer) As Integer
+    Public Function AddOrderDetail(orderId As Long, productId As Long, numberOfProduct As Integer, totalPriceOfProducts As Double) As Integer
         taOrderDetail.Connection = conn
-        Return taOrderDetail.InsertOrderDetail(orderId, productId, numberOfProduct)
+        Return taOrderDetail.InsertOrderDetail(orderId, productId, numberOfProduct, totalPriceOfProducts)
     End Function
-    Public Function UpdateOrderDetail(orderId As Long, productId As Long, numberOfProduct As Integer) As Integer
+    Public Function UpdateOrderDetail(orderId As Long, productId As Long, numberOfProduct As Integer, totalPriceOfProducts As Double) As Integer
         taOrderDetail.Connection = conn
-        Return taOrderDetail.UpdateOrderDetail(numberOfProduct, orderId, productId)
+        Return taOrderDetail.UpdateOrderDetail(numberOfProduct, totalPriceOfProducts, orderId, productId)
     End Function
     Public Function DeleteOrderDetail(orderId As Long, productId As Long) As Integer
         taOrderDetail.Connection = conn
@@ -59,6 +62,63 @@ Public Class clsOrderDetail
         Else
             Return False
         End If
+    End Function
+
+    Public Function GetAllSalesDetail() As OrderDetail.SalesDetailDataTable
+        Dim ds As New OrderDetail.SalesDetailDataTable
+        taSalesDetail.Connection = conn
+        taSalesDetail.Fill(ds)
+        Return ds
+    End Function
+    Public Function GetSalesDetailByProductId(ByVal productId As Long) As OrderDetail.SalesDetailDataTable
+        taSalesDetail.Connection = conn
+        Return taSalesDetail.GetSalesDetailByProductId(productId)
+    End Function
+    Public Function UpdateSalesDetail(ByVal WareHouseId As Long, ByVal ProductId As Long, ByVal Total As Long, ByVal SellNumber As Long, ByVal SalesTotal As Double) As Integer
+        taSalesDetail.Connection = conn
+        Return taSalesDetail.UpdateSalesDetail(WareHouseId, ProductId, Total, SellNumber, SalesTotal)
+    End Function
+    Public Function GetOrderView() As OrderDetail.OrderViewDataTable
+        taOrderView.Connection = conn
+        Return taOrderView.GetData()
+    End Function
+    Public Function GetOrderDetailView() As OrderDetail.OrderDetailViewDataTable
+        taOrderDetailView.Connection = conn
+        Return taOrderDetailView.GetData()
+    End Function
+    Public Function SearchOrder(ByVal Id As Long, ByVal CustomerName As String, ByVal OrderDate As Date, ByVal ShipperId As String,
+                                ByVal ShipDate As Date, ByVal ShipAddress As String, ByVal StatusId As Integer, ByVal PaymentMethod As String, ByVal searchByDate As Boolean) As OrderDetail.OrderDataTable
+        Dim ds As New OrderDetail
+
+        Dim shipIdStr = "AND ShipperId = " & ShipperId
+        Dim statusIdStr = "AND StatusId = " & StatusId
+
+        Dim dateStr = "AND OrderDate = " & OrderDate & " AND 
+                    ShipDate = " & ShipDate
+
+        If ShipperId Is Nothing Then
+            shipIdStr = ""
+        End If
+
+        If StatusId = -1 Then
+            statusIdStr = ""
+        End If
+
+        If searchByDate = False Then
+            dateStr = ""
+        End If
+
+        Dim query = "SELECT Id, CustomerName, OrderDate, ShipperId, ShipDate, ShipAddress, ShipPostalCode, ShipPrice, StatusId, PrivateDiscount, TotalPrice, PaymentMethod
+                    FROM   [Order]
+                    WHERE Id = " & Id & shipIdStr & " AND (ShipAddress LIKE '%' " & ShipAddress & " + '%') " & StatusId & " AND (PaymentMethod LIKE '%' + " & PaymentMethod & " + '%') AND (CustomerName LIKE '%' + " & CustomerName & " + '%') " & dateStr
+        taOrder.Connection = conn
+
+        Dim command As New SqlCommand(query, conn)
+        taOrder.Adapter.SelectCommand = command
+        taOrder.Fill(ds.Order)
+
+        Return ds.Order
+
     End Function
 
 End Class

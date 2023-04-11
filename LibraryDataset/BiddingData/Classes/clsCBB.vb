@@ -81,5 +81,9 @@ Public Class clsCBB
         taStatus.Fill(ds1.CBBStatus, "Order")
         Return ds1
     End Function
+    Public Function GetDeleveredId() As CBB.CBBStatusDataTable
+        taStatus.Connection = conn
+        Return taStatus.GetDeleveredId()
+    End Function
 
 End Class

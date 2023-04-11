@@ -271,14 +271,25 @@ SELECT Id, StatusName FROM Status WHERE (Id = @Id)</CommandText>
               <Mapping SourceColumn="Id" DataSetColumn="Id" />
               <Mapping SourceColumn="StatusName" DataSetColumn="StatusName" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="SalesManagerDB.dbo.Status" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByStatusDelevered" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDeleveredId" GeneratorSourceName="FillByStatusDelevered" GetMethodModifier="Public" GetMethodName="GetDeleveredId" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDeleveredId" UserSourceName="FillByStatusDelevered">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Id,StatusName 
+FROM   Status
+WHERE (StatusName = 'DELEVERED')</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CBBPersonTableAdapter" GeneratorDataComponentClassName="CBBPersonTableAdapter" Name="CBBPerson" UserDataComponentName="CBBPersonTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByShipper" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetShipper" GeneratorSourceName="FillByShipper" GetMethodModifier="Public" GetMethodName="GetShipper" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetShipper" UserSourceName="FillByShipper">
+              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="SalesManagerDB.dbo.Person" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByShipper" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetShipper" GeneratorSourceName="FillByShipper" GetMethodModifier="Public" GetMethodName="GetShipper" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetShipper" UserSourceName="FillByShipper">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Person.Username, Person.LastName, Person.FirstName, Role.RoleName
+                    <CommandText>SELECT Person.Username, Person.LastName + ' ' + Person.FirstName AS ShipperName
 FROM   Person INNER JOIN
              Role ON Person.RoleId = Role.Id
 WHERE (Role.RoleName = N'Shipper')</CommandText>
@@ -289,9 +300,7 @@ WHERE (Role.RoleName = N'Shipper')</CommandText>
             </MainSource>
             <Mappings>
               <Mapping SourceColumn="Username" DataSetColumn="Username" />
-              <Mapping SourceColumn="LastName" DataSetColumn="LastName" />
-              <Mapping SourceColumn="FirstName" DataSetColumn="FirstName" />
-              <Mapping SourceColumn="RoleName" DataSetColumn="RoleName" />
+              <Mapping SourceColumn="ShipperName" DataSetColumn="ShipperName" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -432,35 +441,21 @@ FROM   SalesDetail</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="LastName" msprop:Generator_ColumnPropNameInTable="LastNameColumn" msprop:Generator_ColumnPropNameInRow="LastName" msprop:Generator_UserColumnName="LastName" msprop:Generator_ColumnVarNameInTable="columnLastName">
+              <xs:element name="ShipperName" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="ShipperName" msprop:Generator_ColumnPropNameInTable="ShipperNameColumn" msprop:Generator_ColumnVarNameInTable="columnShipperName" msprop:Generator_UserColumnName="ShipperName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="30" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="FirstName" msprop:Generator_ColumnPropNameInTable="FirstNameColumn" msprop:Generator_ColumnPropNameInRow="FirstName" msprop:Generator_UserColumnName="FirstName" msprop:Generator_ColumnVarNameInTable="columnFirstName">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="RoleName" msprop:Generator_ColumnPropNameInTable="RoleNameColumn" msprop:Generator_ColumnPropNameInRow="RoleName" msprop:Generator_UserColumnName="RoleName" msprop:Generator_ColumnVarNameInTable="columnRoleName">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="25" />
+                    <xs:maxLength value="41" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SalesDetail" msprop:Generator_RowEvHandlerName="SalesDetailRowChangeEventHandler" msprop:Generator_RowDeletedName="SalesDetailRowDeleted" msprop:Generator_RowDeletingName="SalesDetailRowDeleting" msprop:Generator_RowEvArgName="SalesDetailRowChangeEvent" msprop:Generator_TablePropName="SalesDetail" msprop:Generator_RowChangedName="SalesDetailRowChanged" msprop:Generator_RowChangingName="SalesDetailRowChanging" msprop:Generator_TableClassName="SalesDetailDataTable" msprop:Generator_RowClassName="SalesDetailRow" msprop:Generator_TableVarName="tableSalesDetail" msprop:Generator_UserTableName="SalesDetail">
+        <xs:element name="SalesDetail" msprop:Generator_RowEvHandlerName="SalesDetailRowChangeEventHandler" msprop:Generator_RowDeletedName="SalesDetailRowDeleted" msprop:Generator_RowDeletingName="SalesDetailRowDeleting" msprop:Generator_RowEvArgName="SalesDetailRowChangeEvent" msprop:Generator_TablePropName="SalesDetail" msprop:Generator_RowChangedName="SalesDetailRowChanged" msprop:Generator_UserTableName="SalesDetail" msprop:Generator_RowChangingName="SalesDetailRowChanging" msprop:Generator_RowClassName="SalesDetailRow" msprop:Generator_TableClassName="SalesDetailDataTable" msprop:Generator_TableVarName="tableSalesDetail">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="WareHouseId" msprop:Generator_ColumnPropNameInRow="WareHouseId" msprop:Generator_ColumnPropNameInTable="WareHouseIdColumn" msprop:Generator_ColumnVarNameInTable="columnWareHouseId" msprop:Generator_UserColumnName="WareHouseId" type="xs:long" />
-              <xs:element name="ProductId" msprop:Generator_ColumnPropNameInRow="ProductId" msprop:Generator_ColumnPropNameInTable="ProductIdColumn" msprop:Generator_ColumnVarNameInTable="columnProductId" msprop:Generator_UserColumnName="ProductId" type="xs:long" />
+              <xs:element name="WareHouseId" msprop:Generator_ColumnPropNameInTable="WareHouseIdColumn" msprop:Generator_ColumnPropNameInRow="WareHouseId" msprop:Generator_UserColumnName="WareHouseId" msprop:Generator_ColumnVarNameInTable="columnWareHouseId" type="xs:long" />
+              <xs:element name="ProductId" msprop:Generator_ColumnPropNameInTable="ProductIdColumn" msprop:Generator_ColumnPropNameInRow="ProductId" msprop:Generator_UserColumnName="ProductId" msprop:Generator_ColumnVarNameInTable="columnProductId" type="xs:long" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -192,6 +192,11 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:LibraryDataset.CBB.SalesDetailDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:LibraryDataset.CBB.CBBWareHouseProductRow">
 <summary>
 Represents strongly named DataRow class.
@@ -223,6 +228,11 @@ Represents strongly named DataRow class.
 </summary>
 </member>
 <member name="T:LibraryDataset.CBB.CBBPersonRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.SalesDetailRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -262,6 +272,11 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
+<member name="T:LibraryDataset.CBB.SalesDetailRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
 <member name="T:LibraryDataset.CBBTableAdapters.CBBWareHouseProductTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
@@ -293,6 +308,11 @@ Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:LibraryDataset.CBBTableAdapters.CBBPersonTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBBTableAdapters.SalesDetailTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
@@ -347,7 +367,7 @@ Represents a strongly typed in-memory cache of data.
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:LibraryDataset.OrderDetail.OrderDetailDataTable">
+<member name="T:LibraryDataset.OrderDetail.OrderDetail2DataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
@@ -357,12 +377,32 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:LibraryDataset.OrderDetail.SalesDetailDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.OrderViewDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.OrderDetailDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.OrderDetailViewDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:LibraryDataset.OrderDetail.SalesOrderRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:LibraryDataset.OrderDetail.OrderDetailRow">
+<member name="T:LibraryDataset.OrderDetail.OrderDetail2Row">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -372,12 +412,32 @@ Represents strongly named DataRow class.
 Represents strongly named DataRow class.
 </summary>
 </member>
+<member name="T:LibraryDataset.OrderDetail.SalesDetailRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.OrderViewRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.OrderDetailRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.OrderDetailViewRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
 <member name="T:LibraryDataset.OrderDetail.SalesOrderRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
 </member>
-<member name="T:LibraryDataset.OrderDetail.OrderDetailRowChangeEvent">
+<member name="T:LibraryDataset.OrderDetail.OrderDetail2RowChangeEvent">
 <summary>
 Row event argument class
 </summary>
@@ -387,7 +447,47 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
+<member name="T:LibraryDataset.OrderDetail.SalesDetailRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.OrderViewRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.OrderDetailRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.OrderDetailViewRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
 <member name="T:LibraryDataset.OrderDetailTableAdapters.SalesOrderTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetailTableAdapters.OrderDetail2TableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetailTableAdapters.OrderTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetailTableAdapters.SalesDetailTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetailTableAdapters.OrderViewTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
@@ -397,7 +497,7 @@ Represents the connection and commands used to retrieve and save data.
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
-<member name="T:LibraryDataset.OrderDetailTableAdapters.OrderTableAdapter">
+<member name="T:LibraryDataset.OrderDetailTableAdapters.OrderDetailViewTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>

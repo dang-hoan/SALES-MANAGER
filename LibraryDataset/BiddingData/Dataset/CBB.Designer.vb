@@ -2233,11 +2233,7 @@ Partial Public Class CBB
         
         Private columnUsername As Global.System.Data.DataColumn
         
-        Private columnLastName As Global.System.Data.DataColumn
-        
-        Private columnFirstName As Global.System.Data.DataColumn
-        
-        Private columnRoleName As Global.System.Data.DataColumn
+        Private columnShipperName As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -2284,25 +2280,9 @@ Partial Public Class CBB
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property LastNameColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property ShipperNameColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnLastName
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property FirstNameColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnFirstName
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property RoleNameColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnRoleName
+                Return Me.columnShipperName
             End Get
         End Property
         
@@ -2343,9 +2323,9 @@ Partial Public Class CBB
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddCBBPersonRow(ByVal Username As String, ByVal LastName As String, ByVal FirstName As String, ByVal RoleName As String) As CBBPersonRow
+        Public Overloads Function AddCBBPersonRow(ByVal Username As String, ByVal ShipperName As String) As CBBPersonRow
             Dim rowCBBPersonRow As CBBPersonRow = CType(Me.NewRow,CBBPersonRow)
-            Dim columnValuesArray() As Object = New Object() {Username, LastName, FirstName, RoleName}
+            Dim columnValuesArray() As Object = New Object() {Username, ShipperName}
             rowCBBPersonRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCBBPersonRow)
             Return rowCBBPersonRow
@@ -2375,9 +2355,7 @@ Partial Public Class CBB
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub InitVars()
             Me.columnUsername = MyBase.Columns("Username")
-            Me.columnLastName = MyBase.Columns("LastName")
-            Me.columnFirstName = MyBase.Columns("FirstName")
-            Me.columnRoleName = MyBase.Columns("RoleName")
+            Me.columnShipperName = MyBase.Columns("ShipperName")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2385,22 +2363,14 @@ Partial Public Class CBB
         Private Sub InitClass()
             Me.columnUsername = New Global.System.Data.DataColumn("Username", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnUsername)
-            Me.columnLastName = New Global.System.Data.DataColumn("LastName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnLastName)
-            Me.columnFirstName = New Global.System.Data.DataColumn("FirstName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnFirstName)
-            Me.columnRoleName = New Global.System.Data.DataColumn("RoleName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnRoleName)
+            Me.columnShipperName = New Global.System.Data.DataColumn("ShipperName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnShipperName)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnUsername}, true))
             Me.columnUsername.AllowDBNull = false
             Me.columnUsername.Unique = true
             Me.columnUsername.MaxLength = 40
-            Me.columnLastName.AllowDBNull = false
-            Me.columnLastName.MaxLength = 30
-            Me.columnFirstName.AllowDBNull = false
-            Me.columnFirstName.MaxLength = 10
-            Me.columnRoleName.AllowDBNull = false
-            Me.columnRoleName.MaxLength = 25
+            Me.columnShipperName.ReadOnly = true
+            Me.columnShipperName.MaxLength = 41
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3107,36 +3077,30 @@ Partial Public Class CBB
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property LastName() As String
+        Public Property ShipperName() As String
             Get
-                Return CType(Me(Me.tableCBBPerson.LastNameColumn),String)
+                Try 
+                    Return CType(Me(Me.tableCBBPerson.ShipperNameColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ShipperName' in table 'CBBPerson' is DBNull.", e)
+                End Try
             End Get
             Set
-                Me(Me.tableCBBPerson.LastNameColumn) = value
+                Me(Me.tableCBBPerson.ShipperNameColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property FirstName() As String
-            Get
-                Return CType(Me(Me.tableCBBPerson.FirstNameColumn),String)
-            End Get
-            Set
-                Me(Me.tableCBBPerson.FirstNameColumn) = value
-            End Set
-        End Property
+        Public Function IsShipperNameNull() As Boolean
+            Return Me.IsNull(Me.tableCBBPerson.ShipperNameColumn)
+        End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property RoleName() As String
-            Get
-                Return CType(Me(Me.tableCBBPerson.RoleNameColumn),String)
-            End Get
-            Set
-                Me(Me.tableCBBPerson.RoleNameColumn) = value
-            End Set
-        End Property
+        Public Sub SetShipperNameNull()
+            Me(Me.tableCBBPerson.ShipperNameColumn) = Global.System.Convert.DBNull
+        End Sub
     End Class
     
     '''<summary>
@@ -5049,12 +5013,16 @@ Namespace CBBTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT Id, StatusName"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   Status"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (TypeStatus = @TypeStatus)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TypeStatus", Global.System.Data.SqlDbType.VarChar, 30, Global.System.Data.ParameterDirection.Input, 0, 0, "TypeStatus", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT Id,StatusName "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   Status"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (StatusName = 'DELEVERED')"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5086,6 +5054,30 @@ Namespace CBBTableAdapters
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(TypeStatus,String)
             End If
+            Dim dataTable As CBB.CBBStatusDataTable = New CBB.CBBStatusDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByStatusDelevered(ByVal dataTable As CBB.CBBStatusDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDeleveredId() As CBB.CBBStatusDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
             Dim dataTable As CBB.CBBStatusDataTable = New CBB.CBBStatusDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -5339,9 +5331,7 @@ Namespace CBBTableAdapters
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "CBBPerson"
             tableMapping.ColumnMappings.Add("Username", "Username")
-            tableMapping.ColumnMappings.Add("LastName", "LastName")
-            tableMapping.ColumnMappings.Add("FirstName", "FirstName")
-            tableMapping.ColumnMappings.Add("RoleName", "RoleName")
+            tableMapping.ColumnMappings.Add("ShipperName", "ShipperName")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -5358,9 +5348,9 @@ Namespace CBBTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT Person.Username, Person.LastName, Person.FirstName, Role.RoleName"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   "& _ 
-                "Person INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             Role ON Person.RoleId = Role.Id"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Role.Rol"& _ 
-                "eName = N'Shipper')"
+            Me._commandCollection(0).CommandText = "SELECT Person.Username, Person.LastName + ' ' + Person.FirstName AS ShipperName"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+                "FROM   Person INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             Role ON Person.RoleId = Role.Id"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (R"& _ 
+                "ole.RoleName = N'Shipper')"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
