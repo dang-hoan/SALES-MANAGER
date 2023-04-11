@@ -22,11 +22,10 @@ Partial Class WarehouseReport
     'Do not modify it using the code editor.
 
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(WarehouseReport))
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.label1 = New System.Windows.Forms.Label()
         Me.cbbWarehouse = New System.Windows.Forms.ComboBox()
         Me.pictureBox1 = New System.Windows.Forms.PictureBox()
@@ -43,14 +42,12 @@ Partial Class WarehouseReport
         Me.labTotalSales = New System.Windows.Forms.Label()
         Me.label12 = New System.Windows.Forms.Label()
         Me.chartReport = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.CBBWareHouseProductTableAdapterBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.pictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panel1.SuspendLayout()
         Me.panel2.SuspendLayout()
         Me.panel3.SuspendLayout()
         CType(Me.chartReport, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CBBWareHouseProductTableAdapterBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'label1
@@ -213,23 +210,19 @@ Partial Class WarehouseReport
         '
         'chartReport
         '
-        ChartArea2.Name = "ChartArea1"
-        Me.chartReport.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Legend1"
-        Me.chartReport.Legends.Add(Legend2)
+        ChartArea1.Name = "ChartArea1"
+        Me.chartReport.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.chartReport.Legends.Add(Legend1)
         Me.chartReport.Location = New System.Drawing.Point(68, 322)
         Me.chartReport.Name = "chartReport"
-        Series2.ChartArea = "ChartArea1"
-        Series2.Legend = "Legend1"
-        Series2.Name = "Series1"
-        Me.chartReport.Series.Add(Series2)
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.chartReport.Series.Add(Series1)
         Me.chartReport.Size = New System.Drawing.Size(833, 388)
         Me.chartReport.TabIndex = 16
         Me.chartReport.Text = "Chart1"
-        '
-        'CBBWareHouseProductTableAdapterBindingSource
-        '
-        Me.CBBWareHouseProductTableAdapterBindingSource.DataSource = GetType(LibraryDataset.CBBTableAdapters.CBBWareHouseProductTableAdapter)
         '
         'WarehouseReport
         '
@@ -257,17 +250,16 @@ Partial Class WarehouseReport
         Me.panel3.ResumeLayout(False)
         Me.panel3.PerformLayout()
         CType(Me.chartReport, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CBBWareHouseProductTableAdapterBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Private label1 As System.Windows.Forms.Label
-    Private cbbWarehouse As System.Windows.Forms.ComboBox
+    Private WithEvents cbbWarehouse As System.Windows.Forms.ComboBox
     Private pictureBox1 As System.Windows.Forms.PictureBox
     Private pictureBox2 As System.Windows.Forms.PictureBox
-    Private cbbProduct As System.Windows.Forms.ComboBox
+    Private WithEvents cbbProduct As System.Windows.Forms.ComboBox
     Private label2 As System.Windows.Forms.Label
     Private label3 As System.Windows.Forms.Label
     Private labTotalProducts As System.Windows.Forms.Label
@@ -279,5 +271,4 @@ Partial Class WarehouseReport
     Private labTotalSales As System.Windows.Forms.Label
     Private label12 As System.Windows.Forms.Label
     Friend WithEvents chartReport As DataVisualization.Charting.Chart
-    Friend WithEvents CBBWareHouseProductTableAdapterBindingSource As BindingSource
 End Class

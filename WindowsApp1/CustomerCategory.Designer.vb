@@ -42,7 +42,6 @@ Partial Class CustomerCategory
         Me.rdFemale = New System.Windows.Forms.RadioButton()
         Me.rdMale = New System.Windows.Forms.RadioButton()
         Me.dgvCategory = New System.Windows.Forms.DataGridView()
-        Me.btnRestore = New System.Windows.Forms.Button()
         Me.groupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.dgvCategory, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -54,7 +53,7 @@ Partial Class CustomerCategory
         Me.bSave.Cursor = System.Windows.Forms.Cursors.Hand
         Me.bSave.Image = CType(resources.GetObject("bSave.Image"), System.Drawing.Image)
         Me.bSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bSave.Location = New System.Drawing.Point(737, 693)
+        Me.bSave.Location = New System.Drawing.Point(736, 693)
         Me.bSave.Name = "bSave"
         Me.bSave.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.bSave.Size = New System.Drawing.Size(150, 55)
@@ -68,7 +67,7 @@ Partial Class CustomerCategory
         Me.bDelete.Cursor = System.Windows.Forms.Cursors.Hand
         Me.bDelete.Image = CType(resources.GetObject("bDelete.Image"), System.Drawing.Image)
         Me.bDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bDelete.Location = New System.Drawing.Point(409, 693)
+        Me.bDelete.Location = New System.Drawing.Point(518, 693)
         Me.bDelete.Name = "bDelete"
         Me.bDelete.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.bDelete.Size = New System.Drawing.Size(150, 55)
@@ -82,7 +81,7 @@ Partial Class CustomerCategory
         Me.bEdit.Cursor = System.Windows.Forms.Cursors.Hand
         Me.bEdit.Image = CType(resources.GetObject("bEdit.Image"), System.Drawing.Image)
         Me.bEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bEdit.Location = New System.Drawing.Point(245, 693)
+        Me.bEdit.Location = New System.Drawing.Point(300, 693)
         Me.bEdit.Name = "bEdit"
         Me.bEdit.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.bEdit.Size = New System.Drawing.Size(150, 55)
@@ -96,7 +95,7 @@ Partial Class CustomerCategory
         Me.bAdd.Cursor = System.Windows.Forms.Cursors.Hand
         Me.bAdd.Image = CType(resources.GetObject("bAdd.Image"), System.Drawing.Image)
         Me.bAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bAdd.Location = New System.Drawing.Point(81, 693)
+        Me.bAdd.Location = New System.Drawing.Point(82, 693)
         Me.bAdd.Name = "bAdd"
         Me.bAdd.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.bAdd.Size = New System.Drawing.Size(150, 55)
@@ -317,27 +316,12 @@ Partial Class CustomerCategory
         Me.dgvCategory.Size = New System.Drawing.Size(853, 354)
         Me.dgvCategory.TabIndex = 9
         '
-        'btnRestore
-        '
-        Me.btnRestore.BackColor = System.Drawing.Color.SandyBrown
-        Me.btnRestore.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnRestore.Image = CType(resources.GetObject("btnRestore.Image"), System.Drawing.Image)
-        Me.btnRestore.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnRestore.Location = New System.Drawing.Point(573, 693)
-        Me.btnRestore.Name = "btnRestore"
-        Me.btnRestore.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnRestore.Size = New System.Drawing.Size(150, 55)
-        Me.btnRestore.TabIndex = 10
-        Me.btnRestore.Text = " Restore"
-        Me.btnRestore.UseVisualStyleBackColor = False
-        '
         'CustomerCategory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(969, 766)
-        Me.Controls.Add(Me.btnRestore)
         Me.Controls.Add(Me.dgvCategory)
         Me.Controls.Add(Me.bSave)
         Me.Controls.Add(Me.bDelete)
@@ -390,5 +374,4 @@ Partial Class CustomerCategory
     Private WithEvents Label8 As Label
     Friend WithEvents GroupBox2 As GroupBox
     Private WithEvents txtCustomerLastName As TextBox
-    Private WithEvents btnRestore As Button
 End Class

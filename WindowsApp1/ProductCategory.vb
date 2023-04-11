@@ -49,9 +49,8 @@ Public Class ProductCategory
             txtCode.Text = row.Cells(0).Value.ToString
             txtName.Text = row.Cells(1).Value.ToString
             txtPrice.Text = row.Cells(4).Value.ToString
-            txtUnitPrice.Text = row.Cells(5).Value.ToString
             txtDiscount.Text = row.Cells(7).Value.ToString
-            txtNumber.Text = row.Cells(18).Value.ToString
+            txtNumber.Text = row.Cells(11).Value.ToString
 
             For Each item As CBBItem In cbbCategory.Items
                 If item.PropItemId = row.Cells(3).Value.ToString Then
@@ -69,7 +68,7 @@ Public Class ProductCategory
                 End If
             Next
             For Each item As CBBItem In cbbWarehouse.Items
-                If item.PropItemId = row.Cells(17).Value.ToString Then
+                If item.PropItemId = row.Cells(10).Value.ToString Then
                     cbbWarehouse.SelectedItem = item
                 End If
             Next
@@ -84,7 +83,7 @@ Public Class ProductCategory
         txtName.Enabled = valBoolean
         cbbCategory.Enabled = valBoolean
         txtPrice.Enabled = valBoolean
-        txtUnitPrice.Enabled = valBoolean
+        'txtUnitPrice.Enabled = valBoolean
         cbbStatus.Enabled = valBoolean
         cbbSupplier.Enabled = valBoolean
         txtDiscount.Enabled = valBoolean
@@ -97,7 +96,7 @@ Public Class ProductCategory
         txtName.Text = ""
         cbbCategory.SelectedIndex = -1
         txtPrice.Text = ""
-        txtUnitPrice.Text = ""
+        'txtUnitPrice.Text = ""
         cbbStatus.SelectedIndex = -1
         cbbSupplier.SelectedIndex = -1
         txtDiscount.Text = ""
@@ -194,7 +193,7 @@ Public Class ProductCategory
         End If
     End Sub
 
-    Private Sub btnRestore_Click(sender As Object, e As EventArgs) Handles btnRestore.Click
+    Private Sub btnRestore_Click(sender As Object, e As EventArgs)
         Dim productId = CLng(dgvCategory.CurrentRow.Cells(0).Value.ToString)
         Dim isDelete = clsPMSAnalysis.CheckProductWasDeleted(productId)
         If isDelete Then

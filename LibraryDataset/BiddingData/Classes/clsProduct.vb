@@ -3,6 +3,7 @@ Imports System.Data.SqlClient
 
 Public Class clsProduct
     Dim ta As New ProductTableAdapters.ProductTableAdapter
+    Dim taCostProduct As New ProductTableAdapters.CostProductTableAdapter
     Dim taSalesDetail As New ProductTableAdapters.SalesDetailTableAdapter
     Dim taProductSalesDetail As New ProductTableAdapters.ProductSalesDetailTableAdapter
 
@@ -80,6 +81,11 @@ Public Class clsProduct
         Else
             Return False
         End If
+    End Function
+
+    Public Function GetCostOfProduct(ByVal productId As Long) As Product.CostProductDataTable
+        taCostProduct.Connection = conn
+        Return taCostProduct.GetCostOfProduct(productId)
     End Function
 
 

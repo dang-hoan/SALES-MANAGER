@@ -160,7 +160,7 @@ Public Class CustomerCategory
         End If
     End Sub
 
-    Private Sub btnRestore_Click(sender As Object, e As EventArgs) Handles btnRestore.Click
+    Private Sub btnRestore_Click(sender As Object, e As EventArgs)
         Dim username As String = dgvCategory.CurrentRow.Cells(0).Value.ToString
         Dim isDelete = clsPMSAnalysis.CheckUserWasDeleted(username)
         If isDelete Then

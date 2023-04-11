@@ -45,7 +45,6 @@ Partial Class ProductCategory
         Me.txtDiscount = New System.Windows.Forms.TextBox()
         Me.txtName = New System.Windows.Forms.TextBox()
         Me.txtCode = New System.Windows.Forms.TextBox()
-        Me.btnRestore = New System.Windows.Forms.Button()
         Me.bSave = New System.Windows.Forms.Button()
         Me.bDelete = New System.Windows.Forms.Button()
         Me.bEdit = New System.Windows.Forms.Button()
@@ -170,6 +169,7 @@ Partial Class ProductCategory
         Me.txtUnitDiscount.Name = "txtUnitDiscount"
         Me.txtUnitDiscount.Size = New System.Drawing.Size(53, 26)
         Me.txtUnitDiscount.TabIndex = 22
+        Me.txtUnitDiscount.Text = "$"
         '
         'txtNumber
         '
@@ -257,6 +257,7 @@ Partial Class ProductCategory
         Me.txtUnitPrice.Name = "txtUnitPrice"
         Me.txtUnitPrice.Size = New System.Drawing.Size(53, 26)
         Me.txtUnitPrice.TabIndex = 15
+        Me.txtUnitPrice.Text = "$"
         '
         'txtDiscount
         '
@@ -282,27 +283,13 @@ Partial Class ProductCategory
         Me.txtCode.Size = New System.Drawing.Size(103, 26)
         Me.txtCode.TabIndex = 2
         '
-        'btnRestore
-        '
-        Me.btnRestore.BackColor = System.Drawing.Color.SandyBrown
-        Me.btnRestore.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnRestore.Image = CType(resources.GetObject("btnRestore.Image"), System.Drawing.Image)
-        Me.btnRestore.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnRestore.Location = New System.Drawing.Point(573, 689)
-        Me.btnRestore.Name = "btnRestore"
-        Me.btnRestore.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnRestore.Size = New System.Drawing.Size(150, 55)
-        Me.btnRestore.TabIndex = 20
-        Me.btnRestore.Text = " Restore"
-        Me.btnRestore.UseVisualStyleBackColor = False
-        '
         'bSave
         '
         Me.bSave.BackColor = System.Drawing.Color.SandyBrown
         Me.bSave.Cursor = System.Windows.Forms.Cursors.Hand
         Me.bSave.Image = CType(resources.GetObject("bSave.Image"), System.Drawing.Image)
         Me.bSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bSave.Location = New System.Drawing.Point(737, 689)
+        Me.bSave.Location = New System.Drawing.Point(736, 689)
         Me.bSave.Name = "bSave"
         Me.bSave.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.bSave.Size = New System.Drawing.Size(150, 55)
@@ -316,7 +303,7 @@ Partial Class ProductCategory
         Me.bDelete.Cursor = System.Windows.Forms.Cursors.Hand
         Me.bDelete.Image = CType(resources.GetObject("bDelete.Image"), System.Drawing.Image)
         Me.bDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bDelete.Location = New System.Drawing.Point(409, 689)
+        Me.bDelete.Location = New System.Drawing.Point(518, 689)
         Me.bDelete.Name = "bDelete"
         Me.bDelete.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.bDelete.Size = New System.Drawing.Size(150, 55)
@@ -330,7 +317,7 @@ Partial Class ProductCategory
         Me.bEdit.Cursor = System.Windows.Forms.Cursors.Hand
         Me.bEdit.Image = CType(resources.GetObject("bEdit.Image"), System.Drawing.Image)
         Me.bEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bEdit.Location = New System.Drawing.Point(245, 689)
+        Me.bEdit.Location = New System.Drawing.Point(300, 689)
         Me.bEdit.Name = "bEdit"
         Me.bEdit.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.bEdit.Size = New System.Drawing.Size(150, 55)
@@ -344,7 +331,7 @@ Partial Class ProductCategory
         Me.bAdd.Cursor = System.Windows.Forms.Cursors.Hand
         Me.bAdd.Image = CType(resources.GetObject("bAdd.Image"), System.Drawing.Image)
         Me.bAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bAdd.Location = New System.Drawing.Point(81, 689)
+        Me.bAdd.Location = New System.Drawing.Point(82, 689)
         Me.bAdd.Name = "bAdd"
         Me.bAdd.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.bAdd.Size = New System.Drawing.Size(150, 55)
@@ -358,7 +345,6 @@ Partial Class ProductCategory
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(969, 766)
-        Me.Controls.Add(Me.btnRestore)
         Me.Controls.Add(Me.bSave)
         Me.Controls.Add(Me.bDelete)
         Me.Controls.Add(Me.bEdit)
@@ -391,7 +377,6 @@ Partial Class ProductCategory
     Private txtPrice As System.Windows.Forms.TextBox
     Private WithEvents txtUnitPrice As TextBox
     Private WithEvents cbbStatus As ComboBox
-    Private WithEvents btnRestore As Button
     Private WithEvents bSave As Button
     Private WithEvents bDelete As Button
     Private WithEvents bEdit As Button

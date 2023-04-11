@@ -48,6 +48,10 @@ Public Class clsOrderDetail
         taOrderDetail.Connection = conn
         Return taOrderDetail.UpdateOrderDetail(numberOfProduct, orderId, productId)
     End Function
+    Public Function DeleteOrderDetail(orderId As Long, productId As Long) As Integer
+        taOrderDetail.Connection = conn
+        Return taOrderDetail.DeleteOrderDetail(orderId, productId)
+    End Function
     Public Function CheckIfOrderDetailExists(orderId As Long, productId As Long) As Boolean
         taOrderDetail.Connection = conn
         If taOrderDetail.GetOrderDetailByOrderIdAndProductId(orderId, productId).Count > 0 Then

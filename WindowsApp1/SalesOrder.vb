@@ -3,6 +3,7 @@ Imports LibraryCommon
 Public Class SalesOrder
     Dim conn As New connCommon()
     Dim clsPMSAnalysis As New clsOrderDetail(conn.connSales.ConnectionString)
+    Dim clsProduct As New clsProduct(conn.connSales.ConnectionString)
     Dim clsCBB As New clsCBB(conn.connSales.ConnectionString)
 
     Private listName As New List(Of String)
@@ -13,7 +14,6 @@ Public Class SalesOrder
         listBuyProduct.Columns.Add("Product")
         listBuyProduct.Columns.Add("Number")
         Reload()
-
     End Sub
     Private Sub Reload()
         Dim dataShipper = clsCBB.GetCBBShipper().CBBPerson
@@ -128,6 +128,7 @@ Public Class SalesOrder
             txtShipFee.Text = row.Cells(7).Value.ToString
             txtTotalPrice.Text = row.Cells(8).Value.ToString
             txtDiscount.Text = row.Cells(9).Value.ToString
+            txtPaymentMethod.Text = row.Cells(10).Value.ToString
 
             'Listview product
             listBuyProduct.Items.Clear()
@@ -171,18 +172,20 @@ Public Class SalesOrder
         cbbProduct.Enabled = valBoolean
         txtNumber.Enabled = valBoolean
         txtDiscount.Enabled = valBoolean
+        txtPaymentMethod.Enabled = valBoolean
         labUpdate.Visible = valBoolean
         labRemove.Visible = valBoolean
 
         If valBoolean Then
-            listBuyProduct.Location = New Point(184, 17)
-            listBuyProduct.Size = New Point(175, 65)
+            listBuyProduct.Location = New Point(188, 12)
+            listBuyProduct.Size = New Point(188, 95)
         Else
-            listBuyProduct.Location = New Point(130, 17)
-            listBuyProduct.Size = New Point(175, 65)
+            listBuyProduct.Location = New Point(140, 12)
+            listBuyProduct.Size = New Point(188, 95)
         End If
     End Sub
     Private Sub clearValue()
+        txtOrderCode.Text = ""
         txtCustomerName.Text = ""
         cbbShipper.SelectedIndex = -1
         dtOrderDate.Value = DateTime.Now
@@ -193,6 +196,8 @@ Public Class SalesOrder
         cbbProduct.SelectedIndex = -1
         txtNumber.Text = ""
         txtDiscount.Text = ""
+        txtPaymentMethod.Text = ""
+        txtTotalPrice.Text = ""
         listBuyProduct.Items.Clear()
     End Sub
 
@@ -215,7 +220,8 @@ Public Class SalesOrder
             If txtOrderCode.Text <> "" Then             'Edit
                 result = clsPMSAnalysis.UpdateOrder(txtOrderCode.Text, txtCustomerName.Text,
                                             dtOrderDate.Value, shipperId, dtShipDate.Value, txtShipAddress.Text, txtShipFee.Text, statusId,
-                                             txtDiscount.Text, txtTotalPrice.Text, "", "", LoginForm.PropUsername)
+                                             txtDiscount.Text, txtTotalPrice.Text, txtPaymentMethod.Text, "", LoginForm.PropUsername)
+
 
                 For Each product In listBuyProduct.Items
                     If result = 1 Then
@@ -228,12 +234,30 @@ Public Class SalesOrder
                         Exit For
                     End If
                 Next
+
+                Dim id = dgvOrder.CurrentRow.Cells(11).Value.ToString.Split(",")
+                For Each oldProduct In id
+                    If result = 1 Then
+                        Dim isExist = False
+                        For Each product In listBuyProduct.Items
+                            If product.SubItems(0).Text = oldProduct Then
+                                isExist = True
+                                Exit For
+                            End If
+                        Next
+
+                        If Not isExist Then
+                            result = clsPMSAnalysis.DeleteOrderDetail(txtOrderCode.Text, oldProduct)
+                        End If
+
+                    End If
+                Next
             Else                                        'Add new
                 Dim orderId = clsPMSAnalysis.AddOrder(txtCustomerName.Text,
                                             dtOrderDate.Value, shipperId, dtShipDate.Value, txtShipAddress.Text, txtShipFee.Text, statusId,
-                                             txtDiscount.Text, txtTotalPrice.Text, "", "", LoginForm.PropUsername)
+                                             txtDiscount.Text, txtTotalPrice.Text, txtPaymentMethod.Text, "", LoginForm.PropUsername)
 
-
+                result = 1
                 For Each product In listBuyProduct.Items
                     If result = 1 Then
                         If Not clsPMSAnalysis.CheckIfOrderDetailExists(orderId, product.SubItems(0).Text) Then
@@ -257,8 +281,14 @@ Public Class SalesOrder
         End If
     End Sub
     Private Function checkLogicData() As Boolean
-        If txtCustomerName.Text = "" Or cbbShipper.Text = "" Or txtShipFee.Text = "" Or
-            txtShipAddress.Text = "" Or cbbShipStatus.Text = "" Or txtDiscount.Text = "" Then
+        If txtShipFee.Text = "" Then
+            txtShipFee.Text = "0"
+        End If
+        If txtDiscount.Text = "" Then
+            txtDiscount.Text = "0"
+        End If
+        If txtCustomerName.Text = "" Or cbbShipper.Text = "" Or
+            txtShipAddress.Text = "" Or cbbShipStatus.Text = "" Or txtPaymentMethod.Text = "" Then
 
             MsgBox("You need to enter all the fields!")
             Return False
@@ -312,8 +342,14 @@ Public Class SalesOrder
 
         Dim number
 
-        If txtNumber.Text = "" Then
+        If cbbProduct.Text = "" Then
+            MsgBox("You haven't selected product to add yet!")
+            Exit Sub
+        ElseIf txtNumber.Text = "" Then
             number = "0"
+        ElseIf Not checkNumberInteger(txtNumber.Text) Then
+            MsgBox("Number of products must be a number!")
+            Exit Sub
         Else
             number = txtNumber.Text
         End If
@@ -338,6 +374,8 @@ Public Class SalesOrder
             cbbProduct.Items.RemoveAt(cbbProduct.SelectedIndex)
             txtNumber.Text = ""
         End If
+
+        CalculateTotalPrice()
     End Sub
 
     Private Function checkNumberInteger(ByVal number As String)
@@ -361,6 +399,7 @@ Public Class SalesOrder
         Else
             MsgBox("You haven't selected the product in table you want to delete yet!")
         End If
+        CalculateTotalPrice()
     End Sub
 
     Private Sub bDelete_Click(sender As Object, e As EventArgs) Handles bDelete.Click
@@ -372,6 +411,7 @@ Public Class SalesOrder
                 MsgBox("There is an error when interact with database!")
             End If
         End If
+        Reload()
     End Sub
 
     Private Sub cbbProduct_Click(sender As Object, e As EventArgs) Handles cbbProduct.Click
@@ -394,4 +434,44 @@ Public Class SalesOrder
             isExist = False
         Next
     End Sub
+
+    Private Sub CalculateTotalPrice()
+        Dim shipFee = txtShipFee.Text
+        Dim discount = txtDiscount.Text
+
+        If shipFee = "" Then
+            shipFee = "0"
+        End If
+        If discount = "" Then
+            discount = "0"
+        End If
+
+        If Not checkNumber(shipFee) Or Not checkNumber(discount) Then
+            txtTotalPrice.Text = "#N/A"
+        Else
+            Dim cost As Double = 0
+            For Each item In listBuyProduct.Items
+                Dim costItem = clsProduct.GetCostOfProduct(item.SubItems(0).Text)
+                cost += (costItem(0)(0) * (1 - costItem(0)(1) / 100)) * item.SubItems(2).Text
+            Next
+            cost += shipFee
+            cost *= 1 - discount / 100
+            txtTotalPrice.Text = cost
+        End If
+
+    End Sub
+
+    Private Sub txtShipFee_TextChanged(sender As Object, e As EventArgs) Handles txtShipFee.TextChanged
+        If txtShipFee.Enabled = True Then
+            CalculateTotalPrice()
+        End If
+
+    End Sub
+
+    Private Sub txtDiscount_TextChanged(sender As Object, e As EventArgs) Handles txtDiscount.TextChanged
+        If txtDiscount.Enabled = True Then
+            CalculateTotalPrice()
+        End If
+    End Sub
+
 End Class

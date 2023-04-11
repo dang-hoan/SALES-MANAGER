@@ -27,10 +27,28 @@ Public Class clsCBB
         taWareHouse.Fill(ds1.CBBWareHouse)
         Return ds1
     End Function
+    Public Function GetCBBWareHouseOfProduct(ByVal productId As String) As CBB
+        Dim ds1 As New CBB
+        taWareHouse.Connection = conn
+        taWareHouse.FillByWareHousesOfAProduct(ds1.CBBWareHouse, productId)
+        Return ds1
+    End Function
     Public Function GetCBBProduct() As CBB
         Dim ds1 As New CBB
         taProduct.Connection = conn
         taProduct.Fill(ds1.CBBProduct)
+        Return ds1
+    End Function
+    Public Function GetCBBProductOfWareHouse(ByVal warehouseId As String) As CBB
+        Dim ds1 As New CBB
+        taProduct.Connection = conn
+        taProduct.FillByProductsOfAWareHouse(ds1.CBBProduct, warehouseId)
+        Return ds1
+    End Function
+    Public Function GetCBBSaleDetail(ByVal warehouseId As String) As CBB
+        Dim ds1 As New CBB
+        'taProduct.Connection = conn
+        'taProduct.Fi(ds1.CBBProduct, warehouseId)
         Return ds1
     End Function
     Public Function GetCBBCategory() As CBB
