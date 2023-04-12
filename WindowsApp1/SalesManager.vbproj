@@ -134,6 +134,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ProductSearch.Designer.vb">
+      <DependentUpon>ProductSearch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ProductSearch.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="OrderSearch.Designer.vb">
       <DependentUpon>OrderSearch.vb</DependentUpon>
     </Compile>
@@ -174,6 +180,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductSearch.resx">
+      <DependentUpon>ProductSearch.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrderSearch.resx">
       <DependentUpon>OrderSearch.vb</DependentUpon>

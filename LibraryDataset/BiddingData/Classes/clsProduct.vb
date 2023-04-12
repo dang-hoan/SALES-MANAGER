@@ -87,6 +87,56 @@ Public Class clsProduct
         taCostProduct.Connection = conn
         Return taCostProduct.GetCostOfProduct(productId)
     End Function
+    Public Function SearchProduct(ByVal Id As Long, ByVal ProductName As String, ByVal SupplierId As Long, ByVal CategoryId As Long,
+                                  ByVal ProductPrice As Double, ByVal ProductStatusId As Integer, ByVal DiscountPercent As Double,
+                                  ByVal WareHouseId As Long, ByVal Total As Double) As Product.ProductSalesDetailDataTable
+        Dim ds As New Product
 
+        Dim cmd = conn.CreateCommand()
+
+        cmd.CommandText = "SELECT Product.Id, Product.ProductName, Product.SupplierId, Product.CategoryId,
+                        Product.ProductPrice, Product.UnitPrice, Product.ProductStatusId, Product.DiscountPercent, Product.Rating,
+                        Product.ImageId, SalesDetail.WareHouseId, SalesDetail.Total
+                    FROM   Product LEFT OUTER JOIN
+                            SalesDetail ON Product.Id = SalesDetail.ProductId
+                    WHERE (Product.Id = @Id AND @IsIdEntered) AND Product.ProductName LIKE @ProductName AND
+                            (Product.SupplierId = @SupplierId AND @IsSupplierIdEntered) AND (Product.CategoryId = @CategoryId
+                            AND @IsCategoryIdEntered) AND (Product.ProductPrice = @ProductPrice AND @IsProductPriceEntered) 
+                            AND (Product.ProductStatusId = @ProductStatusId AND @IsProductStatusIdEntered) 
+                            AND (Product.DiscountPercent = @DiscountPercent AND @IsDiscountPercentEntered)
+                            AND (SalesDetail.WareHouseId = @WareHouseId AND @IsWareHouseIdEntered) AND (SalesDetail.Total = @Total AND @IsTotalEntered)"
+
+        taProductSalesDetail.Connection = conn
+        'command.CommandType = CommandType.StoredProcedure
+        cmd.Parameters.AddWithValue("@Id", Id)
+        cmd.Parameters.AddWithValue("@ProductName", $"%{ProductName}%")
+        cmd.Parameters.AddWithValue("@SupplierId", SupplierId)
+        cmd.Parameters.AddWithValue("@CategoryId", CategoryId)
+        cmd.Parameters.AddWithValue("@ProductPrice", ProductPrice)
+        cmd.Parameters.AddWithValue("@ProductStatusId", ProductStatusId)
+        cmd.Parameters.AddWithValue("@DiscountPercent", DiscountPercent)
+        cmd.Parameters.AddWithValue("@WareHouseId", WareHouseId)
+        cmd.Parameters.AddWithValue("@Total", Total)
+        cmd.Parameters.AddWithValue("@IsIdEntered", Id = -1)
+        cmd.Parameters.AddWithValue("@IsSupplierIdEntered", SupplierId = -1)
+        cmd.Parameters.AddWithValue("@IsCategoryIdEntered", CategoryId = -1)
+        cmd.Parameters.AddWithValue("@IsProductPriceEntered", ProductPrice = -1)
+        cmd.Parameters.AddWithValue("@IsProductStatusIdEntered", ProductStatusId = -1)
+        cmd.Parameters.AddWithValue("@IsDiscountPercentEntered", DiscountPercent = -1)
+        cmd.Parameters.AddWithValue("@IsWareHouseIdEntered", WareHouseId = -1)
+        cmd.Parameters.AddWithValue("@IsTotalEntered", Total = -1)
+
+        Dim tmp = cmd.CommandText.ToString()
+        For Each p As SqlParameter In cmd.Parameters
+            tmp = tmp.Replace(p.ParameterName.ToString(), "'" & p.Value.ToString() & "'")
+        Next
+        Console.WriteLine(tmp)
+
+        taProductSalesDetail.Adapter.SelectCommand = cmd
+        taProductSalesDetail.Adapter.Fill(ds.ProductSalesDetail)
+
+        Return ds.ProductSalesDetail
+
+    End Function
 
 End Class

@@ -41,7 +41,7 @@ Partial Class MainForm
         Me.srcMain = New System.Windows.Forms.Panel()
         Me.panelWelcome = New System.Windows.Forms.Panel()
         Me.pictureMain = New System.Windows.Forms.PictureBox()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.labHello = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.menuStrip.SuspendLayout()
         Me.srcMain.SuspendLayout()
@@ -148,25 +148,25 @@ Partial Class MainForm
         '
         Me.ToolStripMenuItem8.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem9, Me.ToolStripMenuItem10, Me.btnSearchOrder})
         Me.ToolStripMenuItem8.Name = "ToolStripMenuItem8"
-        Me.ToolStripMenuItem8.Size = New System.Drawing.Size(270, 34)
+        Me.ToolStripMenuItem8.Size = New System.Drawing.Size(166, 34)
         Me.ToolStripMenuItem8.Text = "Search"
         '
         'ToolStripMenuItem9
         '
         Me.ToolStripMenuItem9.Name = "ToolStripMenuItem9"
-        Me.ToolStripMenuItem9.Size = New System.Drawing.Size(270, 34)
+        Me.ToolStripMenuItem9.Size = New System.Drawing.Size(234, 34)
         Me.ToolStripMenuItem9.Text = "Search client"
         '
         'ToolStripMenuItem10
         '
         Me.ToolStripMenuItem10.Name = "ToolStripMenuItem10"
-        Me.ToolStripMenuItem10.Size = New System.Drawing.Size(270, 34)
+        Me.ToolStripMenuItem10.Size = New System.Drawing.Size(234, 34)
         Me.ToolStripMenuItem10.Text = "Search product"
         '
         'btnSearchOrder
         '
         Me.btnSearchOrder.Name = "btnSearchOrder"
-        Me.btnSearchOrder.Size = New System.Drawing.Size(270, 34)
+        Me.btnSearchOrder.Size = New System.Drawing.Size(234, 34)
         Me.btnSearchOrder.Text = "Search order "
         '
         'btnStatistic
@@ -219,7 +219,7 @@ Partial Class MainForm
         'panelWelcome
         '
         Me.panelWelcome.Controls.Add(Me.pictureMain)
-        Me.panelWelcome.Controls.Add(Me.Label2)
+        Me.panelWelcome.Controls.Add(Me.labHello)
         Me.panelWelcome.Controls.Add(Me.Label1)
         Me.panelWelcome.Location = New System.Drawing.Point(0, 0)
         Me.panelWelcome.Name = "panelWelcome"
@@ -236,16 +236,16 @@ Partial Class MainForm
         Me.pictureMain.TabIndex = 2
         Me.pictureMain.TabStop = False
         '
-        'Label2
+        'labHello
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Georgia", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.Green
-        Me.Label2.Location = New System.Drawing.Point(42, 41)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(204, 38)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Hello Hoan"
+        Me.labHello.AutoSize = True
+        Me.labHello.Font = New System.Drawing.Font("Georgia", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labHello.ForeColor = System.Drawing.Color.Green
+        Me.labHello.Location = New System.Drawing.Point(42, 41)
+        Me.labHello.Name = "labHello"
+        Me.labHello.Size = New System.Drawing.Size(204, 38)
+        Me.labHello.TabIndex = 1
+        Me.labHello.Text = "Hello Hoan"
         '
         'Label1
         '
@@ -306,6 +306,6 @@ Partial Class MainForm
     Private WithEvents btnExit As ToolStripMenuItem
     Friend WithEvents Label1 As Label
     Friend WithEvents pictureMain As PictureBox
-    Friend WithEvents Label2 As Label
+    Friend WithEvents labHello As Label
     Friend WithEvents panelWelcome As Panel
 End Class

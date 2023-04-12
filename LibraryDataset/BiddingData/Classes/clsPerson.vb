@@ -4,6 +4,7 @@ Imports System.Data.SqlClient
 Public Class clsPerson
     Dim ta As New _PersonTableAdapters.PersonTableAdapter
     Dim taRole As New _PersonTableAdapters.RoleTableAdapter
+    Dim taName As New _PersonTableAdapters.NameTableAdapter
 
     Private strConnTrans As String
     Private strAuditTrans As String
@@ -15,6 +16,10 @@ Public Class clsPerson
         conn = New SqlConnection(strConn)
         connTransaction = New SqlConnection(strConnTransaction)
     End Sub
+
+    Public Function GetName(ByVal userName) As String
+        Return taName.GetData(userName).Rows(0)(0)
+    End Function
 
     Public Function GetCustomers() As _Person
         Dim ds1 As New _Person

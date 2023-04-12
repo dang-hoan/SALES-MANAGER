@@ -231,9 +231,9 @@ Partial Class WarehouseReport
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.Red
-        Me.Label3.Location = New System.Drawing.Point(240, 725)
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.LightSeaGreen
+        Me.Label3.Location = New System.Drawing.Point(240, 739)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(488, 32)
         Me.Label3.TabIndex = 17
@@ -243,7 +243,7 @@ Partial Class WarehouseReport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(969, 766)
+        Me.ClientSize = New System.Drawing.Size(969, 816)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.chartReport)
         Me.Controls.Add(Me.panel3)

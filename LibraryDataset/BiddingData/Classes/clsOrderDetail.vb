@@ -87,35 +87,71 @@ Public Class clsOrderDetail
         Return taOrderDetailView.GetData()
     End Function
     Public Function SearchOrder(ByVal Id As Long, ByVal CustomerName As String, ByVal OrderDate As Date, ByVal ShipperId As String,
-                                ByVal ShipDate As Date, ByVal ShipAddress As String, ByVal StatusId As Integer, ByVal PaymentMethod As String, ByVal searchByDate As Boolean) As OrderDetail.OrderDataTable
+                                ByVal ShipDate As Date, ByVal ShipAddress As String, ByVal StatusId As Integer, ByVal PaymentMethod As String,
+                                ByVal searchByOrderDate As Boolean, ByVal searchByShipDate As Boolean) As OrderDetail.OrderDataTable
         Dim ds As New OrderDetail
 
-        Dim shipIdStr = "AND ShipperId = " & ShipperId
-        Dim statusIdStr = "AND StatusId = " & StatusId
+        Dim cmd = conn.CreateCommand()
 
-        Dim dateStr = "AND OrderDate = " & OrderDate & " AND 
-                    ShipDate = " & ShipDate
+        Dim code = "AND Id = @Id "
+        Dim shipIdStr = "AND ShipperId = @ShipperId "
+        Dim statusIdStr = "AND StatusId = @StatusId "
+
+        Dim dateOrderStr = "AND DATEPART(DAY, OrderDate) = @OrderDay AND DATEPART(MONTH, OrderDate) = @OrderMonth AND DATEPART(YEAR, OrderDate) = @OrderYear "
+        Dim dateShipStr = "AND DATEPART(DAY, ShipDate) = @ShipDay AND DATEPART(MONTH, ShipDate) = @ShipMonth AND DATEPART(YEAR, ShipDate) = @ShipYear "
+
+        If Id = -1 Then
+            code = ""
+        Else
+            cmd.Parameters.AddWithValue("@Id", Id)
+        End If
 
         If ShipperId Is Nothing Then
             shipIdStr = ""
+        Else
+            cmd.Parameters.AddWithValue("@ShipperId", ShipperId)
         End If
 
         If StatusId = -1 Then
             statusIdStr = ""
+        Else
+            cmd.Parameters.AddWithValue("@StatusId", StatusId)
         End If
 
-        If searchByDate = False Then
-            dateStr = ""
+        If searchByOrderDate = False Then
+            dateOrderStr = ""
+        Else
+            cmd.Parameters.AddWithValue("@OrderDay", OrderDate.Day)
+            cmd.Parameters.AddWithValue("@OrderMonth", OrderDate.Month)
+            cmd.Parameters.AddWithValue("@OrderYear", OrderDate.Year)
         End If
 
-        Dim query = "SELECT Id, CustomerName, OrderDate, ShipperId, ShipDate, ShipAddress, ShipPostalCode, ShipPrice, StatusId, PrivateDiscount, TotalPrice, PaymentMethod
+        If searchByShipDate = False Then
+            dateShipStr = ""
+        Else
+            cmd.Parameters.AddWithValue("@ShipDay", ShipDate.Day)
+            cmd.Parameters.AddWithValue("@ShipMonth", ShipDate.Month)
+            cmd.Parameters.AddWithValue("@ShipYear", ShipDate.Year)
+        End If
+
+        cmd.CommandText = "SELECT Id, CustomerName, OrderDate, ShipperId, ShipDate, ShipAddress, ShipPostalCode, ShipPrice, StatusId, PrivateDiscount, TotalPrice, PaymentMethod
                     FROM   [Order]
-                    WHERE Id = " & Id & shipIdStr & " AND (ShipAddress LIKE '%' " & ShipAddress & " + '%') " & StatusId & " AND (PaymentMethod LIKE '%' + " & PaymentMethod & " + '%') AND (CustomerName LIKE '%' + " & CustomerName & " + '%') " & dateStr
-        taOrder.Connection = conn
+                    WHERE (ShipAddress LIKE @ShipAddress) AND (PaymentMethod LIKE @PaymentMethod) AND (CustomerName LIKE @CustomerName) " & code & shipIdStr & statusIdStr & dateOrderStr & dateShipStr
 
-        Dim command As New SqlCommand(query, conn)
-        taOrder.Adapter.SelectCommand = command
-        taOrder.Fill(ds.Order)
+        taOrder.Connection = conn
+        'command.CommandType = CommandType.StoredProcedure
+        cmd.Parameters.AddWithValue("@ShipAddress", $"%{ShipAddress}%")
+        cmd.Parameters.AddWithValue("@PaymentMethod", $"%{PaymentMethod}%")
+        cmd.Parameters.AddWithValue("@CustomerName", $"%{CustomerName}%")
+
+        Dim tmp = cmd.CommandText.ToString()
+        For Each p As SqlParameter In cmd.Parameters
+            tmp = tmp.Replace(p.ParameterName.ToString(), "'" & p.Value.ToString() & "'")
+        Next
+        Console.WriteLine(tmp)
+
+        taOrder.Adapter.SelectCommand = cmd
+        taOrder.Adapter.Fill(ds.Order)
 
         Return ds.Order
 

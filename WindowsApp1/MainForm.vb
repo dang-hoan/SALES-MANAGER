@@ -1,6 +1,10 @@
-﻿Public Class MainForm
-
+﻿Imports LibraryCommon
+Imports LibraryDataset
+Public Class MainForm
+    Private conn As New connCommon()
+    Private clsPerson As New clsPerson(conn.connSales.ConnectionString)
     Private f As Form = Nothing
+    Private userWantLogout = False
     Private Sub btnCategoryCustomer_Click(sender As Object, e As EventArgs) Handles btnCategoryCustomer.Click
         Dim frmCustomer As New CustomerCategory
         ShowForm(frmCustomer)
@@ -8,6 +12,7 @@
 
     Private Sub ShowForm(subForm As Form)
         If subForm Is Nothing Then
+            labHello.Text = "Hello " + clsPerson.GetName(LoginForm.PropUsername)
             panelWelcome.Visible = True
             Exit Sub
         Else
@@ -26,7 +31,9 @@
     End Sub
 
     Private Sub MainForm_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
-        Application.Exit()
+        If Not userWantLogout Then
+            Application.Exit()
+        End If
     End Sub
 
     Private Sub productToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles productToolStripMenuItem.Click
@@ -54,5 +61,11 @@
 
     Private Sub btnSearchOrder_Click(sender As Object, e As EventArgs) Handles btnSearchOrder.Click
         ShowForm(New OrderSearch)
+    End Sub
+
+    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+        userWantLogout = True
+        Me.Close()
+        LoginForm.Show()
     End Sub
 End Class

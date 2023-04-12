@@ -150,6 +150,7 @@ Partial Class LoginForm
         Me.Controls.Add(Me.PictureBox1)
         Me.DoubleBuffered = True
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.KeyPreview = True
         Me.Name = "LoginForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Login"

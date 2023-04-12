@@ -1354,20 +1354,6 @@ Partial Public Class OrderDetail
         
         Private columnNote As Global.System.Data.DataColumn
         
-        Private columnCreateDate As Global.System.Data.DataColumn
-        
-        Private columnCreateBy As Global.System.Data.DataColumn
-        
-        Private columnUpdateDate As Global.System.Data.DataColumn
-        
-        Private columnUpdateBy As Global.System.Data.DataColumn
-        
-        Private columnDeleteDate As Global.System.Data.DataColumn
-        
-        Private columnDeleteBy As Global.System.Data.DataColumn
-        
-        Private columnIsDelete As Global.System.Data.DataColumn
-        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -1508,62 +1494,6 @@ Partial Public Class OrderDetail
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property CreateDateColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCreateDate
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property CreateByColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCreateBy
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property UpdateDateColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnUpdateDate
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property UpdateByColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnUpdateBy
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property DeleteDateColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDeleteDate
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property DeleteByColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDeleteBy
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property IsDeleteColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnIsDelete
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1600,28 +1530,9 @@ Partial Public Class OrderDetail
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddOrderRow( _
-                    ByVal CustomerName As String,  _
-                    ByVal OrderDate As Date,  _
-                    ByVal ShipperId As String,  _
-                    ByVal ShipDate As Date,  _
-                    ByVal ShipAddress As String,  _
-                    ByVal ShipPostalCode As String,  _
-                    ByVal ShipPrice As Decimal,  _
-                    ByVal StatusId As Integer,  _
-                    ByVal PrivateDiscount As Double,  _
-                    ByVal TotalPrice As Decimal,  _
-                    ByVal PaymentMethod As String,  _
-                    ByVal Note As String,  _
-                    ByVal CreateDate As Date,  _
-                    ByVal CreateBy As String,  _
-                    ByVal UpdateDate As Date,  _
-                    ByVal UpdateBy As String,  _
-                    ByVal DeleteDate As Date,  _
-                    ByVal DeleteBy As String,  _
-                    ByVal IsDelete As Boolean) As OrderRow
+        Public Overloads Function AddOrderRow(ByVal CustomerName As String, ByVal OrderDate As Date, ByVal ShipperId As String, ByVal ShipDate As Date, ByVal ShipAddress As String, ByVal ShipPostalCode As String, ByVal ShipPrice As Decimal, ByVal StatusId As Integer, ByVal PrivateDiscount As Double, ByVal TotalPrice As Decimal, ByVal PaymentMethod As String, ByVal Note As String) As OrderRow
             Dim rowOrderRow As OrderRow = CType(Me.NewRow,OrderRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, CustomerName, OrderDate, ShipperId, ShipDate, ShipAddress, ShipPostalCode, ShipPrice, StatusId, PrivateDiscount, TotalPrice, PaymentMethod, Note, CreateDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete}
+            Dim columnValuesArray() As Object = New Object() {Nothing, CustomerName, OrderDate, ShipperId, ShipDate, ShipAddress, ShipPostalCode, ShipPrice, StatusId, PrivateDiscount, TotalPrice, PaymentMethod, Note}
             rowOrderRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowOrderRow)
             Return rowOrderRow
@@ -1663,13 +1574,6 @@ Partial Public Class OrderDetail
             Me.columnTotalPrice = MyBase.Columns("TotalPrice")
             Me.columnPaymentMethod = MyBase.Columns("PaymentMethod")
             Me.columnNote = MyBase.Columns("Note")
-            Me.columnCreateDate = MyBase.Columns("CreateDate")
-            Me.columnCreateBy = MyBase.Columns("CreateBy")
-            Me.columnUpdateDate = MyBase.Columns("UpdateDate")
-            Me.columnUpdateBy = MyBase.Columns("UpdateBy")
-            Me.columnDeleteDate = MyBase.Columns("DeleteDate")
-            Me.columnDeleteBy = MyBase.Columns("DeleteBy")
-            Me.columnIsDelete = MyBase.Columns("IsDelete")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1701,20 +1605,6 @@ Partial Public Class OrderDetail
             MyBase.Columns.Add(Me.columnPaymentMethod)
             Me.columnNote = New Global.System.Data.DataColumn("Note", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNote)
-            Me.columnCreateDate = New Global.System.Data.DataColumn("CreateDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCreateDate)
-            Me.columnCreateBy = New Global.System.Data.DataColumn("CreateBy", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCreateBy)
-            Me.columnUpdateDate = New Global.System.Data.DataColumn("UpdateDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnUpdateDate)
-            Me.columnUpdateBy = New Global.System.Data.DataColumn("UpdateBy", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnUpdateBy)
-            Me.columnDeleteDate = New Global.System.Data.DataColumn("DeleteDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDeleteDate)
-            Me.columnDeleteBy = New Global.System.Data.DataColumn("DeleteBy", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDeleteBy)
-            Me.columnIsDelete = New Global.System.Data.DataColumn("IsDelete", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnIsDelete)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnId}, true))
             Me.columnId.AutoIncrement = true
             Me.columnId.AutoIncrementSeed = -1
@@ -1736,9 +1626,6 @@ Partial Public Class OrderDetail
             Me.columnPaymentMethod.AllowDBNull = false
             Me.columnPaymentMethod.MaxLength = 50
             Me.columnNote.MaxLength = 255
-            Me.columnCreateBy.MaxLength = 40
-            Me.columnUpdateBy.MaxLength = 40
-            Me.columnDeleteBy.MaxLength = 40
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3598,111 +3485,6 @@ Partial Public Class OrderDetail
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property CreateDate() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tableOrder.CreateDateColumn),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'CreateDate' in table 'Order' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableOrder.CreateDateColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property CreateBy() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableOrder.CreateByColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'CreateBy' in table 'Order' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableOrder.CreateByColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property UpdateDate() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tableOrder.UpdateDateColumn),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'UpdateDate' in table 'Order' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableOrder.UpdateDateColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property UpdateBy() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableOrder.UpdateByColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'UpdateBy' in table 'Order' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableOrder.UpdateByColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property DeleteDate() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tableOrder.DeleteDateColumn),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'DeleteDate' in table 'Order' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableOrder.DeleteDateColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property DeleteBy() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableOrder.DeleteByColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'DeleteBy' in table 'Order' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableOrder.DeleteByColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property IsDelete() As Boolean
-            Get
-                Try 
-                    Return CType(Me(Me.tableOrder.IsDeleteColumn),Boolean)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'IsDelete' in table 'Order' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableOrder.IsDeleteColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsShipDateNull() As Boolean
             Return Me.IsNull(Me.tableOrder.ShipDateColumn)
         End Function
@@ -3747,90 +3529,6 @@ Partial Public Class OrderDetail
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetNoteNull()
             Me(Me.tableOrder.NoteColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsCreateDateNull() As Boolean
-            Return Me.IsNull(Me.tableOrder.CreateDateColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetCreateDateNull()
-            Me(Me.tableOrder.CreateDateColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsCreateByNull() As Boolean
-            Return Me.IsNull(Me.tableOrder.CreateByColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetCreateByNull()
-            Me(Me.tableOrder.CreateByColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsUpdateDateNull() As Boolean
-            Return Me.IsNull(Me.tableOrder.UpdateDateColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetUpdateDateNull()
-            Me(Me.tableOrder.UpdateDateColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsUpdateByNull() As Boolean
-            Return Me.IsNull(Me.tableOrder.UpdateByColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetUpdateByNull()
-            Me(Me.tableOrder.UpdateByColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsDeleteDateNull() As Boolean
-            Return Me.IsNull(Me.tableOrder.DeleteDateColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetDeleteDateNull()
-            Me(Me.tableOrder.DeleteDateColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsDeleteByNull() As Boolean
-            Return Me.IsNull(Me.tableOrder.DeleteByColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetDeleteByNull()
-            Me(Me.tableOrder.DeleteByColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsIsDeleteNull() As Boolean
-            Return Me.IsNull(Me.tableOrder.IsDeleteColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetIsDeleteNull()
-            Me(Me.tableOrder.IsDeleteColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -5267,13 +4965,6 @@ Namespace OrderDetailTableAdapters
             tableMapping.ColumnMappings.Add("TotalPrice", "TotalPrice")
             tableMapping.ColumnMappings.Add("PaymentMethod", "PaymentMethod")
             tableMapping.ColumnMappings.Add("Note", "Note")
-            tableMapping.ColumnMappings.Add("CreateDate", "CreateDate")
-            tableMapping.ColumnMappings.Add("CreateBy", "CreateBy")
-            tableMapping.ColumnMappings.Add("UpdateDate", "UpdateDate")
-            tableMapping.ColumnMappings.Add("UpdateBy", "UpdateBy")
-            tableMapping.ColumnMappings.Add("DeleteDate", "DeleteDate")
-            tableMapping.ColumnMappings.Add("DeleteBy", "DeleteBy")
-            tableMapping.ColumnMappings.Add("IsDelete", "IsDelete")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -5286,15 +4977,7 @@ Namespace OrderDetailTableAdapters
                 "riginal_StatusId) AND ((@IsNull_PrivateDiscount = 1 AND [PrivateDiscount] IS NUL"& _ 
                 "L) OR ([PrivateDiscount] = @Original_PrivateDiscount)) AND ([TotalPrice] = @Orig"& _ 
                 "inal_TotalPrice) AND ([PaymentMethod] = @Original_PaymentMethod) AND ((@IsNull_N"& _ 
-                "ote = 1 AND [Note] IS NULL) OR ([Note] = @Original_Note)) AND ((@IsNull_CreateDa"& _ 
-                "te = 1 AND [CreateDate] IS NULL) OR ([CreateDate] = @Original_CreateDate)) AND ("& _ 
-                "(@IsNull_CreateBy = 1 AND [CreateBy] IS NULL) OR ([CreateBy] = @Original_CreateB"& _ 
-                "y)) AND ((@IsNull_UpdateDate = 1 AND [UpdateDate] IS NULL) OR ([UpdateDate] = @O"& _ 
-                "riginal_UpdateDate)) AND ((@IsNull_UpdateBy = 1 AND [UpdateBy] IS NULL) OR ([Upd"& _ 
-                "ateBy] = @Original_UpdateBy)) AND ((@IsNull_DeleteDate = 1 AND [DeleteDate] IS N"& _ 
-                "ULL) OR ([DeleteDate] = @Original_DeleteDate)) AND ((@IsNull_DeleteBy = 1 AND [D"& _ 
-                "eleteBy] IS NULL) OR ([DeleteBy] = @Original_DeleteBy)) AND ((@IsNull_IsDelete ="& _ 
-                " 1 AND [IsDelete] IS NULL) OR ([IsDelete] = @Original_IsDelete)))"
+                "ote = 1 AND [Note] IS NULL) OR ([Note] = @Original_Note)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Id", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CustomerName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CustomerName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -5313,33 +4996,15 @@ Namespace OrderDetailTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PaymentMethod", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PaymentMethod", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Note", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Note", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Note", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Note", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_CreateDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CreateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_CreateBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CreateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_UpdateDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_UpdateBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UpdateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DeleteDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DeleteDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DeleteBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DeleteBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_IsDelete", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IsDelete", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IsDelete", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IsDelete", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [Order] ([CustomerName], [OrderDate], [ShipperId], [ShipDate], [ShipA"& _ 
                 "ddress], [ShipPostalCode], [ShipPrice], [StatusId], [PrivateDiscount], [TotalPri"& _ 
-                "ce], [PaymentMethod], [Note], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy]"& _ 
-                ", [DeleteDate], [DeleteBy], [IsDelete]) VALUES (@CustomerName, @OrderDate, @Ship"& _ 
-                "perId, @ShipDate, @ShipAddress, @ShipPostalCode, @ShipPrice, @StatusId, @Private"& _ 
-                "Discount, @TotalPrice, @PaymentMethod, @Note, @CreateDate, @CreateBy, @UpdateDat"& _ 
-                "e, @UpdateBy, @DeleteDate, @DeleteBy, @IsDelete);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, CustomerName, Orde"& _ 
-                "rDate, ShipperId, ShipDate, ShipAddress, ShipPostalCode, ShipPrice, StatusId, Pr"& _ 
-                "ivateDiscount, TotalPrice, PaymentMethod, Note, CreateDate, CreateBy, UpdateDate"& _ 
-                ", UpdateBy, DeleteDate, DeleteBy, IsDelete FROM [Order] WHERE (Id = SCOPE_IDENTI"& _ 
-                "TY())"
+                "ce], [PaymentMethod], [Note]) VALUES (@CustomerName, @OrderDate, @ShipperId, @Sh"& _ 
+                "ipDate, @ShipAddress, @ShipPostalCode, @ShipPrice, @StatusId, @PrivateDiscount, "& _ 
+                "@TotalPrice, @PaymentMethod, @Note);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, CustomerName, OrderDate, Shippe"& _ 
+                "rId, ShipDate, ShipAddress, ShipPostalCode, ShipPrice, StatusId, PrivateDiscount"& _ 
+                ", TotalPrice, PaymentMethod, Note FROM [Order] WHERE (Id = SCOPE_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CustomerName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CustomerName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OrderDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OrderDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -5353,43 +5018,25 @@ Namespace OrderDetailTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TotalPrice", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 8, 2, "TotalPrice", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PaymentMethod", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PaymentMethod", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Note", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Note", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeleteDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeleteBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsDelete", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IsDelete", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [Order] SET [CustomerName] = @CustomerName, [OrderDate] = @OrderDate, [Shi"& _ 
                 "pperId] = @ShipperId, [ShipDate] = @ShipDate, [ShipAddress] = @ShipAddress, [Shi"& _ 
                 "pPostalCode] = @ShipPostalCode, [ShipPrice] = @ShipPrice, [StatusId] = @StatusId"& _ 
                 ", [PrivateDiscount] = @PrivateDiscount, [TotalPrice] = @TotalPrice, [PaymentMeth"& _ 
-                "od] = @PaymentMethod, [Note] = @Note, [CreateDate] = @CreateDate, [CreateBy] = @"& _ 
-                "CreateBy, [UpdateDate] = @UpdateDate, [UpdateBy] = @UpdateBy, [DeleteDate] = @De"& _ 
-                "leteDate, [DeleteBy] = @DeleteBy, [IsDelete] = @IsDelete WHERE (([Id] = @Origina"& _ 
-                "l_Id) AND ([CustomerName] = @Original_CustomerName) AND ([OrderDate] = @Original"& _ 
-                "_OrderDate) AND ([ShipperId] = @Original_ShipperId) AND ((@IsNull_ShipDate = 1 A"& _ 
-                "ND [ShipDate] IS NULL) OR ([ShipDate] = @Original_ShipDate)) AND ([ShipAddress] "& _ 
-                "= @Original_ShipAddress) AND ((@IsNull_ShipPostalCode = 1 AND [ShipPostalCode] I"& _ 
-                "S NULL) OR ([ShipPostalCode] = @Original_ShipPostalCode)) AND ([ShipPrice] = @Or"& _ 
-                "iginal_ShipPrice) AND ([StatusId] = @Original_StatusId) AND ((@IsNull_PrivateDis"& _ 
-                "count = 1 AND [PrivateDiscount] IS NULL) OR ([PrivateDiscount] = @Original_Priva"& _ 
-                "teDiscount)) AND ([TotalPrice] = @Original_TotalPrice) AND ([PaymentMethod] = @O"& _ 
-                "riginal_PaymentMethod) AND ((@IsNull_Note = 1 AND [Note] IS NULL) OR ([Note] = @"& _ 
-                "Original_Note)) AND ((@IsNull_CreateDate = 1 AND [CreateDate] IS NULL) OR ([Crea"& _ 
-                "teDate] = @Original_CreateDate)) AND ((@IsNull_CreateBy = 1 AND [CreateBy] IS NU"& _ 
-                "LL) OR ([CreateBy] = @Original_CreateBy)) AND ((@IsNull_UpdateDate = 1 AND [Upda"& _ 
-                "teDate] IS NULL) OR ([UpdateDate] = @Original_UpdateDate)) AND ((@IsNull_UpdateB"& _ 
-                "y = 1 AND [UpdateBy] IS NULL) OR ([UpdateBy] = @Original_UpdateBy)) AND ((@IsNul"& _ 
-                "l_DeleteDate = 1 AND [DeleteDate] IS NULL) OR ([DeleteDate] = @Original_DeleteDa"& _ 
-                "te)) AND ((@IsNull_DeleteBy = 1 AND [DeleteBy] IS NULL) OR ([DeleteBy] = @Origin"& _ 
-                "al_DeleteBy)) AND ((@IsNull_IsDelete = 1 AND [IsDelete] IS NULL) OR ([IsDelete] "& _ 
-                "= @Original_IsDelete)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, CustomerName, OrderDate, ShipperId, ShipDat"& _ 
-                "e, ShipAddress, ShipPostalCode, ShipPrice, StatusId, PrivateDiscount, TotalPrice"& _ 
-                ", PaymentMethod, Note, CreateDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, D"& _ 
-                "eleteBy, IsDelete FROM [Order] WHERE (Id = @Id)"
+                "od] = @PaymentMethod, [Note] = @Note WHERE (([Id] = @Original_Id) AND ([Customer"& _ 
+                "Name] = @Original_CustomerName) AND ([OrderDate] = @Original_OrderDate) AND ([Sh"& _ 
+                "ipperId] = @Original_ShipperId) AND ((@IsNull_ShipDate = 1 AND [ShipDate] IS NUL"& _ 
+                "L) OR ([ShipDate] = @Original_ShipDate)) AND ([ShipAddress] = @Original_ShipAddr"& _ 
+                "ess) AND ((@IsNull_ShipPostalCode = 1 AND [ShipPostalCode] IS NULL) OR ([ShipPos"& _ 
+                "talCode] = @Original_ShipPostalCode)) AND ([ShipPrice] = @Original_ShipPrice) AN"& _ 
+                "D ([StatusId] = @Original_StatusId) AND ((@IsNull_PrivateDiscount = 1 AND [Priva"& _ 
+                "teDiscount] IS NULL) OR ([PrivateDiscount] = @Original_PrivateDiscount)) AND ([T"& _ 
+                "otalPrice] = @Original_TotalPrice) AND ([PaymentMethod] = @Original_PaymentMetho"& _ 
+                "d) AND ((@IsNull_Note = 1 AND [Note] IS NULL) OR ([Note] = @Original_Note)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"S"& _ 
+                "ELECT Id, CustomerName, OrderDate, ShipperId, ShipDate, ShipAddress, ShipPostalC"& _ 
+                "ode, ShipPrice, StatusId, PrivateDiscount, TotalPrice, PaymentMethod, Note FROM "& _ 
+                "[Order] WHERE (Id = @Id)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CustomerName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CustomerName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OrderDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OrderDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -5403,13 +5050,6 @@ Namespace OrderDetailTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TotalPrice", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 8, 2, "TotalPrice", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PaymentMethod", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PaymentMethod", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Note", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Note", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeleteDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeleteBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsDelete", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IsDelete", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Id", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CustomerName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CustomerName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_OrderDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OrderDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -5427,20 +5067,6 @@ Namespace OrderDetailTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PaymentMethod", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PaymentMethod", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Note", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Note", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Note", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Note", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_CreateDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CreateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_CreateBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CreateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_UpdateDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_UpdateBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UpdateBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DeleteDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DeleteDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DeleteBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DeleteBy", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_IsDelete", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IsDelete", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IsDelete", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IsDelete", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
@@ -5454,13 +5080,12 @@ Namespace OrderDetailTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(6) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(4) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT Id, CustomerName, OrderDate, ShipperId, ShipDate, ShipAddress, ShipPostalC"& _ 
-                "ode, ShipPrice, StatusId, PrivateDiscount, TotalPrice, PaymentMethod, Note, Crea"& _ 
-                "teDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete FROM [Ord"& _ 
-                "er]"
+                "ode, ShipPrice, StatusId, PrivateDiscount, TotalPrice, PaymentMethod, Note"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM"& _ 
+                "   [Order]"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
@@ -5475,64 +5100,30 @@ Namespace OrderDetailTableAdapters
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT Id, CustomerName, OrderDate, ShipperId, ShipDate, ShipAddress, ShipPostalC"& _ 
-                "ode, ShipPrice, StatusId, PrivateDiscount, TotalPrice, PaymentMethod, Note, Crea"& _ 
-                "teDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   ["& _ 
-                "Order]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Id = @Id) AND (ShipperId = @ShipperId) AND (ShipAddress LIKE '%' "& _ 
-                "+ @ShipAddress + '%') AND (StatusId = @StatusId) AND (PaymentMethod LIKE '%' + @"& _ 
-                "PaymentMethod + '%') AND (CustomerName LIKE '%' + @CustomerName + '%') AND (Orde"& _ 
-                "rDate = @OrderDate) AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             (ShipDate = @ShipDate) AND (ShipperId <> "& _ 
-                "- 1)"
-            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipperId", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "ShipperId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipAddress", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "ShipAddress", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@StatusId", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "StatusId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PaymentMethod", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "PaymentMethod", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CustomerName", Global.System.Data.SqlDbType.NVarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "CustomerName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OrderDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "OrderDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "ShipDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "SELECT Id, CustomerName, OrderDate, ShipperId, ShipDate, ShipAddress, ShipPostalC"& _ 
-                "ode, ShipPrice, StatusId, PrivateDiscount, TotalPrice, PaymentMethod, Note, Crea"& _ 
-                "teDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   ["& _ 
-                "Order]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Id = @Id) AND (ShipperId = @ShipperId) AND (ShipAddress LIKE '%' "& _ 
-                "+ @ShipAddress + '%') AND (StatusId = @StatusId) AND (PaymentMethod LIKE '%' + @"& _ 
-                "PaymentMethod + '%') AND (CustomerName LIKE '%' + @CustomerName + '%')"
-            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipperId", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "ShipperId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipAddress", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "ShipAddress", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@StatusId", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "StatusId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PaymentMethod", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "PaymentMethod", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CustomerName", Global.System.Data.SqlDbType.NVarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "CustomerName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(4).Connection = Me.Connection
-            Me._commandCollection(4).CommandText = "INSERT INTO [Order]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             (CustomerName, OrderDate, ShipperId, ShipDate, "& _ 
+            Me._commandCollection(2).CommandText = "INSERT INTO [Order]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             (CustomerName, OrderDate, ShipperId, ShipDate, "& _ 
                 "ShipAddress, ShipPostalCode, ShipPrice, StatusId, PrivateDiscount, TotalPrice, P"& _ 
                 "aymentMethod, Note, CreateDate, CreateBy, IsDelete)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"OUTPUT Inserted.Id"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES "& _ 
                 "(@CustomerName,@OrderDate,@ShipperId,@ShipDate,@ShipAddress,@ShipPostalCode,@Shi"& _ 
                 "pPrice,@StatusId,@PrivateDiscount,@TotalPrice,@PaymentMethod,@Note,@CreateDate,@"& _ 
                 "CreateBy, 'False'); "
-            Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CustomerName", Global.System.Data.SqlDbType.NVarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "CustomerName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OrderDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "OrderDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipperId", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "ShipperId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "ShipDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipAddress", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "ShipAddress", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipPostalCode", Global.System.Data.SqlDbType.VarChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, "ShipPostalCode", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipPrice", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 8, 2, "ShipPrice", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@StatusId", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "StatusId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PrivateDiscount", Global.System.Data.SqlDbType.Float, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "PrivateDiscount", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TotalPrice", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 8, 2, "TotalPrice", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PaymentMethod", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "PaymentMethod", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Note", Global.System.Data.SqlDbType.NVarChar, 255, Global.System.Data.ParameterDirection.Input, 0, 0, "Note", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateBy", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(5).Connection = Me.Connection
-            Me._commandCollection(5).CommandText = "UPDATE [Order]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET       CustomerName = @CustomerName, OrderDate = @OrderDate, S"& _ 
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CustomerName", Global.System.Data.SqlDbType.NVarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "CustomerName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OrderDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "OrderDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipperId", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "ShipperId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "ShipDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipAddress", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "ShipAddress", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipPostalCode", Global.System.Data.SqlDbType.VarChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, "ShipPostalCode", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipPrice", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 8, 2, "ShipPrice", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@StatusId", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "StatusId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PrivateDiscount", Global.System.Data.SqlDbType.Float, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "PrivateDiscount", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TotalPrice", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 8, 2, "TotalPrice", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PaymentMethod", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "PaymentMethod", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Note", Global.System.Data.SqlDbType.NVarChar, 255, Global.System.Data.ParameterDirection.Input, 0, 0, "Note", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateBy", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "UPDATE [Order]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET       CustomerName = @CustomerName, OrderDate = @OrderDate, S"& _ 
                 "hipperId = @ShipperId, ShipDate = @ShipDate, ShipAddress = @ShipAddress, ShipPos"& _ 
                 "talCode = @ShipPostalCode, ShipPrice = @ShipPrice, StatusId = @StatusId, Private"& _ 
                 "Discount = @PrivateDiscount, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             TotalPrice = @TotalPrice, PaymentMet"& _ 
@@ -5541,34 +5132,34 @@ Namespace OrderDetailTableAdapters
                 " ShipAddress, ShipPostalCode, ShipPrice, StatusId, PrivateDiscount, TotalPrice, "& _ 
                 "PaymentMethod, Note, CreateDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, Del"& _ 
                 "eteBy, IsDelete FROM [Order] WHERE (Id = @Id)"
-            Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CustomerName", Global.System.Data.SqlDbType.NVarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "CustomerName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OrderDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "OrderDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipperId", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "ShipperId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "ShipDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipAddress", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "ShipAddress", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipPostalCode", Global.System.Data.SqlDbType.VarChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, "ShipPostalCode", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipPrice", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 8, 2, "ShipPrice", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@StatusId", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "StatusId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PrivateDiscount", Global.System.Data.SqlDbType.Float, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "PrivateDiscount", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TotalPrice", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 8, 2, "TotalPrice", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PaymentMethod", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "PaymentMethod", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Note", Global.System.Data.SqlDbType.NVarChar, 255, Global.System.Data.ParameterDirection.Input, 0, 0, "Note", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateBy", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._commandCollection(6) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(6).Connection = Me.Connection
-            Me._commandCollection(6).CommandText = "UPDATE [Order]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET       StatusId = @StatusId, UpdateDate = @UpdateDate, UpdateB"& _ 
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CustomerName", Global.System.Data.SqlDbType.NVarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "CustomerName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OrderDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "OrderDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipperId", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "ShipperId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "ShipDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipAddress", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "ShipAddress", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipPostalCode", Global.System.Data.SqlDbType.VarChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, "ShipPostalCode", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipPrice", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 8, 2, "ShipPrice", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@StatusId", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "StatusId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PrivateDiscount", Global.System.Data.SqlDbType.Float, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "PrivateDiscount", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TotalPrice", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 8, 2, "TotalPrice", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PaymentMethod", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "PaymentMethod", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Note", Global.System.Data.SqlDbType.NVarChar, 255, Global.System.Data.ParameterDirection.Input, 0, 0, "Note", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateBy", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(4).Connection = Me.Connection
+            Me._commandCollection(4).CommandText = "UPDATE [Order]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET       StatusId = @StatusId, UpdateDate = @UpdateDate, UpdateB"& _ 
                 "y = @UpdateBy"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Id = @Id); "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, CustomerName, OrderDate, ShipperId"& _ 
                 ", ShipDate, ShipAddress, ShipPostalCode, ShipPrice, StatusId, PrivateDiscount, T"& _ 
                 "otalPrice, PaymentMethod, Note, CreateDate, CreateBy, UpdateDate, UpdateBy, Dele"& _ 
                 "teDate, DeleteBy, IsDelete FROM [Order] WHERE (Id = @Id)"
-            Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@StatusId", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "StatusId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateBy", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@StatusId", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "StatusId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateBy", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5590,154 +5181,6 @@ Namespace OrderDetailTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
         Public Overloads Overridable Function GetData() As OrderDetail.OrderDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As OrderDetail.OrderDataTable = New OrderDetail.OrderDataTable()
-            Me.Adapter.Fill(dataTable)
-            Return dataTable
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillBy(ByVal dataTable As OrderDetail.OrderDataTable, ByVal Id As Long, ByVal ShipperId As String, ByVal ShipAddress As String, ByVal StatusId As Integer, ByVal PaymentMethod As String, ByVal CustomerName As String, ByVal OrderDate As Date, ByVal ShipDate As Global.System.Nullable(Of Date)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(2)
-            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Id,Long)
-            If (ShipperId Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("ShipperId")
-            Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(ShipperId,String)
-            End If
-            If (ShipAddress Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("ShipAddress")
-            Else
-                Me.Adapter.SelectCommand.Parameters(2).Value = CType(ShipAddress,String)
-            End If
-            Me.Adapter.SelectCommand.Parameters(3).Value = CType(StatusId,Integer)
-            If (PaymentMethod Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("PaymentMethod")
-            Else
-                Me.Adapter.SelectCommand.Parameters(4).Value = CType(PaymentMethod,String)
-            End If
-            If (CustomerName Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("CustomerName")
-            Else
-                Me.Adapter.SelectCommand.Parameters(5).Value = CType(CustomerName,String)
-            End If
-            Me.Adapter.SelectCommand.Parameters(6).Value = CType(OrderDate,Date)
-            If (ShipDate.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(7).Value = CType(ShipDate.Value,Date)
-            Else
-                Me.Adapter.SelectCommand.Parameters(7).Value = Global.System.DBNull.Value
-            End If
-            If (Me.ClearBeforeFill = true) Then
-                dataTable.Clear
-            End If
-            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
-            Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function SearchOrder(ByVal Id As Long, ByVal ShipperId As String, ByVal ShipAddress As String, ByVal StatusId As Integer, ByVal PaymentMethod As String, ByVal CustomerName As String, ByVal OrderDate As Date, ByVal ShipDate As Global.System.Nullable(Of Date)) As OrderDetail.OrderDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(2)
-            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Id,Long)
-            If (ShipperId Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("ShipperId")
-            Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(ShipperId,String)
-            End If
-            If (ShipAddress Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("ShipAddress")
-            Else
-                Me.Adapter.SelectCommand.Parameters(2).Value = CType(ShipAddress,String)
-            End If
-            Me.Adapter.SelectCommand.Parameters(3).Value = CType(StatusId,Integer)
-            If (PaymentMethod Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("PaymentMethod")
-            Else
-                Me.Adapter.SelectCommand.Parameters(4).Value = CType(PaymentMethod,String)
-            End If
-            If (CustomerName Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("CustomerName")
-            Else
-                Me.Adapter.SelectCommand.Parameters(5).Value = CType(CustomerName,String)
-            End If
-            Me.Adapter.SelectCommand.Parameters(6).Value = CType(OrderDate,Date)
-            If (ShipDate.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(7).Value = CType(ShipDate.Value,Date)
-            Else
-                Me.Adapter.SelectCommand.Parameters(7).Value = Global.System.DBNull.Value
-            End If
-            Dim dataTable As OrderDetail.OrderDataTable = New OrderDetail.OrderDataTable()
-            Me.Adapter.Fill(dataTable)
-            Return dataTable
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillBy1(ByVal dataTable As OrderDetail.OrderDataTable, ByVal Id As Long, ByVal ShipperId As String, ByVal ShipAddress As String, ByVal StatusId As Integer, ByVal PaymentMethod As String, ByVal CustomerName As String) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(3)
-            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Id,Long)
-            If (ShipperId Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("ShipperId")
-            Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(ShipperId,String)
-            End If
-            If (ShipAddress Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("ShipAddress")
-            Else
-                Me.Adapter.SelectCommand.Parameters(2).Value = CType(ShipAddress,String)
-            End If
-            Me.Adapter.SelectCommand.Parameters(3).Value = CType(StatusId,Integer)
-            If (PaymentMethod Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("PaymentMethod")
-            Else
-                Me.Adapter.SelectCommand.Parameters(4).Value = CType(PaymentMethod,String)
-            End If
-            If (CustomerName Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("CustomerName")
-            Else
-                Me.Adapter.SelectCommand.Parameters(5).Value = CType(CustomerName,String)
-            End If
-            If (Me.ClearBeforeFill = true) Then
-                dataTable.Clear
-            End If
-            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
-            Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function SearchNonDate(ByVal Id As Long, ByVal ShipperId As String, ByVal ShipAddress As String, ByVal StatusId As Integer, ByVal PaymentMethod As String, ByVal CustomerName As String) As OrderDetail.OrderDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(3)
-            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Id,Long)
-            If (ShipperId Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("ShipperId")
-            Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(ShipperId,String)
-            End If
-            If (ShipAddress Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("ShipAddress")
-            Else
-                Me.Adapter.SelectCommand.Parameters(2).Value = CType(ShipAddress,String)
-            End If
-            Me.Adapter.SelectCommand.Parameters(3).Value = CType(StatusId,Integer)
-            If (PaymentMethod Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("PaymentMethod")
-            Else
-                Me.Adapter.SelectCommand.Parameters(4).Value = CType(PaymentMethod,String)
-            End If
-            If (CustomerName Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("CustomerName")
-            Else
-                Me.Adapter.SelectCommand.Parameters(5).Value = CType(CustomerName,String)
-            End If
             Dim dataTable As OrderDetail.OrderDataTable = New OrderDetail.OrderDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -5775,27 +5218,7 @@ Namespace OrderDetailTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete( _
-                    ByVal Original_Id As Long,  _
-                    ByVal Original_CustomerName As String,  _
-                    ByVal Original_OrderDate As Date,  _
-                    ByVal Original_ShipperId As String,  _
-                    ByVal Original_ShipDate As Global.System.Nullable(Of Date),  _
-                    ByVal Original_ShipAddress As String,  _
-                    ByVal Original_ShipPostalCode As String,  _
-                    ByVal Original_ShipPrice As Decimal,  _
-                    ByVal Original_StatusId As Integer,  _
-                    ByVal Original_PrivateDiscount As Global.System.Nullable(Of Double),  _
-                    ByVal Original_TotalPrice As Decimal,  _
-                    ByVal Original_PaymentMethod As String,  _
-                    ByVal Original_Note As String,  _
-                    ByVal Original_CreateDate As Global.System.Nullable(Of Date),  _
-                    ByVal Original_CreateBy As String,  _
-                    ByVal Original_UpdateDate As Global.System.Nullable(Of Date),  _
-                    ByVal Original_UpdateBy As String,  _
-                    ByVal Original_DeleteDate As Global.System.Nullable(Of Date),  _
-                    ByVal Original_DeleteBy As String,  _
-                    ByVal Original_IsDelete As Global.System.Nullable(Of Boolean)) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_Id As Long, ByVal Original_CustomerName As String, ByVal Original_OrderDate As Date, ByVal Original_ShipperId As String, ByVal Original_ShipDate As Global.System.Nullable(Of Date), ByVal Original_ShipAddress As String, ByVal Original_ShipPostalCode As String, ByVal Original_ShipPrice As Decimal, ByVal Original_StatusId As Integer, ByVal Original_PrivateDiscount As Global.System.Nullable(Of Double), ByVal Original_TotalPrice As Decimal, ByVal Original_PaymentMethod As String, ByVal Original_Note As String) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Id,Long)
             If (Original_CustomerName Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_CustomerName")
@@ -5849,55 +5272,6 @@ Namespace OrderDetailTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_Note,String)
             End If
-            If (Original_CreateDate.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_CreateDate.Value,Date)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(18).Value = Global.System.DBNull.Value
-            End If
-            If (Original_CreateBy Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(20).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_CreateBy,String)
-            End If
-            If (Original_UpdateDate.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_UpdateDate.Value,Date)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(22).Value = Global.System.DBNull.Value
-            End If
-            If (Original_UpdateBy Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(24).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(24).Value = CType(Original_UpdateBy,String)
-            End If
-            If (Original_DeleteDate.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(26).Value = CType(Original_DeleteDate.Value,Date)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(26).Value = Global.System.DBNull.Value
-            End If
-            If (Original_DeleteBy Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(27).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(28).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(27).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(28).Value = CType(Original_DeleteBy,String)
-            End If
-            If (Original_IsDelete.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(30).Value = CType(Original_IsDelete.Value,Boolean)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(30).Value = Global.System.DBNull.Value
-            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -5917,26 +5291,7 @@ Namespace OrderDetailTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert( _
-                    ByVal CustomerName As String,  _
-                    ByVal OrderDate As Date,  _
-                    ByVal ShipperId As String,  _
-                    ByVal ShipDate As Global.System.Nullable(Of Date),  _
-                    ByVal ShipAddress As String,  _
-                    ByVal ShipPostalCode As String,  _
-                    ByVal ShipPrice As Decimal,  _
-                    ByVal StatusId As Integer,  _
-                    ByVal PrivateDiscount As Global.System.Nullable(Of Double),  _
-                    ByVal TotalPrice As Decimal,  _
-                    ByVal PaymentMethod As String,  _
-                    ByVal Note As String,  _
-                    ByVal CreateDate As Global.System.Nullable(Of Date),  _
-                    ByVal CreateBy As String,  _
-                    ByVal UpdateDate As Global.System.Nullable(Of Date),  _
-                    ByVal UpdateBy As String,  _
-                    ByVal DeleteDate As Global.System.Nullable(Of Date),  _
-                    ByVal DeleteBy As String,  _
-                    ByVal IsDelete As Global.System.Nullable(Of Boolean)) As Integer
+        Public Overloads Overridable Function Insert(ByVal CustomerName As String, ByVal OrderDate As Date, ByVal ShipperId As String, ByVal ShipDate As Global.System.Nullable(Of Date), ByVal ShipAddress As String, ByVal ShipPostalCode As String, ByVal ShipPrice As Decimal, ByVal StatusId As Integer, ByVal PrivateDiscount As Global.System.Nullable(Of Double), ByVal TotalPrice As Decimal, ByVal PaymentMethod As String, ByVal Note As String) As Integer
             If (CustomerName Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("CustomerName")
             Else
@@ -5981,41 +5336,6 @@ Namespace OrderDetailTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(11).Value = CType(Note,String)
             End If
-            If (CreateDate.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(12).Value = CType(CreateDate.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            If (CreateBy Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(13).Value = CType(CreateBy,String)
-            End If
-            If (UpdateDate.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(14).Value = CType(UpdateDate.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
-            End If
-            If (UpdateBy Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(15).Value = CType(UpdateBy,String)
-            End If
-            If (DeleteDate.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(16).Value = CType(DeleteDate.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
-            End If
-            If (DeleteBy Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(17).Value = CType(DeleteBy,String)
-            End If
-            If (IsDelete.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(18).Value = CType(IsDelete.Value,Boolean)
-            Else
-                Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
-            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -6048,13 +5368,6 @@ Namespace OrderDetailTableAdapters
                     ByVal TotalPrice As Decimal,  _
                     ByVal PaymentMethod As String,  _
                     ByVal Note As String,  _
-                    ByVal CreateDate As Global.System.Nullable(Of Date),  _
-                    ByVal CreateBy As String,  _
-                    ByVal UpdateDate As Global.System.Nullable(Of Date),  _
-                    ByVal UpdateBy As String,  _
-                    ByVal DeleteDate As Global.System.Nullable(Of Date),  _
-                    ByVal DeleteBy As String,  _
-                    ByVal IsDelete As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_Id As Long,  _
                     ByVal Original_CustomerName As String,  _
                     ByVal Original_OrderDate As Date,  _
@@ -6068,13 +5381,6 @@ Namespace OrderDetailTableAdapters
                     ByVal Original_TotalPrice As Decimal,  _
                     ByVal Original_PaymentMethod As String,  _
                     ByVal Original_Note As String,  _
-                    ByVal Original_CreateDate As Global.System.Nullable(Of Date),  _
-                    ByVal Original_CreateBy As String,  _
-                    ByVal Original_UpdateDate As Global.System.Nullable(Of Date),  _
-                    ByVal Original_UpdateBy As String,  _
-                    ByVal Original_DeleteDate As Global.System.Nullable(Of Date),  _
-                    ByVal Original_DeleteBy As String,  _
-                    ByVal Original_IsDelete As Global.System.Nullable(Of Boolean),  _
                     ByVal Id As Long) As Integer
             If (CustomerName Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("CustomerName")
@@ -6120,144 +5426,60 @@ Namespace OrderDetailTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Note,String)
             End If
-            If (CreateDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(CreateDate.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            If (CreateBy Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(CreateBy,String)
-            End If
-            If (UpdateDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(UpdateDate.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
-            End If
-            If (UpdateBy Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(UpdateBy,String)
-            End If
-            If (DeleteDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(DeleteDate.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
-            End If
-            If (DeleteBy Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(DeleteBy,String)
-            End If
-            If (IsDelete.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(IsDelete.Value,Boolean)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
-            End If
-            Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_Id,Long)
+            Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_Id,Long)
             If (Original_CustomerName Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_CustomerName")
             Else
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_CustomerName,String)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_CustomerName,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_OrderDate,Date)
+            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_OrderDate,Date)
             If (Original_ShipperId Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_ShipperId")
             Else
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_ShipperId,String)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_ShipperId,String)
             End If
             If (Original_ShipDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_ShipDate.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_ShipDate.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
             End If
             If (Original_ShipAddress Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_ShipAddress")
             Else
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_ShipAddress,String)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_ShipAddress,String)
             End If
             If (Original_ShipPostalCode Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_ShipPostalCode,String)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_ShipPostalCode,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_ShipPrice,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_StatusId,Integer)
+            Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_ShipPrice,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_StatusId,Integer)
             If (Original_PrivateDiscount.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_PrivateDiscount.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_PrivateDiscount.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_TotalPrice,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_TotalPrice,Decimal)
             If (Original_PaymentMethod Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_PaymentMethod")
             Else
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_PaymentMethod,String)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_PaymentMethod,String)
             End If
             If (Original_Note Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_Note,String)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_Note,String)
             End If
-            If (Original_CreateDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_CreateDate.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
-            End If
-            If (Original_CreateBy Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_CreateBy,String)
-            End If
-            If (Original_UpdateDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_UpdateDate.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
-            End If
-            If (Original_UpdateBy Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_UpdateBy,String)
-            End If
-            If (Original_DeleteDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Original_DeleteDate.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(45).Value = Global.System.DBNull.Value
-            End If
-            If (Original_DeleteBy Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(47).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(Original_DeleteBy,String)
-            End If
-            If (Original_IsDelete.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(Original_IsDelete.Value,Boolean)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(49).Value = Global.System.DBNull.Value
-            End If
-            Me.Adapter.UpdateCommand.Parameters(50).Value = CType(Id,Long)
+            Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Id,Long)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -6290,13 +5512,6 @@ Namespace OrderDetailTableAdapters
                     ByVal TotalPrice As Decimal,  _
                     ByVal PaymentMethod As String,  _
                     ByVal Note As String,  _
-                    ByVal CreateDate As Global.System.Nullable(Of Date),  _
-                    ByVal CreateBy As String,  _
-                    ByVal UpdateDate As Global.System.Nullable(Of Date),  _
-                    ByVal UpdateBy As String,  _
-                    ByVal DeleteDate As Global.System.Nullable(Of Date),  _
-                    ByVal DeleteBy As String,  _
-                    ByVal IsDelete As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_Id As Long,  _
                     ByVal Original_CustomerName As String,  _
                     ByVal Original_OrderDate As Date,  _
@@ -6309,15 +5524,8 @@ Namespace OrderDetailTableAdapters
                     ByVal Original_PrivateDiscount As Global.System.Nullable(Of Double),  _
                     ByVal Original_TotalPrice As Decimal,  _
                     ByVal Original_PaymentMethod As String,  _
-                    ByVal Original_Note As String,  _
-                    ByVal Original_CreateDate As Global.System.Nullable(Of Date),  _
-                    ByVal Original_CreateBy As String,  _
-                    ByVal Original_UpdateDate As Global.System.Nullable(Of Date),  _
-                    ByVal Original_UpdateBy As String,  _
-                    ByVal Original_DeleteDate As Global.System.Nullable(Of Date),  _
-                    ByVal Original_DeleteBy As String,  _
-                    ByVal Original_IsDelete As Global.System.Nullable(Of Boolean)) As Integer
-            Return Me.Update(CustomerName, OrderDate, ShipperId, ShipDate, ShipAddress, ShipPostalCode, ShipPrice, StatusId, PrivateDiscount, TotalPrice, PaymentMethod, Note, CreateDate, CreateBy, UpdateDate, UpdateBy, DeleteDate, DeleteBy, IsDelete, Original_Id, Original_CustomerName, Original_OrderDate, Original_ShipperId, Original_ShipDate, Original_ShipAddress, Original_ShipPostalCode, Original_ShipPrice, Original_StatusId, Original_PrivateDiscount, Original_TotalPrice, Original_PaymentMethod, Original_Note, Original_CreateDate, Original_CreateBy, Original_UpdateDate, Original_UpdateBy, Original_DeleteDate, Original_DeleteBy, Original_IsDelete, Original_Id)
+                    ByVal Original_Note As String) As Integer
+            Return Me.Update(CustomerName, OrderDate, ShipperId, ShipDate, ShipAddress, ShipPostalCode, ShipPrice, StatusId, PrivateDiscount, TotalPrice, PaymentMethod, Note, Original_Id, Original_CustomerName, Original_OrderDate, Original_ShipperId, Original_ShipDate, Original_ShipAddress, Original_ShipPostalCode, Original_ShipPrice, Original_StatusId, Original_PrivateDiscount, Original_TotalPrice, Original_PaymentMethod, Original_Note, Original_Id)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6357,7 +5565,7 @@ Namespace OrderDetailTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function InsertOrder(ByVal CustomerName As String, ByVal OrderDate As Date, ByVal ShipperId As String, ByVal ShipDate As Global.System.Nullable(Of Date), ByVal ShipAddress As String, ByVal ShipPostalCode As String, ByVal ShipPrice As Decimal, ByVal StatusId As Integer, ByVal PrivateDiscount As Global.System.Nullable(Of Double), ByVal TotalPrice As Decimal, ByVal PaymentMethod As String, ByVal Note As String, ByVal CreateDate As Global.System.Nullable(Of Date), ByVal CreateBy As String) As Object
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(4)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
             If (CustomerName Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("CustomerName")
             Else
@@ -6438,7 +5646,7 @@ Namespace OrderDetailTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
         Public Overloads Overridable Function UpdateOrder(ByVal CustomerName As String, ByVal OrderDate As Date, ByVal ShipperId As String, ByVal ShipDate As Global.System.Nullable(Of Date), ByVal ShipAddress As String, ByVal ShipPostalCode As String, ByVal ShipPrice As Decimal, ByVal StatusId As Integer, ByVal PrivateDiscount As Global.System.Nullable(Of Double), ByVal TotalPrice As Decimal, ByVal PaymentMethod As String, ByVal Note As String, ByVal UpdateDate As Global.System.Nullable(Of Date), ByVal UpdateBy As String, ByVal Id As Long) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(5)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
             If (CustomerName Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("CustomerName")
             Else
@@ -6515,7 +5723,7 @@ Namespace OrderDetailTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
         Public Overloads Overridable Function UpdateOrderStatus(ByVal StatusId As Integer, ByVal UpdateDate As Global.System.Nullable(Of Date), ByVal UpdateBy As String, ByVal Id As Long) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(6)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(4)
             command.Parameters(0).Value = CType(StatusId,Integer)
             If (UpdateDate.HasValue = true) Then
                 command.Parameters(1).Value = CType(UpdateDate.Value,Date)

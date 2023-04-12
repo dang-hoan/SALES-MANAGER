@@ -25,7 +25,8 @@ Partial Class OrderSearch
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(OrderSearch))
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.groupBox1 = New System.Windows.Forms.GroupBox()
-        Me.cbSearchByDate = New System.Windows.Forms.CheckBox()
+        Me.cbSearchByShipDate = New System.Windows.Forms.CheckBox()
+        Me.cbSearchByOrderDate = New System.Windows.Forms.CheckBox()
         Me.txtPaymentMethod = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.cbbShipper = New System.Windows.Forms.ComboBox()
@@ -54,7 +55,7 @@ Partial Class OrderSearch
         Me.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnSearch.Image = CType(resources.GetObject("btnSearch.Image"), System.Drawing.Image)
         Me.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSearch.Location = New System.Drawing.Point(347, 253)
+        Me.btnSearch.Location = New System.Drawing.Point(357, 256)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.btnSearch.Size = New System.Drawing.Size(139, 48)
@@ -64,7 +65,8 @@ Partial Class OrderSearch
         '
         'groupBox1
         '
-        Me.groupBox1.Controls.Add(Me.cbSearchByDate)
+        Me.groupBox1.Controls.Add(Me.cbSearchByShipDate)
+        Me.groupBox1.Controls.Add(Me.cbSearchByOrderDate)
         Me.groupBox1.Controls.Add(Me.txtPaymentMethod)
         Me.groupBox1.Controls.Add(Me.Label12)
         Me.groupBox1.Controls.Add(Me.cbbShipper)
@@ -89,15 +91,25 @@ Partial Class OrderSearch
         Me.groupBox1.TabStop = False
         Me.groupBox1.Text = "Search"
         '
-        'cbSearchByDate
+        'cbSearchByShipDate
         '
-        Me.cbSearchByDate.AutoSize = True
-        Me.cbSearchByDate.Location = New System.Drawing.Point(458, 30)
-        Me.cbSearchByDate.Name = "cbSearchByDate"
-        Me.cbSearchByDate.Size = New System.Drawing.Size(142, 24)
-        Me.cbSearchByDate.TabIndex = 40
-        Me.cbSearchByDate.Text = "Search by date"
-        Me.cbSearchByDate.UseVisualStyleBackColor = True
+        Me.cbSearchByShipDate.AutoSize = True
+        Me.cbSearchByShipDate.Location = New System.Drawing.Point(466, 99)
+        Me.cbSearchByShipDate.Name = "cbSearchByShipDate"
+        Me.cbSearchByShipDate.Size = New System.Drawing.Size(106, 24)
+        Me.cbSearchByShipDate.TabIndex = 41
+        Me.cbSearchByShipDate.Text = "Search by"
+        Me.cbSearchByShipDate.UseVisualStyleBackColor = True
+        '
+        'cbSearchByOrderDate
+        '
+        Me.cbSearchByOrderDate.AutoSize = True
+        Me.cbSearchByOrderDate.Location = New System.Drawing.Point(466, 28)
+        Me.cbSearchByOrderDate.Name = "cbSearchByOrderDate"
+        Me.cbSearchByOrderDate.Size = New System.Drawing.Size(106, 24)
+        Me.cbSearchByOrderDate.TabIndex = 40
+        Me.cbSearchByOrderDate.Text = "Search by"
+        Me.cbSearchByOrderDate.UseVisualStyleBackColor = True
         '
         'txtPaymentMethod
         '
@@ -140,7 +152,7 @@ Partial Class OrderSearch
         'dtOrderDate
         '
         Me.dtOrderDate.Enabled = False
-        Me.dtOrderDate.Location = New System.Drawing.Point(587, 72)
+        Me.dtOrderDate.Location = New System.Drawing.Point(595, 53)
         Me.dtOrderDate.Name = "dtOrderDate"
         Me.dtOrderDate.Size = New System.Drawing.Size(233, 26)
         Me.dtOrderDate.TabIndex = 35
@@ -150,7 +162,7 @@ Partial Class OrderSearch
         Me.label14.AutoSize = True
         Me.label14.BackColor = System.Drawing.Color.White
         Me.label14.ForeColor = System.Drawing.Color.Blue
-        Me.label14.Location = New System.Drawing.Point(454, 74)
+        Me.label14.Location = New System.Drawing.Point(462, 55)
         Me.label14.Name = "label14"
         Me.label14.Size = New System.Drawing.Size(85, 20)
         Me.label14.TabIndex = 34
@@ -167,7 +179,7 @@ Partial Class OrderSearch
         '
         Me.cbbShipStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbbShipStatus.FormattingEnabled = True
-        Me.cbbShipStatus.Location = New System.Drawing.Point(587, 205)
+        Me.cbbShipStatus.Location = New System.Drawing.Point(595, 207)
         Me.cbbShipStatus.Name = "cbbShipStatus"
         Me.cbbShipStatus.Size = New System.Drawing.Size(156, 28)
         Me.cbbShipStatus.TabIndex = 32
@@ -175,14 +187,14 @@ Partial Class OrderSearch
         'dtShipDate
         '
         Me.dtShipDate.Enabled = False
-        Me.dtShipDate.Location = New System.Drawing.Point(587, 117)
+        Me.dtShipDate.Location = New System.Drawing.Point(595, 119)
         Me.dtShipDate.Name = "dtShipDate"
         Me.dtShipDate.Size = New System.Drawing.Size(233, 26)
         Me.dtShipDate.TabIndex = 31
         '
         'txtShipAddress
         '
-        Me.txtShipAddress.Location = New System.Drawing.Point(587, 162)
+        Me.txtShipAddress.Location = New System.Drawing.Point(595, 164)
         Me.txtShipAddress.Name = "txtShipAddress"
         Me.txtShipAddress.Size = New System.Drawing.Size(233, 26)
         Me.txtShipAddress.TabIndex = 28
@@ -210,7 +222,7 @@ Partial Class OrderSearch
         Me.label4.AutoSize = True
         Me.label4.BackColor = System.Drawing.Color.White
         Me.label4.ForeColor = System.Drawing.Color.Blue
-        Me.label4.Location = New System.Drawing.Point(454, 120)
+        Me.label4.Location = New System.Drawing.Point(462, 122)
         Me.label4.Name = "label4"
         Me.label4.Size = New System.Drawing.Size(77, 20)
         Me.label4.TabIndex = 29
@@ -221,7 +233,7 @@ Partial Class OrderSearch
         Me.label6.AutoSize = True
         Me.label6.BackColor = System.Drawing.Color.White
         Me.label6.ForeColor = System.Drawing.Color.Blue
-        Me.label6.Location = New System.Drawing.Point(454, 206)
+        Me.label6.Location = New System.Drawing.Point(462, 208)
         Me.label6.Name = "label6"
         Me.label6.Size = New System.Drawing.Size(89, 20)
         Me.label6.TabIndex = 30
@@ -232,7 +244,7 @@ Partial Class OrderSearch
         Me.label3.AutoSize = True
         Me.label3.BackColor = System.Drawing.Color.White
         Me.label3.ForeColor = System.Drawing.Color.Blue
-        Me.label3.Location = New System.Drawing.Point(454, 165)
+        Me.label3.Location = New System.Drawing.Point(462, 167)
         Me.label3.Name = "label3"
         Me.label3.Size = New System.Drawing.Size(102, 20)
         Me.label3.TabIndex = 26
@@ -301,5 +313,6 @@ Partial Class OrderSearch
     Private WithEvents label6 As Label
     Private WithEvents label3 As Label
     Private WithEvents label5 As Label
-    Friend WithEvents cbSearchByDate As CheckBox
+    Friend WithEvents cbSearchByOrderDate As CheckBox
+    Friend WithEvents cbSearchByShipDate As CheckBox
 End Class
