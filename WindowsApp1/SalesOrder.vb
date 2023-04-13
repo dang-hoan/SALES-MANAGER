@@ -68,10 +68,10 @@ Public Class SalesOrder
                     If data.SalesOrder.Rows(j)(0) <> id Then
                         Exit While
                     End If
-                    totalProduct += data.SalesOrder.Rows(j)("NumberOfProducts")
-                    s += data.SalesOrder.Rows(j)("ProductId").ToString + ","
-                    lineName += data.SalesOrder.Rows(j)("ProductName") + ","
-                    lineNumber += data.SalesOrder.Rows(j)("NumberOfProducts").ToString + ","
+                    totalProduct += If(Not IsDBNull(data.SalesOrder.Rows(j)("NumberOfProducts")), data.SalesOrder.Rows(j)("NumberOfProducts"), 0)
+                    s += If(Not IsDBNull(data.SalesOrder.Rows(j)("ProductId")), data.SalesOrder.Rows(j)("ProductId").ToString + ",", "NULL" + ",")
+                    lineName += If(Not IsDBNull(data.SalesOrder.Rows(j)("ProductName")), data.SalesOrder.Rows(j)("ProductName") + ",", "NULL" + ",")
+                    lineNumber += If(Not IsDBNull(data.SalesOrder.Rows(j)("NumberOfProducts")), data.SalesOrder.Rows(j)("NumberOfProducts").ToString + ",", "NULL" + ",")
                     j += 1
                 End While
 
@@ -135,11 +135,14 @@ Public Class SalesOrder
             Dim id = row.Cells(11).Value.ToString.Split(",")
             Dim name = listName(dgvOrder.CurrentRow.Index).Split(",")
             Dim number = listNumber(dgvOrder.CurrentRow.Index).Split(",")
-            For i = 0 To id.Length - 1
-                Dim rowView = listBuyProduct.Items.Add(id(i))
-                rowView.SubItems.Add(name(i))
-                rowView.SubItems.Add(number(i))
-            Next
+            If id(0).ToString <> "NULL" Then
+                For i = 0 To id.Length - 1
+                    Dim rowView = listBuyProduct.Items.Add(id(i))
+                    rowView.SubItems.Add(name(i))
+                    rowView.SubItems.Add(number(i))
+                Next
+
+            End If
 
             If listBuyProduct.Items.Count > 0 Then
                 listBuyProduct.Items(0).Selected = True
@@ -149,6 +152,9 @@ Public Class SalesOrder
                         txtNumber.Text = listBuyProduct.Items(0).SubItems(2).Text
                     End If
                 Next
+            Else
+                cbbProduct.SelectedIndex = -1
+                txtNumber.Text = ""
             End If
 
             For Each item As CBBPerson In cbbShipper.Items
@@ -230,7 +236,7 @@ Public Class SalesOrder
                 End If
             End If
 
-            Dim result As Integer
+            Dim result As Integer = 1
 
             'Add data sale to SalesDetail table
             Dim stockId = -1
@@ -313,31 +319,34 @@ Public Class SalesOrder
                     Next
 
                     Dim id = dgvOrder.CurrentRow.Cells(11).Value.ToString.Split(",")
-                    For Each oldProduct In id
-                        If result = 1 Then
-                            Dim isExist = False
-                            For Each product In listBuyProduct.Items
-                                If product.SubItems(0).Text = oldProduct Then
-                                    isExist = True
-                                    Exit For
+                    If id(0).ToString <> "NULL" Then
+                        For Each oldProduct In id
+                            If result = 1 Then
+                                Dim isExist = False
+                                For Each product In listBuyProduct.Items
+                                    If product.SubItems(0).Text = oldProduct Then
+                                        isExist = True
+                                        Exit For
+                                    End If
+                                Next
+
+                                If Not isExist Then
+                                    result = clsPMSAnalysis.DeleteOrderDetail(txtOrderCode.Text, oldProduct)
                                 End If
-                            Next
 
-                            If Not isExist Then
-                                result = clsPMSAnalysis.DeleteOrderDetail(txtOrderCode.Text, oldProduct)
                             End If
-
-                        End If
-                    Next
-
+                        Next
+                    End If
                 Else                                        'Add new
                     Dim orderId = clsPMSAnalysis.AddOrder(txtCustomerName.Text,
                                             dtOrderDate.Value, shipperId, dtShipDate.Value, txtShipAddress.Text, txtShipFee.Text, statusId,
                                              txtDiscount.Text, txtTotalPrice.Text, txtPaymentMethod.Text, "", LoginForm.PropUsername)
 
                     result = 1
+
                     For Each product In listBuyProduct.Items
                         If result = 1 Then
+
                             Dim totalPrice As Double = 0
                             Dim costItem = clsProduct.GetCostOfProduct(product.SubItems(0).Text)
                             totalPrice += (costItem(0)(0) * (1 - costItem(0)(1) / 100)) * product.SubItems(2).Text
@@ -384,27 +393,50 @@ Public Class SalesOrder
             MsgBox("You need to enter all the fields!")
             Return False
 
-        ElseIf Not checkNumber(txtShipFee.Text) Then
-            MsgBox("Ship fee must be a number!")
-            Return False
-
-        ElseIf Not checkNumber(txtDiscount.Text) Then
-            MsgBox("Discount must be a number!")
+        ElseIf Not CheckValue("Ship fee", txtShipFee.Text, "Double") Or
+             Not CheckValue("Discount", txtDiscount.Text, "Double") Then
             Return False
         End If
 
         Return True
     End Function
-    Private Function checkNumber(ByVal phone As String)
-        For Each c As Char In phone
-            If Asc(c) <> 44 And Asc(c) <> 46 Then
-                If Asc(c) > 57 Or Asc(c) < 48 Then
-                    Return False
-                End If
-            End If
-        Next
 
-        Return True
+    Private Function CheckValue(ByVal label As String, ByVal value As String, ByVal style As String) As Boolean
+        Dim returnVal = True
+
+        If value.Length = 0 Then
+            Return True
+        End If
+
+        Select Case style
+            Case "Long"
+                Dim Number As Long
+                Try
+                    Number = Long.Parse(value)
+                Catch ex As FormatException
+                    MsgBox(label & " must be a integer number!")
+                    returnVal = False
+                Catch ex As OverflowException
+                    MsgBox(label & " is too big to handle!")
+                    returnVal = False
+                End Try
+
+            Case "Double"
+                Dim Number As Double
+                Try
+                    Number = Double.Parse(value)
+                Catch ex As FormatException
+                    MsgBox(label & " must be a number!")
+                    returnVal = False
+                Catch ex As OverflowException
+                    MsgBox(label & " is too big to handle!")
+                    returnVal = False
+                End Try
+
+        End Select
+
+        Return returnVal
+
     End Function
 
     Private Sub listBuyProduct_SelectedIndexChanged(sender As Object, e As EventArgs) Handles listBuyProduct.SelectedIndexChanged
@@ -438,8 +470,7 @@ Public Class SalesOrder
             Exit Sub
         ElseIf txtNumber.Text = "" Then
             number = "0"
-        ElseIf Not checkNumberInteger(txtNumber.Text) Then
-            MsgBox("Number of products must be a number!")
+        ElseIf Not CheckValue("Number of products", txtNumber.Text, "Long") Then
             Exit Sub
         Else
             number = txtNumber.Text
@@ -448,12 +479,10 @@ Public Class SalesOrder
         For Each item In listBuyProduct.Items
             If selectedRow.PropItemId = item.SubItems(0).Text Then
                 cbbProduct.SelectedIndex = -1
-                If checkNumberInteger(txtNumber.Text) Then
+                If CheckValue("Number of products", txtNumber.Text, "Long") Then
                     item.SubItems(2).Text = number
                     txtNumber.Text = ""
                     isExist = True
-                Else
-                    MsgBox("The number of products must be a number!")
                 End If
             End If
         Next
@@ -469,15 +498,6 @@ Public Class SalesOrder
         CalculateTotalPrice()
     End Sub
 
-    Private Function checkNumberInteger(ByVal number As String)
-        For Each c As Char In number
-            If Asc(c) > 57 Or Asc(c) < 48 Then
-                Return False
-            End If
-        Next
-
-        Return True
-    End Function
 
     Private Sub pictureRemove_Click(sender As Object, e As EventArgs) Handles pictureRemove.Click
         If listBuyProduct.SelectedItems.Count > 0 Then
@@ -537,7 +557,7 @@ Public Class SalesOrder
             discount = "0"
         End If
 
-        If Not checkNumber(shipFee) Or Not checkNumber(discount) Then
+        If Not CheckValue("Ship fee", shipFee, "Double") Or Not CheckValue("Discount", discount, "Double") Then
             txtTotalPrice.Text = "#N/A"
         Else
             Dim cost As Double = 0

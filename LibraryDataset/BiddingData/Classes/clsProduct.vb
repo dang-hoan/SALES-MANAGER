@@ -99,12 +99,12 @@ Public Class clsProduct
                         Product.ImageId, SalesDetail.WareHouseId, SalesDetail.Total
                     FROM   Product LEFT OUTER JOIN
                             SalesDetail ON Product.Id = SalesDetail.ProductId
-                    WHERE (Product.Id = @Id AND @IsIdEntered) AND Product.ProductName LIKE @ProductName AND
-                            (Product.SupplierId = @SupplierId AND @IsSupplierIdEntered) AND (Product.CategoryId = @CategoryId
-                            AND @IsCategoryIdEntered) AND (Product.ProductPrice = @ProductPrice AND @IsProductPriceEntered) 
-                            AND (Product.ProductStatusId = @ProductStatusId AND @IsProductStatusIdEntered) 
-                            AND (Product.DiscountPercent = @DiscountPercent AND @IsDiscountPercentEntered)
-                            AND (SalesDetail.WareHouseId = @WareHouseId AND @IsWareHouseIdEntered) AND (SalesDetail.Total = @Total AND @IsTotalEntered)"
+                    WHERE (Product.Id = @Id OR @IsIdEntered = -1) AND Product.ProductName LIKE @ProductName AND
+                            (Product.SupplierId = @SupplierId OR @IsSupplierIdEntered = -1) AND (Product.CategoryId = @CategoryId
+                            OR @IsCategoryIdEntered = -1) AND (Product.ProductPrice = @ProductPrice OR @IsProductPriceEntered = -1) 
+                            AND (Product.ProductStatusId = @ProductStatusId OR @IsProductStatusIdEntered = -1) 
+                            AND (Product.DiscountPercent = @DiscountPercent OR @IsDiscountPercentEntered = -1)
+                            AND (SalesDetail.WareHouseId = @WareHouseId OR @IsWareHouseIdEntered = -1) AND (SalesDetail.Total = @Total OR @IsTotalEntered = -1)"
 
         taProductSalesDetail.Connection = conn
         'command.CommandType = CommandType.StoredProcedure
@@ -117,14 +117,14 @@ Public Class clsProduct
         cmd.Parameters.AddWithValue("@DiscountPercent", DiscountPercent)
         cmd.Parameters.AddWithValue("@WareHouseId", WareHouseId)
         cmd.Parameters.AddWithValue("@Total", Total)
-        cmd.Parameters.AddWithValue("@IsIdEntered", Id = -1)
-        cmd.Parameters.AddWithValue("@IsSupplierIdEntered", SupplierId = -1)
-        cmd.Parameters.AddWithValue("@IsCategoryIdEntered", CategoryId = -1)
-        cmd.Parameters.AddWithValue("@IsProductPriceEntered", ProductPrice = -1)
-        cmd.Parameters.AddWithValue("@IsProductStatusIdEntered", ProductStatusId = -1)
-        cmd.Parameters.AddWithValue("@IsDiscountPercentEntered", DiscountPercent = -1)
-        cmd.Parameters.AddWithValue("@IsWareHouseIdEntered", WareHouseId = -1)
-        cmd.Parameters.AddWithValue("@IsTotalEntered", Total = -1)
+        cmd.Parameters.AddWithValue("@IsIdEntered", Id)
+        cmd.Parameters.AddWithValue("@IsSupplierIdEntered", SupplierId)
+        cmd.Parameters.AddWithValue("@IsCategoryIdEntered", CategoryId)
+        cmd.Parameters.AddWithValue("@IsProductPriceEntered", ProductPrice)
+        cmd.Parameters.AddWithValue("@IsProductStatusIdEntered", ProductStatusId)
+        cmd.Parameters.AddWithValue("@IsDiscountPercentEntered", DiscountPercent)
+        cmd.Parameters.AddWithValue("@IsWareHouseIdEntered", WareHouseId)
+        cmd.Parameters.AddWithValue("@IsTotalEntered", Total)
 
         Dim tmp = cmd.CommandText.ToString()
         For Each p As SqlParameter In cmd.Parameters

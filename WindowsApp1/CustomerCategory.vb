@@ -112,8 +112,7 @@ Public Class CustomerCategory
             MsgBox("You need to enter all the fields!")
             Return False
 
-        ElseIf Not checkPhone(txtPhone.Text) Then
-            MsgBox("Phone number must be a number!")
+        ElseIf Not CheckValue("Phone", txtPhone.Text, "Long") Then
             Return False
 
         ElseIf Not txtPhone.Text.StartsWith("0") Then
@@ -128,15 +127,44 @@ Public Class CustomerCategory
         Return True
     End Function
 
-    Private Function checkPhone(ByVal phone As String)
-        For Each c As Char In phone
-            If Asc(c) > 57 Or Asc(c) < 48 Then
-                Return False
-            End If
-        Next
+    Private Function CheckValue(ByVal label As String, ByVal value As String, ByVal style As String) As Boolean
+        Dim returnVal = True
 
-        Return True
+        If value.Length = 0 Then
+            Return True
+        End If
+
+        Select Case style
+            Case "Long"
+                Dim Number As Long
+                Try
+                    Number = Long.Parse(value)
+                Catch ex As FormatException
+                    MsgBox(label & " must be a integer number!")
+                    returnVal = False
+                Catch ex As OverflowException
+                    MsgBox(label & " is too big to handle!")
+                    returnVal = False
+                End Try
+
+            Case "Double"
+                Dim Number As Double
+                Try
+                    Number = Double.Parse(value)
+                Catch ex As FormatException
+                    MsgBox(label & " must be a number!")
+                    returnVal = False
+                Catch ex As OverflowException
+                    MsgBox(label & " is too big to handle!")
+                    returnVal = False
+                End Try
+
+        End Select
+
+        Return returnVal
+
     End Function
+
 
     Public Function countString(ByVal inputString As String, ByVal subString As String) As Integer
         Return System.Text.RegularExpressions.Regex.Split(inputString, subString).Length - 1

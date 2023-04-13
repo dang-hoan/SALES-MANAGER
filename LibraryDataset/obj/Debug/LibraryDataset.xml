@@ -367,11 +367,6 @@ Represents a strongly typed in-memory cache of data.
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:LibraryDataset.OrderDetail.OrderDetail2DataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
 <member name="T:LibraryDataset.OrderDetail.OrderDataTable">
 <summary>
 Represents the strongly named DataTable class.
@@ -398,11 +393,6 @@ Represents the strongly named DataTable class.
 </summary>
 </member>
 <member name="T:LibraryDataset.OrderDetail.SalesOrderRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
-<member name="T:LibraryDataset.OrderDetail.OrderDetail2Row">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -437,11 +427,6 @@ Represents strongly named DataRow class.
 Row event argument class
 </summary>
 </member>
-<member name="T:LibraryDataset.OrderDetail.OrderDetail2RowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
 <member name="T:LibraryDataset.OrderDetail.OrderRowChangeEvent">
 <summary>
 Row event argument class
@@ -468,11 +453,6 @@ Row event argument class
 </summary>
 </member>
 <member name="T:LibraryDataset.OrderDetailTableAdapters.SalesOrderTableAdapter">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
-<member name="T:LibraryDataset.OrderDetailTableAdapters.OrderDetail2TableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>

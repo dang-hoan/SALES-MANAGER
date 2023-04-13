@@ -48,21 +48,48 @@ Public Class OrderSearch
 
     End Sub
     Private Function checkLogicData() As Boolean
-        If Not checkNumber(txtOrderCode.Text) Then
-            MsgBox("Ordercode must be a number (>=0)!")
+        If Not CheckValue("Code", txtOrderCode.Text, "Long") Then
             Return False
         End If
         Return True
     End Function
 
-    Private Function checkNumber(ByVal phone As String)
-        For Each c As Char In phone
-            If Asc(c) > 57 Or Asc(c) < 48 Then
-                Return False
-            End If
-        Next
+    Private Function CheckValue(ByVal label As String, ByVal value As String, ByVal style As String) As Boolean
+        Dim returnVal = True
 
-        Return True
+        If value.Length = 0 Then
+            Return True
+        End If
+
+        Select Case style
+            Case "Long"
+                Dim Number As Long
+                Try
+                    Number = Long.Parse(value)
+                Catch ex As FormatException
+                    MsgBox(label & " must be a integer number!")
+                    returnVal = False
+                Catch ex As OverflowException
+                    MsgBox(label & " is too big to handle!")
+                    returnVal = False
+                End Try
+
+            Case "Double"
+                Dim Number As Double
+                Try
+                    Number = Double.Parse(value)
+                Catch ex As FormatException
+                    MsgBox(label & " must be a number!")
+                    returnVal = False
+                Catch ex As OverflowException
+                    MsgBox(label & " is too big to handle!")
+                    returnVal = False
+                End Try
+
+        End Select
+
+        Return returnVal
+
     End Function
     Private Sub cbSearchByOrderDate_CheckedChanged(sender As Object, e As EventArgs) Handles cbSearchByOrderDate.CheckedChanged
         dtOrderDate.Enabled = cbSearchByOrderDate.Checked

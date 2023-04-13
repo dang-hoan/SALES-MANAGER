@@ -86,29 +86,50 @@ Public Class ProductSearch
 
     End Sub
     Private Function checkLogicData() As Boolean
-        If Not checkNumber(txtPrice.Text) Then
-            MsgBox("Price must be a number!")
-            Return False
-
-        ElseIf Not checkNumber(txtDiscount.Text) Then
-            MsgBox("Discount must be a number!")
-            Return False
-        ElseIf Not checkNumber(txtNumber.Text) Then
-            MsgBox("Number of product must be a number!")
-            Return False
+        If CheckValue("Product code", txtCode.Text, "Long") And
+            CheckValue("Price", txtPrice.Text, "Double") And
+            CheckValue("Discount", txtDiscount.Text, "Double") And
+            CheckValue("Number of products", txtNumber.Text, "Long") Then
+            Return True
         End If
-        Return True
+        Return False
+    End Function
+    Private Function CheckValue(ByVal label As String, ByVal value As String, ByVal style As String) As Boolean
+        Dim returnVal = True
+
+        If value.Length = 0 Then
+            Return True
+        End If
+
+        Select Case style
+            Case "Long"
+                Dim Number As Long
+                Try
+                    Number = Long.Parse(value)
+                Catch ex As FormatException
+                    MsgBox(label & " must be a integer number!")
+                    returnVal = False
+                Catch ex As OverflowException
+                    MsgBox(label & " is too big to handle!")
+                    returnVal = False
+                End Try
+
+            Case "Double"
+                Dim Number As Double
+                Try
+                    Number = Double.Parse(value)
+                Catch ex As FormatException
+                    MsgBox(label & " must be a number!")
+                    returnVal = False
+                Catch ex As OverflowException
+                    MsgBox(label & " is too big to handle!")
+                    returnVal = False
+                End Try
+
+        End Select
+
+        Return returnVal
+
     End Function
 
-    Private Function checkNumber(ByVal phone As String)
-        For Each c As Char In phone
-            If Asc(c) <> 44 And Asc(c) <> 46 Then
-                If Asc(c) > 57 Or Asc(c) < 48 Then
-                    Return False
-                End If
-            End If
-        Next
-
-        Return True
-    End Function
 End Class

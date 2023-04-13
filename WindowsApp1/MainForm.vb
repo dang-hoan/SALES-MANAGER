@@ -68,4 +68,8 @@ Public Class MainForm
         Me.Close()
         LoginForm.Show()
     End Sub
+
+    Private Sub btnProductSearch_Click(sender As Object, e As EventArgs) Handles btnProductSearch.Click
+        ShowForm(New ProductSearch)
+    End Sub
 End Class

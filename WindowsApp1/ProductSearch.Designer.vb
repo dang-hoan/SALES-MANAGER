@@ -57,7 +57,7 @@ Partial Class ProductSearch
         Me.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnSearch.Image = CType(resources.GetObject("btnSearch.Image"), System.Drawing.Image)
         Me.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSearch.Location = New System.Drawing.Point(357, 238)
+        Me.btnSearch.Location = New System.Drawing.Point(357, 257)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.btnSearch.Size = New System.Drawing.Size(139, 48)
@@ -114,7 +114,7 @@ Partial Class ProductSearch
         'txtUnitDiscount
         '
         Me.txtUnitDiscount.Enabled = False
-        Me.txtUnitDiscount.Location = New System.Drawing.Point(756, 146)
+        Me.txtUnitDiscount.Location = New System.Drawing.Point(755, 159)
         Me.txtUnitDiscount.Name = "txtUnitDiscount"
         Me.txtUnitDiscount.Size = New System.Drawing.Size(53, 26)
         Me.txtUnitDiscount.TabIndex = 22
@@ -122,8 +122,7 @@ Partial Class ProductSearch
         '
         'txtNumber
         '
-        Me.txtNumber.Enabled = False
-        Me.txtNumber.Location = New System.Drawing.Point(576, 191)
+        Me.txtNumber.Location = New System.Drawing.Point(575, 205)
         Me.txtNumber.Name = "txtNumber"
         Me.txtNumber.Size = New System.Drawing.Size(164, 26)
         Me.txtNumber.TabIndex = 21
@@ -131,7 +130,7 @@ Partial Class ProductSearch
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(429, 197)
+        Me.Label10.Location = New System.Drawing.Point(428, 216)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(65, 20)
         Me.Label10.TabIndex = 20
@@ -141,7 +140,7 @@ Partial Class ProductSearch
         '
         Me.cbbWarehouse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbbWarehouse.FormattingEnabled = True
-        Me.cbbWarehouse.Location = New System.Drawing.Point(576, 25)
+        Me.cbbWarehouse.Location = New System.Drawing.Point(575, 25)
         Me.cbbWarehouse.Name = "cbbWarehouse"
         Me.cbbWarehouse.Size = New System.Drawing.Size(164, 28)
         Me.cbbWarehouse.TabIndex = 19
@@ -149,7 +148,7 @@ Partial Class ProductSearch
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(429, 28)
+        Me.Label9.Location = New System.Drawing.Point(428, 28)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(91, 20)
         Me.Label9.TabIndex = 18
@@ -159,7 +158,7 @@ Partial Class ProductSearch
         '
         Me.cbbSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbbSupplier.FormattingEnabled = True
-        Me.cbbSupplier.Location = New System.Drawing.Point(164, 164)
+        Me.cbbSupplier.Location = New System.Drawing.Point(163, 177)
         Me.cbbSupplier.Name = "cbbSupplier"
         Me.cbbSupplier.Size = New System.Drawing.Size(172, 28)
         Me.cbbSupplier.TabIndex = 17
@@ -167,7 +166,7 @@ Partial Class ProductSearch
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(35, 167)
+        Me.Label8.Location = New System.Drawing.Point(34, 180)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(67, 20)
         Me.Label8.TabIndex = 16
@@ -177,7 +176,7 @@ Partial Class ProductSearch
         '
         Me.cbbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbbStatus.FormattingEnabled = True
-        Me.cbbStatus.Location = New System.Drawing.Point(576, 104)
+        Me.cbbStatus.Location = New System.Drawing.Point(575, 115)
         Me.cbbStatus.Name = "cbbStatus"
         Me.cbbStatus.Size = New System.Drawing.Size(164, 28)
         Me.cbbStatus.TabIndex = 15
@@ -186,15 +185,14 @@ Partial Class ProductSearch
         '
         Me.cbbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbbCategory.FormattingEnabled = True
-        Me.cbbCategory.Location = New System.Drawing.Point(164, 124)
+        Me.cbbCategory.Location = New System.Drawing.Point(163, 137)
         Me.cbbCategory.Name = "cbbCategory"
         Me.cbbCategory.Size = New System.Drawing.Size(172, 28)
         Me.cbbCategory.TabIndex = 14
         '
         'txtPrice
         '
-        Me.txtPrice.Enabled = False
-        Me.txtPrice.Location = New System.Drawing.Point(576, 63)
+        Me.txtPrice.Location = New System.Drawing.Point(575, 71)
         Me.txtPrice.Name = "txtPrice"
         Me.txtPrice.Size = New System.Drawing.Size(164, 26)
         Me.txtPrice.TabIndex = 13
@@ -202,7 +200,7 @@ Partial Class ProductSearch
         'txtUnitPrice
         '
         Me.txtUnitPrice.Enabled = False
-        Me.txtUnitPrice.Location = New System.Drawing.Point(756, 64)
+        Me.txtUnitPrice.Location = New System.Drawing.Point(755, 77)
         Me.txtUnitPrice.Name = "txtUnitPrice"
         Me.txtUnitPrice.Size = New System.Drawing.Size(53, 26)
         Me.txtUnitPrice.TabIndex = 15
@@ -210,24 +208,21 @@ Partial Class ProductSearch
         '
         'txtDiscount
         '
-        Me.txtDiscount.Enabled = False
-        Me.txtDiscount.Location = New System.Drawing.Point(576, 149)
+        Me.txtDiscount.Location = New System.Drawing.Point(575, 161)
         Me.txtDiscount.Name = "txtDiscount"
         Me.txtDiscount.Size = New System.Drawing.Size(164, 26)
         Me.txtDiscount.TabIndex = 0
         '
         'txtName
         '
-        Me.txtName.Enabled = False
-        Me.txtName.Location = New System.Drawing.Point(164, 81)
+        Me.txtName.Location = New System.Drawing.Point(163, 94)
         Me.txtName.Name = "txtName"
         Me.txtName.Size = New System.Drawing.Size(233, 26)
         Me.txtName.TabIndex = 6
         '
         'txtCode
         '
-        Me.txtCode.Enabled = False
-        Me.txtCode.Location = New System.Drawing.Point(164, 38)
+        Me.txtCode.Location = New System.Drawing.Point(163, 51)
         Me.txtCode.Name = "txtCode"
         Me.txtCode.Size = New System.Drawing.Size(103, 26)
         Me.txtCode.TabIndex = 2
@@ -235,7 +230,7 @@ Partial Class ProductSearch
         'label2
         '
         Me.label2.AutoSize = True
-        Me.label2.Location = New System.Drawing.Point(35, 38)
+        Me.label2.Location = New System.Drawing.Point(34, 51)
         Me.label2.Name = "label2"
         Me.label2.Size = New System.Drawing.Size(103, 20)
         Me.label2.TabIndex = 1
@@ -244,7 +239,7 @@ Partial Class ProductSearch
         'label1
         '
         Me.label1.AutoSize = True
-        Me.label1.Location = New System.Drawing.Point(35, 81)
+        Me.label1.Location = New System.Drawing.Point(34, 94)
         Me.label1.Name = "label1"
         Me.label1.Size = New System.Drawing.Size(108, 20)
         Me.label1.TabIndex = 5
@@ -253,7 +248,7 @@ Partial Class ProductSearch
         'label4
         '
         Me.label4.AutoSize = True
-        Me.label4.Location = New System.Drawing.Point(35, 127)
+        Me.label4.Location = New System.Drawing.Point(34, 140)
         Me.label4.Name = "label4"
         Me.label4.Size = New System.Drawing.Size(73, 20)
         Me.label4.TabIndex = 9
@@ -262,7 +257,7 @@ Partial Class ProductSearch
         'label6
         '
         Me.label6.AutoSize = True
-        Me.label6.Location = New System.Drawing.Point(429, 152)
+        Me.label6.Location = New System.Drawing.Point(428, 169)
         Me.label6.Name = "label6"
         Me.label6.Size = New System.Drawing.Size(130, 20)
         Me.label6.TabIndex = 12
@@ -271,7 +266,7 @@ Partial Class ProductSearch
         'label3
         '
         Me.label3.AutoSize = True
-        Me.label3.Location = New System.Drawing.Point(429, 64)
+        Me.label3.Location = New System.Drawing.Point(428, 75)
         Me.label3.Name = "label3"
         Me.label3.Size = New System.Drawing.Size(102, 20)
         Me.label3.TabIndex = 3
@@ -280,7 +275,7 @@ Partial Class ProductSearch
         'label5
         '
         Me.label5.AutoSize = True
-        Me.label5.Location = New System.Drawing.Point(429, 112)
+        Me.label5.Location = New System.Drawing.Point(428, 122)
         Me.label5.Name = "label5"
         Me.label5.Size = New System.Drawing.Size(112, 20)
         Me.label5.TabIndex = 7
