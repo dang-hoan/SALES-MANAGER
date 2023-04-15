@@ -71,6 +71,7 @@
     <Compile Include="BiddingData\Classes\clsProduct.vb" />
     <Compile Include="BiddingData\Classes\clsSupplier.vb" />
     <Compile Include="BiddingData\Classes\clsAccount.vb" />
+    <Compile Include="BiddingData\Classes\clsWarehouse.vb" />
     <Compile Include="BiddingData\Dataset\Account.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -125,6 +126,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Supplier.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="BiddingData\Dataset\Warehouse.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Warehouse.xsd</DependentUpon>
     </Compile>
     <Compile Include="CBBCategory.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -192,7 +198,6 @@
     <None Include="BiddingData\Dataset\OrderDetail.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>OrderDetail.Designer.vb</LastGenOutput>
     </None>
     <None Include="BiddingData\Dataset\OrderDetail.xss">
       <DependentUpon>OrderDetail.xsd</DependentUpon>
@@ -240,6 +245,17 @@
     </None>
     <None Include="BiddingData\Dataset\Supplier.xss">
       <DependentUpon>Supplier.xsd</DependentUpon>
+    </None>
+    <None Include="BiddingData\Dataset\Warehouse.xsc">
+      <DependentUpon>Warehouse.xsd</DependentUpon>
+    </None>
+    <None Include="BiddingData\Dataset\Warehouse.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Warehouse.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="BiddingData\Dataset\Warehouse.xss">
+      <DependentUpon>Warehouse.xsd</DependentUpon>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

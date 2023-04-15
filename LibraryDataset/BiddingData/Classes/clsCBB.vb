@@ -85,5 +85,9 @@ Public Class clsCBB
         taStatus.Connection = conn
         Return taStatus.GetDeleveredId()
     End Function
+    Public Function GetUnavailableId() As Integer
+        taStatus.Connection = conn
+        Return taStatus.GetUnavailableId().Rows(0)(0)
+    End Function
 
 End Class

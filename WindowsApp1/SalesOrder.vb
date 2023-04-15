@@ -6,13 +6,12 @@ Public Class SalesOrder
     Dim clsProduct As New clsProduct(conn.connSales.ConnectionString)
     Dim clsCBB As New clsCBB(conn.connSales.ConnectionString)
 
-    Private listName As New List(Of String)
-    Private listNumber As New List(Of String)
-
     Private Sub dgvOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         listBuyProduct.Columns.Add("Id", 30)
         listBuyProduct.Columns.Add("Product")
         listBuyProduct.Columns.Add("Number")
+        listBuyProduct.Columns.Add("Costs")
+        listBuyProduct.Columns.Add("Status")
         Reload()
     End Sub
     Private Sub Reload()
@@ -55,9 +54,6 @@ Public Class SalesOrder
         Dim data = clsPMSAnalysis.GetAllSaleOrders()
 
         If data.SalesOrder.Count > 0 Then
-            listName.Clear()
-            listNumber.Clear()
-
             Dim i = 0
             While i < data.SalesOrder.Rows.Count
                 Dim id As Long = data.SalesOrder.Rows(i)(0)
@@ -70,13 +66,8 @@ Public Class SalesOrder
                     End If
                     totalProduct += If(Not IsDBNull(data.SalesOrder.Rows(j)("NumberOfProducts")), data.SalesOrder.Rows(j)("NumberOfProducts"), 0)
                     s += If(Not IsDBNull(data.SalesOrder.Rows(j)("ProductId")), data.SalesOrder.Rows(j)("ProductId").ToString + ",", "NULL" + ",")
-                    lineName += If(Not IsDBNull(data.SalesOrder.Rows(j)("ProductName")), data.SalesOrder.Rows(j)("ProductName") + ",", "NULL" + ",")
-                    lineNumber += If(Not IsDBNull(data.SalesOrder.Rows(j)("NumberOfProducts")), data.SalesOrder.Rows(j)("NumberOfProducts").ToString + ",", "NULL" + ",")
                     j += 1
                 End While
-
-                listName.Add(lineName.Substring(0, Len(lineName) - 1))
-                listNumber.Add(lineNumber.Substring(0, Len(lineNumber) - 1))
 
                 Dim rowTable As DataRow = table.NewRow
                 Dim row = data.SalesOrder.Rows(j - 1)
@@ -113,6 +104,7 @@ Public Class SalesOrder
             Return
         Else
             Dim row As DataGridViewRow = dgvOrder.CurrentRow
+            labWarning.Text = ""
             txtOrderCode.Text = row.Cells(0).Value.ToString
             txtCustomerName.Text = row.Cells(1).Value.ToString
             dtOrderDate.Text = row.Cells(2).Value.ToString
@@ -126,20 +118,22 @@ Public Class SalesOrder
             Next
 
             txtShipFee.Text = row.Cells(7).Value.ToString
-            txtTotalPrice.Text = row.Cells(8).Value.ToString
+            txtTotalCosts.Text = row.Cells(8).Value.ToString
             txtDiscount.Text = row.Cells(9).Value.ToString
             txtPaymentMethod.Text = row.Cells(10).Value.ToString
 
             'Listview product
             listBuyProduct.Items.Clear()
             Dim id = row.Cells(11).Value.ToString.Split(",")
-            Dim name = listName(dgvOrder.CurrentRow.Index).Split(",")
-            Dim number = listNumber(dgvOrder.CurrentRow.Index).Split(",")
             If id(0).ToString <> "NULL" Then
                 For i = 0 To id.Length - 1
                     Dim rowView = listBuyProduct.Items.Add(id(i))
-                    rowView.SubItems.Add(name(i))
-                    rowView.SubItems.Add(number(i))
+                    Dim dataProduct = clsProduct.GetProductForListView(id(i), txtOrderCode.Text)
+                    Dim p = dataProduct.Rows(0)
+                    rowView.SubItems.Add(p(0))
+                    rowView.SubItems.Add(p(4))
+                    rowView.SubItems.Add(p(5))
+                    rowView.SubItems.Add(p(6))
                 Next
 
             End If
@@ -150,11 +144,21 @@ Public Class SalesOrder
                     If item.PropItemId = CLng(listBuyProduct.Items(0).SubItems(0).Text) Then
                         cbbProduct.SelectedItem = item
                         txtNumber.Text = listBuyProduct.Items(0).SubItems(2).Text
+                        txtCosts.Text = listBuyProduct.Items(0).SubItems(3).Text
+                        Dim status = listBuyProduct.Items(0).SubItems(4).Text
+                        If status = "UNAVAILABLE" Then
+                            labWarning.Text = "*Warning: this product is out of stock now!"
+                        Else
+                            labWarning.Text = ""
+                        End If
+
+                        Exit For
                     End If
                 Next
             Else
                 cbbProduct.SelectedIndex = -1
                 txtNumber.Text = ""
+                txtCosts.Text = ""
             End If
 
             For Each item As CBBPerson In cbbShipper.Items
@@ -209,11 +213,15 @@ Public Class SalesOrder
         txtNumber.Text = ""
         txtDiscount.Text = ""
         txtPaymentMethod.Text = ""
-        txtTotalPrice.Text = ""
+        txtTotalCosts.Text = ""
+        txtCosts.Text = ""
         listBuyProduct.Items.Clear()
     End Sub
 
     Private Sub bAdd_Click(sender As Object, e As EventArgs) Handles bAdd.Click
+        bDelete.Enabled = False
+        bEdit.Enabled = False
+        bPrint.Enabled = False
         clearValue()
         setEnable(True)
     End Sub
@@ -224,6 +232,10 @@ Public Class SalesOrder
 
     Private Sub bSave_Click(sender As Object, e As EventArgs) Handles bSave.Click
         If checkLogicData() Then
+            bDelete.Enabled = True
+            bEdit.Enabled = True
+            bPrint.Enabled = True
+
             Dim hasDelevered = False
             If cbbShipStatus.SelectedItem IsNot Nothing Then
                 If CType(cbbShipStatus.SelectedItem, CBBItem).PropItemId = clsCBB.GetDeleveredId().Rows(0)(0) Then
@@ -245,18 +257,18 @@ Public Class SalesOrder
                 Dim dataSalesDetail = clsPMSAnalysis.GetAllSalesDetail()
                 For Each item In listBuyProduct.Items
                     result = 123
-                    Dim cost As Double = 0
-                    Dim costItem = clsProduct.GetCostOfProduct(item.SubItems(0).Text)
-                    cost += (costItem(0)(0) * (1 - costItem(0)(1) / 100)) * item.SubItems(2).Text
 
                     For Each row In dataSalesDetail.Rows
                         If row(1) = item.SubItems(0).Text Then
                             If row(2) >= (item.SubItems(2).Text + row(3)) Then
                                 result = 1
-                                clsPMSAnalysis.UpdateSalesDetail(row(0), row(1), row(2), item.SubItems(2).Text + row(3), cost)
+                                clsPMSAnalysis.UpdateSalesDetail(row(0), row(1), row(2), item.SubItems(2).Text + row(3), row(4) + item.SubItems(3).Text)
+                                If row(2) = (item.SubItems(2).Text + row(3)) Then
+                                    result = clsProduct.UpdateStatus(row(1), clsCBB.GetUnavailableId())
+                                End If
                                 Exit For
                             End If
-                            number = row(2) - row(3)
+                            number = row(2) - row(3)         'Number of products left
                         End If
                     Next
 
@@ -299,19 +311,16 @@ Public Class SalesOrder
                 If txtOrderCode.Text <> "" Then             'Edit
                     result = clsPMSAnalysis.UpdateOrder(txtOrderCode.Text, txtCustomerName.Text,
                                             dtOrderDate.Value, shipperId, dtShipDate.Value, txtShipAddress.Text, txtShipFee.Text, statusId,
-                                             txtDiscount.Text, txtTotalPrice.Text, txtPaymentMethod.Text, "", LoginForm.PropUsername)
+                                             txtDiscount.Text, txtTotalCosts.Text, txtPaymentMethod.Text, "", LoginForm.PropUsername)
 
 
                     For Each product In listBuyProduct.Items
                         If result = 1 Then
-                            Dim totalPrice As Double = 0
-                            Dim costItem = clsProduct.GetCostOfProduct(product.SubItems(0).Text)
-                            totalPrice += (costItem(0)(0) * (1 - costItem(0)(1) / 100)) * product.SubItems(2).Text
 
                             If Not clsPMSAnalysis.CheckIfOrderDetailExists(txtOrderCode.Text, product.SubItems(0).Text) Then
-                                result = clsPMSAnalysis.AddOrderDetail(txtOrderCode.Text, product.SubItems(0).Text, product.SubItems(2).Text, totalPrice)
+                                result = clsPMSAnalysis.AddOrderDetail(txtOrderCode.Text, product.SubItems(0).Text, product.SubItems(2).Text, product.SubItems(3).Text)
                             Else
-                                result = clsPMSAnalysis.UpdateOrderDetail(txtOrderCode.Text, product.SubItems(0).Text, product.SubItems(2).Text, totalPrice)
+                                result = clsPMSAnalysis.UpdateOrderDetail(txtOrderCode.Text, product.SubItems(0).Text, product.SubItems(2).Text, product.SubItems(3).Text)
                             End If
                         Else
                             Exit For
@@ -340,19 +349,16 @@ Public Class SalesOrder
                 Else                                        'Add new
                     Dim orderId = clsPMSAnalysis.AddOrder(txtCustomerName.Text,
                                             dtOrderDate.Value, shipperId, dtShipDate.Value, txtShipAddress.Text, txtShipFee.Text, statusId,
-                                             txtDiscount.Text, txtTotalPrice.Text, txtPaymentMethod.Text, "", LoginForm.PropUsername)
+                                             txtDiscount.Text, txtTotalCosts.Text, txtPaymentMethod.Text, "", LoginForm.PropUsername)
 
                     result = 1
 
                     For Each product In listBuyProduct.Items
                         If result = 1 Then
-
-                            Dim totalPrice As Double = 0
-                            Dim costItem = clsProduct.GetCostOfProduct(product.SubItems(0).Text)
-                            totalPrice += (costItem(0)(0) * (1 - costItem(0)(1) / 100)) * product.SubItems(2).Text
-
+                            MsgBox("1")
                             If Not clsPMSAnalysis.CheckIfOrderDetailExists(orderId, product.SubItems(0).Text) Then
-                                result = clsPMSAnalysis.AddOrderDetail(orderId, product.SubItems(0).Text, product.SubItems(2).Text, totalPrice)
+                                MsgBox("2")
+                                result = clsPMSAnalysis.AddOrderDetail(orderId, product.SubItems(0).Text, product.SubItems(2).Text, product.SubItems(3).Text)
                             End If
 
                         Else
@@ -401,7 +407,7 @@ Public Class SalesOrder
         Return True
     End Function
 
-    Private Function CheckValue(ByVal label As String, ByVal value As String, ByVal style As String) As Boolean
+    Private Function CheckValue(ByVal label As String, ByVal value As String, ByVal style As String, Optional ByVal warning As Boolean = True) As Boolean
         Dim returnVal = True
 
         If value.Length = 0 Then
@@ -414,10 +420,14 @@ Public Class SalesOrder
                 Try
                     Number = Long.Parse(value)
                 Catch ex As FormatException
-                    MsgBox(label & " must be a integer number!")
+                    If warning Then
+                        MsgBox(label & " must be a integer number!")
+                    End If
                     returnVal = False
                 Catch ex As OverflowException
-                    MsgBox(label & " is too big to handle!")
+                    If warning Then
+                        MsgBox(label & " is too big to handle!")
+                    End If
                     returnVal = False
                 End Try
 
@@ -426,10 +436,14 @@ Public Class SalesOrder
                 Try
                     Number = Double.Parse(value)
                 Catch ex As FormatException
-                    MsgBox(label & " must be a number!")
+                    If warning Then
+                        MsgBox(label & " must be a number!")
+                    End If
                     returnVal = False
                 Catch ex As OverflowException
-                    MsgBox(label & " is too big to handle!")
+                    If warning Then
+                        MsgBox(label & " is too big to handle!")
+                    End If
                     returnVal = False
                 End Try
 
@@ -448,6 +462,13 @@ Public Class SalesOrder
                     If item.PropItemId = CLng(selectedRow.SubItems(0).Text) Then
                         cbbProduct.SelectedItem = item
                         txtNumber.Text = selectedRow.SubItems(2).Text
+                        txtCosts.Text = selectedRow.SubItems(3).Text
+
+                        If selectedRow.SubItems(4).Text = "UNAVAILABLE" Then
+                            labWarning.Text = "*Warning: this product is out of stock now!"
+                        Else
+                            labWarning.Text = ""
+                        End If
                     End If
                 Next
             Else
@@ -455,6 +476,13 @@ Public Class SalesOrder
                 cbbProduct.Items.Add(abc)
                 cbbProduct.SelectedItem = abc
                 txtNumber.Text = selectedRow.SubItems(2).Text
+                txtCosts.Text = selectedRow.SubItems(3).Text
+
+                If selectedRow.SubItems(4).Text = "UNAVAILABLE" Then
+                    labWarning.Text = "*Warning: this product is out of stock now!"
+                Else
+                    labWarning.Text = ""
+                End If
             End If
         End If
     End Sub
@@ -481,7 +509,9 @@ Public Class SalesOrder
                 cbbProduct.SelectedIndex = -1
                 If CheckValue("Number of products", txtNumber.Text, "Long") Then
                     item.SubItems(2).Text = number
+                    item.SubItems(3).Text = If(number = "0", "0", txtCosts.Text)
                     txtNumber.Text = ""
+                    txtCosts.Text = ""
                     isExist = True
                 End If
             End If
@@ -491,8 +521,11 @@ Public Class SalesOrder
             Dim rowView = listBuyProduct.Items.Add(selectedRow.PropItemId)
             rowView.SubItems.Add(selectedRow.PropItemName)
             rowView.SubItems.Add(number)
+            rowView.SubItems.Add(If(number = "0", "0", txtCosts.Text))
+            rowView.SubItems.Add("AVAILABLE")
             cbbProduct.Items.RemoveAt(cbbProduct.SelectedIndex)
             txtNumber.Text = ""
+            txtCosts.Text = ""
         End If
 
         CalculateTotalPrice()
@@ -505,6 +538,7 @@ Public Class SalesOrder
 
             cbbProduct.Items.Add(New CBBItem(selectedRow.SubItems(0).Text, selectedRow.SubItems(1).Text))
             txtNumber.Text = selectedRow.SubItems(2).Text
+            txtCosts.Text = selectedRow.SubItems(3).Text
             listBuyProduct.Items.RemoveAt(listBuyProduct.SelectedIndices(0))
 
         Else
@@ -558,16 +592,15 @@ Public Class SalesOrder
         End If
 
         If Not CheckValue("Ship fee", shipFee, "Double") Or Not CheckValue("Discount", discount, "Double") Then
-            txtTotalPrice.Text = "#N/A"
+            txtTotalCosts.Text = "#N/A"
         Else
             Dim cost As Double = 0
             For Each item In listBuyProduct.Items
-                Dim costItem = clsProduct.GetCostOfProduct(item.SubItems(0).Text)
-                cost += (costItem(0)(0) * (1 - costItem(0)(1) / 100)) * item.SubItems(2).Text
+                cost += item.SubItems(3).Text
             Next
             cost += shipFee
             cost *= 1 - discount / 100
-            txtTotalPrice.Text = cost
+            txtTotalCosts.Text = cost
         End If
 
     End Sub
@@ -585,4 +618,22 @@ Public Class SalesOrder
         End If
     End Sub
 
+    Private Sub txtNumber_KeyUp(sender As Object, e As KeyEventArgs) Handles txtNumber.KeyUp
+        Calculate_ProductCost()
+    End Sub
+
+    Private Sub Calculate_ProductCost()
+        If cbbProduct.Text <> "" And txtNumber.Text <> "" Then
+            If CheckValue("", txtNumber.Text, "Long", False) Then
+                Dim costItem = clsProduct.GetCostOfProduct(CType(cbbProduct.SelectedItem, CBBItem).PropItemId)
+                txtCosts.Text = (costItem(0)(0) * (1 - costItem(0)(1) / 100)) * txtNumber.Text
+            Else
+                txtCosts.Text = "#N/A"
+            End If
+        End If
+    End Sub
+
+    Private Sub cbbProduct_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbbProduct.SelectedIndexChanged
+        Calculate_ProductCost()
+    End Sub
 End Class

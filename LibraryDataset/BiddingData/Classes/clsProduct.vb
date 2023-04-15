@@ -6,6 +6,7 @@ Public Class clsProduct
     Dim taCostProduct As New ProductTableAdapters.CostProductTableAdapter
     Dim taSalesDetail As New ProductTableAdapters.SalesDetailTableAdapter
     Dim taProductSalesDetail As New ProductTableAdapters.ProductSalesDetailTableAdapter
+    Dim taProductsView As New ProductTableAdapters.ProductViewTableAdapter
 
 
     Private strConnTrans As String
@@ -137,6 +138,15 @@ Public Class clsProduct
 
         Return ds.ProductSalesDetail
 
+    End Function
+
+    Public Function GetProductForListView(ByVal productId As Long, ByVal orderId As Long) As Product.ProductViewDataTable
+        taProductsView.Connection = conn
+        Return taProductsView.GetData(productId, orderId)
+    End Function
+    Public Function UpdateStatus(ByVal productId As Long, ByVal statusId As Integer) As Integer
+        ta.Connection = conn
+        Return ta.UpdateStatus(statusId, productId)
     End Function
 
 End Class

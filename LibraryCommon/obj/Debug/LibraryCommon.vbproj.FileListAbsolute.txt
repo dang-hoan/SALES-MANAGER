@@ -8,3 +8,13 @@ D:\Code\vs data\WindowsApp1\LibraryCommon\obj\Debug\LibraryCommon.vbproj.CoreCom
 D:\Code\vs data\WindowsApp1\LibraryCommon\obj\Debug\LibraryCommon.dll
 D:\Code\vs data\WindowsApp1\LibraryCommon\obj\Debug\LibraryCommon.xml
 D:\Code\vs data\WindowsApp1\LibraryCommon\obj\Debug\LibraryCommon.pdb
+D:\Code\vs data\SalesManager\LibraryCommon\bin\Debug\LibraryCommon.dll
+D:\Code\vs data\SalesManager\LibraryCommon\bin\Debug\LibraryCommon.pdb
+D:\Code\vs data\SalesManager\LibraryCommon\bin\Debug\LibraryCommon.xml
+D:\Code\vs data\SalesManager\LibraryCommon\obj\Debug\LibraryCommon.vbproj.AssemblyReference.cache
+D:\Code\vs data\SalesManager\LibraryCommon\obj\Debug\LibraryCommon.Resources.resources
+D:\Code\vs data\SalesManager\LibraryCommon\obj\Debug\LibraryCommon.vbproj.GenerateResource.cache
+D:\Code\vs data\SalesManager\LibraryCommon\obj\Debug\LibraryCommon.vbproj.CoreCompileInputs.cache
+D:\Code\vs data\SalesManager\LibraryCommon\obj\Debug\LibraryCommon.dll
+D:\Code\vs data\SalesManager\LibraryCommon\obj\Debug\LibraryCommon.xml
+D:\Code\vs data\SalesManager\LibraryCommon\obj\Debug\LibraryCommon.pdb

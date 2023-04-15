@@ -72,4 +72,8 @@ Public Class MainForm
     Private Sub btnProductSearch_Click(sender As Object, e As EventArgs) Handles btnProductSearch.Click
         ShowForm(New ProductSearch)
     End Sub
+
+    Private Sub btnWarehouseCategory_Click(sender As Object, e As EventArgs) Handles btnWarehouseCategory.Click
+        ShowForm(New WarehouseCategory)
+    End Sub
 End Class

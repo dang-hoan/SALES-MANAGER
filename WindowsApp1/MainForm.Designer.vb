@@ -29,6 +29,7 @@ Partial Class MainForm
         Me.productToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.orderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.supplierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnWarehouseCategory = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnTool = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem8 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem9 = New System.Windows.Forms.ToolStripMenuItem()
@@ -43,7 +44,6 @@ Partial Class MainForm
         Me.pictureMain = New System.Windows.Forms.PictureBox()
         Me.labHello = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.WarehouseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuStrip.SuspendLayout()
         Me.srcMain.SuspendLayout()
         Me.panelWelcome.SuspendLayout()
@@ -55,6 +55,7 @@ Partial Class MainForm
         Me.menuStrip.AutoSize = False
         Me.menuStrip.BackColor = System.Drawing.Color.MediumAquamarine
         Me.menuStrip.Dock = System.Windows.Forms.DockStyle.Left
+        Me.menuStrip.GripMargin = New System.Windows.Forms.Padding(2, 2, 0, 2)
         Me.menuStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.menuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnHome, Me.btnCategory, Me.btnTool, Me.btnStatistic, Me.btnExit})
         Me.menuStrip.Location = New System.Drawing.Point(0, 0)
@@ -87,7 +88,7 @@ Partial Class MainForm
         '
         Me.btnCategory.AutoSize = False
         Me.btnCategory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnCategory.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnCategoryCustomer, Me.ToolStripMenuItem2, Me.toolStripMenuItem1, Me.productToolStripMenuItem, Me.orderToolStripMenuItem, Me.supplierToolStripMenuItem, Me.WarehouseToolStripMenuItem})
+        Me.btnCategory.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnCategoryCustomer, Me.ToolStripMenuItem2, Me.toolStripMenuItem1, Me.productToolStripMenuItem, Me.orderToolStripMenuItem, Me.supplierToolStripMenuItem, Me.btnWarehouseCategory})
         Me.btnCategory.Image = CType(resources.GetObject("btnCategory.Image"), System.Drawing.Image)
         Me.btnCategory.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.btnCategory.Name = "btnCategory"
@@ -130,6 +131,12 @@ Partial Class MainForm
         Me.supplierToolStripMenuItem.Name = "supplierToolStripMenuItem"
         Me.supplierToolStripMenuItem.Size = New System.Drawing.Size(270, 34)
         Me.supplierToolStripMenuItem.Text = "Supplier"
+        '
+        'btnWarehouseCategory
+        '
+        Me.btnWarehouseCategory.Name = "btnWarehouseCategory"
+        Me.btnWarehouseCategory.Size = New System.Drawing.Size(270, 34)
+        Me.btnWarehouseCategory.Text = "Warehouse"
         '
         'btnTool
         '
@@ -258,12 +265,6 @@ Partial Class MainForm
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Welcome to sales manager app!!"
         '
-        'WarehouseToolStripMenuItem
-        '
-        Me.WarehouseToolStripMenuItem.Name = "WarehouseToolStripMenuItem"
-        Me.WarehouseToolStripMenuItem.Size = New System.Drawing.Size(270, 34)
-        Me.WarehouseToolStripMenuItem.Text = "Warehouse"
-        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -314,5 +315,5 @@ Partial Class MainForm
     Friend WithEvents pictureMain As PictureBox
     Friend WithEvents labHello As Label
     Friend WithEvents panelWelcome As Panel
-    Friend WithEvents WarehouseToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents btnWarehouseCategory As ToolStripMenuItem
 End Class

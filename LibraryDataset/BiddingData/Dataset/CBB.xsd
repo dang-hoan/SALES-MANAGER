@@ -272,6 +272,16 @@ SELECT Id, StatusName FROM Status WHERE (Id = @Id)</CommandText>
               <Mapping SourceColumn="StatusName" DataSetColumn="StatusName" />
             </Mappings>
             <Sources>
+              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="SalesManagerDB.dbo.Status" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetUnavailableId" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetUnavailableId" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetUnavailableId" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Id, StatusName
+FROM   Status
+WHERE (StatusName = 'UNAVAILABLE')</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="SalesManagerDB.dbo.Status" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByStatusDelevered" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDeleveredId" GeneratorSourceName="FillByStatusDelevered" GetMethodModifier="Public" GetMethodName="GetDeleveredId" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDeleveredId" UserSourceName="FillByStatusDelevered">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
@@ -441,7 +451,7 @@ FROM   SalesDetail</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="ShipperName" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="ShipperName" msprop:Generator_ColumnPropNameInTable="ShipperNameColumn" msprop:Generator_ColumnVarNameInTable="columnShipperName" msprop:Generator_UserColumnName="ShipperName" minOccurs="0">
+              <xs:element name="ShipperName" msdata:ReadOnly="true" msprop:Generator_UserColumnName="ShipperName" msprop:Generator_ColumnPropNameInTable="ShipperNameColumn" msprop:Generator_ColumnPropNameInRow="ShipperName" msprop:Generator_ColumnVarNameInTable="columnShipperName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="41" />
