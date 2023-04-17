@@ -100,7 +100,8 @@ Public Class SalesOrder
     End Sub
 
     Private Sub setValue()
-        If dgvOrder Is Nothing Then
+        If dgvOrder.Rows.Count = 0 Then
+            setEnableButton(False)
             Return
         Else
             Dim row As DataGridViewRow = dgvOrder.CurrentRow
@@ -171,6 +172,7 @@ Public Class SalesOrder
     Private Sub bEdit_Click(sender As Object, e As EventArgs) Handles bEdit.Click
         If cbbShipStatus.SelectedItem IsNot Nothing Then
             If CType(cbbShipStatus.SelectedItem, CBBItem).PropItemId <> clsCBB.GetDeleveredId().Rows(0)(0) Then
+                bAdd.Enabled = False
                 setEnable(True)
             Else
                 MsgBox("Order was delevered to customer, you can't edit it!")
@@ -200,6 +202,11 @@ Public Class SalesOrder
             listBuyProduct.Size = New Point(188, 95)
         End If
     End Sub
+    Private Sub setEnableButton(valBoolean As Boolean)
+        bEdit.Enabled = valBoolean
+        bDelete.Enabled = valBoolean
+        bPrint.Enabled = valBoolean
+    End Sub
     Private Sub clearValue()
         txtOrderCode.Text = ""
         txtCustomerName.Text = ""
@@ -219,15 +226,14 @@ Public Class SalesOrder
     End Sub
 
     Private Sub bAdd_Click(sender As Object, e As EventArgs) Handles bAdd.Click
-        bDelete.Enabled = False
-        bEdit.Enabled = False
-        bPrint.Enabled = False
+        setEnableButton(False)
         clearValue()
         setEnable(True)
     End Sub
     Private Sub dgvOrder_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvOrder.CellClick
         setEnable(False)
         setValue()
+        setEnableButton(True)
     End Sub
 
     Private Sub bSave_Click(sender As Object, e As EventArgs) Handles bSave.Click
@@ -355,9 +361,7 @@ Public Class SalesOrder
 
                     For Each product In listBuyProduct.Items
                         If result = 1 Then
-                            MsgBox("1")
                             If Not clsPMSAnalysis.CheckIfOrderDetailExists(orderId, product.SubItems(0).Text) Then
-                                MsgBox("2")
                                 result = clsPMSAnalysis.AddOrderDetail(orderId, product.SubItems(0).Text, product.SubItems(2).Text, product.SubItems(3).Text)
                             End If
 
@@ -375,6 +379,7 @@ Public Class SalesOrder
                 setEnable(False)
                 MsgBox(type & " order information successful!")
                 Reload()
+                bAdd.Enabled = True
             ElseIf result = 123 Then
                 If number <= 0 Then
                     MsgBox("The item has id " & stockId & " is out of stock!")

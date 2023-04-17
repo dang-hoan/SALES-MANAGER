@@ -318,11 +318,11 @@ Partial Public Class Warehouse
     Partial Public Class SalesDetailDataTable
         Inherits Global.System.Data.TypedTableBase(Of SalesDetailRow)
         
-        Private columnWareHouseId As Global.System.Data.DataColumn
-        
         Private columnProductId As Global.System.Data.DataColumn
         
         Private columnTotal As Global.System.Data.DataColumn
+        
+        Private columnProductName As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -361,14 +361,6 @@ Partial Public Class Warehouse
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property WareHouseIdColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnWareHouseId
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public ReadOnly Property ProductIdColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnProductId
@@ -380,6 +372,14 @@ Partial Public Class Warehouse
         Public ReadOnly Property TotalColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnTotal
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property ProductNameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnProductName
             End Get
         End Property
         
@@ -420,9 +420,9 @@ Partial Public Class Warehouse
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddSalesDetailRow(ByVal WareHouseId As Long, ByVal ProductId As Long, ByVal Total As Long) As SalesDetailRow
+        Public Overloads Function AddSalesDetailRow(ByVal ProductId As Long, ByVal Total As Long, ByVal ProductName As String) As SalesDetailRow
             Dim rowSalesDetailRow As SalesDetailRow = CType(Me.NewRow,SalesDetailRow)
-            Dim columnValuesArray() As Object = New Object() {WareHouseId, ProductId, Total}
+            Dim columnValuesArray() As Object = New Object() {ProductId, Total, ProductName}
             rowSalesDetailRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSalesDetailRow)
             Return rowSalesDetailRow
@@ -445,22 +445,23 @@ Partial Public Class Warehouse
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub InitVars()
-            Me.columnWareHouseId = MyBase.Columns("WareHouseId")
             Me.columnProductId = MyBase.Columns("ProductId")
             Me.columnTotal = MyBase.Columns("Total")
+            Me.columnProductName = MyBase.Columns("ProductName")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnWareHouseId = New Global.System.Data.DataColumn("WareHouseId", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnWareHouseId)
             Me.columnProductId = New Global.System.Data.DataColumn("ProductId", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnProductId)
             Me.columnTotal = New Global.System.Data.DataColumn("Total", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnTotal)
-            Me.columnWareHouseId.AllowDBNull = false
+            Me.columnProductName = New Global.System.Data.DataColumn("ProductName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnProductName)
             Me.columnProductId.AllowDBNull = false
+            Me.columnProductName.AllowDBNull = false
+            Me.columnProductName.MaxLength = 40
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -604,11 +605,9 @@ Partial Public Class Warehouse
         
         Private columnAddress As Global.System.Data.DataColumn
         
-        Private columnTotalProduct As Global.System.Data.DataColumn
-        
         Private columnNumberOfImport As Global.System.Data.DataColumn
         
-        Private columnNumbeOfExport As Global.System.Data.DataColumn
+        Private columnNumberOfExport As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -671,14 +670,6 @@ Partial Public Class Warehouse
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property TotalProductColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnTotalProduct
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public ReadOnly Property NumberOfImportColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnNumberOfImport
@@ -687,9 +678,9 @@ Partial Public Class Warehouse
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property NumbeOfExportColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property NumberOfExportColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnNumbeOfExport
+                Return Me.columnNumberOfExport
             End Get
         End Property
         
@@ -730,9 +721,9 @@ Partial Public Class Warehouse
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddWareHouseRow(ByVal WareHouseName As String, ByVal Address As String, ByVal TotalProduct As Long, ByVal NumberOfImport As Long, ByVal NumbeOfExport As Long) As WareHouseRow
+        Public Overloads Function AddWareHouseRow(ByVal WareHouseName As String, ByVal Address As String, ByVal NumberOfImport As Long, ByVal NumberOfExport As Long) As WareHouseRow
             Dim rowWareHouseRow As WareHouseRow = CType(Me.NewRow,WareHouseRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, WareHouseName, Address, TotalProduct, NumberOfImport, NumbeOfExport}
+            Dim columnValuesArray() As Object = New Object() {Nothing, WareHouseName, Address, NumberOfImport, NumberOfExport}
             rowWareHouseRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowWareHouseRow)
             Return rowWareHouseRow
@@ -764,9 +755,8 @@ Partial Public Class Warehouse
             Me.columnId = MyBase.Columns("Id")
             Me.columnWareHouseName = MyBase.Columns("WareHouseName")
             Me.columnAddress = MyBase.Columns("Address")
-            Me.columnTotalProduct = MyBase.Columns("TotalProduct")
             Me.columnNumberOfImport = MyBase.Columns("NumberOfImport")
-            Me.columnNumbeOfExport = MyBase.Columns("NumbeOfExport")
+            Me.columnNumberOfExport = MyBase.Columns("NumberOfExport")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -778,12 +768,10 @@ Partial Public Class Warehouse
             MyBase.Columns.Add(Me.columnWareHouseName)
             Me.columnAddress = New Global.System.Data.DataColumn("Address", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnAddress)
-            Me.columnTotalProduct = New Global.System.Data.DataColumn("TotalProduct", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnTotalProduct)
             Me.columnNumberOfImport = New Global.System.Data.DataColumn("NumberOfImport", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNumberOfImport)
-            Me.columnNumbeOfExport = New Global.System.Data.DataColumn("NumbeOfExport", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnNumbeOfExport)
+            Me.columnNumberOfExport = New Global.System.Data.DataColumn("NumberOfExport", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNumberOfExport)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnId}, true))
             Me.columnId.AutoIncrement = true
             Me.columnId.AutoIncrementSeed = -1
@@ -943,17 +931,6 @@ Partial Public Class Warehouse
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property WareHouseId() As Long
-            Get
-                Return CType(Me(Me.tableSalesDetail.WareHouseIdColumn),Long)
-            End Get
-            Set
-                Me(Me.tableSalesDetail.WareHouseIdColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property ProductId() As Long
             Get
                 Return CType(Me(Me.tableSalesDetail.ProductIdColumn),Long)
@@ -975,6 +952,17 @@ Partial Public Class Warehouse
             End Get
             Set
                 Me(Me.tableSalesDetail.TotalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property ProductName() As String
+            Get
+                Return CType(Me(Me.tableSalesDetail.ProductNameColumn),String)
+            End Get
+            Set
+                Me(Me.tableSalesDetail.ProductNameColumn) = value
             End Set
         End Property
         
@@ -1041,21 +1029,6 @@ Partial Public Class Warehouse
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property TotalProduct() As Long
-            Get
-                Try 
-                    Return CType(Me(Me.tableWareHouse.TotalProductColumn),Long)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'TotalProduct' in table 'WareHouse' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableWareHouse.TotalProductColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property NumberOfImport() As Long
             Get
                 Try 
@@ -1071,30 +1044,18 @@ Partial Public Class Warehouse
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property NumbeOfExport() As Long
+        Public Property NumberOfExport() As Long
             Get
                 Try 
-                    Return CType(Me(Me.tableWareHouse.NumbeOfExportColumn),Long)
+                    Return CType(Me(Me.tableWareHouse.NumberOfExportColumn),Long)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'NumbeOfExport' in table 'WareHouse' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'NumberOfExport' in table 'WareHouse' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableWareHouse.NumbeOfExportColumn) = value
+                Me(Me.tableWareHouse.NumberOfExportColumn) = value
             End Set
         End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsTotalProductNull() As Boolean
-            Return Me.IsNull(Me.tableWareHouse.TotalProductColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetTotalProductNull()
-            Me(Me.tableWareHouse.TotalProductColumn) = Global.System.Convert.DBNull
-        End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -1110,14 +1071,14 @@ Partial Public Class Warehouse
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsNumbeOfExportNull() As Boolean
-            Return Me.IsNull(Me.tableWareHouse.NumbeOfExportColumn)
+        Public Function IsNumberOfExportNull() As Boolean
+            Return Me.IsNull(Me.tableWareHouse.NumberOfExportColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetNumbeOfExportNull()
-            Me(Me.tableWareHouse.NumbeOfExportColumn) = Global.System.Convert.DBNull
+        Public Sub SetNumberOfExportNull()
+            Me(Me.tableWareHouse.NumberOfExportColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -1323,18 +1284,10 @@ Namespace WarehouseTableAdapters
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "SalesDetail"
-            tableMapping.ColumnMappings.Add("WareHouseId", "WareHouseId")
             tableMapping.ColumnMappings.Add("ProductId", "ProductId")
             tableMapping.ColumnMappings.Add("Total", "Total")
+            tableMapping.ColumnMappings.Add("ProductName", "ProductName")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [SalesDetail] ([WareHouseId], [ProductId], [Total]) VALUES (@WareHous"& _ 
-                "eId, @ProductId, @Total)"
-            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WareHouseId", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WareHouseId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ProductId", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ProductId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Total", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Total", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1350,16 +1303,20 @@ Namespace WarehouseTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT WareHouseId, ProductId, Total"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   SalesDetail"
+            Me._commandCollection(0).CommandText = "SELECT SalesDetail.ProductId, Product.ProductName, SalesDetail.Total"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   Sale"& _ 
+                "sDetail INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             Product ON SalesDetail.ProductId = Product.Id"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+                "WHERE (SalesDetail.WareHouseId = @WareHouseId) AND (Product.IsDelete = 'False')"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WareHouseId", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "WareHouseId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As Warehouse.SalesDetailDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As Warehouse.SalesDetailDataTable, ByVal WareHouseId As Long) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(WareHouseId,Long)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -1371,66 +1328,12 @@ Namespace WarehouseTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As Warehouse.SalesDetailDataTable
+        Public Overloads Overridable Function GetData(ByVal WareHouseId As Long) As Warehouse.SalesDetailDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(WareHouseId,Long)
             Dim dataTable As Warehouse.SalesDetailDataTable = New Warehouse.SalesDetailDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As Warehouse.SalesDetailDataTable) As Integer
-            Return Me.Adapter.Update(dataTable)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As Warehouse) As Integer
-            Return Me.Adapter.Update(dataSet, "SalesDetail")
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(dataRows)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal WareHouseId As Long, ByVal ProductId As Long, ByVal Total As Global.System.Nullable(Of Long)) As Integer
-            Me.Adapter.InsertCommand.Parameters(0).Value = CType(WareHouseId,Long)
-            Me.Adapter.InsertCommand.Parameters(1).Value = CType(ProductId,Long)
-            If (Total.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(2).Value = CType(Total.Value,Long)
-            Else
-                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
-            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.InsertCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.InsertCommand.Connection.Close
-                End If
-            End Try
         End Function
     End Class
     
@@ -1564,67 +1467,58 @@ Namespace WarehouseTableAdapters
             tableMapping.ColumnMappings.Add("Id", "Id")
             tableMapping.ColumnMappings.Add("WareHouseName", "WareHouseName")
             tableMapping.ColumnMappings.Add("Address", "Address")
-            tableMapping.ColumnMappings.Add("TotalProduct", "TotalProduct")
             tableMapping.ColumnMappings.Add("NumberOfImport", "NumberOfImport")
-            tableMapping.ColumnMappings.Add("NumbeOfExport", "NumbeOfExport")
+            tableMapping.ColumnMappings.Add("NumbeOfExport", "NumberOfExport")
+            tableMapping.ColumnMappings.Add("NumberOfExport", "NumberOfExport")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM [WareHouse] WHERE (([Id] = @Original_Id) AND ([WareHouseName] = @Orig"& _ 
-                "inal_WareHouseName) AND ([Address] = @Original_Address) AND ((@IsNull_TotalProdu"& _ 
-                "ct = 1 AND [TotalProduct] IS NULL) OR ([TotalProduct] = @Original_TotalProduct))"& _ 
-                " AND ((@IsNull_NumberOfImport = 1 AND [NumberOfImport] IS NULL) OR ([NumberOfImp"& _ 
-                "ort] = @Original_NumberOfImport)) AND ((@IsNull_NumbeOfExport = 1 AND [NumbeOfEx"& _ 
-                "port] IS NULL) OR ([NumbeOfExport] = @Original_NumbeOfExport)))"
+                "inal_WareHouseName) AND ([Address] = @Original_Address) AND ((@IsNull_NumberOfIm"& _ 
+                "port = 1 AND [NumberOfImport] IS NULL) OR ([NumberOfImport] = @Original_NumberOf"& _ 
+                "Import)) AND ((@IsNull_NumberOfExport = 1 AND [NumberOfExport] IS NULL) OR ([Num"& _ 
+                "berOfExport] = @Original_NumberOfExport)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Id", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_WareHouseName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WareHouseName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Address", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Address", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_TotalProduct", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TotalProduct", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TotalProduct", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TotalProduct", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_NumberOfImport", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumberOfImport", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_NumberOfImport", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumberOfImport", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_NumbeOfExport", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumbeOfExport", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_NumbeOfExport", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumbeOfExport", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_NumberOfExport", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumberOfExport", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_NumberOfExport", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumberOfExport", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [WareHouse] ([WareHouseName], [Address], [TotalProduct], [NumberOfImp"& _ 
-                "ort], [NumbeOfExport]) VALUES (@WareHouseName, @Address, @TotalProduct, @NumberO"& _ 
-                "fImport, @NumbeOfExport);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, WareHouseName, Address, TotalProduct, Numb"& _ 
-                "erOfImport, NumbeOfExport FROM WareHouse WHERE (Id = SCOPE_IDENTITY())"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [WareHouse] ([WareHouseName], [Address], [NumberOfImport], [NumberOfE"& _ 
+                "xport]) VALUES (@WareHouseName, @Address, @NumberOfImport, @NumberOfExport);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SE"& _ 
+                "LECT Id, WareHouseName, Address, NumberOfImport, NumberOfExport FROM WareHouse W"& _ 
+                "HERE (Id = SCOPE_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WareHouseName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WareHouseName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Address", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Address", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TotalProduct", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TotalProduct", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NumberOfImport", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumberOfImport", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NumbeOfExport", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumbeOfExport", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NumberOfExport", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumberOfExport", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [WareHouse] SET [WareHouseName] = @WareHouseName, [Address] = @Address, [T"& _ 
-                "otalProduct] = @TotalProduct, [NumberOfImport] = @NumberOfImport, [NumbeOfExport"& _ 
-                "] = @NumbeOfExport WHERE (([Id] = @Original_Id) AND ([WareHouseName] = @Original"& _ 
-                "_WareHouseName) AND ([Address] = @Original_Address) AND ((@IsNull_TotalProduct ="& _ 
-                " 1 AND [TotalProduct] IS NULL) OR ([TotalProduct] = @Original_TotalProduct)) AND"& _ 
-                " ((@IsNull_NumberOfImport = 1 AND [NumberOfImport] IS NULL) OR ([NumberOfImport]"& _ 
-                " = @Original_NumberOfImport)) AND ((@IsNull_NumbeOfExport = 1 AND [NumbeOfExport"& _ 
-                "] IS NULL) OR ([NumbeOfExport] = @Original_NumbeOfExport)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, WareHou"& _ 
-                "seName, Address, TotalProduct, NumberOfImport, NumbeOfExport FROM WareHouse WHER"& _ 
-                "E (Id = @Id)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [WareHouse] SET [WareHouseName] = @WareHouseName, [Address] = @Address, [N"& _ 
+                "umberOfImport] = @NumberOfImport, [NumberOfExport] = @NumberOfExport WHERE (([Id"& _ 
+                "] = @Original_Id) AND ([WareHouseName] = @Original_WareHouseName) AND ([Address]"& _ 
+                " = @Original_Address) AND ((@IsNull_NumberOfImport = 1 AND [NumberOfImport] IS N"& _ 
+                "ULL) OR ([NumberOfImport] = @Original_NumberOfImport)) AND ((@IsNull_NumberOfExp"& _ 
+                "ort = 1 AND [NumberOfExport] IS NULL) OR ([NumberOfExport] = @Original_NumberOfE"& _ 
+                "xport)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, WareHouseName, Address, NumberOfImport, NumberOfExport FRO"& _ 
+                "M WareHouse WHERE (Id = @Id)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WareHouseName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WareHouseName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Address", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Address", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TotalProduct", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TotalProduct", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NumberOfImport", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumberOfImport", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NumbeOfExport", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumbeOfExport", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NumberOfExport", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumberOfExport", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Id", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_WareHouseName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WareHouseName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Address", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Address", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_TotalProduct", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TotalProduct", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TotalProduct", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TotalProduct", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_NumberOfImport", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumberOfImport", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_NumberOfImport", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumberOfImport", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_NumbeOfExport", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumbeOfExport", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_NumbeOfExport", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumbeOfExport", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_NumberOfExport", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumberOfExport", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_NumberOfExport", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumberOfExport", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
@@ -1638,12 +1532,49 @@ Namespace WarehouseTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(3) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT Id, WareHouseName, Address, TotalProduct, NumberOfImport, NumbeOfExport"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"F"& _ 
-                "ROM   WareHouse"
+            Me._commandCollection(0).CommandText = "SELECT Id, WareHouseName, Address, NumberOfImport, NumberOfExport"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   WareHou"& _ 
+                "se"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (IsDelete = 'False')"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "UPDATE WareHouse"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET       DeleteDate = @DeleteDate, DeleteBy = @DeleteBy, IsDel"& _ 
+                "ete = 'True'"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Id = @Id);  "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, WareHouseName, Address, NumberOfIm"& _ 
+                "port, NumberOfExport FROM WareHouse WHERE (Id = @Id)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeleteDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeleteBy", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "INSERT INTO WareHouse"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             (WareHouseName, Address, NumberOfImport, Numb"& _ 
+                "erOfExport, CreateDate, CreateBy, IsDelete)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES (@WareHouseName,@Address,@Nu"& _ 
+                "mberOfImport,@NumberOfExport,@CreateDate,@CreateBy, 'False');   "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, War"& _ 
+                "eHouseName, Address, NumberOfImport, NumberOfExport FROM WareHouse WHERE (Id = S"& _ 
+                "COPE_IDENTITY())"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WareHouseName", Global.System.Data.SqlDbType.NVarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "WareHouseName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Address", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "Address", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NumberOfImport", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "NumberOfImport", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NumberOfExport", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "NumberOfExport", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreateBy", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "CreateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "UPDATE WareHouse"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET       WareHouseName = @WareHouseName, Address = @Address, N"& _ 
+                "umberOfImport = @NumberOfImport, NumberOfExport = @NumberOfExport, UpdateDate = "& _ 
+                "@UpdateDate, UpdateBy = @UpdateBy"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Id = @Id);   "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, WareHouseNam"& _ 
+                "e, Address, NumberOfImport, NumberOfExport FROM WareHouse WHERE (Id = @Id)"
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WareHouseName", Global.System.Data.SqlDbType.NVarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "WareHouseName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Address", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "Address", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NumberOfImport", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "NumberOfImport", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NumberOfExport", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "NumberOfExport", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UpdateBy", Global.System.Data.SqlDbType.VarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "UpdateBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1702,7 +1633,7 @@ Namespace WarehouseTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_Id As Long, ByVal Original_WareHouseName As String, ByVal Original_Address As String, ByVal Original_TotalProduct As Global.System.Nullable(Of Long), ByVal Original_NumberOfImport As Global.System.Nullable(Of Long), ByVal Original_NumbeOfExport As Global.System.Nullable(Of Long)) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_Id As Long, ByVal Original_WareHouseName As String, ByVal Original_Address As String, ByVal Original_NumberOfImport As Global.System.Nullable(Of Long), ByVal Original_NumberOfExport As Global.System.Nullable(Of Long)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Id,Long)
             If (Original_WareHouseName Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_WareHouseName")
@@ -1714,26 +1645,19 @@ Namespace WarehouseTableAdapters
             Else
                 Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_Address,String)
             End If
-            If (Original_TotalProduct.HasValue = true) Then
+            If (Original_NumberOfImport.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_TotalProduct.Value,Long)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_NumberOfImport.Value,Long)
             Else
                 Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
-            If (Original_NumberOfImport.HasValue = true) Then
+            If (Original_NumberOfExport.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_NumberOfImport.Value,Long)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_NumberOfExport.Value,Long)
             Else
                 Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
-            End If
-            If (Original_NumbeOfExport.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_NumbeOfExport.Value,Long)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -1754,7 +1678,7 @@ Namespace WarehouseTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal WareHouseName As String, ByVal Address As String, ByVal TotalProduct As Global.System.Nullable(Of Long), ByVal NumberOfImport As Global.System.Nullable(Of Long), ByVal NumbeOfExport As Global.System.Nullable(Of Long)) As Integer
+        Public Overloads Overridable Function Insert(ByVal WareHouseName As String, ByVal Address As String, ByVal NumberOfImport As Global.System.Nullable(Of Long), ByVal NumberOfExport As Global.System.Nullable(Of Long)) As Integer
             If (WareHouseName Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("WareHouseName")
             Else
@@ -1765,20 +1689,15 @@ Namespace WarehouseTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(1).Value = CType(Address,String)
             End If
-            If (TotalProduct.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(2).Value = CType(TotalProduct.Value,Long)
+            If (NumberOfImport.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(2).Value = CType(NumberOfImport.Value,Long)
             Else
                 Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
             End If
-            If (NumberOfImport.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(3).Value = CType(NumberOfImport.Value,Long)
+            If (NumberOfExport.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(NumberOfExport.Value,Long)
             Else
                 Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
-            End If
-            If (NumbeOfExport.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(4).Value = CType(NumbeOfExport.Value,Long)
-            Else
-                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -1799,7 +1718,7 @@ Namespace WarehouseTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal WareHouseName As String, ByVal Address As String, ByVal TotalProduct As Global.System.Nullable(Of Long), ByVal NumberOfImport As Global.System.Nullable(Of Long), ByVal NumbeOfExport As Global.System.Nullable(Of Long), ByVal Original_Id As Long, ByVal Original_WareHouseName As String, ByVal Original_Address As String, ByVal Original_TotalProduct As Global.System.Nullable(Of Long), ByVal Original_NumberOfImport As Global.System.Nullable(Of Long), ByVal Original_NumbeOfExport As Global.System.Nullable(Of Long), ByVal Id As Long) As Integer
+        Public Overloads Overridable Function Update(ByVal WareHouseName As String, ByVal Address As String, ByVal NumberOfImport As Global.System.Nullable(Of Long), ByVal NumberOfExport As Global.System.Nullable(Of Long), ByVal Original_Id As Long, ByVal Original_WareHouseName As String, ByVal Original_Address As String, ByVal Original_NumberOfImport As Global.System.Nullable(Of Long), ByVal Original_NumberOfExport As Global.System.Nullable(Of Long), ByVal Id As Long) As Integer
             If (WareHouseName Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("WareHouseName")
             Else
@@ -1810,54 +1729,42 @@ Namespace WarehouseTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(1).Value = CType(Address,String)
             End If
-            If (TotalProduct.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(TotalProduct.Value,Long)
+            If (NumberOfImport.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(NumberOfImport.Value,Long)
             Else
                 Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
             End If
-            If (NumberOfImport.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(NumberOfImport.Value,Long)
+            If (NumberOfExport.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(NumberOfExport.Value,Long)
             Else
                 Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
             End If
-            If (NumbeOfExport.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(NumbeOfExport.Value,Long)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
-            End If
-            Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Original_Id,Long)
+            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Original_Id,Long)
             If (Original_WareHouseName Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_WareHouseName")
             Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_WareHouseName,String)
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Original_WareHouseName,String)
             End If
             If (Original_Address Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Address")
             Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_Address,String)
-            End If
-            If (Original_TotalProduct.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_TotalProduct.Value,Long)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_Address,String)
             End If
             If (Original_NumberOfImport.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_NumberOfImport.Value,Long)
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_NumberOfImport.Value,Long)
             Else
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
             End If
-            If (Original_NumbeOfExport.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_NumbeOfExport.Value,Long)
+            If (Original_NumberOfExport.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_NumberOfExport.Value,Long)
             Else
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Id,Long)
+            Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Id,Long)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -1877,8 +1784,146 @@ Namespace WarehouseTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal WareHouseName As String, ByVal Address As String, ByVal TotalProduct As Global.System.Nullable(Of Long), ByVal NumberOfImport As Global.System.Nullable(Of Long), ByVal NumbeOfExport As Global.System.Nullable(Of Long), ByVal Original_Id As Long, ByVal Original_WareHouseName As String, ByVal Original_Address As String, ByVal Original_TotalProduct As Global.System.Nullable(Of Long), ByVal Original_NumberOfImport As Global.System.Nullable(Of Long), ByVal Original_NumbeOfExport As Global.System.Nullable(Of Long)) As Integer
-            Return Me.Update(WareHouseName, Address, TotalProduct, NumberOfImport, NumbeOfExport, Original_Id, Original_WareHouseName, Original_Address, Original_TotalProduct, Original_NumberOfImport, Original_NumbeOfExport, Original_Id)
+        Public Overloads Overridable Function Update(ByVal WareHouseName As String, ByVal Address As String, ByVal NumberOfImport As Global.System.Nullable(Of Long), ByVal NumberOfExport As Global.System.Nullable(Of Long), ByVal Original_Id As Long, ByVal Original_WareHouseName As String, ByVal Original_Address As String, ByVal Original_NumberOfImport As Global.System.Nullable(Of Long), ByVal Original_NumberOfExport As Global.System.Nullable(Of Long)) As Integer
+            Return Me.Update(WareHouseName, Address, NumberOfImport, NumberOfExport, Original_Id, Original_WareHouseName, Original_Address, Original_NumberOfImport, Original_NumberOfExport, Original_Id)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
+        Public Overloads Overridable Function DeleteWarehouse(ByVal DeleteDate As Global.System.Nullable(Of Date), ByVal DeleteBy As String, ByVal Id As Long) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            If (DeleteDate.HasValue = true) Then
+                command.Parameters(0).Value = CType(DeleteDate.Value,Date)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (DeleteBy Is Nothing) Then
+                command.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(1).Value = CType(DeleteBy,String)
+            End If
+            command.Parameters(2).Value = CType(Id,Long)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, false)>  _
+        Public Overloads Overridable Function InsertWarehouse(ByVal WareHouseName As String, ByVal Address As String, ByVal NumberOfImport As Global.System.Nullable(Of Long), ByVal NumberOfExport As Global.System.Nullable(Of Long), ByVal CreateDate As Global.System.Nullable(Of Date), ByVal CreateBy As String) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
+            If (WareHouseName Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("WareHouseName")
+            Else
+                command.Parameters(0).Value = CType(WareHouseName,String)
+            End If
+            If (Address Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Address")
+            Else
+                command.Parameters(1).Value = CType(Address,String)
+            End If
+            If (NumberOfImport.HasValue = true) Then
+                command.Parameters(2).Value = CType(NumberOfImport.Value,Long)
+            Else
+                command.Parameters(2).Value = Global.System.DBNull.Value
+            End If
+            If (NumberOfExport.HasValue = true) Then
+                command.Parameters(3).Value = CType(NumberOfExport.Value,Long)
+            Else
+                command.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (CreateDate.HasValue = true) Then
+                command.Parameters(4).Value = CType(CreateDate.Value,Date)
+            Else
+                command.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (CreateBy Is Nothing) Then
+                command.Parameters(5).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(5).Value = CType(CreateBy,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
+        Public Overloads Overridable Function UpdateWarehouse(ByVal WareHouseName As String, ByVal Address As String, ByVal NumberOfImport As Global.System.Nullable(Of Long), ByVal NumberOfExport As Global.System.Nullable(Of Long), ByVal UpdateDate As Global.System.Nullable(Of Date), ByVal UpdateBy As String, ByVal Id As Long) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
+            If (WareHouseName Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("WareHouseName")
+            Else
+                command.Parameters(0).Value = CType(WareHouseName,String)
+            End If
+            If (Address Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Address")
+            Else
+                command.Parameters(1).Value = CType(Address,String)
+            End If
+            If (NumberOfImport.HasValue = true) Then
+                command.Parameters(2).Value = CType(NumberOfImport.Value,Long)
+            Else
+                command.Parameters(2).Value = Global.System.DBNull.Value
+            End If
+            If (NumberOfExport.HasValue = true) Then
+                command.Parameters(3).Value = CType(NumberOfExport.Value,Long)
+            Else
+                command.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (UpdateDate.HasValue = true) Then
+                command.Parameters(4).Value = CType(UpdateDate.Value,Date)
+            Else
+                command.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (UpdateBy Is Nothing) Then
+                command.Parameters(5).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(5).Value = CType(UpdateBy,String)
+            End If
+            command.Parameters(6).Value = CType(Id,Long)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
         End Function
     End Class
     
@@ -1895,8 +1940,6 @@ Namespace WarehouseTableAdapters
         
         Private _updateOrder As UpdateOrderOption
         
-        Private _salesDetailTableAdapter As SalesDetailTableAdapter
-        
         Private _wareHouseTableAdapter As WareHouseTableAdapter
         
         Private _backupDataSetBeforeUpdate As Boolean
@@ -1911,20 +1954,6 @@ Namespace WarehouseTableAdapters
             End Get
             Set
                 Me._updateOrder = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
-            "a", "System.Drawing.Design.UITypeEditor")>  _
-        Public Property SalesDetailTableAdapter() As SalesDetailTableAdapter
-            Get
-                Return Me._salesDetailTableAdapter
-            End Get
-            Set
-                Me._salesDetailTableAdapter = value
             End Set
         End Property
         
@@ -1961,10 +1990,6 @@ Namespace WarehouseTableAdapters
                 If (Not (Me._connection) Is Nothing) Then
                     Return Me._connection
                 End If
-                If ((Not (Me._salesDetailTableAdapter) Is Nothing)  _
-                            AndAlso (Not (Me._salesDetailTableAdapter.Connection) Is Nothing)) Then
-                    Return Me._salesDetailTableAdapter.Connection
-                End If
                 If ((Not (Me._wareHouseTableAdapter) Is Nothing)  _
                             AndAlso (Not (Me._wareHouseTableAdapter.Connection) Is Nothing)) Then
                     Return Me._wareHouseTableAdapter.Connection
@@ -1982,9 +2007,6 @@ Namespace WarehouseTableAdapters
         Public ReadOnly Property TableAdapterInstanceCount() As Integer
             Get
                 Dim count As Integer = 0
-                If (Not (Me._salesDetailTableAdapter) Is Nothing) Then
-                    count = (count + 1)
-                End If
                 If (Not (Me._wareHouseTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
@@ -1999,15 +2021,6 @@ Namespace WarehouseTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Function UpdateUpdatedRows(ByVal dataSet As Warehouse, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._salesDetailTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.SalesDetail.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._salesDetailTableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
             If (Not (Me._wareHouseTableAdapter) Is Nothing) Then
                 Dim updatedRows() As Global.System.Data.DataRow = dataSet._WareHouse.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
@@ -2027,14 +2040,6 @@ Namespace WarehouseTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Function UpdateInsertedRows(ByVal dataSet As Warehouse, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._salesDetailTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.SalesDetail.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._salesDetailTableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
             If (Not (Me._wareHouseTableAdapter) Is Nothing) Then
                 Dim addedRows() As Global.System.Data.DataRow = dataSet._WareHouse.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
@@ -2058,14 +2063,6 @@ Namespace WarehouseTableAdapters
                 If ((Not (deletedRows) Is Nothing)  _
                             AndAlso (0 < deletedRows.Length)) Then
                     result = (result + Me._wareHouseTableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
-            If (Not (Me._salesDetailTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.SalesDetail.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._salesDetailTableAdapter.Update(deletedRows))
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
@@ -2110,11 +2107,6 @@ Namespace WarehouseTableAdapters
             If (dataSet.HasChanges = false) Then
                 Return 0
             End If
-            If ((Not (Me._salesDetailTableAdapter) Is Nothing)  _
-                        AndAlso (Me.MatchTableAdapterConnection(Me._salesDetailTableAdapter.Connection) = false)) Then
-                Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
-                        "tring.")
-            End If
             If ((Not (Me._wareHouseTableAdapter) Is Nothing)  _
                         AndAlso (Me.MatchTableAdapterConnection(Me._wareHouseTableAdapter.Connection) = false)) Then
                 Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
@@ -2152,15 +2144,6 @@ Namespace WarehouseTableAdapters
             Try 
                 '---- Prepare for update -----------
                 '
-                If (Not (Me._salesDetailTableAdapter) Is Nothing) Then
-                    revertConnections.Add(Me._salesDetailTableAdapter, Me._salesDetailTableAdapter.Connection)
-                    Me._salesDetailTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
-                    Me._salesDetailTableAdapter.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
-                    If Me._salesDetailTableAdapter.Adapter.AcceptChangesDuringUpdate Then
-                        Me._salesDetailTableAdapter.Adapter.AcceptChangesDuringUpdate = false
-                        adaptersWithAcceptChangesDuringUpdate.Add(Me._salesDetailTableAdapter.Adapter)
-                    End If
-                End If
                 If (Not (Me._wareHouseTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._wareHouseTableAdapter, Me._wareHouseTableAdapter.Connection)
                     Me._wareHouseTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
@@ -2229,10 +2212,6 @@ Namespace WarehouseTableAdapters
             Finally
                 If workConnOpened Then
                     workConnection.Close
-                End If
-                If (Not (Me._salesDetailTableAdapter) Is Nothing) Then
-                    Me._salesDetailTableAdapter.Connection = CType(revertConnections(Me._salesDetailTableAdapter),Global.System.Data.SqlClient.SqlConnection)
-                    Me._salesDetailTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._wareHouseTableAdapter) Is Nothing) Then
                     Me._wareHouseTableAdapter.Connection = CType(revertConnections(Me._wareHouseTableAdapter),Global.System.Data.SqlClient.SqlConnection)

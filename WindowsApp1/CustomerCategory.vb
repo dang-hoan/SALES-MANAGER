@@ -16,6 +16,7 @@ Public Class CustomerCategory
     End Sub
 
     Private Sub bEdit_Click(sender As Object, e As EventArgs) Handles bEdit.Click
+        bAdd.Enabled = False
         setEnable(True)
     End Sub
 
@@ -35,6 +36,11 @@ Public Class CustomerCategory
         txtEmail.Enabled = valBoolean
     End Sub
 
+    Private Sub setEnableButton(valBoolean As Boolean)
+        bEdit.Enabled = valBoolean
+        bDelete.Enabled = valBoolean
+    End Sub
+
     Private Sub clearValue()
         txtCustomerCode.Text = ""
         txtCustomerFirstName.Text = ""
@@ -47,17 +53,20 @@ Public Class CustomerCategory
     End Sub
 
     Private Sub bAdd_Click(sender As Object, e As EventArgs) Handles bAdd.Click
+        setEnableButton(False)
         clearValue()
         setEnable(True)
     End Sub
 
     Private Sub dgvCategory_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCategory.CellClick
+        setEnableButton(True)
         setEnable(False)
         setValue()
     End Sub
 
     Private Sub setValue()
-        If dgvCategory Is Nothing Then
+        If dgvCategory.Rows.Count = 0 Then
+            setEnableButton(False)
             Return
         Else
             Dim row As DataGridViewRow = dgvCategory.CurrentRow
@@ -95,6 +104,7 @@ Public Class CustomerCategory
                 setEnable(False)
                 MsgBox(type & " customer information successful!")
                 Reload()
+                bAdd.Enabled = True
             Else
                 MsgBox("There is an error when interact with database!")
             End If
@@ -172,36 +182,23 @@ Public Class CustomerCategory
     End Function
 
     Private Sub bDelete_Click(sender As Object, e As EventArgs) Handles bDelete.Click
-        Dim username As String = dgvCategory.CurrentRow.Cells(0).Value.ToString
-        Dim isDelete = clsPMSAnalysis.CheckUserWasDeleted(username)
-        If Not isDelete Then
-            Dim result = clsPMSAnalysis.DeleteUser(LoginForm.PropUsername, username)
-            If result = 1 Then
-                setEnable(False)
-                MsgBox("Delete customer information successful!")
-                Reload()
+        If dgvCategory.CurrentRow IsNot Nothing Then
+            Dim username As String = dgvCategory.CurrentRow.Cells(0).Value.ToString
+            Dim isDelete = clsPMSAnalysis.CheckUserWasDeleted(username)
+            If Not isDelete Then
+                Dim result = clsPMSAnalysis.DeleteUser(LoginForm.PropUsername, username)
+                If result = 1 Then
+                    setEnable(False)
+                    MsgBox("Delete customer information successful!")
+                    Reload()
+                Else
+                    MsgBox("There is an error when interact with database!")
+                End If
             Else
-                MsgBox("There is an error when interact with database!")
+                MsgBox("User was deleted before!")
             End If
-        Else
-            MsgBox("User was deleted before!")
+
         End If
     End Sub
 
-    Private Sub btnRestore_Click(sender As Object, e As EventArgs)
-        Dim username As String = dgvCategory.CurrentRow.Cells(0).Value.ToString
-        Dim isDelete = clsPMSAnalysis.CheckUserWasDeleted(username)
-        If isDelete Then
-            Dim result = clsPMSAnalysis.RestoreUser(username)
-            If result = 1 Then
-                setEnable(False)
-                MsgBox("Restore customer information successful!")
-                Reload()
-            Else
-                MsgBox("There is an error when interact with database!")
-            End If
-        Else
-            MsgBox("The user hasn't been deleted yet, you don't need restore!")
-        End If
-    End Sub
 End Class

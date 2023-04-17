@@ -26,6 +26,10 @@ Public Class clsProduct
         taProductSalesDetail.Fill(ds1.ProductSalesDetail)
         Return ds1
     End Function
+    Public Function GetProductById(ByVal productId As String) As Product.ProductSalesDetailDataTable
+        taProductSalesDetail.Connection = conn
+        Return taProductSalesDetail.GetProductById(productId)
+    End Function
 
     Public Function CheckProductExits(productId As Long) As Boolean
         ta.Connection = conn
