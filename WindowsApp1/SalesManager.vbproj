@@ -227,6 +227,7 @@
     <None Include="My Project\DataSources\LibraryDataset.ProductTableAdapters.ProductTableAdapter.datasource" />
     <None Include="My Project\DataSources\LibraryDataset.ProductTableAdapters.TableAdapterManager+UpdateOrderOption.datasource" />
     <None Include="My Project\DataSources\LibraryDataset.ProductTableAdapters.TableAdapterManager.datasource" />
+    <None Include="My Project\DataSources\LibraryDataset.WarehouseTableAdapters.SalesDetailTableAdapter.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>

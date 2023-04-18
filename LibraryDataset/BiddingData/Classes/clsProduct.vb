@@ -30,6 +30,10 @@ Public Class clsProduct
         taProductSalesDetail.Connection = conn
         Return taProductSalesDetail.GetProductById(productId)
     End Function
+    Public Function GetProductsOfWarehouse(ByVal warehouseId As String) As Product.ProductSalesDetailDataTable
+        taProductSalesDetail.Connection = conn
+        Return taProductSalesDetail.GetProductsOfWarehouse(warehouseId)
+    End Function
 
     Public Function CheckProductExits(productId As Long) As Boolean
         ta.Connection = conn
@@ -73,6 +77,10 @@ Public Class clsProduct
     Public Function DeleteProduct(ByVal deleteUsername As String, ByVal productId As Long) As Integer
         ta.Connection = conn
         Return ta.DeleteProduct(DateTime.Now, deleteUsername, productId)
+    End Function
+    Public Function DeleteSalesDetail(ByVal productId As Long) As Integer
+        taSalesDetail.Connection = conn
+        Return taSalesDetail.DeleteSalesDetail(productId)
     End Function
     Public Function RestoreProduct(ByVal productId As Long) As Integer
         ta.Connection = conn

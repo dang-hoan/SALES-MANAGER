@@ -34,9 +34,11 @@ Public Class CustomerCategory
         rdMale.Enabled = valBoolean
         rdFemale.Enabled = valBoolean
         txtEmail.Enabled = valBoolean
+        bSave.Enabled = valBoolean
     End Sub
 
-    Private Sub setEnableButton(valBoolean As Boolean)
+    Private Sub addEditDeleteEnabled(valBoolean As Boolean)
+        bAdd.Enabled = valBoolean
         bEdit.Enabled = valBoolean
         bDelete.Enabled = valBoolean
     End Sub
@@ -53,20 +55,21 @@ Public Class CustomerCategory
     End Sub
 
     Private Sub bAdd_Click(sender As Object, e As EventArgs) Handles bAdd.Click
-        setEnableButton(False)
+        addEditDeleteEnabled(False)
         clearValue()
         setEnable(True)
     End Sub
 
     Private Sub dgvCategory_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCategory.CellClick
-        setEnableButton(True)
+        addEditDeleteEnabled(True)
         setEnable(False)
         setValue()
     End Sub
 
     Private Sub setValue()
         If dgvCategory.Rows.Count = 0 Then
-            setEnableButton(False)
+            addEditDeleteEnabled(False)
+            bAdd.Enabled = True
             Return
         Else
             Dim row As DataGridViewRow = dgvCategory.CurrentRow

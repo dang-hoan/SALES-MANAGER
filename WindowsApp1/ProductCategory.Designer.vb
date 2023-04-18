@@ -49,6 +49,8 @@ Partial Class ProductCategory
         Me.bDelete = New System.Windows.Forms.Button()
         Me.bEdit = New System.Windows.Forms.Button()
         Me.bAdd = New System.Windows.Forms.Button()
+        Me.txtSoldProducts = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
         CType(Me.dgvCategory, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.groupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -74,7 +76,7 @@ Partial Class ProductCategory
         'label3
         '
         Me.label3.AutoSize = True
-        Me.label3.Location = New System.Drawing.Point(429, 64)
+        Me.label3.Location = New System.Drawing.Point(429, 78)
         Me.label3.Name = "label3"
         Me.label3.Size = New System.Drawing.Size(102, 20)
         Me.label3.TabIndex = 3
@@ -92,7 +94,7 @@ Partial Class ProductCategory
         'label5
         '
         Me.label5.AutoSize = True
-        Me.label5.Location = New System.Drawing.Point(429, 107)
+        Me.label5.Location = New System.Drawing.Point(429, 130)
         Me.label5.Name = "label5"
         Me.label5.Size = New System.Drawing.Size(112, 20)
         Me.label5.TabIndex = 7
@@ -101,7 +103,7 @@ Partial Class ProductCategory
         'label6
         '
         Me.label6.AutoSize = True
-        Me.label6.Location = New System.Drawing.Point(429, 147)
+        Me.label6.Location = New System.Drawing.Point(429, 170)
         Me.label6.Name = "label6"
         Me.label6.Size = New System.Drawing.Size(130, 20)
         Me.label6.TabIndex = 12
@@ -124,17 +126,19 @@ Partial Class ProductCategory
         Me.dgvCategory.AllowUserToDeleteRows = False
         Me.dgvCategory.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.dgvCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvCategory.Location = New System.Drawing.Point(54, 302)
+        Me.dgvCategory.Location = New System.Drawing.Point(54, 331)
         Me.dgvCategory.Name = "dgvCategory"
         Me.dgvCategory.ReadOnly = True
         Me.dgvCategory.RowHeadersWidth = 62
         Me.dgvCategory.RowTemplate.Height = 28
         Me.dgvCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvCategory.Size = New System.Drawing.Size(853, 370)
+        Me.dgvCategory.Size = New System.Drawing.Size(853, 341)
         Me.dgvCategory.TabIndex = 1
         '
         'groupBox1
         '
+        Me.groupBox1.Controls.Add(Me.Label11)
+        Me.groupBox1.Controls.Add(Me.txtSoldProducts)
         Me.groupBox1.Controls.Add(Me.txtUnitDiscount)
         Me.groupBox1.Controls.Add(Me.txtNumber)
         Me.groupBox1.Controls.Add(Me.Label10)
@@ -157,7 +161,7 @@ Partial Class ProductCategory
         Me.groupBox1.Controls.Add(Me.label5)
         Me.groupBox1.Location = New System.Drawing.Point(54, 76)
         Me.groupBox1.Name = "groupBox1"
-        Me.groupBox1.Size = New System.Drawing.Size(853, 209)
+        Me.groupBox1.Size = New System.Drawing.Size(853, 249)
         Me.groupBox1.TabIndex = 0
         Me.groupBox1.TabStop = False
         Me.groupBox1.Text = "Detail"
@@ -165,7 +169,7 @@ Partial Class ProductCategory
         'txtUnitDiscount
         '
         Me.txtUnitDiscount.Enabled = False
-        Me.txtUnitDiscount.Location = New System.Drawing.Point(756, 144)
+        Me.txtUnitDiscount.Location = New System.Drawing.Point(756, 164)
         Me.txtUnitDiscount.Name = "txtUnitDiscount"
         Me.txtUnitDiscount.Size = New System.Drawing.Size(53, 26)
         Me.txtUnitDiscount.TabIndex = 22
@@ -174,7 +178,7 @@ Partial Class ProductCategory
         'txtNumber
         '
         Me.txtNumber.Enabled = False
-        Me.txtNumber.Location = New System.Drawing.Point(576, 173)
+        Me.txtNumber.Location = New System.Drawing.Point(164, 205)
         Me.txtNumber.Name = "txtNumber"
         Me.txtNumber.Size = New System.Drawing.Size(164, 26)
         Me.txtNumber.TabIndex = 21
@@ -182,17 +186,17 @@ Partial Class ProductCategory
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(429, 173)
+        Me.Label10.Location = New System.Drawing.Point(35, 208)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(65, 20)
+        Me.Label10.Size = New System.Drawing.Size(110, 20)
         Me.Label10.TabIndex = 20
-        Me.Label10.Text = "Number"
+        Me.Label10.Text = "Total products"
         '
         'cbbWarehouse
         '
         Me.cbbWarehouse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbbWarehouse.FormattingEnabled = True
-        Me.cbbWarehouse.Location = New System.Drawing.Point(576, 25)
+        Me.cbbWarehouse.Location = New System.Drawing.Point(576, 35)
         Me.cbbWarehouse.Name = "cbbWarehouse"
         Me.cbbWarehouse.Size = New System.Drawing.Size(164, 28)
         Me.cbbWarehouse.TabIndex = 19
@@ -200,7 +204,7 @@ Partial Class ProductCategory
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(429, 28)
+        Me.Label9.Location = New System.Drawing.Point(429, 38)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(91, 20)
         Me.Label9.TabIndex = 18
@@ -228,7 +232,7 @@ Partial Class ProductCategory
         '
         Me.cbbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbbStatus.FormattingEnabled = True
-        Me.cbbStatus.Location = New System.Drawing.Point(576, 101)
+        Me.cbbStatus.Location = New System.Drawing.Point(576, 124)
         Me.cbbStatus.Name = "cbbStatus"
         Me.cbbStatus.Size = New System.Drawing.Size(164, 28)
         Me.cbbStatus.TabIndex = 15
@@ -245,7 +249,7 @@ Partial Class ProductCategory
         'txtPrice
         '
         Me.txtPrice.Enabled = False
-        Me.txtPrice.Location = New System.Drawing.Point(576, 64)
+        Me.txtPrice.Location = New System.Drawing.Point(576, 78)
         Me.txtPrice.Name = "txtPrice"
         Me.txtPrice.Size = New System.Drawing.Size(164, 26)
         Me.txtPrice.TabIndex = 13
@@ -253,7 +257,7 @@ Partial Class ProductCategory
         'txtUnitPrice
         '
         Me.txtUnitPrice.Enabled = False
-        Me.txtUnitPrice.Location = New System.Drawing.Point(756, 64)
+        Me.txtUnitPrice.Location = New System.Drawing.Point(756, 78)
         Me.txtUnitPrice.Name = "txtUnitPrice"
         Me.txtUnitPrice.Size = New System.Drawing.Size(53, 26)
         Me.txtUnitPrice.TabIndex = 15
@@ -262,7 +266,7 @@ Partial Class ProductCategory
         'txtDiscount
         '
         Me.txtDiscount.Enabled = False
-        Me.txtDiscount.Location = New System.Drawing.Point(576, 141)
+        Me.txtDiscount.Location = New System.Drawing.Point(576, 164)
         Me.txtDiscount.Name = "txtDiscount"
         Me.txtDiscount.Size = New System.Drawing.Size(164, 26)
         Me.txtDiscount.TabIndex = 0
@@ -339,6 +343,23 @@ Partial Class ProductCategory
         Me.bAdd.Text = "Add"
         Me.bAdd.UseVisualStyleBackColor = False
         '
+        'txtSoldProducts
+        '
+        Me.txtSoldProducts.Enabled = False
+        Me.txtSoldProducts.Location = New System.Drawing.Point(576, 205)
+        Me.txtSoldProducts.Name = "txtSoldProducts"
+        Me.txtSoldProducts.Size = New System.Drawing.Size(164, 26)
+        Me.txtSoldProducts.TabIndex = 23
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(429, 211)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(107, 20)
+        Me.Label11.TabIndex = 24
+        Me.Label11.Text = "Sold products"
+        '
         'ProductCategory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -388,4 +409,6 @@ Partial Class ProductCategory
     Private WithEvents cbbWarehouse As ComboBox
     Private WithEvents Label9 As Label
     Private WithEvents txtUnitDiscount As TextBox
+    Private WithEvents Label11 As Label
+    Private WithEvents txtSoldProducts As TextBox
 End Class

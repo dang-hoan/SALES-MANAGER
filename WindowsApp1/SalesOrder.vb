@@ -4,6 +4,7 @@ Public Class SalesOrder
     Dim conn As New connCommon()
     Dim clsPMSAnalysis As New clsOrderDetail(conn.connSales.ConnectionString)
     Dim clsProduct As New clsProduct(conn.connSales.ConnectionString)
+    Dim clsWarehouse As New clsWarehouse(conn.connSales.ConnectionString)
     Dim clsCBB As New clsCBB(conn.connSales.ConnectionString)
 
     Private Sub dgvOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -101,7 +102,8 @@ Public Class SalesOrder
 
     Private Sub setValue()
         If dgvOrder.Rows.Count = 0 Then
-            setEnableButton(False)
+            addEditDeleteEnabled(False)
+            bAdd.Enabled = True
             Return
         Else
             Dim row As DataGridViewRow = dgvOrder.CurrentRow
@@ -201,8 +203,10 @@ Public Class SalesOrder
             listBuyProduct.Location = New Point(140, 12)
             listBuyProduct.Size = New Point(188, 95)
         End If
+        bSave.Enabled = valBoolean
     End Sub
-    Private Sub setEnableButton(valBoolean As Boolean)
+    Private Sub addEditDeleteEnabled(valBoolean As Boolean)
+        bAdd.Enabled = valBoolean
         bEdit.Enabled = valBoolean
         bDelete.Enabled = valBoolean
         bPrint.Enabled = valBoolean
@@ -226,14 +230,14 @@ Public Class SalesOrder
     End Sub
 
     Private Sub bAdd_Click(sender As Object, e As EventArgs) Handles bAdd.Click
-        setEnableButton(False)
+        addEditDeleteEnabled(False)
         clearValue()
         setEnable(True)
     End Sub
     Private Sub dgvOrder_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvOrder.CellClick
         setEnable(False)
         setValue()
-        setEnableButton(True)
+        addEditDeleteEnabled(True)
     End Sub
 
     Private Sub bSave_Click(sender As Object, e As EventArgs) Handles bSave.Click
@@ -269,6 +273,9 @@ Public Class SalesOrder
                             If row(2) >= (item.SubItems(2).Text + row(3)) Then
                                 result = 1
                                 clsPMSAnalysis.UpdateSalesDetail(row(0), row(1), row(2), item.SubItems(2).Text + row(3), row(4) + item.SubItems(3).Text)
+                                Dim oldExports = clsWarehouse.GetWarehouseById(row(0)).Rows(0)(3)
+                                clsWarehouse.UpdateExportsOfWarehouse(oldExports + item.SubItems(2).Text, row(0))
+
                                 If row(2) = (item.SubItems(2).Text + row(3)) Then
                                     result = clsProduct.UpdateStatus(row(1), clsCBB.GetUnavailableId())
                                 End If

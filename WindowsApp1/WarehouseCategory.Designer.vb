@@ -22,8 +22,8 @@ Partial Class WarehouseCategory
     'Do not modify it using the code editor.
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(WarehouseCategory))
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.label1 = New System.Windows.Forms.Label()
         Me.label2 = New System.Windows.Forms.Label()
         Me.label7 = New System.Windows.Forms.Label()
@@ -42,17 +42,19 @@ Partial Class WarehouseCategory
         Me.bAdd = New System.Windows.Forms.Button()
         Me.dgvCategory = New System.Windows.Forms.DataGridView()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.dgvProduct = New System.Windows.Forms.DataGridView()
         Me.bAddProduct = New System.Windows.Forms.Button()
-        Me.ProductId = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgvProduct = New System.Windows.Forms.DataGridView()
+        Me.Warehouse = New LibraryDataset.Warehouse()
+        Me.ProductIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProductNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TotalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Edit = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Delete = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.groupBox1.SuspendLayout()
         CType(Me.dgvCategory, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         CType(Me.dgvProduct, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Warehouse, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'label1
@@ -254,22 +256,6 @@ Partial Class WarehouseCategory
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "List products of warehouse"
         '
-        'dgvProduct
-        '
-        Me.dgvProduct.AllowUserToAddRows = False
-        Me.dgvProduct.AllowUserToDeleteRows = False
-        Me.dgvProduct.BackgroundColor = System.Drawing.Color.WhiteSmoke
-        Me.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvProduct.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ProductId, Me.Column2, Me.Column3, Me.Edit, Me.Delete})
-        Me.dgvProduct.Location = New System.Drawing.Point(6, 25)
-        Me.dgvProduct.Name = "dgvProduct"
-        Me.dgvProduct.ReadOnly = True
-        Me.dgvProduct.RowHeadersWidth = 62
-        Me.dgvProduct.RowTemplate.Height = 28
-        Me.dgvProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvProduct.Size = New System.Drawing.Size(820, 147)
-        Me.dgvProduct.TabIndex = 0
-        '
         'bAddProduct
         '
         Me.bAddProduct.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -283,37 +269,65 @@ Partial Class WarehouseCategory
         Me.bAddProduct.Text = "Add product"
         Me.bAddProduct.UseVisualStyleBackColor = True
         '
-        'ProductId
+        'dgvProduct
         '
-        Me.ProductId.HeaderText = "Product code"
-        Me.ProductId.MinimumWidth = 8
-        Me.ProductId.Name = "ProductId"
-        Me.ProductId.ReadOnly = True
+        Me.dgvProduct.AllowUserToAddRows = False
+        Me.dgvProduct.AllowUserToDeleteRows = False
+        Me.dgvProduct.AutoGenerateColumns = False
+        Me.dgvProduct.BackgroundColor = System.Drawing.Color.WhiteSmoke
+        Me.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvProduct.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ProductIdDataGridViewTextBoxColumn, Me.ProductNameDataGridViewTextBoxColumn, Me.TotalDataGridViewTextBoxColumn, Me.Edit, Me.Delete})
+        Me.dgvProduct.DataMember = "SalesDetail"
+        Me.dgvProduct.DataSource = Me.Warehouse
+        Me.dgvProduct.Location = New System.Drawing.Point(6, 25)
+        Me.dgvProduct.Name = "dgvProduct"
+        Me.dgvProduct.ReadOnly = True
+        Me.dgvProduct.RowHeadersWidth = 62
+        Me.dgvProduct.RowTemplate.Height = 28
+        Me.dgvProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvProduct.Size = New System.Drawing.Size(820, 147)
+        Me.dgvProduct.TabIndex = 0
         '
-        'Column2
+        'Warehouse
         '
-        Me.Column2.HeaderText = "Product name"
-        Me.Column2.MinimumWidth = 8
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        Me.Column2.Width = 120
+        Me.Warehouse.DataSetName = "Warehouse"
+        Me.Warehouse.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'Column3
+        'ProductIdDataGridViewTextBoxColumn
         '
-        Me.Column3.HeaderText = "Number of products"
-        Me.Column3.MinimumWidth = 8
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        Me.Column3.Width = 140
+        Me.ProductIdDataGridViewTextBoxColumn.DataPropertyName = "ProductId"
+        Me.ProductIdDataGridViewTextBoxColumn.HeaderText = "Product code"
+        Me.ProductIdDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.ProductIdDataGridViewTextBoxColumn.Name = "ProductIdDataGridViewTextBoxColumn"
+        Me.ProductIdDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ProductIdDataGridViewTextBoxColumn.Width = 95
+        '
+        'ProductNameDataGridViewTextBoxColumn
+        '
+        Me.ProductNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName"
+        Me.ProductNameDataGridViewTextBoxColumn.HeaderText = "Product name"
+        Me.ProductNameDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.ProductNameDataGridViewTextBoxColumn.Name = "ProductNameDataGridViewTextBoxColumn"
+        Me.ProductNameDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ProductNameDataGridViewTextBoxColumn.Width = 130
+        '
+        'TotalDataGridViewTextBoxColumn
+        '
+        Me.TotalDataGridViewTextBoxColumn.DataPropertyName = "Total"
+        Me.TotalDataGridViewTextBoxColumn.HeaderText = "Number of products"
+        Me.TotalDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.TotalDataGridViewTextBoxColumn.Name = "TotalDataGridViewTextBoxColumn"
+        Me.TotalDataGridViewTextBoxColumn.ReadOnly = True
+        Me.TotalDataGridViewTextBoxColumn.Width = 140
         '
         'Edit
         '
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle15.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black
-        Me.Edit.DefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        Me.Edit.DefaultCellStyle = DataGridViewCellStyle1
         Me.Edit.HeaderText = ""
         Me.Edit.MinimumWidth = 8
         Me.Edit.Name = "Edit"
@@ -326,12 +340,12 @@ Partial Class WarehouseCategory
         '
         'Delete
         '
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle16.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black
-        Me.Delete.DefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
+        Me.Delete.DefaultCellStyle = DataGridViewCellStyle2
         Me.Delete.HeaderText = ""
         Me.Delete.MinimumWidth = 8
         Me.Delete.Name = "Delete"
@@ -363,6 +377,7 @@ Partial Class WarehouseCategory
         CType(Me.dgvCategory, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         CType(Me.dgvProduct, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Warehouse, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -387,9 +402,10 @@ Partial Class WarehouseCategory
     Private WithEvents GroupBox2 As GroupBox
     Friend WithEvents dgvProduct As DataGridView
     Friend WithEvents bAddProduct As Button
-    Friend WithEvents ProductId As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents Warehouse As LibraryDataset.Warehouse
+    Friend WithEvents ProductIdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ProductNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TotalDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents Edit As DataGridViewButtonColumn
     Friend WithEvents Delete As DataGridViewButtonColumn
 End Class

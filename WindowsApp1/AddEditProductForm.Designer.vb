@@ -46,6 +46,8 @@ Partial Class AddEditProductForm
         Me.txtCode = New System.Windows.Forms.TextBox()
         Me.bSave = New System.Windows.Forms.Button()
         Me.bClearAll = New System.Windows.Forms.Button()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtSoldProducts = New System.Windows.Forms.TextBox()
         Me.groupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -113,9 +115,12 @@ Partial Class AddEditProductForm
         Me.labTitle.Size = New System.Drawing.Size(325, 46)
         Me.labTitle.TabIndex = 8
         Me.labTitle.Text = "ADD PRODUCT"
+        Me.labTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'groupBox1
         '
+        Me.groupBox1.Controls.Add(Me.Label11)
+        Me.groupBox1.Controls.Add(Me.txtSoldProducts)
         Me.groupBox1.Controls.Add(Me.txtUnitDiscount)
         Me.groupBox1.Controls.Add(Me.txtNumber)
         Me.groupBox1.Controls.Add(Me.Label10)
@@ -164,9 +169,9 @@ Partial Class AddEditProductForm
         Me.Label10.AutoSize = True
         Me.Label10.Location = New System.Drawing.Point(423, 249)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(65, 20)
+        Me.Label10.Size = New System.Drawing.Size(110, 20)
         Me.Label10.TabIndex = 20
-        Me.Label10.Text = "Number"
+        Me.Label10.Text = "Total products"
         '
         'cbbWarehouse
         '
@@ -266,7 +271,7 @@ Partial Class AddEditProductForm
         Me.bSave.Cursor = System.Windows.Forms.Cursors.Hand
         Me.bSave.Image = CType(resources.GetObject("bSave.Image"), System.Drawing.Image)
         Me.bSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bSave.Location = New System.Drawing.Point(549, 522)
+        Me.bSave.Location = New System.Drawing.Point(519, 522)
         Me.bSave.Name = "bSave"
         Me.bSave.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.bSave.Size = New System.Drawing.Size(150, 55)
@@ -280,13 +285,30 @@ Partial Class AddEditProductForm
         Me.bClearAll.Cursor = System.Windows.Forms.Cursors.Hand
         Me.bClearAll.Image = CType(resources.GetObject("bClearAll.Image"), System.Drawing.Image)
         Me.bClearAll.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bClearAll.Location = New System.Drawing.Point(330, 522)
+        Me.bClearAll.Location = New System.Drawing.Point(300, 522)
         Me.bClearAll.Name = "bClearAll"
         Me.bClearAll.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.bClearAll.Size = New System.Drawing.Size(150, 55)
         Me.bClearAll.TabIndex = 20
         Me.bClearAll.Text = "Clear all"
         Me.bClearAll.UseVisualStyleBackColor = False
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(423, 319)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(107, 20)
+        Me.Label11.TabIndex = 26
+        Me.Label11.Text = "Sold products"
+        '
+        'txtSoldProducts
+        '
+        Me.txtSoldProducts.Enabled = False
+        Me.txtSoldProducts.Location = New System.Drawing.Point(570, 313)
+        Me.txtSoldProducts.Name = "txtSoldProducts"
+        Me.txtSoldProducts.Size = New System.Drawing.Size(164, 26)
+        Me.txtSoldProducts.TabIndex = 25
         '
         'AddEditProductForm
         '
@@ -331,4 +353,6 @@ Partial Class AddEditProductForm
     Private WithEvents Label9 As Label
     Private WithEvents txtUnitDiscount As TextBox
     Private WithEvents bClearAll As Button
+    Private WithEvents Label11 As Label
+    Private WithEvents txtSoldProducts As TextBox
 End Class

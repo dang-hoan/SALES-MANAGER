@@ -4,6 +4,7 @@ Public Class ProductCategory
     Dim conn As New connCommon()
     Dim clsPMSAnalysis As New clsProduct(conn.connSales.ConnectionString)
     Dim clsCBB As New clsCBB(conn.connSales.ConnectionString)
+    Dim clsWarehouse As New clsWarehouse(conn.connSales.ConnectionString)
     Private Sub CustomerCategory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Reload()
     End Sub
@@ -43,7 +44,8 @@ Public Class ProductCategory
 
     Private Sub setValue()
         If dgvCategory.Rows.Count = 0 Then
-            setEnableButton(False)
+            addEditDeleteEnabled(False)
+            bAdd.Enabled = True
             Return
         Else
             Dim row As DataGridViewRow = dgvCategory.CurrentRow
@@ -52,6 +54,7 @@ Public Class ProductCategory
             txtPrice.Text = row.Cells(4).Value.ToString
             txtDiscount.Text = row.Cells(7).Value.ToString
             txtNumber.Text = row.Cells(11).Value.ToString
+            txtSoldProducts.Text = row.Cells(12).Value.ToString
 
             For Each item As CBBItem In cbbCategory.Items
                 If item.PropItemId = row.Cells(3).Value.ToString Then
@@ -91,9 +94,11 @@ Public Class ProductCategory
         txtDiscount.Enabled = valBoolean
         txtNumber.Enabled = valBoolean
         cbbWarehouse.Enabled = valBoolean
+        bSave.Enabled = valBoolean
     End Sub
 
-    Private Sub setEnableButton(valBoolean As Boolean)
+    Private Sub addEditDeleteEnabled(valBoolean As Boolean)
+        bAdd.Enabled = valBoolean
         bEdit.Enabled = valBoolean
         bDelete.Enabled = valBoolean
     End Sub
@@ -108,18 +113,19 @@ Public Class ProductCategory
         txtDiscount.Text = ""
         txtNumber.Text = ""
         cbbWarehouse.SelectedIndex = -1
+        txtSoldProducts.Text = "0"
     End Sub
 
     Private Sub bAdd_Click(sender As Object, e As EventArgs) Handles bAdd.Click
         clearValue()
         setEnable(True)
-        setEnableButton(False)
+        addEditDeleteEnabled(False)
     End Sub
 
     Private Sub dgvCategory_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCategory.CellClick
         setEnable(False)
         setValue()
-        setEnableButton(True)
+        addEditDeleteEnabled(True)
     End Sub
 
     Private Sub bSave_Click(sender As Object, e As EventArgs) Handles bSave.Click
@@ -135,10 +141,21 @@ Public Class ProductCategory
                 result = clsPMSAnalysis.EditProduct(txtCode.Text, txtName.Text,
                                             supplierId, categoryId, txtPrice.Text, txtUnitPrice.Text, statusId,
                                              txtDiscount.Text, Nothing, Nothing, wareHouseId, txtNumber.Text, LoginForm.PropUsername)
+
+                If result = 1 Then
+                    Dim oldTotal = dgvCategory.CurrentRow.Cells(11).Value.ToString
+                    Dim oldImports = clsWarehouse.GetWarehouseById(wareHouseId).Rows(0)(3)
+                    result = clsWarehouse.UpdateImportsOfWarehouse(oldImports - oldTotal + txtNumber.Text, wareHouseId)
+                End If
             Else                                'Add new
                 result = clsPMSAnalysis.AddProduct(txtName.Text,
                                             supplierId, categoryId, txtPrice.Text, txtUnitPrice.Text, statusId,
                                              txtDiscount.Text, Nothing, Nothing, wareHouseId, txtNumber.Text, LoginForm.PropUsername)
+
+                If result = 1 Then
+                    Dim oldImports = clsWarehouse.GetWarehouseById(wareHouseId).Rows(0)(3)
+                    result = clsWarehouse.UpdateImportsOfWarehouse(oldImports + txtNumber.Text, wareHouseId)
+                End If
                 type = "Add"
             End If
 
@@ -162,6 +179,9 @@ Public Class ProductCategory
         ElseIf Not CheckValue("Price", txtPrice.Text, "Double") Or
             Not CheckValue("Discount", txtDiscount.Text, "Double") Or
             Not CheckValue("Number of products", txtNumber.Text, "Long") Then
+            Return False
+        ElseIf txtNumber.Text < txtSoldProducts.Text Then
+            MsgBox("Total products must be greater than sold products!")
             Return False
         End If
         Return True
