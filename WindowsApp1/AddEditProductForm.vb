@@ -53,6 +53,9 @@ Public Class AddEditProductForm
                 cbbWarehouse.Items.Add(New CBBItem(row(0), row(1)))
             Next
             setValue(clsPMSAnalysis.GetProductById(productId).Rows(0))
+            If cbbWarehouse.Text = "" Then
+                cbbWarehouse.Enabled = False
+            End If
         Else                                           'Add new product for warehouse
             For Each row As DataRow In dataWarehouse.Rows
                 If row(0) = warehouseId Then
