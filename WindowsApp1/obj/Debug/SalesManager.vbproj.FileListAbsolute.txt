@@ -56,3 +56,4 @@ D:\Code\vs data\SalesManager\WindowsApp1\bin\Debug\LibraryDataset.dll.config
 D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\SalesManager.vbproj.CopyComplete
 D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.WarehouseCategory.resources
 D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.AddEditProductForm.resources
+D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.SupplierCategory.resources

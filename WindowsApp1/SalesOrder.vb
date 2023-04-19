@@ -174,7 +174,8 @@ Public Class SalesOrder
     Private Sub bEdit_Click(sender As Object, e As EventArgs) Handles bEdit.Click
         If cbbShipStatus.SelectedItem IsNot Nothing Then
             If CType(cbbShipStatus.SelectedItem, CBBItem).PropItemId <> clsCBB.GetDeleveredId().Rows(0)(0) Then
-                bAdd.Enabled = False
+                addEditDeleteEnabled(False)
+                bDelete.Enabled = True
                 setEnable(True)
             Else
                 MsgBox("Order was delevered to customer, you can't edit it!")
@@ -273,7 +274,7 @@ Public Class SalesOrder
                             If row(2) >= (item.SubItems(2).Text + row(3)) Then
                                 result = 1
                                 clsPMSAnalysis.UpdateSalesDetail(row(0), row(1), row(2), item.SubItems(2).Text + row(3), row(4) + item.SubItems(3).Text)
-                                Dim oldExports = clsWarehouse.GetWarehouseById(row(0)).Rows(0)(3)
+                                Dim oldExports = clsWarehouse.GetWarehouseById(row(0)).Rows(0)(4)
                                 clsWarehouse.UpdateExportsOfWarehouse(oldExports + item.SubItems(2).Text, row(0))
 
                                 If row(2) = (item.SubItems(2).Text + row(3)) Then
@@ -386,7 +387,7 @@ Public Class SalesOrder
                 setEnable(False)
                 MsgBox(type & " order information successful!")
                 Reload()
-                bAdd.Enabled = True
+                addEditDeleteEnabled(True)
             ElseIf result = 123 Then
                 If number <= 0 Then
                     MsgBox("The item has id " & stockId & " is out of stock!")
@@ -647,5 +648,14 @@ Public Class SalesOrder
 
     Private Sub cbbProduct_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbbProduct.SelectedIndexChanged
         Calculate_ProductCost()
+    End Sub
+    Private Sub dgvCategory_KeyUp(sender As Object, e As KeyEventArgs) Handles dgvOrder.KeyUp
+        If e.KeyCode.Equals(Keys.Up) Or e.KeyCode.Equals(Keys.Down) Then
+            If dgvOrder.CurrentRow IsNot Nothing And bSave.Enabled = False Then
+                addEditDeleteEnabled(True)
+                setEnable(False)
+                setValue()
+            End If
+        End If
     End Sub
 End Class

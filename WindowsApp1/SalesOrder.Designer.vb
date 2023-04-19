@@ -525,6 +525,8 @@ Partial Class SalesOrder
         '
         'dgvOrder
         '
+        Me.dgvOrder.AllowUserToAddRows = False
+        Me.dgvOrder.AllowUserToDeleteRows = False
         Me.dgvOrder.BackgroundColor = System.Drawing.Color.White
         Me.dgvOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvOrder.Location = New System.Drawing.Point(54, 522)

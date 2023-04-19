@@ -143,7 +143,7 @@ Public Class AddEditProductForm
                 Dim caller As WarehouseCategory = CType(Application.OpenForms("WarehouseCategory"), WarehouseCategory)
                 caller.Warehouse.Clear()
                 caller.Warehouse.Merge(clsWarehouse.GetProductsOfWarehouse(warehouseId))
-
+                caller.SetImports(selectedWarehouse)
                 MsgBox(bSave.Text & " product information successful!")
                 Me.Close()
             Else

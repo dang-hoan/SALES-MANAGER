@@ -302,7 +302,7 @@ WHERE (StatusName = 'DELEVERED')</CommandText>
                     <CommandText>SELECT Person.Username, Person.LastName + ' ' + Person.FirstName AS ShipperName
 FROM   Person INNER JOIN
              Role ON Person.RoleId = Role.Id
-WHERE (Role.RoleName = N'Shipper') AND (Role.IsDelete = 'False')</CommandText>
+WHERE (Role.RoleName = N'Shipper') AND (Person.IsDelete = 'False')</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>

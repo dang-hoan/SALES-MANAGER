@@ -205,6 +205,7 @@ Partial Class CustomerCategory
         Me.txtCustomerLastName.Name = "txtCustomerLastName"
         Me.txtCustomerLastName.Size = New System.Drawing.Size(147, 26)
         Me.txtCustomerLastName.TabIndex = 16
+        Me.txtCustomerLastName.Tag = ""
         '
         'txtEmail
         '
@@ -358,7 +359,7 @@ Partial Class CustomerCategory
     Private rdMale As System.Windows.Forms.RadioButton
     Private txtAddress As System.Windows.Forms.TextBox
     Private txtPhone As System.Windows.Forms.TextBox
-    Private txtCustomerFirstName As System.Windows.Forms.TextBox
+    Private WithEvents txtCustomerFirstName As System.Windows.Forms.TextBox
     Private txtCustomerCode As System.Windows.Forms.TextBox
     Private dtBirthDay As System.Windows.Forms.DateTimePicker
     Friend WithEvents dgvCategory As DataGridView

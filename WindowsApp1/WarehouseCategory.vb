@@ -44,7 +44,8 @@ Public Class WarehouseCategory
         If dgvCategory.Rows.Count = 0 Then
             MsgBox("There isn't any warehouse information to edit!")
         Else
-            bAdd.Enabled = False
+            addEditDeleteEnabled(False)
+            bDelete.Enabled = True
             setEnable(True)
         End If
     End Sub
@@ -88,6 +89,10 @@ Public Class WarehouseCategory
         addEditDeleteEnabled(True)
         If Not isSaved Then
             clsPMSAnalysis.DeleteCompletelyWarehouse(warehouseId)
+            Dim products = clsPMSAnalysis.GetProductsOfWarehouse(warehouseId)
+            For Each product In products
+                clsProduct.DeleteCompletelyProduct(product.ProductId)
+            Next
             clsPMSAnalysis.DeleteCompletelySalesDetail(warehouseId)
         End If
     End Sub
@@ -107,7 +112,7 @@ Public Class WarehouseCategory
                 setEnable(False)
                 MsgBox(type & " warehouse information successful!")
                 Reload()
-                bAdd.Enabled = True
+                addEditDeleteEnabled(True)
                 isSaved = True
             Else
                 MsgBox("There is an error when interact with database!")
@@ -169,8 +174,8 @@ Public Class WarehouseCategory
     End Function
 
     Private Sub bDelete_Click(sender As Object, e As EventArgs) Handles bDelete.Click
-        If dgvCategory.CurrentRow IsNot Nothing Then
-            Dim warehouseId = CLng(dgvCategory.CurrentRow.Cells(0).Value.ToString)
+        If txtCode.Text <> "" Then
+            Dim warehouseId = txtCode.Text
             Dim result = clsPMSAnalysis.DeleteWarehouse(warehouseId, LoginForm.PropUsername)
             If result = 1 Then
                 MsgBox("Delete warehouse information successful!")
@@ -227,7 +232,23 @@ Public Class WarehouseCategory
     Private Sub WarehouseCategory_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If Not isSaved Then
             clsPMSAnalysis.DeleteCompletelyWarehouse(warehouseId)
+            Dim products = clsPMSAnalysis.GetProductsOfWarehouse(warehouseId)
+            For Each product In products
+                clsProduct.DeleteCompletelyProduct(product.ProductId)
+            Next
             clsPMSAnalysis.DeleteCompletelySalesDetail(warehouseId)
+        End If
+    End Sub
+    Public Sub SetImports(warehouseId)
+        txtNumberOfImport.Text = clsPMSAnalysis.GetWarehouseById(warehouseId).Rows(0)(3)
+    End Sub
+    Private Sub dgvCategory_KeyUp(sender As Object, e As KeyEventArgs) Handles dgvCategory.KeyUp
+        If e.KeyCode.Equals(Keys.Up) Or e.KeyCode.Equals(Keys.Down) Then
+            If dgvCategory.CurrentRow IsNot Nothing And bSave.Enabled = False Then
+                addEditDeleteEnabled(True)
+                setEnable(False)
+                setValue()
+            End If
         End If
     End Sub
 

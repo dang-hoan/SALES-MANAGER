@@ -28,7 +28,7 @@ Partial Class MainForm
         Me.toolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
         Me.productToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.orderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.supplierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.bSupplier = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnWarehouseCategory = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnTool = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem8 = New System.Windows.Forms.ToolStripMenuItem()
@@ -88,7 +88,7 @@ Partial Class MainForm
         '
         Me.btnCategory.AutoSize = False
         Me.btnCategory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnCategory.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnCategoryCustomer, Me.ToolStripMenuItem2, Me.toolStripMenuItem1, Me.productToolStripMenuItem, Me.orderToolStripMenuItem, Me.supplierToolStripMenuItem, Me.btnWarehouseCategory})
+        Me.btnCategory.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnCategoryCustomer, Me.ToolStripMenuItem2, Me.toolStripMenuItem1, Me.productToolStripMenuItem, Me.orderToolStripMenuItem, Me.bSupplier, Me.btnWarehouseCategory})
         Me.btnCategory.Image = CType(resources.GetObject("btnCategory.Image"), System.Drawing.Image)
         Me.btnCategory.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.btnCategory.Name = "btnCategory"
@@ -126,11 +126,11 @@ Partial Class MainForm
         Me.orderToolStripMenuItem.Size = New System.Drawing.Size(270, 34)
         Me.orderToolStripMenuItem.Text = "Order"
         '
-        'supplierToolStripMenuItem
+        'bSupplier
         '
-        Me.supplierToolStripMenuItem.Name = "supplierToolStripMenuItem"
-        Me.supplierToolStripMenuItem.Size = New System.Drawing.Size(270, 34)
-        Me.supplierToolStripMenuItem.Text = "Supplier"
+        Me.bSupplier.Name = "bSupplier"
+        Me.bSupplier.Size = New System.Drawing.Size(270, 34)
+        Me.bSupplier.Text = "Supplier"
         '
         'btnWarehouseCategory
         '
@@ -297,7 +297,7 @@ Partial Class MainForm
     Private btnCategory As System.Windows.Forms.ToolStripMenuItem
     Private toolStripMenuItem1 As System.Windows.Forms.ToolStripSeparator
     Private WithEvents productToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Private supplierToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Private WithEvents bSupplier As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents srcMain As Panel
     Private WithEvents btnCategoryCustomer As ToolStripMenuItem
     Private WithEvents ToolStripMenuItem2 As ToolStripMenuItem

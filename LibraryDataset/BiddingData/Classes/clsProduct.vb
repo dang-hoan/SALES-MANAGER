@@ -78,6 +78,10 @@ Public Class clsProduct
         ta.Connection = conn
         Return ta.DeleteProduct(DateTime.Now, deleteUsername, productId)
     End Function
+    Public Function DeleteCompletelyProduct(ByVal productId As Long) As Integer
+        ta.Connection = conn
+        Return ta.DeleteCompletelyProduct(productId)
+    End Function
     Public Function DeleteSalesDetail(ByVal productId As Long) As Integer
         taSalesDetail.Connection = conn
         Return taSalesDetail.DeleteSalesDetail(productId)

@@ -76,4 +76,8 @@ Public Class MainForm
     Private Sub btnWarehouseCategory_Click(sender As Object, e As EventArgs) Handles btnWarehouseCategory.Click
         ShowForm(New WarehouseCategory)
     End Sub
+
+    Private Sub bSupplier_Click(sender As Object, e As EventArgs) Handles bSupplier.Click
+        ShowForm(New SupplierCategory)
+    End Sub
 End Class

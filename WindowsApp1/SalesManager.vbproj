@@ -98,6 +98,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SupplierCategory.Designer.vb">
+      <DependentUpon>SupplierCategory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierCategory.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CustomerCategory.Designer.vb">
       <DependentUpon>CustomerCategory.vb</DependentUpon>
     </Compile>
@@ -178,6 +184,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="SupplierCategory.resx">
+      <DependentUpon>SupplierCategory.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomerCategory.resx">
       <DependentUpon>CustomerCategory.vb</DependentUpon>
     </EmbeddedResource>

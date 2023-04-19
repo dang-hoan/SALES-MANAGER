@@ -15,11 +15,33 @@ Public Class clsSupplier
         connTransaction = New SqlConnection(strConnTransaction)
     End Sub
 
-    Public Function GetUserByUsername(ByVal username As String, ByVal password As String) As Supplier
+    Public Function GetAllSuppliers() As Supplier.SupplierDataTable
         Dim ds1 As New Supplier
         ta.Connection = conn
-        'ta.FillBy(ds1._Supplier, username, password)
-        Return ds1
+        ta.Fill(ds1._Supplier)
+        Return ds1._Supplier
+    End Function
+
+    Public Function AddSupplier(ByVal CompanyName As String, ByVal Address As String,
+                                ByVal Phone As String, ByVal Email As String, ByVal Webpage As String,
+                                ByVal Description As String, ByVal CreateUser As String) As Integer
+        ta.Connection = conn
+        Return ta.InsertSupplier(CompanyName, Address, Phone, Email, Webpage, Description,
+                                 DateTime.Now, CreateUser)
+    End Function
+
+    Public Function UpdateSupplier(ByVal Id As Long, ByVal CompanyName As String, ByVal Address As String,
+                                ByVal Phone As String, ByVal Email As String, ByVal Webpage As String,
+                                ByVal Description As String, ByVal UpdateUser As String) As Integer
+        ta.Connection = conn
+        Return ta.UpdateSupplier(CompanyName, Address, Phone, Email, Webpage, Description,
+                                 DateTime.Now, UpdateUser, Id)
+    End Function
+
+    Public Function DeleteSupplier(ByVal Id As Long, ByVal DeleteUser As String) As Integer
+        Dim ds1 As New Supplier
+        ta.Connection = conn
+        Return ta.DeleteSupplier(DateTime.Now, DeleteUser, Id)
     End Function
 
 End Class

@@ -7,7 +7,7 @@ CREATE TABLE "Supplier"(
     "Phone" VARCHAR(20) NULL,
     "Email" VARCHAR(20) NULL,
     "Webpage" VARCHAR(100) NULL,
-    "Description" VARCHAR(100) NULL,
+    "Description" NVARCHAR(100) NULL,
 	"CreateDate" datetime NULL,
 	"CreateBy" varchar(40) NULL,
 	"UpdateDate" datetime NULL,

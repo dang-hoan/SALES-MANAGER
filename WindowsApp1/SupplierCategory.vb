@@ -1,19 +1,16 @@
 ﻿Imports LibraryDataset
 Imports LibraryCommon
 
-Public Class CustomerCategory
+Public Class SupplierCategory
     Dim conn As New connCommon()
-    Dim clsPMSAnalysis As New clsPerson(conn.connSales.ConnectionString)
-
-    Private isAddFirstName As Boolean = False
-    Private isAddLastName As Boolean = False
-    Private Sub CustomerCategory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Dim clsPMSAnalysis As New clsSupplier(conn.connSales.ConnectionString)
+    Private Sub SupplierCategory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Reload()
     End Sub
 
     Private Sub Reload()
-        Dim data = clsPMSAnalysis.GetCustomers()
-        dgvCategory.DataSource = data.Person
+        ds_Supplier.Clear()
+        ds_Supplier.Merge(clsPMSAnalysis.GetAllSuppliers())
         setEnable(False)
         setValue()
     End Sub
@@ -25,19 +22,12 @@ Public Class CustomerCategory
     End Sub
 
     Private Sub setEnable(valBoolean As Boolean)
-        If txtCustomerCode.Text <> "" Then
-            txtCustomerCode.Enabled = False
-        Else
-            txtCustomerCode.Enabled = valBoolean
-        End If
-        txtCustomerFirstName.Enabled = valBoolean
-        txtCustomerLastName.Enabled = valBoolean
+        txtName.Enabled = valBoolean
         txtPhone.Enabled = valBoolean
         txtAddress.Enabled = valBoolean
-        dtBirthDay.Enabled = valBoolean
-        rdMale.Enabled = valBoolean
-        rdFemale.Enabled = valBoolean
         txtEmail.Enabled = valBoolean
+        txtWebpage.Enabled = valBoolean
+        txtDescription.Enabled = valBoolean
         bSave.Enabled = valBoolean
     End Sub
 
@@ -48,18 +38,13 @@ Public Class CustomerCategory
     End Sub
 
     Private Sub clearValue()
-        txtCustomerFirstName.Text = "First name"
-        txtCustomerLastName.Text = "Last name"
-        txtCustomerFirstName.ForeColor = Color.LightGray
-        txtCustomerLastName.ForeColor = Color.LightGray
-        txtCustomerCode.Text = ""
-        rdMale.Checked = True
-        txtPhone.Text = ""
+        txtCode.Text = ""
+        txtName.Text = ""
         txtAddress.Text = ""
-        dtBirthDay.Value = DateTime.Now
+        txtPhone.Text = ""
         txtEmail.Text = ""
-        isAddFirstName = True
-        isAddLastName = True
+        txtWebpage.Text = ""
+        txtDescription.Text = ""
     End Sub
 
     Private Sub bAdd_Click(sender As Object, e As EventArgs) Handles bAdd.Click
@@ -81,18 +66,13 @@ Public Class CustomerCategory
             Return
         Else
             Dim row As DataGridViewRow = dgvCategory.CurrentRow
-            txtCustomerCode.Text = row.Cells(0).Value.ToString
-            txtCustomerLastName.Text = row.Cells(1).Value.ToString
-            txtCustomerFirstName.Text = row.Cells(2).Value.ToString
-            dtBirthDay.Text = row.Cells(4).Value.ToString
-            txtPhone.Text = row.Cells(5).Value.ToString
-            txtEmail.Text = row.Cells(6).Value.ToString
-            txtAddress.Text = row.Cells(7).Value.ToString
-            If row.Cells(3).Value.ToString() = "True" Then
-                rdMale.Checked = True
-            Else
-                rdFemale.Checked = True
-            End If
+            txtCode.Text = row.Cells(0).Value.ToString
+            txtName.Text = row.Cells(1).Value.ToString
+            txtAddress.Text = row.Cells(2).Value.ToString
+            txtPhone.Text = row.Cells(3).Value.ToString
+            txtEmail.Text = row.Cells(4).Value.ToString
+            txtWebpage.Text = row.Cells(5).Value.ToString
+            txtDescription.Text = row.Cells(6).Value.ToString
         End If
     End Sub
 
@@ -100,20 +80,22 @@ Public Class CustomerCategory
         If checkLogicData() Then
             Dim result As Integer
             Dim type As String = "Update"
-            If txtCustomerCode.Enabled = False Then          'Edit
-                result = clsPMSAnalysis.EditUser(txtCustomerCode.Text, txtCustomerLastName.Text,
-                                            txtCustomerFirstName.Text, rdMale.Checked, dtBirthDay.Value,
-                                            txtPhone.Text, txtEmail.Text, txtAddress.Text, LoginForm.PropUsername)
+            If txtCode.Text <> "" Then          'Edit
+                result = clsPMSAnalysis.UpdateSupplier(txtCode.Text, txtName.Text,
+                                            txtAddress.Text, txtPhone.Text, txtEmail.Text,
+                                            txtWebpage.Text, txtDescription.Text,
+                                            LoginForm.PropUsername)
             Else                                             'Add new
-                result = clsPMSAnalysis.AddCustomer(txtCustomerCode.Text, txtCustomerLastName.Text,
-                                            txtCustomerFirstName.Text, rdMale.Checked, dtBirthDay.Value,
-                                            txtPhone.Text, txtEmail.Text, txtAddress.Text, LoginForm.PropUsername)
+                result = clsPMSAnalysis.AddSupplier(txtName.Text, txtAddress.Text,
+                                            txtPhone.Text, txtEmail.Text,
+                                            txtWebpage.Text, txtDescription.Text,
+                                            LoginForm.PropUsername)
                 type = "Add"
             End If
 
             If result = 1 Then
                 setEnable(False)
-                MsgBox(type & " customer information successful!")
+                MsgBox(type & " supplier information successful!")
                 Reload()
                 addEditDeleteEnabled(True)
             Else
@@ -123,14 +105,10 @@ Public Class CustomerCategory
     End Sub
 
     Private Function checkLogicData() As Boolean
-        If clsPMSAnalysis.CheckUsernameExits(txtCustomerCode.Text) And txtCustomerCode.Enabled = True Then
-            MsgBox("CustomerCode already exists in the system! Let enter other CustomerCode")
-            Return False
+        If txtName.Text = "" Or
+            txtEmail.Text = "" Or txtPhone.Text = "" Or txtAddress.Text = "" Then
 
-        ElseIf txtCustomerCode.Text = "" Or txtCustomerFirstName.Text = "" Or txtCustomerLastName.Text = "" Or txtPhone.Text = "" Or txtAddress.Text = "" Or
-            txtEmail.Text = "" Then
-
-            MsgBox("You need to enter all the fields!")
+            MsgBox("You need to enter all the required fields!")
             Return False
 
         ElseIf Not CheckValue("Phone", txtPhone.Text, "Long") Then
@@ -142,7 +120,7 @@ Public Class CustomerCategory
 
         ElseIf countString(txtEmail.Text, "gmail.com") <> 1 Or Not txtEmail.Text.EndsWith("@gmail.com") Then
             MsgBox("Email invalidate!")
-            Return False
+        Return False
         End If
 
         Return True
@@ -193,40 +171,20 @@ Public Class CustomerCategory
     End Function
 
     Private Sub bDelete_Click(sender As Object, e As EventArgs) Handles bDelete.Click
-        If txtCustomerCode.Text <> "" Then
-            Dim username As String = txtCustomerCode.Text
-            Dim isDelete = clsPMSAnalysis.CheckUserWasDeleted(username)
-            If Not isDelete Then
-                Dim result = clsPMSAnalysis.DeleteUser(LoginForm.PropUsername, username)
-                If result = 1 Then
-                    setEnable(False)
-                    MsgBox("Delete customer information successful!")
-                    Reload()
-                Else
-                    MsgBox("There is an error when interact with database!")
-                End If
+        If txtCode.Text <> "" Then
+            Dim code As String = txtCode.Text
+            Dim result = clsPMSAnalysis.DeleteSupplier(code, LoginForm.PropUsername)
+            If result = 1 Then
+                setEnable(False)
+                MsgBox("Delete supplier information successful!")
+                Reload()
             Else
-                MsgBox("User was deleted before!")
+                MsgBox("There is an error when interact with database!")
             End If
 
         End If
     End Sub
 
-    Private Sub txtCustomerFirstName_TextChanged(sender As Object, e As EventArgs) Handles txtCustomerFirstName.TextChanged
-        If isAddFirstName Then
-            txtCustomerFirstName.Text = ""
-            txtCustomerFirstName.ForeColor = Color.Black
-            isAddFirstName = False
-        End If
-    End Sub
-
-    Private Sub txtCustomerLastName_TextChanged(sender As Object, e As EventArgs) Handles txtCustomerLastName.TextChanged
-        If isAddLastName Then
-            txtCustomerLastName.Text = ""
-            txtCustomerLastName.ForeColor = Color.Black
-            isAddLastName = False
-        End If
-    End Sub
     Private Sub dgvCategory_KeyUp(sender As Object, e As KeyEventArgs) Handles dgvCategory.KeyUp
         If e.KeyCode.Equals(Keys.Up) Or e.KeyCode.Equals(Keys.Down) Then
             If dgvCategory.CurrentRow IsNot Nothing And bSave.Enabled = False Then

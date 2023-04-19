@@ -80,7 +80,8 @@ Public Class ProductCategory
     End Sub
 
     Private Sub bEdit_Click(sender As Object, e As EventArgs) Handles bEdit.Click
-        bAdd.Enabled = False
+        addEditDeleteEnabled(False)
+        bDelete.Enabled = True
         setEnable(True)
     End Sub
 
@@ -163,7 +164,7 @@ Public Class ProductCategory
                 setEnable(False)
                 MsgBox(type & " product information successful!")
                 Reload()
-                bAdd.Enabled = True
+                addEditDeleteEnabled(True)
             Else
                 MsgBox("There is an error when interact with database!")
             End If
@@ -226,8 +227,8 @@ Public Class ProductCategory
     End Function
 
     Private Sub bDelete_Click(sender As Object, e As EventArgs) Handles bDelete.Click
-        If dgvCategory.CurrentRow IsNot Nothing Then
-            Dim productId = CLng(dgvCategory.CurrentRow.Cells(0).Value.ToString)
+        If txtCode.Text <> "" Then
+            Dim productId = txtCode.Text
             Dim isDelete = clsPMSAnalysis.CheckProductWasDeleted(productId)
             If Not isDelete Then
                 Dim result = clsPMSAnalysis.DeleteProduct(LoginForm.PropUsername, productId)
@@ -247,5 +248,14 @@ Public Class ProductCategory
 
     Private Sub txtUnitPrice_TextChanged(sender As Object, e As EventArgs) Handles txtUnitPrice.TextChanged
         txtUnitDiscount.Text = txtUnitPrice.Text
+    End Sub
+    Private Sub dgvCategory_KeyUp(sender As Object, e As KeyEventArgs) Handles dgvCategory.KeyUp
+        If e.KeyCode.Equals(Keys.Up) Or e.KeyCode.Equals(Keys.Down) Then
+            If dgvCategory.CurrentRow IsNot Nothing And bSave.Enabled = False Then
+                addEditDeleteEnabled(True)
+                setEnable(False)
+                setValue()
+            End If
+        End If
     End Sub
 End Class
