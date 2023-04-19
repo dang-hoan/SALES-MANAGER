@@ -15,7 +15,7 @@ Public Class LoginForm
     Private Sub login()
         Dim data = clsPMSAnalysis.GetUserByUsername(txtUsername.Text, txtPassword.Text)
         If data._Account.Rows.Count > 0 Then
-            Dim IsDelete = clsPerson.CheckUserWasDeleted(txtUsername.Text)
+            Dim IsDelete = clsPMSAnalysis.CheckUserWasDeleted(txtUsername.Text)
             If Not IsDelete Then
                 username = txtUsername.Text
                 Dim main As New MainForm()

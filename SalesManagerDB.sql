@@ -64,8 +64,7 @@ CREATE TABLE "Product"(
 
 
 CREATE TABLE "Account"(
-	"Id" bigint PRIMARY KEY IDENTITY(1,1) NOT NULL,
-    "Username" VARCHAR(40) NOT NULL,
+    "Username" VARCHAR(40) PRIMARY KEY NOT NULL,
     "Password" VARCHAR(20) NOT NULL,
     "StatusId" INT NOT NULL,
 	"CreateDate" datetime NULL,
@@ -153,7 +152,8 @@ CREATE TABLE "Image"(
 
 
 CREATE TABLE "Person"(
-    "Username" VARCHAR(40) PRIMARY KEY NOT NULL,
+	"Id" bigint PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    "Username" VARCHAR(40) NULL,
     "LastName" NVARCHAR(30) NOT NULL,
     "FirstName" NVARCHAR(10) NOT NULL,
     "Gender" BIT NULL,

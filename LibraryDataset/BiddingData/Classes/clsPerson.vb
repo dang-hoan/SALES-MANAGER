@@ -27,12 +27,25 @@ Public Class clsPerson
         ta.FillByCustomers(ds1.Person)
         Return ds1
     End Function
-
-    Public Function EditUser(userName As String, lastName As String, firstName As String,
-                                gender As Boolean, birthDate As DateTime, phone As String,
-                                email As String, address As String, updateUser As String) As Integer
+    Public Function GetEmployees() As _Person
+        Dim ds1 As New _Person
         ta.Connection = conn
-        Return ta.UpdateUser(lastName, firstName, gender, birthDate, phone, email, address, DateTime.Now, updateUser, userName)
+        ta.FillByEmployees(ds1.Person)
+        Return ds1
+    End Function
+
+    Public Function EditCustomer(userName As String, lastName As String, firstName As String,
+                                gender As Boolean, birthDate As DateTime, phone As String,
+                                email As String, address As String, updateUser As String, id As Long) As Integer
+        ta.Connection = conn
+        Return ta.UpdateCustomer(lastName, firstName, gender, birthDate, phone, email, address, DateTime.Now, updateUser, userName, id)
+    End Function
+
+    Public Function UpdateEmployee(userName As String, lastName As String, firstName As String,
+                                gender As Boolean, birthDate As DateTime, phone As String,
+                                email As String, address As String, roleId As Integer, updateUser As String, id As Long) As Integer
+        ta.Connection = conn
+        Return ta.UpdateEmployee(lastName, firstName, gender, birthDate, phone, email, address, roleId, DateTime.Now, updateUser, userName, id)
     End Function
 
     Public Function AddCustomer(userName As String, lastName As String, firstName As String,
@@ -46,6 +59,12 @@ Public Class clsPerson
         End If
         Return ta.InsertUser(userName, lastName, firstName, gender, birthDate, phone, email, address, id, DateTime.Now, createrUser, False)
     End Function
+    Public Function AddEmployee(userName As String, lastName As String, firstName As String,
+                                gender As Boolean, birthDate As Date, phone As String,
+                                email As String, address As String, roleId As Integer, createrUser As String) As Integer
+        ta.Connection = conn
+        Return ta.InsertUser(userName, lastName, firstName, gender, birthDate, phone, email, address, roleId, DateTime.Now, createrUser, False)
+    End Function
 
     Public Function CheckUsernameExits(ByVal username As String) As Boolean
         Dim ds As New _Person
@@ -56,26 +75,8 @@ Public Class clsPerson
         End If
         Return False
     End Function
-
-    Public Function DeleteCompletelyUser(ByVal username As String) As Integer
+    Public Function DeleteUser(ByVal deleteUsername As String, ByVal Id As Long) As Integer
         ta.Connection = conn
-        Return ta.DeleteCompletelyUser(username)
-    End Function
-    Public Function DeleteUser(ByVal deleteUsername As String, ByVal username As String) As Integer
-        ta.Connection = conn
-        Return ta.DeleteUser(DateTime.Now, deleteUsername, username)
-    End Function
-    Public Function RestoreUser(ByVal username As String) As Integer
-        ta.Connection = conn
-        Return ta.RestoreUser(username)
-    End Function
-    Public Function CheckUserWasDeleted(ByVal username As String) As Integer
-        ta.Connection = conn
-        Dim result = ta.CheckUserWasDeleted(username).Count
-        If result > 0 Then
-            Return True
-        Else
-            Return False
-        End If
+        Return ta.DeleteUser(DateTime.Now, deleteUsername, Id)
     End Function
 End Class

@@ -21,5 +21,14 @@ Public Class clsAccount
         ta.FillBy(ds1._Account, username, password)
         Return ds1
     End Function
+    Public Function CheckUserWasDeleted(ByVal username As String) As Integer
+        ta.Connection = conn
+        Dim result = ta.CheckUserWasDeleted(username).Count
+        If result > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 
 End Class

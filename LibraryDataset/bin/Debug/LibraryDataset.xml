@@ -197,6 +197,11 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:LibraryDataset.CBB.CBBRoleDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:LibraryDataset.CBB.CBBWareHouseProductRow">
 <summary>
 Represents strongly named DataRow class.
@@ -233,6 +238,11 @@ Represents strongly named DataRow class.
 </summary>
 </member>
 <member name="T:LibraryDataset.CBB.SalesDetailRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBRoleRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -277,6 +287,11 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
+<member name="T:LibraryDataset.CBB.CBBRoleRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
 <member name="T:LibraryDataset.CBBTableAdapters.CBBWareHouseProductTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
@@ -313,6 +328,11 @@ Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:LibraryDataset.CBBTableAdapters.SalesDetailTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBBTableAdapters.CBBRoleTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
@@ -532,12 +552,12 @@ Represents a strongly typed in-memory cache of data.
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:LibraryDataset._Person.PersonDataTable">
+<member name="T:LibraryDataset._Person.NameDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:LibraryDataset._Person.NameDataTable">
+<member name="T:LibraryDataset._Person.PersonDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
@@ -547,12 +567,12 @@ Represents the strongly named DataTable class.
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:LibraryDataset._Person.PersonRow">
+<member name="T:LibraryDataset._Person.NameRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:LibraryDataset._Person.NameRow">
+<member name="T:LibraryDataset._Person.PersonRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -562,12 +582,12 @@ Represents strongly named DataRow class.
 Row event argument class
 </summary>
 </member>
-<member name="T:LibraryDataset._Person.PersonRowChangeEvent">
+<member name="T:LibraryDataset._Person.NameRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
 </member>
-<member name="T:LibraryDataset._Person.NameRowChangeEvent">
+<member name="T:LibraryDataset._Person.PersonRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
@@ -577,12 +597,12 @@ Row event argument class
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
-<member name="T:LibraryDataset._PersonTableAdapters.PersonTableAdapter">
+<member name="T:LibraryDataset._PersonTableAdapters.NameTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
-<member name="T:LibraryDataset._PersonTableAdapters.NameTableAdapter">
+<member name="T:LibraryDataset._PersonTableAdapters.PersonTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>

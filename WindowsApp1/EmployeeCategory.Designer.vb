@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class CustomerCategory
+Partial Class EmployeeCategory
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -17,7 +17,7 @@ Partial Class CustomerCategory
     Private components As System.ComponentModel.IContainer = Nothing
 
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CustomerCategory))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EmployeeCategory))
         Me.bSave = New System.Windows.Forms.Button()
         Me.bDelete = New System.Windows.Forms.Button()
         Me.bEdit = New System.Windows.Forms.Button()
@@ -30,18 +30,21 @@ Partial Class CustomerCategory
         Me.label6 = New System.Windows.Forms.Label()
         Me.label7 = New System.Windows.Forms.Label()
         Me.groupBox1 = New System.Windows.Forms.GroupBox()
-        Me.txtCustomerLastName = New System.Windows.Forms.TextBox()
+        Me.bAccountInfor = New System.Windows.Forms.Button()
+        Me.txtLastName = New System.Windows.Forms.TextBox()
         Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.dtBirthDay = New System.Windows.Forms.DateTimePicker()
         Me.txtAddress = New System.Windows.Forms.TextBox()
         Me.txtPhone = New System.Windows.Forms.TextBox()
-        Me.txtCustomerFirstName = New System.Windows.Forms.TextBox()
-        Me.txtCustomerCode = New System.Windows.Forms.TextBox()
+        Me.txtFirstName = New System.Windows.Forms.TextBox()
+        Me.txtCode = New System.Windows.Forms.TextBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.rdFemale = New System.Windows.Forms.RadioButton()
         Me.rdMale = New System.Windows.Forms.RadioButton()
         Me.dgvCategory = New System.Windows.Forms.DataGridView()
+        Me.cbbRole = New System.Windows.Forms.ComboBox()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.groupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.dgvCategory, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -107,27 +110,27 @@ Partial Class CustomerCategory
         '
         Me.label1.AutoSize = True
         Me.label1.ForeColor = System.Drawing.Color.Blue
-        Me.label1.Location = New System.Drawing.Point(20, 74)
+        Me.label1.Location = New System.Drawing.Point(24, 74)
         Me.label1.Name = "label1"
-        Me.label1.Size = New System.Drawing.Size(122, 20)
+        Me.label1.Size = New System.Drawing.Size(123, 20)
         Me.label1.TabIndex = 5
-        Me.label1.Text = "Customer name"
+        Me.label1.Text = "Employee name"
         '
         'label2
         '
         Me.label2.AutoSize = True
         Me.label2.ForeColor = System.Drawing.Color.Blue
-        Me.label2.Location = New System.Drawing.Point(20, 31)
+        Me.label2.Location = New System.Drawing.Point(24, 31)
         Me.label2.Name = "label2"
-        Me.label2.Size = New System.Drawing.Size(117, 20)
+        Me.label2.Size = New System.Drawing.Size(118, 20)
         Me.label2.TabIndex = 1
-        Me.label2.Text = "Customer code"
+        Me.label2.Text = "Employee code"
         '
         'label3
         '
         Me.label3.AutoSize = True
         Me.label3.ForeColor = System.Drawing.Color.Blue
-        Me.label3.Location = New System.Drawing.Point(507, 63)
+        Me.label3.Location = New System.Drawing.Point(505, 77)
         Me.label3.Name = "label3"
         Me.label3.Size = New System.Drawing.Size(70, 20)
         Me.label3.TabIndex = 3
@@ -137,7 +140,7 @@ Partial Class CustomerCategory
         '
         Me.label4.AutoSize = True
         Me.label4.ForeColor = System.Drawing.Color.Blue
-        Me.label4.Location = New System.Drawing.Point(20, 120)
+        Me.label4.Location = New System.Drawing.Point(24, 124)
         Me.label4.Name = "label4"
         Me.label4.Size = New System.Drawing.Size(63, 20)
         Me.label4.TabIndex = 9
@@ -147,7 +150,7 @@ Partial Class CustomerCategory
         '
         Me.label5.AutoSize = True
         Me.label5.ForeColor = System.Drawing.Color.Blue
-        Me.label5.Location = New System.Drawing.Point(507, 109)
+        Me.label5.Location = New System.Drawing.Point(507, 122)
         Me.label5.Name = "label5"
         Me.label5.Size = New System.Drawing.Size(55, 20)
         Me.label5.TabIndex = 7
@@ -157,7 +160,7 @@ Partial Class CustomerCategory
         '
         Me.label6.AutoSize = True
         Me.label6.ForeColor = System.Drawing.Color.Blue
-        Me.label6.Location = New System.Drawing.Point(507, 146)
+        Me.label6.Location = New System.Drawing.Point(24, 174)
         Me.label6.Name = "label6"
         Me.label6.Size = New System.Drawing.Size(68, 20)
         Me.label6.TabIndex = 12
@@ -170,20 +173,23 @@ Partial Class CustomerCategory
         Me.label7.ForeColor = System.Drawing.Color.Blue
         Me.label7.Location = New System.Drawing.Point(284, 36)
         Me.label7.Name = "label7"
-        Me.label7.Size = New System.Drawing.Size(404, 37)
+        Me.label7.Size = New System.Drawing.Size(398, 37)
         Me.label7.TabIndex = 8
-        Me.label7.Text = "CUSTOMER CATEGORY"
+        Me.label7.Text = "EMPLOYEE CATEGORY"
         '
         'groupBox1
         '
-        Me.groupBox1.Controls.Add(Me.txtCustomerLastName)
+        Me.groupBox1.Controls.Add(Me.Label9)
+        Me.groupBox1.Controls.Add(Me.cbbRole)
+        Me.groupBox1.Controls.Add(Me.bAccountInfor)
+        Me.groupBox1.Controls.Add(Me.txtLastName)
         Me.groupBox1.Controls.Add(Me.txtEmail)
         Me.groupBox1.Controls.Add(Me.Label8)
         Me.groupBox1.Controls.Add(Me.dtBirthDay)
         Me.groupBox1.Controls.Add(Me.txtAddress)
         Me.groupBox1.Controls.Add(Me.txtPhone)
-        Me.groupBox1.Controls.Add(Me.txtCustomerFirstName)
-        Me.groupBox1.Controls.Add(Me.txtCustomerCode)
+        Me.groupBox1.Controls.Add(Me.txtFirstName)
+        Me.groupBox1.Controls.Add(Me.txtCode)
         Me.groupBox1.Controls.Add(Me.label2)
         Me.groupBox1.Controls.Add(Me.label1)
         Me.groupBox1.Controls.Add(Me.label4)
@@ -193,24 +199,35 @@ Partial Class CustomerCategory
         Me.groupBox1.Controls.Add(Me.GroupBox2)
         Me.groupBox1.Location = New System.Drawing.Point(54, 97)
         Me.groupBox1.Name = "groupBox1"
-        Me.groupBox1.Size = New System.Drawing.Size(853, 188)
+        Me.groupBox1.Size = New System.Drawing.Size(853, 221)
         Me.groupBox1.TabIndex = 0
         Me.groupBox1.TabStop = False
         Me.groupBox1.Text = "Detail"
         '
-        'txtCustomerLastName
+        'bAccountInfor
         '
-        Me.txtCustomerLastName.Enabled = False
-        Me.txtCustomerLastName.Location = New System.Drawing.Point(351, 74)
-        Me.txtCustomerLastName.Name = "txtCustomerLastName"
-        Me.txtCustomerLastName.Size = New System.Drawing.Size(147, 26)
-        Me.txtCustomerLastName.TabIndex = 16
-        Me.txtCustomerLastName.Tag = ""
+        Me.bAccountInfor.AutoSize = True
+        Me.bAccountInfor.BackColor = System.Drawing.Color.DarkSeaGreen
+        Me.bAccountInfor.Location = New System.Drawing.Point(654, 160)
+        Me.bAccountInfor.Name = "bAccountInfor"
+        Me.bAccountInfor.Size = New System.Drawing.Size(176, 48)
+        Me.bAccountInfor.TabIndex = 20
+        Me.bAccountInfor.Text = "Account information"
+        Me.bAccountInfor.UseVisualStyleBackColor = False
+        '
+        'txtLastName
+        '
+        Me.txtLastName.Enabled = False
+        Me.txtLastName.Location = New System.Drawing.Point(320, 74)
+        Me.txtLastName.Name = "txtLastName"
+        Me.txtLastName.Size = New System.Drawing.Size(147, 26)
+        Me.txtLastName.TabIndex = 16
+        Me.txtLastName.Tag = ""
         '
         'txtEmail
         '
         Me.txtEmail.Enabled = False
-        Me.txtEmail.Location = New System.Drawing.Point(597, 25)
+        Me.txtEmail.Location = New System.Drawing.Point(597, 28)
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(233, 26)
         Me.txtEmail.TabIndex = 14
@@ -228,7 +245,7 @@ Partial Class CustomerCategory
         'dtBirthDay
         '
         Me.dtBirthDay.Enabled = False
-        Me.dtBirthDay.Location = New System.Drawing.Point(597, 63)
+        Me.dtBirthDay.Location = New System.Drawing.Point(599, 74)
         Me.dtBirthDay.Name = "dtBirthDay"
         Me.dtBirthDay.Size = New System.Drawing.Size(233, 26)
         Me.dtBirthDay.TabIndex = 4
@@ -236,7 +253,7 @@ Partial Class CustomerCategory
         'txtAddress
         '
         Me.txtAddress.Enabled = False
-        Me.txtAddress.Location = New System.Drawing.Point(597, 146)
+        Me.txtAddress.Location = New System.Drawing.Point(157, 171)
         Me.txtAddress.Name = "txtAddress"
         Me.txtAddress.Size = New System.Drawing.Size(233, 26)
         Me.txtAddress.TabIndex = 0
@@ -244,32 +261,32 @@ Partial Class CustomerCategory
         'txtPhone
         '
         Me.txtPhone.Enabled = False
-        Me.txtPhone.Location = New System.Drawing.Point(597, 106)
+        Me.txtPhone.Location = New System.Drawing.Point(597, 122)
         Me.txtPhone.Name = "txtPhone"
         Me.txtPhone.Size = New System.Drawing.Size(233, 26)
         Me.txtPhone.TabIndex = 8
         '
-        'txtCustomerFirstName
+        'txtFirstName
         '
-        Me.txtCustomerFirstName.Enabled = False
-        Me.txtCustomerFirstName.Location = New System.Drawing.Point(156, 74)
-        Me.txtCustomerFirstName.Name = "txtCustomerFirstName"
-        Me.txtCustomerFirstName.Size = New System.Drawing.Size(189, 26)
-        Me.txtCustomerFirstName.TabIndex = 6
+        Me.txtFirstName.Enabled = False
+        Me.txtFirstName.Location = New System.Drawing.Point(157, 74)
+        Me.txtFirstName.Name = "txtFirstName"
+        Me.txtFirstName.Size = New System.Drawing.Size(157, 26)
+        Me.txtFirstName.TabIndex = 6
         '
-        'txtCustomerCode
+        'txtCode
         '
-        Me.txtCustomerCode.Enabled = False
-        Me.txtCustomerCode.Location = New System.Drawing.Point(156, 31)
-        Me.txtCustomerCode.Name = "txtCustomerCode"
-        Me.txtCustomerCode.Size = New System.Drawing.Size(103, 26)
-        Me.txtCustomerCode.TabIndex = 2
+        Me.txtCode.Enabled = False
+        Me.txtCode.Location = New System.Drawing.Point(157, 31)
+        Me.txtCode.Name = "txtCode"
+        Me.txtCode.Size = New System.Drawing.Size(121, 26)
+        Me.txtCode.TabIndex = 2
         '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.rdFemale)
         Me.GroupBox2.Controls.Add(Me.rdMale)
-        Me.GroupBox2.Location = New System.Drawing.Point(156, 106)
+        Me.GroupBox2.Location = New System.Drawing.Point(157, 106)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(251, 50)
         Me.GroupBox2.TabIndex = 15
@@ -307,17 +324,36 @@ Partial Class CustomerCategory
         Me.dgvCategory.AllowUserToDeleteRows = False
         Me.dgvCategory.BackgroundColor = System.Drawing.Color.White
         Me.dgvCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvCategory.Location = New System.Drawing.Point(54, 307)
+        Me.dgvCategory.Location = New System.Drawing.Point(54, 334)
         Me.dgvCategory.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.dgvCategory.Name = "dgvCategory"
         Me.dgvCategory.ReadOnly = True
         Me.dgvCategory.RowHeadersWidth = 62
         Me.dgvCategory.RowTemplate.Height = 33
         Me.dgvCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvCategory.Size = New System.Drawing.Size(853, 354)
+        Me.dgvCategory.Size = New System.Drawing.Size(853, 327)
         Me.dgvCategory.TabIndex = 9
         '
-        'CustomerCategory
+        'cbbRole
+        '
+        Me.cbbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbRole.FormattingEnabled = True
+        Me.cbbRole.Location = New System.Drawing.Point(361, 31)
+        Me.cbbRole.Name = "cbbRole"
+        Me.cbbRole.Size = New System.Drawing.Size(106, 28)
+        Me.cbbRole.TabIndex = 22
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.ForeColor = System.Drawing.Color.Blue
+        Me.Label9.Location = New System.Drawing.Point(313, 31)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(42, 20)
+        Me.Label9.TabIndex = 23
+        Me.Label9.Text = "Role"
+        '
+        'EmployeeCategory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -332,7 +368,7 @@ Partial Class CustomerCategory
         Me.Controls.Add(Me.label7)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "CustomerCategory"
+        Me.Name = "EmployeeCategory"
         Me.groupBox1.ResumeLayout(False)
         Me.groupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -359,8 +395,8 @@ Partial Class CustomerCategory
     Private rdMale As System.Windows.Forms.RadioButton
     Private txtAddress As System.Windows.Forms.TextBox
     Private txtPhone As System.Windows.Forms.TextBox
-    Private WithEvents txtCustomerFirstName As System.Windows.Forms.TextBox
-    Private txtCustomerCode As System.Windows.Forms.TextBox
+    Private WithEvents txtFirstName As System.Windows.Forms.TextBox
+    Private WithEvents txtCode As System.Windows.Forms.TextBox
     Private dtBirthDay As System.Windows.Forms.DateTimePicker
     Friend WithEvents dgvCategory As DataGridView
     Friend WithEvents UsernameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
@@ -374,5 +410,8 @@ Partial Class CustomerCategory
     Private WithEvents txtEmail As TextBox
     Private WithEvents Label8 As Label
     Friend WithEvents GroupBox2 As GroupBox
-    Private WithEvents txtCustomerLastName As TextBox
+    Private WithEvents txtLastName As TextBox
+    Friend WithEvents bAccountInfor As Button
+    Private WithEvents Label9 As Label
+    Friend WithEvents cbbRole As ComboBox
 End Class

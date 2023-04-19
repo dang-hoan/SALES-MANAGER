@@ -1,19 +1,29 @@
 ﻿Imports LibraryDataset
 Imports LibraryCommon
 
-Public Class CustomerCategory
+Public Class EmployeeCategory
     Dim conn As New connCommon()
     Dim clsPMSAnalysis As New clsPerson(conn.connSales.ConnectionString)
+    Dim clsCBB As New clsCBB(conn.connSales.ConnectionString)
     Dim clsAccount As New clsAccount(conn.connSales.ConnectionString)
 
     Private isAddFirstName As Boolean = False
     Private isAddLastName As Boolean = False
-    Private Sub CustomerCategory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    Private employeeUsername = Nothing
+    Private Sub EmployeeCategory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Reload()
     End Sub
 
     Private Sub Reload()
-        Dim data = clsPMSAnalysis.GetCustomers()
+        Dim dataRole = clsCBB.GetCBBRole().CBBRole
+        cbbRole.Items.Clear()
+
+        For Each row As DataRow In dataRole.Rows
+            cbbRole.Items.Add(New CBBItem(row(0), row(1)))
+        Next
+
+        Dim data = clsPMSAnalysis.GetEmployees()
         dgvCategory.DataSource = data.Person
         setEnable(False)
         setValue()
@@ -26,14 +36,15 @@ Public Class CustomerCategory
     End Sub
 
     Private Sub setEnable(valBoolean As Boolean)
-        txtCustomerFirstName.Enabled = valBoolean
-        txtCustomerLastName.Enabled = valBoolean
+        txtFirstName.Enabled = valBoolean
+        txtLastName.Enabled = valBoolean
         txtPhone.Enabled = valBoolean
         txtAddress.Enabled = valBoolean
         dtBirthDay.Enabled = valBoolean
         rdMale.Enabled = valBoolean
         rdFemale.Enabled = valBoolean
         txtEmail.Enabled = valBoolean
+        cbbRole.Enabled = valBoolean
         bSave.Enabled = valBoolean
     End Sub
 
@@ -44,14 +55,15 @@ Public Class CustomerCategory
     End Sub
 
     Private Sub clearValue()
-        txtCustomerFirstName.Text = "First name"
-        txtCustomerLastName.Text = "Last name"
-        txtCustomerCode.Text = ""
+        txtFirstName.Text = "First name"
+        txtLastName.Text = "Last name"
+        txtCode.Text = ""
         rdMale.Checked = True
         txtPhone.Text = ""
         txtAddress.Text = ""
         dtBirthDay.Value = DateTime.Now
         txtEmail.Text = ""
+        cbbRole.SelectedIndex = -1
         setPlaceHolderEnable(True)
     End Sub
 
@@ -75,9 +87,10 @@ Public Class CustomerCategory
             Return
         Else
             Dim row As DataGridViewRow = dgvCategory.CurrentRow
-            txtCustomerCode.Text = row.Cells(0).Value.ToString
-            txtCustomerLastName.Text = row.Cells(2).Value.ToString
-            txtCustomerFirstName.Text = row.Cells(3).Value.ToString
+            txtCode.Text = row.Cells(0).Value.ToString
+            employeeUsername = row.Cells(1).Value.ToString
+            txtLastName.Text = row.Cells(2).Value.ToString
+            txtFirstName.Text = row.Cells(3).Value.ToString
             dtBirthDay.Text = row.Cells(5).Value.ToString
             txtPhone.Text = row.Cells(6).Value.ToString
             txtEmail.Text = row.Cells(7).Value.ToString
@@ -87,6 +100,12 @@ Public Class CustomerCategory
             Else
                 rdFemale.Checked = True
             End If
+
+            For Each item As CBBItem In cbbRole.Items
+                If item.PropItemId = row.Cells(9).Value.ToString Then
+                    cbbRole.SelectedItem = item
+                End If
+            Next
         End If
     End Sub
 
@@ -94,20 +113,20 @@ Public Class CustomerCategory
         If checkLogicData() Then
             Dim result As Integer
             Dim type As String = "Update"
-            If txtCustomerCode.Text <> "" Then          'Edit
-                result = clsPMSAnalysis.EditCustomer(Nothing, txtCustomerLastName.Text,
-                                            txtCustomerFirstName.Text, rdMale.Checked, dtBirthDay.Value,
-                                            txtPhone.Text, txtEmail.Text, txtAddress.Text, LoginForm.PropUsername, txtCustomerCode.Text)
-            Else                                             'Add new
-                result = clsPMSAnalysis.AddCustomer(Nothing, txtCustomerLastName.Text,
-                                            txtCustomerFirstName.Text, rdMale.Checked, dtBirthDay.Value,
-                                            txtPhone.Text, txtEmail.Text, txtAddress.Text, LoginForm.PropUsername)
+            If txtCode.Text <> "" Then          'Edit
+                result = clsPMSAnalysis.UpdateEmployee(employeeUsername, txtLastName.Text,
+                                            txtFirstName.Text, rdMale.Checked, dtBirthDay.Value,
+                                            txtPhone.Text, txtEmail.Text, txtAddress.Text, CType(cbbRole.SelectedItem, CBBItem).PropItemId, LoginForm.PropUsername, txtCode.Text)
+            Else                                     'Add new
+                result = clsPMSAnalysis.AddEmployee(employeeUsername, txtLastName.Text,
+                                            txtFirstName.Text, rdMale.Checked, dtBirthDay.Value,
+                                            txtPhone.Text, txtEmail.Text, txtAddress.Text, CType(cbbRole.SelectedItem, CBBItem).PropItemId, LoginForm.PropUsername)
                 type = "Add"
             End If
 
             If result = 1 Then
                 setEnable(False)
-                MsgBox(type & " customer information successful!")
+                MsgBox(type & " employee information successful!")
                 Reload()
                 addEditDeleteEnabled(True)
                 setPlaceHolderEnable(False)
@@ -118,7 +137,11 @@ Public Class CustomerCategory
     End Sub
 
     Private Function checkLogicData() As Boolean
-        If txtCustomerFirstName.Text = "" Or txtCustomerLastName.Text = "" Or txtPhone.Text = "" Or txtAddress.Text = "" Or
+        If clsPMSAnalysis.CheckUsernameExits(txtCode.Text) And txtCode.Enabled = True Then
+            MsgBox("Employee code already exists in the system! Let enter other Employee code")
+            Return False
+
+        ElseIf txtFirstName.Text = "" Or txtLastName.Text = "" Or txtPhone.Text = "" Or txtAddress.Text = "" Or
             txtEmail.Text = "" Then
 
             MsgBox("You need to enter all the fields!")
@@ -133,7 +156,7 @@ Public Class CustomerCategory
 
         ElseIf countString(txtEmail.Text, "gmail.com") <> 1 Or Not txtEmail.Text.EndsWith("@gmail.com") Then
             MsgBox("Email invalidate!")
-        Return False
+            Return False
         End If
 
         Return True
@@ -184,14 +207,14 @@ Public Class CustomerCategory
     End Function
 
     Private Sub bDelete_Click(sender As Object, e As EventArgs) Handles bDelete.Click
-        If txtCustomerCode.Text <> "" Then
-            Dim username As String = txtCustomerCode.Text
+        If txtCode.Text <> "" Then
+            Dim username As String = txtCode.Text
             Dim isDelete = clsAccount.CheckUserWasDeleted(username)
             If Not isDelete Then
                 Dim result = clsPMSAnalysis.DeleteUser(LoginForm.PropUsername, username)
                 If result = 1 Then
                     setEnable(False)
-                    MsgBox("Delete customer information successful!")
+                    MsgBox("Delete employee information successful!")
                     Reload()
                 Else
                     MsgBox("There is an error when interact with database!")
@@ -200,22 +223,6 @@ Public Class CustomerCategory
                 MsgBox("User was deleted before!")
             End If
 
-        End If
-    End Sub
-
-    Private Sub txtCustomerFirstName_Click(sender As Object, e As EventArgs) Handles txtCustomerFirstName.Click
-        If isAddFirstName Then
-            txtCustomerFirstName.Text = ""
-            txtCustomerFirstName.ForeColor = Color.Black
-            isAddFirstName = False
-        End If
-    End Sub
-
-    Private Sub txtCustomerLastName_Click(sender As Object, e As EventArgs) Handles txtCustomerLastName.Click
-        If isAddLastName Then
-            txtCustomerLastName.Text = ""
-            txtCustomerLastName.ForeColor = Color.Black
-            isAddLastName = False
         End If
     End Sub
     Private Sub dgvCategory_KeyUp(sender As Object, e As KeyEventArgs) Handles dgvCategory.KeyUp
@@ -227,16 +234,42 @@ Public Class CustomerCategory
             End If
         End If
     End Sub
+
+    Private Sub bAccountInfor_Click(sender As Object, e As EventArgs) Handles bAccountInfor.Click
+        Dim frmAccountInfor As New AccountInformation
+        frmAccountInfor.isView = Not bSave.Enabled
+        frmAccountInfor.employeeCode = employeeUsername
+        frmAccountInfor.ShowDialog()
+    End Sub
+
+    Private Sub txtFirstName_Click(sender As Object, e As EventArgs) Handles txtFirstName.Click
+        If isAddFirstName Then
+            txtFirstName.Text = ""
+            txtFirstName.ForeColor = Color.Black
+            isAddFirstName = False
+        End If
+    End Sub
+
+    Private Sub txtLastName_Click(sender As Object, e As EventArgs) Handles txtLastName.Click
+        If isAddLastName Then
+            txtLastName.Text = ""
+            txtLastName.ForeColor = Color.Black
+            isAddLastName = False
+        End If
+    End Sub
+    Public Sub SetEmployeeCode(ByVal employeeCode As String)
+        txtCode.Text = employeeCode
+    End Sub
     Public Sub setPlaceHolderEnable(ByVal valBoolean As Boolean)
         If valBoolean = False Then
-            txtCustomerLastName.ForeColor = Color.Black
+            txtLastName.ForeColor = Color.Black
             isAddLastName = False
-            txtCustomerFirstName.ForeColor = Color.Black
+            txtFirstName.ForeColor = Color.Black
             isAddFirstName = False
         Else
-            txtCustomerLastName.ForeColor = Color.Gray
+            txtLastName.ForeColor = Color.Gray
             isAddLastName = True
-            txtCustomerFirstName.ForeColor = Color.Gray
+            txtFirstName.ForeColor = Color.Gray
             isAddFirstName = True
         End If
     End Sub

@@ -8,6 +8,7 @@ Public Class clsCBB
     Dim taSupplier As New CBBTableAdapters.CBBSupplierTableAdapter
     Dim taStatus As New CBBTableAdapters.CBBStatusTableAdapter
     Dim taPerson As New CBBTableAdapters.CBBPersonTableAdapter
+    Dim taRole As New CBBTableAdapters.CBBRoleTableAdapter
     Private conn As New SqlConnection
 
     Public Sub New(ByVal strConn As String, Optional ByVal strConnTransaction As String = Nothing)
@@ -79,6 +80,18 @@ Public Class clsCBB
         Dim ds1 As New CBB
         taStatus.Connection = conn
         taStatus.Fill(ds1.CBBStatus, "Order")
+        Return ds1
+    End Function
+    Public Function GetCBBStatusOfAccount() As CBB
+        Dim ds1 As New CBB
+        taStatus.Connection = conn
+        taStatus.Fill(ds1.CBBStatus, "Account")
+        Return ds1
+    End Function
+    Public Function GetCBBRole() As CBB
+        Dim ds1 As New CBB
+        taRole.Connection = conn
+        taRole.Fill(ds1.CBBRole)
         Return ds1
     End Function
     Public Function GetDeleveredId() As CBB.CBBStatusDataTable

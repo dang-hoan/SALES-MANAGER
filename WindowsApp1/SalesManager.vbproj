@@ -98,6 +98,18 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountInformation.Designer.vb">
+      <DependentUpon>AccountInformation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AccountInformation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeCategory.Designer.vb">
+      <DependentUpon>EmployeeCategory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeCategory.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SupplierCategory.Designer.vb">
       <DependentUpon>SupplierCategory.vb</DependentUpon>
     </Compile>
@@ -184,6 +196,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AccountInformation.resx">
+      <DependentUpon>AccountInformation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeCategory.resx">
+      <DependentUpon>EmployeeCategory.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SupplierCategory.resx">
       <DependentUpon>SupplierCategory.vb</DependentUpon>
     </EmbeddedResource>

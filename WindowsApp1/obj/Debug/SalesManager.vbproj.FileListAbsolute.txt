@@ -57,3 +57,5 @@ D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\SalesManager.vbproj.CopyCompl
 D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.WarehouseCategory.resources
 D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.AddEditProductForm.resources
 D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.SupplierCategory.resources
+D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.AccountInformation.resources
+D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.EmployeeCategory.resources

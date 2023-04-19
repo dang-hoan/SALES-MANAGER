@@ -80,4 +80,8 @@ Public Class MainForm
     Private Sub bSupplier_Click(sender As Object, e As EventArgs) Handles bSupplier.Click
         ShowForm(New SupplierCategory)
     End Sub
+
+    Private Sub btnEmployee_Click(sender As Object, e As EventArgs) Handles btnEmployee.Click
+        ShowForm(New EmployeeCategory)
+    End Sub
 End Class
