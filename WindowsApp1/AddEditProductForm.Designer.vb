@@ -30,6 +30,8 @@ Partial Class AddEditProductForm
         Me.label6 = New System.Windows.Forms.Label()
         Me.labTitle = New System.Windows.Forms.Label()
         Me.groupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtSoldProducts = New System.Windows.Forms.TextBox()
         Me.txtUnitDiscount = New System.Windows.Forms.TextBox()
         Me.txtNumber = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -46,8 +48,6 @@ Partial Class AddEditProductForm
         Me.txtCode = New System.Windows.Forms.TextBox()
         Me.bSave = New System.Windows.Forms.Button()
         Me.bClearAll = New System.Windows.Forms.Button()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.txtSoldProducts = New System.Windows.Forms.TextBox()
         Me.groupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -147,6 +147,23 @@ Partial Class AddEditProductForm
         Me.groupBox1.TabIndex = 0
         Me.groupBox1.TabStop = False
         Me.groupBox1.Text = "Detail"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(423, 319)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(107, 20)
+        Me.Label11.TabIndex = 26
+        Me.Label11.Text = "Sold products"
+        '
+        'txtSoldProducts
+        '
+        Me.txtSoldProducts.Enabled = False
+        Me.txtSoldProducts.Location = New System.Drawing.Point(570, 313)
+        Me.txtSoldProducts.Name = "txtSoldProducts"
+        Me.txtSoldProducts.Size = New System.Drawing.Size(164, 26)
+        Me.txtSoldProducts.TabIndex = 25
         '
         'txtUnitDiscount
         '
@@ -293,29 +310,12 @@ Partial Class AddEditProductForm
         Me.bClearAll.Text = "Clear all"
         Me.bClearAll.UseVisualStyleBackColor = False
         '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(423, 319)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(107, 20)
-        Me.Label11.TabIndex = 26
-        Me.Label11.Text = "Sold products"
-        '
-        'txtSoldProducts
-        '
-        Me.txtSoldProducts.Enabled = False
-        Me.txtSoldProducts.Location = New System.Drawing.Point(570, 313)
-        Me.txtSoldProducts.Name = "txtSoldProducts"
-        Me.txtSoldProducts.Size = New System.Drawing.Size(164, 26)
-        Me.txtSoldProducts.TabIndex = 25
-        '
         'AddEditProductForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(969, 589)
+        Me.ClientSize = New System.Drawing.Size(969, 605)
         Me.Controls.Add(Me.bClearAll)
         Me.Controls.Add(Me.bSave)
         Me.Controls.Add(Me.groupBox1)

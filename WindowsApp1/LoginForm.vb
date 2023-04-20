@@ -13,18 +13,25 @@ Public Class LoginForm
         login()
     End Sub
     Private Sub login()
-        Dim data = clsPMSAnalysis.GetUserByUsername(txtUsername.Text, txtPassword.Text)
-        If data._Account.Rows.Count > 0 Then
-            Dim IsDelete = clsPMSAnalysis.CheckUserWasDeleted(txtUsername.Text)
-            If Not IsDelete Then
-                username = txtUsername.Text
-                Dim main As New MainForm()
-                main.Show()
-                Me.Hide()
-                txtPassword.Text = ""
-            Else
-                MsgBox("Your account was deleted from the system!")
-            End If
+        If clsPMSAnalysis.CheckUserExists(txtUsername.Text, txtPassword.Text) Then
+            Dim statusName = clsPMSAnalysis.GetStatusOfAccount(txtUsername.Text).Rows(0)(1)
+
+            Select Case statusName
+                Case "ACTIVITIED"
+                    username = txtUsername.Text
+                    Dim main As New MainForm()
+                    main.Show()
+                    Me.Hide()
+                    txtPassword.Text = ""
+                Case "BLOCK"
+                    MsgBox("Your account is blocked from logging into the system!")
+                Case "DELETED"
+                    MsgBox("Your account is deleted from the system!")
+                Case "PENDING"
+                    MsgBox("Your account is pending!")
+                Case "NOT ACTIVITIED"          'Ví dụ xin nghỉ làm thời gian hoặc mới vào làm ở cty
+                    MsgBox("Your account is not activitied yet!")
+            End Select
         Else
             MsgBox("Username or password isn't correct!")
         End If

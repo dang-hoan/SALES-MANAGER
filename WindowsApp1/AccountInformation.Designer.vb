@@ -48,9 +48,9 @@ Partial Class AccountInformation
         Me.Label1.ForeColor = System.Drawing.Color.Blue
         Me.Label1.Location = New System.Drawing.Point(105, 96)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(118, 20)
+        Me.Label1.Size = New System.Drawing.Size(112, 20)
         Me.Label1.TabIndex = 25
-        Me.Label1.Text = "Employee code"
+        Me.Label1.Text = "Account name"
         '
         'Label2
         '

@@ -15,6 +15,8 @@ Public Class CustomerCategory
     Private Sub Reload()
         Dim data = clsPMSAnalysis.GetCustomers()
         dgvCategory.DataSource = data.Person
+        dgvCategory.Columns(1).Visible = False
+        dgvCategory.Columns(9).Visible = False
         setEnable(False)
         setValue()
     End Sub
@@ -118,7 +120,7 @@ Public Class CustomerCategory
     End Sub
 
     Private Function checkLogicData() As Boolean
-        If txtCustomerFirstName.Text = "" Or txtCustomerLastName.Text = "" Or txtPhone.Text = "" Or txtAddress.Text = "" Or
+        If txtCustomerFirstName.Text = "" Or isAddFirstName = True Or isAddLastName = True Or txtCustomerLastName.Text = "" Or txtPhone.Text = "" Or txtAddress.Text = "" Or
             txtEmail.Text = "" Then
 
             MsgBox("You need to enter all the fields!")

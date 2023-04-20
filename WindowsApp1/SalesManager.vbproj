@@ -110,6 +110,7 @@
     <Compile Include="EmployeeCategory.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SecurePasswordHasher.vb" />
     <Compile Include="SupplierCategory.Designer.vb">
       <DependentUpon>SupplierCategory.vb</DependentUpon>
     </Compile>

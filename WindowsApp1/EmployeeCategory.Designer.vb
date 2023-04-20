@@ -30,6 +30,8 @@ Partial Class EmployeeCategory
         Me.label6 = New System.Windows.Forms.Label()
         Me.label7 = New System.Windows.Forms.Label()
         Me.groupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.cbbRole = New System.Windows.Forms.ComboBox()
         Me.bAccountInfor = New System.Windows.Forms.Button()
         Me.txtLastName = New System.Windows.Forms.TextBox()
         Me.txtEmail = New System.Windows.Forms.TextBox()
@@ -43,8 +45,6 @@ Partial Class EmployeeCategory
         Me.rdFemale = New System.Windows.Forms.RadioButton()
         Me.rdMale = New System.Windows.Forms.RadioButton()
         Me.dgvCategory = New System.Windows.Forms.DataGridView()
-        Me.cbbRole = New System.Windows.Forms.ComboBox()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.groupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.dgvCategory, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -204,6 +204,25 @@ Partial Class EmployeeCategory
         Me.groupBox1.TabStop = False
         Me.groupBox1.Text = "Detail"
         '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.ForeColor = System.Drawing.Color.Blue
+        Me.Label9.Location = New System.Drawing.Point(313, 31)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(42, 20)
+        Me.Label9.TabIndex = 23
+        Me.Label9.Text = "Role"
+        '
+        'cbbRole
+        '
+        Me.cbbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbRole.FormattingEnabled = True
+        Me.cbbRole.Location = New System.Drawing.Point(361, 31)
+        Me.cbbRole.Name = "cbbRole"
+        Me.cbbRole.Size = New System.Drawing.Size(106, 28)
+        Me.cbbRole.TabIndex = 22
+        '
         'bAccountInfor
         '
         Me.bAccountInfor.AutoSize = True
@@ -333,25 +352,6 @@ Partial Class EmployeeCategory
         Me.dgvCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvCategory.Size = New System.Drawing.Size(853, 327)
         Me.dgvCategory.TabIndex = 9
-        '
-        'cbbRole
-        '
-        Me.cbbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbbRole.FormattingEnabled = True
-        Me.cbbRole.Location = New System.Drawing.Point(361, 31)
-        Me.cbbRole.Name = "cbbRole"
-        Me.cbbRole.Size = New System.Drawing.Size(106, 28)
-        Me.cbbRole.TabIndex = 22
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.ForeColor = System.Drawing.Color.Blue
-        Me.Label9.Location = New System.Drawing.Point(313, 31)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(42, 20)
-        Me.Label9.TabIndex = 23
-        Me.Label9.Text = "Role"
         '
         'EmployeeCategory
         '

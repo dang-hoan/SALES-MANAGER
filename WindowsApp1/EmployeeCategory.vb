@@ -9,6 +9,7 @@ Public Class EmployeeCategory
 
     Private isAddFirstName As Boolean = False
     Private isAddLastName As Boolean = False
+    Private isSaved As Boolean = True
 
     Private employeeUsername = Nothing
     Private Sub EmployeeCategory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -64,6 +65,7 @@ Public Class EmployeeCategory
         dtBirthDay.Value = DateTime.Now
         txtEmail.Text = ""
         cbbRole.SelectedIndex = -1
+        employeeUsername = Nothing
         setPlaceHolderEnable(True)
     End Sub
 
@@ -71,9 +73,11 @@ Public Class EmployeeCategory
         addEditDeleteEnabled(False)
         clearValue()
         setEnable(True)
+        isSaved = False
     End Sub
 
     Private Sub dgvCategory_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCategory.CellClick
+        deleteAccountIfNotSave()
         addEditDeleteEnabled(True)
         setEnable(False)
         setValue()
@@ -88,7 +92,7 @@ Public Class EmployeeCategory
         Else
             Dim row As DataGridViewRow = dgvCategory.CurrentRow
             txtCode.Text = row.Cells(0).Value.ToString
-            employeeUsername = row.Cells(1).Value.ToString
+            employeeUsername = If(row.Cells(1).Value.ToString = "", Nothing, row.Cells(1).Value.ToString)
             txtLastName.Text = row.Cells(2).Value.ToString
             txtFirstName.Text = row.Cells(3).Value.ToString
             dtBirthDay.Text = row.Cells(5).Value.ToString
@@ -113,7 +117,7 @@ Public Class EmployeeCategory
         If checkLogicData() Then
             Dim result As Integer
             Dim type As String = "Update"
-            If txtCode.Text <> "" Then          'Edit
+            If txtCode.Text <> "" Then               'Edit
                 result = clsPMSAnalysis.UpdateEmployee(employeeUsername, txtLastName.Text,
                                             txtFirstName.Text, rdMale.Checked, dtBirthDay.Value,
                                             txtPhone.Text, txtEmail.Text, txtAddress.Text, CType(cbbRole.SelectedItem, CBBItem).PropItemId, LoginForm.PropUsername, txtCode.Text)
@@ -130,6 +134,7 @@ Public Class EmployeeCategory
                 Reload()
                 addEditDeleteEnabled(True)
                 setPlaceHolderEnable(False)
+                isSaved = True
             Else
                 MsgBox("There is an error when interact with database!")
             End If
@@ -137,12 +142,8 @@ Public Class EmployeeCategory
     End Sub
 
     Private Function checkLogicData() As Boolean
-        If clsPMSAnalysis.CheckUsernameExits(txtCode.Text) And txtCode.Enabled = True Then
-            MsgBox("Employee code already exists in the system! Let enter other Employee code")
-            Return False
-
-        ElseIf txtFirstName.Text = "" Or txtLastName.Text = "" Or txtPhone.Text = "" Or txtAddress.Text = "" Or
-            txtEmail.Text = "" Then
+        If txtFirstName.Text = "" Or isAddFirstName = True Or isAddLastName = True Or txtLastName.Text = "" Or txtPhone.Text = "" Or txtAddress.Text = "" Or
+            txtEmail.Text = "" Or cbbRole.SelectedIndex = -1 Then
 
             MsgBox("You need to enter all the fields!")
             Return False
@@ -156,7 +157,7 @@ Public Class EmployeeCategory
 
         ElseIf countString(txtEmail.Text, "gmail.com") <> 1 Or Not txtEmail.Text.EndsWith("@gmail.com") Then
             MsgBox("Email invalidate!")
-            Return False
+        Return False
         End If
 
         Return True
@@ -203,7 +204,6 @@ Public Class EmployeeCategory
 
     Public Function countString(ByVal inputString As String, ByVal subString As String) As Integer
         Return System.Text.RegularExpressions.Regex.Split(inputString, subString).Length - 1
-
     End Function
 
     Private Sub bDelete_Click(sender As Object, e As EventArgs) Handles bDelete.Click
@@ -238,7 +238,8 @@ Public Class EmployeeCategory
     Private Sub bAccountInfor_Click(sender As Object, e As EventArgs) Handles bAccountInfor.Click
         Dim frmAccountInfor As New AccountInformation
         frmAccountInfor.isView = Not bSave.Enabled
-        frmAccountInfor.employeeCode = employeeUsername
+        frmAccountInfor.employeeCode = If(txtCode.Text <> "", txtCode.Text, -1)
+        frmAccountInfor.employeeUsername = employeeUsername
         frmAccountInfor.ShowDialog()
     End Sub
 
@@ -257,9 +258,6 @@ Public Class EmployeeCategory
             isAddLastName = False
         End If
     End Sub
-    Public Sub SetEmployeeCode(ByVal employeeCode As String)
-        txtCode.Text = employeeCode
-    End Sub
     Public Sub setPlaceHolderEnable(ByVal valBoolean As Boolean)
         If valBoolean = False Then
             txtLastName.ForeColor = Color.Black
@@ -271,6 +269,24 @@ Public Class EmployeeCategory
             isAddLastName = True
             txtFirstName.ForeColor = Color.Gray
             isAddFirstName = True
+        End If
+    End Sub
+    Public Sub setAccountName(ByVal accountName As String)
+        employeeUsername = accountName
+        If isSaved Then
+            If dgvCategory.CurrentRow IsNot Nothing Then
+                dgvCategory.CurrentRow.Cells(1).Value = accountName
+            End If
+        End If
+    End Sub
+
+    Private Sub EmployeeCategory_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        deleteAccountIfNotSave()
+    End Sub
+    Private Sub deleteAccountIfNotSave()
+        If Not isSaved Then
+            clsAccount.DeleteCompletelyAccount(employeeUsername)
+            isSaved = True
         End If
     End Sub
 End Class
