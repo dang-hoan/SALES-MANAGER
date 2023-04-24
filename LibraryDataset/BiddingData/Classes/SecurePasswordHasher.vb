@@ -6,7 +6,7 @@ Module SecurePasswordHasher
 
     Function HashFunc(ByVal password As String, ByVal iterations As Integer) As String
         'Create salt
-        Dim salt(SaltSize) As Byte
+        Dim salt(SaltSize - 1) As Byte
         Dim rng = New RNGCryptoServiceProvider()
         rng.GetBytes(salt)
 
@@ -47,7 +47,7 @@ Module SecurePasswordHasher
         Dim hashBytes = Convert.FromBase64String(base64Hash)
 
         'Get salt
-        Dim salt(SaltSize) As Byte
+        Dim salt(SaltSize - 1) As Byte
         Array.Copy(hashBytes, 0, salt, 0, SaltSize)
 
         'Create hash with given salt

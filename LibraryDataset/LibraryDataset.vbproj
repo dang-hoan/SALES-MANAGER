@@ -72,6 +72,7 @@
     <Compile Include="BiddingData\Classes\clsSupplier.vb" />
     <Compile Include="BiddingData\Classes\clsAccount.vb" />
     <Compile Include="BiddingData\Classes\clsWarehouse.vb" />
+    <Compile Include="BiddingData\Classes\SecurePasswordHasher.vb" />
     <Compile Include="BiddingData\Dataset\Account.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

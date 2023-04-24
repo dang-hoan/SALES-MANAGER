@@ -10,6 +10,7 @@ Public Class AccountInformation
     Public isView As Boolean = True
     Public employeeCode As Long = -1
     Public employeeUsername As String
+    Public employeePassword As String = ""
     Private isShow As Boolean = False
 
     Private Sub AccountInformation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -27,6 +28,7 @@ Public Class AccountInformation
                 Dim account = result(0)
                 txtCode.Text = account(0)
                 txtPassword.Text = account(1)
+                employeePassword = account(1)
 
                 For Each item As CBBItem In cbbStatus.Items
                     If item.PropItemId = account(2) Then
@@ -55,7 +57,12 @@ Public Class AccountInformation
             Dim result As Integer
             Dim type As String = "Update"
             If txtCode.Enabled = False Then
-                result = clsPMSAnalysis.UpdateAccount(txtCode.Text, txtPassword.Text, CType(cbbStatus.SelectedItem, CBBItem).PropItemId, LoginForm.PropUsername)
+                If txtPassword.Text.Equals(employeePassword) Then
+                    result = clsPMSAnalysis.UpdateAccountStatus(txtCode.Text, CType(cbbStatus.SelectedItem, CBBItem).PropItemId, LoginForm.PropUsername)
+                Else
+                    result = clsPMSAnalysis.UpdateAccount(txtCode.Text, txtPassword.Text, CType(cbbStatus.SelectedItem, CBBItem).PropItemId, LoginForm.PropUsername)
+                End If
+
             Else
                 result = clsPMSAnalysis.AddAccount(txtCode.Text, txtPassword.Text, CType(cbbStatus.SelectedItem, CBBItem).PropItemId, LoginForm.PropUsername, employeeCode)
                 type = "Add"
@@ -98,4 +105,5 @@ Public Class AccountInformation
             txtPassword.UseSystemPasswordChar = True
         End If
     End Sub
+
 End Class

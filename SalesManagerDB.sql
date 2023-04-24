@@ -65,7 +65,7 @@ CREATE TABLE "Product"(
 
 CREATE TABLE "Account"(
     "Username" VARCHAR(40) PRIMARY KEY NOT NULL,
-    "Password" VARCHAR(20) NOT NULL,
+    "Password" VARCHAR(200) NOT NULL,
     "StatusId" INT NOT NULL,
 	"CreateDate" datetime NULL,
 	"CreateBy" varchar(40) NULL,

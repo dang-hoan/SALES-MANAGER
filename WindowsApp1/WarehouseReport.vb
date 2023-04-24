@@ -13,8 +13,8 @@ Public Class WarehouseReport
         cbbWarehouse.Items.Clear()
         cbbProduct.Items.Clear()
 
-        cbbWarehouse.Items.Add("")
-        cbbProduct.Items.Add("")
+        cbbWarehouse.Items.Add("All")
+        cbbProduct.Items.Add("All")
         For Each row As DataRow In dataWareHouse.Rows
             cbbWarehouse.Items.Add(New CBBItem(row(0), row(1)))
         Next
@@ -30,17 +30,17 @@ Public Class WarehouseReport
     Private Sub cbbWarehouse_Click(sender As Object, e As EventArgs) Handles cbbWarehouse.Click
         Dim warehouseId = Nothing
         'Save selected productId 
-        If cbbWarehouse.Text <> "" Then
+        If cbbWarehouse.Text <> "All" Then
             warehouseId = CType(cbbWarehouse.SelectedItem, CBBItem).PropItemId
         End If
 
-        If cbbProduct.Text <> "" Then
+        If cbbProduct.Text <> "All" Then
             Dim productId = CType(cbbProduct.SelectedItem, CBBItem).PropItemId
             Dim dataWareHouse = clsPMSAnalysis.GetCBBWareHouseOfProduct(productId).CBBWareHouse
 
             cbbWarehouse.Items.Clear()
 
-            cbbWarehouse.Items.Add("")
+            cbbWarehouse.Items.Add("All")
 
             For Each row As DataRow In dataWareHouse.Rows
                 cbbWarehouse.Items.Add(New CBBItem(row(0), row(1)))
@@ -50,7 +50,7 @@ Public Class WarehouseReport
 
             cbbWarehouse.Items.Clear()
 
-            cbbWarehouse.Items.Add("")
+            cbbWarehouse.Items.Add("All")
 
             For Each row As DataRow In dataWareHouse.Rows
                 cbbWarehouse.Items.Add(New CBBItem(row(0), row(1)))
@@ -71,17 +71,17 @@ Public Class WarehouseReport
     Private Sub cbbProduct_Click(sender As Object, e As EventArgs) Handles cbbProduct.Click
         Dim productId = Nothing
         'Save selected productId 
-        If cbbProduct.Text <> "" Then
+        If cbbProduct.Text <> "All" Then
             productId = CType(cbbProduct.SelectedItem, CBBItem).PropItemId
         End If
 
-        If cbbWarehouse.Text <> "" Then
+        If cbbWarehouse.Text <> "All" Then
             Dim warehouseId = CType(cbbWarehouse.SelectedItem, CBBItem).PropItemId
             Dim dataProduct = clsPMSAnalysis.GetCBBProductOfWareHouse(warehouseId).CBBProduct
 
             cbbProduct.Items.Clear()
 
-            cbbProduct.Items.Add("")
+            cbbProduct.Items.Add("All")
 
             For Each row As DataRow In dataProduct.Rows
                 cbbProduct.Items.Add(New CBBItem(row(0), row(1)))
@@ -91,7 +91,7 @@ Public Class WarehouseReport
 
             cbbProduct.Items.Clear()
 
-            cbbProduct.Items.Add("")
+            cbbProduct.Items.Add("All")
 
             For Each row As DataRow In dataProduct.Rows
                 cbbProduct.Items.Add(New CBBItem(row(0), row(1)))
@@ -110,7 +110,7 @@ Public Class WarehouseReport
     End Sub
 
     Private Sub GetValue()
-        If cbbWarehouse.Text <> "" And cbbProduct.Text <> "" Then
+        If cbbWarehouse.Text <> "All" And cbbProduct.Text <> "All" Then
             Dim data = clsOrderDetail.GetSalesDetailByProductId(CType(cbbProduct.SelectedItem, CBBItem).PropItemId)
             Dim dataOrderDetail = clsOrderDetail.GetOrderDetailView()
 
@@ -143,7 +143,7 @@ Public Class WarehouseReport
                 chartReport.Series("Sales").Points.AddXY(i, listSales(year - i))
             Next
 
-        ElseIf cbbWarehouse.Text = "" And cbbProduct.Text = "" Then
+        ElseIf cbbWarehouse.Text = "All" And cbbProduct.Text = "All" Then
             Dim data = clsOrderDetail.GetAllSalesDetail()
             Dim dataOrder = clsOrderDetail.GetOrderView()
 

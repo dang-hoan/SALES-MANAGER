@@ -1,5 +1,7 @@
 ﻿Imports LibraryDataset
 Imports LibraryCommon
+
+Imports Microsoft.Office.Interop.Excel
 Public Class OrderSearch
     Dim conn As New connCommon()
     Dim clsOrderDetail As New clsOrderDetail(conn.connSales.ConnectionString)
@@ -97,5 +99,53 @@ Public Class OrderSearch
 
     Private Sub cbSearchByShipDate_CheckedChanged(sender As Object, e As EventArgs) Handles cbSearchByShipDate.CheckedChanged
         dtShipDate.Enabled = cbSearchByShipDate.Checked
+    End Sub
+
+    Private Sub btnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
+        exportToExcel(dgvOrderSearch)
+    End Sub
+
+    Private Sub exportToExcel(ByVal dgv As DataGridView)
+        Dim xlApp As Application
+        Dim xlWorkBook As Workbook
+        Dim xlWorkSheet As Worksheet
+        Dim misValue As Object = System.Reflection.Missing.Value
+        Dim i As Integer
+        Dim j As Integer
+
+        xlApp = New Application
+        xlWorkBook = xlApp.Workbooks.Add(misValue)
+        xlWorkSheet = xlWorkBook.Sheets("sheet1")
+
+
+        For i = 0 To dgv.RowCount - 2
+            For j = 0 To dgv.ColumnCount - 1
+                For k As Integer = 1 To dgv.Columns.Count
+                    xlWorkSheet.Cells(1, k) = dgv.Columns(k - 1).HeaderText
+                    xlWorkSheet.Cells(i + 2, j + 1) = dgv(j, i).Value.ToString()
+                Next
+            Next
+        Next
+
+        xlWorkSheet.SaveAs("C:\Users\DELL\Downloads\file.xlsx")
+        xlWorkBook.Close()
+        xlApp.Quit()
+
+        releaseObject(xlApp)
+        releaseObject(xlWorkBook)
+        releaseObject(xlWorkSheet)
+
+        MsgBox("Export successfully in C:\Users\DELL\Downloads\file.xlsx")
+    End Sub
+
+    Private Sub releaseObject(ByVal obj As Object)
+        Try
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(obj)
+            obj = Nothing
+        Catch ex As Exception
+            obj = Nothing
+        Finally
+            GC.Collect()
+        End Try
     End Sub
 End Class

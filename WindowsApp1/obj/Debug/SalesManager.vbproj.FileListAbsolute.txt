@@ -59,3 +59,4 @@ D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.AddEditProductFor
 D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.SupplierCategory.resources
 D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.AccountInformation.resources
 D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.EmployeeCategory.resources
+D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\SalesManager.vbproj.ResolveComReference.cache

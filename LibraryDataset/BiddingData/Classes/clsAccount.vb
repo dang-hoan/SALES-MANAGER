@@ -19,11 +19,13 @@ Public Class clsAccount
 
     Public Function CheckUserExists(ByVal username As String, ByVal password As String) As Boolean
         ta.Connection = conn
-        Dim result = ta.CheckUserExists(username, password).Rows.Count
-        If result = 0 Then
-            Return False
+        Dim account = ta.GetAccountByUsername(username)
+
+        If account.Rows.Count > 0 Then
+            'Verify
+            Return SecurePasswordHasher.Verify(password, account.Rows(0)(1))
         Else
-            Return True
+            Return False
         End If
     End Function
     Public Function CheckUsernameExists(ByVal username As String) As Boolean
@@ -52,7 +54,8 @@ Public Class clsAccount
         ta.Connection = conn
         taPerson.Connection = conn
         Dim now = DateTime.Now
-        Dim result = ta.InsertAccount(username, password, statusId, now, createUser)
+        Dim hash = SecurePasswordHasher.Hash(password)
+        Dim result = ta.InsertAccount(username, hash, statusId, now, createUser)
         Dim result2 = 1
         If id <> -1 Then
             result2 = taPerson.UpdateUsername(username, now, createUser, id)
@@ -67,7 +70,12 @@ Public Class clsAccount
     End Function
     Public Function UpdateAccount(ByVal username As String, ByVal password As String, ByVal statusId As Integer, ByVal updateUser As String) As Integer
         ta.Connection = conn
-        Return ta.UpdateAccount(password, statusId, DateTime.Now, updateUser, username)
+        Dim hash = SecurePasswordHasher.Hash(password)
+        Return ta.UpdateAccount(hash, statusId, DateTime.Now, updateUser, username)
+    End Function
+    Public Function UpdateAccountStatus(ByVal username As String, ByVal statusId As Integer, ByVal updateUser As String) As Integer
+        ta.Connection = conn
+        Return ta.UpdateAccountStatus(statusId, DateTime.Now, updateUser, username)
     End Function
     Public Function DeleteCompletelyAccount(ByVal username As String) As Integer
         If username IsNot Nothing Then

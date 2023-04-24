@@ -13,6 +13,11 @@ Public Class LoginForm
         login()
     End Sub
     Private Sub login()
+        If txtUsername.Text.Trim() = "" Or txtPassword.Text.Trim() = "" Then
+            MsgBox("Username and password can't be empty!")
+            Return
+        End If
+
         If clsPMSAnalysis.CheckUserExists(txtUsername.Text, txtPassword.Text) Then
             Dim statusName = clsPMSAnalysis.GetStatusOfAccount(txtUsername.Text).Rows(0)(1)
 

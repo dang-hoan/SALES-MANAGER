@@ -46,6 +46,7 @@ Partial Class ProductSearch
         Me.label6 = New System.Windows.Forms.Label()
         Me.label3 = New System.Windows.Forms.Label()
         Me.label5 = New System.Windows.Forms.Label()
+        Me.btnExport = New System.Windows.Forms.Button()
         CType(Me.dgvProductSearch, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.groupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -281,12 +282,28 @@ Partial Class ProductSearch
         Me.label5.TabIndex = 7
         Me.label5.Text = "Product status"
         '
+        'btnExport
+        '
+        Me.btnExport.BackColor = System.Drawing.Color.SandyBrown
+        Me.btnExport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnExport.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnExport.Image = CType(resources.GetObject("btnExport.Image"), System.Drawing.Image)
+        Me.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnExport.Location = New System.Drawing.Point(768, 788)
+        Me.btnExport.Name = "btnExport"
+        Me.btnExport.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnExport.Size = New System.Drawing.Size(139, 48)
+        Me.btnExport.TabIndex = 23
+        Me.btnExport.Text = "Export"
+        Me.btnExport.UseVisualStyleBackColor = False
+        '
         'ProductSearch
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(969, 818)
+        Me.ClientSize = New System.Drawing.Size(969, 857)
+        Me.Controls.Add(Me.btnExport)
         Me.Controls.Add(Me.groupBox1)
         Me.Controls.Add(Me.dgvProductSearch)
         Me.Name = "ProductSearch"
@@ -321,4 +338,5 @@ Partial Class ProductSearch
     Private WithEvents label6 As Label
     Private WithEvents label3 As Label
     Private WithEvents label5 As Label
+    Private WithEvents btnExport As Button
 End Class

@@ -44,6 +44,7 @@ Partial Class OrderSearch
         Me.label3 = New System.Windows.Forms.Label()
         Me.label5 = New System.Windows.Forms.Label()
         Me.dgvOrderSearch = New System.Windows.Forms.DataGridView()
+        Me.btnExport = New System.Windows.Forms.Button()
         Me.groupBox1.SuspendLayout()
         CType(Me.dgvOrderSearch, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -274,8 +275,23 @@ Partial Class OrderSearch
         Me.dgvOrderSearch.RowHeadersWidth = 62
         Me.dgvOrderSearch.RowTemplate.Height = 33
         Me.dgvOrderSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvOrderSearch.Size = New System.Drawing.Size(853, 369)
+        Me.dgvOrderSearch.Size = New System.Drawing.Size(853, 324)
         Me.dgvOrderSearch.TabIndex = 1
+        '
+        'btnExport
+        '
+        Me.btnExport.BackColor = System.Drawing.Color.SandyBrown
+        Me.btnExport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnExport.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnExport.Image = CType(resources.GetObject("btnExport.Image"), System.Drawing.Image)
+        Me.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnExport.Location = New System.Drawing.Point(768, 750)
+        Me.btnExport.Name = "btnExport"
+        Me.btnExport.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnExport.Size = New System.Drawing.Size(139, 48)
+        Me.btnExport.TabIndex = 24
+        Me.btnExport.Text = "Export"
+        Me.btnExport.UseVisualStyleBackColor = False
         '
         'OrderSearch
         '
@@ -283,6 +299,7 @@ Partial Class OrderSearch
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(969, 818)
+        Me.Controls.Add(Me.btnExport)
         Me.Controls.Add(Me.dgvOrderSearch)
         Me.Controls.Add(Me.groupBox1)
         Me.Name = "OrderSearch"
@@ -315,4 +332,5 @@ Partial Class OrderSearch
     Private WithEvents label5 As Label
     Friend WithEvents cbSearchByOrderDate As CheckBox
     Friend WithEvents cbSearchByShipDate As CheckBox
+    Private WithEvents btnExport As Button
 End Class
