@@ -108,6 +108,12 @@
     <Compile Include="AccountInformation.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DecentralizationForm.Designer.vb">
+      <DependentUpon>DecentralizationForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DecentralizationForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="EmployeeCategory.Designer.vb">
       <DependentUpon>EmployeeCategory.vb</DependentUpon>
     </Compile>
@@ -202,6 +208,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AccountInformation.resx">
       <DependentUpon>AccountInformation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DecentralizationForm.resx">
+      <DependentUpon>DecentralizationForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeCategory.resx">
       <DependentUpon>EmployeeCategory.vb</DependentUpon>

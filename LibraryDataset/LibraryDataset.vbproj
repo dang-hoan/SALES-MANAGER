@@ -69,6 +69,7 @@
     <Compile Include="BiddingData\Classes\clsPerson.vb" />
     <Compile Include="BiddingData\Classes\clsCBB.vb" />
     <Compile Include="BiddingData\Classes\clsProduct.vb" />
+    <Compile Include="BiddingData\Classes\clsRolePermission.vb" />
     <Compile Include="BiddingData\Classes\clsSupplier.vb" />
     <Compile Include="BiddingData\Classes\clsAccount.vb" />
     <Compile Include="BiddingData\Classes\clsWarehouse.vb" />

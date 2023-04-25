@@ -322,7 +322,7 @@ Partial Class AddEditProductForm
         Me.Controls.Add(Me.labTitle)
         Me.Name = "AddEditProductForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Product Category"
+        Me.Text = "Product"
         Me.groupBox1.ResumeLayout(False)
         Me.groupBox1.PerformLayout()
         Me.ResumeLayout(False)

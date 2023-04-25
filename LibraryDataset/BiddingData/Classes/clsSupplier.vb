@@ -39,7 +39,6 @@ Public Class clsSupplier
     End Function
 
     Public Function DeleteSupplier(ByVal Id As Long, ByVal DeleteUser As String) As Integer
-        Dim ds1 As New Supplier
         ta.Connection = conn
         Return ta.DeleteSupplier(DateTime.Now, DeleteUser, Id)
     End Function
