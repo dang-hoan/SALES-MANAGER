@@ -44,6 +44,7 @@ Partial Class MainForm
         Me.pictureMain = New System.Windows.Forms.PictureBox()
         Me.labHello = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnDecentralization = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuStrip.SuspendLayout()
         Me.srcMain.SuspendLayout()
         Me.panelWelcome.SuspendLayout()
@@ -100,49 +101,49 @@ Partial Class MainForm
         'btnCategoryCustomer
         '
         Me.btnCategoryCustomer.Name = "btnCategoryCustomer"
-        Me.btnCategoryCustomer.Size = New System.Drawing.Size(270, 34)
+        Me.btnCategoryCustomer.Size = New System.Drawing.Size(202, 34)
         Me.btnCategoryCustomer.Text = "Customer"
         '
         'btnEmployee
         '
         Me.btnEmployee.Name = "btnEmployee"
-        Me.btnEmployee.Size = New System.Drawing.Size(270, 34)
+        Me.btnEmployee.Size = New System.Drawing.Size(202, 34)
         Me.btnEmployee.Text = "Employee"
         '
         'toolStripMenuItem1
         '
         Me.toolStripMenuItem1.Name = "toolStripMenuItem1"
-        Me.toolStripMenuItem1.Size = New System.Drawing.Size(267, 6)
+        Me.toolStripMenuItem1.Size = New System.Drawing.Size(199, 6)
         '
         'productToolStripMenuItem
         '
         Me.productToolStripMenuItem.Name = "productToolStripMenuItem"
-        Me.productToolStripMenuItem.Size = New System.Drawing.Size(270, 34)
+        Me.productToolStripMenuItem.Size = New System.Drawing.Size(202, 34)
         Me.productToolStripMenuItem.Text = "Product"
         '
         'orderToolStripMenuItem
         '
         Me.orderToolStripMenuItem.Name = "orderToolStripMenuItem"
-        Me.orderToolStripMenuItem.Size = New System.Drawing.Size(270, 34)
+        Me.orderToolStripMenuItem.Size = New System.Drawing.Size(202, 34)
         Me.orderToolStripMenuItem.Text = "Order"
         '
         'bSupplier
         '
         Me.bSupplier.Name = "bSupplier"
-        Me.bSupplier.Size = New System.Drawing.Size(270, 34)
+        Me.bSupplier.Size = New System.Drawing.Size(202, 34)
         Me.bSupplier.Text = "Supplier"
         '
         'btnWarehouseCategory
         '
         Me.btnWarehouseCategory.Name = "btnWarehouseCategory"
-        Me.btnWarehouseCategory.Size = New System.Drawing.Size(270, 34)
+        Me.btnWarehouseCategory.Size = New System.Drawing.Size(202, 34)
         Me.btnWarehouseCategory.Text = "Warehouse"
         '
         'btnTool
         '
         Me.btnTool.AutoSize = False
         Me.btnTool.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnTool.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem8})
+        Me.btnTool.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem8, Me.btnDecentralization})
         Me.btnTool.Image = CType(resources.GetObject("btnTool.Image"), System.Drawing.Image)
         Me.btnTool.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.btnTool.Name = "btnTool"
@@ -155,7 +156,7 @@ Partial Class MainForm
         '
         Me.ToolStripMenuItem8.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem9, Me.btnProductSearch, Me.btnSearchOrder})
         Me.ToolStripMenuItem8.Name = "ToolStripMenuItem8"
-        Me.ToolStripMenuItem8.Size = New System.Drawing.Size(166, 34)
+        Me.ToolStripMenuItem8.Size = New System.Drawing.Size(270, 34)
         Me.ToolStripMenuItem8.Text = "Search"
         '
         'ToolStripMenuItem9
@@ -265,6 +266,12 @@ Partial Class MainForm
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Welcome to sales manager app!!"
         '
+        'btnDecentralization
+        '
+        Me.btnDecentralization.Name = "btnDecentralization"
+        Me.btnDecentralization.Size = New System.Drawing.Size(270, 34)
+        Me.btnDecentralization.Text = "Decentralization"
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -316,4 +323,5 @@ Partial Class MainForm
     Friend WithEvents labHello As Label
     Friend WithEvents panelWelcome As Panel
     Friend WithEvents btnWarehouseCategory As ToolStripMenuItem
+    Friend WithEvents btnDecentralization As ToolStripMenuItem
 End Class

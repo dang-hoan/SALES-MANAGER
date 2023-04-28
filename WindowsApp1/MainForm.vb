@@ -84,4 +84,8 @@ Public Class MainForm
     Private Sub btnEmployee_Click(sender As Object, e As EventArgs) Handles btnEmployee.Click
         ShowForm(New EmployeeCategory)
     End Sub
+
+    Private Sub btnDecentralization_Click(sender As Object, e As EventArgs) Handles btnDecentralization.Click
+        ShowForm(New DecentralizationForm)
+    End Sub
 End Class

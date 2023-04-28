@@ -60,3 +60,4 @@ D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.SupplierCategory.
 D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.AccountInformation.resources
 D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.EmployeeCategory.resources
 D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\SalesManager.vbproj.ResolveComReference.cache
+D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.DecentralizationForm.resources
