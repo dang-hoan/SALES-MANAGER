@@ -13,65 +13,341 @@ Public Class DecentralizationForm
 
     Private Sub SetEnable(ByVal valBoolean As Boolean)
         cbCustomerCG.Enabled = valBoolean
-        cbCustomerCGView.Enabled = valBoolean
-        cbCustomerCGAdd.Enabled = valBoolean
-        cbCustomerCGEdit.Enabled = valBoolean
-        cbCustomerCGDelete.Enabled = valBoolean
+        cbCustomerCGView.Enabled = cbCustomerCG.Checked
+        cbCustomerCGAdd.Enabled = cbCustomerCG.Checked
+        cbCustomerCGEdit.Enabled = cbCustomerCG.Checked
+        cbCustomerCGDelete.Enabled = cbCustomerCG.Checked
+
         cbEmployeeCG.Enabled = valBoolean
-        cbEmployeeCGView.Enabled = valBoolean
-        cbEmployeeCGAdd.Enabled = valBoolean
-        cbEmployeeCGEdit.Enabled = valBoolean
-        cbEmployeeCGDelete.Enabled = valBoolean
+        cbEmployeeCGView.Enabled = cbEmployeeCG.Checked
+        cbEmployeeCGAdd.Enabled = cbEmployeeCG.Checked
+        cbEmployeeCGEdit.Enabled = cbEmployeeCG.Checked
+        cbEmployeeCGDelete.Enabled = cbEmployeeCG.Checked
+
         cbProductCG.Enabled = valBoolean
-        cbProductCGView.Enabled = valBoolean
-        cbProductCGAdd.Enabled = valBoolean
-        cbProductCGEdit.Enabled = valBoolean
-        cbProductCGDelete.Enabled = valBoolean
+        cbProductCGView.Enabled = cbProductCG.Checked
+        cbProductCGAdd.Enabled = cbProductCG.Checked
+        cbProductCGEdit.Enabled = cbProductCG.Checked
+        cbProductCGDelete.Enabled = cbProductCG.Checked
+
+
         cbOrderCG.Enabled = valBoolean
-        cbOrderCGView.Enabled = valBoolean
-        cbOrderCGAdd.Enabled = valBoolean
-        cbOrderCGEdit.Enabled = valBoolean
-        cbOrderCGDelete.Enabled = valBoolean
+        cbOrderCGView.Enabled = cbOrderCG.Checked
+        cbOrderCGAdd.Enabled = cbOrderCG.Checked
+        cbOrderCGEdit.Enabled = cbOrderCG.Checked
+        cbOrderCGDelete.Enabled = cbOrderCG.Checked
+
         cbSupplierCG.Enabled = valBoolean
-        cbSupplierCGView.Enabled = valBoolean
-        cbSupplierCGAdd.Enabled = valBoolean
-        cbSupplierCGEdit.Enabled = valBoolean
-        cbSupplierCGDelete.Enabled = valBoolean
+        cbSupplierCGView.Enabled = cbSupplierCG.Checked
+        cbSupplierCGAdd.Enabled = cbSupplierCG.Checked
+        cbSupplierCGEdit.Enabled = cbSupplierCG.Checked
+        cbSupplierCGDelete.Enabled = cbSupplierCG.Checked
+
         cbWarehouseCG.Enabled = valBoolean
-        cbWarehouseCGView.Enabled = valBoolean
-        cbWarehouseCGAdd.Enabled = valBoolean
-        cbWarehouseCGEdit.Enabled = valBoolean
-        cbWarehouseCGDelete.Enabled = valBoolean
+        cbWarehouseCGView.Enabled = cbWarehouseCG.Checked
+        cbWarehouseCGAdd.Enabled = cbWarehouseCG.Checked
+        cbWarehouseCGEdit.Enabled = cbWarehouseCG.Checked
+        cbWarehouseCGDelete.Enabled = cbWarehouseCG.Checked
+
         cbEmployeeSearch.Enabled = valBoolean
-        cbEmployeeSSearch.Enabled = valBoolean
-        cbEmployeeSearchExport.Enabled = valBoolean
+        cbEmployeeSSearch.Enabled = cbEmployeeSearch.Checked
+        cbEmployeeSearchExport.Enabled = cbEmployeeSearch.Checked
+
         cbProductSearch.Enabled = valBoolean
-        cbProductSSearch.Enabled = valBoolean
-        cbProductSearchExport.Enabled = valBoolean
+        cbProductSSearch.Enabled = cbProductSearch.Checked
+        cbProductSearchExport.Enabled = cbProductSearch.Checked
+
         cbOrderSearch.Enabled = valBoolean
-        cbOrderSSearch.Enabled = valBoolean
-        cbOrderSearchExport.Enabled = valBoolean
+        cbOrderSSearch.Enabled = cbOrderSearch.Checked
+        cbOrderSearchExport.Enabled = cbOrderSearch.Checked
+
         cbInventoryReport.Enabled = valBoolean
-        cbInventoryReportSearch.Enabled = valBoolean
-        cbInventoryReportExport.Enabled = valBoolean
+        cbInventoryReportSearch.Enabled = cbInventoryReport.Checked
+        cbInventoryReportExport.Enabled = cbInventoryReport.Checked
+
         cbSalesReport.Enabled = valBoolean
-        cbSalesReportSearch.Enabled = valBoolean
-        cbSalesReportReport.Enabled = valBoolean
+        cbSalesReportSearch.Enabled = cbSalesReport.Checked
+        cbSalesReportExport.Enabled = cbSalesReport.Checked
+
         cbDecentralization.Enabled = valBoolean
-        cbDecentralizationView.Enabled = valBoolean
-        cbDecentralizationEdit.Enabled = valBoolean
+        cbDecentralizationView.Enabled = cbDecentralization.Checked
+        cbDecentralizationEdit.Enabled = cbDecentralization.Checked
+
         cbEmployeeAccountInfor.Enabled = valBoolean
-        cbEmployeeAccountInforView.Enabled = valBoolean
-        cbEmployeeAccountInforAdd.Enabled = valBoolean
-        cbEmployeeAccountInforEdit.Enabled = valBoolean
+        cbEmployeeAccountInforView.Enabled = cbEmployeeAccountInfor.Checked
+        cbEmployeeAccountInforAdd.Enabled = cbEmployeeAccountInfor.Checked
+        cbEmployeeAccountInforEdit.Enabled = cbEmployeeAccountInfor.Checked
+
         cbDetailWarehouseProduct.Enabled = valBoolean
-        cbDetailProductView.Enabled = valBoolean
-        cbDetailProductAdd.Enabled = valBoolean
-        cbDetailProductEdit.Enabled = valBoolean
+        cbDetailProductView.Enabled = cbDetailWarehouseProduct.Checked
+        cbDetailProductAdd.Enabled = cbDetailWarehouseProduct.Checked
+        cbDetailProductEdit.Enabled = cbDetailWarehouseProduct.Checked
+
+        If cbbRole.SelectedItem IsNot Nothing Then
+            bEdit.Enabled = Not valBoolean
+            bClearAll.Enabled = valBoolean
+            bSave.Enabled = valBoolean
+            bDeleteRole.Enabled = True
+        Else
+            bEdit.Enabled = False
+            bClearAll.Enabled = False
+            bSave.Enabled = False
+            bDeleteRole.Enabled = False
+        End If
+    End Sub
+
+    Private Sub SetEnableFalse()
+        cbCustomerCG.Enabled = False
+        cbCustomerCGView.Enabled = False
+        cbCustomerCGAdd.Enabled = False
+        cbCustomerCGEdit.Enabled = False
+        cbCustomerCGDelete.Enabled = False
+        cbEmployeeCG.Enabled = False
+        cbEmployeeCGView.Enabled = False
+        cbEmployeeCGAdd.Enabled = False
+        cbEmployeeCGEdit.Enabled = False
+        cbEmployeeCGDelete.Enabled = False
+        cbProductCG.Enabled = False
+        cbProductCGView.Enabled = False
+        cbProductCGAdd.Enabled = False
+        cbProductCGEdit.Enabled = False
+        cbProductCGDelete.Enabled = False
+        cbOrderCG.Enabled = False
+        cbOrderCGView.Enabled = False
+        cbOrderCGAdd.Enabled = False
+        cbOrderCGEdit.Enabled = False
+        cbOrderCGDelete.Enabled = False
+        cbSupplierCG.Enabled = False
+        cbSupplierCGView.Enabled = False
+        cbSupplierCGAdd.Enabled = False
+        cbSupplierCGEdit.Enabled = False
+        cbSupplierCGDelete.Enabled = False
+        cbWarehouseCG.Enabled = False
+        cbWarehouseCGView.Enabled = False
+        cbWarehouseCGAdd.Enabled = False
+        cbWarehouseCGEdit.Enabled = False
+        cbWarehouseCGDelete.Enabled = False
+        cbEmployeeSearch.Enabled = False
+        cbEmployeeSSearch.Enabled = False
+        cbEmployeeSearchExport.Enabled = False
+        cbProductSearch.Enabled = False
+        cbProductSSearch.Enabled = False
+        cbProductSearchExport.Enabled = False
+        cbOrderSearch.Enabled = False
+        cbOrderSSearch.Enabled = False
+        cbOrderSearchExport.Enabled = False
+        cbInventoryReport.Enabled = False
+        cbInventoryReportSearch.Enabled = False
+        cbInventoryReportExport.Enabled = False
+        cbSalesReport.Enabled = False
+        cbSalesReportSearch.Enabled = False
+        cbSalesReportExport.Enabled = False
+        cbDecentralization.Enabled = False
+        cbDecentralizationView.Enabled = False
+        cbDecentralizationEdit.Enabled = False
+        cbEmployeeAccountInfor.Enabled = False
+        cbEmployeeAccountInforView.Enabled = False
+        cbEmployeeAccountInforAdd.Enabled = False
+        cbEmployeeAccountInforEdit.Enabled = False
+        cbDetailWarehouseProduct.Enabled = False
+        cbDetailProductView.Enabled = False
+        cbDetailProductAdd.Enabled = False
+        cbDetailProductEdit.Enabled = False
+
+        If cbbRole.SelectedItem IsNot Nothing Then
+            bEdit.Enabled = True
+            bClearAll.Enabled = False
+            bSave.Enabled = False
+            bDeleteRole.Enabled = True
+        Else
+            bEdit.Enabled = False
+            bClearAll.Enabled = False
+            bSave.Enabled = False
+            bDeleteRole.Enabled = False
+        End If
     End Sub
 
     Private Sub SetValue()
-        Dim dataPermission = clsPMSAnalysis.get
+        If cbbRole.Text <> "" Then
+            ClearValue()
+            Dim dataPermission = clsPMSAnalysis.GetRolePermissionByRoleId(CType(cbbRole.SelectedItem, CBBItem).PropItemId)
+            For Each permission In dataPermission.Rows
+                Dim form = permission(1).split(":")(0)
+                Dim permiss = Strings.Split(Strings.Split(permission(1), ": ")(1), ", ")
+                Select Case form
+                    Case "Customer category"
+                        cbCustomerCG.Checked = True
+                        For Each p In permiss
+                            Select Case p
+                                Case "View"
+                                    cbCustomerCGView.Checked = True
+                                Case "Add"
+                                    cbCustomerCGAdd.Checked = True
+                                Case "Edit"
+                                    cbCustomerCGEdit.Checked = True
+                                Case "Delete"
+                                    cbCustomerCGDelete.Checked = True
+                            End Select
+                        Next
+
+                    Case "Employee category"
+                        cbEmployeeCG.Checked = True
+                        For Each p In permiss
+                            Select Case p
+                                Case "View"
+                                    cbEmployeeCGView.Checked = True
+                                Case "Add"
+                                    cbEmployeeCGAdd.Checked = True
+                                Case "Edit"
+                                    cbEmployeeCGEdit.Checked = True
+                                Case "Delete"
+                                    cbEmployeeCGDelete.Checked = True
+                            End Select
+                        Next
+                    Case "Product category"
+                        cbProductCG.Checked = True
+                        For Each p In permiss
+                            Select Case p
+                                Case "View"
+                                    cbProductCGView.Checked = True
+                                Case "Add"
+                                    cbProductCGAdd.Checked = True
+                                Case "Edit"
+                                    cbProductCGEdit.Checked = True
+                                Case "Delete"
+                                    cbProductCGDelete.Checked = True
+                            End Select
+                        Next
+                    Case "Order category"
+                        cbOrderCG.Checked = True
+                        For Each p In permiss
+                            Select Case p
+                                Case "View"
+                                    cbOrderCGView.Checked = True
+                                Case "Add"
+                                    cbOrderCGAdd.Checked = True
+                                Case "Edit"
+                                    cbOrderCGEdit.Checked = True
+                                Case "Delete"
+                                    cbOrderCGDelete.Checked = True
+                            End Select
+                        Next
+                    Case "Supplier category"
+                        cbSupplierCG.Checked = True
+                        For Each p In permiss
+                            Select Case p
+                                Case "View"
+                                    cbSupplierCGView.Checked = True
+                                Case "Add"
+                                    cbSupplierCGAdd.Checked = True
+                                Case "Edit"
+                                    cbSupplierCGEdit.Checked = True
+                                Case "Delete"
+                                    cbSupplierCGDelete.Checked = True
+                            End Select
+                        Next
+                    Case "Warehouse category"
+                        cbWarehouseCG.Checked = True
+                        For Each p In permiss
+                            Select Case p
+                                Case "View"
+                                    cbWarehouseCGView.Checked = True
+                                Case "Add"
+                                    cbWarehouseCGAdd.Checked = True
+                                Case "Edit"
+                                    cbWarehouseCGEdit.Checked = True
+                                Case "Delete"
+                                    cbWarehouseCGDelete.Checked = True
+                            End Select
+                        Next
+                    Case "Employee search"
+                        cbEmployeeSearch.Checked = True
+                        For Each p In permiss
+                            Select Case p
+                                Case "Search"
+                                    cbEmployeeSSearch.Checked = True
+                                Case "Export"
+                                    cbEmployeeSearchExport.Checked = True
+                            End Select
+                        Next
+                    Case "Product search"
+                        cbProductSearch.Checked = True
+                        For Each p In permiss
+                            Select Case p
+                                Case "Search"
+                                    cbProductSSearch.Checked = True
+                                Case "Export"
+                                    cbProductSearchExport.Checked = True
+                            End Select
+                        Next
+                    Case "Order search"
+                        cbOrderSearch.Checked = True
+                        For Each p In permiss
+                            Select Case p
+                                Case "Search"
+                                    cbOrderSSearch.Checked = True
+                                Case "Export"
+                                    cbOrderSearchExport.Checked = True
+                            End Select
+                        Next
+                    Case "Inventory report"
+                        cbInventoryReport.Checked = True
+                        For Each p In permiss
+                            Select Case p
+                                Case "Search"
+                                    cbInventoryReportSearch.Checked = True
+                                Case "Export"
+                                    cbInventoryReportExport.Checked = True
+                            End Select
+                        Next
+                    Case "Sales report"
+                        cbSalesReport.Checked = True
+                        For Each p In permiss
+                            Select Case p
+                                Case "Search"
+                                    cbSalesReportSearch.Checked = True
+                                Case "Export"
+                                    cbSalesReportExport.Checked = True
+                            End Select
+                        Next
+                    Case "Decentralization"
+                        cbDecentralization.Checked = True
+                        For Each p In permiss
+                            Select Case p
+                                Case "View"
+                                    cbDecentralizationView.Checked = True
+                                Case "Edit"
+                                    cbDecentralizationEdit.Checked = True
+                            End Select
+                        Next
+                    Case "Employee's account information"
+                        cbEmployeeAccountInfor.Checked = True
+                        For Each p In permiss
+                            Select Case p
+                                Case "View"
+                                    cbEmployeeAccountInforView.Checked = True
+                                Case "Add"
+                                    cbEmployeeAccountInforAdd.Checked = True
+                                Case "Edit"
+                                    cbEmployeeAccountInforEdit.Checked = True
+                            End Select
+                        Next
+                    Case "Detail product of warehouse"
+                        cbDetailWarehouseProduct.Checked = True
+                        For Each p In permiss
+                            Select Case p
+                                Case "View"
+                                    cbDetailProductView.Checked = True
+                                Case "Add"
+                                    cbDetailProductAdd.Checked = True
+                                Case "Edit"
+                                    cbDetailProductEdit.Checked = True
+                            End Select
+                        Next
+                End Select
+            Next
+            SetEnableFalse()
+        End If
     End Sub
     Private Sub ClearValue()
         cbCustomerCG.Checked = False
@@ -118,7 +394,7 @@ Public Class DecentralizationForm
         cbInventoryReportExport.Checked = False
         cbSalesReport.Checked = False
         cbSalesReportSearch.Checked = False
-        cbSalesReportReport.Checked = False
+        cbSalesReportExport.Checked = False
         cbDecentralization.Checked = False
         cbDecentralizationView.Checked = False
         cbDecentralizationEdit.Checked = False
@@ -135,9 +411,20 @@ Public Class DecentralizationForm
     Private Sub Reload()
         Dim dataRole = clsPMSAnalysis.GetAllRoles()
 
+        Dim selected As CBBItem = Nothing
+        If cbbRole.SelectedItem IsNot Nothing Then
+            selected = cbbRole.SelectedItem
+        End If
+
         cbbRole.Items.Clear()
         For Each role In dataRole
             cbbRole.Items.Add(New CBBItem(role(0), role(1)))
+        Next
+
+        For Each role As CBBItem In cbbRole.Items
+            If role.PropItemId = selected.PropItemId Then
+                cbbRole.SelectedItem = role
+            End If
         Next
 
     End Sub
@@ -150,6 +437,7 @@ Public Class DecentralizationForm
                 MsgBox("Add new role successful!")
                 isNew = True
                 Reload()
+                SetEnable(True)
             Else
                 MsgBox("There is an error when interact with database!")
             End If
@@ -162,6 +450,8 @@ Public Class DecentralizationForm
             If result = 1 Then
                 MsgBox("Delete new role successful!")
                 Reload()
+                SetEnable(False)
+                ClearValue()
             Else
                 MsgBox("There is an error when interact with database!")
             End If
@@ -173,86 +463,126 @@ Public Class DecentralizationForm
 
         'CATEGORY
         If cbCustomerCG.Checked Then
-            permissions(0) += "Customer category: " + If(cbCustomerCGView.Checked, "View, ", ", ") +
-                If(cbCustomerCGAdd.Checked, "Add, ", ", ") + If(cbCustomerCGEdit.Checked, "Edit, ", ", ") +
-                If(cbCustomerCGDelete.Checked, "Delete", "")
+            permissions(0) += "Customer category: " + If(cbCustomerCGView.Checked, "View, ", "") +
+                If(cbCustomerCGAdd.Checked, "Add, ", "") + If(cbCustomerCGEdit.Checked, "Edit, ", "") +
+                If(cbCustomerCGDelete.Checked, "Delete, ", "")
+            If permissions(0) <> "" Then
+                permissions(0) = permissions(0).Substring(0, permissions(0).Length - 2)
+            End If
         End If
 
         If cbEmployeeCG.Checked Then
-            permissions(1) += "Employee category: " + If(cbEmployeeCGView.Checked, "View, ", ", ") +
-                If(cbEmployeeCGAdd.Checked, "Add, ", ", ") + If(cbEmployeeCGEdit.Checked, "Edit, ", ", ") +
-                If(cbEmployeeCGDelete.Checked, "Delete", "")
+            permissions(1) += "Employee category: " + If(cbEmployeeCGView.Checked, "View, ", "") +
+                If(cbEmployeeCGAdd.Checked, "Add, ", "") + If(cbEmployeeCGEdit.Checked, "Edit, ", "") +
+                If(cbEmployeeCGDelete.Checked, "Delete, ", "")
+            If permissions(1) <> "" Then
+                permissions(1) = permissions(1).Substring(0, permissions(1).Length - 2)
+            End If
         End If
 
         If cbProductCG.Checked Then
-            permissions(2) += "Product category: " + If(cbProductCGView.Checked, "View, ", ", ") +
-                If(cbProductCGAdd.Checked, "Add, ", ", ") + If(cbProductCGEdit.Checked, "Edit, ", ", ") +
-                If(cbProductCGDelete.Checked, "Delete", "")
+            permissions(2) += "Product category: " + If(cbProductCGView.Checked, "View, ", "") +
+                If(cbProductCGAdd.Checked, "Add, ", "") + If(cbProductCGEdit.Checked, "Edit, ", "") +
+                If(cbProductCGDelete.Checked, "Delete, ", "")
+            If permissions(2) <> "" Then
+                permissions(2) = permissions(2).Substring(0, permissions(2).Length - 2)
+            End If
         End If
 
         If cbOrderCG.Checked Then
-            permissions(3) += "Customer category: " + If(cbOrderCGView.Checked, "View, ", ", ") +
-                If(cbOrderCGAdd.Checked, "Add, ", ", ") + If(cbOrderCGEdit.Checked, "Edit, ", ", ") +
-                If(cbOrderCGDelete.Checked, "Delete", "")
+            permissions(3) += "Customer category: " + If(cbOrderCGView.Checked, "View, ", "") +
+                If(cbOrderCGAdd.Checked, "Add, ", "") + If(cbOrderCGEdit.Checked, "Edit, ", "") +
+                If(cbOrderCGDelete.Checked, "Delete, ", "")
+            If permissions(3) <> "" Then
+                permissions(3) = permissions(3).Substring(0, permissions(3).Length - 2)
+            End If
         End If
 
         If cbSupplierCG.Checked Then
-            permissions(4) += "Supplier category: " + If(cbSupplierCGView.Checked, "View, ", ", ") +
-                If(cbSupplierCGAdd.Checked, "Add, ", ", ") + If(cbSupplierCGEdit.Checked, "Edit, ", ", ") +
-                If(cbSupplierCGDelete.Checked, "Delete", "")
+            permissions(4) += "Supplier category: " + If(cbSupplierCGView.Checked, "View, ", "") +
+                If(cbSupplierCGAdd.Checked, "Add, ", "") + If(cbSupplierCGEdit.Checked, "Edit, ", "") +
+                If(cbSupplierCGDelete.Checked, "Delete, ", "")
+            If permissions(4) <> "" Then
+                permissions(4) = permissions(4).Substring(0, permissions(4).Length - 2)
+            End If
         End If
 
         If cbWarehouseCG.Checked Then
-            permissions(5) += "Warehouse category: " + If(cbWarehouseCGView.Checked, "View, ", ", ") +
-                If(cbWarehouseCGAdd.Checked, "Add, ", ", ") + If(cbWarehouseCGEdit.Checked, "Edit, ", ", ") +
-                If(cbWarehouseCGDelete.Checked, "Delete", "")
+            permissions(5) += "Warehouse category: " + If(cbWarehouseCGView.Checked, "View, ", "") +
+                If(cbWarehouseCGAdd.Checked, "Add, ", "") + If(cbWarehouseCGEdit.Checked, "Edit, ", "") +
+                If(cbWarehouseCGDelete.Checked, "Delete, ", "")
+            If permissions(5) <> "" Then
+                permissions(5) = permissions(5).Substring(0, permissions(5).Length - 2)
+            End If
         End If
 
         'TOOLS 
         If cbEmployeeSearch.Checked Then
-            permissions(6) += "Employee search: " + If(cbEmployeeSSearch.Checked, "Search, ", ", ") +
-                If(cbEmployeeSearchExport.Checked, "Export", "")
+            permissions(6) += "Employee search: " + If(cbEmployeeSSearch.Checked, "Search, ", "") +
+                If(cbEmployeeSearchExport.Checked, "Export, ", "")
+            If permissions(6) <> "" Then
+                permissions(6) = permissions(6).Substring(0, permissions(6).Length - 2)
+            End If
         End If
         If cbProductSearch.Checked Then
-            permissions(7) += "Product search: " + If(cbProductSSearch.Checked, "Search, ", ", ") +
-                If(cbProductSearchExport.Checked, "Export", "")
+            permissions(7) += "Product search: " + If(cbProductSSearch.Checked, "Search, ", "") +
+                If(cbProductSearchExport.Checked, "Export, ", "")
+            If permissions(7) <> "" Then
+                permissions(7) = permissions(7).Substring(0, permissions(7).Length - 2)
+            End If
         End If
         If cbOrderSearch.Checked Then
-            permissions(8) += "Order search: " + If(cbOrderSSearch.Checked, "Search, ", ", ") +
-                If(cbOrderSearchExport.Checked, "Export", "")
+            permissions(8) += "Order search: " + If(cbOrderSSearch.Checked, "Search, ", "") +
+                If(cbOrderSearchExport.Checked, "Export, ", "")
+            If permissions(8) <> "" Then
+                permissions(8) = permissions(8).Substring(0, permissions(8).Length - 2)
+            End If
         End If
 
         'STATISTIC
         If cbInventoryReport.Checked Then
-            permissions(9) += "Inventory report: " + If(cbInventoryReportSearch.Checked, "Search, ", ", ") +
-                If(cbInventoryReportExport.Checked, "Export", "")
+            permissions(9) += "Inventory report: " + If(cbInventoryReportSearch.Checked, "Search, ", "") +
+                If(cbInventoryReportExport.Checked, "Export, ", "")
+            If permissions(9) <> "" Then
+                permissions(9) = permissions(9).Substring(0, permissions(9).Length - 2)
+            End If
         End If
         If cbSalesReport.Checked Then
-            permissions(10) += "Sales report: " + If(cbSalesReportSearch.Checked, "Search, ", ", ") +
-                If(cbSalesReportReport.Checked, "Export", "")
+            permissions(10) += "Sales report: " + If(cbSalesReportSearch.Checked, "Search, ", "") +
+                If(cbSalesReportExport.Checked, "Export, ", "")
+            If permissions(10) <> "" Then
+                permissions(10) = permissions(10).Substring(0, permissions(10).Length - 2)
+            End If
         End If
 
         'OTHERS
         If cbDecentralization.Checked Then
-            permissions(11) += "Decentralization: " + If(cbDecentralizationView.Checked, "View, ", ", ") +
-                If(cbDecentralizationEdit.Checked, "Edit", "")
+            permissions(11) += "Decentralization: " + If(cbDecentralizationView.Checked, "View, ", "") +
+                If(cbDecentralizationEdit.Checked, "Edit, ", "")
+            If permissions(11) <> "" Then
+                permissions(11) = permissions(11).Substring(0, permissions(11).Length - 2)
+            End If
         End If
         If cbEmployeeAccountInfor.Checked Then
-            permissions(12) += "Employee's account information: " + If(cbEmployeeAccountInforView.Checked, "View, ", ", ") +
-                +If(cbEmployeeAccountInforAdd.Checked, "Add, ", ", ") +
-                If(cbEmployeeAccountInforEdit.Checked, "Edit", "")
+            permissions(12) += "Employee's account information: " + If(cbEmployeeAccountInforView.Checked, "View, ", "") +
+                +If(cbEmployeeAccountInforAdd.Checked, "Add, ", "") +
+                If(cbEmployeeAccountInforEdit.Checked, "Edit, ", "")
+            If permissions(12) <> "" Then
+                permissions(12) = permissions(12).Substring(0, permissions(12).Length - 2)
+            End If
         End If
         If cbDetailWarehouseProduct.Checked Then
-            permissions(13) += "Detail product of warehouse: " + If(cbDetailProductView.Checked, "View, ", ", ") +
-                If(cbDetailProductAdd.Checked, "Add, ", ", ") + If(cbDetailProductEdit.Checked, "Edit, ", ", ")
+            permissions(13) += "Detail product of warehouse: " + If(cbDetailProductView.Checked, "View, ", "") +
+                If(cbDetailProductAdd.Checked, "Add, ", "") + If(cbDetailProductEdit.Checked, "Edit, , ", "")
+            If permissions(13) <> "" Then
+                permissions(13) = permissions(13).Substring(0, permissions(13).Length - 2)
+            End If
         End If
 
         Dim type = ""
         Dim result = 1
         If isNew Then
             For Each permission In permissions
-                MsgBox(permission)
-                MsgBox(result)
                 If permission <> "" Then
                     If result = 1 Then
                         Dim permissionId? = clsPMSAnalysis.CheckPermissionExists(permission)
@@ -267,25 +597,30 @@ Public Class DecentralizationForm
             Next
             type = "Add"
         Else
-            result = clsPMSAnalysis.DeleteRolePermisisonByRole(CType(cbbRole.SelectedItem, CBBItem).PropItemId)
-            For Each permission In permissions
-                If permission <> "" Then
-                    If result = 1 Then
-                        Dim permissionId? = clsPMSAnalysis.CheckPermissionExists(permission)
-                        If permissionId Is Nothing Then
-                            permissionId = clsPMSAnalysis.AddPermission(permission, LoginForm.PropUsername)
-                        End If
-                        result = clsPMSAnalysis.AddRolePermission(CType(cbbRole.SelectedItem, CBBItem).PropItemId, permissionId)
-                    Else
-                        Exit For
-                    End If
+            If cbbRole.SelectedItem IsNot Nothing Then
+                result = clsPMSAnalysis.DeleteRolePermisisonByRole(CType(cbbRole.SelectedItem, CBBItem).PropItemId)
+                If result >= 0 Then
+                    result = 1
                 End If
-            Next
-            type = "Update"
+                For Each permission In permissions
+                    If permission <> "" Then
+                        If result = 1 Then
+                            Dim permissionId? = clsPMSAnalysis.CheckPermissionExists(permission)
+                            If permissionId Is Nothing Then
+                                permissionId = clsPMSAnalysis.AddPermission(permission, LoginForm.PropUsername)
+                            End If
+                            result = clsPMSAnalysis.AddRolePermission(CType(cbbRole.SelectedItem, CBBItem).PropItemId, permissionId)
+                        Else
+                            Exit For
+                        End If
+                    End If
+                Next
+                type = "Update"
+            End If
         End If
 
         If result = 1 Then
-            SetEnable(False)
+            SetEnableFalse()
             MsgBox(type & " product information successful!")
             Reload()
             isNew = False
@@ -303,6 +638,104 @@ Public Class DecentralizationForm
     End Sub
 
     Private Sub cbbRole_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbbRole.SelectedIndexChanged
-        setValue()
+        SetValue()
+    End Sub
+
+    Private Sub cbCustomerCG_CheckedChanged(sender As Object, e As EventArgs) Handles cbCustomerCG.CheckedChanged
+        Dim val = cbCustomerCG.Checked
+        cbCustomerCGView.Enabled = val
+        cbCustomerCGAdd.Enabled = val
+        cbCustomerCGEdit.Enabled = val
+        cbCustomerCGDelete.Enabled = val
+    End Sub
+
+    Private Sub cbEmployeeCG_CheckedChanged(sender As Object, e As EventArgs) Handles cbEmployeeCG.CheckedChanged
+        Dim val = cbEmployeeCG.Checked
+        cbEmployeeCGView.Enabled = val
+        cbEmployeeCGAdd.Enabled = val
+        cbEmployeeCGEdit.Enabled = val
+        cbEmployeeCGDelete.Enabled = val
+    End Sub
+
+    Private Sub cbProductCG_CheckedChanged(sender As Object, e As EventArgs) Handles cbProductCG.CheckedChanged
+        Dim val = cbProductCG.Checked
+        cbProductCGView.Enabled = val
+        cbProductCGAdd.Enabled = val
+        cbProductCGEdit.Enabled = val
+        cbProductCGDelete.Enabled = val
+    End Sub
+
+    Private Sub cbOrderCG_CheckedChanged(sender As Object, e As EventArgs) Handles cbOrderCG.CheckedChanged
+        Dim val = cbOrderCG.Checked
+        cbOrderCGView.Enabled = val
+        cbOrderCGAdd.Enabled = val
+        cbOrderCGEdit.Enabled = val
+        cbOrderCGDelete.Enabled = val
+    End Sub
+
+    Private Sub cbSupplierCG_CheckedChanged(sender As Object, e As EventArgs) Handles cbSupplierCG.CheckedChanged
+        Dim val = cbSupplierCG.Checked
+        cbSupplierCGView.Enabled = val
+        cbSupplierCGAdd.Enabled = val
+        cbSupplierCGEdit.Enabled = val
+        cbSupplierCGDelete.Enabled = val
+    End Sub
+
+    Private Sub cbWarehouseCG_CheckedChanged(sender As Object, e As EventArgs) Handles cbWarehouseCG.CheckedChanged
+        Dim val = cbWarehouseCG.Checked
+        cbWarehouseCGView.Enabled = val
+        cbWarehouseCGAdd.Enabled = val
+        cbWarehouseCGEdit.Enabled = val
+        cbWarehouseCGDelete.Enabled = val
+    End Sub
+
+    Private Sub cbEmployeeSearch_CheckedChanged(sender As Object, e As EventArgs) Handles cbEmployeeSearch.CheckedChanged
+        Dim val = cbEmployeeSearch.Checked
+        cbEmployeeSSearch.Enabled = val
+        cbEmployeeSearchExport.Enabled = val
+    End Sub
+
+    Private Sub cbProductSearch_CheckedChanged(sender As Object, e As EventArgs) Handles cbProductSearch.CheckedChanged
+        Dim val = cbProductSearch.Checked
+        cbProductSSearch.Enabled = val
+        cbProductSearchExport.Enabled = val
+    End Sub
+
+    Private Sub cbOrderSearch_CheckedChanged(sender As Object, e As EventArgs) Handles cbOrderSearch.CheckedChanged
+        Dim val = cbOrderSearch.Checked
+        cbOrderSSearch.Enabled = val
+        cbOrderSearchExport.Enabled = val
+    End Sub
+
+    Private Sub cbInventoryReport_CheckedChanged(sender As Object, e As EventArgs) Handles cbInventoryReport.CheckedChanged
+        Dim val = cbInventoryReport.Checked
+        cbInventoryReportSearch.Enabled = val
+        cbInventoryReportExport.Enabled = val
+    End Sub
+
+    Private Sub cbSalesReport_CheckedChanged(sender As Object, e As EventArgs) Handles cbSalesReport.CheckedChanged
+        Dim val = cbSalesReport.Checked
+        cbSalesReportSearch.Enabled = val
+        cbSalesReportExport.Enabled = val
+    End Sub
+
+    Private Sub cbDecentralization_CheckedChanged(sender As Object, e As EventArgs) Handles cbDecentralization.CheckedChanged
+        Dim val = cbDecentralization.Checked
+        cbDecentralizationView.Enabled = val
+        cbDecentralizationEdit.Enabled = val
+    End Sub
+
+    Private Sub cbEmployeeAccountInfor_CheckedChanged(sender As Object, e As EventArgs) Handles cbEmployeeAccountInfor.CheckedChanged
+        Dim val = cbEmployeeAccountInfor.Checked
+        cbEmployeeAccountInforView.Enabled = val
+        cbEmployeeAccountInforAdd.Enabled = val
+        cbEmployeeAccountInforEdit.Enabled = val
+    End Sub
+
+    Private Sub cbDetailWarehouseProduct_CheckedChanged(sender As Object, e As EventArgs) Handles cbDetailWarehouseProduct.CheckedChanged
+        Dim val = cbDetailWarehouseProduct.Checked
+        cbDetailProductView.Enabled = val
+        cbDetailProductAdd.Enabled = val
+        cbDetailProductEdit.Enabled = val
     End Sub
 End Class

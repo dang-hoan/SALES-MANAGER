@@ -17,10 +17,9 @@ Public Class clsRolePermission
         ta.Fill(ds1)
         Return ds1
     End Function
-    Public Function GetRolePermissionByRole(ByVal roleId As Long) As Role.RolePermissionDataTable
-        Dim ds1 As New Role.RolePermissionDataTable
-        taRolePermission.Connection = conn
-        Return taRolePermission.GetData()
+    Public Function GetRolePermissionByRoleId(ByVal roleId As Long) As Role.PermissionDataTable
+        taPermission.Connection = conn
+        Return taPermission.GetPermissionsByRoleId(roleId)
     End Function
 
     Public Function AddRole(ByVal roleName As String, ByVal createUser As String) As Integer
@@ -47,7 +46,7 @@ Public Class clsRolePermission
         Return taPermission.UpdatePermission(permissionName, DateTime.Now, updateUser, id)
     End Function
 
-    Public Function CheckPermissionExists(ByVal permissionName) As Long
+    Public Function CheckPermissionExists(ByVal permissionName As String) As Long?
         taPermission.Connection = conn
         Return taPermission.CheckPermissionExists(permissionName)
     End Function
