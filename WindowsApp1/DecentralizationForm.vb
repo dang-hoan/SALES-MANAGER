@@ -13,73 +13,59 @@ Public Class DecentralizationForm
 
     Private Sub SetEnable(ByVal valBoolean As Boolean)
         cbCustomerCG.Enabled = valBoolean
-        cbCustomerCGView.Enabled = cbCustomerCG.Checked
         cbCustomerCGAdd.Enabled = cbCustomerCG.Checked
         cbCustomerCGEdit.Enabled = cbCustomerCG.Checked
         cbCustomerCGDelete.Enabled = cbCustomerCG.Checked
 
         cbEmployeeCG.Enabled = valBoolean
-        cbEmployeeCGView.Enabled = cbEmployeeCG.Checked
         cbEmployeeCGAdd.Enabled = cbEmployeeCG.Checked
         cbEmployeeCGEdit.Enabled = cbEmployeeCG.Checked
         cbEmployeeCGDelete.Enabled = cbEmployeeCG.Checked
 
         cbProductCG.Enabled = valBoolean
-        cbProductCGView.Enabled = cbProductCG.Checked
         cbProductCGAdd.Enabled = cbProductCG.Checked
         cbProductCGEdit.Enabled = cbProductCG.Checked
         cbProductCGDelete.Enabled = cbProductCG.Checked
 
 
         cbOrderCG.Enabled = valBoolean
-        cbOrderCGView.Enabled = cbOrderCG.Checked
         cbOrderCGAdd.Enabled = cbOrderCG.Checked
         cbOrderCGEdit.Enabled = cbOrderCG.Checked
         cbOrderCGDelete.Enabled = cbOrderCG.Checked
 
         cbSupplierCG.Enabled = valBoolean
-        cbSupplierCGView.Enabled = cbSupplierCG.Checked
         cbSupplierCGAdd.Enabled = cbSupplierCG.Checked
         cbSupplierCGEdit.Enabled = cbSupplierCG.Checked
         cbSupplierCGDelete.Enabled = cbSupplierCG.Checked
 
         cbWarehouseCG.Enabled = valBoolean
-        cbWarehouseCGView.Enabled = cbWarehouseCG.Checked
         cbWarehouseCGAdd.Enabled = cbWarehouseCG.Checked
         cbWarehouseCGEdit.Enabled = cbWarehouseCG.Checked
         cbWarehouseCGDelete.Enabled = cbWarehouseCG.Checked
 
         cbEmployeeSearch.Enabled = valBoolean
-        cbEmployeeSSearch.Enabled = cbEmployeeSearch.Checked
         cbEmployeeSearchExport.Enabled = cbEmployeeSearch.Checked
 
         cbProductSearch.Enabled = valBoolean
-        cbProductSSearch.Enabled = cbProductSearch.Checked
         cbProductSearchExport.Enabled = cbProductSearch.Checked
 
         cbOrderSearch.Enabled = valBoolean
-        cbOrderSSearch.Enabled = cbOrderSearch.Checked
         cbOrderSearchExport.Enabled = cbOrderSearch.Checked
 
         cbInventoryReport.Enabled = valBoolean
-        cbInventoryReportSearch.Enabled = cbInventoryReport.Checked
         cbInventoryReportExport.Enabled = cbInventoryReport.Checked
 
         cbSalesReport.Enabled = valBoolean
-        cbSalesReportSearch.Enabled = cbSalesReport.Checked
         cbSalesReportExport.Enabled = cbSalesReport.Checked
 
         cbDecentralization.Enabled = valBoolean
-        cbDecentralizationView.Enabled = cbDecentralization.Checked
         cbDecentralizationEdit.Enabled = cbDecentralization.Checked
 
         cbEmployeeAccountInfor.Enabled = valBoolean
-        cbEmployeeAccountInforView.Enabled = cbEmployeeAccountInfor.Checked
         cbEmployeeAccountInforAdd.Enabled = cbEmployeeAccountInfor.Checked
         cbEmployeeAccountInforEdit.Enabled = cbEmployeeAccountInfor.Checked
 
         cbDetailWarehouseProduct.Enabled = valBoolean
-        cbDetailProductView.Enabled = cbDetailWarehouseProduct.Checked
         cbDetailProductAdd.Enabled = cbDetailWarehouseProduct.Checked
         cbDetailProductEdit.Enabled = cbDetailWarehouseProduct.Checked
 
@@ -421,11 +407,17 @@ Public Class DecentralizationForm
             cbbRole.Items.Add(New CBBItem(role(0), role(1)))
         Next
 
-        For Each role As CBBItem In cbbRole.Items
-            If role.PropItemId = selected.PropItemId Then
-                cbbRole.SelectedItem = role
+        If isNew Then
+            cbbRole.SelectedItem = cbbRole.Items(cbbRole.Items.Count - 1)
+        Else
+            If selected IsNot Nothing Then
+                For Each role As CBBItem In cbbRole.Items
+                    If role.PropItemId = selected.PropItemId Then
+                        cbbRole.SelectedItem = role
+                    End If
+                Next
             End If
-        Next
+        End If
 
     End Sub
 
@@ -437,6 +429,7 @@ Public Class DecentralizationForm
                 MsgBox("Add new role successful!")
                 isNew = True
                 Reload()
+                ClearValue()
                 SetEnable(True)
             Else
                 MsgBox("There is an error when interact with database!")
@@ -490,7 +483,7 @@ Public Class DecentralizationForm
         End If
 
         If cbOrderCG.Checked Then
-            permissions(3) += "Customer category: " + If(cbOrderCGView.Checked, "View, ", "") +
+            permissions(3) += "Order category: " + If(cbOrderCGView.Checked, "View, ", "") +
                 If(cbOrderCGAdd.Checked, "Add, ", "") + If(cbOrderCGEdit.Checked, "Edit, ", "") +
                 If(cbOrderCGDelete.Checked, "Delete, ", "")
             If permissions(3) <> "" Then
@@ -565,7 +558,7 @@ Public Class DecentralizationForm
         End If
         If cbEmployeeAccountInfor.Checked Then
             permissions(12) += "Employee's account information: " + If(cbEmployeeAccountInforView.Checked, "View, ", "") +
-                +If(cbEmployeeAccountInforAdd.Checked, "Add, ", "") +
+                If(cbEmployeeAccountInforAdd.Checked, "Add, ", "") +
                 If(cbEmployeeAccountInforEdit.Checked, "Edit, ", "")
             If permissions(12) <> "" Then
                 permissions(12) = permissions(12).Substring(0, permissions(12).Length - 2)
@@ -573,7 +566,7 @@ Public Class DecentralizationForm
         End If
         If cbDetailWarehouseProduct.Checked Then
             permissions(13) += "Detail product of warehouse: " + If(cbDetailProductView.Checked, "View, ", "") +
-                If(cbDetailProductAdd.Checked, "Add, ", "") + If(cbDetailProductEdit.Checked, "Edit, , ", "")
+                If(cbDetailProductAdd.Checked, "Add, ", "") + If(cbDetailProductEdit.Checked, "Edit, ", "")
             If permissions(13) <> "" Then
                 permissions(13) = permissions(13).Substring(0, permissions(13).Length - 2)
             End If
@@ -621,7 +614,7 @@ Public Class DecentralizationForm
 
         If result = 1 Then
             SetEnableFalse()
-            MsgBox(type & " product information successful!")
+            MsgBox(type & " permission information successful!")
             Reload()
             isNew = False
         Else
@@ -643,7 +636,7 @@ Public Class DecentralizationForm
 
     Private Sub cbCustomerCG_CheckedChanged(sender As Object, e As EventArgs) Handles cbCustomerCG.CheckedChanged
         Dim val = cbCustomerCG.Checked
-        cbCustomerCGView.Enabled = val
+        cbCustomerCGView.Checked = True
         cbCustomerCGAdd.Enabled = val
         cbCustomerCGEdit.Enabled = val
         cbCustomerCGDelete.Enabled = val
@@ -651,7 +644,7 @@ Public Class DecentralizationForm
 
     Private Sub cbEmployeeCG_CheckedChanged(sender As Object, e As EventArgs) Handles cbEmployeeCG.CheckedChanged
         Dim val = cbEmployeeCG.Checked
-        cbEmployeeCGView.Enabled = val
+        cbEmployeeCGView.Checked = True
         cbEmployeeCGAdd.Enabled = val
         cbEmployeeCGEdit.Enabled = val
         cbEmployeeCGDelete.Enabled = val
@@ -659,7 +652,7 @@ Public Class DecentralizationForm
 
     Private Sub cbProductCG_CheckedChanged(sender As Object, e As EventArgs) Handles cbProductCG.CheckedChanged
         Dim val = cbProductCG.Checked
-        cbProductCGView.Enabled = val
+        cbProductCGView.Checked = True
         cbProductCGAdd.Enabled = val
         cbProductCGEdit.Enabled = val
         cbProductCGDelete.Enabled = val
@@ -667,7 +660,7 @@ Public Class DecentralizationForm
 
     Private Sub cbOrderCG_CheckedChanged(sender As Object, e As EventArgs) Handles cbOrderCG.CheckedChanged
         Dim val = cbOrderCG.Checked
-        cbOrderCGView.Enabled = val
+        cbOrderCGView.Checked = True
         cbOrderCGAdd.Enabled = val
         cbOrderCGEdit.Enabled = val
         cbOrderCGDelete.Enabled = val
@@ -675,7 +668,7 @@ Public Class DecentralizationForm
 
     Private Sub cbSupplierCG_CheckedChanged(sender As Object, e As EventArgs) Handles cbSupplierCG.CheckedChanged
         Dim val = cbSupplierCG.Checked
-        cbSupplierCGView.Enabled = val
+        cbSupplierCGView.Checked = True
         cbSupplierCGAdd.Enabled = val
         cbSupplierCGEdit.Enabled = val
         cbSupplierCGDelete.Enabled = val
@@ -683,7 +676,7 @@ Public Class DecentralizationForm
 
     Private Sub cbWarehouseCG_CheckedChanged(sender As Object, e As EventArgs) Handles cbWarehouseCG.CheckedChanged
         Dim val = cbWarehouseCG.Checked
-        cbWarehouseCGView.Enabled = val
+        cbWarehouseCGView.Checked = True
         cbWarehouseCGAdd.Enabled = val
         cbWarehouseCGEdit.Enabled = val
         cbWarehouseCGDelete.Enabled = val
@@ -691,50 +684,50 @@ Public Class DecentralizationForm
 
     Private Sub cbEmployeeSearch_CheckedChanged(sender As Object, e As EventArgs) Handles cbEmployeeSearch.CheckedChanged
         Dim val = cbEmployeeSearch.Checked
-        cbEmployeeSSearch.Enabled = val
+        cbEmployeeSSearch.Checked = True
         cbEmployeeSearchExport.Enabled = val
     End Sub
 
     Private Sub cbProductSearch_CheckedChanged(sender As Object, e As EventArgs) Handles cbProductSearch.CheckedChanged
         Dim val = cbProductSearch.Checked
-        cbProductSSearch.Enabled = val
+        cbProductSSearch.Checked = True
         cbProductSearchExport.Enabled = val
     End Sub
 
     Private Sub cbOrderSearch_CheckedChanged(sender As Object, e As EventArgs) Handles cbOrderSearch.CheckedChanged
         Dim val = cbOrderSearch.Checked
-        cbOrderSSearch.Enabled = val
+        cbOrderSSearch.Checked = True
         cbOrderSearchExport.Enabled = val
     End Sub
 
     Private Sub cbInventoryReport_CheckedChanged(sender As Object, e As EventArgs) Handles cbInventoryReport.CheckedChanged
         Dim val = cbInventoryReport.Checked
-        cbInventoryReportSearch.Enabled = val
+        cbInventoryReportSearch.Checked = True
         cbInventoryReportExport.Enabled = val
     End Sub
 
     Private Sub cbSalesReport_CheckedChanged(sender As Object, e As EventArgs) Handles cbSalesReport.CheckedChanged
         Dim val = cbSalesReport.Checked
-        cbSalesReportSearch.Enabled = val
+        cbSalesReportSearch.Checked = True
         cbSalesReportExport.Enabled = val
     End Sub
 
     Private Sub cbDecentralization_CheckedChanged(sender As Object, e As EventArgs) Handles cbDecentralization.CheckedChanged
         Dim val = cbDecentralization.Checked
-        cbDecentralizationView.Enabled = val
+        cbDecentralizationView.Checked = True
         cbDecentralizationEdit.Enabled = val
     End Sub
 
     Private Sub cbEmployeeAccountInfor_CheckedChanged(sender As Object, e As EventArgs) Handles cbEmployeeAccountInfor.CheckedChanged
         Dim val = cbEmployeeAccountInfor.Checked
-        cbEmployeeAccountInforView.Enabled = val
+        cbEmployeeAccountInforView.Checked = True
         cbEmployeeAccountInforAdd.Enabled = val
         cbEmployeeAccountInforEdit.Enabled = val
     End Sub
 
     Private Sub cbDetailWarehouseProduct_CheckedChanged(sender As Object, e As EventArgs) Handles cbDetailWarehouseProduct.CheckedChanged
         Dim val = cbDetailWarehouseProduct.Checked
-        cbDetailProductView.Enabled = val
+        cbDetailProductView.Checked = True
         cbDetailProductAdd.Enabled = val
         cbDetailProductEdit.Enabled = val
     End Sub
