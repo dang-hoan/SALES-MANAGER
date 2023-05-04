@@ -156,7 +156,7 @@ Public Class DecentralizationForm
     Private Sub SetValue()
         If cbbRole.Text <> "" Then
             ClearValue()
-            Dim dataPermission = clsPMSAnalysis.GetRolePermissionByRoleId(CType(cbbRole.SelectedItem, CBBItem).PropItemId)
+            Dim dataPermission = clsPMSAnalysis.GetPermissionByRoleId(CType(cbbRole.SelectedItem, CBBItem).PropItemId)
             For Each permission In dataPermission.Rows
                 Dim form = permission(1).split(":")(0)
                 Dim permiss = Strings.Split(Strings.Split(permission(1), ": ")(1), ", ")

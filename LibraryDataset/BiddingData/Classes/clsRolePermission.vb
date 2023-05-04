@@ -17,9 +17,13 @@ Public Class clsRolePermission
         ta.Fill(ds1)
         Return ds1
     End Function
-    Public Function GetRolePermissionByRoleId(ByVal roleId As Long) As Role.PermissionDataTable
+    Public Function GetPermissionByRoleId(ByVal roleId As Long) As Role.PermissionDataTable
         taPermission.Connection = conn
         Return taPermission.GetPermissionsByRoleId(roleId)
+    End Function
+    Public Function GetPermissionOfUser(ByVal username As String) As Role.PermissionDataTable
+        taPermission.Connection = conn
+        Return taPermission.GetPermissionOfUser(username)
     End Function
 
     Public Function AddRole(ByVal roleName As String, ByVal createUser As String) As Integer

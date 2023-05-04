@@ -23,28 +23,28 @@ Partial Class MainForm
         Me.btnHome = New System.Windows.Forms.ToolStripMenuItem()
         Me.toolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnCategory = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnCategoryCustomer = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnCustomer = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnEmployee = New System.Windows.Forms.ToolStripMenuItem()
         Me.toolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.productToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.orderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.bSupplier = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnWarehouseCategory = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnProduct = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnOrder = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnSupplier = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnWarehouse = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnTool = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem8 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem9 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnSearch = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnEmployeeSearch = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnProductSearch = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnSearchOrder = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnOrderSearch = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnDecentralization = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnStatistic = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnInventoryReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnSalesReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnExit = New System.Windows.Forms.ToolStripMenuItem()
         Me.srcMain = New System.Windows.Forms.Panel()
         Me.panelWelcome = New System.Windows.Forms.Panel()
         Me.pictureMain = New System.Windows.Forms.PictureBox()
         Me.labHello = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.btnDecentralization = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuStrip.SuspendLayout()
         Me.srcMain.SuspendLayout()
         Me.panelWelcome.SuspendLayout()
@@ -89,7 +89,7 @@ Partial Class MainForm
         '
         Me.btnCategory.AutoSize = False
         Me.btnCategory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnCategory.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnCategoryCustomer, Me.btnEmployee, Me.toolStripMenuItem1, Me.productToolStripMenuItem, Me.orderToolStripMenuItem, Me.bSupplier, Me.btnWarehouseCategory})
+        Me.btnCategory.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnCustomer, Me.btnEmployee, Me.toolStripMenuItem1, Me.btnProduct, Me.btnOrder, Me.btnSupplier, Me.btnWarehouse})
         Me.btnCategory.Image = CType(resources.GetObject("btnCategory.Image"), System.Drawing.Image)
         Me.btnCategory.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.btnCategory.Name = "btnCategory"
@@ -98,11 +98,11 @@ Partial Class MainForm
         Me.btnCategory.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
-        'btnCategoryCustomer
+        'btnCustomer
         '
-        Me.btnCategoryCustomer.Name = "btnCategoryCustomer"
-        Me.btnCategoryCustomer.Size = New System.Drawing.Size(202, 34)
-        Me.btnCategoryCustomer.Text = "Customer"
+        Me.btnCustomer.Name = "btnCustomer"
+        Me.btnCustomer.Size = New System.Drawing.Size(202, 34)
+        Me.btnCustomer.Text = "Customer"
         '
         'btnEmployee
         '
@@ -115,35 +115,35 @@ Partial Class MainForm
         Me.toolStripMenuItem1.Name = "toolStripMenuItem1"
         Me.toolStripMenuItem1.Size = New System.Drawing.Size(199, 6)
         '
-        'productToolStripMenuItem
+        'btnProduct
         '
-        Me.productToolStripMenuItem.Name = "productToolStripMenuItem"
-        Me.productToolStripMenuItem.Size = New System.Drawing.Size(202, 34)
-        Me.productToolStripMenuItem.Text = "Product"
+        Me.btnProduct.Name = "btnProduct"
+        Me.btnProduct.Size = New System.Drawing.Size(202, 34)
+        Me.btnProduct.Text = "Product"
         '
-        'orderToolStripMenuItem
+        'btnOrder
         '
-        Me.orderToolStripMenuItem.Name = "orderToolStripMenuItem"
-        Me.orderToolStripMenuItem.Size = New System.Drawing.Size(202, 34)
-        Me.orderToolStripMenuItem.Text = "Order"
+        Me.btnOrder.Name = "btnOrder"
+        Me.btnOrder.Size = New System.Drawing.Size(202, 34)
+        Me.btnOrder.Text = "Order"
         '
-        'bSupplier
+        'btnSupplier
         '
-        Me.bSupplier.Name = "bSupplier"
-        Me.bSupplier.Size = New System.Drawing.Size(202, 34)
-        Me.bSupplier.Text = "Supplier"
+        Me.btnSupplier.Name = "btnSupplier"
+        Me.btnSupplier.Size = New System.Drawing.Size(202, 34)
+        Me.btnSupplier.Text = "Supplier"
         '
-        'btnWarehouseCategory
+        'btnWarehouse
         '
-        Me.btnWarehouseCategory.Name = "btnWarehouseCategory"
-        Me.btnWarehouseCategory.Size = New System.Drawing.Size(202, 34)
-        Me.btnWarehouseCategory.Text = "Warehouse"
+        Me.btnWarehouse.Name = "btnWarehouse"
+        Me.btnWarehouse.Size = New System.Drawing.Size(202, 34)
+        Me.btnWarehouse.Text = "Warehouse"
         '
         'btnTool
         '
         Me.btnTool.AutoSize = False
         Me.btnTool.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnTool.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem8, Me.btnDecentralization})
+        Me.btnTool.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnSearch, Me.btnDecentralization})
         Me.btnTool.Image = CType(resources.GetObject("btnTool.Image"), System.Drawing.Image)
         Me.btnTool.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.btnTool.Name = "btnTool"
@@ -152,36 +152,42 @@ Partial Class MainForm
         Me.btnTool.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnTool.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
-        'ToolStripMenuItem8
+        'btnSearch
         '
-        Me.ToolStripMenuItem8.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem9, Me.btnProductSearch, Me.btnSearchOrder})
-        Me.ToolStripMenuItem8.Name = "ToolStripMenuItem8"
-        Me.ToolStripMenuItem8.Size = New System.Drawing.Size(270, 34)
-        Me.ToolStripMenuItem8.Text = "Search"
+        Me.btnSearch.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnEmployeeSearch, Me.btnProductSearch, Me.btnOrderSearch})
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Size = New System.Drawing.Size(270, 34)
+        Me.btnSearch.Text = "Search"
         '
-        'ToolStripMenuItem9
+        'btnEmployeeSearch
         '
-        Me.ToolStripMenuItem9.Name = "ToolStripMenuItem9"
-        Me.ToolStripMenuItem9.Size = New System.Drawing.Size(234, 34)
-        Me.ToolStripMenuItem9.Text = "Search client"
+        Me.btnEmployeeSearch.Name = "btnEmployeeSearch"
+        Me.btnEmployeeSearch.Size = New System.Drawing.Size(270, 34)
+        Me.btnEmployeeSearch.Text = "Search client"
         '
         'btnProductSearch
         '
         Me.btnProductSearch.Name = "btnProductSearch"
-        Me.btnProductSearch.Size = New System.Drawing.Size(234, 34)
+        Me.btnProductSearch.Size = New System.Drawing.Size(270, 34)
         Me.btnProductSearch.Text = "Search product"
         '
-        'btnSearchOrder
+        'btnOrderSearch
         '
-        Me.btnSearchOrder.Name = "btnSearchOrder"
-        Me.btnSearchOrder.Size = New System.Drawing.Size(234, 34)
-        Me.btnSearchOrder.Text = "Search order "
+        Me.btnOrderSearch.Name = "btnOrderSearch"
+        Me.btnOrderSearch.Size = New System.Drawing.Size(270, 34)
+        Me.btnOrderSearch.Text = "Search order "
+        '
+        'btnDecentralization
+        '
+        Me.btnDecentralization.Name = "btnDecentralization"
+        Me.btnDecentralization.Size = New System.Drawing.Size(270, 34)
+        Me.btnDecentralization.Text = "Decentralization"
         '
         'btnStatistic
         '
         Me.btnStatistic.AutoSize = False
         Me.btnStatistic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnStatistic.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem4, Me.ToolStripMenuItem5})
+        Me.btnStatistic.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnInventoryReport, Me.btnSalesReport})
         Me.btnStatistic.Image = CType(resources.GetObject("btnStatistic.Image"), System.Drawing.Image)
         Me.btnStatistic.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.btnStatistic.Name = "btnStatistic"
@@ -190,17 +196,17 @@ Partial Class MainForm
         Me.btnStatistic.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnStatistic.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
-        'ToolStripMenuItem4
+        'btnInventoryReport
         '
-        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
-        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(189, 34)
-        Me.ToolStripMenuItem4.Text = "Inventory"
+        Me.btnInventoryReport.Name = "btnInventoryReport"
+        Me.btnInventoryReport.Size = New System.Drawing.Size(270, 34)
+        Me.btnInventoryReport.Text = "Inventory"
         '
-        'ToolStripMenuItem5
+        'btnSalesReport
         '
-        Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
-        Me.ToolStripMenuItem5.Size = New System.Drawing.Size(189, 34)
-        Me.ToolStripMenuItem5.Text = "Sales"
+        Me.btnSalesReport.Name = "btnSalesReport"
+        Me.btnSalesReport.Size = New System.Drawing.Size(270, 34)
+        Me.btnSalesReport.Text = "Sales"
         '
         'btnExit
         '
@@ -266,12 +272,6 @@ Partial Class MainForm
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Welcome to sales manager app!!"
         '
-        'btnDecentralization
-        '
-        Me.btnDecentralization.Name = "btnDecentralization"
-        Me.btnDecentralization.Size = New System.Drawing.Size(270, 34)
-        Me.btnDecentralization.Text = "Decentralization"
-        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -303,25 +303,25 @@ Partial Class MainForm
     Private toolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Private btnCategory As System.Windows.Forms.ToolStripMenuItem
     Private toolStripMenuItem1 As System.Windows.Forms.ToolStripSeparator
-    Private WithEvents productToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Private WithEvents bSupplier As System.Windows.Forms.ToolStripMenuItem
+    Private WithEvents btnProduct As System.Windows.Forms.ToolStripMenuItem
+    Private WithEvents btnSupplier As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents srcMain As Panel
-    Private WithEvents btnCategoryCustomer As ToolStripMenuItem
+    Private WithEvents btnCustomer As ToolStripMenuItem
     Private WithEvents btnEmployee As ToolStripMenuItem
-    Private WithEvents orderToolStripMenuItem As ToolStripMenuItem
+    Private WithEvents btnOrder As ToolStripMenuItem
     Private WithEvents btnTool As ToolStripMenuItem
-    Private WithEvents ToolStripMenuItem8 As ToolStripMenuItem
-    Private WithEvents ToolStripMenuItem9 As ToolStripMenuItem
+    Private WithEvents btnSearch As ToolStripMenuItem
+    Private WithEvents btnEmployeeSearch As ToolStripMenuItem
     Private WithEvents btnProductSearch As ToolStripMenuItem
-    Private WithEvents btnSearchOrder As ToolStripMenuItem
+    Private WithEvents btnOrderSearch As ToolStripMenuItem
     Private WithEvents btnStatistic As ToolStripMenuItem
-    Private WithEvents ToolStripMenuItem4 As ToolStripMenuItem
-    Private WithEvents ToolStripMenuItem5 As ToolStripMenuItem
+    Private WithEvents btnInventoryReport As ToolStripMenuItem
+    Private WithEvents btnSalesReport As ToolStripMenuItem
     Private WithEvents btnExit As ToolStripMenuItem
     Friend WithEvents Label1 As Label
     Friend WithEvents pictureMain As PictureBox
     Friend WithEvents labHello As Label
     Friend WithEvents panelWelcome As Panel
-    Friend WithEvents btnWarehouseCategory As ToolStripMenuItem
+    Friend WithEvents btnWarehouse As ToolStripMenuItem
     Friend WithEvents btnDecentralization As ToolStripMenuItem
 End Class

@@ -5,11 +5,51 @@ Public Class CustomerCategory
     Dim conn As New connCommon()
     Dim clsPMSAnalysis As New clsPerson(conn.connSales.ConnectionString)
     Dim clsAccount As New clsAccount(conn.connSales.ConnectionString)
+    Dim clsRolePermission As New clsRolePermission(conn.connSales.ConnectionString)
 
     Private isAddFirstName As Boolean = False
     Private isAddLastName As Boolean = False
     Private Sub CustomerCategory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Reload()
+        SetVisibleForPermission()
+    End Sub
+    Private Sub SetVisibleForPermission()
+        'btnCustomer.Visible = False
+        'btnEmployee.Visible = False
+        'btnProduct.Visible = False
+        'btnOrder.Visible = False
+        'btnSupplier.Visible = False
+        'btnWarehouse.Visible = False
+        'btnEmployeeSearch.Visible = False
+        'btnProductSearch.Visible = False
+        'btnOrderSearch.Visible = False
+        'btnInventoryReport.Visible = False
+        'btnSalesReport.Visible = False
+        'btnDecentralization.Visible = False
+        'Dim listNumber As New List(Of Integer) From {0, 0, 0, 0}        'Category, Search, Statistic, Tool
+        'Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
+        'For Each permission In dataPermission
+        '    Dim form = permission(1).split(":")(0)
+        '    Dim permiss = f
+        '    Select Case form
+        '        Case "Customer category"
+        '            btnCustomer.Visible = True
+        '            listNumber(0) += 1
+
+        '    End Select
+        'Next
+        'If listNumber(0) = 0 Then
+        '    btnCategory.Visible = False
+        'End If
+        'If listNumber(1) = 0 Then
+        '    btnSearch.Visible = False
+        'End If
+        'If listNumber(2) = 0 Then
+        '    btnStatistic.Visible = False
+        'End If
+        'If listNumber(3) = 0 And listNumber(1) = 0 Then
+        '    btnTool.Visible = False
+        'End If
     End Sub
 
     Private Sub Reload()

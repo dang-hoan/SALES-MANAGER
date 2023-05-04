@@ -5,7 +5,6 @@ Imports System.IO
 Public Class LoginForm
     Dim conn As New connCommon()
     Dim clsPMSAnalysis As New clsAccount(conn.connSales.ConnectionString)
-    Dim clsPerson As New clsPerson(conn.connSales.ConnectionString)
     Private username As String
     Private isShow As Boolean = False
 
