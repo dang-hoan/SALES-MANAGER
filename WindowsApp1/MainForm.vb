@@ -67,10 +67,6 @@ Public Class MainForm
                 Case "Decentralization"
                     btnDecentralization.Visible = True
                     listNumber(3) += 1
-                    'Case "Employee's account information"
-                    '    btnEmployeeInfor.Visible = True
-                    'Case "Detail product of warehouse"
-                    '    cbDetailWarehouseProduct.Visible = True
             End Select
         Next
         If listNumber(0) = 0 Then
@@ -87,7 +83,7 @@ Public Class MainForm
         End If
     End Sub
     Private Sub btnCategoryCustomer_Click(sender As Object, e As EventArgs) Handles btnCustomer.Click
-        Dim frmCustomer As New CustomerCategory
+        Dim frmCustomer As New frmCustomerCategory
         ShowForm(frmCustomer)
     End Sub
 

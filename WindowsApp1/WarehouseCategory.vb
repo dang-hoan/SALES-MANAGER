@@ -4,11 +4,88 @@ Public Class WarehouseCategory
     Dim conn As New connCommon()
     Dim clsPMSAnalysis As New clsWarehouse(conn.connSales.ConnectionString)
     Dim clsProduct As New clsProduct(conn.connSales.ConnectionString)
+    Dim clsRolePermission As New clsRolePermission(conn.connSales.ConnectionString)
 
     Private warehouseId As Long
     Private isSaved As Boolean = False
+    Private allowEditProduct As Boolean = False
+    Private allowDeleteProduct As Boolean = False
     Private Sub WarehouseCategory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Reload()
+        SetVisibleForPermission()
+    End Sub
+
+    Private Sub SetVisibleForPermission()
+        bAdd.Visible = False
+        bEdit.Visible = False
+        bDelete.Visible = False
+        bSave.Visible = False
+        bAddProduct.Visible = False
+
+        Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
+        Dim viewDetail = False
+
+        For Each permission In dataPermission
+            Dim form = permission(1).split(":")(0)
+            Dim permiss = Strings.Split(Strings.Split(permission(1), ": ")(1), ", ")
+            Select Case form
+                Case "Warehouse category"
+                    For Each p In permiss
+                        Select Case p
+                            Case "Add"
+                                bAdd.Visible = True
+                                bSave.Visible = True
+                            Case "Edit"
+                                bEdit.Visible = True
+                                bSave.Visible = True
+                            Case "Delete"
+                                bDelete.Visible = True
+                        End Select
+                    Next
+                Case "Detail product of warehouse"
+                    For Each p In permiss
+                        Select Case p
+                            Case "Add"
+                                bAddProduct.Visible = True
+                            Case "Edit"
+                                allowEditProduct = True
+                            Case "Delete"
+                                allowDeleteProduct = True
+                        End Select
+                    Next
+                    viewDetail = True
+            End Select
+        Next
+        If Not viewDetail Then
+            gbProducts.Visible = False
+            dgvCategory.Location = New Point(gbProducts.Location.X, gbProducts.Location.Y + 10)
+            dgvCategory.Size = New Size(555, 280)
+        End If
+        CenterButtons()
+    End Sub
+
+    Private Sub CenterButtons()
+        Dim listButtons = New List(Of Button) From {bAdd, bEdit, bDelete, bSave}
+        Dim totalWidth As Integer = 0
+        Dim count = 0
+
+        For Each btn As Button In listButtons
+            If btn.Visible = True Then
+                totalWidth += btn.Width
+                count += 1
+            End If
+        Next
+
+        Dim offset_between = 30
+        Dim x As Integer = (Me.Width - totalWidth - offset_between * (count - 1)) / 2
+        Dim y As Integer = 490
+
+        For Each btn As Button In listButtons
+            If btn.Visible = True Then
+                btn.Location = New Point(x, y)
+                x += btn.Width + offset_between
+            End If
+        Next
     End Sub
 
     Public Sub Reload()
@@ -56,8 +133,8 @@ Public Class WarehouseCategory
         bAddProduct.Enabled = valBoolean
         'txtNumberOfImport.Enabled = valBoolean
         'txtNumberOfExport.Enabled = valBoolean
-        dgvProduct.Columns(3).Visible = valBoolean
-        dgvProduct.Columns(4).Visible = valBoolean
+        dgvProduct.Columns(3).Visible = valBoolean And allowEditProduct
+        dgvProduct.Columns(4).Visible = valBoolean And allowDeleteProduct
         bSave.Enabled = valBoolean
     End Sub
 

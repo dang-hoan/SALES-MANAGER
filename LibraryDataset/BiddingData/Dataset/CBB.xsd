@@ -366,7 +366,7 @@ SELECT Id, RoleName FROM Role WHERE (Id = SCOPE_IDENTITY())</CommandText>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT Id, RoleName
 FROM   Role
-WHERE (RoleName &lt;&gt; N'Customer')</CommandText>
+WHERE (RoleName &lt;&gt; N'Customer') AND (IsDelete = 'False')</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -518,11 +518,11 @@ SELECT Id, RoleName FROM Role WHERE (Id = @Id)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CBBRole" msprop:Generator_RowEvHandlerName="CBBRoleRowChangeEventHandler" msprop:Generator_RowDeletedName="CBBRoleRowDeleted" msprop:Generator_RowDeletingName="CBBRoleRowDeleting" msprop:Generator_RowEvArgName="CBBRoleRowChangeEvent" msprop:Generator_TablePropName="CBBRole" msprop:Generator_RowChangedName="CBBRoleRowChanged" msprop:Generator_RowChangingName="CBBRoleRowChanging" msprop:Generator_TableClassName="CBBRoleDataTable" msprop:Generator_RowClassName="CBBRoleRow" msprop:Generator_TableVarName="tableCBBRole" msprop:Generator_UserTableName="CBBRole">
+        <xs:element name="CBBRole" msprop:Generator_RowClassName="CBBRoleRow" msprop:Generator_RowEvHandlerName="CBBRoleRowChangeEventHandler" msprop:Generator_RowDeletedName="CBBRoleRowDeleted" msprop:Generator_RowDeletingName="CBBRoleRowDeleting" msprop:Generator_RowEvArgName="CBBRoleRowChangeEvent" msprop:Generator_TablePropName="CBBRole" msprop:Generator_RowChangedName="CBBRoleRowChanged" msprop:Generator_UserTableName="CBBRole" msprop:Generator_RowChangingName="CBBRoleRowChanging" msprop:Generator_TableClassName="CBBRoleDataTable" msprop:Generator_TableVarName="tableCBBRole">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_UserColumnName="Id" type="xs:int" />
-              <xs:element name="RoleName" msprop:Generator_ColumnPropNameInRow="RoleName" msprop:Generator_ColumnPropNameInTable="RoleNameColumn" msprop:Generator_ColumnVarNameInTable="columnRoleName" msprop:Generator_UserColumnName="RoleName">
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnVarNameInTable="columnId" type="xs:int" />
+              <xs:element name="RoleName" msprop:Generator_UserColumnName="RoleName" msprop:Generator_ColumnPropNameInTable="RoleNameColumn" msprop:Generator_ColumnPropNameInRow="RoleName" msprop:Generator_ColumnVarNameInTable="columnRoleName">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="25" />

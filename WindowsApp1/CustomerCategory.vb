@@ -1,7 +1,7 @@
 ﻿Imports LibraryDataset
 Imports LibraryCommon
 
-Public Class CustomerCategory
+Public Class frmCustomerCategory
     Dim conn As New connCommon()
     Dim clsPMSAnalysis As New clsPerson(conn.connSales.ConnectionString)
     Dim clsAccount As New clsAccount(conn.connSales.ConnectionString)
@@ -14,42 +14,55 @@ Public Class CustomerCategory
         SetVisibleForPermission()
     End Sub
     Private Sub SetVisibleForPermission()
-        'btnCustomer.Visible = False
-        'btnEmployee.Visible = False
-        'btnProduct.Visible = False
-        'btnOrder.Visible = False
-        'btnSupplier.Visible = False
-        'btnWarehouse.Visible = False
-        'btnEmployeeSearch.Visible = False
-        'btnProductSearch.Visible = False
-        'btnOrderSearch.Visible = False
-        'btnInventoryReport.Visible = False
-        'btnSalesReport.Visible = False
-        'btnDecentralization.Visible = False
-        'Dim listNumber As New List(Of Integer) From {0, 0, 0, 0}        'Category, Search, Statistic, Tool
-        'Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
-        'For Each permission In dataPermission
-        '    Dim form = permission(1).split(":")(0)
-        '    Dim permiss = f
-        '    Select Case form
-        '        Case "Customer category"
-        '            btnCustomer.Visible = True
-        '            listNumber(0) += 1
+        bAdd.Visible = False
+        bEdit.Visible = False
+        bDelete.Visible = False
+        bSave.Visible = False
+        Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
+        For Each permission In dataPermission
+            Dim form = permission(1).split(":")(0)
+            Dim permiss = Strings.Split(Strings.Split(permission(1), ": ")(1), ", ")
+            If form = "Customer category" Then
+                For Each p In permiss
+                    Select Case p
+                        Case "Add"
+                            bAdd.Visible = True
+                            bSave.Visible = True
+                        Case "Edit"
+                            bEdit.Visible = True
+                            bSave.Visible = True
+                        Case "Delete"
+                            bDelete.Visible = True
+                    End Select
+                Next
+                Exit For
+            End If
+        Next
+        CenterButtons()
+    End Sub
 
-        '    End Select
-        'Next
-        'If listNumber(0) = 0 Then
-        '    btnCategory.Visible = False
-        'End If
-        'If listNumber(1) = 0 Then
-        '    btnSearch.Visible = False
-        'End If
-        'If listNumber(2) = 0 Then
-        '    btnStatistic.Visible = False
-        'End If
-        'If listNumber(3) = 0 And listNumber(1) = 0 Then
-        '    btnTool.Visible = False
-        'End If
+    Private Sub CenterButtons()
+        Dim listButtons = New List(Of Button) From {bAdd, bEdit, bDelete, bSave}
+        Dim totalWidth As Integer = 0
+        Dim count = 0
+
+        For Each btn As Button In listButtons
+            If btn.Visible = True Then
+                totalWidth += btn.Width
+                count += 1
+            End If
+        Next
+
+        Dim offset_between = 30
+        Dim x As Integer = (Me.Width - totalWidth - offset_between * (count - 1)) / 2
+        Dim y As Integer = 450
+
+        For Each btn As Button In listButtons
+            If btn.Visible = True Then
+                btn.Location = New Point(x, y)
+                x += btn.Width + offset_between
+            End If
+        Next
     End Sub
 
     Private Sub Reload()
@@ -175,7 +188,7 @@ Public Class CustomerCategory
 
         ElseIf countString(txtEmail.Text, "gmail.com") <> 1 Or Not txtEmail.Text.EndsWith("@gmail.com") Then
             MsgBox("Email invalidate!")
-        Return False
+            Return False
         End If
 
         Return True

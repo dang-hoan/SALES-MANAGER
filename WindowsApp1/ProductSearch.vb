@@ -7,6 +7,7 @@ Public Class ProductSearch
     Dim conn As New connCommon()
     Dim clsProduct As New clsProduct(conn.connSales.ConnectionString)
     Dim clsCBB As New clsCBB(conn.connSales.ConnectionString)
+    Dim clsRolePermission As New clsRolePermission(conn.connSales.ConnectionString)
     Private Sub OrderSearch_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim dataCategory = clsCBB.GetCBBCategory().CBBCategory
         Dim dataSupplier = clsCBB.GetCBBSupplier().CBBSupplier
@@ -37,6 +38,25 @@ Public Class ProductSearch
 
         For Each row As DataRow In dataWarehouse.Rows
             cbbWarehouse.Items.Add(New CBBItem(row(0), row(1)))
+        Next
+        SetVisibleForPermission()
+    End Sub
+
+    Private Sub SetVisibleForPermission()
+        btnExport.Visible = False
+        Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
+        For Each permission In dataPermission
+            Dim form = permission(1).split(":")(0)
+            Dim permiss = Strings.Split(Strings.Split(permission(1), ": ")(1), ", ")
+            If form = "Product search" Then
+                For Each p In permiss
+                    Select Case p
+                        Case "Export"
+                            btnExport.Visible = True
+                    End Select
+                Next
+                Exit For
+            End If
         Next
     End Sub
 

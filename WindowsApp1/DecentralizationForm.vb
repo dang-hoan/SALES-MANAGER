@@ -9,6 +9,47 @@ Public Class DecentralizationForm
     Private Sub DecentralizationForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Reload()
         SetEnable(False)
+        SetVisibleForPermission()
+    End Sub
+
+    Private Sub SetVisibleForPermission()
+        bNewRole.Visible = False
+        bDeleteRole.Visible = False
+        bEdit.Visible = False
+        bClearAll.Visible = False
+        bSave.Visible = False
+        Dim dataPermission = clsPMSAnalysis.GetPermissionOfUser(LoginForm.PropUsername)
+        For Each permission In dataPermission
+            Dim form = permission(1).split(":")(0)
+            Dim permiss = Strings.Split(Strings.Split(permission(1), ": ")(1), ", ")
+            If form = "Decentralization" Then
+                For Each p In permiss
+                    Select Case p
+                        Case "Add"
+                            bNewRole.Visible = True
+                        Case "Edit"
+                            bEdit.Visible = True
+                            bClearAll.Visible = True
+                            bSave.Visible = True
+                        Case "Delete"
+                            bDeleteRole.Visible = True
+                    End Select
+                Next
+                Exit For
+            End If
+        Next
+        CenterButton()
+    End Sub
+
+    Private Sub CenterButton()
+        Dim val1 = bNewRole.Visible
+        Dim val2 = bDeleteRole.Visible
+        If val1 = True And val2 = False Then
+            bNewRole.Location = New Point(cbbRole.Location.X + cbbRole.Width + 10, cbbRole.Location.Y)
+        End If
+        If val1 = False And val2 = True Then
+            bDeleteRole.Location = New Point(cbbRole.Location.X + cbbRole.Width + 10, cbbRole.Location.Y)
+        End If
     End Sub
 
     Private Sub SetEnable(ByVal valBoolean As Boolean)
@@ -59,7 +100,9 @@ Public Class DecentralizationForm
         cbSalesReportExport.Enabled = cbSalesReport.Checked
 
         cbDecentralization.Enabled = valBoolean
+        cbDecentralizationAdd.Enabled = cbDecentralization.Checked
         cbDecentralizationEdit.Enabled = cbDecentralization.Checked
+        cbDecentralizationDelete.Enabled = cbDecentralization.Checked
 
         cbEmployeeAccountInfor.Enabled = valBoolean
         cbEmployeeAccountInforAdd.Enabled = cbEmployeeAccountInfor.Checked
@@ -68,6 +111,7 @@ Public Class DecentralizationForm
         cbDetailWarehouseProduct.Enabled = valBoolean
         cbDetailProductAdd.Enabled = cbDetailWarehouseProduct.Checked
         cbDetailProductEdit.Enabled = cbDetailWarehouseProduct.Checked
+        cbDetailProductDelete.Enabled = cbDetailWarehouseProduct.Checked
 
         If cbbRole.SelectedItem IsNot Nothing Then
             bEdit.Enabled = Not valBoolean
@@ -130,7 +174,9 @@ Public Class DecentralizationForm
         cbSalesReportExport.Enabled = False
         cbDecentralization.Enabled = False
         cbDecentralizationView.Enabled = False
+        cbDecentralizationAdd.Enabled = False
         cbDecentralizationEdit.Enabled = False
+        cbDecentralizationDelete.Enabled = False
         cbEmployeeAccountInfor.Enabled = False
         cbEmployeeAccountInforView.Enabled = False
         cbEmployeeAccountInforAdd.Enabled = False
@@ -139,6 +185,7 @@ Public Class DecentralizationForm
         cbDetailProductView.Enabled = False
         cbDetailProductAdd.Enabled = False
         cbDetailProductEdit.Enabled = False
+        cbDetailProductDelete.Enabled = False
 
         If cbbRole.SelectedItem IsNot Nothing Then
             bEdit.Enabled = True
@@ -302,8 +349,12 @@ Public Class DecentralizationForm
                             Select Case p
                                 Case "View"
                                     cbDecentralizationView.Checked = True
+                                Case "Add"
+                                    cbDecentralizationAdd.Checked = True
                                 Case "Edit"
                                     cbDecentralizationEdit.Checked = True
+                                Case "Delete"
+                                    cbDecentralizationDelete.Checked = True
                             End Select
                         Next
                     Case "Employee's account information"
@@ -328,6 +379,8 @@ Public Class DecentralizationForm
                                     cbDetailProductAdd.Checked = True
                                 Case "Edit"
                                     cbDetailProductEdit.Checked = True
+                                Case "Delete"
+                                    cbDetailProductDelete.Checked = True
                             End Select
                         Next
                 End Select
@@ -383,7 +436,9 @@ Public Class DecentralizationForm
         cbSalesReportExport.Checked = False
         cbDecentralization.Checked = False
         cbDecentralizationView.Checked = False
+        cbDecentralizationAdd.Checked = False
         cbDecentralizationEdit.Checked = False
+        cbDecentralizationDelete.Checked = False
         cbEmployeeAccountInfor.Checked = False
         cbEmployeeAccountInforView.Checked = False
         cbEmployeeAccountInforAdd.Checked = False
@@ -392,6 +447,7 @@ Public Class DecentralizationForm
         cbDetailProductView.Checked = False
         cbDetailProductAdd.Checked = False
         cbDetailProductEdit.Checked = False
+        cbDetailProductDelete.Checked = False
     End Sub
 
     Private Sub Reload()
@@ -430,7 +486,12 @@ Public Class DecentralizationForm
                 isNew = True
                 Reload()
                 ClearValue()
-                SetEnable(True)
+                If bSave.Visible = True Then
+                    SetEnable(True)
+                Else
+                    SetEnableFalse()
+                    isNew = False
+                End If
             Else
                 MsgBox("There is an error when interact with database!")
             End If
@@ -445,6 +506,7 @@ Public Class DecentralizationForm
                 Reload()
                 SetEnable(False)
                 ClearValue()
+                isNew = False
             Else
                 MsgBox("There is an error when interact with database!")
             End If
@@ -551,7 +613,9 @@ Public Class DecentralizationForm
         'OTHERS
         If cbDecentralization.Checked Then
             permissions(11) += "Decentralization: " + If(cbDecentralizationView.Checked, "View, ", "") +
-                If(cbDecentralizationEdit.Checked, "Edit, ", "")
+                If(cbDecentralizationAdd.Checked, "Add, ", "") +
+                If(cbDecentralizationEdit.Checked, "Edit, ", "") +
+                If(cbDecentralizationDelete.Checked, "Delete, ", "")
             If permissions(11) <> "" Then
                 permissions(11) = permissions(11).Substring(0, permissions(11).Length - 2)
             End If
@@ -566,7 +630,8 @@ Public Class DecentralizationForm
         End If
         If cbDetailWarehouseProduct.Checked Then
             permissions(13) += "Detail product of warehouse: " + If(cbDetailProductView.Checked, "View, ", "") +
-                If(cbDetailProductAdd.Checked, "Add, ", "") + If(cbDetailProductEdit.Checked, "Edit, ", "")
+                If(cbDetailProductAdd.Checked, "Add, ", "") + If(cbDetailProductEdit.Checked, "Edit, ", "") +
+                If(cbDetailProductDelete.Checked, "Delete, ", "")
             If permissions(13) <> "" Then
                 permissions(13) = permissions(13).Substring(0, permissions(13).Length - 2)
             End If
@@ -715,7 +780,9 @@ Public Class DecentralizationForm
     Private Sub cbDecentralization_CheckedChanged(sender As Object, e As EventArgs) Handles cbDecentralization.CheckedChanged
         Dim val = cbDecentralization.Checked
         cbDecentralizationView.Checked = True
+        cbDecentralizationAdd.Enabled = val
         cbDecentralizationEdit.Enabled = val
+        cbDecentralizationDelete.Enabled = val
     End Sub
 
     Private Sub cbEmployeeAccountInfor_CheckedChanged(sender As Object, e As EventArgs) Handles cbEmployeeAccountInfor.CheckedChanged
@@ -730,5 +797,6 @@ Public Class DecentralizationForm
         cbDetailProductView.Checked = True
         cbDetailProductAdd.Enabled = val
         cbDetailProductEdit.Enabled = val
+        cbDetailProductDelete.Enabled = val
     End Sub
 End Class

@@ -111,6 +111,9 @@ Partial Class DecentralizationForm
         Me.bNewRole = New System.Windows.Forms.Button()
         Me.cbbRole = New System.Windows.Forms.ComboBox()
         Me.Label25 = New System.Windows.Forms.Label()
+        Me.cbDecentralizationDelete = New System.Windows.Forms.CheckBox()
+        Me.cbDecentralizationAdd = New System.Windows.Forms.CheckBox()
+        Me.cbDetailProductDelete = New System.Windows.Forms.CheckBox()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -128,6 +131,9 @@ Partial Class DecentralizationForm
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.cbDetailProductDelete)
+        Me.GroupBox1.Controls.Add(Me.cbDecentralizationAdd)
+        Me.GroupBox1.Controls.Add(Me.cbDecentralizationDelete)
         Me.GroupBox1.Controls.Add(Me.cbDetailProductEdit)
         Me.GroupBox1.Controls.Add(Me.cbDetailProductView)
         Me.GroupBox1.Controls.Add(Me.cbDetailProductAdd)
@@ -209,7 +215,7 @@ Partial Class DecentralizationForm
         Me.GroupBox1.Controls.Add(Me.cbCustomerCG)
         Me.GroupBox1.Location = New System.Drawing.Point(62, 3)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(808, 2349)
+        Me.GroupBox1.Size = New System.Drawing.Size(808, 2415)
         Me.GroupBox1.TabIndex = 8
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Permission"
@@ -217,7 +223,7 @@ Partial Class DecentralizationForm
         'cbDetailProductEdit
         '
         Me.cbDetailProductEdit.AutoSize = True
-        Me.cbDetailProductEdit.Location = New System.Drawing.Point(678, 2220)
+        Me.cbDetailProductEdit.Location = New System.Drawing.Point(678, 2302)
         Me.cbDetailProductEdit.Name = "cbDetailProductEdit"
         Me.cbDetailProductEdit.Size = New System.Drawing.Size(63, 24)
         Me.cbDetailProductEdit.TabIndex = 115
@@ -228,7 +234,7 @@ Partial Class DecentralizationForm
         '
         Me.cbDetailProductView.AutoSize = True
         Me.cbDetailProductView.Enabled = False
-        Me.cbDetailProductView.Location = New System.Drawing.Point(678, 2161)
+        Me.cbDetailProductView.Location = New System.Drawing.Point(678, 2243)
         Me.cbDetailProductView.Name = "cbDetailProductView"
         Me.cbDetailProductView.Size = New System.Drawing.Size(69, 24)
         Me.cbDetailProductView.TabIndex = 114
@@ -238,7 +244,7 @@ Partial Class DecentralizationForm
         'cbDetailProductAdd
         '
         Me.cbDetailProductAdd.AutoSize = True
-        Me.cbDetailProductAdd.Location = New System.Drawing.Point(678, 2191)
+        Me.cbDetailProductAdd.Location = New System.Drawing.Point(678, 2273)
         Me.cbDetailProductAdd.Name = "cbDetailProductAdd"
         Me.cbDetailProductAdd.Size = New System.Drawing.Size(64, 24)
         Me.cbDetailProductAdd.TabIndex = 113
@@ -250,7 +256,7 @@ Partial Class DecentralizationForm
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label24.ForeColor = System.Drawing.Color.Black
-        Me.Label24.Location = New System.Drawing.Point(366, 2158)
+        Me.Label24.Location = New System.Drawing.Point(366, 2240)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(234, 22)
         Me.Label24.TabIndex = 112
@@ -259,7 +265,7 @@ Partial Class DecentralizationForm
         'cbDetailWarehouseProduct
         '
         Me.cbDetailWarehouseProduct.AutoSize = True
-        Me.cbDetailWarehouseProduct.Location = New System.Drawing.Point(255, 2159)
+        Me.cbDetailWarehouseProduct.Location = New System.Drawing.Point(255, 2241)
         Me.cbDetailWarehouseProduct.Name = "cbDetailWarehouseProduct"
         Me.cbDetailWarehouseProduct.Size = New System.Drawing.Size(72, 24)
         Me.cbDetailWarehouseProduct.TabIndex = 111
@@ -269,7 +275,7 @@ Partial Class DecentralizationForm
         'cbEmployeeAccountInforEdit
         '
         Me.cbEmployeeAccountInforEdit.AutoSize = True
-        Me.cbEmployeeAccountInforEdit.Location = New System.Drawing.Point(678, 2090)
+        Me.cbEmployeeAccountInforEdit.Location = New System.Drawing.Point(678, 2162)
         Me.cbEmployeeAccountInforEdit.Name = "cbEmployeeAccountInforEdit"
         Me.cbEmployeeAccountInforEdit.Size = New System.Drawing.Size(63, 24)
         Me.cbEmployeeAccountInforEdit.TabIndex = 110
@@ -280,7 +286,7 @@ Partial Class DecentralizationForm
         '
         Me.cbEmployeeAccountInforView.AutoSize = True
         Me.cbEmployeeAccountInforView.Enabled = False
-        Me.cbEmployeeAccountInforView.Location = New System.Drawing.Point(678, 2031)
+        Me.cbEmployeeAccountInforView.Location = New System.Drawing.Point(678, 2103)
         Me.cbEmployeeAccountInforView.Name = "cbEmployeeAccountInforView"
         Me.cbEmployeeAccountInforView.Size = New System.Drawing.Size(69, 24)
         Me.cbEmployeeAccountInforView.TabIndex = 109
@@ -290,7 +296,7 @@ Partial Class DecentralizationForm
         'cbEmployeeAccountInforAdd
         '
         Me.cbEmployeeAccountInforAdd.AutoSize = True
-        Me.cbEmployeeAccountInforAdd.Location = New System.Drawing.Point(678, 2061)
+        Me.cbEmployeeAccountInforAdd.Location = New System.Drawing.Point(678, 2133)
         Me.cbEmployeeAccountInforAdd.Name = "cbEmployeeAccountInforAdd"
         Me.cbEmployeeAccountInforAdd.Size = New System.Drawing.Size(64, 24)
         Me.cbEmployeeAccountInforAdd.TabIndex = 108
@@ -302,7 +308,7 @@ Partial Class DecentralizationForm
         Me.Label23.AutoSize = True
         Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label23.ForeColor = System.Drawing.Color.Black
-        Me.Label23.Location = New System.Drawing.Point(366, 2028)
+        Me.Label23.Location = New System.Drawing.Point(366, 2100)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(263, 22)
         Me.Label23.TabIndex = 107
@@ -311,7 +317,7 @@ Partial Class DecentralizationForm
         'cbEmployeeAccountInfor
         '
         Me.cbEmployeeAccountInfor.AutoSize = True
-        Me.cbEmployeeAccountInfor.Location = New System.Drawing.Point(255, 2029)
+        Me.cbEmployeeAccountInfor.Location = New System.Drawing.Point(255, 2101)
         Me.cbEmployeeAccountInfor.Name = "cbEmployeeAccountInfor"
         Me.cbEmployeeAccountInfor.Size = New System.Drawing.Size(72, 24)
         Me.cbEmployeeAccountInfor.TabIndex = 106
@@ -520,7 +526,7 @@ Partial Class DecentralizationForm
         'cbDecentralizationEdit
         '
         Me.cbDecentralizationEdit.AutoSize = True
-        Me.cbDecentralizationEdit.Location = New System.Drawing.Point(678, 1957)
+        Me.cbDecentralizationEdit.Location = New System.Drawing.Point(678, 1984)
         Me.cbDecentralizationEdit.Name = "cbDecentralizationEdit"
         Me.cbDecentralizationEdit.Size = New System.Drawing.Size(63, 24)
         Me.cbDecentralizationEdit.TabIndex = 83
@@ -980,7 +986,7 @@ Partial Class DecentralizationForm
         Me.Label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Label6.Location = New System.Drawing.Point(348, 74)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(2, 2200)
+        Me.Label6.Size = New System.Drawing.Size(2, 2300)
         Me.Label6.TabIndex = 8
         Me.Label6.Text = "Label6"
         '
@@ -989,7 +995,7 @@ Partial Class DecentralizationForm
         Me.Label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Label5.Location = New System.Drawing.Point(650, 74)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(2, 2200)
+        Me.Label5.Size = New System.Drawing.Size(2, 2300)
         Me.Label5.TabIndex = 7
         Me.Label5.Text = "Label5"
         '
@@ -1116,6 +1122,36 @@ Partial Class DecentralizationForm
         Me.Label25.TabIndex = 13
         Me.Label25.Text = "Role"
         '
+        'cbDecentralizationDelete
+        '
+        Me.cbDecentralizationDelete.AutoSize = True
+        Me.cbDecentralizationDelete.Location = New System.Drawing.Point(678, 2011)
+        Me.cbDecentralizationDelete.Name = "cbDecentralizationDelete"
+        Me.cbDecentralizationDelete.Size = New System.Drawing.Size(82, 24)
+        Me.cbDecentralizationDelete.TabIndex = 116
+        Me.cbDecentralizationDelete.Text = "Delete"
+        Me.cbDecentralizationDelete.UseVisualStyleBackColor = True
+        '
+        'cbDecentralizationAdd
+        '
+        Me.cbDecentralizationAdd.AutoSize = True
+        Me.cbDecentralizationAdd.Location = New System.Drawing.Point(678, 1955)
+        Me.cbDecentralizationAdd.Name = "cbDecentralizationAdd"
+        Me.cbDecentralizationAdd.Size = New System.Drawing.Size(64, 24)
+        Me.cbDecentralizationAdd.TabIndex = 117
+        Me.cbDecentralizationAdd.Text = "Add"
+        Me.cbDecentralizationAdd.UseVisualStyleBackColor = True
+        '
+        'cbDetailProductDelete
+        '
+        Me.cbDetailProductDelete.AutoSize = True
+        Me.cbDetailProductDelete.Location = New System.Drawing.Point(678, 2330)
+        Me.cbDetailProductDelete.Name = "cbDetailProductDelete"
+        Me.cbDetailProductDelete.Size = New System.Drawing.Size(82, 24)
+        Me.cbDetailProductDelete.TabIndex = 118
+        Me.cbDetailProductDelete.Text = "Delete"
+        Me.cbDetailProductDelete.UseVisualStyleBackColor = True
+        '
         'DecentralizationForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -1227,4 +1263,7 @@ Partial Class DecentralizationForm
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents cbCustomerCG As CheckBox
+    Friend WithEvents cbDecentralizationAdd As CheckBox
+    Friend WithEvents cbDecentralizationDelete As CheckBox
+    Friend WithEvents cbDetailProductDelete As CheckBox
 End Class

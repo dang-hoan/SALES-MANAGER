@@ -50,6 +50,7 @@ Public Class AccountInformation
                 txtCode.Enabled = False
             End If
         End If
+
     End Sub
 
     Private Sub bSave_Click(sender As Object, e As EventArgs) Handles bSave.Click

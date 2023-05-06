@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class CustomerCategory
+Partial Class frmCustomerCategory
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -17,7 +17,7 @@ Partial Class CustomerCategory
     Private components As System.ComponentModel.IContainer = Nothing
 
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CustomerCategory))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCustomerCategory))
         Me.bSave = New System.Windows.Forms.Button()
         Me.bDelete = New System.Windows.Forms.Button()
         Me.bEdit = New System.Windows.Forms.Button()
@@ -57,7 +57,7 @@ Partial Class CustomerCategory
         Me.bSave.Name = "bSave"
         Me.bSave.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.bSave.Size = New System.Drawing.Size(150, 55)
-        Me.bSave.TabIndex = 5
+        Me.bSave.TabIndex = 4
         Me.bSave.Text = "Save"
         Me.bSave.UseVisualStyleBackColor = False
         '
@@ -85,7 +85,7 @@ Partial Class CustomerCategory
         Me.bEdit.Name = "bEdit"
         Me.bEdit.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.bEdit.Size = New System.Drawing.Size(150, 55)
-        Me.bEdit.TabIndex = 4
+        Me.bEdit.TabIndex = 2
         Me.bEdit.Text = "Edit"
         Me.bEdit.UseVisualStyleBackColor = False
         '
@@ -99,7 +99,7 @@ Partial Class CustomerCategory
         Me.bAdd.Name = "bAdd"
         Me.bAdd.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.bAdd.Size = New System.Drawing.Size(150, 55)
-        Me.bAdd.TabIndex = 2
+        Me.bAdd.TabIndex = 1
         Me.bAdd.Text = "Add"
         Me.bAdd.UseVisualStyleBackColor = False
         '
@@ -204,7 +204,7 @@ Partial Class CustomerCategory
         Me.txtCustomerLastName.Location = New System.Drawing.Point(351, 74)
         Me.txtCustomerLastName.Name = "txtCustomerLastName"
         Me.txtCustomerLastName.Size = New System.Drawing.Size(147, 26)
-        Me.txtCustomerLastName.TabIndex = 16
+        Me.txtCustomerLastName.TabIndex = 2
         Me.txtCustomerLastName.Tag = ""
         '
         'txtEmail
@@ -213,7 +213,7 @@ Partial Class CustomerCategory
         Me.txtEmail.Location = New System.Drawing.Point(597, 25)
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(233, 26)
-        Me.txtEmail.TabIndex = 14
+        Me.txtEmail.TabIndex = 3
         '
         'Label8
         '
@@ -239,7 +239,7 @@ Partial Class CustomerCategory
         Me.txtAddress.Location = New System.Drawing.Point(597, 146)
         Me.txtAddress.Name = "txtAddress"
         Me.txtAddress.Size = New System.Drawing.Size(233, 26)
-        Me.txtAddress.TabIndex = 0
+        Me.txtAddress.TabIndex = 6
         '
         'txtPhone
         '
@@ -247,7 +247,7 @@ Partial Class CustomerCategory
         Me.txtPhone.Location = New System.Drawing.Point(597, 106)
         Me.txtPhone.Name = "txtPhone"
         Me.txtPhone.Size = New System.Drawing.Size(233, 26)
-        Me.txtPhone.TabIndex = 8
+        Me.txtPhone.TabIndex = 5
         '
         'txtCustomerFirstName
         '
@@ -255,7 +255,7 @@ Partial Class CustomerCategory
         Me.txtCustomerFirstName.Location = New System.Drawing.Point(156, 74)
         Me.txtCustomerFirstName.Name = "txtCustomerFirstName"
         Me.txtCustomerFirstName.Size = New System.Drawing.Size(189, 26)
-        Me.txtCustomerFirstName.TabIndex = 6
+        Me.txtCustomerFirstName.TabIndex = 1
         '
         'txtCustomerCode
         '
@@ -263,7 +263,7 @@ Partial Class CustomerCategory
         Me.txtCustomerCode.Location = New System.Drawing.Point(156, 31)
         Me.txtCustomerCode.Name = "txtCustomerCode"
         Me.txtCustomerCode.Size = New System.Drawing.Size(103, 26)
-        Me.txtCustomerCode.TabIndex = 2
+        Me.txtCustomerCode.TabIndex = 0
         '
         'GroupBox2
         '
@@ -283,7 +283,7 @@ Partial Class CustomerCategory
         Me.rdFemale.Location = New System.Drawing.Point(136, 16)
         Me.rdFemale.Name = "rdFemale"
         Me.rdFemale.Size = New System.Drawing.Size(87, 24)
-        Me.rdFemale.TabIndex = 11
+        Me.rdFemale.TabIndex = 1
         Me.rdFemale.TabStop = True
         Me.rdFemale.Text = "Female"
         Me.rdFemale.UseVisualStyleBackColor = True
@@ -296,7 +296,7 @@ Partial Class CustomerCategory
         Me.rdMale.Location = New System.Drawing.Point(27, 16)
         Me.rdMale.Name = "rdMale"
         Me.rdMale.Size = New System.Drawing.Size(68, 24)
-        Me.rdMale.TabIndex = 10
+        Me.rdMale.TabIndex = 0
         Me.rdMale.TabStop = True
         Me.rdMale.Text = "Male"
         Me.rdMale.UseVisualStyleBackColor = True
@@ -315,9 +315,9 @@ Partial Class CustomerCategory
         Me.dgvCategory.RowTemplate.Height = 33
         Me.dgvCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvCategory.Size = New System.Drawing.Size(853, 354)
-        Me.dgvCategory.TabIndex = 9
+        Me.dgvCategory.TabIndex = 0
         '
-        'CustomerCategory
+        'frmCustomerCategory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -332,7 +332,7 @@ Partial Class CustomerCategory
         Me.Controls.Add(Me.label7)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "CustomerCategory"
+        Me.Name = "frmCustomerCategory"
         Me.groupBox1.ResumeLayout(False)
         Me.groupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
