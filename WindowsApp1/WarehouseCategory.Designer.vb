@@ -41,18 +41,18 @@ Partial Class WarehouseCategory
         Me.bEdit = New System.Windows.Forms.Button()
         Me.bAdd = New System.Windows.Forms.Button()
         Me.dgvCategory = New System.Windows.Forms.DataGridView()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.gbProducts = New System.Windows.Forms.GroupBox()
         Me.bAddProduct = New System.Windows.Forms.Button()
         Me.dgvProduct = New System.Windows.Forms.DataGridView()
-        Me.Warehouse = New LibraryDataset.Warehouse()
         Me.ProductIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProductNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TotalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Edit = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Delete = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.Warehouse = New LibraryDataset.Warehouse()
         Me.groupBox1.SuspendLayout()
         CType(Me.dgvCategory, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox2.SuspendLayout()
+        Me.gbProducts.SuspendLayout()
         CType(Me.dgvProduct, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Warehouse, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -245,16 +245,16 @@ Partial Class WarehouseCategory
         Me.dgvCategory.Size = New System.Drawing.Size(832, 238)
         Me.dgvCategory.TabIndex = 1
         '
-        'GroupBox2
+        'gbProducts
         '
-        Me.GroupBox2.Controls.Add(Me.bAddProduct)
-        Me.GroupBox2.Controls.Add(Me.dgvProduct)
-        Me.GroupBox2.Location = New System.Drawing.Point(70, 277)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(832, 213)
-        Me.GroupBox2.TabIndex = 25
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "List products of warehouse"
+        Me.gbProducts.Controls.Add(Me.bAddProduct)
+        Me.gbProducts.Controls.Add(Me.dgvProduct)
+        Me.gbProducts.Location = New System.Drawing.Point(70, 277)
+        Me.gbProducts.Name = "gbProducts"
+        Me.gbProducts.Size = New System.Drawing.Size(832, 213)
+        Me.gbProducts.TabIndex = 25
+        Me.gbProducts.TabStop = False
+        Me.gbProducts.Text = "List products of warehouse"
         '
         'bAddProduct
         '
@@ -287,11 +287,6 @@ Partial Class WarehouseCategory
         Me.dgvProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvProduct.Size = New System.Drawing.Size(820, 147)
         Me.dgvProduct.TabIndex = 0
-        '
-        'Warehouse
-        '
-        Me.Warehouse.DataSetName = "Warehouse"
-        Me.Warehouse.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'ProductIdDataGridViewTextBoxColumn
         '
@@ -356,13 +351,18 @@ Partial Class WarehouseCategory
         Me.Delete.UseColumnTextForButtonValue = True
         Me.Delete.Width = 50
         '
+        'Warehouse
+        '
+        Me.Warehouse.DataSetName = "Warehouse"
+        Me.Warehouse.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'WarehouseCategory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(969, 837)
-        Me.Controls.Add(Me.GroupBox2)
+        Me.Controls.Add(Me.gbProducts)
         Me.Controls.Add(Me.bSave)
         Me.Controls.Add(Me.bDelete)
         Me.Controls.Add(Me.bEdit)
@@ -375,7 +375,7 @@ Partial Class WarehouseCategory
         Me.groupBox1.ResumeLayout(False)
         Me.groupBox1.PerformLayout()
         CType(Me.dgvCategory, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox2.ResumeLayout(False)
+        Me.gbProducts.ResumeLayout(False)
         CType(Me.dgvProduct, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Warehouse, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -399,7 +399,7 @@ Partial Class WarehouseCategory
     Private WithEvents txtNumberOfImport As TextBox
     Private WithEvents txtAddress As TextBox
     Private WithEvents dgvCategory As DataGridView
-    Private WithEvents GroupBox2 As GroupBox
+    Private WithEvents gbProducts As GroupBox
     Friend WithEvents dgvProduct As DataGridView
     Friend WithEvents bAddProduct As Button
     Friend WithEvents Warehouse As LibraryDataset.Warehouse

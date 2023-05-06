@@ -28,7 +28,6 @@ D:\Code\vs data\WindowsApp1\WindowsApp1\bin\Debug\LibraryDataset.dll
 D:\Code\vs data\WindowsApp1\WindowsApp1\obj\Debug\WindowsApp1.ProductSearch.resources
 D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\SalesManager.vbproj.AssemblyReference.cache
 D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\SalesManager.vbproj.SuggestedBindingRedirects.cache
-D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.CustomerCategory.resources
 D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.LoginForm.resources
 D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.MainForm.resources
 D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.Resources.resources
@@ -60,3 +59,5 @@ D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.SupplierCategory.
 D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.AccountInformation.resources
 D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.EmployeeCategory.resources
 D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\SalesManager.vbproj.ResolveComReference.cache
+D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.DecentralizationForm.resources
+D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.frmCustomerCategory.resources

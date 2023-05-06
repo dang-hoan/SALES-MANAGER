@@ -184,7 +184,7 @@ CREATE TABLE "Role"(
 );
 CREATE TABLE "Permission"(
 	"Id" INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
-    "PermissionName" NVARCHAR(25) NOT NULL,
+    "PermissionName" varchar(300) NOT NULL,
 	"CreateDate" datetime NULL,
 	"CreateBy" varchar(40) NULL,
 	"UpdateDate" datetime NULL,

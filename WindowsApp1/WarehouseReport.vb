@@ -23,6 +23,8 @@ Public Class WarehouseReport
             cbbProduct.Items.Add(New CBBItem(row(0), row(1)))
         Next
 
+        cbbWarehouse.SelectedIndex = 0
+        cbbProduct.SelectedIndex = 0
         GetValue()
 
     End Sub
@@ -30,11 +32,11 @@ Public Class WarehouseReport
     Private Sub cbbWarehouse_Click(sender As Object, e As EventArgs) Handles cbbWarehouse.Click
         Dim warehouseId = Nothing
         'Save selected productId 
-        If cbbWarehouse.Text <> "All" Then
+        If Not isAll(cbbWarehouse.Text) Then
             warehouseId = CType(cbbWarehouse.SelectedItem, CBBItem).PropItemId
         End If
 
-        If cbbProduct.Text <> "All" Then
+        If Not isAll(cbbProduct.Text) Then
             Dim productId = CType(cbbProduct.SelectedItem, CBBItem).PropItemId
             Dim dataWareHouse = clsPMSAnalysis.GetCBBWareHouseOfProduct(productId).CBBWareHouse
 
@@ -71,11 +73,11 @@ Public Class WarehouseReport
     Private Sub cbbProduct_Click(sender As Object, e As EventArgs) Handles cbbProduct.Click
         Dim productId = Nothing
         'Save selected productId 
-        If cbbProduct.Text <> "All" Then
+        If Not isAll(cbbProduct.Text) Then
             productId = CType(cbbProduct.SelectedItem, CBBItem).PropItemId
         End If
 
-        If cbbWarehouse.Text <> "All" Then
+        If Not isAll(cbbWarehouse.Text) Then
             Dim warehouseId = CType(cbbWarehouse.SelectedItem, CBBItem).PropItemId
             Dim dataProduct = clsPMSAnalysis.GetCBBProductOfWareHouse(warehouseId).CBBProduct
 
@@ -110,7 +112,7 @@ Public Class WarehouseReport
     End Sub
 
     Private Sub GetValue()
-        If cbbWarehouse.Text <> "All" And cbbProduct.Text <> "All" Then
+        If Not isAll(cbbWarehouse.Text) And Not isAll(cbbProduct.Text) Then
             Dim data = clsOrderDetail.GetSalesDetailByProductId(CType(cbbProduct.SelectedItem, CBBItem).PropItemId)
             Dim dataOrderDetail = clsOrderDetail.GetOrderDetailView()
 
@@ -143,7 +145,7 @@ Public Class WarehouseReport
                 chartReport.Series("Sales").Points.AddXY(i, listSales(year - i))
             Next
 
-        ElseIf cbbWarehouse.Text = "All" And cbbProduct.Text = "All" Then
+        ElseIf isAll(cbbWarehouse.Text) And isAll(cbbProduct.Text) Then
             Dim data = clsOrderDetail.GetAllSalesDetail()
             Dim dataOrder = clsOrderDetail.GetOrderView()
 
@@ -195,6 +197,15 @@ Public Class WarehouseReport
     Private Sub cbbProduct_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cbbProduct.SelectionChangeCommitted
         GetValue()
     End Sub
+
+    Private Function isAll(ByVal cbbText As String) As Boolean
+        If cbbText = "All" Or cbbText = "" Then
+            Return True
+        Else
+            Return False
+        End If
+
+    End Function
 
 
     ' Shouldn't do this (-> non-response program)

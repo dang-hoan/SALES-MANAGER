@@ -95,7 +95,7 @@ Partial Class SalesOrder
         Me.bDelete.Cursor = System.Windows.Forms.Cursors.Hand
         Me.bDelete.Image = CType(resources.GetObject("bDelete.Image"), System.Drawing.Image)
         Me.bDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bDelete.Location = New System.Drawing.Point(243, 738)
+        Me.bDelete.Location = New System.Drawing.Point(405, 738)
         Me.bDelete.Name = "bDelete"
         Me.bDelete.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.bDelete.Size = New System.Drawing.Size(139, 48)
@@ -545,7 +545,7 @@ Partial Class SalesOrder
         Me.bEdit.Cursor = System.Windows.Forms.Cursors.Hand
         Me.bEdit.Image = CType(resources.GetObject("bEdit.Image"), System.Drawing.Image)
         Me.bEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bEdit.Location = New System.Drawing.Point(405, 738)
+        Me.bEdit.Location = New System.Drawing.Point(243, 738)
         Me.bEdit.Name = "bEdit"
         Me.bEdit.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.bEdit.Size = New System.Drawing.Size(139, 48)

@@ -72,14 +72,14 @@ Partial Class ProductSearch
         Me.dgvProductSearch.AllowUserToDeleteRows = False
         Me.dgvProductSearch.BackgroundColor = System.Drawing.Color.White
         Me.dgvProductSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvProductSearch.Location = New System.Drawing.Point(54, 377)
+        Me.dgvProductSearch.Location = New System.Drawing.Point(54, 384)
         Me.dgvProductSearch.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.dgvProductSearch.Name = "dgvProductSearch"
         Me.dgvProductSearch.ReadOnly = True
         Me.dgvProductSearch.RowHeadersWidth = 62
         Me.dgvProductSearch.RowTemplate.Height = 33
         Me.dgvProductSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvProductSearch.Size = New System.Drawing.Size(853, 393)
+        Me.dgvProductSearch.Size = New System.Drawing.Size(853, 339)
         Me.dgvProductSearch.TabIndex = 1
         '
         'groupBox1
@@ -289,7 +289,7 @@ Partial Class ProductSearch
         Me.btnExport.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnExport.Image = CType(resources.GetObject("btnExport.Image"), System.Drawing.Image)
         Me.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnExport.Location = New System.Drawing.Point(768, 788)
+        Me.btnExport.Location = New System.Drawing.Point(768, 746)
         Me.btnExport.Name = "btnExport"
         Me.btnExport.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.btnExport.Size = New System.Drawing.Size(139, 48)
@@ -302,7 +302,7 @@ Partial Class ProductSearch
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(969, 857)
+        Me.ClientSize = New System.Drawing.Size(969, 818)
         Me.Controls.Add(Me.btnExport)
         Me.Controls.Add(Me.groupBox1)
         Me.Controls.Add(Me.dgvProductSearch)

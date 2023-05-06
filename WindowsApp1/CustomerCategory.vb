@@ -1,15 +1,68 @@
 ﻿Imports LibraryDataset
 Imports LibraryCommon
 
-Public Class CustomerCategory
+Public Class frmCustomerCategory
     Dim conn As New connCommon()
     Dim clsPMSAnalysis As New clsPerson(conn.connSales.ConnectionString)
     Dim clsAccount As New clsAccount(conn.connSales.ConnectionString)
+    Dim clsRolePermission As New clsRolePermission(conn.connSales.ConnectionString)
 
     Private isAddFirstName As Boolean = False
     Private isAddLastName As Boolean = False
     Private Sub CustomerCategory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Reload()
+        SetVisibleForPermission()
+    End Sub
+    Private Sub SetVisibleForPermission()
+        bAdd.Visible = False
+        bEdit.Visible = False
+        bDelete.Visible = False
+        bSave.Visible = False
+        Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
+        For Each permission In dataPermission
+            Dim form = permission(1).split(":")(0)
+            Dim permiss = Strings.Split(Strings.Split(permission(1), ": ")(1), ", ")
+            If form = "Customer category" Then
+                For Each p In permiss
+                    Select Case p
+                        Case "Add"
+                            bAdd.Visible = True
+                            bSave.Visible = True
+                        Case "Edit"
+                            bEdit.Visible = True
+                            bSave.Visible = True
+                        Case "Delete"
+                            bDelete.Visible = True
+                    End Select
+                Next
+                Exit For
+            End If
+        Next
+        CenterButtons()
+    End Sub
+
+    Private Sub CenterButtons()
+        Dim listButtons = New List(Of Button) From {bAdd, bEdit, bDelete, bSave}
+        Dim totalWidth As Integer = 0
+        Dim count = 0
+
+        For Each btn As Button In listButtons
+            If btn.Visible = True Then
+                totalWidth += btn.Width
+                count += 1
+            End If
+        Next
+
+        Dim offset_between = 30
+        Dim x As Integer = (Me.Width - totalWidth - offset_between * (count - 1)) / 2
+        Dim y As Integer = 450
+
+        For Each btn As Button In listButtons
+            If btn.Visible = True Then
+                btn.Location = New Point(x, y)
+                x += btn.Width + offset_between
+            End If
+        Next
     End Sub
 
     Private Sub Reload()
@@ -135,7 +188,7 @@ Public Class CustomerCategory
 
         ElseIf countString(txtEmail.Text, "gmail.com") <> 1 Or Not txtEmail.Text.EndsWith("@gmail.com") Then
             MsgBox("Email invalidate!")
-        Return False
+            Return False
         End If
 
         Return True
