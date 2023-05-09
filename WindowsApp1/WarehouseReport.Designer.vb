@@ -43,6 +43,11 @@ Partial Class WarehouseReport
         Me.labelSales = New System.Windows.Forms.Label()
         Me.chartReport = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.btnExport = New System.Windows.Forms.Button()
+        Me.cbbFromYear = New System.Windows.Forms.ComboBox()
+        Me.cbbToYear = New System.Windows.Forms.ComboBox()
         CType(Me.pictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panel1.SuspendLayout()
@@ -54,7 +59,7 @@ Partial Class WarehouseReport
         'label1
         '
         Me.label1.AutoSize = True
-        Me.label1.Location = New System.Drawing.Point(197, 114)
+        Me.label1.Location = New System.Drawing.Point(159, 114)
         Me.label1.Name = "label1"
         Me.label1.Size = New System.Drawing.Size(91, 20)
         Me.label1.TabIndex = 0
@@ -64,7 +69,7 @@ Partial Class WarehouseReport
         '
         Me.cbbWarehouse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbbWarehouse.FormattingEnabled = True
-        Me.cbbWarehouse.Location = New System.Drawing.Point(309, 59)
+        Me.cbbWarehouse.Location = New System.Drawing.Point(271, 59)
         Me.cbbWarehouse.Name = "cbbWarehouse"
         Me.cbbWarehouse.Size = New System.Drawing.Size(188, 28)
         Me.cbbWarehouse.TabIndex = 1
@@ -73,7 +78,7 @@ Partial Class WarehouseReport
         '
         Me.pictureBox1.BackgroundImage = CType(resources.GetObject("pictureBox1.BackgroundImage"), System.Drawing.Image)
         Me.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.pictureBox1.Location = New System.Drawing.Point(201, 24)
+        Me.pictureBox1.Location = New System.Drawing.Point(163, 24)
         Me.pictureBox1.Name = "pictureBox1"
         Me.pictureBox1.Size = New System.Drawing.Size(93, 83)
         Me.pictureBox1.TabIndex = 4
@@ -83,7 +88,7 @@ Partial Class WarehouseReport
         '
         Me.pictureBox2.BackgroundImage = CType(resources.GetObject("pictureBox2.BackgroundImage"), System.Drawing.Image)
         Me.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.pictureBox2.Location = New System.Drawing.Point(548, 33)
+        Me.pictureBox2.Location = New System.Drawing.Point(510, 33)
         Me.pictureBox2.Name = "pictureBox2"
         Me.pictureBox2.Size = New System.Drawing.Size(73, 63)
         Me.pictureBox2.TabIndex = 7
@@ -93,7 +98,7 @@ Partial Class WarehouseReport
         '
         Me.cbbProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbbProduct.FormattingEnabled = True
-        Me.cbbProduct.Location = New System.Drawing.Point(651, 59)
+        Me.cbbProduct.Location = New System.Drawing.Point(613, 59)
         Me.cbbProduct.Name = "cbbProduct"
         Me.cbbProduct.Size = New System.Drawing.Size(196, 28)
         Me.cbbProduct.TabIndex = 6
@@ -101,7 +106,7 @@ Partial Class WarehouseReport
         'label2
         '
         Me.label2.AutoSize = True
-        Me.label2.Location = New System.Drawing.Point(557, 114)
+        Me.label2.Location = New System.Drawing.Point(519, 114)
         Me.label2.Name = "label2"
         Me.label2.Size = New System.Drawing.Size(64, 20)
         Me.label2.TabIndex = 5
@@ -218,7 +223,7 @@ Partial Class WarehouseReport
         Me.chartReport.ChartAreas.Add(ChartArea1)
         Legend1.Name = "Legend1"
         Me.chartReport.Legends.Add(Legend1)
-        Me.chartReport.Location = New System.Drawing.Point(68, 322)
+        Me.chartReport.Location = New System.Drawing.Point(68, 359)
         Me.chartReport.Name = "chartReport"
         Series1.ChartArea = "ChartArea1"
         Series1.Legend = "Legend1"
@@ -233,17 +238,68 @@ Partial Class WarehouseReport
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.LightSeaGreen
-        Me.Label3.Location = New System.Drawing.Point(240, 739)
+        Me.Label3.Location = New System.Drawing.Point(240, 763)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(488, 32)
         Me.Label3.TabIndex = 17
         Me.Label3.Text = "Chart showing sales over the years"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(236, 308)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(84, 20)
+        Me.Label4.TabIndex = 20
+        Me.Label4.Text = "From year:"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(575, 308)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(65, 20)
+        Me.Label5.TabIndex = 21
+        Me.Label5.Text = "To year:"
+        '
+        'btnExport
+        '
+        Me.btnExport.BackColor = System.Drawing.Color.SandyBrown
+        Me.btnExport.Location = New System.Drawing.Point(793, 763)
+        Me.btnExport.Name = "btnExport"
+        Me.btnExport.Size = New System.Drawing.Size(108, 41)
+        Me.btnExport.TabIndex = 22
+        Me.btnExport.Text = "Export"
+        Me.btnExport.UseVisualStyleBackColor = False
+        '
+        'cbbFromYear
+        '
+        Me.cbbFromYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbFromYear.FormattingEnabled = True
+        Me.cbbFromYear.Location = New System.Drawing.Point(326, 305)
+        Me.cbbFromYear.Name = "cbbFromYear"
+        Me.cbbFromYear.Size = New System.Drawing.Size(86, 28)
+        Me.cbbFromYear.TabIndex = 23
+        '
+        'cbbToYear
+        '
+        Me.cbbToYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbToYear.FormattingEnabled = True
+        Me.cbbToYear.Location = New System.Drawing.Point(646, 305)
+        Me.cbbToYear.Name = "cbbToYear"
+        Me.cbbToYear.Size = New System.Drawing.Size(86, 28)
+        Me.cbbToYear.TabIndex = 25
         '
         'WarehouseReport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(969, 816)
+        Me.Controls.Add(Me.cbbToYear)
+        Me.Controls.Add(Me.cbbFromYear)
+        Me.Controls.Add(Me.btnExport)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.chartReport)
         Me.Controls.Add(Me.panel3)
@@ -288,4 +344,9 @@ Partial Class WarehouseReport
     Private labelSales As System.Windows.Forms.Label
     Friend WithEvents chartReport As DataVisualization.Charting.Chart
     Friend WithEvents Label3 As Label
+    Private WithEvents Label4 As Label
+    Private WithEvents Label5 As Label
+    Friend WithEvents btnExport As Button
+    Friend WithEvents cbbFromYear As ComboBox
+    Friend WithEvents cbbToYear As ComboBox
 End Class

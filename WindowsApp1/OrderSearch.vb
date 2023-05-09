@@ -91,10 +91,10 @@ Public Class OrderSearch
                 Try
                     Number = Long.Parse(value)
                 Catch ex As FormatException
-                    MsgBox(label & " must be a integer number!")
+                    MsgBox(label & " must be a integer number!", Nothing, "Notification")
                     returnVal = False
                 Catch ex As OverflowException
-                    MsgBox(label & " is too big to handle!")
+                    MsgBox(label & " is too big to handle!", Nothing, "Notification")
                     returnVal = False
                 End Try
 
@@ -103,10 +103,10 @@ Public Class OrderSearch
                 Try
                     Number = Double.Parse(value)
                 Catch ex As FormatException
-                    MsgBox(label & " must be a number!")
+                    MsgBox(label & " must be a number!", Nothing, "Notification")
                     returnVal = False
                 Catch ex As OverflowException
-                    MsgBox(label & " is too big to handle!")
+                    MsgBox(label & " is too big to handle!", Nothing, "Notification")
                     returnVal = False
                 End Try
 
@@ -125,12 +125,12 @@ Public Class OrderSearch
 
     Private Sub btnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
         If dgvOrderSearch Is Nothing Then
-            MsgBox("No data to export!")
+            MsgBox("No data to export!", Nothing, "Notification")
             Return
         End If
 
         If dgvOrderSearch.Rows.Count = 0 Then
-            MsgBox("No data to export!")
+            MsgBox("No data to export!", Nothing, "Notification")
             Return
         End If
 
@@ -163,9 +163,9 @@ Public Class OrderSearch
             Dim res = exportToExcel(sfd.FileName, dgvOrderSearch, "order search")
 
             If res Then
-                MsgBox("Export successfully in " & sfd.FileName & "!")
+                MsgBox("Export successfully in " & sfd.FileName & "!", Nothing, "Notification")
             Else
-                MsgBox("We can't export your data because selected file is opening!")
+                MsgBox("We can't export your data because selected file is opening!", Nothing, "Notification")
             End If
         End If
     End Sub
@@ -212,6 +212,19 @@ Public Class OrderSearch
         xlWorkSheet.Cells.EntireColumn.AutoFit()
         Dim range = "A1:" & Chr(dgv.Columns.Count + 64) & (dgv.Rows.Count + 1)
         xlWorkSheet.Range(range).Cells.Borders.LineStyle = XlLineStyle.xlContinuous
+
+        range = "C:C"
+        xlWorkSheet.Range(range).EntireColumn.NumberFormat = "MM/DD/YYYY HH:mm"
+        range = "E:E"
+        xlWorkSheet.Range(range).EntireColumn.NumberFormat = "MM/DD/YYYY HH:mm"
+
+        Dim rangeName = "B:B"
+        xlWorkSheet.Range(rangeName).Cells.HorizontalAlignment = XlHAlign.xlHAlignLeft
+        rangeName = "F:F"
+        xlWorkSheet.Range(rangeName).Cells.HorizontalAlignment = XlHAlign.xlHAlignLeft
+        rangeName = "L:L"
+        xlWorkSheet.Range(rangeName).Cells.HorizontalAlignment = XlHAlign.xlHAlignLeft
+
         xlApp.DisplayAlerts = False
         Dim saved = True
         Try

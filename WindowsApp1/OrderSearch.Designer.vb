@@ -56,7 +56,7 @@ Partial Class OrderSearch
         Me.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnSearch.Image = CType(resources.GetObject("btnSearch.Image"), System.Drawing.Image)
         Me.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSearch.Location = New System.Drawing.Point(357, 256)
+        Me.btnSearch.Location = New System.Drawing.Point(262, 256)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.btnSearch.Size = New System.Drawing.Size(139, 48)
@@ -66,6 +66,7 @@ Partial Class OrderSearch
         '
         'groupBox1
         '
+        Me.groupBox1.Controls.Add(Me.btnExport)
         Me.groupBox1.Controls.Add(Me.cbSearchByShipDate)
         Me.groupBox1.Controls.Add(Me.cbSearchByOrderDate)
         Me.groupBox1.Controls.Add(Me.txtPaymentMethod)
@@ -275,7 +276,7 @@ Partial Class OrderSearch
         Me.dgvOrderSearch.RowHeadersWidth = 62
         Me.dgvOrderSearch.RowTemplate.Height = 33
         Me.dgvOrderSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvOrderSearch.Size = New System.Drawing.Size(853, 324)
+        Me.dgvOrderSearch.Size = New System.Drawing.Size(853, 371)
         Me.dgvOrderSearch.TabIndex = 1
         '
         'btnExport
@@ -285,7 +286,7 @@ Partial Class OrderSearch
         Me.btnExport.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnExport.Image = CType(resources.GetObject("btnExport.Image"), System.Drawing.Image)
         Me.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnExport.Location = New System.Drawing.Point(768, 750)
+        Me.btnExport.Location = New System.Drawing.Point(451, 256)
         Me.btnExport.Name = "btnExport"
         Me.btnExport.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.btnExport.Size = New System.Drawing.Size(139, 48)
@@ -299,7 +300,6 @@ Partial Class OrderSearch
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(969, 818)
-        Me.Controls.Add(Me.btnExport)
         Me.Controls.Add(Me.dgvOrderSearch)
         Me.Controls.Add(Me.groupBox1)
         Me.Name = "OrderSearch"

@@ -70,23 +70,23 @@ Public Class AccountInformation
             End If
 
             If result = 1 Then
-                MsgBox(type & " employee account successful!")
+                MsgBox(type & " employee account successful!", Nothing, "Notification")
                 Dim caller As EmployeeCategory = CType(Application.OpenForms("EmployeeCategory"), EmployeeCategory)
                 caller.setAccountName(txtCode.Text)
                 Me.Close()
             Else
-                MsgBox(txtCode.Text & ", " & employeeUsername & ", " & employeeCode)
-                MsgBox("There is an error when interact with database!")
+                MsgBox(txtCode.Text & ", " & employeeUsername & ", " & employeeCode, Nothing, "Notification")
+                MsgBox("There is an error when interact with database!", Nothing, "Notification")
             End If
         End If
     End Sub
     Private Function checkLogicData() As Boolean
         If txtCode.Text = "" Or txtPassword.Text = "" Or cbbStatus.SelectedIndex = -1 Then
-            MsgBox("You need to enter all the fields!")
+            MsgBox("You need to enter all the fields!", Nothing, "Notification")
             Return False
 
         ElseIf clsPMSAnalysis.CheckUsernameExists(txtCode.Text) And txtCode.Enabled = True Then
-            MsgBox("Account name already exists in the system! Let enter other account name")
+            MsgBox("Account name already exists in the system! Let enter other account name", Nothing, "Notification")
             Return False
         End If
 

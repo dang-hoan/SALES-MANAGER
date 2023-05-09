@@ -215,11 +215,11 @@ Public Class ProductCategory
 
             If result = 1 Then
                 setEnable(False)
-                MsgBox(type & " product information successful!")
+                MsgBox(type & " product information successful!", Nothing, "Notification")
                 Reload()
                 addEditDeleteEnabled(True)
             Else
-                MsgBox("There is an error when interact with database!")
+                MsgBox("There is an error when interact with database!", Nothing, "Notification")
             End If
         End If
     End Sub
@@ -227,7 +227,7 @@ Public Class ProductCategory
         If txtName.Text = "" Or cbbCategory.Text = "" Or txtPrice.Text = "" Or txtUnitPrice.Text = "" Or
             cbbStatus.Text = "" Or txtDiscount.Text = "" Or cbbWarehouse.Text = "" Or cbbSupplier.Text = "" Then
 
-            MsgBox("You need to enter all the fields!")
+            MsgBox("You need to enter all the fields!", Nothing, "Notification")
             Return False
 
         ElseIf Not CheckValue("Price", txtPrice.Text, "Double") Or
@@ -235,7 +235,7 @@ Public Class ProductCategory
             Not CheckValue("Number of products", txtNumber.Text, "Long") Then
             Return False
         ElseIf txtNumber.Text < txtSoldProducts.Text Then
-            MsgBox("Total products must be greater than sold products!")
+            MsgBox("Total products must be greater than sold products!", Nothing, "Notification")
             Return False
         End If
         Return True
@@ -254,10 +254,10 @@ Public Class ProductCategory
                 Try
                     Number = Long.Parse(value)
                 Catch ex As FormatException
-                    MsgBox(label & " must be a integer number!")
+                    MsgBox(label & " must be a integer number!", Nothing, "Notification")
                     returnVal = False
                 Catch ex As OverflowException
-                    MsgBox(label & " is too big to handle!")
+                    MsgBox(label & " is too big to handle!", Nothing, "Notification")
                     returnVal = False
                 End Try
 
@@ -266,10 +266,10 @@ Public Class ProductCategory
                 Try
                     Number = Double.Parse(value)
                 Catch ex As FormatException
-                    MsgBox(label & " must be a number!")
+                    MsgBox(label & " must be a number!", Nothing, "Notification")
                     returnVal = False
                 Catch ex As OverflowException
-                    MsgBox(label & " is too big to handle!")
+                    MsgBox(label & " is too big to handle!", Nothing, "Notification")
                     returnVal = False
                 End Try
 
@@ -287,13 +287,13 @@ Public Class ProductCategory
                 Dim result = clsPMSAnalysis.DeleteProduct(LoginForm.PropUsername, productId)
                 If result = 1 Then
                     setEnable(False)
-                    MsgBox("Delete product information successful!")
+                    MsgBox("Delete product information successful!", Nothing, "Notification")
                     Reload()
                 Else
-                    MsgBox("There is an error when interact with database!")
+                    MsgBox("There is an error when interact with database!", Nothing, "Notification")
                 End If
             Else
-                MsgBox("Product was deleted before!")
+                MsgBox("Product was deleted before!", Nothing, "Notification")
             End If
 
         End If

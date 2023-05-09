@@ -26,6 +26,7 @@ Partial Class ProductSearch
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.dgvProductSearch = New System.Windows.Forms.DataGridView()
         Me.groupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnExport = New System.Windows.Forms.Button()
         Me.txtUnitDiscount = New System.Windows.Forms.TextBox()
         Me.txtNumber = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -46,7 +47,6 @@ Partial Class ProductSearch
         Me.label6 = New System.Windows.Forms.Label()
         Me.label3 = New System.Windows.Forms.Label()
         Me.label5 = New System.Windows.Forms.Label()
-        Me.btnExport = New System.Windows.Forms.Button()
         CType(Me.dgvProductSearch, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.groupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -58,7 +58,7 @@ Partial Class ProductSearch
         Me.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnSearch.Image = CType(resources.GetObject("btnSearch.Image"), System.Drawing.Image)
         Me.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSearch.Location = New System.Drawing.Point(357, 257)
+        Me.btnSearch.Location = New System.Drawing.Point(265, 257)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.btnSearch.Size = New System.Drawing.Size(139, 48)
@@ -79,11 +79,12 @@ Partial Class ProductSearch
         Me.dgvProductSearch.RowHeadersWidth = 62
         Me.dgvProductSearch.RowTemplate.Height = 33
         Me.dgvProductSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvProductSearch.Size = New System.Drawing.Size(853, 339)
+        Me.dgvProductSearch.Size = New System.Drawing.Size(853, 389)
         Me.dgvProductSearch.TabIndex = 1
         '
         'groupBox1
         '
+        Me.groupBox1.Controls.Add(Me.btnExport)
         Me.groupBox1.Controls.Add(Me.txtUnitDiscount)
         Me.groupBox1.Controls.Add(Me.txtNumber)
         Me.groupBox1.Controls.Add(Me.btnSearch)
@@ -111,6 +112,21 @@ Partial Class ProductSearch
         Me.groupBox1.TabIndex = 6
         Me.groupBox1.TabStop = False
         Me.groupBox1.Text = "Detail"
+        '
+        'btnExport
+        '
+        Me.btnExport.BackColor = System.Drawing.Color.SandyBrown
+        Me.btnExport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnExport.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnExport.Image = CType(resources.GetObject("btnExport.Image"), System.Drawing.Image)
+        Me.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnExport.Location = New System.Drawing.Point(448, 257)
+        Me.btnExport.Name = "btnExport"
+        Me.btnExport.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnExport.Size = New System.Drawing.Size(139, 48)
+        Me.btnExport.TabIndex = 23
+        Me.btnExport.Text = "Export"
+        Me.btnExport.UseVisualStyleBackColor = False
         '
         'txtUnitDiscount
         '
@@ -282,28 +298,12 @@ Partial Class ProductSearch
         Me.label5.TabIndex = 7
         Me.label5.Text = "Product status"
         '
-        'btnExport
-        '
-        Me.btnExport.BackColor = System.Drawing.Color.SandyBrown
-        Me.btnExport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnExport.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnExport.Image = CType(resources.GetObject("btnExport.Image"), System.Drawing.Image)
-        Me.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnExport.Location = New System.Drawing.Point(768, 746)
-        Me.btnExport.Name = "btnExport"
-        Me.btnExport.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnExport.Size = New System.Drawing.Size(139, 48)
-        Me.btnExport.TabIndex = 23
-        Me.btnExport.Text = "Export"
-        Me.btnExport.UseVisualStyleBackColor = False
-        '
         'ProductSearch
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(969, 818)
-        Me.Controls.Add(Me.btnExport)
         Me.Controls.Add(Me.groupBox1)
         Me.Controls.Add(Me.dgvProductSearch)
         Me.Name = "ProductSearch"

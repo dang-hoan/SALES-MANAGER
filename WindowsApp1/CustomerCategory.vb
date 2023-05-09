@@ -162,12 +162,12 @@ Public Class frmCustomerCategory
 
             If result = 1 Then
                 setEnable(False)
-                MsgBox(type & " customer information successful!")
+                MsgBox(type & " customer information successful!", Nothing, "Notification")
                 Reload()
                 addEditDeleteEnabled(True)
                 setPlaceHolderEnable(False)
             Else
-                MsgBox("There is an error when interact with database!")
+                MsgBox("There is an error when interact with database!", Nothing, "Notification")
             End If
         End If
     End Sub
@@ -176,18 +176,18 @@ Public Class frmCustomerCategory
         If txtCustomerFirstName.Text = "" Or isAddFirstName = True Or isAddLastName = True Or txtCustomerLastName.Text = "" Or txtPhone.Text = "" Or txtAddress.Text = "" Or
             txtEmail.Text = "" Then
 
-            MsgBox("You need to enter all the fields!")
+            MsgBox("You need to enter all the fields!", Nothing, "Notification")
             Return False
 
         ElseIf Not CheckValue("Phone", txtPhone.Text, "Long") Then
             Return False
 
         ElseIf Not txtPhone.Text.StartsWith("0") Then
-            MsgBox("Phone number must be started with '0'!")
+            MsgBox("Phone number must be started with '0'!", Nothing, "Notification")
             Return False
 
         ElseIf countString(txtEmail.Text, "gmail.com") <> 1 Or Not txtEmail.Text.EndsWith("@gmail.com") Then
-            MsgBox("Email invalidate!")
+            MsgBox("Email invalidate!", Nothing, "Notification")
             Return False
         End If
 
@@ -207,10 +207,10 @@ Public Class frmCustomerCategory
                 Try
                     Number = Long.Parse(value)
                 Catch ex As FormatException
-                    MsgBox(label & " must be a integer number!")
+                    MsgBox(label & " must be a integer number!", Nothing, "Notification")
                     returnVal = False
                 Catch ex As OverflowException
-                    MsgBox(label & " is too big to handle!")
+                    MsgBox(label & " is too big to handle!", Nothing, "Notification")
                     returnVal = False
                 End Try
 
@@ -219,10 +219,10 @@ Public Class frmCustomerCategory
                 Try
                     Number = Double.Parse(value)
                 Catch ex As FormatException
-                    MsgBox(label & " must be a number!")
+                    MsgBox(label & " must be a number!", Nothing, "Notification")
                     returnVal = False
                 Catch ex As OverflowException
-                    MsgBox(label & " is too big to handle!")
+                    MsgBox(label & " is too big to handle!", Nothing, "Notification")
                     returnVal = False
                 End Try
 
@@ -246,13 +246,13 @@ Public Class frmCustomerCategory
                 Dim result = clsPMSAnalysis.DeleteUser(LoginForm.PropUsername, username)
                 If result = 1 Then
                     setEnable(False)
-                    MsgBox("Delete customer information successful!")
+                    MsgBox("Delete customer information successful!", Nothing, "Notification")
                     Reload()
                 Else
-                    MsgBox("There is an error when interact with database!")
+                    MsgBox("There is an error when interact with database!", Nothing, "Notification")
                 End If
             Else
-                MsgBox("User was deleted before!")
+                MsgBox("User was deleted before!", Nothing, "Notification")
             End If
 
         End If

@@ -74,6 +74,14 @@ Public Class clsOrderDetail
         taSalesDetail.Connection = conn
         Return taSalesDetail.GetSalesDetailByProductId(productId)
     End Function
+    Public Function GetSalesDetailByWarehouseId(ByVal warehouseId As Long) As OrderDetail.SalesDetailDataTable
+        taSalesDetail.Connection = conn
+        Return taSalesDetail.GetSalesDetailByWarehouseId(warehouseId)
+    End Function
+    Public Function GetSalesDetailByProductName(ByVal productName As String) As OrderDetail.SalesDetailDataTable
+        taSalesDetail.Connection = conn
+        Return taSalesDetail.GetSalesDetailByProductName(productName)
+    End Function
     Public Function UpdateSalesDetail(ByVal WareHouseId As Long, ByVal ProductId As Long, ByVal Total As Long, ByVal SellNumber As Long, ByVal SalesTotal As Double) As Integer
         taSalesDetail.Connection = conn
         Return taSalesDetail.UpdateSalesDetail(WareHouseId, ProductId, Total, SellNumber, SalesTotal)
@@ -136,7 +144,7 @@ Public Class clsOrderDetail
 
         cmd.CommandText = "SELECT Id, CustomerName, OrderDate, ShipperId, ShipDate, ShipAddress, ShipPostalCode, ShipPrice, StatusId, PrivateDiscount, TotalPrice, PaymentMethod
                     FROM   [Order]
-                    WHERE (ShipAddress LIKE @ShipAddress) AND (PaymentMethod LIKE @PaymentMethod) AND (CustomerName LIKE @CustomerName) " & code & shipIdStr & statusIdStr & dateOrderStr & dateShipStr
+                    WHERE (ShipAddress LIKE @ShipAddress) AND (PaymentMethod LIKE @PaymentMethod) AND (CustomerName LIKE @CustomerName) AND [Order].IsDelete = 'False' " & code & shipIdStr & statusIdStr & dateOrderStr & dateShipStr
 
         taOrder.Connection = conn
         'command.CommandType = CommandType.StoredProcedure

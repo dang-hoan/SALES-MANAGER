@@ -5767,7 +5767,8 @@ Namespace CBBTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT Person.Username, Person.LastName + ' ' + Person.FirstName AS ShipperName"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
                 "FROM   Person INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             Role ON Person.RoleId = Role.Id"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (R"& _ 
-                "ole.RoleName = N'Shipper') AND (Person.IsDelete = 'False')"
+                "ole.RoleName = N'Shipper') AND (Person.IsDelete = 'False') AND (Person.Username "& _ 
+                "IS NOT NULL)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

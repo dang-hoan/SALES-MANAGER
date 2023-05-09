@@ -130,10 +130,10 @@ Public Class ProductSearch
                 Try
                     Number = Long.Parse(value)
                 Catch ex As FormatException
-                    MsgBox(label & " must be a integer number!")
+                    MsgBox(label & " must be a integer number!", Nothing, "Notification")
                     returnVal = False
                 Catch ex As OverflowException
-                    MsgBox(label & " is too big to handle!")
+                    MsgBox(label & " is too big to handle!", Nothing, "Notification")
                     returnVal = False
                 End Try
 
@@ -142,10 +142,10 @@ Public Class ProductSearch
                 Try
                     Number = Double.Parse(value)
                 Catch ex As FormatException
-                    MsgBox(label & " must be a number!")
+                    MsgBox(label & " must be a number!", Nothing, "Notification")
                     returnVal = False
                 Catch ex As OverflowException
-                    MsgBox(label & " is too big to handle!")
+                    MsgBox(label & " is too big to handle!", Nothing, "Notification")
                     returnVal = False
                 End Try
 
@@ -156,12 +156,12 @@ Public Class ProductSearch
     End Function
     Private Sub btnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
         If dgvProductSearch Is Nothing Then
-            MsgBox("No data to export!")
+            MsgBox("No data to export!", Nothing, "Notification")
             Return
         End If
 
         If dgvProductSearch.Rows.Count = 0 Then
-            MsgBox("No data to export!")
+            MsgBox("No data to export!", Nothing, "Notification")
             Return
         End If
 
@@ -194,9 +194,9 @@ Public Class ProductSearch
             Dim res = exportToExcel(sfd.FileName, dgvProductSearch, "order search")
 
             If res Then
-                MsgBox("Export successfully in " & sfd.FileName & "!")
+                MsgBox("Export successfully in " & sfd.FileName & "!", Nothing, "Notification")
             Else
-                MsgBox("We can't export your data because selected file is opening!")
+                MsgBox("We can't export your data because selected file is opening!", Nothing, "Notification")
             End If
         End If
     End Sub
@@ -243,7 +243,12 @@ Public Class ProductSearch
         xlWorkSheet.Cells.EntireColumn.AutoFit()
         Dim range = "A1:" & Chr(dgv.Columns.Count + 64) & (dgv.Rows.Count + 1)
         xlWorkSheet.Range(range).Cells.Borders.LineStyle = XlLineStyle.xlContinuous
+
+        Dim rangeName = "B:B"
+        xlWorkSheet.Range(rangeName).Cells.HorizontalAlignment = XlHAlign.xlHAlignLeft
+
         xlApp.DisplayAlerts = False
+
         Dim saved = True
         Try
             xlWorkSheet.SaveAs(path)

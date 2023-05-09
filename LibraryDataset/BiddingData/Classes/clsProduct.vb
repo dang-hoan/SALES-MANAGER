@@ -121,7 +121,7 @@ Public Class clsProduct
                             OR @IsCategoryIdEntered = -1) AND (Product.ProductPrice = @ProductPrice OR @IsProductPriceEntered = -1) 
                             AND (Product.ProductStatusId = @ProductStatusId OR @IsProductStatusIdEntered = -1) 
                             AND (Product.DiscountPercent = @DiscountPercent OR @IsDiscountPercentEntered = -1)
-                            AND (SalesDetail.WareHouseId = @WareHouseId OR @IsWareHouseIdEntered = -1) AND (SalesDetail.Total = @Total OR @IsTotalEntered = -1)"
+                            AND (SalesDetail.WareHouseId = @WareHouseId OR @IsWareHouseIdEntered = -1) AND (SalesDetail.Total = @Total OR @IsTotalEntered = -1) AND Product.IsDelete = 'False'"
 
         taProductSalesDetail.Connection = conn
         'command.CommandType = CommandType.StoredProcedure

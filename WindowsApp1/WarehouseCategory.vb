@@ -119,7 +119,7 @@ Public Class WarehouseCategory
 
     Private Sub bEdit_Click(sender As Object, e As EventArgs) Handles bEdit.Click
         If dgvCategory.Rows.Count = 0 Then
-            MsgBox("There isn't any warehouse information to edit!")
+            MsgBox("There isn't any warehouse information to edit!", Nothing, "Notification")
         Else
             addEditDeleteEnabled(False)
             bDelete.Enabled = True
@@ -187,12 +187,12 @@ Public Class WarehouseCategory
             result = clsPMSAnalysis.UpdateWarehouse(selectedWarehouse, txtName.Text, txtAddress.Text, txtNumberOfImport.Text, txtNumberOfExport.Text, LoginForm.PropUsername)
             If result = 1 Then
                 setEnable(False)
-                MsgBox(type & " warehouse information successful!")
+                MsgBox(type & " warehouse information successful!", Nothing, "Notification")
                 Reload()
                 addEditDeleteEnabled(True)
                 isSaved = True
             Else
-                MsgBox("There is an error when interact with database!")
+                MsgBox("There is an error when interact with database!", Nothing, "Notification")
             End If
         End If
     End Sub
@@ -201,7 +201,7 @@ Public Class WarehouseCategory
         If txtName.Text = "" Or txtAddress.Text = "" Or txtNumberOfImport.Text = "" Or
             txtNumberOfExport.Text = "" Then
 
-            MsgBox("You need to enter all the fields!")
+            MsgBox("You need to enter all the fields!", Nothing, "Notification")
             Return False
 
         ElseIf Not CheckValue("Warehouse code", txtCode.Text, "Long") Or
@@ -225,10 +225,10 @@ Public Class WarehouseCategory
                 Try
                     Number = Long.Parse(value)
                 Catch ex As FormatException
-                    MsgBox(label & " must be a integer number!")
+                    MsgBox(label & " must be a integer number!", Nothing, "Notification")
                     returnVal = False
                 Catch ex As OverflowException
-                    MsgBox(label & " is too big to handle!")
+                    MsgBox(label & " is too big to handle!", Nothing, "Notification")
                     returnVal = False
                 End Try
 
@@ -237,10 +237,10 @@ Public Class WarehouseCategory
                 Try
                     Number = Double.Parse(value)
                 Catch ex As FormatException
-                    MsgBox(label & " must be a number!")
+                    MsgBox(label & " must be a number!", Nothing, "Notification")
                     returnVal = False
                 Catch ex As OverflowException
-                    MsgBox(label & " is too big to handle!")
+                    MsgBox(label & " is too big to handle!", Nothing, "Notification")
                     returnVal = False
                 End Try
 
@@ -255,10 +255,10 @@ Public Class WarehouseCategory
             Dim warehouseId = txtCode.Text
             Dim result = clsPMSAnalysis.DeleteWarehouse(warehouseId, LoginForm.PropUsername)
             If result = 1 Then
-                MsgBox("Delete warehouse information successful!")
+                MsgBox("Delete warehouse information successful!", Nothing, "Notification")
                 Reload()
             Else
-                MsgBox("There is an error when interact with database!")
+                MsgBox("There is an error when interact with database!", Nothing, "Notification")
             End If
 
         End If
@@ -296,12 +296,12 @@ Public Class WarehouseCategory
                     result = clsProduct.DeleteSalesDetail(dgvProduct.CurrentRow.Cells(0).Value.ToString)
                 End If
                 If result = 1 Then
-                    MsgBox("Delete product information successful!")
+                    MsgBox("Delete product information successful!", Nothing, "Notification")
                     Dim selectedWarehouse = If(txtCode.Text = "", warehouseId, txtCode.Text)
                     Warehouse.Clear()
                     Warehouse.Merge(clsPMSAnalysis.GetProductsOfWarehouse(selectedWarehouse))
                 Else
-                    MsgBox("There is an error when interact with database!")
+                    MsgBox("There is an error when interact with database!", Nothing, "Notification")
                 End If
         End Select
     End Sub

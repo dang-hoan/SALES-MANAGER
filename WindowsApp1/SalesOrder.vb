@@ -150,7 +150,7 @@ Public Class SalesOrder
             dgvOrder.DataSource = table
             setValue()
         Else
-            MsgBox("There isn't any sales order to show!")
+            MsgBox("There isn't any sales order to show!", Nothing, "Notification")
         End If
         setEnable(False)
     End Sub
@@ -233,7 +233,7 @@ Public Class SalesOrder
                 bDelete.Enabled = True
                 setEnable(True)
             Else
-                MsgBox("Order was delevered to customer, you can't edit it!")
+                MsgBox("Order was delevered to customer, you can't edit it!", Nothing, "Notification")
             End If
         End If
     End Sub
@@ -305,7 +305,7 @@ Public Class SalesOrder
             Dim hasDelevered = False
             If cbbShipStatus.SelectedItem IsNot Nothing Then
                 If CType(cbbShipStatus.SelectedItem, CBBItem).PropItemId = clsCBB.GetDeleveredId().Rows(0)(0) Then
-                    Dim ask As MsgBoxResult = MsgBox("Once the order is updated to delivered, you won't be able to edit it in the future! Are you sure to save the order?", MsgBoxStyle.YesNo)
+                    Dim ask As MsgBoxResult = MsgBox("Once the order is updated to delivered, you won't be able to edit it in the future! Are you sure to save the order?", MsgBoxStyle.YesNo, "Notification")
                     If ask = MsgBoxResult.No Then
                         Exit Sub
                     Else
@@ -440,17 +440,17 @@ Public Class SalesOrder
 
             If result = 1 Then
                 setEnable(False)
-                MsgBox(type & " order information successful!")
+                MsgBox(type & " order information successful!", Nothing, "Notification")
                 Reload()
                 addEditDeleteEnabled(True)
             ElseIf result = 123 Then
                 If number <= 0 Then
-                    MsgBox("The item has id " & stockId & " is out of stock!")
+                    MsgBox("The item has id " & stockId & " is out of stock!", Nothing, "Notification")
                 Else
-                    MsgBox("The item has id " & stockId & " only " & number & " left!")
+                    MsgBox("The item has id " & stockId & " only " & number & " left!", Nothing, "Notification")
                 End If
             Else
-                MsgBox("There is an error when interact with database!")
+                MsgBox("There is an error when interact with database!", Nothing, "Notification")
             End If
         End If
     End Sub
@@ -464,7 +464,7 @@ Public Class SalesOrder
         If txtCustomerName.Text = "" Or cbbShipper.Text = "" Or
             txtShipAddress.Text = "" Or cbbShipStatus.Text = "" Or txtPaymentMethod.Text = "" Then
 
-            MsgBox("You need to enter all the fields!")
+            MsgBox("You need to enter all the fields!", Nothing, "Notification")
             Return False
 
         ElseIf Not CheckValue("Ship fee", txtShipFee.Text, "Double") Or
@@ -489,12 +489,12 @@ Public Class SalesOrder
                     Number = Long.Parse(value)
                 Catch ex As FormatException
                     If warning Then
-                        MsgBox(label & " must be a integer number!")
+                        MsgBox(label & " must be a integer number!", Nothing, "Notification")
                     End If
                     returnVal = False
                 Catch ex As OverflowException
                     If warning Then
-                        MsgBox(label & " is too big to handle!")
+                        MsgBox(label & " is too big to handle!", Nothing, "Notification")
                     End If
                     returnVal = False
                 End Try
@@ -505,12 +505,12 @@ Public Class SalesOrder
                     Number = Double.Parse(value)
                 Catch ex As FormatException
                     If warning Then
-                        MsgBox(label & " must be a number!")
+                        MsgBox(label & " must be a number!", Nothing, "Notification")
                     End If
                     returnVal = False
                 Catch ex As OverflowException
                     If warning Then
-                        MsgBox(label & " is too big to handle!")
+                        MsgBox(label & " is too big to handle!", Nothing, "Notification")
                     End If
                     returnVal = False
                 End Try
@@ -562,7 +562,7 @@ Public Class SalesOrder
         Dim number
 
         If cbbProduct.Text = "" Then
-            MsgBox("You haven't selected product to add yet!")
+            MsgBox("You haven't selected product to add yet!", Nothing, "Notification")
             Exit Sub
         ElseIf txtNumber.Text = "" Then
             number = "0"
@@ -610,7 +610,7 @@ Public Class SalesOrder
             listBuyProduct.Items.RemoveAt(listBuyProduct.SelectedIndices(0))
 
         Else
-            MsgBox("You haven't selected the product in table you want to delete yet!")
+            MsgBox("You haven't selected the product in table you want to delete yet!", Nothing, "Notification")
         End If
         CalculateTotalPrice()
     End Sub
@@ -619,9 +619,9 @@ Public Class SalesOrder
         If txtOrderCode.Text <> "" Then
             Dim result = clsPMSAnalysis.DeleteOrder(txtOrderCode.Text, LoginForm.PropUsername)
             If result = 1 Then
-                MsgBox("Delete order successful!")
+                MsgBox("Delete order successful!", Nothing, "Notification")
             Else
-                MsgBox("There is an error when interact with database!")
+                MsgBox("There is an error when interact with database!", Nothing, "Notification")
             End If
         End If
         Reload()

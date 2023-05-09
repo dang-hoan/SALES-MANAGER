@@ -46,4 +46,8 @@ Public Class clsWarehouse
         ta.Connection = conn
         Return ta.UpdateExportsOfWarehouse(numberOfExports, warehouseId)
     End Function
+    Public Function CheckWareHouseContainProduct(ByVal warehouseId As Long, ByVal productId As Long) As Boolean
+        taSalesDetail.Connection = conn
+        Return If(taSalesDetail.CheckWareHouseContainProduct(warehouseId, productId).Rows.Count > 0, True, False)
+    End Function
 End Class

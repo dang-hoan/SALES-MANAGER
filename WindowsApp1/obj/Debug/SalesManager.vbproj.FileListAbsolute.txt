@@ -61,3 +61,9 @@ D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.EmployeeCategory.
 D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\SalesManager.vbproj.ResolveComReference.cache
 D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.DecentralizationForm.resources
 D:\Code\vs data\SalesManager\WindowsApp1\obj\Debug\WindowsApp1.frmCustomerCategory.resources
+D:\Code\vs data\SalesManager\WindowsApp1\bin\Debug\EPPlus.dll
+D:\Code\vs data\SalesManager\WindowsApp1\bin\Debug\EPPlus.Interfaces.dll
+D:\Code\vs data\SalesManager\WindowsApp1\bin\Debug\EPPlus.System.Drawing.dll
+D:\Code\vs data\SalesManager\WindowsApp1\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+D:\Code\vs data\SalesManager\WindowsApp1\bin\Debug\EPPlus.xml
+D:\Code\vs data\SalesManager\WindowsApp1\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml

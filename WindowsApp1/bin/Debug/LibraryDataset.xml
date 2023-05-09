@@ -402,17 +402,17 @@ Used to sort self-referenced table's rows
 Represents a strongly typed in-memory cache of data.
 </summary>
 </member>
+<member name="T:LibraryDataset.OrderDetail.SalesDetailDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:LibraryDataset.OrderDetail.SalesOrderDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
 </member>
 <member name="T:LibraryDataset.OrderDetail.OrderDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
-<member name="T:LibraryDataset.OrderDetail.SalesDetailDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>

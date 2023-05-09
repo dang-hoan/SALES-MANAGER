@@ -482,7 +482,7 @@ Public Class DecentralizationForm
         If roleName <> "" Then
             Dim result = clsPMSAnalysis.AddRole(roleName, LoginForm.PropUsername)
             If result = 1 Then
-                MsgBox("Add new role successful!")
+                MsgBox("Add new role successful!", Nothing, "Notification")
                 isNew = True
                 Reload()
                 ClearValue()
@@ -493,7 +493,7 @@ Public Class DecentralizationForm
                     isNew = False
                 End If
             Else
-                MsgBox("There is an error when interact with database!")
+                MsgBox("There is an error when interact with database!", Nothing, "Notification")
             End If
         End If
     End Sub
@@ -502,13 +502,13 @@ Public Class DecentralizationForm
         If cbbRole.Text <> "" Then
             Dim result = clsPMSAnalysis.DeleteRole(CType(cbbRole.SelectedItem, CBBItem).PropItemId, LoginForm.PropUsername)
             If result = 1 Then
-                MsgBox("Delete new role successful!")
+                MsgBox("Delete new role successful!", Nothing, "Notification")
                 Reload()
                 SetEnable(False)
                 ClearValue()
                 isNew = False
             Else
-                MsgBox("There is an error when interact with database!")
+                MsgBox("There is an error when interact with database!", Nothing, "Notification")
             End If
         End If
     End Sub
@@ -679,11 +679,11 @@ Public Class DecentralizationForm
 
         If result = 1 Then
             SetEnableFalse()
-            MsgBox(type & " permission information successful!")
+            MsgBox(type & " permission information successful!", Nothing, "Notification")
             Reload()
             isNew = False
         Else
-            MsgBox("There is an error when interact with database!")
+            MsgBox("There is an error when interact with database!", Nothing, "Notification")
         End If
     End Sub
 

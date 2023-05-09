@@ -204,7 +204,7 @@ Public Class EmployeeCategory
 
             If result = 1 Then
                 setEnable(False)
-                MsgBox(type & " employee information successful!")
+                MsgBox(type & " employee information successful!", Nothing, "Notification")
                 Reload()
                 addEditDeleteEnabled(True)
                 setPlaceHolderEnable(False)
@@ -213,7 +213,7 @@ Public Class EmployeeCategory
                     bAccountInfor.Visible = True
                 End If
             Else
-                MsgBox("There is an error when interact with database!")
+                MsgBox("There is an error when interact with database!", Nothing, "Notification")
             End If
         End If
     End Sub
@@ -222,19 +222,19 @@ Public Class EmployeeCategory
         If txtFirstName.Text = "" Or isAddFirstName = True Or isAddLastName = True Or txtLastName.Text = "" Or txtPhone.Text = "" Or txtAddress.Text = "" Or
             txtEmail.Text = "" Or cbbRole.SelectedIndex = -1 Then
 
-            MsgBox("You need to enter all the fields!")
+            MsgBox("You need to enter all the fields!", Nothing, "Notification")
             Return False
 
         ElseIf Not CheckValue("Phone", txtPhone.Text, "Long") Then
             Return False
 
         ElseIf Not txtPhone.Text.StartsWith("0") Then
-            MsgBox("Phone number must be started with '0'!")
+            MsgBox("Phone number must be started with '0'!", Nothing, "Notification")
             Return False
 
         ElseIf countString(txtEmail.Text, "gmail.com") <> 1 Or Not txtEmail.Text.EndsWith("@gmail.com") Then
-            MsgBox("Email invalidate!")
-        Return False
+            MsgBox("Email invalidate!", Nothing, "Notification")
+            Return False
         End If
 
         Return True
@@ -253,10 +253,10 @@ Public Class EmployeeCategory
                 Try
                     Number = Long.Parse(value)
                 Catch ex As FormatException
-                    MsgBox(label & " must be a integer number!")
+                    MsgBox(label & " must be a integer number!", Nothing, "Notification")
                     returnVal = False
                 Catch ex As OverflowException
-                    MsgBox(label & " is too big to handle!")
+                    MsgBox(label & " is too big to handle!", Nothing, "Notification")
                     returnVal = False
                 End Try
 
@@ -265,10 +265,10 @@ Public Class EmployeeCategory
                 Try
                     Number = Double.Parse(value)
                 Catch ex As FormatException
-                    MsgBox(label & " must be a number!")
+                    MsgBox(label & " must be a number!", Nothing, "Notification")
                     returnVal = False
                 Catch ex As OverflowException
-                    MsgBox(label & " is too big to handle!")
+                    MsgBox(label & " is too big to handle!", Nothing, "Notification")
                     returnVal = False
                 End Try
 
@@ -291,13 +291,13 @@ Public Class EmployeeCategory
                 Dim result = clsPMSAnalysis.DeleteUser(LoginForm.PropUsername, username)
                 If result = 1 Then
                     setEnable(False)
-                    MsgBox("Delete employee information successful!")
+                    MsgBox("Delete employee information successful!", Nothing, "Notification")
                     Reload()
                 Else
-                    MsgBox("There is an error when interact with database!")
+                    MsgBox("There is an error when interact with database!", Nothing, "Notification")
                 End If
             Else
-                MsgBox("User was deleted before!")
+                MsgBox("User was deleted before!", Nothing, "Notification")
             End If
 
         End If

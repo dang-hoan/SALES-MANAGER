@@ -13,7 +13,7 @@ Public Class LoginForm
     End Sub
     Private Sub login()
         If txtUsername.Text.Trim() = "" Or txtPassword.Text.Trim() = "" Then
-            MsgBox("Username and password can't be empty!")
+            MsgBox("Username and password can't be empty!", Nothing, "Notification")
             Return
         End If
 
@@ -28,16 +28,16 @@ Public Class LoginForm
                     Me.Hide()
                     txtPassword.Text = ""
                 Case "BLOCK"
-                    MsgBox("Your account is blocked from logging into the system!")
+                    MsgBox("Your account is blocked from logging into the system!", Nothing, "Notification")
                 Case "DELETED"
-                    MsgBox("Your account is deleted from the system!")
+                    MsgBox("Your account is deleted from the system!", Nothing, "Notification")
                 Case "PENDING"
-                    MsgBox("Your account is pending!")
+                    MsgBox("Your account is pending!", Nothing, "Notification")
                 Case "NOT ACTIVITIED"          'Ví dụ xin nghỉ làm thời gian hoặc mới vào làm ở cty
-                    MsgBox("Your account is not activitied yet!")
+                    MsgBox("Your account is not activitied yet!", Nothing, "Notification")
             End Select
         Else
-            MsgBox("Username or password isn't correct!")
+            MsgBox("Username or password isn't correct!", Nothing, "Notification")
         End If
     End Sub
 
