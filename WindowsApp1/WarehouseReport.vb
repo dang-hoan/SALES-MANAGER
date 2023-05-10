@@ -519,7 +519,46 @@ Public Class WarehouseReport
             xlWorkSheet.Name = title
 
             'add data
-            Dim i = 1, j = 1, k = i
+            Dim i = 7, j = 7, k = i
+            Dim range = xlWorkSheet.Range("A2:C5")
+            range.Merge()
+            range.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter
+            range.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter
+            range.Font.Color = ColorTranslator.ToOle(Color.Brown)
+            range.Interior.Color = ColorTranslator.ToOle(Color.FromArgb(&HFA, &HEB, &HD7))
+            range.Font.Bold = True
+            range.Font.Size = 15
+            range.Value = labTotalProducts.Text & vbCrLf & "Total products"
+
+            range = xlWorkSheet.Range("E2:G5")
+            range.Merge()
+            range.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter
+            range.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter
+            range.Font.Color = ColorTranslator.ToOle(Color.Red)
+            range.Interior.Color = ColorTranslator.ToOle(Color.FromArgb(&HFA, &HEB, &HD7))
+            range.Font.Bold = True
+            range.Font.Size = 15
+            range.Value = labRemainProducts.Text & vbCrLf & "Remain products"
+
+            range = xlWorkSheet.Range("I2:K5")
+            range.Merge()
+            range.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter
+            range.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter
+            range.Font.Color = ColorTranslator.ToOle(Color.FromArgb(&H1C, &HC0, &H0))
+            range.Interior.Color = ColorTranslator.ToOle(Color.FromArgb(&HFA, &HEB, &HD7))
+            range.Font.Bold = True
+            range.Font.Size = 15
+            range.Value = labTotalSales.Text & vbCrLf & "Total sales"
+
+            range = xlWorkSheet.Range("C24:I24")
+            range.Merge()
+            range.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter
+            range.Font.Color = ColorTranslator.ToOle(Color.FromArgb(&H29, &HB3, &HAA))
+            range.Font.Bold = True
+            range.Font.Italic = True
+            range.Font.Size = 18
+            range.Value = "Chart showing sales over the years"
+
             'xlWorkSheet.Cells(i, j) = "Year"
             xlWorkSheet.Cells(i, j + 1) = "Sales"
             For Each point As DataPoint In chartReport.Series("Sales").Points
@@ -539,17 +578,19 @@ Public Class WarehouseReport
             Dim chartRange As Excel.Range
 
             xlCharts = xlWorkSheet.ChartObjects
-            myChart = xlCharts.Add(10, 80, 300, 250)
+            myChart = xlCharts.Add(10, 80, 500, 250)
             chartPage = myChart.Chart
             chartRange = xlWorkSheet.Range(Chr(j + 64) & k, Chr(j + 64 + 1) & i)
             Console.WriteLine(Chr(j + 64) & k & ", " & Chr(j + 64 + 1) & i)
             chartPage.SetSourceData(Source:=chartRange)
             chartPage.ChartType = Excel.XlChartType.xlColumnClustered
+            chartPage.ApplyDataLabels()
 
             'exporting chart as picture file
             'xlWorkSheet.ChartObjects(1).chart.Export(FileName:=
             '"C:\Users\DELL\Downloads\excel_chart_export.bmp", FilterName:="BMP")
 
+            xlApp.DisplayAlerts = False
             Dim saved = True
             Try
                 xlWorkSheet.SaveAs(path)
@@ -558,7 +599,9 @@ Public Class WarehouseReport
             End Try
 
             If saved Then
-                MsgBox("Export successfully in " & path & "!", Nothing, "Notification")
+                Dim notifyFrm = New SaveFileNotification()
+                notifyFrm.path = path
+                notifyFrm.ShowDialog(Me)
             Else
                 MsgBox("We can't export your data because selected file is opening!", Nothing, "Notification")
             End If

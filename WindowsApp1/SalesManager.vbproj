@@ -12,7 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
@@ -136,6 +136,12 @@
     <Compile Include="EmployeeCategory.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SaveFileNotification.Designer.vb">
+      <DependentUpon>SaveFileNotification.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SaveFileNotification.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SupplierCategory.Designer.vb">
       <DependentUpon>SupplierCategory.vb</DependentUpon>
     </Compile>
@@ -230,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeCategory.resx">
       <DependentUpon>EmployeeCategory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaveFileNotification.resx">
+      <DependentUpon>SaveFileNotification.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SupplierCategory.resx">
       <DependentUpon>SupplierCategory.vb</DependentUpon>

@@ -23,7 +23,7 @@ Public Class MainForm
         btnEmployeeSearch.Visible = False
         btnProductSearch.Visible = False
         btnOrderSearch.Visible = False
-        btnInventoryReport.Visible = False
+        btnWarehouseReport.Visible = False
         btnSalesReport.Visible = False
         btnDecentralization.Visible = False
         Dim listNumber As New List(Of Integer) From {0, 0, 0, 0}        'Category, Search, Statistic, Tool
@@ -59,7 +59,7 @@ Public Class MainForm
                     btnOrderSearch.Visible = True
                     listNumber(1) += 1
                 Case "Inventory report"
-                    btnInventoryReport.Visible = True
+                    btnWarehouseReport.Visible = True
                     listNumber(2) += 1
                 Case "Sales report"
                     btnSalesReport.Visible = True
@@ -123,7 +123,7 @@ Public Class MainForm
         ShowForm(frmSalesOrder)
     End Sub
 
-    Private Sub inventoryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles btnInventoryReport.Click
+    Private Sub inventoryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles btnWarehouseReport.Click
         Dim frmWarehouseReport As New WarehouseReport
         ShowForm(frmWarehouseReport)
     End Sub

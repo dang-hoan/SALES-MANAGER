@@ -37,7 +37,7 @@ Partial Class MainForm
         Me.btnOrderSearch = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnDecentralization = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnStatistic = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnInventoryReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnWarehouseReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnSalesReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnExit = New System.Windows.Forms.ToolStripMenuItem()
         Me.srcMain = New System.Windows.Forms.Panel()
@@ -156,38 +156,38 @@ Partial Class MainForm
         '
         Me.btnSearch.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnEmployeeSearch, Me.btnProductSearch, Me.btnOrderSearch})
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(270, 34)
+        Me.btnSearch.Size = New System.Drawing.Size(240, 34)
         Me.btnSearch.Text = "Search"
         '
         'btnEmployeeSearch
         '
         Me.btnEmployeeSearch.Name = "btnEmployeeSearch"
-        Me.btnEmployeeSearch.Size = New System.Drawing.Size(270, 34)
+        Me.btnEmployeeSearch.Size = New System.Drawing.Size(234, 34)
         Me.btnEmployeeSearch.Text = "Search client"
         '
         'btnProductSearch
         '
         Me.btnProductSearch.Name = "btnProductSearch"
-        Me.btnProductSearch.Size = New System.Drawing.Size(270, 34)
+        Me.btnProductSearch.Size = New System.Drawing.Size(234, 34)
         Me.btnProductSearch.Text = "Search product"
         '
         'btnOrderSearch
         '
         Me.btnOrderSearch.Name = "btnOrderSearch"
-        Me.btnOrderSearch.Size = New System.Drawing.Size(270, 34)
+        Me.btnOrderSearch.Size = New System.Drawing.Size(234, 34)
         Me.btnOrderSearch.Text = "Search order "
         '
         'btnDecentralization
         '
         Me.btnDecentralization.Name = "btnDecentralization"
-        Me.btnDecentralization.Size = New System.Drawing.Size(270, 34)
+        Me.btnDecentralization.Size = New System.Drawing.Size(240, 34)
         Me.btnDecentralization.Text = "Decentralization"
         '
         'btnStatistic
         '
         Me.btnStatistic.AutoSize = False
         Me.btnStatistic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnStatistic.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnInventoryReport, Me.btnSalesReport})
+        Me.btnStatistic.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnWarehouseReport, Me.btnSalesReport})
         Me.btnStatistic.Image = CType(resources.GetObject("btnStatistic.Image"), System.Drawing.Image)
         Me.btnStatistic.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.btnStatistic.Name = "btnStatistic"
@@ -196,11 +196,11 @@ Partial Class MainForm
         Me.btnStatistic.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnStatistic.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
-        'btnInventoryReport
+        'btnWarehouseReport
         '
-        Me.btnInventoryReport.Name = "btnInventoryReport"
-        Me.btnInventoryReport.Size = New System.Drawing.Size(270, 34)
-        Me.btnInventoryReport.Text = "Inventory"
+        Me.btnWarehouseReport.Name = "btnWarehouseReport"
+        Me.btnWarehouseReport.Size = New System.Drawing.Size(270, 34)
+        Me.btnWarehouseReport.Text = "Warehouse"
         '
         'btnSalesReport
         '
@@ -315,7 +315,7 @@ Partial Class MainForm
     Private WithEvents btnProductSearch As ToolStripMenuItem
     Private WithEvents btnOrderSearch As ToolStripMenuItem
     Private WithEvents btnStatistic As ToolStripMenuItem
-    Private WithEvents btnInventoryReport As ToolStripMenuItem
+    Private WithEvents btnWarehouseReport As ToolStripMenuItem
     Private WithEvents btnSalesReport As ToolStripMenuItem
     Private WithEvents btnExit As ToolStripMenuItem
     Friend WithEvents Label1 As Label
