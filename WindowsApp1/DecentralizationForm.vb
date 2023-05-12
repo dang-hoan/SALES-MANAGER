@@ -682,6 +682,7 @@ Public Class DecentralizationForm
             MsgBox(type & " permission information successful!", Nothing, "Notification")
             Reload()
             isNew = False
+            SetVisibleForPermission()
         Else
             MsgBox("There is an error when interact with database!", Nothing, "Notification")
         End If
