@@ -38,7 +38,6 @@ Partial Class MainForm
         Me.btnDecentralization = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnStatistic = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnWarehouseReport = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnSalesReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnExit = New System.Windows.Forms.ToolStripMenuItem()
         Me.srcMain = New System.Windows.Forms.Panel()
         Me.panelWelcome = New System.Windows.Forms.Panel()
@@ -56,7 +55,6 @@ Partial Class MainForm
         Me.menuStrip.AutoSize = False
         Me.menuStrip.BackColor = System.Drawing.Color.MediumAquamarine
         Me.menuStrip.Dock = System.Windows.Forms.DockStyle.Left
-        Me.menuStrip.GripMargin = New System.Windows.Forms.Padding(2, 2, 0, 2)
         Me.menuStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.menuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnHome, Me.btnCategory, Me.btnTool, Me.btnStatistic, Me.btnExit})
         Me.menuStrip.Location = New System.Drawing.Point(0, 0)
@@ -187,7 +185,7 @@ Partial Class MainForm
         '
         Me.btnStatistic.AutoSize = False
         Me.btnStatistic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnStatistic.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnWarehouseReport, Me.btnSalesReport})
+        Me.btnStatistic.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnWarehouseReport})
         Me.btnStatistic.Image = CType(resources.GetObject("btnStatistic.Image"), System.Drawing.Image)
         Me.btnStatistic.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.btnStatistic.Name = "btnStatistic"
@@ -201,12 +199,6 @@ Partial Class MainForm
         Me.btnWarehouseReport.Name = "btnWarehouseReport"
         Me.btnWarehouseReport.Size = New System.Drawing.Size(270, 34)
         Me.btnWarehouseReport.Text = "Warehouse"
-        '
-        'btnSalesReport
-        '
-        Me.btnSalesReport.Name = "btnSalesReport"
-        Me.btnSalesReport.Size = New System.Drawing.Size(270, 34)
-        Me.btnSalesReport.Text = "Sales"
         '
         'btnExit
         '
@@ -316,7 +308,6 @@ Partial Class MainForm
     Private WithEvents btnOrderSearch As ToolStripMenuItem
     Private WithEvents btnStatistic As ToolStripMenuItem
     Private WithEvents btnWarehouseReport As ToolStripMenuItem
-    Private WithEvents btnSalesReport As ToolStripMenuItem
     Private WithEvents btnExit As ToolStripMenuItem
     Friend WithEvents Label1 As Label
     Friend WithEvents pictureMain As PictureBox

@@ -24,7 +24,6 @@ Public Class MainForm
         btnProductSearch.Visible = False
         btnOrderSearch.Visible = False
         btnWarehouseReport.Visible = False
-        btnSalesReport.Visible = False
         btnDecentralization.Visible = False
         Dim listNumber As New List(Of Integer) From {0, 0, 0, 0}        'Category, Search, Statistic, Tool
         Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
@@ -62,8 +61,8 @@ Public Class MainForm
                     btnWarehouseReport.Visible = True
                     listNumber(2) += 1
                 Case "Sales report"
-                    btnSalesReport.Visible = True
-                    listNumber(2) += 1
+                    'btnSalesReport.Visible = True
+                    'listNumber(2) += 1
                 Case "Decentralization"
                     btnDecentralization.Visible = True
                     listNumber(3) += 1

@@ -470,6 +470,9 @@ Public Class SalesOrder
         ElseIf Not CheckValue("Ship fee", txtShipFee.Text, "Double") Or
              Not CheckValue("Discount", txtDiscount.Text, "Double") Then
             Return False
+        ElseIf txtDiscount.Text < 0 Or txtDiscount.Text > 100 Then
+            MsgBox("Discount percent must be in 0 - 100!", Nothing, "Notification")
+            Return False
         End If
 
         Return True

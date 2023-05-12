@@ -31,6 +31,8 @@ Partial Class ProductCategory
         Me.label7 = New System.Windows.Forms.Label()
         Me.dgvCategory = New System.Windows.Forms.DataGridView()
         Me.groupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtSoldProducts = New System.Windows.Forms.TextBox()
         Me.txtUnitDiscount = New System.Windows.Forms.TextBox()
         Me.txtNumber = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -49,8 +51,6 @@ Partial Class ProductCategory
         Me.bDelete = New System.Windows.Forms.Button()
         Me.bEdit = New System.Windows.Forms.Button()
         Me.bAdd = New System.Windows.Forms.Button()
-        Me.txtSoldProducts = New System.Windows.Forms.TextBox()
-        Me.Label11 = New System.Windows.Forms.Label()
         CType(Me.dgvCategory, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.groupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -166,6 +166,23 @@ Partial Class ProductCategory
         Me.groupBox1.TabStop = False
         Me.groupBox1.Text = "Detail"
         '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(429, 211)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(107, 20)
+        Me.Label11.TabIndex = 24
+        Me.Label11.Text = "Sold products"
+        '
+        'txtSoldProducts
+        '
+        Me.txtSoldProducts.Enabled = False
+        Me.txtSoldProducts.Location = New System.Drawing.Point(576, 205)
+        Me.txtSoldProducts.Name = "txtSoldProducts"
+        Me.txtSoldProducts.Size = New System.Drawing.Size(164, 26)
+        Me.txtSoldProducts.TabIndex = 23
+        '
         'txtUnitDiscount
         '
         Me.txtUnitDiscount.Enabled = False
@@ -173,7 +190,7 @@ Partial Class ProductCategory
         Me.txtUnitDiscount.Name = "txtUnitDiscount"
         Me.txtUnitDiscount.Size = New System.Drawing.Size(53, 26)
         Me.txtUnitDiscount.TabIndex = 22
-        Me.txtUnitDiscount.Text = "$"
+        Me.txtUnitDiscount.Text = "%"
         '
         'txtNumber
         '
@@ -342,23 +359,6 @@ Partial Class ProductCategory
         Me.bAdd.TabIndex = 16
         Me.bAdd.Text = "Add"
         Me.bAdd.UseVisualStyleBackColor = False
-        '
-        'txtSoldProducts
-        '
-        Me.txtSoldProducts.Enabled = False
-        Me.txtSoldProducts.Location = New System.Drawing.Point(576, 205)
-        Me.txtSoldProducts.Name = "txtSoldProducts"
-        Me.txtSoldProducts.Size = New System.Drawing.Size(164, 26)
-        Me.txtSoldProducts.TabIndex = 23
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(429, 211)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(107, 20)
-        Me.Label11.TabIndex = 24
-        Me.Label11.Text = "Sold products"
         '
         'ProductCategory
         '

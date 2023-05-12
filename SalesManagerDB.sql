@@ -155,7 +155,7 @@ CREATE TABLE "Person"(
 	"Id" bigint PRIMARY KEY IDENTITY(1,1) NOT NULL,
     "Username" VARCHAR(40) NULL,
     "LastName" NVARCHAR(30) NOT NULL,
-    "FirstName" NVARCHAR(10) NOT NULL,
+    "FirstName" NVARCHAR(30) NOT NULL,
     "Gender" BIT NULL,
     "BirthDate" DATETIME NULL,
     "Phone" VARCHAR(20) NOT NULL,

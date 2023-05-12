@@ -162,7 +162,10 @@ Public Class AddEditProductForm
             Not CheckValue("Discount", txtDiscount.Text, "Double") Or
             Not CheckValue("Number of products", txtNumber.Text, "Long") Then
             Return False
-        ElseIf txtNumber.Text < txtSoldProducts.Text Then
+        ElseIf txtDiscount.Text < 0 Or txtDiscount.Text > 100 Then
+            MsgBox("Discount percent must be in 0 - 100!", Nothing, "Notification")
+            Return False
+        ElseIf CType(txtNumber.Text, Double) < CType(txtSoldProducts.Text, Double) Then
             MsgBox("Total products must be greater than sold products!", Nothing, "Notification")
             Return False
         End If

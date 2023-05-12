@@ -1123,7 +1123,7 @@ Partial Public Class _Person
             Me.columnLastName.AllowDBNull = false
             Me.columnLastName.MaxLength = 30
             Me.columnFirstName.AllowDBNull = false
-            Me.columnFirstName.MaxLength = 10
+            Me.columnFirstName.MaxLength = 30
             Me.columnPhone.AllowDBNull = false
             Me.columnPhone.MaxLength = 20
             Me.columnEmail.MaxLength = 40

@@ -172,7 +172,7 @@ Partial Class AddEditProductForm
         Me.txtUnitDiscount.Name = "txtUnitDiscount"
         Me.txtUnitDiscount.Size = New System.Drawing.Size(53, 26)
         Me.txtUnitDiscount.TabIndex = 22
-        Me.txtUnitDiscount.Text = "$"
+        Me.txtUnitDiscount.Text = "%"
         '
         'txtNumber
         '
