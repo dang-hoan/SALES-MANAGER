@@ -50,6 +50,10 @@ Public Class DecentralizationForm
         If val1 = False And val2 = True Then
             bDeleteRole.Location = New Point(cbbRole.Location.X + cbbRole.Width + 10, cbbRole.Location.Y)
         End If
+        If val1 = True And val2 = True Then
+            bNewRole.Location = New Point(cbbRole.Location.X + cbbRole.Width + 10, cbbRole.Location.Y - 12)
+            bDeleteRole.Location = New Point(cbbRole.Location.X + cbbRole.Width + 10, cbbRole.Location.Y + 12)
+        End If
     End Sub
 
     Private Sub SetEnable(ByVal valBoolean As Boolean)
@@ -682,6 +686,8 @@ Public Class DecentralizationForm
             MsgBox(type & " permission information successful!", Nothing, "Notification")
             Reload()
             isNew = False
+            Dim caller As MainForm = CType(Application.OpenForms("MainForm"), MainForm)
+            caller.SetVisibleForPermission()
             SetVisibleForPermission()
         Else
             MsgBox("There is an error when interact with database!", Nothing, "Notification")

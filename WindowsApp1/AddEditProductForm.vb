@@ -52,7 +52,7 @@ Public Class AddEditProductForm
             For Each row As DataRow In dataWarehouse.Rows
                 cbbWarehouse.Items.Add(New CBBItem(row(0), row(1)))
             Next
-            setValue(clsPMSAnalysis.GetProductById(productId).Rows(0))
+            setValue(clsPMSAnalysis.GetProductById(productId))
             If cbbWarehouse.Text = "" Then
                 cbbWarehouse.Enabled = False
             End If

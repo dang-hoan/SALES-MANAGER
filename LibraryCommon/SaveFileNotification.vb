@@ -1,7 +1,7 @@
 ﻿Public Class SaveFileNotification
     Public path As String = ""
     Private Sub SaveFileNotification_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        labNotify.Text = "Export successfully in " & path & "! Do you want to open this file?"
+        labNotify.Text = "Export data successfully to file " & path & "! Do you want to open this file?"
     End Sub
 
     Private Sub bOpenFile_Click(sender As Object, e As EventArgs) Handles bOpenFile.Click

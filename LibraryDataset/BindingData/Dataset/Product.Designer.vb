@@ -819,15 +819,9 @@ Partial Public Class Product
         
         Private columnProductName As Global.System.Data.DataColumn
         
-        Private columnSupplierId As Global.System.Data.DataColumn
-        
-        Private columnCategoryId As Global.System.Data.DataColumn
-        
         Private columnProductPrice As Global.System.Data.DataColumn
         
         Private columnUnitPrice As Global.System.Data.DataColumn
-        
-        Private columnProductStatusId As Global.System.Data.DataColumn
         
         Private columnDiscountPercent As Global.System.Data.DataColumn
         
@@ -835,11 +829,25 @@ Partial Public Class Product
         
         Private columnImageId As Global.System.Data.DataColumn
         
-        Private columnWareHouseId As Global.System.Data.DataColumn
-        
         Private columnTotal As Global.System.Data.DataColumn
         
         Private columnSellNumber As Global.System.Data.DataColumn
+        
+        Private columnCompanyName As Global.System.Data.DataColumn
+        
+        Private columnCategoryName As Global.System.Data.DataColumn
+        
+        Private columnStatusName As Global.System.Data.DataColumn
+        
+        Private columnWareHouseName As Global.System.Data.DataColumn
+        
+        Private columnSupplierId As Global.System.Data.DataColumn
+        
+        Private columnCategoryId As Global.System.Data.DataColumn
+        
+        Private columnStatusId As Global.System.Data.DataColumn
+        
+        Private columnWareHouseId As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -894,22 +902,6 @@ Partial Public Class Product
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property SupplierIdColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnSupplierId
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property CategoryIdColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCategoryId
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public ReadOnly Property ProductPriceColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnProductPrice
@@ -921,14 +913,6 @@ Partial Public Class Product
         Public ReadOnly Property UnitPriceColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnUnitPrice
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property ProductStatusIdColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnProductStatusId
             End Get
         End Property
         
@@ -958,14 +942,6 @@ Partial Public Class Product
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property WareHouseIdColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnWareHouseId
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public ReadOnly Property TotalColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnTotal
@@ -977,6 +953,70 @@ Partial Public Class Product
         Public ReadOnly Property SellNumberColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnSellNumber
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property CompanyNameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCompanyName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property CategoryNameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCategoryName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property StatusNameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnStatusName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property WareHouseNameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnWareHouseName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property SupplierIdColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSupplierId
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property CategoryIdColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCategoryId
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property StatusIdColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnStatusId
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property WareHouseIdColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnWareHouseId
             End Get
         End Property
         
@@ -1017,9 +1057,9 @@ Partial Public Class Product
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddProductSalesDetailRow(ByVal ProductName As String, ByVal SupplierId As Long, ByVal CategoryId As Long, ByVal ProductPrice As Decimal, ByVal UnitPrice As String, ByVal ProductStatusId As Integer, ByVal DiscountPercent As Double, ByVal Rating As Integer, ByVal ImageId As Long, ByVal WareHouseId As Long, ByVal Total As Long, ByVal SellNumber As Long) As ProductSalesDetailRow
+        Public Overloads Function AddProductSalesDetailRow(ByVal ProductName As String, ByVal ProductPrice As Decimal, ByVal UnitPrice As String, ByVal DiscountPercent As Double, ByVal Rating As Integer, ByVal ImageId As Long, ByVal Total As Long, ByVal SellNumber As Long, ByVal CompanyName As String, ByVal CategoryName As String, ByVal StatusName As String, ByVal WareHouseName As String) As ProductSalesDetailRow
             Dim rowProductSalesDetailRow As ProductSalesDetailRow = CType(Me.NewRow,ProductSalesDetailRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, ProductName, SupplierId, CategoryId, ProductPrice, UnitPrice, ProductStatusId, DiscountPercent, Rating, ImageId, WareHouseId, Total, SellNumber}
+            Dim columnValuesArray() As Object = New Object() {Nothing, ProductName, ProductPrice, UnitPrice, DiscountPercent, Rating, ImageId, Total, SellNumber, CompanyName, CategoryName, StatusName, WareHouseName, Nothing, Nothing, Nothing, Nothing}
             rowProductSalesDetailRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowProductSalesDetailRow)
             Return rowProductSalesDetailRow
@@ -1050,17 +1090,21 @@ Partial Public Class Product
         Friend Sub InitVars()
             Me.columnId = MyBase.Columns("Id")
             Me.columnProductName = MyBase.Columns("ProductName")
-            Me.columnSupplierId = MyBase.Columns("SupplierId")
-            Me.columnCategoryId = MyBase.Columns("CategoryId")
             Me.columnProductPrice = MyBase.Columns("ProductPrice")
             Me.columnUnitPrice = MyBase.Columns("UnitPrice")
-            Me.columnProductStatusId = MyBase.Columns("ProductStatusId")
             Me.columnDiscountPercent = MyBase.Columns("DiscountPercent")
             Me.columnRating = MyBase.Columns("Rating")
             Me.columnImageId = MyBase.Columns("ImageId")
-            Me.columnWareHouseId = MyBase.Columns("WareHouseId")
             Me.columnTotal = MyBase.Columns("Total")
             Me.columnSellNumber = MyBase.Columns("SellNumber")
+            Me.columnCompanyName = MyBase.Columns("CompanyName")
+            Me.columnCategoryName = MyBase.Columns("CategoryName")
+            Me.columnStatusName = MyBase.Columns("StatusName")
+            Me.columnWareHouseName = MyBase.Columns("WareHouseName")
+            Me.columnSupplierId = MyBase.Columns("SupplierId")
+            Me.columnCategoryId = MyBase.Columns("CategoryId")
+            Me.columnStatusId = MyBase.Columns("StatusId")
+            Me.columnWareHouseId = MyBase.Columns("WareHouseId")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1070,28 +1114,36 @@ Partial Public Class Product
             MyBase.Columns.Add(Me.columnId)
             Me.columnProductName = New Global.System.Data.DataColumn("ProductName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnProductName)
-            Me.columnSupplierId = New Global.System.Data.DataColumn("SupplierId", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnSupplierId)
-            Me.columnCategoryId = New Global.System.Data.DataColumn("CategoryId", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCategoryId)
             Me.columnProductPrice = New Global.System.Data.DataColumn("ProductPrice", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnProductPrice)
             Me.columnUnitPrice = New Global.System.Data.DataColumn("UnitPrice", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnUnitPrice)
-            Me.columnProductStatusId = New Global.System.Data.DataColumn("ProductStatusId", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnProductStatusId)
             Me.columnDiscountPercent = New Global.System.Data.DataColumn("DiscountPercent", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDiscountPercent)
             Me.columnRating = New Global.System.Data.DataColumn("Rating", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnRating)
             Me.columnImageId = New Global.System.Data.DataColumn("ImageId", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnImageId)
-            Me.columnWareHouseId = New Global.System.Data.DataColumn("WareHouseId", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnWareHouseId)
             Me.columnTotal = New Global.System.Data.DataColumn("Total", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnTotal)
             Me.columnSellNumber = New Global.System.Data.DataColumn("SellNumber", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSellNumber)
+            Me.columnCompanyName = New Global.System.Data.DataColumn("CompanyName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCompanyName)
+            Me.columnCategoryName = New Global.System.Data.DataColumn("CategoryName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCategoryName)
+            Me.columnStatusName = New Global.System.Data.DataColumn("StatusName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnStatusName)
+            Me.columnWareHouseName = New Global.System.Data.DataColumn("WareHouseName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnWareHouseName)
+            Me.columnSupplierId = New Global.System.Data.DataColumn("SupplierId", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSupplierId)
+            Me.columnCategoryId = New Global.System.Data.DataColumn("CategoryId", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCategoryId)
+            Me.columnStatusId = New Global.System.Data.DataColumn("StatusId", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnStatusId)
+            Me.columnWareHouseId = New Global.System.Data.DataColumn("WareHouseId", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnWareHouseId)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnId}, true))
             Me.columnId.AutoIncrement = true
             Me.columnId.AutoIncrementSeed = -1
@@ -1101,12 +1153,37 @@ Partial Public Class Product
             Me.columnId.Unique = true
             Me.columnProductName.AllowDBNull = false
             Me.columnProductName.MaxLength = 40
-            Me.columnSupplierId.AllowDBNull = false
-            Me.columnCategoryId.AllowDBNull = false
             Me.columnProductPrice.AllowDBNull = false
             Me.columnUnitPrice.AllowDBNull = false
             Me.columnUnitPrice.MaxLength = 10
-            Me.columnProductStatusId.AllowDBNull = false
+            Me.columnCompanyName.AllowDBNull = false
+            Me.columnCompanyName.MaxLength = 50
+            Me.columnCategoryName.AllowDBNull = false
+            Me.columnCategoryName.MaxLength = 30
+            Me.columnStatusName.AllowDBNull = false
+            Me.columnStatusName.MaxLength = 30
+            Me.columnWareHouseName.AllowDBNull = false
+            Me.columnWareHouseName.MaxLength = 40
+            Me.columnSupplierId.AutoIncrement = true
+            Me.columnSupplierId.AutoIncrementSeed = -1
+            Me.columnSupplierId.AutoIncrementStep = -1
+            Me.columnSupplierId.AllowDBNull = false
+            Me.columnSupplierId.ReadOnly = true
+            Me.columnCategoryId.AutoIncrement = true
+            Me.columnCategoryId.AutoIncrementSeed = -1
+            Me.columnCategoryId.AutoIncrementStep = -1
+            Me.columnCategoryId.AllowDBNull = false
+            Me.columnCategoryId.ReadOnly = true
+            Me.columnStatusId.AutoIncrement = true
+            Me.columnStatusId.AutoIncrementSeed = -1
+            Me.columnStatusId.AutoIncrementStep = -1
+            Me.columnStatusId.AllowDBNull = false
+            Me.columnStatusId.ReadOnly = true
+            Me.columnWareHouseId.AutoIncrement = true
+            Me.columnWareHouseId.AutoIncrementSeed = -1
+            Me.columnWareHouseId.AutoIncrementStep = -1
+            Me.columnWareHouseId.AllowDBNull = false
+            Me.columnWareHouseId.ReadOnly = true
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2384,28 +2461,6 @@ Partial Public Class Product
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property SupplierId() As Long
-            Get
-                Return CType(Me(Me.tableProductSalesDetail.SupplierIdColumn),Long)
-            End Get
-            Set
-                Me(Me.tableProductSalesDetail.SupplierIdColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property CategoryId() As Long
-            Get
-                Return CType(Me(Me.tableProductSalesDetail.CategoryIdColumn),Long)
-            End Get
-            Set
-                Me(Me.tableProductSalesDetail.CategoryIdColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property ProductPrice() As Decimal
             Get
                 Return CType(Me(Me.tableProductSalesDetail.ProductPriceColumn),Decimal)
@@ -2423,17 +2478,6 @@ Partial Public Class Product
             End Get
             Set
                 Me(Me.tableProductSalesDetail.UnitPriceColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property ProductStatusId() As Integer
-            Get
-                Return CType(Me(Me.tableProductSalesDetail.ProductStatusIdColumn),Integer)
-            End Get
-            Set
-                Me(Me.tableProductSalesDetail.ProductStatusIdColumn) = value
             End Set
         End Property
         
@@ -2484,21 +2528,6 @@ Partial Public Class Product
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property WareHouseId() As Long
-            Get
-                Try 
-                    Return CType(Me(Me.tableProductSalesDetail.WareHouseIdColumn),Long)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'WareHouseId' in table 'ProductSalesDetail' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableProductSalesDetail.WareHouseIdColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property Total() As Long
             Get
                 Try 
@@ -2524,6 +2553,94 @@ Partial Public Class Product
             End Get
             Set
                 Me(Me.tableProductSalesDetail.SellNumberColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property CompanyName() As String
+            Get
+                Return CType(Me(Me.tableProductSalesDetail.CompanyNameColumn),String)
+            End Get
+            Set
+                Me(Me.tableProductSalesDetail.CompanyNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property CategoryName() As String
+            Get
+                Return CType(Me(Me.tableProductSalesDetail.CategoryNameColumn),String)
+            End Get
+            Set
+                Me(Me.tableProductSalesDetail.CategoryNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property StatusName() As String
+            Get
+                Return CType(Me(Me.tableProductSalesDetail.StatusNameColumn),String)
+            End Get
+            Set
+                Me(Me.tableProductSalesDetail.StatusNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property WareHouseName() As String
+            Get
+                Return CType(Me(Me.tableProductSalesDetail.WareHouseNameColumn),String)
+            End Get
+            Set
+                Me(Me.tableProductSalesDetail.WareHouseNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property SupplierId() As Long
+            Get
+                Return CType(Me(Me.tableProductSalesDetail.SupplierIdColumn),Long)
+            End Get
+            Set
+                Me(Me.tableProductSalesDetail.SupplierIdColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property CategoryId() As Long
+            Get
+                Return CType(Me(Me.tableProductSalesDetail.CategoryIdColumn),Long)
+            End Get
+            Set
+                Me(Me.tableProductSalesDetail.CategoryIdColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property StatusId() As Integer
+            Get
+                Return CType(Me(Me.tableProductSalesDetail.StatusIdColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableProductSalesDetail.StatusIdColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property WareHouseId() As Long
+            Get
+                Return CType(Me(Me.tableProductSalesDetail.WareHouseIdColumn),Long)
+            End Get
+            Set
+                Me(Me.tableProductSalesDetail.WareHouseIdColumn) = value
             End Set
         End Property
         
@@ -2561,18 +2678,6 @@ Partial Public Class Product
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetImageIdNull()
             Me(Me.tableProductSalesDetail.ImageIdColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsWareHouseIdNull() As Boolean
-            Return Me.IsNull(Me.tableProductSalesDetail.WareHouseIdColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetWareHouseIdNull()
-            Me(Me.tableProductSalesDetail.WareHouseIdColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4158,17 +4263,21 @@ Namespace ProductTableAdapters
             tableMapping.DataSetTable = "ProductSalesDetail"
             tableMapping.ColumnMappings.Add("Id", "Id")
             tableMapping.ColumnMappings.Add("ProductName", "ProductName")
-            tableMapping.ColumnMappings.Add("SupplierId", "SupplierId")
-            tableMapping.ColumnMappings.Add("CategoryId", "CategoryId")
             tableMapping.ColumnMappings.Add("ProductPrice", "ProductPrice")
             tableMapping.ColumnMappings.Add("UnitPrice", "UnitPrice")
-            tableMapping.ColumnMappings.Add("ProductStatusId", "ProductStatusId")
             tableMapping.ColumnMappings.Add("DiscountPercent", "DiscountPercent")
             tableMapping.ColumnMappings.Add("Rating", "Rating")
             tableMapping.ColumnMappings.Add("ImageId", "ImageId")
-            tableMapping.ColumnMappings.Add("WareHouseId", "WareHouseId")
             tableMapping.ColumnMappings.Add("Total", "Total")
             tableMapping.ColumnMappings.Add("SellNumber", "SellNumber")
+            tableMapping.ColumnMappings.Add("CompanyName", "CompanyName")
+            tableMapping.ColumnMappings.Add("CategoryName", "CategoryName")
+            tableMapping.ColumnMappings.Add("StatusName", "StatusName")
+            tableMapping.ColumnMappings.Add("WareHouseName", "WareHouseName")
+            tableMapping.ColumnMappings.Add("SupplierId", "SupplierId")
+            tableMapping.ColumnMappings.Add("CategoryId", "CategoryId")
+            tableMapping.ColumnMappings.Add("StatusId", "StatusId")
+            tableMapping.ColumnMappings.Add("WareHouseId", "WareHouseId")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -4185,20 +4294,31 @@ Namespace ProductTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT Product.Id, Product.ProductName, Product.SupplierId, Product.CategoryId, P"& _ 
-                "roduct.ProductPrice, Product.UnitPrice, Product.ProductStatusId, Product.Discoun"& _ 
-                "tPercent, Product.Rating, Product.ImageId, SalesDetail.WareHouseId, SalesDetail."& _ 
-                "Total, SalesDetail.SellNumber"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   Product LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             Sale"& _ 
-                "sDetail ON Product.Id = SalesDetail.ProductId"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Product.IsDelete = 'False'"& _ 
-                ")"
+            Me._commandCollection(0).CommandText = "SELECT Product.Id, Product.ProductName, Product.ProductPrice, Product.UnitPrice, "& _ 
+                "Product.DiscountPercent, Product.Rating, Product.ImageId, SalesDetail.Total, Sal"& _ 
+                "esDetail.SellNumber, Supplier.CompanyName, Category.CategoryName, Status.StatusN"& _ 
+                "ame, WareHouse.WareHouseName, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             Supplier.Id AS SupplierId, Category"& _ 
+                ".Id AS CategoryId, Status.Id AS StatusId, WareHouse.Id AS WareHouseId"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   Pr"& _ 
+                "oduct INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             Supplier ON Product.SupplierId = Supplier.Id INNE"& _ 
+                "R JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             Category ON Product.CategoryId = Category.Id INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  "& _ 
+                "           Status ON Product.ProductStatusId = Status.Id LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
+                "       SalesDetail ON Product.Id = SalesDetail.ProductId INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           "& _ 
+                "  WareHouse ON SalesDetail.WareHouseId = WareHouse.Id"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Product.IsDelete ="& _ 
+                " 'False')"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT Product.Id, Product.ProductName, Product.SupplierId, Product.CategoryId, P"& _ 
-                "roduct.ProductPrice, Product.UnitPrice, Product.ProductStatusId, Product.Discoun"& _ 
-                "tPercent, Product.Rating, Product.ImageId, SalesDetail.Total, SalesDetail.WareHo"& _ 
-                "useId, SalesDetail.SellNumber"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   Product LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             Sale"& _ 
-                "sDetail ON Product.Id = SalesDetail.ProductId"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Product.Id = @Id)"
+            Me._commandCollection(1).CommandText = "SELECT Product.Id, Product.ProductName, Product.ProductPrice, Product.UnitPrice, "& _ 
+                "Product.DiscountPercent, Product.Rating, Product.ImageId, SalesDetail.Total, Sal"& _ 
+                "esDetail.SellNumber, Supplier.CompanyName, Category.CategoryName, Status.StatusN"& _ 
+                "ame, WareHouse.WareHouseName, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             Supplier.Id AS SupplierId, Category"& _ 
+                ".Id AS CategoryId, Status.Id AS StatusId, WareHouse.Id AS WareHouseId"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   Pr"& _ 
+                "oduct INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             Supplier ON Product.SupplierId = Supplier.Id INNE"& _ 
+                "R JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             Category ON Product.CategoryId = Category.Id INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  "& _ 
+                "           Status ON Product.ProductStatusId = Status.Id LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
+                "       SalesDetail ON Product.Id = SalesDetail.ProductId INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           "& _ 
+                "  WareHouse ON SalesDetail.WareHouseId = WareHouse.Id"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Product.Id = @Id) "& _ 
+                "AND (Product.IsDelete = 'False')"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()

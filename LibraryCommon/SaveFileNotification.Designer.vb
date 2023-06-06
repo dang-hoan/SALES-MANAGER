@@ -1,4 +1,5 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class SaveFileNotification
     Inherits System.Windows.Forms.Form
 
@@ -68,7 +69,7 @@ Partial Class SaveFileNotification
 
     End Sub
 
-    Friend WithEvents bOpenFile As Button
-    Friend WithEvents labNotify As Label
-    Friend WithEvents bExit As Button
+    Friend WithEvents bOpenFile As Windows.Forms.Button
+    Friend WithEvents labNotify As Windows.Forms.Label
+    Friend WithEvents bExit As Windows.Forms.Button
 End Class

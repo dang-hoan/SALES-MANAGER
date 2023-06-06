@@ -1,0 +1,20 @@
+- forget password (gởi mk mới qua email), register account
+- xuất đồ thị báo cáo theo ngày chọn
+- gộp search + danh mục
+- thêm bảng paymentMethod để lưu combobox
+- thêm chú thích cho các trường	
+- sửa lại định dạng ngày
+- xoá nhiều row trong grid view (thêm cột checkbox ở đầu để chọn row muốn xoá)
+- hiển thị trường tên không hiển thị trường id
+- sửa lại code sql search
+- thêm check box search hay không
+- thêm phân trang trong datagridview
+- thay so sánh khác rỗng thành hàm check rỗng của thư viện
+- sửa discount trong order??
+- ship date > order date??
+- ship date, order date chỉ hiện ngày tháng năm, k format thêm giờ
+- thêm tiêu đề cho file excel
+- ẩn panel nền đồ thị khi trống dữ liệu trong report warehouse
+- refresh datagridview?? có nên k
+- number, -, export
+- bỏ chữ interger trong cảnh báo

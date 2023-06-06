@@ -55,6 +55,7 @@ Partial Class MainForm
         Me.menuStrip.AutoSize = False
         Me.menuStrip.BackColor = System.Drawing.Color.MediumAquamarine
         Me.menuStrip.Dock = System.Windows.Forms.DockStyle.Left
+        Me.menuStrip.GripMargin = New System.Windows.Forms.Padding(2, 2, 0, 2)
         Me.menuStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.menuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnHome, Me.btnCategory, Me.btnTool, Me.btnStatistic, Me.btnExit})
         Me.menuStrip.Location = New System.Drawing.Point(0, 0)
@@ -99,42 +100,42 @@ Partial Class MainForm
         'btnCustomer
         '
         Me.btnCustomer.Name = "btnCustomer"
-        Me.btnCustomer.Size = New System.Drawing.Size(202, 34)
+        Me.btnCustomer.Size = New System.Drawing.Size(270, 34)
         Me.btnCustomer.Text = "Customer"
         '
         'btnEmployee
         '
         Me.btnEmployee.Name = "btnEmployee"
-        Me.btnEmployee.Size = New System.Drawing.Size(202, 34)
+        Me.btnEmployee.Size = New System.Drawing.Size(270, 34)
         Me.btnEmployee.Text = "Employee"
         '
         'toolStripMenuItem1
         '
         Me.toolStripMenuItem1.Name = "toolStripMenuItem1"
-        Me.toolStripMenuItem1.Size = New System.Drawing.Size(199, 6)
+        Me.toolStripMenuItem1.Size = New System.Drawing.Size(267, 6)
         '
         'btnProduct
         '
         Me.btnProduct.Name = "btnProduct"
-        Me.btnProduct.Size = New System.Drawing.Size(202, 34)
+        Me.btnProduct.Size = New System.Drawing.Size(270, 34)
         Me.btnProduct.Text = "Product"
         '
         'btnOrder
         '
         Me.btnOrder.Name = "btnOrder"
-        Me.btnOrder.Size = New System.Drawing.Size(202, 34)
+        Me.btnOrder.Size = New System.Drawing.Size(270, 34)
         Me.btnOrder.Text = "Order"
         '
         'btnSupplier
         '
         Me.btnSupplier.Name = "btnSupplier"
-        Me.btnSupplier.Size = New System.Drawing.Size(202, 34)
+        Me.btnSupplier.Size = New System.Drawing.Size(270, 34)
         Me.btnSupplier.Text = "Supplier"
         '
         'btnWarehouse
         '
         Me.btnWarehouse.Name = "btnWarehouse"
-        Me.btnWarehouse.Size = New System.Drawing.Size(202, 34)
+        Me.btnWarehouse.Size = New System.Drawing.Size(270, 34)
         Me.btnWarehouse.Text = "Warehouse"
         '
         'btnTool
@@ -146,7 +147,7 @@ Partial Class MainForm
         Me.btnTool.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.btnTool.Name = "btnTool"
         Me.btnTool.Size = New System.Drawing.Size(80, 100)
-        Me.btnTool.Text = "Tool"
+        Me.btnTool.Text = "Decentralize"
         Me.btnTool.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnTool.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
@@ -154,7 +155,7 @@ Partial Class MainForm
         '
         Me.btnSearch.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnEmployeeSearch, Me.btnProductSearch, Me.btnOrderSearch})
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(240, 34)
+        Me.btnSearch.Size = New System.Drawing.Size(270, 34)
         Me.btnSearch.Text = "Search"
         '
         'btnEmployeeSearch
@@ -178,7 +179,7 @@ Partial Class MainForm
         'btnDecentralization
         '
         Me.btnDecentralization.Name = "btnDecentralization"
-        Me.btnDecentralization.Size = New System.Drawing.Size(240, 34)
+        Me.btnDecentralization.Size = New System.Drawing.Size(270, 34)
         Me.btnDecentralization.Text = "Decentralization"
         '
         'btnStatistic
@@ -197,7 +198,7 @@ Partial Class MainForm
         'btnWarehouseReport
         '
         Me.btnWarehouseReport.Name = "btnWarehouseReport"
-        Me.btnWarehouseReport.Size = New System.Drawing.Size(270, 34)
+        Me.btnWarehouseReport.Size = New System.Drawing.Size(202, 34)
         Me.btnWarehouseReport.Text = "Warehouse"
         '
         'btnExit

@@ -61,6 +61,7 @@ Public Class LoginForm
 
     Private Sub LoginForm_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
             login()
         End If
     End Sub

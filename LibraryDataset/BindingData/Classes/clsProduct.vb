@@ -26,9 +26,9 @@ Public Class clsProduct
         taProductSalesDetail.Fill(ds1.ProductSalesDetail)
         Return ds1
     End Function
-    Public Function GetProductById(ByVal productId As String) As Product.ProductSalesDetailDataTable
+    Public Function GetProductById(ByVal productId As String) As DataRow
         taProductSalesDetail.Connection = conn
-        Return taProductSalesDetail.GetProductById(productId)
+        Return taProductSalesDetail.GetProductById(productId).Rows(0)
     End Function
     Public Function GetProductsOfWarehouse(ByVal warehouseId As String) As Product.ProductSalesDetailDataTable
         taProductSalesDetail.Connection = conn
@@ -104,49 +104,27 @@ Public Class clsProduct
         taCostProduct.Connection = conn
         Return taCostProduct.GetCostOfProduct(productId)
     End Function
-    Public Function SearchProduct(ByVal Id As Long, ByVal ProductName As String, ByVal SupplierId As Long, ByVal CategoryId As Long,
-                                  ByVal ProductPrice As Double, ByVal ProductStatusId As Integer, ByVal DiscountPercent As Double,
-                                  ByVal WareHouseId As Long, ByVal Total As Double) As Product.ProductSalesDetailDataTable
+    Public Function SearchProduct(ByVal sqlCommand As String) As Product.ProductSalesDetailDataTable
         Dim ds As New Product
 
         Dim cmd = conn.CreateCommand()
 
-        cmd.CommandText = "SELECT Product.Id, Product.ProductName, Product.SupplierId, Product.CategoryId,
-                        Product.ProductPrice, Product.UnitPrice, Product.ProductStatusId, Product.DiscountPercent, Product.Rating,
-                        Product.ImageId, SalesDetail.WareHouseId, SalesDetail.Total
-                    FROM   Product LEFT OUTER JOIN
-                            SalesDetail ON Product.Id = SalesDetail.ProductId
-                    WHERE (Product.Id = @Id OR @IsIdEntered = -1) AND Product.ProductName LIKE @ProductName AND
-                            (Product.SupplierId = @SupplierId OR @IsSupplierIdEntered = -1) AND (Product.CategoryId = @CategoryId
-                            OR @IsCategoryIdEntered = -1) AND (Product.ProductPrice = @ProductPrice OR @IsProductPriceEntered = -1) 
-                            AND (Product.ProductStatusId = @ProductStatusId OR @IsProductStatusIdEntered = -1) 
-                            AND (Product.DiscountPercent = @DiscountPercent OR @IsDiscountPercentEntered = -1)
-                            AND (SalesDetail.WareHouseId = @WareHouseId OR @IsWareHouseIdEntered = -1) AND (SalesDetail.Total = @Total OR @IsTotalEntered = -1) AND Product.IsDelete = 'False'"
+        cmd.CommandText = "SELECT Product.Id, Product.ProductName, Product.ProductPrice, Product.UnitPrice,
+                            Product.DiscountPercent, Product.Rating, Product.ImageId, SalesDetail.Total,
+                            SalesDetail.SellNumber, Supplier.CompanyName, Category.CategoryName,
+                            Status.StatusName, WareHouse.WareHouseName
+                            FROM   
+                                Product INNER JOIN
+                                Supplier ON Product.SupplierId = Supplier.Id INNER JOIN
+                                Category ON Product.CategoryId = Category.Id INNER JOIN
+                                Status ON Product.ProductStatusId = Status.Id LEFT OUTER JOIN
+                                SalesDetail ON Product.Id = SalesDetail.ProductId INNER JOIN
+                                WareHouse ON SalesDetail.WareHouseId = WareHouse.Id
+                            WHERE Product.IsDelete = 'False'" & sqlCommand
 
         taProductSalesDetail.Connection = conn
-        'command.CommandType = CommandType.StoredProcedure
-        cmd.Parameters.AddWithValue("@Id", Id)
-        cmd.Parameters.AddWithValue("@ProductName", $"%{ProductName}%")
-        cmd.Parameters.AddWithValue("@SupplierId", SupplierId)
-        cmd.Parameters.AddWithValue("@CategoryId", CategoryId)
-        cmd.Parameters.AddWithValue("@ProductPrice", ProductPrice)
-        cmd.Parameters.AddWithValue("@ProductStatusId", ProductStatusId)
-        cmd.Parameters.AddWithValue("@DiscountPercent", DiscountPercent)
-        cmd.Parameters.AddWithValue("@WareHouseId", WareHouseId)
-        cmd.Parameters.AddWithValue("@Total", Total)
-        cmd.Parameters.AddWithValue("@IsIdEntered", Id)
-        cmd.Parameters.AddWithValue("@IsSupplierIdEntered", SupplierId)
-        cmd.Parameters.AddWithValue("@IsCategoryIdEntered", CategoryId)
-        cmd.Parameters.AddWithValue("@IsProductPriceEntered", ProductPrice)
-        cmd.Parameters.AddWithValue("@IsProductStatusIdEntered", ProductStatusId)
-        cmd.Parameters.AddWithValue("@IsDiscountPercentEntered", DiscountPercent)
-        cmd.Parameters.AddWithValue("@IsWareHouseIdEntered", WareHouseId)
-        cmd.Parameters.AddWithValue("@IsTotalEntered", Total)
 
         Dim tmp = cmd.CommandText.ToString()
-        For Each p As SqlParameter In cmd.Parameters
-            tmp = tmp.Replace(p.ParameterName.ToString(), "'" & p.Value.ToString() & "'")
-        Next
         Console.WriteLine(tmp)
 
         taProductSalesDetail.Adapter.SelectCommand = cmd

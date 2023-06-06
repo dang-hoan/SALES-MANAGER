@@ -101,7 +101,7 @@ SELECT Id, ProductName, SupplierId, CategoryId, ProductPrice, UnitPrice, Product
               <Mapping SourceColumn="ImageId" DataSetColumn="ImageId" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteCompletelyProduct" Modifier="Public" Name="DeleteCompletelyProduct" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="DeleteCompletelyProduct">
+              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteCompletelyProduct" Modifier="Public" Name="DeleteCompletelyProduct" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteCompletelyProduct">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM Product
@@ -112,7 +112,7 @@ WHERE (Id = @Id)</CommandText>
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteProduct" Modifier="Public" Name="DeleteProduct" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteProduct">
+              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteProduct" Modifier="Public" Name="DeleteProduct" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="DeleteProduct">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE Product
@@ -157,7 +157,7 @@ SELECT Id, ProductName, SupplierId, CategoryId, ProductPrice, UnitPrice, Product
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="SalesManagerDB.dbo.Product" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="InsertProduct" Modifier="Public" Name="InsertProduct" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="InsertProduct">
+              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="SalesManagerDB.dbo.Product" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="InsertProduct" Modifier="Public" Name="InsertProduct" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="InsertProduct">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO Product
@@ -182,7 +182,7 @@ VALUES (@ProductName,@SupplierId,@CategoryId,@ProductPrice,@UnitPrice,@ProductSt
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="RestoreProduct" Modifier="Public" Name="RestoreProduct" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="RestoreProduct">
+              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="RestoreProduct" Modifier="Public" Name="RestoreProduct" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="RestoreProduct">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE Product
@@ -195,7 +195,7 @@ SELECT Id, ProductName, SupplierId, CategoryId, ProductPrice, UnitPrice, Product
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateProduct" Modifier="Public" Name="UpdateProduct" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="UpdateProduct">
+              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateProduct" Modifier="Public" Name="UpdateProduct" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="UpdateProduct">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE Product
@@ -220,7 +220,7 @@ SELECT Id, ProductName, SupplierId, CategoryId, ProductPrice, UnitPrice, Product
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateStatus" Modifier="Public" Name="UpdateStatus" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="UpdateStatus">
+              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateStatus" Modifier="Public" Name="UpdateStatus" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="UpdateStatus">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE Product
@@ -241,9 +241,14 @@ SELECT Id, ProductName, SupplierId, CategoryId, ProductPrice, UnitPrice, Product
               <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Product.Id, Product.ProductName, Product.SupplierId, Product.CategoryId, Product.ProductPrice, Product.UnitPrice, Product.ProductStatusId, Product.DiscountPercent, Product.Rating, Product.ImageId, SalesDetail.WareHouseId, SalesDetail.Total, SalesDetail.SellNumber
-FROM   Product LEFT OUTER JOIN
-             SalesDetail ON Product.Id = SalesDetail.ProductId
+                    <CommandText>SELECT Product.Id, Product.ProductName, Product.ProductPrice, Product.UnitPrice, Product.DiscountPercent, Product.Rating, Product.ImageId, SalesDetail.Total, SalesDetail.SellNumber, Supplier.CompanyName, Category.CategoryName, Status.StatusName, WareHouse.WareHouseName, 
+             Supplier.Id AS SupplierId, Category.Id AS CategoryId, Status.Id AS StatusId, WareHouse.Id AS WareHouseId
+FROM   Product INNER JOIN
+             Supplier ON Product.SupplierId = Supplier.Id INNER JOIN
+             Category ON Product.CategoryId = Category.Id INNER JOIN
+             Status ON Product.ProductStatusId = Status.Id LEFT OUTER JOIN
+             SalesDetail ON Product.Id = SalesDetail.ProductId INNER JOIN
+             WareHouse ON SalesDetail.WareHouseId = WareHouse.Id
 WHERE (Product.IsDelete = 'False')</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -253,26 +258,35 @@ WHERE (Product.IsDelete = 'False')</CommandText>
             <Mappings>
               <Mapping SourceColumn="Id" DataSetColumn="Id" />
               <Mapping SourceColumn="ProductName" DataSetColumn="ProductName" />
-              <Mapping SourceColumn="SupplierId" DataSetColumn="SupplierId" />
-              <Mapping SourceColumn="CategoryId" DataSetColumn="CategoryId" />
               <Mapping SourceColumn="ProductPrice" DataSetColumn="ProductPrice" />
               <Mapping SourceColumn="UnitPrice" DataSetColumn="UnitPrice" />
-              <Mapping SourceColumn="ProductStatusId" DataSetColumn="ProductStatusId" />
               <Mapping SourceColumn="DiscountPercent" DataSetColumn="DiscountPercent" />
               <Mapping SourceColumn="Rating" DataSetColumn="Rating" />
               <Mapping SourceColumn="ImageId" DataSetColumn="ImageId" />
-              <Mapping SourceColumn="WareHouseId" DataSetColumn="WareHouseId" />
               <Mapping SourceColumn="Total" DataSetColumn="Total" />
               <Mapping SourceColumn="SellNumber" DataSetColumn="SellNumber" />
+              <Mapping SourceColumn="CompanyName" DataSetColumn="CompanyName" />
+              <Mapping SourceColumn="CategoryName" DataSetColumn="CategoryName" />
+              <Mapping SourceColumn="StatusName" DataSetColumn="StatusName" />
+              <Mapping SourceColumn="WareHouseName" DataSetColumn="WareHouseName" />
+              <Mapping SourceColumn="SupplierId" DataSetColumn="SupplierId" />
+              <Mapping SourceColumn="CategoryId" DataSetColumn="CategoryId" />
+              <Mapping SourceColumn="StatusId" DataSetColumn="StatusId" />
+              <Mapping SourceColumn="WareHouseId" DataSetColumn="WareHouseId" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetProductById" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetProductById" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetProductById" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Product.Id, Product.ProductName, Product.SupplierId, Product.CategoryId, Product.ProductPrice, Product.UnitPrice, Product.ProductStatusId, Product.DiscountPercent, Product.Rating, Product.ImageId, SalesDetail.Total, SalesDetail.WareHouseId, SalesDetail.SellNumber
-FROM   Product LEFT OUTER JOIN
-             SalesDetail ON Product.Id = SalesDetail.ProductId
-WHERE (Product.Id = @Id)</CommandText>
+                    <CommandText>SELECT Product.Id, Product.ProductName, Product.ProductPrice, Product.UnitPrice, Product.DiscountPercent, Product.Rating, Product.ImageId, SalesDetail.Total, SalesDetail.SellNumber, Supplier.CompanyName, Category.CategoryName, Status.StatusName, WareHouse.WareHouseName, 
+             Supplier.Id AS SupplierId, Category.Id AS CategoryId, Status.Id AS StatusId, WareHouse.Id AS WareHouseId
+FROM   Product INNER JOIN
+             Supplier ON Product.SupplierId = Supplier.Id INNER JOIN
+             Category ON Product.CategoryId = Category.Id INNER JOIN
+             Status ON Product.ProductStatusId = Status.Id LEFT OUTER JOIN
+             SalesDetail ON Product.Id = SalesDetail.ProductId INNER JOIN
+             WareHouse ON SalesDetail.WareHouseId = WareHouse.Id
+WHERE (Product.Id = @Id) AND (Product.IsDelete = 'False')</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="Id" ColumnName="Id" DataSourceName="SalesManagerDB.dbo.Product" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@Id" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -507,8 +521,6 @@ WHERE (Product.Id = @Id) AND (OrderDetail.OrderId = @OrderId)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="SupplierId" msprop:Generator_ColumnPropNameInTable="SupplierIdColumn" msprop:Generator_ColumnPropNameInRow="SupplierId" msprop:Generator_UserColumnName="SupplierId" msprop:Generator_ColumnVarNameInTable="columnSupplierId" type="xs:long" />
-              <xs:element name="CategoryId" msprop:Generator_ColumnPropNameInTable="CategoryIdColumn" msprop:Generator_ColumnPropNameInRow="CategoryId" msprop:Generator_UserColumnName="CategoryId" msprop:Generator_ColumnVarNameInTable="columnCategoryId" type="xs:long" />
               <xs:element name="ProductPrice" msprop:Generator_ColumnPropNameInTable="ProductPriceColumn" msprop:Generator_ColumnPropNameInRow="ProductPrice" msprop:Generator_UserColumnName="ProductPrice" msprop:Generator_ColumnVarNameInTable="columnProductPrice" type="xs:decimal" />
               <xs:element name="UnitPrice" msprop:Generator_ColumnPropNameInTable="UnitPriceColumn" msprop:Generator_ColumnPropNameInRow="UnitPrice" msprop:Generator_UserColumnName="UnitPrice" msprop:Generator_ColumnVarNameInTable="columnUnitPrice">
                 <xs:simpleType>
@@ -517,13 +529,43 @@ WHERE (Product.Id = @Id) AND (OrderDetail.OrderId = @OrderId)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="ProductStatusId" msprop:Generator_ColumnPropNameInTable="ProductStatusIdColumn" msprop:Generator_ColumnPropNameInRow="ProductStatusId" msprop:Generator_UserColumnName="ProductStatusId" msprop:Generator_ColumnVarNameInTable="columnProductStatusId" type="xs:int" />
               <xs:element name="DiscountPercent" msprop:Generator_ColumnPropNameInTable="DiscountPercentColumn" msprop:Generator_ColumnPropNameInRow="DiscountPercent" msprop:Generator_UserColumnName="DiscountPercent" msprop:Generator_ColumnVarNameInTable="columnDiscountPercent" type="xs:double" minOccurs="0" />
               <xs:element name="Rating" msprop:Generator_ColumnPropNameInTable="RatingColumn" msprop:Generator_ColumnPropNameInRow="Rating" msprop:Generator_UserColumnName="Rating" msprop:Generator_ColumnVarNameInTable="columnRating" type="xs:int" minOccurs="0" />
               <xs:element name="ImageId" msprop:Generator_ColumnPropNameInTable="ImageIdColumn" msprop:Generator_ColumnPropNameInRow="ImageId" msprop:Generator_UserColumnName="ImageId" msprop:Generator_ColumnVarNameInTable="columnImageId" type="xs:long" minOccurs="0" />
-              <xs:element name="WareHouseId" msprop:Generator_ColumnPropNameInTable="WareHouseIdColumn" msprop:Generator_ColumnPropNameInRow="WareHouseId" msprop:Generator_UserColumnName="WareHouseId" msprop:Generator_ColumnVarNameInTable="columnWareHouseId" type="xs:long" minOccurs="0" />
               <xs:element name="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_UserColumnName="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" type="xs:long" minOccurs="0" />
-              <xs:element name="SellNumber" msprop:Generator_UserColumnName="SellNumber" msprop:Generator_ColumnPropNameInTable="SellNumberColumn" msprop:Generator_ColumnPropNameInRow="SellNumber" msprop:Generator_ColumnVarNameInTable="columnSellNumber" type="xs:long" minOccurs="0" />
+              <xs:element name="SellNumber" msprop:Generator_ColumnPropNameInTable="SellNumberColumn" msprop:Generator_ColumnPropNameInRow="SellNumber" msprop:Generator_UserColumnName="SellNumber" msprop:Generator_ColumnVarNameInTable="columnSellNumber" type="xs:long" minOccurs="0" />
+              <xs:element name="CompanyName" msprop:Generator_ColumnPropNameInTable="CompanyNameColumn" msprop:Generator_ColumnPropNameInRow="CompanyName" msprop:Generator_UserColumnName="CompanyName" msprop:Generator_ColumnVarNameInTable="columnCompanyName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CategoryName" msprop:Generator_ColumnPropNameInTable="CategoryNameColumn" msprop:Generator_ColumnPropNameInRow="CategoryName" msprop:Generator_UserColumnName="CategoryName" msprop:Generator_ColumnVarNameInTable="columnCategoryName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="StatusName" msprop:Generator_ColumnPropNameInTable="StatusNameColumn" msprop:Generator_ColumnPropNameInRow="StatusName" msprop:Generator_UserColumnName="StatusName" msprop:Generator_ColumnVarNameInTable="columnStatusName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="WareHouseName" msprop:Generator_ColumnPropNameInTable="WareHouseNameColumn" msprop:Generator_ColumnPropNameInRow="WareHouseName" msprop:Generator_UserColumnName="WareHouseName" msprop:Generator_ColumnVarNameInTable="columnWareHouseName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SupplierId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="SupplierId" msprop:Generator_ColumnPropNameInTable="SupplierIdColumn" msprop:Generator_ColumnVarNameInTable="columnSupplierId" msprop:Generator_UserColumnName="SupplierId" type="xs:long" />
+              <xs:element name="CategoryId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="CategoryId" msprop:Generator_ColumnPropNameInTable="CategoryIdColumn" msprop:Generator_ColumnVarNameInTable="columnCategoryId" msprop:Generator_UserColumnName="CategoryId" type="xs:long" />
+              <xs:element name="StatusId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="StatusId" msprop:Generator_ColumnPropNameInTable="StatusIdColumn" msprop:Generator_ColumnVarNameInTable="columnStatusId" msprop:Generator_UserColumnName="StatusId" type="xs:int" />
+              <xs:element name="WareHouseId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="WareHouseId" msprop:Generator_ColumnPropNameInTable="WareHouseIdColumn" msprop:Generator_ColumnVarNameInTable="columnWareHouseId" msprop:Generator_UserColumnName="WareHouseId" type="xs:long" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

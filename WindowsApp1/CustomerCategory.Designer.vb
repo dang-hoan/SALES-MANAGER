@@ -42,6 +42,7 @@ Partial Class frmCustomerCategory
         Me.rdFemale = New System.Windows.Forms.RadioButton()
         Me.rdMale = New System.Windows.Forms.RadioButton()
         Me.dgvCategory = New System.Windows.Forms.DataGridView()
+        Me.btnSearch = New System.Windows.Forms.Button()
         Me.groupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.dgvCategory, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -176,6 +177,7 @@ Partial Class frmCustomerCategory
         '
         'groupBox1
         '
+        Me.groupBox1.Controls.Add(Me.btnSearch)
         Me.groupBox1.Controls.Add(Me.txtCustomerLastName)
         Me.groupBox1.Controls.Add(Me.txtEmail)
         Me.groupBox1.Controls.Add(Me.Label8)
@@ -191,9 +193,9 @@ Partial Class frmCustomerCategory
         Me.groupBox1.Controls.Add(Me.label3)
         Me.groupBox1.Controls.Add(Me.label5)
         Me.groupBox1.Controls.Add(Me.GroupBox2)
-        Me.groupBox1.Location = New System.Drawing.Point(54, 97)
+        Me.groupBox1.Location = New System.Drawing.Point(54, 85)
         Me.groupBox1.Name = "groupBox1"
-        Me.groupBox1.Size = New System.Drawing.Size(853, 188)
+        Me.groupBox1.Size = New System.Drawing.Size(853, 250)
         Me.groupBox1.TabIndex = 0
         Me.groupBox1.TabStop = False
         Me.groupBox1.Text = "Detail"
@@ -307,15 +309,29 @@ Partial Class frmCustomerCategory
         Me.dgvCategory.AllowUserToDeleteRows = False
         Me.dgvCategory.BackgroundColor = System.Drawing.Color.White
         Me.dgvCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvCategory.Location = New System.Drawing.Point(54, 307)
+        Me.dgvCategory.Location = New System.Drawing.Point(54, 352)
         Me.dgvCategory.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.dgvCategory.Name = "dgvCategory"
         Me.dgvCategory.ReadOnly = True
         Me.dgvCategory.RowHeadersWidth = 62
         Me.dgvCategory.RowTemplate.Height = 33
         Me.dgvCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvCategory.Size = New System.Drawing.Size(853, 354)
+        Me.dgvCategory.Size = New System.Drawing.Size(853, 309)
         Me.dgvCategory.TabIndex = 0
+        '
+        'btnSearch
+        '
+        Me.btnSearch.BackColor = System.Drawing.Color.SandyBrown
+        Me.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnSearch.Image = CType(resources.GetObject("btnSearch.Image"), System.Drawing.Image)
+        Me.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnSearch.Location = New System.Drawing.Point(351, 180)
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnSearch.Size = New System.Drawing.Size(150, 55)
+        Me.btnSearch.TabIndex = 16
+        Me.btnSearch.Text = "Search"
+        Me.btnSearch.UseVisualStyleBackColor = False
         '
         'frmCustomerCategory
         '
@@ -375,4 +391,5 @@ Partial Class frmCustomerCategory
     Private WithEvents Label8 As Label
     Friend WithEvents GroupBox2 As GroupBox
     Private WithEvents txtCustomerLastName As TextBox
+    Private WithEvents btnSearch As Button
 End Class

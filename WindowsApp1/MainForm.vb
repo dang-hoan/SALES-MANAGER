@@ -13,7 +13,7 @@ Public Class MainForm
         SetVisibleForPermission()
     End Sub
 
-    Private Sub SetVisibleForPermission()
+    Public Sub SetVisibleForPermission()
         btnCustomer.Visible = False
         btnEmployee.Visible = False
         btnProduct.Visible = False
@@ -28,7 +28,7 @@ Public Class MainForm
         Dim listNumber As New List(Of Integer) From {0, 0, 0, 0}        'Category, Search, Statistic, Tool
         Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
         For Each permission In dataPermission
-            Dim form = permission(1).split(":")(0)
+            Dim form = permission(1).split(": ")(0)
             Select Case form
                 Case "Customer category"
                     btnCustomer.Visible = True
@@ -70,15 +70,23 @@ Public Class MainForm
         Next
         If listNumber(0) = 0 Then
             btnCategory.Visible = False
+        Else
+            btnCategory.Visible = True
         End If
         If listNumber(1) = 0 Then
             btnSearch.Visible = False
+        Else
+            btnSearch.Visible = True
         End If
         If listNumber(2) = 0 Then
             btnStatistic.Visible = False
+        Else
+            btnStatistic.Visible = True
         End If
         If listNumber(3) = 0 And listNumber(1) = 0 Then
             btnTool.Visible = False
+        Else
+            btnTool.Visible = True
         End If
     End Sub
     Private Sub btnCategoryCustomer_Click(sender As Object, e As EventArgs) Handles btnCustomer.Click
@@ -142,7 +150,7 @@ Public Class MainForm
     End Sub
 
     Private Sub btnProductSearch_Click(sender As Object, e As EventArgs) Handles btnProductSearch.Click
-        ShowForm(New ProductSearch)
+        ShowForm(New ProductCategory)
     End Sub
 
     Private Sub btnWarehouseCategory_Click(sender As Object, e As EventArgs) Handles btnWarehouse.Click

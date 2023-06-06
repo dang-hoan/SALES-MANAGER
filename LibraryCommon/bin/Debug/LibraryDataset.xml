@@ -1,0 +1,1071 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+LibraryDataset
+</name>
+</assembly>
+<members>
+<member name="T:LibraryDataset.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:LibraryDataset.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:LibraryDataset.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Account">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:LibraryDataset.Account.AccountDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Account.StatusDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Account.AccountRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Account.StatusRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Account.AccountRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.Account.StatusRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.AccountTableAdapters.AccountTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.AccountTableAdapters.StatusTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.AccountTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:LibraryDataset.AccountTableAdapters.TableAdapterManager.UpdateUpdatedRows(LibraryDataset.Account,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:LibraryDataset.AccountTableAdapters.TableAdapterManager.UpdateInsertedRows(LibraryDataset.Account,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:LibraryDataset.AccountTableAdapters.TableAdapterManager.UpdateDeletedRows(LibraryDataset.Account,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:LibraryDataset.AccountTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:LibraryDataset.AccountTableAdapters.TableAdapterManager.UpdateAll(LibraryDataset.Account)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:LibraryDataset.AccountTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:LibraryDataset.AccountTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:LibraryDataset.Category">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:LibraryDataset.Category.CategoryDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Category.CategoryRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Category.CategoryRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.CategoryTableAdapters.CategoryTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.CategoryTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:LibraryDataset.CategoryTableAdapters.TableAdapterManager.UpdateUpdatedRows(LibraryDataset.Category,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:LibraryDataset.CategoryTableAdapters.TableAdapterManager.UpdateInsertedRows(LibraryDataset.Category,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:LibraryDataset.CategoryTableAdapters.TableAdapterManager.UpdateDeletedRows(LibraryDataset.Category,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:LibraryDataset.CategoryTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:LibraryDataset.CategoryTableAdapters.TableAdapterManager.UpdateAll(LibraryDataset.Category)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:LibraryDataset.CategoryTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:LibraryDataset.CategoryTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBWareHouseProductDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBWareHouseDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBProductDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBCategoryDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBSupplierDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBStatusDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBPersonDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.SalesDetailDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBRoleDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBWareHouseProductRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBWareHouseRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBProductRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBCategoryRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBSupplierRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBStatusRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBPersonRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.SalesDetailRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBRoleRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBWareHouseProductRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBWareHouseRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBProductRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBCategoryRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBSupplierRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBStatusRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBPersonRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.SalesDetailRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.CBB.CBBRoleRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.CBBTableAdapters.CBBWareHouseProductTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBBTableAdapters.CBBWareHouseTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBBTableAdapters.CBBProductTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBBTableAdapters.CBBCategoryTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBBTableAdapters.CBBSupplierTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBBTableAdapters.CBBStatusTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBBTableAdapters.CBBPersonTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBBTableAdapters.SalesDetailTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBBTableAdapters.CBBRoleTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBBTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:LibraryDataset.CBBTableAdapters.TableAdapterManager.UpdateUpdatedRows(LibraryDataset.CBB,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:LibraryDataset.CBBTableAdapters.TableAdapterManager.UpdateInsertedRows(LibraryDataset.CBB,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:LibraryDataset.CBBTableAdapters.TableAdapterManager.UpdateDeletedRows(LibraryDataset.CBB,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:LibraryDataset.CBBTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:LibraryDataset.CBBTableAdapters.TableAdapterManager.UpdateAll(LibraryDataset.CBB)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:LibraryDataset.CBBTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:LibraryDataset.CBBTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.SalesDetailDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.SalesOrderDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.OrderDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.OrderViewDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.OrderDetailDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.OrderDetailViewDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.SalesOrderRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.OrderRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.SalesDetailRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.OrderViewRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.OrderDetailRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.OrderDetailViewRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.SalesOrderRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.OrderRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.SalesDetailRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.OrderViewRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.OrderDetailRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetail.OrderDetailViewRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetailTableAdapters.SalesOrderTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetailTableAdapters.OrderTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetailTableAdapters.SalesDetailTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetailTableAdapters.OrderViewTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetailTableAdapters.OrderDetailTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetailTableAdapters.OrderDetailViewTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetailTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:LibraryDataset.OrderDetailTableAdapters.TableAdapterManager.UpdateUpdatedRows(LibraryDataset.OrderDetail,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:LibraryDataset.OrderDetailTableAdapters.TableAdapterManager.UpdateInsertedRows(LibraryDataset.OrderDetail,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:LibraryDataset.OrderDetailTableAdapters.TableAdapterManager.UpdateDeletedRows(LibraryDataset.OrderDetail,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:LibraryDataset.OrderDetailTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:LibraryDataset.OrderDetailTableAdapters.TableAdapterManager.UpdateAll(LibraryDataset.OrderDetail)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetailTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:LibraryDataset.OrderDetailTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:LibraryDataset._Person">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:LibraryDataset._Person.RoleDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset._Person.NameDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset._Person.PersonDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset._Person.RoleRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset._Person.NameRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset._Person.PersonRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset._Person.RoleRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset._Person.NameRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset._Person.PersonRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset._PersonTableAdapters.RoleTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset._PersonTableAdapters.NameTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset._PersonTableAdapters.PersonTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset._PersonTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:LibraryDataset._PersonTableAdapters.TableAdapterManager.UpdateUpdatedRows(LibraryDataset._Person,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:LibraryDataset._PersonTableAdapters.TableAdapterManager.UpdateInsertedRows(LibraryDataset._Person,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:LibraryDataset._PersonTableAdapters.TableAdapterManager.UpdateDeletedRows(LibraryDataset._Person,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:LibraryDataset._PersonTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:LibraryDataset._PersonTableAdapters.TableAdapterManager.UpdateAll(LibraryDataset._Person)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:LibraryDataset._PersonTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:LibraryDataset._PersonTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:LibraryDataset.Product">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:LibraryDataset.Product.ProductDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Product.ProductSalesDetailDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Product.SalesDetailDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Product.CostProductDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Product.ProductViewDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Product.ProductRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Product.ProductSalesDetailRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Product.SalesDetailRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Product.CostProductRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Product.ProductViewRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Product.ProductRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.Product.ProductSalesDetailRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.Product.SalesDetailRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.Product.CostProductRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.Product.ProductViewRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.ProductTableAdapters.ProductTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.ProductTableAdapters.ProductSalesDetailTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.ProductTableAdapters.SalesDetailTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.ProductTableAdapters.CostProductTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.ProductTableAdapters.ProductViewTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.ProductTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:LibraryDataset.ProductTableAdapters.TableAdapterManager.UpdateUpdatedRows(LibraryDataset.Product,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:LibraryDataset.ProductTableAdapters.TableAdapterManager.UpdateInsertedRows(LibraryDataset.Product,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:LibraryDataset.ProductTableAdapters.TableAdapterManager.UpdateDeletedRows(LibraryDataset.Product,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:LibraryDataset.ProductTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:LibraryDataset.ProductTableAdapters.TableAdapterManager.UpdateAll(LibraryDataset.Product)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:LibraryDataset.ProductTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:LibraryDataset.ProductTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:LibraryDataset.Role">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:LibraryDataset.Role.RoleDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Role.RolePermissionDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Role.PermissionDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Role.RoleRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Role.RolePermissionRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Role.PermissionRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Role.RoleRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.Role.RolePermissionRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.Role.PermissionRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.RoleTableAdapters.RoleTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.RoleTableAdapters.RolePermissionTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.RoleTableAdapters.PermissionTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.RoleTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:LibraryDataset.RoleTableAdapters.TableAdapterManager.UpdateUpdatedRows(LibraryDataset.Role,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:LibraryDataset.RoleTableAdapters.TableAdapterManager.UpdateInsertedRows(LibraryDataset.Role,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:LibraryDataset.RoleTableAdapters.TableAdapterManager.UpdateDeletedRows(LibraryDataset.Role,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:LibraryDataset.RoleTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:LibraryDataset.RoleTableAdapters.TableAdapterManager.UpdateAll(LibraryDataset.Role)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:LibraryDataset.RoleTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:LibraryDataset.RoleTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:LibraryDataset.Supplier">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:LibraryDataset.Supplier.SupplierDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Supplier.SupplierRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Supplier.SupplierRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.SupplierTableAdapters.SupplierTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.SupplierTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:LibraryDataset.SupplierTableAdapters.TableAdapterManager.UpdateUpdatedRows(LibraryDataset.Supplier,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:LibraryDataset.SupplierTableAdapters.TableAdapterManager.UpdateInsertedRows(LibraryDataset.Supplier,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:LibraryDataset.SupplierTableAdapters.TableAdapterManager.UpdateDeletedRows(LibraryDataset.Supplier,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:LibraryDataset.SupplierTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:LibraryDataset.SupplierTableAdapters.TableAdapterManager.UpdateAll(LibraryDataset.Supplier)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:LibraryDataset.SupplierTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:LibraryDataset.SupplierTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:LibraryDataset.Warehouse">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:LibraryDataset.Warehouse.WareHouseDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Warehouse.SalesDetailDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Warehouse.WareHouseRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Warehouse.SalesDetailRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Warehouse.WareHouseRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.Warehouse.SalesDetailRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.WarehouseTableAdapters.WareHouseTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.WarehouseTableAdapters.SalesDetailTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.WarehouseTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:LibraryDataset.WarehouseTableAdapters.TableAdapterManager.UpdateUpdatedRows(LibraryDataset.Warehouse,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:LibraryDataset.WarehouseTableAdapters.TableAdapterManager.UpdateInsertedRows(LibraryDataset.Warehouse,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:LibraryDataset.WarehouseTableAdapters.TableAdapterManager.UpdateDeletedRows(LibraryDataset.Warehouse,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:LibraryDataset.WarehouseTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:LibraryDataset.WarehouseTableAdapters.TableAdapterManager.UpdateAll(LibraryDataset.Warehouse)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:LibraryDataset.WarehouseTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:LibraryDataset.WarehouseTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+</members>
+</doc>

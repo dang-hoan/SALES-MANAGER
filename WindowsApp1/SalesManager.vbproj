@@ -124,6 +124,7 @@
     <Compile Include="AccountInformation.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DataGridViewCheckBoxHeaderCell.vb" />
     <Compile Include="DecentralizationForm.Designer.vb">
       <DependentUpon>DecentralizationForm.vb</DependentUpon>
     </Compile>
@@ -134,12 +135,6 @@
       <DependentUpon>EmployeeCategory.vb</DependentUpon>
     </Compile>
     <Compile Include="EmployeeCategory.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SaveFileNotification.Designer.vb">
-      <DependentUpon>SaveFileNotification.vb</DependentUpon>
-    </Compile>
-    <Compile Include="SaveFileNotification.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SupplierCategory.Designer.vb">
@@ -196,10 +191,10 @@
     <Compile Include="WarehouseCategory.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProductSearch.Designer.vb">
-      <DependentUpon>ProductSearch.vb</DependentUpon>
+    <Compile Include="ProductCategory.Designer.vb">
+      <DependentUpon>ProductCategory.vb</DependentUpon>
     </Compile>
-    <Compile Include="ProductSearch.vb">
+    <Compile Include="ProductCategory.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="OrderSearch.Designer.vb">
@@ -208,10 +203,10 @@
     <Compile Include="OrderSearch.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProductCategory.Designer.vb">
-      <DependentUpon>ProductCategory.vb</DependentUpon>
+    <Compile Include="ProductInformation.Designer.vb">
+      <DependentUpon>ProductInformation.vb</DependentUpon>
     </Compile>
-    <Compile Include="ProductCategory.vb">
+    <Compile Include="ProductInformation.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SalesOrder.Designer.vb">
@@ -237,9 +232,6 @@
     <EmbeddedResource Include="EmployeeCategory.resx">
       <DependentUpon>EmployeeCategory.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SaveFileNotification.resx">
-      <DependentUpon>SaveFileNotification.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="SupplierCategory.resx">
       <DependentUpon>SupplierCategory.vb</DependentUpon>
     </EmbeddedResource>
@@ -264,14 +256,14 @@
     <EmbeddedResource Include="WarehouseCategory.resx">
       <DependentUpon>WarehouseCategory.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductSearch.resx">
-      <DependentUpon>ProductSearch.vb</DependentUpon>
+    <EmbeddedResource Include="ProductCategory.resx">
+      <DependentUpon>ProductCategory.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrderSearch.resx">
       <DependentUpon>OrderSearch.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductCategory.resx">
-      <DependentUpon>ProductCategory.vb</DependentUpon>
+    <EmbeddedResource Include="ProductInformation.resx">
+      <DependentUpon>ProductInformation.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SalesOrder.resx">
       <DependentUpon>SalesOrder.vb</DependentUpon>

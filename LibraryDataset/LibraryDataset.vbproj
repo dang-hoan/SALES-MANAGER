@@ -65,71 +65,71 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BiddingData\Classes\clsOrderDetail.vb" />
-    <Compile Include="BiddingData\Classes\clsPerson.vb" />
-    <Compile Include="BiddingData\Classes\clsCBB.vb" />
-    <Compile Include="BiddingData\Classes\clsProduct.vb" />
-    <Compile Include="BiddingData\Classes\clsRolePermission.vb" />
-    <Compile Include="BiddingData\Classes\clsSupplier.vb" />
-    <Compile Include="BiddingData\Classes\clsAccount.vb" />
-    <Compile Include="BiddingData\Classes\clsWarehouse.vb" />
-    <Compile Include="BiddingData\Classes\SecurePasswordHasher.vb" />
-    <Compile Include="BiddingData\Dataset\Account.Designer.vb">
+    <Compile Include="BindingData\Classes\clsOrderDetail.vb" />
+    <Compile Include="BindingData\Classes\clsPerson.vb" />
+    <Compile Include="BindingData\Classes\clsCBB.vb" />
+    <Compile Include="BindingData\Classes\clsProduct.vb" />
+    <Compile Include="BindingData\Classes\clsRolePermission.vb" />
+    <Compile Include="BindingData\Classes\clsSupplier.vb" />
+    <Compile Include="BindingData\Classes\clsAccount.vb" />
+    <Compile Include="BindingData\Classes\clsWarehouse.vb" />
+    <Compile Include="BindingData\Classes\SecurePasswordHasher.vb" />
+    <Compile Include="BindingData\Dataset\Account.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Account.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BiddingData\Dataset\Account.vb">
+    <Compile Include="BindingData\Dataset\Account.vb">
       <DependentUpon>Account.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BiddingData\Dataset\Category.Designer.vb">
+    <Compile Include="BindingData\Dataset\Category.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Category.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BiddingData\Dataset\CBB.Designer.vb">
+    <Compile Include="BindingData\Dataset\CBB.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CBB.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BiddingData\Dataset\OrderDetail.vb">
+    <Compile Include="BindingData\Dataset\OrderDetail.vb">
       <DependentUpon>OrderDetail.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BiddingData\Dataset\OrderDetail1.Designer.vb">
+    <Compile Include="BindingData\Dataset\OrderDetail1.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>OrderDetail.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BiddingData\Dataset\Person.Designer.vb">
+    <Compile Include="BindingData\Dataset\Person.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Person.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BiddingData\Dataset\Person.vb">
+    <Compile Include="BindingData\Dataset\Person.vb">
       <DependentUpon>Person.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BiddingData\Dataset\Product.Designer.vb">
+    <Compile Include="BindingData\Dataset\Product.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Product.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BiddingData\Dataset\Product.vb">
+    <Compile Include="BindingData\Dataset\Product.vb">
       <DependentUpon>Product.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BiddingData\Dataset\RolePermission.Designer.vb">
+    <Compile Include="BindingData\Dataset\RolePermission.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RolePermission.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BiddingData\Dataset\RolePermission.vb">
+    <Compile Include="BindingData\Dataset\RolePermission.vb">
       <DependentUpon>RolePermission.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BiddingData\Dataset\Supplier.Designer.vb">
+    <Compile Include="BindingData\Dataset\Supplier.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Supplier.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BiddingData\Dataset\Warehouse.Designer.vb">
+    <Compile Include="BindingData\Dataset\Warehouse.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Warehouse.xsd</DependentUpon>
@@ -161,103 +161,103 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="BiddingData\Dataset\Account.xsc">
+    <None Include="BindingData\Dataset\Account.xsc">
       <DependentUpon>Account.xsd</DependentUpon>
     </None>
-    <None Include="BiddingData\Dataset\Account.xsd">
+    <None Include="BindingData\Dataset\Account.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>Account.Designer.vb</LastGenOutput>
     </None>
-    <None Include="BiddingData\Dataset\Account.xss">
+    <None Include="BindingData\Dataset\Account.xss">
       <DependentUpon>Account.xsd</DependentUpon>
     </None>
-    <None Include="BiddingData\Dataset\Category.xsc">
+    <None Include="BindingData\Dataset\Category.xsc">
       <DependentUpon>Category.xsd</DependentUpon>
     </None>
-    <None Include="BiddingData\Dataset\Category.xsd">
+    <None Include="BindingData\Dataset\Category.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>Category.Designer.vb</LastGenOutput>
     </None>
-    <None Include="BiddingData\Dataset\Category.xss">
+    <None Include="BindingData\Dataset\Category.xss">
       <DependentUpon>Category.xsd</DependentUpon>
     </None>
-    <None Include="BiddingData\Dataset\CBB.xsc">
+    <None Include="BindingData\Dataset\CBB.xsc">
       <DependentUpon>CBB.xsd</DependentUpon>
     </None>
-    <None Include="BiddingData\Dataset\CBB.xsd">
+    <None Include="BindingData\Dataset\CBB.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>CBB.Designer.vb</LastGenOutput>
     </None>
-    <None Include="BiddingData\Dataset\CBB.xss">
+    <None Include="BindingData\Dataset\CBB.xss">
       <DependentUpon>CBB.xsd</DependentUpon>
     </None>
-    <None Include="BiddingData\Dataset\OrderDetail.xsc">
+    <None Include="BindingData\Dataset\OrderDetail.xsc">
       <DependentUpon>OrderDetail.xsd</DependentUpon>
     </None>
-    <None Include="BiddingData\Dataset\OrderDetail.xsd">
+    <None Include="BindingData\Dataset\OrderDetail.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>OrderDetail1.Designer.vb</LastGenOutput>
     </None>
-    <None Include="BiddingData\Dataset\OrderDetail.xss">
+    <None Include="BindingData\Dataset\OrderDetail.xss">
       <DependentUpon>OrderDetail.xsd</DependentUpon>
     </None>
-    <None Include="BiddingData\Dataset\Person.xsc">
+    <None Include="BindingData\Dataset\Person.xsc">
       <DependentUpon>Person.xsd</DependentUpon>
     </None>
-    <None Include="BiddingData\Dataset\Person.xsd">
+    <None Include="BindingData\Dataset\Person.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>Person.Designer.vb</LastGenOutput>
     </None>
-    <None Include="BiddingData\Dataset\Person.xss">
+    <None Include="BindingData\Dataset\Person.xss">
       <DependentUpon>Person.xsd</DependentUpon>
     </None>
-    <None Include="BiddingData\Dataset\Product.xsc">
+    <None Include="BindingData\Dataset\Product.xsc">
       <DependentUpon>Product.xsd</DependentUpon>
     </None>
-    <None Include="BiddingData\Dataset\Product.xsd">
+    <None Include="BindingData\Dataset\Product.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>Product.Designer.vb</LastGenOutput>
     </None>
-    <None Include="BiddingData\Dataset\Product.xss">
+    <None Include="BindingData\Dataset\Product.xss">
       <DependentUpon>Product.xsd</DependentUpon>
     </None>
-    <None Include="BiddingData\Dataset\RolePermission.xsc">
+    <None Include="BindingData\Dataset\RolePermission.xsc">
       <DependentUpon>RolePermission.xsd</DependentUpon>
     </None>
-    <None Include="BiddingData\Dataset\RolePermission.xsd">
+    <None Include="BindingData\Dataset\RolePermission.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>RolePermission.Designer.vb</LastGenOutput>
     </None>
-    <None Include="BiddingData\Dataset\RolePermission.xss">
+    <None Include="BindingData\Dataset\RolePermission.xss">
       <DependentUpon>RolePermission.xsd</DependentUpon>
     </None>
-    <None Include="BiddingData\Dataset\Supplier.xsc">
+    <None Include="BindingData\Dataset\Supplier.xsc">
       <DependentUpon>Supplier.xsd</DependentUpon>
     </None>
-    <None Include="BiddingData\Dataset\Supplier.xsd">
+    <None Include="BindingData\Dataset\Supplier.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>Supplier.Designer.vb</LastGenOutput>
     </None>
-    <None Include="BiddingData\Dataset\Supplier.xss">
+    <None Include="BindingData\Dataset\Supplier.xss">
       <DependentUpon>Supplier.xsd</DependentUpon>
     </None>
-    <None Include="BiddingData\Dataset\Warehouse.xsc">
+    <None Include="BindingData\Dataset\Warehouse.xsc">
       <DependentUpon>Warehouse.xsd</DependentUpon>
     </None>
-    <None Include="BiddingData\Dataset\Warehouse.xsd">
+    <None Include="BindingData\Dataset\Warehouse.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>Warehouse.Designer.vb</LastGenOutput>
     </None>
-    <None Include="BiddingData\Dataset\Warehouse.xss">
+    <None Include="BindingData\Dataset\Warehouse.xss">
       <DependentUpon>Warehouse.xsd</DependentUpon>
     </None>
     <None Include="My Project\Application.myapp">
