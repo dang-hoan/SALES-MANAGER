@@ -3492,10 +3492,10 @@ Namespace ProductTableAdapters
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsDelete", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "IsDelete", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(7) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(7).Connection = Me.Connection
-            Me._commandCollection(7).CommandText = "UPDATE Product"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET       IsDelete = 'False'"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Id = @Id);  "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, Pro"& _ 
-                "ductName, SupplierId, CategoryId, ProductPrice, UnitPrice, ProductStatusId, Disc"& _ 
-                "ountPercent, Rating, ImageId, CreateDate, CreateBy, UpdateDate, UpdateBy, Delete"& _ 
-                "Date, DeleteBy, IsDelete FROM Product WHERE (Id = @Id)"
+            Me._commandCollection(7).CommandText = "UPDATE Product"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET       IsDelete = 'False', DeleteDate = NULL, DeleteBy = NULL;"& _ 
+                "    "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, ProductName, SupplierId, CategoryId, ProductPrice, UnitPrice, P"& _ 
+                "roductStatusId, DiscountPercent, Rating, ImageId, CreateDate, CreateBy, UpdateDa"& _ 
+                "te, UpdateBy, DeleteDate, DeleteBy, IsDelete FROM Product WHERE (Id = @Id)"
             Me._commandCollection(7).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(8) = New Global.System.Data.SqlClient.SqlCommand()

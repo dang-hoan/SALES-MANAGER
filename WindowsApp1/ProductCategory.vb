@@ -67,7 +67,7 @@ Public Class ProductCategory
     Public Sub SetPagedDataSource(ByVal dataTable As DataTable)
         tables = New BindingList(Of DataTable)()
         Dim dt As DataTable = Nothing
-        Dim counter As Integer = 1
+        Dim counter As Integer = 1           'Count number of records of a page
 
         For Each dr As DataRow In dataTable.Rows
             If counter = 1 Then
@@ -101,11 +101,12 @@ Public Class ProductCategory
         If bs.Position >= 0 Then
             Me.dgvProductSearch.DataSource = tables(bs.Position)
         Else
-            If TypeOf Me.dgvProductSearch.DataSource Is DataTable Then
-                Dim dt = Me.dgvProductSearch.DataSource
-                dt.Rows.Clear()
-                Me.dgvProductSearch.DataSource = dt
-            End If
+            Me.dgvProductSearch.DataSource = Nothing
+            'If TypeOf Me.dgvProductSearch.DataSource Is DataTable Then
+            '    Dim dt = Me.dgvProductSearch.DataSource
+            '    dt.Rows.Clear()
+            '    Me.dgvProductSearch.DataSource = dt
+            'End If
         End If
         cellContentValueChangedByUser = False
         CheckTest.CheckUncheckEntireColumn(listCheckboxValue)
@@ -149,9 +150,9 @@ Public Class ProductCategory
     End Sub
     Private Sub dgvProductSearch_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvProductSearch.CellDoubleClick
         If (e.ColumnIndex > 0 And e.RowIndex >= 0) Then
-            Dim frmProductCategory = New ProductInformation()
-            frmProductCategory.LoadData(dgvProductSearch.SelectedRows(0).Cells(1).Value.ToString())
-            frmProductCategory.ShowDialog()
+            Dim frmProductInformation = New ProductInformation()
+            frmProductInformation.LoadData(dgvProductSearch.SelectedRows(0).Cells(1).Value.ToString())
+            frmProductInformation.ShowDialog()
         End If
         If (e.ColumnIndex = CheckTest.ColumnIndex And e.RowIndex <> -1) Then
             'A DoubleClick event is treated separate from a MouseUp event.
@@ -211,10 +212,6 @@ Public Class ProductCategory
     Public Sub Reload()
         'dgvProductSearch.DataSource = clsProduct.SearchProduct("")
         SetPagedDataSource(clsProduct.SearchProduct(""))
-        dgvProductSearch.ReadOnly = False
-        For i = 1 To dgvProductSearch.Columns.Count - 1
-            dgvProductSearch.Columns(i).ReadOnly = True
-        Next
     End Sub
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         If checkLogicData() Then
@@ -370,7 +367,7 @@ Public Class ProductCategory
                 End If
             Next
 
-            Dim listLeftFormat As New ArrayList() From {1, 5, 6, 7}       'list left format of datagridview column
+            Dim listLeftFormat As New ArrayList() From {1, 5, 6, 7}       'list left format of datagridview column (excluding column Checkbox)
             exportObject.exportToExcel(sfd.FileName, tables, listPrintedColumn, listLeftFormat, "order search")
         End If
     End Sub
@@ -391,9 +388,9 @@ Public Class ProductCategory
     End Sub
 
     Private Sub bAdd_Click(sender As Object, e As EventArgs) Handles bAdd.Click
-        Dim frmProductCategory = New ProductInformation()
-        frmProductCategory.LoadData(-1)
-        frmProductCategory.ShowDialog()
+        Dim frmProductInformation = New ProductInformation()
+        frmProductInformation.LoadData(-1)
+        frmProductInformation.ShowDialog()
     End Sub
 
     Private Sub bDelete_Click(sender As Object, e As EventArgs) Handles bDelete.Click

@@ -21,7 +21,10 @@ Public Class clsSupplier
         ta.Fill(ds1._Supplier)
         Return ds1._Supplier
     End Function
-
+    Public Function GetSuppliertById(ByVal supplierId As String) As DataRow
+        ta.Connection = conn
+        Return ta.GetSupplierById(supplierId).Rows(0)
+    End Function
     Public Function AddSupplier(ByVal CompanyName As String, ByVal Address As String,
                                 ByVal Phone As String, ByVal Email As String, ByVal Webpage As String,
                                 ByVal Description As String, ByVal CreateUser As String) As Integer
@@ -41,6 +44,27 @@ Public Class clsSupplier
     Public Function DeleteSupplier(ByVal Id As Long, ByVal DeleteUser As String) As Integer
         ta.Connection = conn
         Return ta.DeleteSupplier(DateTime.Now, DeleteUser, Id)
+    End Function
+
+    Public Function SearchSupplier(ByVal sqlCommand As String) As Supplier.SupplierDataTable
+        Dim ds As New Supplier
+
+        Dim cmd = conn.CreateCommand()
+
+        cmd.CommandText = "Select Id, CompanyName, Address, Phone, Email, Webpage, Description
+                           FROM Supplier
+                           WHERE (IsDelete = 'False')" & sqlCommand
+
+        ta.Connection = conn
+
+        Dim tmp = cmd.CommandText.ToString()
+        Console.WriteLine(tmp)
+
+        ta.Adapter.SelectCommand = cmd
+        ta.Adapter.Fill(ds._Supplier)
+
+        Return ds._Supplier
+
     End Function
 
 End Class
