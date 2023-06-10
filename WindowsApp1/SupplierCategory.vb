@@ -77,7 +77,7 @@ Public Class SupplierCategory
         cellContentValueChangedByUser = False
         CheckTest.CheckUncheckEntireColumn(listCheckboxValue)
     End Sub
-    Private Sub dgvSupplierSearch_CellContentClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvSupplierSearch.CellContentClick
+    Private Sub dgvSupplierSearch_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvSupplierSearch.CellContentClick
         cellContentValueChangedByUser = True
     End Sub
     Private Sub dgvSupplierSearch_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles dgvSupplierSearch.CellValueChanged
@@ -190,18 +190,14 @@ Public Class SupplierCategory
         End If
     End Sub
     Private Function checkLogicData() As Boolean
-        If txtPhone.Text <> "" Then
-            If Not CheckValue("Phone", txtPhone.Text, "Long") Then
-                MsgBox("Phone number must be a number!", Nothing, "Notification")
-                Return False
-            End If
+        If Not (CheckValue("Supplier code", txtCode.Text, "Long") And CheckValue("Phone", txtPhone.Text, "Long")) Then
+            Return False
         End If
-
         Return True
     End Function
-    Public Function countString(ByVal inputString As String, ByVal subString As String) As Integer
-        Return System.Text.RegularExpressions.Regex.Split(inputString, subString).Length - 1
-    End Function
+    'Public Function countString(ByVal inputString As String, ByVal subString As String) As Integer
+    '    Return System.Text.RegularExpressions.Regex.Split(inputString, subString).Length - 1
+    'End Function
     Private Function CheckValue(ByVal label As String, ByVal value As String, ByVal style As String) As Boolean
         Dim returnVal = True
 
@@ -298,7 +294,7 @@ Public Class SupplierCategory
             Next
 
             Dim listLeftFormat As New ArrayList() From {1, 2, 4, 5, 6}       'list left format of datagridview column (excluding column Checkbox)
-            exportObject.exportToExcel(sfd.FileName, tables, listPrintedColumn, listLeftFormat, "supplier search")
+            exportObject.exportToExcel(sfd.FileName, tables, listPrintedColumn, listLeftFormat, "Supplier search")
         End If
     End Sub
     Private Sub bAdd_Click(sender As Object, e As EventArgs) Handles bAdd.Click

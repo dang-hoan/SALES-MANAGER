@@ -368,7 +368,7 @@ Public Class ProductCategory
             Next
 
             Dim listLeftFormat As New ArrayList() From {1, 5, 6, 7}       'list left format of datagridview column (excluding column Checkbox)
-            exportObject.exportToExcel(sfd.FileName, tables, listPrintedColumn, listLeftFormat, "order search")
+            exportObject.exportToExcel(sfd.FileName, tables, listPrintedColumn, listLeftFormat, "Product search")
         End If
     End Sub
     Private Sub cbCategory_CheckedChanged(sender As Object, e As EventArgs) Handles cbCategory.CheckedChanged

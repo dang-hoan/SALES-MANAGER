@@ -191,6 +191,12 @@
     <Compile Include="AddEditProductForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="WarehouseInformation.Designer.vb">
+      <DependentUpon>WarehouseInformation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WarehouseInformation.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="WarehouseCategory.Designer.vb">
       <DependentUpon>WarehouseCategory.vb</DependentUpon>
     </Compile>
@@ -261,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddEditProductForm.resx">
       <DependentUpon>AddEditProductForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WarehouseInformation.resx">
+      <DependentUpon>WarehouseInformation.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WarehouseCategory.resx">
       <DependentUpon>WarehouseCategory.vb</DependentUpon>

@@ -108,3 +108,4 @@ D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.exe
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.xml
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.pdb
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.SupplierInformation.resources
+D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.WarehouseInformation.resources

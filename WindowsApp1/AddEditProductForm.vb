@@ -126,7 +126,7 @@ Public Class AddEditProductForm
 
                 If result = 1 Then
                     Dim oldTotal = oldNumbers
-                    Dim oldImports = clsWarehouse.GetWarehouseById(warehouseId).Rows(0)(3)
+                    Dim oldImports = clsWarehouse.GetWarehouseById(warehouseId)(3)
                     result = clsWarehouse.UpdateImportsOfWarehouse(oldImports - oldTotal + txtNumber.Text, warehouseId)
                 End If
             Else                                'Add new
@@ -134,7 +134,7 @@ Public Class AddEditProductForm
                                             supplierId, categoryId, txtPrice.Text, txtUnitPrice.Text, statusId,
                                              txtDiscount.Text, Nothing, Nothing, selectedWarehouse, txtNumber.Text, LoginForm.PropUsername)
                 If result = 1 Then
-                    Dim oldImports = clsWarehouse.GetWarehouseById(warehouseId).Rows(0)(3)
+                    Dim oldImports = clsWarehouse.GetWarehouseById(warehouseId)(3)
                     result = clsWarehouse.UpdateImportsOfWarehouse(oldImports + txtNumber.Text, warehouseId)
                 End If
             End If
@@ -143,7 +143,6 @@ Public Class AddEditProductForm
                 Dim caller As WarehouseCategory = CType(Application.OpenForms("WarehouseCategory"), WarehouseCategory)
                 caller.Warehouse.Clear()
                 caller.Warehouse.Merge(clsWarehouse.GetProductsOfWarehouse(warehouseId))
-                caller.SetImports(selectedWarehouse)
                 MsgBox(bSave.Text & " product information successful!", Nothing, "Notification")
                 Me.Close()
             Else

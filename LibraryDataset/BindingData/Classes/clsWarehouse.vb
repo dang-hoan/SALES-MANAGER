@@ -10,9 +10,9 @@ Public Class clsWarehouse
         ta.Connection = conn
         Return ta.GetData()
     End Function
-    Public Function GetWarehouseById(ByVal warehouseId As Long) As Warehouse.WareHouseDataTable
+    Public Function GetWarehouseById(ByVal warehouseId As Long) As DataRow
         ta.Connection = conn
-        Return ta.GetWarehouseById(warehouseId)
+        Return ta.GetWarehouseById(warehouseId).Rows(0)
     End Function
     Public Function GetProductsOfWarehouse(ByVal warehouseId As Long) As Warehouse.SalesDetailDataTable
         taSalesDetail.Connection = conn
@@ -45,6 +45,26 @@ Public Class clsWarehouse
     Public Function UpdateExportsOfWarehouse(ByVal numberOfExports As Long, ByVal warehouseId As Long) As Integer
         ta.Connection = conn
         Return ta.UpdateExportsOfWarehouse(numberOfExports, warehouseId)
+    End Function
+    Public Function SearchWarehouse(ByVal sqlCommand As String) As Warehouse.WareHouseDataTable
+        Dim ds As New Warehouse
+
+        Dim cmd = conn.CreateCommand()
+
+        cmd.CommandText = "SELECT Id, WareHouseName, Address, NumberOfImport, NumberOfExport
+                           FROM   WareHouse
+                           WHERE (IsDelete = 'False')" & sqlCommand
+
+        ta.Connection = conn
+
+        Dim tmp = cmd.CommandText.ToString()
+        Console.WriteLine(tmp)
+
+        ta.Adapter.SelectCommand = cmd
+        ta.Adapter.Fill(ds._WareHouse)
+
+        Return ds._WareHouse
+
     End Function
     Public Function CheckWareHouseContainProduct(ByVal warehouseId As Long, ByVal productId As Long) As Boolean
         taSalesDetail.Connection = conn

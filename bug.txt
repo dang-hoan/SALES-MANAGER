@@ -18,3 +18,4 @@
 - refresh datagridview?? có nên k
 - number, -, export
 - bỏ chữ interger trong cảnh báo
+- xoá 1 đối tượng (xoá row trong category này có ảnh hưởng tới việc hiển thị trong các category khác?)

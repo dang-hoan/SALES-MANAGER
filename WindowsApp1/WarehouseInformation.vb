@@ -1,20 +1,20 @@
 ﻿Imports LibraryDataset
 Imports LibraryCommon
-
-Public Class SupplierInformation
+Public Class WarehouseInformation
     Dim conn As New connCommon()
-    Dim clsPMSAnalysis As New clsSupplier(conn.connSales.ConnectionString)
+    Dim clsPMSAnalysis As New clsWarehouse(conn.connSales.ConnectionString)
+    Dim clsProduct As New clsProduct(conn.connSales.ConnectionString)
     Dim clsRolePermission As New clsRolePermission(conn.connSales.ConnectionString)
 
     Dim mode As String = "Update"
-    Public Sub LoadData(supplierCode As Long)
+    Public Sub LoadData(warehouseCode As Long)
         SetVisibleForPermission()
 
-        If supplierCode = -1 Then
+        If warehouseCode = -1 Then
             setEnable(True)
             mode = "Add"
 
-            labTitle.Text = "ADD SUPPLIER"
+            labTitle.Text = "ADD WAREHOUSE"
             labTitle.Location = New Point(Me.Width / 2 - labTitle.Width / 2, 30)
 
             Dim x As Integer = (Me.Width - bSave.Width) / 2
@@ -23,47 +23,68 @@ Public Class SupplierInformation
             bEdit.Visible = False
             bDelete.Visible = False
 
+            txtNumberOfImport.Text = "0"
+            txtNumberOfExport.Text = "0"
         Else
             setEnable(False)
 
-            Dim data = clsPMSAnalysis.GetSuppliertById(supplierCode)
-            txtCode.Text = supplierCode
-            txtName.Text = data("CompanyName")
+            Dim data = clsPMSAnalysis.GetWarehouseById(warehouseCode)
+            txtCode.Text = warehouseCode
+            txtName.Text = data("WareHouseName")
             txtAddress.Text = data("Address")
-            txtPhone.Text = data("Phone")
-            txtEmail.Text = data("Email")
-            txtWebpage.Text = data("Webpage")
-            txtDescription.Text = data("Description")
+            txtNumberOfImport.Text = data("NumberOfImport")
+            txtNumberOfExport.Text = data("NumberOfExport")
 
         End If
         'InitPlaceHolderText()
 
     End Sub
+
     Private Sub SetVisibleForPermission()
         'bAdd.Visible = False
         bEdit.Visible = False
         bDelete.Visible = False
         bSave.Visible = False
+
         Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
+        'Dim viewDetail = False
+
         For Each permission In dataPermission
             Dim form = permission(1).split(":")(0)
             Dim permiss = Strings.Split(Strings.Split(permission(1), ": ")(1), ", ")
-            If form = "Supplier category" Then
-                For Each p In permiss
-                    Select Case p
-                        Case "Add"
-                            'bAdd.Visible = True
-                            bSave.Visible = True
-                        Case "Edit"
-                            bEdit.Visible = True
-                            bSave.Visible = True
-                        Case "Delete"
-                            bDelete.Visible = True
-                    End Select
-                Next
-                Exit For
-            End If
+            Select Case form
+                Case "Warehouse category"
+                    For Each p In permiss
+                        Select Case p
+                            Case "Add"
+                                'bAdd.Visible = True
+                                bSave.Visible = True
+                            Case "Edit"
+                                bEdit.Visible = True
+                                bSave.Visible = True
+                            Case "Delete"
+                                bDelete.Visible = True
+                        End Select
+                    Next
+                    'Case "Detail product of warehouse"
+                    '    For Each p In permiss
+                    '        Select Case p
+                    '            Case "Add"
+                    '                bAddProduct.Visible = True
+                    '            Case "Edit"
+                    '                allowEditProduct = True
+                    '            Case "Delete"
+                    '                allowDeleteProduct = True
+                    '        End Select
+                    '    Next
+                    'viewDetail = True
+            End Select
         Next
+        'If Not viewDetail Then
+        '    gbProducts.Visible = False
+        '    dgvCategory.Location = New Point(gbProducts.Location.X, gbProducts.Location.Y + 10)
+        '    dgvCategory.Size = New Size(555, 280)
+        'End If
         CenterButtons()
     End Sub
 
@@ -81,7 +102,7 @@ Public Class SupplierInformation
 
         Dim offset_between = 30
         Dim x As Integer = (Me.Width - totalWidth - offset_between * (count - 1)) / 2
-        Dim y As Integer = 450
+        Dim y As Integer = 290
 
         For Each btn As Button In listButtons
             If btn.Visible = True Then
@@ -98,11 +119,9 @@ Public Class SupplierInformation
 
     Private Sub setEnable(valBoolean As Boolean)
         txtName.Enabled = valBoolean
-        txtPhone.Enabled = valBoolean
         txtAddress.Enabled = valBoolean
-        txtEmail.Enabled = valBoolean
-        txtWebpage.Enabled = valBoolean
-        txtDescription.Enabled = valBoolean
+        'txtNumberOfImport.Enabled = valBoolean
+        'txtNumberOfExport.Enabled = valBoolean
         bSave.Enabled = valBoolean
     End Sub
 
@@ -110,15 +129,13 @@ Public Class SupplierInformation
         bEdit.Enabled = valBoolean
         bDelete.Enabled = valBoolean
     End Sub
-
     Private Sub clearValue()
         txtCode.Text = ""
         txtName.Text = ""
         txtAddress.Text = ""
-        txtPhone.Text = ""
-        txtEmail.Text = ""
-        txtWebpage.Text = ""
-        txtDescription.Text = ""
+        txtNumberOfImport.Text = "0"
+        txtNumberOfExport.Text = "0"
+        Warehouse.Clear()
     End Sub
 
     Private Sub bAdd_Click(sender As Object, e As EventArgs)
@@ -130,21 +147,14 @@ Public Class SupplierInformation
     Private Sub bSave_Click(sender As Object, e As EventArgs) Handles bSave.Click
         If checkLogicData() Then
             Dim result As Integer
-            If mode = "Update" Then                          'Edit
-                result = clsPMSAnalysis.UpdateSupplier(txtCode.Text, txtName.Text,
-                                            txtAddress.Text, txtPhone.Text, txtEmail.Text,
-                                            txtWebpage.Text, txtDescription.Text,
-                                            LoginForm.PropUsername)
-            Else                                             'Add new
-                result = clsPMSAnalysis.AddSupplier(txtName.Text, txtAddress.Text,
-                                            txtPhone.Text, txtEmail.Text,
-                                            txtWebpage.Text, txtDescription.Text,
-                                            LoginForm.PropUsername)
+            If mode = "Update" Then          'Edit
+                result = clsPMSAnalysis.UpdateWarehouse(txtCode.Text, txtName.Text, txtAddress.Text, txtNumberOfImport.Text, txtNumberOfExport.Text, LoginForm.PropUsername)
+            Else
+                result = clsPMSAnalysis.AddWarehouse(txtName.Text, txtAddress.Text, txtNumberOfImport.Text, txtNumberOfExport.Text, LoginForm.PropUsername)
             End If
-
             If result = 1 Then
-                MsgBox(mode & " supplier information successful!", Nothing, "Notification")
-                Dim caller As SupplierCategory = CType(Application.OpenForms("SupplierCategory"), SupplierCategory)
+                MsgBox(mode & " warehouse information successful!", Nothing, "Notification")
+                Dim caller As WarehouseCategory = CType(Application.OpenForms("WarehouseCategory"), WarehouseCategory)
                 caller.Reload()
                 Me.Close()
             Else
@@ -154,24 +164,17 @@ Public Class SupplierInformation
     End Sub
 
     Private Function checkLogicData() As Boolean
-        If txtName.Text = "" Or
-            txtEmail.Text = "" Or txtPhone.Text = "" Or txtAddress.Text = "" Then
+        If txtName.Text = "" Or txtAddress.Text = "" Or txtNumberOfImport.Text = "" Or
+            txtNumberOfExport.Text = "" Then
 
-            MsgBox("You need to enter all the required fields!", Nothing, "Notification")
+            MsgBox("You need to enter all the fields!", Nothing, "Notification")
             Return False
 
-        ElseIf Not CheckValue("Phone", txtPhone.Text, "Long") Then
-            Return False
-
-        ElseIf Not txtPhone.Text.StartsWith("0") Then
-            MsgBox("Phone number must be started with '0'!", Nothing, "Notification")
-            Return False
-
-        ElseIf countString(txtEmail.Text, "gmail.com") <> 1 Or Not txtEmail.Text.EndsWith("@gmail.com") Then
-            MsgBox("Email invalidate!", Nothing, "Notification")
+        ElseIf Not CheckValue("Warehouse code", txtCode.Text, "Long") Or
+            Not CheckValue("Number of import", txtNumberOfImport.Text, "Long") Or
+            Not CheckValue("Number of export", txtNumberOfExport.Text, "Long") Then
             Return False
         End If
-
         Return True
     End Function
 
@@ -213,22 +216,17 @@ Public Class SupplierInformation
 
     End Function
 
-
-    Public Function countString(ByVal inputString As String, ByVal subString As String) As Integer
-        Return System.Text.RegularExpressions.Regex.Split(inputString, subString).Length - 1
-
-    End Function
-
     Private Sub bDelete_Click(sender As Object, e As EventArgs) Handles bDelete.Click
         Dim code As String = txtCode.Text
-        Dim result = clsPMSAnalysis.DeleteSupplier(code, LoginForm.PropUsername)
+        Dim result = clsPMSAnalysis.DeleteWarehouse(code, LoginForm.PropUsername)
         If result = 1 Then
-            MsgBox("Delete supplier information successful!", Nothing, "Notification")
-            Dim caller As SupplierCategory = CType(Application.OpenForms("SupplierCategory"), SupplierCategory)
+            MsgBox("Delete warehouse information successful!", Nothing, "Notification")
+            Dim caller As WarehouseCategory = CType(Application.OpenForms("WarehouseCategory"), WarehouseCategory)
             caller.Reload()
             Me.Close()
         Else
             MsgBox("There is an error when interact with database!", Nothing, "Notification")
         End If
     End Sub
+
 End Class

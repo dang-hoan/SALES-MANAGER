@@ -44,9 +44,8 @@ Public Class ProductInformation
             labTitle.Location = New Point(Me.Width / 2 - labTitle.Width / 2, 30)
 
             Dim x As Integer = (Me.Width - bSave.Width) / 2
-            Dim y As Integer = 350
 
-            bSave.Location = New Point(x, y)
+            bSave.Location = New Point(x, bSave.Location.Y)
             bEdit.Visible = False
             bDelete.Visible = False
 
@@ -213,7 +212,7 @@ Public Class ProductInformation
                                              txtDiscount.Text, Nothing, Nothing, wareHouseId, txtNumber.Text, LoginForm.PropUsername)
 
                 If result = 1 Then
-                    Dim oldImports = clsWarehouse.GetWarehouseById(wareHouseId).Rows(0)("NumberOfImport")
+                    Dim oldImports = clsWarehouse.GetWarehouseById(wareHouseId)("NumberOfImport")
                     result = clsWarehouse.UpdateImportsOfWarehouse(oldImports - oldTotal + txtNumber.Text, wareHouseId)
                 End If
             Else                                'Add new
@@ -222,7 +221,7 @@ Public Class ProductInformation
                                              txtDiscount.Text, Nothing, Nothing, wareHouseId, txtNumber.Text, LoginForm.PropUsername)
 
                 If result = 1 Then
-                    Dim oldImports = clsWarehouse.GetWarehouseById(wareHouseId).Rows(0)("NumberOfImport")
+                    Dim oldImports = clsWarehouse.GetWarehouseById(wareHouseId)("NumberOfImport")
                     result = clsWarehouse.UpdateImportsOfWarehouse(oldImports + txtNumber.Text, wareHouseId)
                 End If
 

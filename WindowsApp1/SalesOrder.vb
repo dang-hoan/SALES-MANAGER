@@ -329,7 +329,7 @@ Public Class SalesOrder
                             If row(2) >= (item.SubItems(2).Text + row(3)) Then
                                 result = 1
                                 clsPMSAnalysis.UpdateSalesDetail(row(0), row(1), row(2), item.SubItems(2).Text + row(3), row(4) + item.SubItems(3).Text)
-                                Dim oldExports = clsWarehouse.GetWarehouseById(row(0)).Rows(0)(4)
+                                Dim oldExports = clsWarehouse.GetWarehouseById(row(0))(4)
                                 clsWarehouse.UpdateExportsOfWarehouse(oldExports + item.SubItems(2).Text, row(0))
 
                                 If row(2) = (item.SubItems(2).Text + row(3)) Then

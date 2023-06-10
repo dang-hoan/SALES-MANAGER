@@ -21,13 +21,14 @@ Partial Class WarehouseCategory
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(WarehouseCategory))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.label1 = New System.Windows.Forms.Label()
         Me.label2 = New System.Windows.Forms.Label()
         Me.label7 = New System.Windows.Forms.Label()
         Me.groupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnExport = New System.Windows.Forms.Button()
+        Me.btnSearch = New System.Windows.Forms.Button()
         Me.txtAddress = New System.Windows.Forms.TextBox()
         Me.txtNumberOfImport = New System.Windows.Forms.TextBox()
         Me.txtNumberOfExport = New System.Windows.Forms.TextBox()
@@ -36,25 +37,31 @@ Partial Class WarehouseCategory
         Me.Label8 = New System.Windows.Forms.Label()
         Me.txtName = New System.Windows.Forms.TextBox()
         Me.txtCode = New System.Windows.Forms.TextBox()
-        Me.bSave = New System.Windows.Forms.Button()
         Me.bDelete = New System.Windows.Forms.Button()
-        Me.bEdit = New System.Windows.Forms.Button()
         Me.bAdd = New System.Windows.Forms.Button()
-        Me.dgvCategory = New System.Windows.Forms.DataGridView()
-        Me.gbProducts = New System.Windows.Forms.GroupBox()
-        Me.bAddProduct = New System.Windows.Forms.Button()
-        Me.dgvProduct = New System.Windows.Forms.DataGridView()
-        Me.ProductIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProductNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TotalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Edit = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.Delete = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Warehouse = New LibraryDataset.Warehouse()
+        Me.dgvWarehouseSearch = New System.Windows.Forms.DataGridView()
+        Me.CheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.WareHouseNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AddressDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NumberOfImportDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NumberOfExportDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.bindingNav = New System.Windows.Forms.BindingNavigator(Me.components)
+        Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
+        Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorMovePreviousItem = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorSeparator = New System.Windows.Forms.ToolStripSeparator()
+        Me.BindingNavigatorPositionItem = New System.Windows.Forms.ToolStripTextBox()
+        Me.BindingNavigatorSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.groupBox1.SuspendLayout()
-        CType(Me.dgvCategory, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gbProducts.SuspendLayout()
-        CType(Me.dgvProduct, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Warehouse, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvWarehouseSearch, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.bindingNav, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.bindingNav.SuspendLayout()
         Me.SuspendLayout()
         '
         'label1
@@ -88,6 +95,8 @@ Partial Class WarehouseCategory
         '
         'groupBox1
         '
+        Me.groupBox1.Controls.Add(Me.btnExport)
+        Me.groupBox1.Controls.Add(Me.btnSearch)
         Me.groupBox1.Controls.Add(Me.txtAddress)
         Me.groupBox1.Controls.Add(Me.txtNumberOfImport)
         Me.groupBox1.Controls.Add(Me.txtNumberOfExport)
@@ -100,14 +109,43 @@ Partial Class WarehouseCategory
         Me.groupBox1.Controls.Add(Me.label1)
         Me.groupBox1.Location = New System.Drawing.Point(70, 89)
         Me.groupBox1.Name = "groupBox1"
-        Me.groupBox1.Size = New System.Drawing.Size(832, 182)
+        Me.groupBox1.Size = New System.Drawing.Size(832, 243)
         Me.groupBox1.TabIndex = 0
         Me.groupBox1.TabStop = False
         Me.groupBox1.Text = "Detail"
         '
+        'btnExport
+        '
+        Me.btnExport.BackColor = System.Drawing.Color.SandyBrown
+        Me.btnExport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnExport.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnExport.Image = CType(resources.GetObject("btnExport.Image"), System.Drawing.Image)
+        Me.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnExport.Location = New System.Drawing.Point(438, 178)
+        Me.btnExport.Name = "btnExport"
+        Me.btnExport.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnExport.Size = New System.Drawing.Size(139, 48)
+        Me.btnExport.TabIndex = 27
+        Me.btnExport.Text = "Export"
+        Me.btnExport.UseVisualStyleBackColor = False
+        '
+        'btnSearch
+        '
+        Me.btnSearch.BackColor = System.Drawing.Color.SandyBrown
+        Me.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnSearch.Image = CType(resources.GetObject("btnSearch.Image"), System.Drawing.Image)
+        Me.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnSearch.Location = New System.Drawing.Point(255, 178)
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnSearch.Size = New System.Drawing.Size(139, 48)
+        Me.btnSearch.TabIndex = 26
+        Me.btnSearch.Text = "Search"
+        Me.btnSearch.UseVisualStyleBackColor = False
+        '
         'txtAddress
         '
-        Me.txtAddress.Enabled = False
         Me.txtAddress.Location = New System.Drawing.Point(193, 129)
         Me.txtAddress.Name = "txtAddress"
         Me.txtAddress.Size = New System.Drawing.Size(233, 26)
@@ -115,21 +153,17 @@ Partial Class WarehouseCategory
         '
         'txtNumberOfImport
         '
-        Me.txtNumberOfImport.Enabled = False
         Me.txtNumberOfImport.Location = New System.Drawing.Point(615, 35)
         Me.txtNumberOfImport.Name = "txtNumberOfImport"
         Me.txtNumberOfImport.Size = New System.Drawing.Size(164, 26)
         Me.txtNumberOfImport.TabIndex = 22
-        Me.txtNumberOfImport.Text = "0"
         '
         'txtNumberOfExport
         '
-        Me.txtNumberOfExport.Enabled = False
         Me.txtNumberOfExport.Location = New System.Drawing.Point(615, 84)
         Me.txtNumberOfExport.Name = "txtNumberOfExport"
         Me.txtNumberOfExport.Size = New System.Drawing.Size(164, 26)
         Me.txtNumberOfExport.TabIndex = 21
-        Me.txtNumberOfExport.Text = "0"
         '
         'Label10
         '
@@ -160,7 +194,6 @@ Partial Class WarehouseCategory
         '
         'txtName
         '
-        Me.txtName.Enabled = False
         Me.txtName.Location = New System.Drawing.Point(193, 81)
         Me.txtName.Name = "txtName"
         Me.txtName.Size = New System.Drawing.Size(233, 26)
@@ -168,25 +201,10 @@ Partial Class WarehouseCategory
         '
         'txtCode
         '
-        Me.txtCode.Enabled = False
         Me.txtCode.Location = New System.Drawing.Point(193, 38)
         Me.txtCode.Name = "txtCode"
         Me.txtCode.Size = New System.Drawing.Size(117, 26)
         Me.txtCode.TabIndex = 2
-        '
-        'bSave
-        '
-        Me.bSave.BackColor = System.Drawing.Color.SandyBrown
-        Me.bSave.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.bSave.Image = CType(resources.GetObject("bSave.Image"), System.Drawing.Image)
-        Me.bSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bSave.Location = New System.Drawing.Point(734, 755)
-        Me.bSave.Name = "bSave"
-        Me.bSave.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.bSave.Size = New System.Drawing.Size(150, 55)
-        Me.bSave.TabIndex = 19
-        Me.bSave.Text = "Save"
-        Me.bSave.UseVisualStyleBackColor = False
         '
         'bDelete
         '
@@ -194,7 +212,7 @@ Partial Class WarehouseCategory
         Me.bDelete.Cursor = System.Windows.Forms.Cursors.Hand
         Me.bDelete.Image = CType(resources.GetObject("bDelete.Image"), System.Drawing.Image)
         Me.bDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bDelete.Location = New System.Drawing.Point(516, 755)
+        Me.bDelete.Location = New System.Drawing.Point(518, 755)
         Me.bDelete.Name = "bDelete"
         Me.bDelete.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.bDelete.Size = New System.Drawing.Size(150, 55)
@@ -202,27 +220,13 @@ Partial Class WarehouseCategory
         Me.bDelete.Text = "Delete"
         Me.bDelete.UseVisualStyleBackColor = False
         '
-        'bEdit
-        '
-        Me.bEdit.BackColor = System.Drawing.Color.SandyBrown
-        Me.bEdit.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.bEdit.Image = CType(resources.GetObject("bEdit.Image"), System.Drawing.Image)
-        Me.bEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bEdit.Location = New System.Drawing.Point(298, 755)
-        Me.bEdit.Name = "bEdit"
-        Me.bEdit.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.bEdit.Size = New System.Drawing.Size(150, 55)
-        Me.bEdit.TabIndex = 18
-        Me.bEdit.Text = "Edit"
-        Me.bEdit.UseVisualStyleBackColor = False
-        '
         'bAdd
         '
         Me.bAdd.BackColor = System.Drawing.Color.SandyBrown
         Me.bAdd.Cursor = System.Windows.Forms.Cursors.Hand
         Me.bAdd.Image = CType(resources.GetObject("bAdd.Image"), System.Drawing.Image)
         Me.bAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bAdd.Location = New System.Drawing.Point(80, 755)
+        Me.bAdd.Location = New System.Drawing.Point(300, 755)
         Me.bAdd.Name = "bAdd"
         Me.bAdd.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.bAdd.Size = New System.Drawing.Size(150, 55)
@@ -230,154 +234,195 @@ Partial Class WarehouseCategory
         Me.bAdd.Text = "Add"
         Me.bAdd.UseVisualStyleBackColor = False
         '
-        'dgvCategory
-        '
-        Me.dgvCategory.AllowUserToAddRows = False
-        Me.dgvCategory.AllowUserToDeleteRows = False
-        Me.dgvCategory.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.dgvCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvCategory.Location = New System.Drawing.Point(70, 496)
-        Me.dgvCategory.Name = "dgvCategory"
-        Me.dgvCategory.ReadOnly = True
-        Me.dgvCategory.RowHeadersWidth = 62
-        Me.dgvCategory.RowTemplate.Height = 28
-        Me.dgvCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvCategory.Size = New System.Drawing.Size(832, 238)
-        Me.dgvCategory.TabIndex = 1
-        '
-        'gbProducts
-        '
-        Me.gbProducts.Controls.Add(Me.bAddProduct)
-        Me.gbProducts.Controls.Add(Me.dgvProduct)
-        Me.gbProducts.Location = New System.Drawing.Point(70, 277)
-        Me.gbProducts.Name = "gbProducts"
-        Me.gbProducts.Size = New System.Drawing.Size(832, 213)
-        Me.gbProducts.TabIndex = 25
-        Me.gbProducts.TabStop = False
-        Me.gbProducts.Text = "List products of warehouse"
-        '
-        'bAddProduct
-        '
-        Me.bAddProduct.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.bAddProduct.ForeColor = System.Drawing.Color.Green
-        Me.bAddProduct.Image = CType(resources.GetObject("bAddProduct.Image"), System.Drawing.Image)
-        Me.bAddProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bAddProduct.Location = New System.Drawing.Point(10, 178)
-        Me.bAddProduct.Name = "bAddProduct"
-        Me.bAddProduct.Size = New System.Drawing.Size(150, 29)
-        Me.bAddProduct.TabIndex = 1
-        Me.bAddProduct.Text = "Add product"
-        Me.bAddProduct.UseVisualStyleBackColor = True
-        '
-        'dgvProduct
-        '
-        Me.dgvProduct.AllowUserToAddRows = False
-        Me.dgvProduct.AllowUserToDeleteRows = False
-        Me.dgvProduct.AutoGenerateColumns = False
-        Me.dgvProduct.BackgroundColor = System.Drawing.Color.WhiteSmoke
-        Me.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvProduct.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ProductIdDataGridViewTextBoxColumn, Me.ProductNameDataGridViewTextBoxColumn, Me.TotalDataGridViewTextBoxColumn, Me.Edit, Me.Delete})
-        Me.dgvProduct.DataMember = "SalesDetail"
-        Me.dgvProduct.DataSource = Me.Warehouse
-        Me.dgvProduct.Location = New System.Drawing.Point(6, 25)
-        Me.dgvProduct.Name = "dgvProduct"
-        Me.dgvProduct.ReadOnly = True
-        Me.dgvProduct.RowHeadersWidth = 62
-        Me.dgvProduct.RowTemplate.Height = 28
-        Me.dgvProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvProduct.Size = New System.Drawing.Size(820, 147)
-        Me.dgvProduct.TabIndex = 0
-        '
-        'ProductIdDataGridViewTextBoxColumn
-        '
-        Me.ProductIdDataGridViewTextBoxColumn.DataPropertyName = "ProductId"
-        Me.ProductIdDataGridViewTextBoxColumn.HeaderText = "Product code"
-        Me.ProductIdDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.ProductIdDataGridViewTextBoxColumn.Name = "ProductIdDataGridViewTextBoxColumn"
-        Me.ProductIdDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ProductIdDataGridViewTextBoxColumn.Width = 95
-        '
-        'ProductNameDataGridViewTextBoxColumn
-        '
-        Me.ProductNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName"
-        Me.ProductNameDataGridViewTextBoxColumn.HeaderText = "Product name"
-        Me.ProductNameDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.ProductNameDataGridViewTextBoxColumn.Name = "ProductNameDataGridViewTextBoxColumn"
-        Me.ProductNameDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ProductNameDataGridViewTextBoxColumn.Width = 130
-        '
-        'TotalDataGridViewTextBoxColumn
-        '
-        Me.TotalDataGridViewTextBoxColumn.DataPropertyName = "Total"
-        Me.TotalDataGridViewTextBoxColumn.HeaderText = "Number of products"
-        Me.TotalDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.TotalDataGridViewTextBoxColumn.Name = "TotalDataGridViewTextBoxColumn"
-        Me.TotalDataGridViewTextBoxColumn.ReadOnly = True
-        Me.TotalDataGridViewTextBoxColumn.Width = 140
-        '
-        'Edit
-        '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
-        Me.Edit.DefaultCellStyle = DataGridViewCellStyle1
-        Me.Edit.HeaderText = ""
-        Me.Edit.MinimumWidth = 8
-        Me.Edit.Name = "Edit"
-        Me.Edit.ReadOnly = True
-        Me.Edit.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Edit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.Edit.Text = "Edit"
-        Me.Edit.UseColumnTextForButtonValue = True
-        Me.Edit.Width = 50
-        '
-        'Delete
-        '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
-        Me.Delete.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Delete.HeaderText = ""
-        Me.Delete.MinimumWidth = 8
-        Me.Delete.Name = "Delete"
-        Me.Delete.ReadOnly = True
-        Me.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.Delete.Text = "Delete"
-        Me.Delete.UseColumnTextForButtonValue = True
-        Me.Delete.Width = 50
-        '
         'Warehouse
         '
         Me.Warehouse.DataSetName = "Warehouse"
         Me.Warehouse.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'dgvWarehouseSearch
+        '
+        Me.dgvWarehouseSearch.AllowUserToAddRows = False
+        Me.dgvWarehouseSearch.AllowUserToDeleteRows = False
+        Me.dgvWarehouseSearch.AutoGenerateColumns = False
+        Me.dgvWarehouseSearch.BackgroundColor = System.Drawing.Color.White
+        Me.dgvWarehouseSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvWarehouseSearch.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CheckBoxColumn, Me.IdDataGridViewTextBoxColumn, Me.WareHouseNameDataGridViewTextBoxColumn, Me.AddressDataGridViewTextBoxColumn, Me.NumberOfImportDataGridViewTextBoxColumn, Me.NumberOfExportDataGridViewTextBoxColumn})
+        Me.dgvWarehouseSearch.DataMember = "WareHouse"
+        Me.dgvWarehouseSearch.DataSource = Me.Warehouse
+        Me.dgvWarehouseSearch.Location = New System.Drawing.Point(70, 348)
+        Me.dgvWarehouseSearch.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.dgvWarehouseSearch.Name = "dgvWarehouseSearch"
+        Me.dgvWarehouseSearch.ReadOnly = True
+        Me.dgvWarehouseSearch.RowHeadersVisible = False
+        Me.dgvWarehouseSearch.RowHeadersWidth = 62
+        Me.dgvWarehouseSearch.RowTemplate.Height = 33
+        Me.dgvWarehouseSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvWarehouseSearch.Size = New System.Drawing.Size(832, 349)
+        Me.dgvWarehouseSearch.TabIndex = 20
+        '
+        'CheckBoxColumn
+        '
+        Me.CheckBoxColumn.HeaderText = ""
+        Me.CheckBoxColumn.MinimumWidth = 8
+        Me.CheckBoxColumn.Name = "CheckBoxColumn"
+        Me.CheckBoxColumn.ReadOnly = True
+        Me.CheckBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.CheckBoxColumn.Width = 48
+        '
+        'IdDataGridViewTextBoxColumn
+        '
+        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "Id"
+        Me.IdDataGridViewTextBoxColumn.HeaderText = "Id"
+        Me.IdDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
+        Me.IdDataGridViewTextBoxColumn.ReadOnly = True
+        Me.IdDataGridViewTextBoxColumn.Width = 150
+        '
+        'WareHouseNameDataGridViewTextBoxColumn
+        '
+        Me.WareHouseNameDataGridViewTextBoxColumn.DataPropertyName = "WareHouseName"
+        Me.WareHouseNameDataGridViewTextBoxColumn.HeaderText = "Warehouse name"
+        Me.WareHouseNameDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.WareHouseNameDataGridViewTextBoxColumn.Name = "WareHouseNameDataGridViewTextBoxColumn"
+        Me.WareHouseNameDataGridViewTextBoxColumn.ReadOnly = True
+        Me.WareHouseNameDataGridViewTextBoxColumn.Width = 150
+        '
+        'AddressDataGridViewTextBoxColumn
+        '
+        Me.AddressDataGridViewTextBoxColumn.DataPropertyName = "Address"
+        Me.AddressDataGridViewTextBoxColumn.HeaderText = "Address"
+        Me.AddressDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.AddressDataGridViewTextBoxColumn.Name = "AddressDataGridViewTextBoxColumn"
+        Me.AddressDataGridViewTextBoxColumn.ReadOnly = True
+        Me.AddressDataGridViewTextBoxColumn.Width = 150
+        '
+        'NumberOfImportDataGridViewTextBoxColumn
+        '
+        Me.NumberOfImportDataGridViewTextBoxColumn.DataPropertyName = "NumberOfImport"
+        Me.NumberOfImportDataGridViewTextBoxColumn.HeaderText = "Number of import"
+        Me.NumberOfImportDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.NumberOfImportDataGridViewTextBoxColumn.Name = "NumberOfImportDataGridViewTextBoxColumn"
+        Me.NumberOfImportDataGridViewTextBoxColumn.ReadOnly = True
+        Me.NumberOfImportDataGridViewTextBoxColumn.Width = 150
+        '
+        'NumberOfExportDataGridViewTextBoxColumn
+        '
+        Me.NumberOfExportDataGridViewTextBoxColumn.DataPropertyName = "NumberOfExport"
+        Me.NumberOfExportDataGridViewTextBoxColumn.HeaderText = "Number of export"
+        Me.NumberOfExportDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.NumberOfExportDataGridViewTextBoxColumn.Name = "NumberOfExportDataGridViewTextBoxColumn"
+        Me.NumberOfExportDataGridViewTextBoxColumn.ReadOnly = True
+        Me.NumberOfExportDataGridViewTextBoxColumn.Width = 150
+        '
+        'bindingNav
+        '
+        Me.bindingNav.AddNewItem = Nothing
+        Me.bindingNav.AutoSize = False
+        Me.bindingNav.CountItem = Me.BindingNavigatorCountItem
+        Me.bindingNav.DeleteItem = Nothing
+        Me.bindingNav.Dock = System.Windows.Forms.DockStyle.None
+        Me.bindingNav.ImageScalingSize = New System.Drawing.Size(24, 24)
+        Me.bindingNav.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2})
+        Me.bindingNav.Location = New System.Drawing.Point(319, 699)
+        Me.bindingNav.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
+        Me.bindingNav.MoveLastItem = Me.BindingNavigatorMoveLastItem
+        Me.bindingNav.MoveNextItem = Me.BindingNavigatorMoveNextItem
+        Me.bindingNav.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
+        Me.bindingNav.Name = "bindingNav"
+        Me.bindingNav.PositionItem = Me.BindingNavigatorPositionItem
+        Me.bindingNav.Size = New System.Drawing.Size(331, 31)
+        Me.bindingNav.TabIndex = 34
+        Me.bindingNav.Text = "BindingNavigator1"
+        '
+        'BindingNavigatorCountItem
+        '
+        Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
+        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(54, 26)
+        Me.BindingNavigatorCountItem.Text = "of {0}"
+        Me.BindingNavigatorCountItem.ToolTipText = "Total number of items"
+        '
+        'BindingNavigatorMoveFirstItem
+        '
+        Me.BindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BindingNavigatorMoveFirstItem.Image = CType(resources.GetObject("BindingNavigatorMoveFirstItem.Image"), System.Drawing.Image)
+        Me.BindingNavigatorMoveFirstItem.Name = "BindingNavigatorMoveFirstItem"
+        Me.BindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = True
+        Me.BindingNavigatorMoveFirstItem.Size = New System.Drawing.Size(34, 26)
+        Me.BindingNavigatorMoveFirstItem.Text = "Move first"
+        '
+        'BindingNavigatorMovePreviousItem
+        '
+        Me.BindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BindingNavigatorMovePreviousItem.Image = CType(resources.GetObject("BindingNavigatorMovePreviousItem.Image"), System.Drawing.Image)
+        Me.BindingNavigatorMovePreviousItem.Name = "BindingNavigatorMovePreviousItem"
+        Me.BindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = True
+        Me.BindingNavigatorMovePreviousItem.Size = New System.Drawing.Size(34, 26)
+        Me.BindingNavigatorMovePreviousItem.Text = "Move previous"
+        '
+        'BindingNavigatorSeparator
+        '
+        Me.BindingNavigatorSeparator.Name = "BindingNavigatorSeparator"
+        Me.BindingNavigatorSeparator.Size = New System.Drawing.Size(6, 31)
+        '
+        'BindingNavigatorPositionItem
+        '
+        Me.BindingNavigatorPositionItem.AccessibleName = "Position"
+        Me.BindingNavigatorPositionItem.AutoSize = False
+        Me.BindingNavigatorPositionItem.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.BindingNavigatorPositionItem.Name = "BindingNavigatorPositionItem"
+        Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(50, 31)
+        Me.BindingNavigatorPositionItem.Text = "0"
+        Me.BindingNavigatorPositionItem.ToolTipText = "Current position"
+        '
+        'BindingNavigatorSeparator1
+        '
+        Me.BindingNavigatorSeparator1.Name = "BindingNavigatorSeparator1"
+        Me.BindingNavigatorSeparator1.Size = New System.Drawing.Size(6, 31)
+        '
+        'BindingNavigatorMoveNextItem
+        '
+        Me.BindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BindingNavigatorMoveNextItem.Image = CType(resources.GetObject("BindingNavigatorMoveNextItem.Image"), System.Drawing.Image)
+        Me.BindingNavigatorMoveNextItem.Name = "BindingNavigatorMoveNextItem"
+        Me.BindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = True
+        Me.BindingNavigatorMoveNextItem.Size = New System.Drawing.Size(34, 26)
+        Me.BindingNavigatorMoveNextItem.Text = "Move next"
+        '
+        'BindingNavigatorMoveLastItem
+        '
+        Me.BindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BindingNavigatorMoveLastItem.Image = CType(resources.GetObject("BindingNavigatorMoveLastItem.Image"), System.Drawing.Image)
+        Me.BindingNavigatorMoveLastItem.Name = "BindingNavigatorMoveLastItem"
+        Me.BindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = True
+        Me.BindingNavigatorMoveLastItem.Size = New System.Drawing.Size(34, 26)
+        Me.BindingNavigatorMoveLastItem.Text = "Move last"
+        '
+        'BindingNavigatorSeparator2
+        '
+        Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
+        Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 31)
         '
         'WarehouseCategory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(969, 837)
-        Me.Controls.Add(Me.gbProducts)
-        Me.Controls.Add(Me.bSave)
+        Me.ClientSize = New System.Drawing.Size(969, 840)
+        Me.Controls.Add(Me.bindingNav)
+        Me.Controls.Add(Me.dgvWarehouseSearch)
         Me.Controls.Add(Me.bDelete)
-        Me.Controls.Add(Me.bEdit)
         Me.Controls.Add(Me.bAdd)
         Me.Controls.Add(Me.groupBox1)
-        Me.Controls.Add(Me.dgvCategory)
         Me.Controls.Add(Me.label7)
         Me.Name = "WarehouseCategory"
         Me.Text = "Product Category"
         Me.groupBox1.ResumeLayout(False)
         Me.groupBox1.PerformLayout()
-        CType(Me.dgvCategory, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.gbProducts.ResumeLayout(False)
-        CType(Me.dgvProduct, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Warehouse, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvWarehouseSearch, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.bindingNav, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.bindingNav.ResumeLayout(False)
+        Me.bindingNav.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -388,9 +433,7 @@ Partial Class WarehouseCategory
     Private groupBox1 As System.Windows.Forms.GroupBox
     Private txtName As System.Windows.Forms.TextBox
     Private txtCode As System.Windows.Forms.TextBox
-    Private WithEvents bSave As Button
     Private WithEvents bDelete As Button
-    Private WithEvents bEdit As Button
     Private WithEvents bAdd As Button
     Private WithEvents Label8 As Label
     Private WithEvents txtNumberOfExport As TextBox
@@ -398,14 +441,24 @@ Partial Class WarehouseCategory
     Private WithEvents Label9 As Label
     Private WithEvents txtNumberOfImport As TextBox
     Private WithEvents txtAddress As TextBox
-    Private WithEvents dgvCategory As DataGridView
-    Private WithEvents gbProducts As GroupBox
-    Friend WithEvents dgvProduct As DataGridView
-    Friend WithEvents bAddProduct As Button
     Friend WithEvents Warehouse As LibraryDataset.Warehouse
-    Friend WithEvents ProductIdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ProductNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents TotalDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents Edit As DataGridViewButtonColumn
-    Friend WithEvents Delete As DataGridViewButtonColumn
+    Private WithEvents btnExport As Button
+    Private WithEvents btnSearch As Button
+    Friend WithEvents dgvWarehouseSearch As DataGridView
+    Friend WithEvents bindingNav As BindingNavigator
+    Friend WithEvents BindingNavigatorCountItem As ToolStripLabel
+    Friend WithEvents BindingNavigatorMoveFirstItem As ToolStripButton
+    Friend WithEvents BindingNavigatorMovePreviousItem As ToolStripButton
+    Friend WithEvents BindingNavigatorSeparator As ToolStripSeparator
+    Friend WithEvents BindingNavigatorPositionItem As ToolStripTextBox
+    Friend WithEvents BindingNavigatorSeparator1 As ToolStripSeparator
+    Friend WithEvents BindingNavigatorMoveNextItem As ToolStripButton
+    Friend WithEvents BindingNavigatorMoveLastItem As ToolStripButton
+    Friend WithEvents BindingNavigatorSeparator2 As ToolStripSeparator
+    Friend WithEvents CheckBoxColumn As DataGridViewCheckBoxColumn
+    Friend WithEvents IdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents WareHouseNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents AddressDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents NumberOfImportDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents NumberOfExportDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
 End Class
