@@ -18,6 +18,10 @@ Public Class clsWarehouse
         taSalesDetail.Connection = conn
         Return taSalesDetail.GetData(warehouseId)
     End Function
+    Public Function GetWarehouseByProductId(ByVal productId As Long) As Warehouse.WareHouseDataTable
+        ta.Connection = conn
+        Return ta.GetWarehouseByProductId(productId)
+    End Function
     Public Function AddWarehouse(ByVal warehouseName As String, ByVal address As String, ByVal numberOfImport As Long, ByVal numberOfExport As Long, ByVal createUser As String) As Integer
         ta.Connection = conn
         Return ta.InsertWarehouse(warehouseName, address, numberOfImport, numberOfExport, DateTime.Now, createUser)

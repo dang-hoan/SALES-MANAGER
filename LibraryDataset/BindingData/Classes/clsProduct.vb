@@ -100,9 +100,9 @@ Public Class clsProduct
         End If
     End Function
 
-    Public Function GetCostOfProduct(ByVal productId As Long) As Product.CostProductDataTable
+    Public Function GetCostOfProductById(ByVal productId As Long) As DataRow
         taCostProduct.Connection = conn
-        Return taCostProduct.GetCostOfProduct(productId)
+        Return taCostProduct.GetCostOfProduct(productId).Rows(0)
     End Function
     Public Function SearchProduct(ByVal sqlCommand As String) As Product.ProductSalesDetailDataTable
         Dim ds As New Product

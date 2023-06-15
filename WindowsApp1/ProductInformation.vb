@@ -8,7 +8,7 @@ Public Class ProductInformation
     Dim clsRolePermission As New clsRolePermission(conn.connSales.ConnectionString)
 
     Dim mode As String = "Update"
-    Public Sub LoadData(productCode As Long)
+    Public Sub LoadData(productCode As Long, Optional onlyView As Boolean = False)
         SetVisibleForPermission()
         Dim dataCategory = clsCBB.GetCBBCategory().CBBCategory
         Dim dataSupplier = clsCBB.GetCBBSupplier().CBBSupplier
@@ -59,7 +59,7 @@ Public Class ProductInformation
             txtName.Text = data("ProductName")
             txtPrice.Text = data("ProductPrice")
             txtDiscount.Text = data("DiscountPercent")
-            txtNumber.Text = data("Total")
+            txtTotal.Text = data("Total")
             txtSoldProducts.Text = data("SellNumber")
 
             For Each item As CBBItem In cbbCategory.Items
@@ -82,6 +82,12 @@ Public Class ProductInformation
                     cbbWarehouse.SelectedItem = item
                 End If
             Next
+
+            If onlyView Then
+                bSave.Visible = False
+                bEdit.Visible = False
+                bDelete.Visible = False
+            End If
 
         End If
         InitPlaceHolderText()
@@ -167,7 +173,7 @@ Public Class ProductInformation
         cbbStatus.Enabled = valBoolean
         cbbSupplier.Enabled = valBoolean
         txtDiscount.Enabled = valBoolean
-        txtNumber.Enabled = valBoolean
+        txtTotal.Enabled = valBoolean
         cbbWarehouse.Enabled = valBoolean
         bSave.Enabled = valBoolean
     End Sub
@@ -185,15 +191,9 @@ Public Class ProductInformation
         cbbStatus.SelectedIndex = -1
         cbbSupplier.SelectedIndex = -1
         txtDiscount.Text = ""
-        txtNumber.Text = ""
+        txtTotal.Text = ""
         cbbWarehouse.SelectedIndex = -1
         txtSoldProducts.Text = "0"
-    End Sub
-
-    Private Sub bAdd_Click(sender As Object, e As EventArgs)
-        clearValue()
-        setEnable(True)
-        editDeleteEnabled(False)
     End Sub
 
     Private Sub bSave_Click(sender As Object, e As EventArgs) Handles bSave.Click
@@ -209,20 +209,20 @@ Public Class ProductInformation
 
                 result = clsPMSAnalysis.EditProduct(txtCode.Text, txtName.Text,
                                             supplierId, categoryId, txtPrice.Text, txtUnitPrice.Text, statusId,
-                                             txtDiscount.Text, Nothing, Nothing, wareHouseId, txtNumber.Text, LoginForm.PropUsername)
+                                             txtDiscount.Text, Nothing, Nothing, wareHouseId, txtTotal.Text, LoginForm.PropUsername)
 
                 If result = 1 Then
                     Dim oldImports = clsWarehouse.GetWarehouseById(wareHouseId)("NumberOfImport")
-                    result = clsWarehouse.UpdateImportsOfWarehouse(oldImports - oldTotal + txtNumber.Text, wareHouseId)
+                    result = clsWarehouse.UpdateImportsOfWarehouse(oldImports - oldTotal + txtTotal.Text, wareHouseId)
                 End If
             Else                                'Add new
                 result = clsPMSAnalysis.AddProduct(txtName.Text,
                                             supplierId, categoryId, txtPrice.Text, txtUnitPrice.Text, statusId,
-                                             txtDiscount.Text, Nothing, Nothing, wareHouseId, txtNumber.Text, LoginForm.PropUsername)
+                                             txtDiscount.Text, Nothing, Nothing, wareHouseId, txtTotal.Text, LoginForm.PropUsername)
 
                 If result = 1 Then
                     Dim oldImports = clsWarehouse.GetWarehouseById(wareHouseId)("NumberOfImport")
-                    result = clsWarehouse.UpdateImportsOfWarehouse(oldImports + txtNumber.Text, wareHouseId)
+                    result = clsWarehouse.UpdateImportsOfWarehouse(oldImports + txtTotal.Text, wareHouseId)
                 End If
 
             End If
@@ -252,14 +252,14 @@ Public Class ProductInformation
 
         ElseIf Not CheckValue("Price", txtPrice.Text, "Double") Or
             Not CheckValue("Discount", txtDiscount.Text, "Double") Or
-            Not CheckValue("Number of products", txtNumber.Text, "Long") Then
+            Not CheckValue("Number of products", txtTotal.Text, "Long") Then
             Return False
 
         ElseIf txtDiscount.Text < 0 Or txtDiscount.Text > 100 Then
             MsgBox("Discount percent must be in 0 - 100!", Nothing, "Notification")
             Return False
 
-        ElseIf CType(txtNumber.Text, Double) < CType(txtSoldProducts.Text, Double) Then
+        ElseIf CType(txtTotal.Text, Double) < CType(txtSoldProducts.Text, Double) Then
             MsgBox("Total products must be greater than sold products!", Nothing, "Notification")
             Return False
         End If
@@ -307,13 +307,25 @@ Public Class ProductInformation
 
     Private Sub bDelete_Click(sender As Object, e As EventArgs) Handles bDelete.Click
         Dim productId = txtCode.Text
-        Dim result = clsPMSAnalysis.DeleteProduct(LoginForm.PropUsername, productId)
+
+        Dim product = clsPMSAnalysis.GetProductById(productId)
+        Dim warehouseId = product("WareHouseId")
+        Dim total = product("Total")
+        Dim oldImports = clsWarehouse.GetWarehouseById(warehouseId)("NumberOfImport")
+        Dim result = clsWarehouse.UpdateImportsOfWarehouse(oldImports - total, warehouseId)
+
+        If result = 1 Then
+            result = clsPMSAnalysis.DeleteProduct(LoginForm.PropUsername, productId)
+        End If
+
         If result = 1 Then
             MsgBox("Delete product information successful!", Nothing, "Notification")
             Dim caller As ProductCategory = CType(Application.OpenForms("ProductCategory"), ProductCategory)
             caller.Reload()
             Me.Close()
-        Else
+        End If
+
+        If result <> 1 Then
             MsgBox("There is an error when interact with database!", Nothing, "Notification")
         End If
     End Sub

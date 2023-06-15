@@ -125,7 +125,7 @@ CREATE TABLE "Order"(
     "StatusId" INT NOT NULL,
     "PrivateDiscount" FLOAT NULL,
     "TotalPrice" DECIMAL(8, 2) NOT NULL,
-    "PaymentMethod" nvarchar(50) NOT NULL,
+    "PaymentMethodId" INT NOT NULL,
     "Note" NVARCHAR(255) NULL,
 	"CreateDate" datetime NULL,
 	"CreateBy" varchar(40) NULL,
@@ -197,4 +197,15 @@ CREATE TABLE "RolePermission"(
 	"RoleId" INT NOT NULL,
     "PermissionId" INT NOT NULL,
 	CONSTRAINT PK_RolePermission PRIMARY KEY ("RoleId","PermissionId")
+)
+CREATE TABLE "PaymentMethod"(
+	"Id" INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	"PaymentMethodName" varchar(100) NOT NULL,
+	"CreateDate" datetime NULL,
+	"CreateBy" varchar(40) NULL,
+	"UpdateDate" datetime NULL,
+	"UpdateBy" varchar(40) NULL,
+	"DeleteDate" datetime NULL,
+	"DeleteBy" varchar(40) NULL,
+	"IsDelete" bit NULL
 )

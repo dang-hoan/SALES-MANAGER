@@ -94,12 +94,9 @@ D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.frmCustomerCateg
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.LoginForm.resources
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.MainForm.resources
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.Resources.resources
-D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.AddEditProductForm.resources
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.WarehouseCategory.resources
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.ProductCategory.resources
-D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.OrderSearch.resources
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.ProductInformation.resources
-D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.SalesOrder.resources
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.WarehouseReport.resources
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\SalesManager.vbproj.GenerateResource.cache
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\SalesManager.vbproj.CoreCompileInputs.cache
@@ -109,3 +106,5 @@ D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.xml
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.pdb
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.SupplierInformation.resources
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.WarehouseInformation.resources
+D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.SalesOrderInformation.resources
+D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.SalesOrderCategory.resources

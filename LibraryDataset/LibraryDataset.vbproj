@@ -92,12 +92,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CBB.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BindingData\Dataset\OrderDetail.vb">
-      <DependentUpon>OrderDetail.xsd</DependentUpon>
+    <Compile Include="BindingData\Dataset\CBB.vb">
+      <DependentUpon>CBB.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BindingData\Dataset\OrderDetail1.Designer.vb">
+    <Compile Include="BindingData\Dataset\OrderDetail.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>OrderDetail.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="BindingData\Dataset\OrderDetail.vb">
       <DependentUpon>OrderDetail.xsd</DependentUpon>
     </Compile>
     <Compile Include="BindingData\Dataset\Person.Designer.vb">
@@ -199,7 +202,7 @@
     <None Include="BindingData\Dataset\OrderDetail.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>OrderDetail1.Designer.vb</LastGenOutput>
+      <LastGenOutput>OrderDetail.Designer.vb</LastGenOutput>
     </None>
     <None Include="BindingData\Dataset\OrderDetail.xss">
       <DependentUpon>OrderDetail.xsd</DependentUpon>

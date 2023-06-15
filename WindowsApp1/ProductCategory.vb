@@ -5,6 +5,7 @@ Imports System.ComponentModel
 
 Public Class ProductCategory
     Dim conn As New connCommon()
+    Dim clsWarehouse As New clsWarehouse(conn.connSales.ConnectionString)
     Dim clsProduct As New clsProduct(conn.connSales.ConnectionString)
     Dim clsCBB As New clsCBB(conn.connSales.ConnectionString)
     Dim clsRolePermission As New clsRolePermission(conn.connSales.ConnectionString)
@@ -398,7 +399,15 @@ Public Class ProductCategory
             Dim err = False
 
             For Each id In listCheckboxValue
-                Dim result = clsProduct.DeleteProduct(LoginForm.PropUsername, id)
+                Dim product = clsProduct.GetProductById(id)
+                Dim warehouseId = product("WareHouseId")
+                Dim total = product("Total")
+                Dim oldImports = clsWarehouse.GetWarehouseById(warehouseId)("NumberOfImport")
+                Dim result = clsWarehouse.UpdateImportsOfWarehouse(oldImports - total, warehouseId)
+
+                If result = 1 Then
+                    result = clsProduct.DeleteProduct(LoginForm.PropUsername, id)
+                End If
 
                 If result <> 1 Then
                     MsgBox("There is an error when interact with database!", Nothing, "Notification")

@@ -100,42 +100,42 @@ Partial Class MainForm
         'btnCustomer
         '
         Me.btnCustomer.Name = "btnCustomer"
-        Me.btnCustomer.Size = New System.Drawing.Size(270, 34)
+        Me.btnCustomer.Size = New System.Drawing.Size(202, 34)
         Me.btnCustomer.Text = "Customer"
         '
         'btnEmployee
         '
         Me.btnEmployee.Name = "btnEmployee"
-        Me.btnEmployee.Size = New System.Drawing.Size(270, 34)
+        Me.btnEmployee.Size = New System.Drawing.Size(202, 34)
         Me.btnEmployee.Text = "Employee"
         '
         'toolStripMenuItem1
         '
         Me.toolStripMenuItem1.Name = "toolStripMenuItem1"
-        Me.toolStripMenuItem1.Size = New System.Drawing.Size(267, 6)
+        Me.toolStripMenuItem1.Size = New System.Drawing.Size(199, 6)
         '
         'btnProduct
         '
         Me.btnProduct.Name = "btnProduct"
-        Me.btnProduct.Size = New System.Drawing.Size(270, 34)
+        Me.btnProduct.Size = New System.Drawing.Size(202, 34)
         Me.btnProduct.Text = "Product"
         '
         'btnOrder
         '
         Me.btnOrder.Name = "btnOrder"
-        Me.btnOrder.Size = New System.Drawing.Size(270, 34)
+        Me.btnOrder.Size = New System.Drawing.Size(202, 34)
         Me.btnOrder.Text = "Order"
         '
         'btnSupplier
         '
         Me.btnSupplier.Name = "btnSupplier"
-        Me.btnSupplier.Size = New System.Drawing.Size(270, 34)
+        Me.btnSupplier.Size = New System.Drawing.Size(202, 34)
         Me.btnSupplier.Text = "Supplier"
         '
         'btnWarehouse
         '
         Me.btnWarehouse.Name = "btnWarehouse"
-        Me.btnWarehouse.Size = New System.Drawing.Size(270, 34)
+        Me.btnWarehouse.Size = New System.Drawing.Size(202, 34)
         Me.btnWarehouse.Text = "Warehouse"
         '
         'btnTool
@@ -155,7 +155,7 @@ Partial Class MainForm
         '
         Me.btnSearch.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnEmployeeSearch, Me.btnProductSearch, Me.btnOrderSearch})
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(270, 34)
+        Me.btnSearch.Size = New System.Drawing.Size(240, 34)
         Me.btnSearch.Text = "Search"
         '
         'btnEmployeeSearch
@@ -179,7 +179,7 @@ Partial Class MainForm
         'btnDecentralization
         '
         Me.btnDecentralization.Name = "btnDecentralization"
-        Me.btnDecentralization.Size = New System.Drawing.Size(270, 34)
+        Me.btnDecentralization.Size = New System.Drawing.Size(240, 34)
         Me.btnDecentralization.Text = "Decentralization"
         '
         'btnStatistic

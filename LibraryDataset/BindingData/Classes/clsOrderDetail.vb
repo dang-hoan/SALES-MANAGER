@@ -13,26 +13,19 @@ Public Class clsOrderDetail
     Public Sub New(ByVal strConn As String, Optional ByVal strConnTransaction As String = Nothing)
         conn = New SqlConnection(strConn)
     End Sub
-
-    Public Function GetAllSaleOrders() As OrderDetail
-        Dim ds As New OrderDetail
-        ta.Connection = conn
-        ta.Fill(ds.SalesOrder)
-        Return ds
-    End Function
     Public Function AddOrder(customerName As String, orderDate As Date,
-                             shipperId As String, shipDate As Date, shipAddress As String,
+                             shipperId As Long, shipDate As Date, shipAddress As String,
                              shipPrice As Double, statusId As Integer, privateDiscount As Double,
-                             totalPrice As Double, paymentMethod As String, note As String, createUser As String) As Integer
+                             totalPrice As Double, paymentMethodId As Integer, note As String, createUser As String) As Integer
         taOrder.Connection = conn
-        Return taOrder.InsertOrder(customerName, orderDate, shipperId, shipDate, shipAddress, Nothing, shipPrice, statusId, privateDiscount, totalPrice, paymentMethod, note, DateTime.Now, createUser)
+        Return taOrder.InsertOrder(customerName, orderDate, shipperId, shipDate, shipAddress, Nothing, shipPrice, statusId, privateDiscount, totalPrice, paymentMethodId, note, DateTime.Now, createUser)
     End Function
     Public Function UpdateOrder(id As Long, customerName As String, orderDate As Date,
-                             shipperId As String, shipDate As Date, shipAddress As String,
+                             shipperId As Long, shipDate As Date, shipAddress As String,
                              shipPrice As Double, statusId As Integer, privateDiscount As Double,
-                             totalPrice As Double, paymentMethod As String, note As String, updateUser As String) As Integer
+                             totalPrice As Double, paymentMethodId As Integer, note As String, updateUser As String) As Integer
         taOrder.Connection = conn
-        Return taOrder.UpdateOrder(customerName, orderDate, shipperId, shipDate, shipAddress, Nothing, shipPrice, statusId, privateDiscount, totalPrice, paymentMethod, note, DateTime.Now, updateUser, id)
+        Return taOrder.UpdateOrder(customerName, orderDate, shipperId, shipDate, shipAddress, Nothing, shipPrice, statusId, privateDiscount, totalPrice, paymentMethodId, note, DateTime.Now, updateUser, id)
     End Function
     Public Function DeleteOrder(id As Long, deleteUser As String) As Integer
         taOrder.Connection = conn
@@ -94,74 +87,37 @@ Public Class clsOrderDetail
         taOrderDetailView.Connection = conn
         Return taOrderDetailView.GetData()
     End Function
-    Public Function SearchOrder(ByVal Id As Long, ByVal CustomerName As String, ByVal OrderDate As Date, ByVal ShipperId As String,
-                                ByVal ShipDate As Date, ByVal ShipAddress As String, ByVal StatusId As Integer, ByVal PaymentMethod As String,
-                                ByVal searchByOrderDate As Boolean, ByVal searchByShipDate As Boolean) As OrderDetail.OrderDataTable
+
+    Public Function GetSalesOrderById(ByVal orderId As Long) As DataRow
+        ta.Connection = conn
+        Return ta.GetSalesOrderById(orderId).Rows(0)
+    End Function
+    Public Function GetProductsInforByOrderId(ByVal orderId As Long) As OrderDetail.OrderDetailDataTable
+        taOrderDetail.Connection = conn
+        Return taOrderDetail.GetProductsInforByOrderId(orderId)
+    End Function
+    Public Function SearchSalesOrder(ByVal sqlCommand As String) As OrderDetail.SalesOrderDataTable
         Dim ds As New OrderDetail
 
         Dim cmd = conn.CreateCommand()
 
-        Dim code = "AND Id = @Id "
-        Dim shipIdStr = "AND ShipperId = @ShipperId "
-        Dim statusIdStr = "AND StatusId = @StatusId "
+        cmd.CommandText = "SELECT [Order].Id AS OrderId, [Order].CustomerName, [Order].OrderDate, [Order].ShipDate, [Order].ShipAddress, [Order].StatusId, [Order].ShipPrice, [Order].TotalPrice, [Order].PrivateDiscount, [Order].PaymentMethodId, [Order].ShipperId, [Order].Note, 
+                           PaymentMethod.PaymentMethodName, Person.LastName + ' ' + Person.FirstName AS ShipperName, Status.StatusName
+                           FROM   [Order] INNER JOIN
+                                    PaymentMethod ON [Order].PaymentMethodId = PaymentMethod.Id INNER JOIN
+                                    Person ON [Order].ShipperId = Person.Id INNER JOIN
+                                    Status ON [Order].StatusId = Status.Id
+                           WHERE ([Order].IsDelete = 'False')" & sqlCommand
 
-        Dim dateOrderStr = "AND DATEPART(DAY, OrderDate) = @OrderDay AND DATEPART(MONTH, OrderDate) = @OrderMonth AND DATEPART(YEAR, OrderDate) = @OrderYear "
-        Dim dateShipStr = "AND DATEPART(DAY, ShipDate) = @ShipDay AND DATEPART(MONTH, ShipDate) = @ShipMonth AND DATEPART(YEAR, ShipDate) = @ShipYear "
-
-        If Id = -1 Then
-            code = ""
-        Else
-            cmd.Parameters.AddWithValue("@Id", Id)
-        End If
-
-        If ShipperId Is Nothing Then
-            shipIdStr = ""
-        Else
-            cmd.Parameters.AddWithValue("@ShipperId", ShipperId)
-        End If
-
-        If StatusId = -1 Then
-            statusIdStr = ""
-        Else
-            cmd.Parameters.AddWithValue("@StatusId", StatusId)
-        End If
-
-        If searchByOrderDate = False Then
-            dateOrderStr = ""
-        Else
-            cmd.Parameters.AddWithValue("@OrderDay", OrderDate.Day)
-            cmd.Parameters.AddWithValue("@OrderMonth", OrderDate.Month)
-            cmd.Parameters.AddWithValue("@OrderYear", OrderDate.Year)
-        End If
-
-        If searchByShipDate = False Then
-            dateShipStr = ""
-        Else
-            cmd.Parameters.AddWithValue("@ShipDay", ShipDate.Day)
-            cmd.Parameters.AddWithValue("@ShipMonth", ShipDate.Month)
-            cmd.Parameters.AddWithValue("@ShipYear", ShipDate.Year)
-        End If
-
-        cmd.CommandText = "SELECT Id, CustomerName, OrderDate, ShipperId, ShipDate, ShipAddress, ShipPostalCode, ShipPrice, StatusId, PrivateDiscount, TotalPrice, PaymentMethod
-                    FROM   [Order]
-                    WHERE (ShipAddress LIKE @ShipAddress) AND (PaymentMethod LIKE @PaymentMethod) AND (CustomerName LIKE @CustomerName) AND [Order].IsDelete = 'False' " & code & shipIdStr & statusIdStr & dateOrderStr & dateShipStr
-
-        taOrder.Connection = conn
-        'command.CommandType = CommandType.StoredProcedure
-        cmd.Parameters.AddWithValue("@ShipAddress", $"%{ShipAddress}%")
-        cmd.Parameters.AddWithValue("@PaymentMethod", $"%{PaymentMethod}%")
-        cmd.Parameters.AddWithValue("@CustomerName", $"%{CustomerName}%")
+        ta.Connection = conn
 
         Dim tmp = cmd.CommandText.ToString()
-        For Each p As SqlParameter In cmd.Parameters
-            tmp = tmp.Replace(p.ParameterName.ToString(), "'" & p.Value.ToString() & "'")
-        Next
         Console.WriteLine(tmp)
 
-        taOrder.Adapter.SelectCommand = cmd
-        taOrder.Adapter.Fill(ds.Order)
+        ta.Adapter.SelectCommand = cmd
+        ta.Adapter.Fill(ds.SalesOrder)
 
-        Return ds.Order
+        Return ds.SalesOrder
 
     End Function
 

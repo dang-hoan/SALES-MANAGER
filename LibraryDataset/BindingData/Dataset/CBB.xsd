@@ -282,7 +282,7 @@ WHERE (StatusName = 'UNAVAILABLE')</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="SalesManagerDB.dbo.Status" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByStatusDelevered" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDeleveredId" GeneratorSourceName="FillByStatusDelevered" GetMethodModifier="Public" GetMethodName="GetDeleveredId" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDeleveredId" UserSourceName="FillByStatusDelevered">
+              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="SalesManagerDB.dbo.Status" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByStatusDelivered" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDeliveredId" GeneratorSourceName="FillByStatusDelivered" GetMethodModifier="Public" GetMethodName="GetDeliveredId" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDeliveredId" UserSourceName="FillByStatusDelivered">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT Id,StatusName 
@@ -293,26 +293,6 @@ WHERE (StatusName = 'DELEVERED')</CommandText>
                 </SelectCommand>
               </DbSource>
             </Sources>
-          </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CBBPersonTableAdapter" GeneratorDataComponentClassName="CBBPersonTableAdapter" Name="CBBPerson" UserDataComponentName="CBBPersonTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="SalesManagerDB.dbo.Person" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByShipper" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetShipper" GeneratorSourceName="FillByShipper" GetMethodModifier="Public" GetMethodName="GetShipper" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetShipper" UserSourceName="FillByShipper">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Person.Username, Person.LastName + ' ' + Person.FirstName AS ShipperName
-FROM   Person INNER JOIN
-             Role ON Person.RoleId = Role.Id
-WHERE (Role.RoleName = N'Shipper') AND (Person.IsDelete = 'False') AND (Person.Username IS NOT NULL)</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="Username" DataSetColumn="Username" />
-              <Mapping SourceColumn="ShipperName" DataSetColumn="ShipperName" />
-            </Mappings>
-            <Sources />
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SalesDetailTableAdapter" GeneratorDataComponentClassName="SalesDetailTableAdapter" Name="SalesDetail" UserDataComponentName="SalesDetailTableAdapter">
             <MainSource>
@@ -387,6 +367,74 @@ SELECT Id, RoleName FROM Role WHERE (Id = @Id)</CommandText>
             <Mappings>
               <Mapping SourceColumn="Id" DataSetColumn="Id" />
               <Mapping SourceColumn="RoleName" DataSetColumn="RoleName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CBBPaymentMethodTableAdapter" GeneratorDataComponentClassName="CBBPaymentMethodTableAdapter" Name="CBBPaymentMethod" UserDataComponentName="CBBPaymentMethodTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="SalesManagerDB.dbo.PaymentMethod" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [PaymentMethod] WHERE (([Id] = @Original_Id) AND ([PaymentMethodName] = @Original_PaymentMethodName))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_PaymentMethodName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PaymentMethodName" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [PaymentMethod] ([PaymentMethodName]) VALUES (@PaymentMethodName);
+SELECT Id, PaymentMethodName FROM PaymentMethod WHERE (Id = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@PaymentMethodName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PaymentMethodName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Id, PaymentMethodName
+FROM   PaymentMethod</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [PaymentMethod] SET [PaymentMethodName] = @PaymentMethodName WHERE (([Id] = @Original_Id) AND ([PaymentMethodName] = @Original_PaymentMethodName));
+SELECT Id, PaymentMethodName FROM PaymentMethod WHERE (Id = @Id)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@PaymentMethodName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PaymentMethodName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_PaymentMethodName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PaymentMethodName" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Id" ColumnName="Id" DataSourceName="SalesManagerDB.dbo.PaymentMethod" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="PaymentMethodName" DataSetColumn="PaymentMethodName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CBBPersonTableAdapter" GeneratorDataComponentClassName="CBBPersonTableAdapter" Name="CBBPerson" UserDataComponentName="CBBPersonTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="SalesManagerDB.dbo.Person" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByShipper" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetShipper" GeneratorSourceName="FillByShipper" GetMethodModifier="Public" GetMethodName="GetShipper" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetShipper" UserSourceName="FillByShipper">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Person.Id, Person.LastName + ' ' + Person.FirstName AS ShipperName
+FROM   Person INNER JOIN
+             Role ON Person.RoleId = Role.Id
+WHERE (Role.RoleName = N'Shipper') AND (Person.IsDelete = 'False')</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="ShipperName" DataSetColumn="ShipperName" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -490,26 +538,6 @@ SELECT Id, RoleName FROM Role WHERE (Id = @Id)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CBBPerson" msprop:Generator_RowEvHandlerName="CBBPersonRowChangeEventHandler" msprop:Generator_RowDeletedName="CBBPersonRowDeleted" msprop:Generator_RowDeletingName="CBBPersonRowDeleting" msprop:Generator_RowEvArgName="CBBPersonRowChangeEvent" msprop:Generator_TablePropName="CBBPerson" msprop:Generator_RowChangedName="CBBPersonRowChanged" msprop:Generator_UserTableName="CBBPerson" msprop:Generator_RowChangingName="CBBPersonRowChanging" msprop:Generator_RowClassName="CBBPersonRow" msprop:Generator_TableClassName="CBBPersonDataTable" msprop:Generator_TableVarName="tableCBBPerson">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Username" msprop:Generator_ColumnPropNameInTable="UsernameColumn" msprop:Generator_ColumnPropNameInRow="Username" msprop:Generator_UserColumnName="Username" msprop:Generator_ColumnVarNameInTable="columnUsername" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="40" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="ShipperName" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="ShipperNameColumn" msprop:Generator_ColumnPropNameInRow="ShipperName" msprop:Generator_UserColumnName="ShipperName" msprop:Generator_ColumnVarNameInTable="columnShipperName" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="41" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
         <xs:element name="SalesDetail" msprop:Generator_RowEvHandlerName="SalesDetailRowChangeEventHandler" msprop:Generator_RowDeletedName="SalesDetailRowDeleted" msprop:Generator_RowDeletingName="SalesDetailRowDeleting" msprop:Generator_RowEvArgName="SalesDetailRowChangeEvent" msprop:Generator_TablePropName="SalesDetail" msprop:Generator_RowChangedName="SalesDetailRowChanged" msprop:Generator_UserTableName="SalesDetail" msprop:Generator_RowChangingName="SalesDetailRowChanging" msprop:Generator_RowClassName="SalesDetailRow" msprop:Generator_TableClassName="SalesDetailDataTable" msprop:Generator_TableVarName="tableSalesDetail">
           <xs:complexType>
             <xs:sequence>
@@ -526,6 +554,34 @@ SELECT Id, RoleName FROM Role WHERE (Id = @Id)</CommandText>
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CBBPaymentMethod" msprop:Generator_RowEvHandlerName="CBBPaymentMethodRowChangeEventHandler" msprop:Generator_RowDeletedName="CBBPaymentMethodRowDeleted" msprop:Generator_RowDeletingName="CBBPaymentMethodRowDeleting" msprop:Generator_RowEvArgName="CBBPaymentMethodRowChangeEvent" msprop:Generator_TablePropName="CBBPaymentMethod" msprop:Generator_RowChangedName="CBBPaymentMethodRowChanged" msprop:Generator_UserTableName="CBBPaymentMethod" msprop:Generator_RowChangingName="CBBPaymentMethodRowChanging" msprop:Generator_RowClassName="CBBPaymentMethodRow" msprop:Generator_TableClassName="CBBPaymentMethodDataTable" msprop:Generator_TableVarName="tableCBBPaymentMethod">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_UserColumnName="Id" msprop:Generator_ColumnVarNameInTable="columnId" type="xs:int" />
+              <xs:element name="PaymentMethodName" msprop:Generator_ColumnPropNameInTable="PaymentMethodNameColumn" msprop:Generator_ColumnPropNameInRow="PaymentMethodName" msprop:Generator_UserColumnName="PaymentMethodName" msprop:Generator_ColumnVarNameInTable="columnPaymentMethodName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CBBPerson" msprop:Generator_RowEvHandlerName="CBBPersonRowChangeEventHandler" msprop:Generator_RowDeletedName="CBBPersonRowDeleted" msprop:Generator_RowDeletingName="CBBPersonRowDeleting" msprop:Generator_RowEvArgName="CBBPersonRowChangeEvent" msprop:Generator_TablePropName="CBBPerson" msprop:Generator_RowChangedName="CBBPersonRowChanged" msprop:Generator_RowChangingName="CBBPersonRowChanging" msprop:Generator_TableClassName="CBBPersonDataTable" msprop:Generator_RowClassName="CBBPersonRow" msprop:Generator_TableVarName="tableCBBPerson" msprop:Generator_UserTableName="CBBPerson">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_UserColumnName="Id" type="xs:long" />
+              <xs:element name="ShipperName" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="ShipperName" msprop:Generator_ColumnPropNameInTable="ShipperNameColumn" msprop:Generator_ColumnVarNameInTable="columnShipperName" msprop:Generator_UserColumnName="ShipperName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="61" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -554,12 +610,16 @@ SELECT Id, RoleName FROM Role WHERE (Id = @Id)</CommandText>
       <xs:selector xpath=".//mstns:CBBStatus" />
       <xs:field xpath="mstns:Id" />
     </xs:unique>
-    <xs:unique name="CBBPerson_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:CBBPerson" />
-      <xs:field xpath="mstns:Username" />
-    </xs:unique>
     <xs:unique name="CBBRole_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:CBBRole" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+    <xs:unique name="CBBPaymentMethod_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CBBPaymentMethod" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+    <xs:unique name="CBBPerson_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CBBPerson" />
       <xs:field xpath="mstns:Id" />
     </xs:unique>
   </xs:element>

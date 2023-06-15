@@ -1,7 +1,7 @@
 - forget password (gởi mk mới qua email), register account
 - xuất đồ thị báo cáo theo ngày chọn
 - gộp search + danh mục
-- thêm bảng paymentMethod để lưu combobox
+V thêm bảng paymentMethod để lưu combobox
 - thêm chú thích cho các trường	
 - sửa lại định dạng ngày
 - xoá nhiều row trong grid view (thêm cột checkbox ở đầu để chọn row muốn xoá)
@@ -10,12 +10,21 @@
 - thêm check box search hay không
 - thêm phân trang trong datagridview
 - thay so sánh khác rỗng thành hàm check rỗng của thư viện
-- sửa discount trong order??
-- ship date > order date??
-- ship date, order date chỉ hiện ngày tháng năm, k format thêm giờ
+V sửa discount trong order??
+V ship date > order date??
+V ship date, order date chỉ hiện ngày tháng năm, k format thêm giờ
 - thêm tiêu đề cho file excel
 - ẩn panel nền đồ thị khi trống dữ liệu trong report warehouse
 - refresh datagridview?? có nên k
-- number, -, export
+V number, -, export
 - bỏ chữ interger trong cảnh báo
 - xoá 1 đối tượng (xoá row trong category này có ảnh hưởng tới việc hiển thị trong các category khác?)
+V sửa txtNumber -> txtTotal
+- khi nhà kho bị xoá -> sản phẩm của kho cũng bị xoá
+- đổi hàm reload thành hàm search
+- in hoá đơn
+V save và xoá (được chọn), add, calculate tất cả các product có trong bindlist of order information form
+V duyệt qua tất cả product khi khởi tạo combobox cbbProduct
+V double click vào order information
+V add remove order khi dgv rỗng
+- out of stock

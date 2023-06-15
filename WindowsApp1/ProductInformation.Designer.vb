@@ -33,7 +33,7 @@ Partial Class ProductInformation
         Me.Label11 = New System.Windows.Forms.Label()
         Me.txtSoldProducts = New System.Windows.Forms.TextBox()
         Me.txtUnitDiscount = New System.Windows.Forms.TextBox()
-        Me.txtNumber = New System.Windows.Forms.TextBox()
+        Me.txtTotal = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.cbbWarehouse = New System.Windows.Forms.ComboBox()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -122,7 +122,7 @@ Partial Class ProductInformation
         Me.groupBox1.Controls.Add(Me.Label11)
         Me.groupBox1.Controls.Add(Me.txtSoldProducts)
         Me.groupBox1.Controls.Add(Me.txtUnitDiscount)
-        Me.groupBox1.Controls.Add(Me.txtNumber)
+        Me.groupBox1.Controls.Add(Me.txtTotal)
         Me.groupBox1.Controls.Add(Me.Label10)
         Me.groupBox1.Controls.Add(Me.cbbWarehouse)
         Me.groupBox1.Controls.Add(Me.Label9)
@@ -174,13 +174,13 @@ Partial Class ProductInformation
         Me.txtUnitDiscount.TabIndex = 22
         Me.txtUnitDiscount.Text = "%"
         '
-        'txtNumber
+        'txtTotal
         '
-        Me.txtNumber.Enabled = False
-        Me.txtNumber.Location = New System.Drawing.Point(166, 337)
-        Me.txtNumber.Name = "txtNumber"
-        Me.txtNumber.Size = New System.Drawing.Size(164, 26)
-        Me.txtNumber.TabIndex = 21
+        Me.txtTotal.Enabled = False
+        Me.txtTotal.Location = New System.Drawing.Point(166, 337)
+        Me.txtTotal.Name = "txtTotal"
+        Me.txtTotal.Size = New System.Drawing.Size(164, 26)
+        Me.txtTotal.TabIndex = 21
         '
         'Label10
         '
@@ -368,7 +368,7 @@ Partial Class ProductInformation
     Private WithEvents bEdit As Button
     Private WithEvents cbbSupplier As ComboBox
     Private WithEvents Label8 As Label
-    Private WithEvents txtNumber As TextBox
+    Private WithEvents txtTotal As TextBox
     Private WithEvents Label10 As Label
     Private WithEvents cbbWarehouse As ComboBox
     Private WithEvents Label9 As Label

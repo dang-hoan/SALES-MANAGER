@@ -4,8 +4,9 @@ Imports System.Drawing
 Imports Microsoft.Office.Interop.Excel
 Public Class Export
     Public Function exportToExcel(ByVal path As String, ByVal tables As BindingList(Of Data.DataTable),
-                                  ByVal listPrintedColumn As List(Of KeyValuePair(Of Integer, String)), ByVal listLeftFormat As ArrayList,
-                                  ByVal title As String) As Integer
+                                  ByVal listPrintedColumn As List(Of KeyValuePair(Of Integer, String)),
+                                  ByVal listLeftFormat As ArrayList,
+                                  ByVal title As String, Optional ByVal listDateTimeFormat As ArrayList = Nothing, Optional ByVal formatString As String = "MM/DD/YYYY HH:mm") As Integer
 
         Dim xlApp As Application
         Dim xlWorkBook As Workbook
@@ -62,6 +63,14 @@ Public Class Export
             range = Chr(startColumn + column + 64) & ":" & Chr(startColumn + column + 64)
             xlWorkSheet.Range(range).Cells.HorizontalAlignment = XlHAlign.xlHAlignLeft
         Next
+
+        'Fomrat for datetime field
+        If listDateTimeFormat IsNot Nothing Then
+            For Each column In listDateTimeFormat
+                range = Chr(startColumn + column + 64) & ":" & Chr(startColumn + column + 64)
+                xlWorkSheet.Range(range).EntireColumn.NumberFormat = formatString
+            Next
+        End If
 
         xlApp.DisplayAlerts = False
 

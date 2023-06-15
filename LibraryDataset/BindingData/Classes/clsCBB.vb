@@ -9,6 +9,7 @@ Public Class clsCBB
     Dim taStatus As New CBBTableAdapters.CBBStatusTableAdapter
     Dim taPerson As New CBBTableAdapters.CBBPersonTableAdapter
     Dim taRole As New CBBTableAdapters.CBBRoleTableAdapter
+    Dim taPaymentMethod As New CBBTableAdapters.CBBPaymentMethodTableAdapter
     Private conn As New SqlConnection
 
     Public Sub New(ByVal strConn As String, Optional ByVal strConnTransaction As String = Nothing)
@@ -94,9 +95,15 @@ Public Class clsCBB
         taRole.Fill(ds1.CBBRole)
         Return ds1
     End Function
-    Public Function GetDeleveredId() As CBB.CBBStatusDataTable
+    Public Function GetCBBPaymentMethod() As CBB
+        Dim ds1 As New CBB
+        taPaymentMethod.Connection = conn
+        taPaymentMethod.Fill(ds1.CBBPaymentMethod)
+        Return ds1
+    End Function
+    Public Function GetDeliveredId() As Integer
         taStatus.Connection = conn
-        Return taStatus.GetDeleveredId()
+        Return taStatus.GetDeliveredId().Rows(0)(0)
     End Function
     Public Function GetUnavailableId() As Integer
         taStatus.Connection = conn

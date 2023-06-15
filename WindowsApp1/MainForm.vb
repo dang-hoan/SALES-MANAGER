@@ -126,7 +126,7 @@ Public Class MainForm
     End Sub
 
     Private Sub orderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles btnOrder.Click
-        Dim frmSalesOrder As New SalesOrder
+        Dim frmSalesOrder As New SalesOrderCategory
         ShowForm(frmSalesOrder)
     End Sub
 
@@ -139,9 +139,9 @@ Public Class MainForm
         ShowForm(Nothing)
     End Sub
 
-    Private Sub btnSearchOrder_Click(sender As Object, e As EventArgs) Handles btnOrderSearch.Click
-        ShowForm(New OrderSearch)
-    End Sub
+    'Private Sub btnSearchOrder_Click(sender As Object, e As EventArgs) Handles btnOrderSearch.Click
+    '    ShowForm(New OrderSearch)
+    'End Sub
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         userWantLogout = True

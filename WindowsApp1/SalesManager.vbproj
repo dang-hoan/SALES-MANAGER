@@ -137,6 +137,12 @@
     <Compile Include="EmployeeCategory.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SalesOrderInformation.Designer.vb">
+      <DependentUpon>SalesOrderInformation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SalesOrderInformation.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SupplierInformation.Designer.vb">
       <DependentUpon>SupplierInformation.vb</DependentUpon>
     </Compile>
@@ -185,12 +191,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="AddEditProductForm.Designer.vb">
-      <DependentUpon>AddEditProductForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="AddEditProductForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="WarehouseInformation.Designer.vb">
       <DependentUpon>WarehouseInformation.vb</DependentUpon>
     </Compile>
@@ -209,22 +209,16 @@
     <Compile Include="ProductCategory.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OrderSearch.Designer.vb">
-      <DependentUpon>OrderSearch.vb</DependentUpon>
-    </Compile>
-    <Compile Include="OrderSearch.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="ProductInformation.Designer.vb">
       <DependentUpon>ProductInformation.vb</DependentUpon>
     </Compile>
     <Compile Include="ProductInformation.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SalesOrder.Designer.vb">
-      <DependentUpon>SalesOrder.vb</DependentUpon>
+    <Compile Include="SalesOrderCategory.Designer.vb">
+      <DependentUpon>SalesOrderCategory.vb</DependentUpon>
     </Compile>
-    <Compile Include="SalesOrder.vb">
+    <Compile Include="SalesOrderCategory.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="WarehouseReport.Designer.vb">
@@ -243,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeCategory.resx">
       <DependentUpon>EmployeeCategory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesOrderInformation.resx">
+      <DependentUpon>SalesOrderInformation.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SupplierInformation.resx">
       <DependentUpon>SupplierInformation.vb</DependentUpon>
@@ -265,9 +262,6 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddEditProductForm.resx">
-      <DependentUpon>AddEditProductForm.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="WarehouseInformation.resx">
       <DependentUpon>WarehouseInformation.vb</DependentUpon>
     </EmbeddedResource>
@@ -277,14 +271,11 @@
     <EmbeddedResource Include="ProductCategory.resx">
       <DependentUpon>ProductCategory.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OrderSearch.resx">
-      <DependentUpon>OrderSearch.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ProductInformation.resx">
       <DependentUpon>ProductInformation.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SalesOrder.resx">
-      <DependentUpon>SalesOrder.vb</DependentUpon>
+    <EmbeddedResource Include="SalesOrderCategory.resx">
+      <DependentUpon>SalesOrderCategory.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WarehouseReport.resx">
       <DependentUpon>WarehouseReport.vb</DependentUpon>
