@@ -5,7 +5,6 @@ Public Class clsProduct
     Dim ta As New ProductTableAdapters.ProductTableAdapter
     Dim taCostProduct As New ProductTableAdapters.CostProductTableAdapter
     Dim taSalesDetail As New ProductTableAdapters.SalesDetailTableAdapter
-    Dim taProductSalesDetail As New ProductTableAdapters.ProductSalesDetailTableAdapter
     Dim taProductsView As New ProductTableAdapters.ProductViewTableAdapter
 
 
@@ -22,17 +21,17 @@ Public Class clsProduct
 
     Public Function GetAllProduct() As Product
         Dim ds1 As New Product
-        taProductSalesDetail.Connection = conn
-        taProductSalesDetail.Fill(ds1.ProductSalesDetail)
+        taProductsView.Connection = conn
+        taProductsView.Fill(ds1.ProductView)
         Return ds1
     End Function
     Public Function GetProductById(ByVal productId As String) As DataRow
-        taProductSalesDetail.Connection = conn
-        Return taProductSalesDetail.GetProductById(productId).Rows(0)
+        taProductsView.Connection = conn
+        Return taProductsView.GetProductById(productId).Rows(0)
     End Function
-    Public Function GetProductsOfWarehouse(ByVal warehouseId As String) As Product.ProductSalesDetailDataTable
-        taProductSalesDetail.Connection = conn
-        Return taProductSalesDetail.GetProductsOfWarehouse(warehouseId)
+    Public Function GetProductsOfWarehouse(ByVal warehouseId As String) As Product.ProductViewDataTable
+        taProductsView.Connection = conn
+        Return taProductsView.GetProductsOfWarehouse(warehouseId)
     End Function
 
     Public Function CheckProductExits(productId As Long) As Boolean
@@ -90,7 +89,7 @@ Public Class clsProduct
         ta.Connection = conn
         Return ta.RestoreProduct(productId)
     End Function
-    Public Function CheckProductWasDeleted(ByVal productId As Long) As Integer
+    Public Function CheckProductWasDeleted(ByVal productId As Long) As Boolean
         ta.Connection = conn
         Dim result = ta.CheckProductWasDeleted(productId).Count
         If result > 0 Then
@@ -104,39 +103,25 @@ Public Class clsProduct
         taCostProduct.Connection = conn
         Return taCostProduct.GetCostOfProduct(productId).Rows(0)
     End Function
-    Public Function SearchProduct(ByVal sqlCommand As String) As Product.ProductSalesDetailDataTable
+    Public Function SearchProduct(ByVal sqlCommand As String) As Product.ProductViewDataTable
         Dim ds As New Product
 
         Dim cmd = conn.CreateCommand()
 
-        cmd.CommandText = "SELECT Product.Id, Product.ProductName, Product.ProductPrice, Product.UnitPrice,
-                            Product.DiscountPercent, Product.Rating, Product.ImageId, SalesDetail.Total,
-                            SalesDetail.SellNumber, Supplier.CompanyName, Category.CategoryName,
-                            Status.StatusName, WareHouse.WareHouseName
-                            FROM   
-                                Product INNER JOIN
-                                Supplier ON Product.SupplierId = Supplier.Id INNER JOIN
-                                Category ON Product.CategoryId = Category.Id INNER JOIN
-                                Status ON Product.ProductStatusId = Status.Id LEFT OUTER JOIN
-                                SalesDetail ON Product.Id = SalesDetail.ProductId INNER JOIN
-                                WareHouse ON SalesDetail.WareHouseId = WareHouse.Id
-                            WHERE Product.IsDelete = 'False'" & sqlCommand
+        cmd.CommandText = "SELECT *
+                            FROM ProductView
+                            WHERE IsDelete = 'False'" & sqlCommand
 
-        taProductSalesDetail.Connection = conn
+        taProductsView.Connection = conn
 
         Dim tmp = cmd.CommandText.ToString()
         Console.WriteLine(tmp)
 
-        taProductSalesDetail.Adapter.SelectCommand = cmd
-        taProductSalesDetail.Adapter.Fill(ds.ProductSalesDetail)
+        taProductsView.Adapter.SelectCommand = cmd
+        taProductsView.Adapter.Fill(ds.ProductView)
 
-        Return ds.ProductSalesDetail
+        Return ds.ProductView
 
-    End Function
-
-    Public Function GetProductForListView(ByVal productId As Long, ByVal orderId As Long) As Product.ProductViewDataTable
-        taProductsView.Connection = conn
-        Return taProductsView.GetData(productId, orderId)
     End Function
     Public Function UpdateStatus(ByVal productId As Long, ByVal statusId As Integer) As Integer
         ta.Connection = conn

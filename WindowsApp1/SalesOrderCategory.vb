@@ -207,41 +207,40 @@ Public Class SalesOrderCategory
     End Sub
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
-        ' AND ([Order].Id = @Id) AND ([Order].ShipperId = @ShipperId)
-        ' AND ([Order].PaymentMethodId = @PaymentMethodId) AND ([Order].CustomerName = @CustomerName)
-        ' AND ([Order].OrderDate = @OrderDate) AND ([Order].ShipDate = @ShipDate)
-        ' AND ([Order].ShipAddress = [Order].ShipAddress) And ([Order].StatusId = @StatusId)
+        'AND (OrderId = @OrderId) AND (CustomerName = @CustomerName) AND (OrderDate = @OrderDate)
+        'AND (ShipDate = @ShipDate) AND (ShipAddress = @ShipAddress) AND (StatusId = @StatusId)
+        'AND (PaymentMethodId = @PaymentMethodId) AND (ShipperId = @ShipperId)   
         If checkLogicData() Then
             Dim sqlCommand = ""
 
             If Not String.IsNullOrWhiteSpace(txtOrderCode.Text) Then
-                sqlCommand &= $" AND [Order].Id = {txtOrderCode.Text}"
+                sqlCommand &= $" AND OrderId = {txtOrderCode.Text}"
             End If
 
-            sqlCommand &= $" AND [Order].CustomerName LIKE N'%{txtCustomerName.Text}%'"
-            sqlCommand &= $" AND [Order].ShipAddress LIKE N'%{txtShipAddress.Text}%'"
+            sqlCommand &= $" AND CustomerName LIKE N'%{txtCustomerName.Text}%'"
+            sqlCommand &= $" AND ShipAddress LIKE N'%{txtShipAddress.Text}%'"
 
             If cbShipper.Checked Then
-                sqlCommand &= $" AND [Order].ShipperId = {CType(cbbShipper.SelectedItem, CBBItem).PropItemId}"
+                sqlCommand &= $" AND ShipperId = {CType(cbbShipper.SelectedItem, CBBItem).PropItemId}"
             End If
 
             If cbPaymentMethod.Checked Then
-                sqlCommand &= $" AND [Order].PaymentMethodId = {CType(cbbPaymentMethod.SelectedItem, CBBItem).PropItemId}"
+                sqlCommand &= $" AND PaymentMethodId = {CType(cbbPaymentMethod.SelectedItem, CBBItem).PropItemId}"
             End If
 
             'Get custom format and code format from https://learn.microsoft.com/en-us/sql/t-sql/functions/cast-and-convert-transact-sql?view=sql-server-ver15#date-and-time-styles
             Dim customFormat = dtOrderDate.CustomFormat
 
             If cbOrderDate.Checked Then
-                sqlCommand &= $" AND CONVERT(VARCHAR(10), [Order].OrderDate, 103) = '{dtOrderDate.Value.ToString(customFormat)}'"
+                sqlCommand &= $" AND CONVERT(VARCHAR(10), OrderDate, 103) = '{dtOrderDate.Value.ToString(customFormat)}'"
             End If
 
             If cbShipDate.Checked Then
-                sqlCommand &= $" AND CONVERT(VARCHAR(10), [Order].ShipDate, 103) = '{dtShipDate.Value.ToString(customFormat)}'"
+                sqlCommand &= $" AND CONVERT(VARCHAR(10), ShipDate, 103) = '{dtShipDate.Value.ToString(customFormat)}'"
             End If
 
             If cbShipStatus.Checked Then
-                sqlCommand &= $" AND [Order].StatusId = {CType(cbbShipStatus.SelectedItem, CBBItem).PropItemId}"
+                sqlCommand &= $" AND StatusId = {CType(cbbShipStatus.SelectedItem, CBBItem).PropItemId}"
             End If
 
             SetPagedDataSource(clsPMSAnalysis.SearchSalesOrder(sqlCommand))
@@ -367,7 +366,7 @@ Public Class SalesOrderCategory
                 End If
             Next
 
-            Dim listLeftFormat As New ArrayList() From {1, 4, 8, 9, 10, 11}       'list left format of datagridview column (excluding column Checkbox)
+            Dim listLeftFormat As New ArrayList() From {1, 4, 8, 9, 10}       'list left format of datagridview column (excluding column Checkbox)
             Dim listDateTimeFormat As New ArrayList() From {2, 3}                 'list datetime format of datagridview column (excluding column Checkbox)
             exportObject.exportToExcel(sfd.FileName, tables, listPrintedColumn, listLeftFormat, "Sales order search", listDateTimeFormat)
         End If

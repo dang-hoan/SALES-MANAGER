@@ -108,3 +108,4 @@ D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.SupplierInformat
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.WarehouseInformation.resources
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.SalesOrderInformation.resources
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.SalesOrderCategory.resources
+D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.EmployeeInformation.resources

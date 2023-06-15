@@ -121,9 +121,7 @@
     <Compile Include="AccountInformation.Designer.vb">
       <DependentUpon>AccountInformation.vb</DependentUpon>
     </Compile>
-    <Compile Include="AccountInformation.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="AccountInformation.vb" />
     <Compile Include="DataGridViewCheckBoxHeaderCell.vb" />
     <Compile Include="DecentralizationForm.Designer.vb">
       <DependentUpon>DecentralizationForm.vb</DependentUpon>
@@ -131,12 +129,14 @@
     <Compile Include="DecentralizationForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="EmployeeInformation.Designer.vb">
+      <DependentUpon>EmployeeInformation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeInformation.vb" />
     <Compile Include="EmployeeCategory.Designer.vb">
       <DependentUpon>EmployeeCategory.vb</DependentUpon>
     </Compile>
-    <Compile Include="EmployeeCategory.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="EmployeeCategory.vb" />
     <Compile Include="SalesOrderInformation.Designer.vb">
       <DependentUpon>SalesOrderInformation.vb</DependentUpon>
     </Compile>
@@ -234,6 +234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DecentralizationForm.resx">
       <DependentUpon>DecentralizationForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeInformation.resx">
+      <DependentUpon>EmployeeInformation.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeCategory.resx">
       <DependentUpon>EmployeeCategory.vb</DependentUpon>

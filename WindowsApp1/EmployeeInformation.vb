@@ -1,7 +1,7 @@
 ﻿'Imports LibraryDataset
 'Imports LibraryCommon
 
-'Public Class EmployeeCategory
+'Public Class EmployeeInformation
 '    Dim conn As New connCommon()
 '    Dim clsPMSAnalysis As New clsPerson(conn.connSales.ConnectionString)
 '    Dim clsCBB As New clsCBB(conn.connSales.ConnectionString)
@@ -100,7 +100,7 @@
 '        setValue()
 '    End Sub
 
-'    Private Sub bEdit_Click(sender As Object, e As EventArgs)
+'    Private Sub bEdit_Click(sender As Object, e As EventArgs) Handles bEdit.Click
 '        addEditDeleteEnabled(False)
 '        bDelete.Enabled = True
 '        setEnable(True)
@@ -149,7 +149,7 @@
 '        End If
 '    End Sub
 
-'    Private Sub dgvCategory_CellClick(sender As Object, e As DataGridViewCellEventArgs)
+'    Private Sub dgvCategory_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCategory.CellClick
 '        deleteAccountIfNotSave()
 '        addEditDeleteEnabled(True)
 '        setEnable(False)
@@ -283,7 +283,7 @@
 '        Return System.Text.RegularExpressions.Regex.Split(inputString, subString).Length - 1
 '    End Function
 
-'    Private Sub bDelete_Click(sender As Object, e As EventArgs)
+'    Private Sub bDelete_Click(sender As Object, e As EventArgs) Handles bDelete.Click
 '        If txtCode.Text <> "" Then
 '            Dim username As String = txtCode.Text
 '            Dim isDelete = clsAccount.CheckUserWasDeleted(username)
@@ -302,7 +302,7 @@
 
 '        End If
 '    End Sub
-'    Private Sub dgvCategory_KeyUp(sender As Object, e As KeyEventArgs)
+'    Private Sub dgvCategory_KeyUp(sender As Object, e As KeyEventArgs) Handles dgvCategory.KeyUp
 '        If e.KeyCode.Equals(Keys.Up) Or e.KeyCode.Equals(Keys.Down) Then
 '            If dgvCategory.CurrentRow IsNot Nothing And bSave.Enabled = False Then
 '                addEditDeleteEnabled(True)
@@ -312,7 +312,7 @@
 '        End If
 '    End Sub
 
-'    Private Sub bAccountInfor_Click(sender As Object, e As EventArgs)
+'    Private Sub bAccountInfor_Click(sender As Object, e As EventArgs) Handles bAccountInfor.Click
 '        Dim frmAccountInfor As New AccountInformation
 '        frmAccountInfor.isView = Not bSave.Enabled
 '        If bSave.Enabled Then

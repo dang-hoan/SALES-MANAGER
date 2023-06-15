@@ -73,7 +73,7 @@ Public Class ProductInformation
                 End If
             Next
             For Each item As CBBItem In cbbStatus.Items
-                If item.PropItemId = data("StatusId") Then
+                If item.PropItemId = data("ProductStatusId") Then
                     cbbStatus.SelectedItem = item
                 End If
             Next

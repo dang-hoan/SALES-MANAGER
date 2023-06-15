@@ -447,7 +447,7 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:LibraryDataset.OrderDetail.SalesOrderDataTable">
+<member name="T:LibraryDataset.OrderDetail.SalesOrderViewDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
@@ -477,7 +477,7 @@ Represents strongly named DataRow class.
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:LibraryDataset.OrderDetail.SalesOrderRow">
+<member name="T:LibraryDataset.OrderDetail.SalesOrderViewRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -507,7 +507,7 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
-<member name="T:LibraryDataset.OrderDetail.SalesOrderRowChangeEvent">
+<member name="T:LibraryDataset.OrderDetail.SalesOrderViewRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
@@ -537,7 +537,7 @@ Represents the connection and commands used to retrieve and save data.
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
-<member name="T:LibraryDataset.OrderDetailTableAdapters.SalesOrderTableAdapter">
+<member name="T:LibraryDataset.OrderDetailTableAdapters.SalesOrderViewTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
@@ -697,17 +697,17 @@ Represents a strongly typed in-memory cache of data.
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:LibraryDataset.Product.ProductSalesDetailDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
 <member name="T:LibraryDataset.Product.SalesDetailDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
 </member>
 <member name="T:LibraryDataset.Product.CostProductDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Product.ProductView2DataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
@@ -722,17 +722,17 @@ Represents the strongly named DataTable class.
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:LibraryDataset.Product.ProductSalesDetailRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
 <member name="T:LibraryDataset.Product.SalesDetailRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
 <member name="T:LibraryDataset.Product.CostProductRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LibraryDataset.Product.ProductView2Row">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -747,17 +747,17 @@ Represents strongly named DataRow class.
 Row event argument class
 </summary>
 </member>
-<member name="T:LibraryDataset.Product.ProductSalesDetailRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
 <member name="T:LibraryDataset.Product.SalesDetailRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
 </member>
 <member name="T:LibraryDataset.Product.CostProductRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LibraryDataset.Product.ProductView2RowChangeEvent">
 <summary>
 Row event argument class
 </summary>
@@ -772,17 +772,17 @@ Row event argument class
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
-<member name="T:LibraryDataset.ProductTableAdapters.ProductSalesDetailTableAdapter">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
 <member name="T:LibraryDataset.ProductTableAdapters.SalesDetailTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:LibraryDataset.ProductTableAdapters.CostProductTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:LibraryDataset.ProductTableAdapters.ProductView2TableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>

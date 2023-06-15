@@ -2,7 +2,7 @@
 Imports System.Data.SqlClient
 
 Public Class clsOrderDetail
-    Dim ta As New OrderDetailTableAdapters.SalesOrderTableAdapter
+    Dim ta As New OrderDetailTableAdapters.SalesOrderViewTableAdapter
     Dim taOrder As New OrderDetailTableAdapters.OrderTableAdapter
     Dim taOrderView As New OrderDetailTableAdapters.OrderViewTableAdapter
     Dim taOrderDetail As New OrderDetailTableAdapters.OrderDetailTableAdapter
@@ -96,18 +96,14 @@ Public Class clsOrderDetail
         taOrderDetail.Connection = conn
         Return taOrderDetail.GetProductsInforByOrderId(orderId)
     End Function
-    Public Function SearchSalesOrder(ByVal sqlCommand As String) As OrderDetail.SalesOrderDataTable
+    Public Function SearchSalesOrder(ByVal sqlCommand As String) As OrderDetail.SalesOrderViewDataTable
         Dim ds As New OrderDetail
 
         Dim cmd = conn.CreateCommand()
 
-        cmd.CommandText = "SELECT [Order].Id AS OrderId, [Order].CustomerName, [Order].OrderDate, [Order].ShipDate, [Order].ShipAddress, [Order].StatusId, [Order].ShipPrice, [Order].TotalPrice, [Order].PrivateDiscount, [Order].PaymentMethodId, [Order].ShipperId, [Order].Note, 
-                           PaymentMethod.PaymentMethodName, Person.LastName + ' ' + Person.FirstName AS ShipperName, Status.StatusName
-                           FROM   [Order] INNER JOIN
-                                    PaymentMethod ON [Order].PaymentMethodId = PaymentMethod.Id INNER JOIN
-                                    Person ON [Order].ShipperId = Person.Id INNER JOIN
-                                    Status ON [Order].StatusId = Status.Id
-                           WHERE ([Order].IsDelete = 'False')" & sqlCommand
+        cmd.CommandText = "SELECT *
+                           FROM SalesOrderView
+                           WHERE IsDelete = 'False'" & sqlCommand
 
         ta.Connection = conn
 
@@ -115,9 +111,9 @@ Public Class clsOrderDetail
         Console.WriteLine(tmp)
 
         ta.Adapter.SelectCommand = cmd
-        ta.Adapter.Fill(ds.SalesOrder)
+        ta.Adapter.Fill(ds.SalesOrderView)
 
-        Return ds.SalesOrder
+        Return ds.SalesOrderView
 
     End Function
 

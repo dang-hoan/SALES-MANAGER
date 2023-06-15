@@ -64,26 +64,6 @@ Partial Class ProductCategory
         Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.dgvProductSearch = New System.Windows.Forms.DataGridView()
-        Me.CheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProductNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProductPriceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UnitPriceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DiscountPercentDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CategoryNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CompanyNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.WareHouseNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TotalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SellNumberDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.StatusNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.RatingDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ImageIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SupplierIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CategoryIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.StatusIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.WareHouseIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Product = New LibraryDataset.Product()
         Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -102,6 +82,23 @@ Partial Class ProductCategory
         Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgvProductSearch = New System.Windows.Forms.DataGridView()
+        Me.Product = New LibraryDataset.Product()
+        Me.CheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProductNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CategoryNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CompanyNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProductPriceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UnitPriceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DiscountPercentDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SellNumberDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TotalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.WareHouseNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StatusNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RatingDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ImageIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IsDeleteDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.groupBox1.SuspendLayout()
         CType(Me.bindingNav, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.bindingNav.SuspendLayout()
@@ -473,7 +470,6 @@ Partial Class ProductCategory
         '
         Me.BindingNavigatorPositionItem.AccessibleName = "Position"
         Me.BindingNavigatorPositionItem.AutoSize = False
-        Me.BindingNavigatorPositionItem.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.BindingNavigatorPositionItem.Name = "BindingNavigatorPositionItem"
         Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(50, 31)
         Me.BindingNavigatorPositionItem.Text = "0"
@@ -506,200 +502,6 @@ Partial Class ProductCategory
         '
         Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
         Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 31)
-        '
-        'dgvProductSearch
-        '
-        Me.dgvProductSearch.AllowUserToAddRows = False
-        Me.dgvProductSearch.AllowUserToDeleteRows = False
-        Me.dgvProductSearch.AutoGenerateColumns = False
-        Me.dgvProductSearch.BackgroundColor = System.Drawing.Color.White
-        Me.dgvProductSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvProductSearch.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CheckBoxColumn, Me.IdDataGridViewTextBoxColumn, Me.ProductNameDataGridViewTextBoxColumn, Me.ProductPriceDataGridViewTextBoxColumn, Me.UnitPriceDataGridViewTextBoxColumn, Me.DiscountPercentDataGridViewTextBoxColumn, Me.CategoryNameDataGridViewTextBoxColumn, Me.CompanyNameDataGridViewTextBoxColumn, Me.WareHouseNameDataGridViewTextBoxColumn, Me.TotalDataGridViewTextBoxColumn, Me.SellNumberDataGridViewTextBoxColumn, Me.StatusNameDataGridViewTextBoxColumn, Me.RatingDataGridViewTextBoxColumn, Me.ImageIdDataGridViewTextBoxColumn, Me.SupplierIdDataGridViewTextBoxColumn, Me.CategoryIdDataGridViewTextBoxColumn, Me.StatusIdDataGridViewTextBoxColumn, Me.WareHouseIdDataGridViewTextBoxColumn})
-        Me.dgvProductSearch.DataMember = "ProductSalesDetail"
-        Me.dgvProductSearch.DataSource = Me.Product
-        Me.dgvProductSearch.Location = New System.Drawing.Point(54, 448)
-        Me.dgvProductSearch.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.dgvProductSearch.Name = "dgvProductSearch"
-        Me.dgvProductSearch.ReadOnly = True
-        Me.dgvProductSearch.RowHeadersVisible = False
-        Me.dgvProductSearch.RowHeadersWidth = 62
-        Me.dgvProductSearch.RowTemplate.Height = 33
-        Me.dgvProductSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvProductSearch.Size = New System.Drawing.Size(853, 265)
-        Me.dgvProductSearch.TabIndex = 1
-        '
-        'CheckBoxColumn
-        '
-        Me.CheckBoxColumn.HeaderText = ""
-        Me.CheckBoxColumn.MinimumWidth = 8
-        Me.CheckBoxColumn.Name = "CheckBoxColumn"
-        Me.CheckBoxColumn.ReadOnly = True
-        Me.CheckBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.CheckBoxColumn.Width = 48
-        '
-        'IdDataGridViewTextBoxColumn
-        '
-        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "Id"
-        Me.IdDataGridViewTextBoxColumn.HeaderText = "Product code"
-        Me.IdDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
-        Me.IdDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IdDataGridViewTextBoxColumn.Width = 150
-        '
-        'ProductNameDataGridViewTextBoxColumn
-        '
-        Me.ProductNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName"
-        Me.ProductNameDataGridViewTextBoxColumn.HeaderText = "Product name"
-        Me.ProductNameDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.ProductNameDataGridViewTextBoxColumn.Name = "ProductNameDataGridViewTextBoxColumn"
-        Me.ProductNameDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ProductNameDataGridViewTextBoxColumn.Width = 150
-        '
-        'ProductPriceDataGridViewTextBoxColumn
-        '
-        Me.ProductPriceDataGridViewTextBoxColumn.DataPropertyName = "ProductPrice"
-        Me.ProductPriceDataGridViewTextBoxColumn.HeaderText = "Product price"
-        Me.ProductPriceDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.ProductPriceDataGridViewTextBoxColumn.Name = "ProductPriceDataGridViewTextBoxColumn"
-        Me.ProductPriceDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ProductPriceDataGridViewTextBoxColumn.Width = 150
-        '
-        'UnitPriceDataGridViewTextBoxColumn
-        '
-        Me.UnitPriceDataGridViewTextBoxColumn.DataPropertyName = "UnitPrice"
-        Me.UnitPriceDataGridViewTextBoxColumn.HeaderText = "Price unit"
-        Me.UnitPriceDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.UnitPriceDataGridViewTextBoxColumn.Name = "UnitPriceDataGridViewTextBoxColumn"
-        Me.UnitPriceDataGridViewTextBoxColumn.ReadOnly = True
-        Me.UnitPriceDataGridViewTextBoxColumn.Width = 150
-        '
-        'DiscountPercentDataGridViewTextBoxColumn
-        '
-        Me.DiscountPercentDataGridViewTextBoxColumn.DataPropertyName = "DiscountPercent"
-        Me.DiscountPercentDataGridViewTextBoxColumn.HeaderText = "Discount percent"
-        Me.DiscountPercentDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.DiscountPercentDataGridViewTextBoxColumn.Name = "DiscountPercentDataGridViewTextBoxColumn"
-        Me.DiscountPercentDataGridViewTextBoxColumn.ReadOnly = True
-        Me.DiscountPercentDataGridViewTextBoxColumn.Width = 150
-        '
-        'CategoryNameDataGridViewTextBoxColumn
-        '
-        Me.CategoryNameDataGridViewTextBoxColumn.DataPropertyName = "CategoryName"
-        Me.CategoryNameDataGridViewTextBoxColumn.HeaderText = "Category name"
-        Me.CategoryNameDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.CategoryNameDataGridViewTextBoxColumn.Name = "CategoryNameDataGridViewTextBoxColumn"
-        Me.CategoryNameDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CategoryNameDataGridViewTextBoxColumn.Width = 150
-        '
-        'CompanyNameDataGridViewTextBoxColumn
-        '
-        Me.CompanyNameDataGridViewTextBoxColumn.DataPropertyName = "CompanyName"
-        Me.CompanyNameDataGridViewTextBoxColumn.HeaderText = "Company name"
-        Me.CompanyNameDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.CompanyNameDataGridViewTextBoxColumn.Name = "CompanyNameDataGridViewTextBoxColumn"
-        Me.CompanyNameDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CompanyNameDataGridViewTextBoxColumn.Width = 150
-        '
-        'WareHouseNameDataGridViewTextBoxColumn
-        '
-        Me.WareHouseNameDataGridViewTextBoxColumn.DataPropertyName = "WareHouseName"
-        Me.WareHouseNameDataGridViewTextBoxColumn.HeaderText = "Warehouse name"
-        Me.WareHouseNameDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.WareHouseNameDataGridViewTextBoxColumn.Name = "WareHouseNameDataGridViewTextBoxColumn"
-        Me.WareHouseNameDataGridViewTextBoxColumn.ReadOnly = True
-        Me.WareHouseNameDataGridViewTextBoxColumn.Width = 150
-        '
-        'TotalDataGridViewTextBoxColumn
-        '
-        Me.TotalDataGridViewTextBoxColumn.DataPropertyName = "Total"
-        Me.TotalDataGridViewTextBoxColumn.HeaderText = "Total"
-        Me.TotalDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.TotalDataGridViewTextBoxColumn.Name = "TotalDataGridViewTextBoxColumn"
-        Me.TotalDataGridViewTextBoxColumn.ReadOnly = True
-        Me.TotalDataGridViewTextBoxColumn.Width = 150
-        '
-        'SellNumberDataGridViewTextBoxColumn
-        '
-        Me.SellNumberDataGridViewTextBoxColumn.DataPropertyName = "SellNumber"
-        Me.SellNumberDataGridViewTextBoxColumn.HeaderText = "Sell number"
-        Me.SellNumberDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.SellNumberDataGridViewTextBoxColumn.Name = "SellNumberDataGridViewTextBoxColumn"
-        Me.SellNumberDataGridViewTextBoxColumn.ReadOnly = True
-        Me.SellNumberDataGridViewTextBoxColumn.Width = 150
-        '
-        'StatusNameDataGridViewTextBoxColumn
-        '
-        Me.StatusNameDataGridViewTextBoxColumn.DataPropertyName = "StatusName"
-        Me.StatusNameDataGridViewTextBoxColumn.HeaderText = "Status name"
-        Me.StatusNameDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.StatusNameDataGridViewTextBoxColumn.Name = "StatusNameDataGridViewTextBoxColumn"
-        Me.StatusNameDataGridViewTextBoxColumn.ReadOnly = True
-        Me.StatusNameDataGridViewTextBoxColumn.Width = 150
-        '
-        'RatingDataGridViewTextBoxColumn
-        '
-        Me.RatingDataGridViewTextBoxColumn.DataPropertyName = "Rating"
-        Me.RatingDataGridViewTextBoxColumn.HeaderText = "Rating"
-        Me.RatingDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.RatingDataGridViewTextBoxColumn.Name = "RatingDataGridViewTextBoxColumn"
-        Me.RatingDataGridViewTextBoxColumn.ReadOnly = True
-        Me.RatingDataGridViewTextBoxColumn.Visible = False
-        Me.RatingDataGridViewTextBoxColumn.Width = 150
-        '
-        'ImageIdDataGridViewTextBoxColumn
-        '
-        Me.ImageIdDataGridViewTextBoxColumn.DataPropertyName = "ImageId"
-        Me.ImageIdDataGridViewTextBoxColumn.HeaderText = "ImageId"
-        Me.ImageIdDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.ImageIdDataGridViewTextBoxColumn.Name = "ImageIdDataGridViewTextBoxColumn"
-        Me.ImageIdDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ImageIdDataGridViewTextBoxColumn.Visible = False
-        Me.ImageIdDataGridViewTextBoxColumn.Width = 150
-        '
-        'SupplierIdDataGridViewTextBoxColumn
-        '
-        Me.SupplierIdDataGridViewTextBoxColumn.DataPropertyName = "SupplierId"
-        Me.SupplierIdDataGridViewTextBoxColumn.HeaderText = "SupplierId"
-        Me.SupplierIdDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.SupplierIdDataGridViewTextBoxColumn.Name = "SupplierIdDataGridViewTextBoxColumn"
-        Me.SupplierIdDataGridViewTextBoxColumn.ReadOnly = True
-        Me.SupplierIdDataGridViewTextBoxColumn.Visible = False
-        Me.SupplierIdDataGridViewTextBoxColumn.Width = 150
-        '
-        'CategoryIdDataGridViewTextBoxColumn
-        '
-        Me.CategoryIdDataGridViewTextBoxColumn.DataPropertyName = "CategoryId"
-        Me.CategoryIdDataGridViewTextBoxColumn.HeaderText = "CategoryId"
-        Me.CategoryIdDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.CategoryIdDataGridViewTextBoxColumn.Name = "CategoryIdDataGridViewTextBoxColumn"
-        Me.CategoryIdDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CategoryIdDataGridViewTextBoxColumn.Visible = False
-        Me.CategoryIdDataGridViewTextBoxColumn.Width = 150
-        '
-        'StatusIdDataGridViewTextBoxColumn
-        '
-        Me.StatusIdDataGridViewTextBoxColumn.DataPropertyName = "StatusId"
-        Me.StatusIdDataGridViewTextBoxColumn.HeaderText = "StatusId"
-        Me.StatusIdDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.StatusIdDataGridViewTextBoxColumn.Name = "StatusIdDataGridViewTextBoxColumn"
-        Me.StatusIdDataGridViewTextBoxColumn.ReadOnly = True
-        Me.StatusIdDataGridViewTextBoxColumn.Visible = False
-        Me.StatusIdDataGridViewTextBoxColumn.Width = 150
-        '
-        'WareHouseIdDataGridViewTextBoxColumn
-        '
-        Me.WareHouseIdDataGridViewTextBoxColumn.DataPropertyName = "WareHouseId"
-        Me.WareHouseIdDataGridViewTextBoxColumn.HeaderText = "WareHouseId"
-        Me.WareHouseIdDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.WareHouseIdDataGridViewTextBoxColumn.Name = "WareHouseIdDataGridViewTextBoxColumn"
-        Me.WareHouseIdDataGridViewTextBoxColumn.ReadOnly = True
-        Me.WareHouseIdDataGridViewTextBoxColumn.Visible = False
-        Me.WareHouseIdDataGridViewTextBoxColumn.Width = 150
-        '
-        'Product
-        '
-        Me.Product.DataSetName = "Product"
-        Me.Product.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'DataGridViewCheckBoxColumn1
         '
@@ -869,6 +671,170 @@ Partial Class ProductCategory
         Me.DataGridViewTextBoxColumn17.Visible = False
         Me.DataGridViewTextBoxColumn17.Width = 150
         '
+        'dgvProductSearch
+        '
+        Me.dgvProductSearch.AllowUserToAddRows = False
+        Me.dgvProductSearch.AllowUserToDeleteRows = False
+        Me.dgvProductSearch.AutoGenerateColumns = False
+        Me.dgvProductSearch.BackgroundColor = System.Drawing.Color.White
+        Me.dgvProductSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvProductSearch.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CheckBoxColumn, Me.IdDataGridViewTextBoxColumn, Me.ProductNameDataGridViewTextBoxColumn, Me.CategoryNameDataGridViewTextBoxColumn, Me.CompanyNameDataGridViewTextBoxColumn, Me.ProductPriceDataGridViewTextBoxColumn, Me.UnitPriceDataGridViewTextBoxColumn, Me.DiscountPercentDataGridViewTextBoxColumn, Me.SellNumberDataGridViewTextBoxColumn, Me.TotalDataGridViewTextBoxColumn, Me.WareHouseNameDataGridViewTextBoxColumn, Me.StatusNameDataGridViewTextBoxColumn, Me.RatingDataGridViewTextBoxColumn, Me.ImageIdDataGridViewTextBoxColumn, Me.IsDeleteDataGridViewCheckBoxColumn})
+        Me.dgvProductSearch.DataMember = "ProductView"
+        Me.dgvProductSearch.DataSource = Me.Product
+        Me.dgvProductSearch.Location = New System.Drawing.Point(54, 448)
+        Me.dgvProductSearch.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.dgvProductSearch.Name = "dgvProductSearch"
+        Me.dgvProductSearch.ReadOnly = True
+        Me.dgvProductSearch.RowHeadersVisible = False
+        Me.dgvProductSearch.RowHeadersWidth = 62
+        Me.dgvProductSearch.RowTemplate.Height = 33
+        Me.dgvProductSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvProductSearch.Size = New System.Drawing.Size(853, 265)
+        Me.dgvProductSearch.TabIndex = 1
+        '
+        'Product
+        '
+        Me.Product.DataSetName = "Product"
+        Me.Product.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CheckBoxColumn
+        '
+        Me.CheckBoxColumn.HeaderText = ""
+        Me.CheckBoxColumn.MinimumWidth = 8
+        Me.CheckBoxColumn.Name = "CheckBoxColumn"
+        Me.CheckBoxColumn.ReadOnly = True
+        Me.CheckBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.CheckBoxColumn.Width = 48
+        '
+        'IdDataGridViewTextBoxColumn
+        '
+        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "Id"
+        Me.IdDataGridViewTextBoxColumn.HeaderText = "Product code"
+        Me.IdDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
+        Me.IdDataGridViewTextBoxColumn.ReadOnly = True
+        Me.IdDataGridViewTextBoxColumn.Width = 150
+        '
+        'ProductNameDataGridViewTextBoxColumn
+        '
+        Me.ProductNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName"
+        Me.ProductNameDataGridViewTextBoxColumn.HeaderText = "Product name"
+        Me.ProductNameDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.ProductNameDataGridViewTextBoxColumn.Name = "ProductNameDataGridViewTextBoxColumn"
+        Me.ProductNameDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ProductNameDataGridViewTextBoxColumn.Width = 150
+        '
+        'CategoryNameDataGridViewTextBoxColumn
+        '
+        Me.CategoryNameDataGridViewTextBoxColumn.DataPropertyName = "CategoryName"
+        Me.CategoryNameDataGridViewTextBoxColumn.HeaderText = "Category"
+        Me.CategoryNameDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.CategoryNameDataGridViewTextBoxColumn.Name = "CategoryNameDataGridViewTextBoxColumn"
+        Me.CategoryNameDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CategoryNameDataGridViewTextBoxColumn.Width = 150
+        '
+        'CompanyNameDataGridViewTextBoxColumn
+        '
+        Me.CompanyNameDataGridViewTextBoxColumn.DataPropertyName = "CompanyName"
+        Me.CompanyNameDataGridViewTextBoxColumn.HeaderText = "Company"
+        Me.CompanyNameDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.CompanyNameDataGridViewTextBoxColumn.Name = "CompanyNameDataGridViewTextBoxColumn"
+        Me.CompanyNameDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CompanyNameDataGridViewTextBoxColumn.Width = 150
+        '
+        'ProductPriceDataGridViewTextBoxColumn
+        '
+        Me.ProductPriceDataGridViewTextBoxColumn.DataPropertyName = "ProductPrice"
+        Me.ProductPriceDataGridViewTextBoxColumn.HeaderText = "Product price"
+        Me.ProductPriceDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.ProductPriceDataGridViewTextBoxColumn.Name = "ProductPriceDataGridViewTextBoxColumn"
+        Me.ProductPriceDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ProductPriceDataGridViewTextBoxColumn.Width = 150
+        '
+        'UnitPriceDataGridViewTextBoxColumn
+        '
+        Me.UnitPriceDataGridViewTextBoxColumn.DataPropertyName = "UnitPrice"
+        Me.UnitPriceDataGridViewTextBoxColumn.HeaderText = "Price unit"
+        Me.UnitPriceDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.UnitPriceDataGridViewTextBoxColumn.Name = "UnitPriceDataGridViewTextBoxColumn"
+        Me.UnitPriceDataGridViewTextBoxColumn.ReadOnly = True
+        Me.UnitPriceDataGridViewTextBoxColumn.Width = 150
+        '
+        'DiscountPercentDataGridViewTextBoxColumn
+        '
+        Me.DiscountPercentDataGridViewTextBoxColumn.DataPropertyName = "DiscountPercent"
+        Me.DiscountPercentDataGridViewTextBoxColumn.HeaderText = "Discount percent"
+        Me.DiscountPercentDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.DiscountPercentDataGridViewTextBoxColumn.Name = "DiscountPercentDataGridViewTextBoxColumn"
+        Me.DiscountPercentDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DiscountPercentDataGridViewTextBoxColumn.Width = 150
+        '
+        'SellNumberDataGridViewTextBoxColumn
+        '
+        Me.SellNumberDataGridViewTextBoxColumn.DataPropertyName = "SellNumber"
+        Me.SellNumberDataGridViewTextBoxColumn.HeaderText = "Sell number"
+        Me.SellNumberDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.SellNumberDataGridViewTextBoxColumn.Name = "SellNumberDataGridViewTextBoxColumn"
+        Me.SellNumberDataGridViewTextBoxColumn.ReadOnly = True
+        Me.SellNumberDataGridViewTextBoxColumn.Width = 150
+        '
+        'TotalDataGridViewTextBoxColumn
+        '
+        Me.TotalDataGridViewTextBoxColumn.DataPropertyName = "Total"
+        Me.TotalDataGridViewTextBoxColumn.HeaderText = "Total"
+        Me.TotalDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.TotalDataGridViewTextBoxColumn.Name = "TotalDataGridViewTextBoxColumn"
+        Me.TotalDataGridViewTextBoxColumn.ReadOnly = True
+        Me.TotalDataGridViewTextBoxColumn.Width = 150
+        '
+        'WareHouseNameDataGridViewTextBoxColumn
+        '
+        Me.WareHouseNameDataGridViewTextBoxColumn.DataPropertyName = "WareHouseName"
+        Me.WareHouseNameDataGridViewTextBoxColumn.HeaderText = "Warehouse"
+        Me.WareHouseNameDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.WareHouseNameDataGridViewTextBoxColumn.Name = "WareHouseNameDataGridViewTextBoxColumn"
+        Me.WareHouseNameDataGridViewTextBoxColumn.ReadOnly = True
+        Me.WareHouseNameDataGridViewTextBoxColumn.Width = 150
+        '
+        'StatusNameDataGridViewTextBoxColumn
+        '
+        Me.StatusNameDataGridViewTextBoxColumn.DataPropertyName = "StatusName"
+        Me.StatusNameDataGridViewTextBoxColumn.HeaderText = "Status"
+        Me.StatusNameDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.StatusNameDataGridViewTextBoxColumn.Name = "StatusNameDataGridViewTextBoxColumn"
+        Me.StatusNameDataGridViewTextBoxColumn.ReadOnly = True
+        Me.StatusNameDataGridViewTextBoxColumn.Width = 150
+        '
+        'RatingDataGridViewTextBoxColumn
+        '
+        Me.RatingDataGridViewTextBoxColumn.DataPropertyName = "Rating"
+        Me.RatingDataGridViewTextBoxColumn.HeaderText = "Rating"
+        Me.RatingDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.RatingDataGridViewTextBoxColumn.Name = "RatingDataGridViewTextBoxColumn"
+        Me.RatingDataGridViewTextBoxColumn.ReadOnly = True
+        Me.RatingDataGridViewTextBoxColumn.Visible = False
+        Me.RatingDataGridViewTextBoxColumn.Width = 150
+        '
+        'ImageIdDataGridViewTextBoxColumn
+        '
+        Me.ImageIdDataGridViewTextBoxColumn.DataPropertyName = "ImageId"
+        Me.ImageIdDataGridViewTextBoxColumn.HeaderText = "ImageId"
+        Me.ImageIdDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.ImageIdDataGridViewTextBoxColumn.Name = "ImageIdDataGridViewTextBoxColumn"
+        Me.ImageIdDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ImageIdDataGridViewTextBoxColumn.Visible = False
+        Me.ImageIdDataGridViewTextBoxColumn.Width = 150
+        '
+        'IsDeleteDataGridViewCheckBoxColumn
+        '
+        Me.IsDeleteDataGridViewCheckBoxColumn.DataPropertyName = "IsDelete"
+        Me.IsDeleteDataGridViewCheckBoxColumn.HeaderText = "IsDelete"
+        Me.IsDeleteDataGridViewCheckBoxColumn.MinimumWidth = 8
+        Me.IsDeleteDataGridViewCheckBoxColumn.Name = "IsDeleteDataGridViewCheckBoxColumn"
+        Me.IsDeleteDataGridViewCheckBoxColumn.ReadOnly = True
+        Me.IsDeleteDataGridViewCheckBoxColumn.Visible = False
+        Me.IsDeleteDataGridViewCheckBoxColumn.Width = 150
+        '
         'ProductCategory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -945,24 +911,6 @@ Partial Class ProductCategory
     Friend WithEvents DataGridViewTextBoxColumn15 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn16 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn17 As DataGridViewTextBoxColumn
-    Friend WithEvents CheckBoxColumn As DataGridViewCheckBoxColumn
-    Friend WithEvents IdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ProductNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ProductPriceDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents UnitPriceDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DiscountPercentDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents CategoryNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents CompanyNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents WareHouseNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents TotalDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents SellNumberDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents StatusNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents RatingDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ImageIdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents SupplierIdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents CategoryIdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents StatusIdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents WareHouseIdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents bindingNav As BindingNavigator
     Friend WithEvents BindingNavigatorCountItem As ToolStripLabel
     Friend WithEvents BindingNavigatorMoveFirstItem As ToolStripButton
@@ -973,4 +921,19 @@ Partial Class ProductCategory
     Friend WithEvents BindingNavigatorMoveNextItem As ToolStripButton
     Friend WithEvents BindingNavigatorMoveLastItem As ToolStripButton
     Friend WithEvents BindingNavigatorSeparator2 As ToolStripSeparator
+    Friend WithEvents CheckBoxColumn As DataGridViewCheckBoxColumn
+    Friend WithEvents IdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ProductNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CategoryNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CompanyNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ProductPriceDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents UnitPriceDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DiscountPercentDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents SellNumberDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TotalDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents WareHouseNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents StatusNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents RatingDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ImageIdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents IsDeleteDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
 End Class

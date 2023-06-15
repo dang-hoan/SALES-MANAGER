@@ -215,41 +215,46 @@ Public Class ProductCategory
         SetPagedDataSource(clsProduct.SearchProduct(""))
     End Sub
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        'AND Id AND ProductName LIKE N'%%'
+        'AND SupplierId AND CategoryId
+        'AND ProductStatusId AND WareHouseId
+        'AND ProductPrice AND DiscountPercent
+        'AND Total
         If checkLogicData() Then
             Dim sqlCommand = ""
 
             If Not String.IsNullOrWhiteSpace(txtCode.Text) Then
-                sqlCommand &= $" AND Product.Id = {txtCode.Text}"
+                sqlCommand &= $" AND Id = {txtCode.Text}"
             End If
 
-            sqlCommand &= $" AND Product.ProductName LIKE N'%{txtName.Text}%'"
+            sqlCommand &= $" AND ProductName LIKE N'%{txtName.Text}%'"
 
             If cbSupplier.Checked Then
-                sqlCommand &= $" AND Product.SupplierId = {CType(cbbSupplier.SelectedItem, CBBItem).PropItemId}"
+                sqlCommand &= $" AND SupplierId = {CType(cbbSupplier.SelectedItem, CBBItem).PropItemId}"
             End If
 
             If cbCategory.Checked Then
-                sqlCommand &= $" AND Product.CategoryId = {CType(cbbCategory.SelectedItem, CBBItem).PropItemId}"
+                sqlCommand &= $" AND CategoryId = {CType(cbbCategory.SelectedItem, CBBItem).PropItemId}"
             End If
 
             If cbProductStatus.Checked Then
-                sqlCommand &= $" AND Product.ProductStatusId = {CType(cbbStatus.SelectedItem, CBBItem).PropItemId}"
+                sqlCommand &= $" AND ProductStatusId = {CType(cbbStatus.SelectedItem, CBBItem).PropItemId}"
             End If
 
             If cbWarehouse.Checked Then
-                sqlCommand &= $" AND SalesDetail.WareHouseId = {CType(cbbWarehouse.SelectedItem, CBBItem).PropItemId}"
+                sqlCommand &= $" AND WareHouseId = {CType(cbbWarehouse.SelectedItem, CBBItem).PropItemId}"
             End If
 
             If Not String.IsNullOrWhiteSpace(txtPrice.Text) Then
-                sqlCommand &= $" AND Product.ProductPrice = {txtPrice.Text}"
+                sqlCommand &= $" AND ProductPrice = {txtPrice.Text}"
             End If
 
             If Not String.IsNullOrWhiteSpace(txtDiscount.Text) Then
-                sqlCommand &= $" AND Product.DiscountPercent = {txtDiscount.Text}"
+                sqlCommand &= $" AND DiscountPercent = {txtDiscount.Text}"
             End If
 
             If Not String.IsNullOrWhiteSpace(txtNumber.Text) Then
-                sqlCommand &= $" AND SalesDetail.Total = {txtNumber.Text}"
+                sqlCommand &= $" AND Total = {txtNumber.Text}"
             End If
 
             'dgvProductSearch.DataSource = clsProduct.SearchProduct(sqlCommand)
@@ -368,7 +373,7 @@ Public Class ProductCategory
                 End If
             Next
 
-            Dim listLeftFormat As New ArrayList() From {1, 5, 6, 7}       'list left format of datagridview column (excluding column Checkbox)
+            Dim listLeftFormat As New ArrayList() From {1, 2, 3, 9}       'list left format of datagridview column (excluding column Checkbox)
             exportObject.exportToExcel(sfd.FileName, tables, listPrintedColumn, listLeftFormat, "Product search")
         End If
     End Sub

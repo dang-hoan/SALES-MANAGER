@@ -35,7 +35,7 @@ Partial Public Class OrderDetail
     
     Private tableOrderDetailView As OrderDetailViewDataTable
     
-    Private tableSalesOrder As SalesOrderDataTable
+    Private tableSalesOrderView As SalesOrderViewDataTable
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -81,8 +81,8 @@ Partial Public Class OrderDetail
             If (Not (ds.Tables("OrderDetailView")) Is Nothing) Then
                 MyBase.Tables.Add(New OrderDetailViewDataTable(ds.Tables("OrderDetailView")))
             End If
-            If (Not (ds.Tables("SalesOrder")) Is Nothing) Then
-                MyBase.Tables.Add(New SalesOrderDataTable(ds.Tables("SalesOrder")))
+            If (Not (ds.Tables("SalesOrderView")) Is Nothing) Then
+                MyBase.Tables.Add(New SalesOrderViewDataTable(ds.Tables("SalesOrderView")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -155,9 +155,9 @@ Partial Public Class OrderDetail
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property SalesOrder() As SalesOrderDataTable
+    Public ReadOnly Property SalesOrderView() As SalesOrderViewDataTable
         Get
-            Return Me.tableSalesOrder
+            Return Me.tableSalesOrderView
         End Get
     End Property
     
@@ -243,8 +243,8 @@ Partial Public Class OrderDetail
             If (Not (ds.Tables("OrderDetailView")) Is Nothing) Then
                 MyBase.Tables.Add(New OrderDetailViewDataTable(ds.Tables("OrderDetailView")))
             End If
-            If (Not (ds.Tables("SalesOrder")) Is Nothing) Then
-                MyBase.Tables.Add(New SalesOrderDataTable(ds.Tables("SalesOrder")))
+            If (Not (ds.Tables("SalesOrderView")) Is Nothing) Then
+                MyBase.Tables.Add(New SalesOrderViewDataTable(ds.Tables("SalesOrderView")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -308,10 +308,10 @@ Partial Public Class OrderDetail
                 Me.tableOrderDetailView.InitVars
             End If
         End If
-        Me.tableSalesOrder = CType(MyBase.Tables("SalesOrder"),SalesOrderDataTable)
+        Me.tableSalesOrderView = CType(MyBase.Tables("SalesOrderView"),SalesOrderViewDataTable)
         If (initTable = true) Then
-            If (Not (Me.tableSalesOrder) Is Nothing) Then
-                Me.tableSalesOrder.InitVars
+            If (Not (Me.tableSalesOrderView) Is Nothing) Then
+                Me.tableSalesOrderView.InitVars
             End If
         End If
     End Sub
@@ -334,8 +334,8 @@ Partial Public Class OrderDetail
         MyBase.Tables.Add(Me.tableOrderDetail)
         Me.tableOrderDetailView = New OrderDetailViewDataTable()
         MyBase.Tables.Add(Me.tableOrderDetailView)
-        Me.tableSalesOrder = New SalesOrderDataTable()
-        MyBase.Tables.Add(Me.tableSalesOrder)
+        Me.tableSalesOrderView = New SalesOrderViewDataTable()
+        MyBase.Tables.Add(Me.tableSalesOrderView)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -370,7 +370,7 @@ Partial Public Class OrderDetail
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Private Function ShouldSerializeSalesOrder() As Boolean
+    Private Function ShouldSerializeSalesOrderView() As Boolean
         Return false
     End Function
     
@@ -448,7 +448,7 @@ Partial Public Class OrderDetail
     Public Delegate Sub OrderDetailViewRowChangeEventHandler(ByVal sender As Object, ByVal e As OrderDetailViewRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Delegate Sub SalesOrderRowChangeEventHandler(ByVal sender As Object, ByVal e As SalesOrderRowChangeEvent)
+    Public Delegate Sub SalesOrderViewRowChangeEventHandler(ByVal sender As Object, ByVal e As SalesOrderViewRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -2147,8 +2147,8 @@ Partial Public Class OrderDetail
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class SalesOrderDataTable
-        Inherits Global.System.Data.TypedTableBase(Of SalesOrderRow)
+    Partial Public Class SalesOrderViewDataTable
+        Inherits Global.System.Data.TypedTableBase(Of SalesOrderViewRow)
         
         Private columnOrderId As Global.System.Data.DataColumn
         
@@ -2180,11 +2180,13 @@ Partial Public Class OrderDetail
         
         Private columnStatusName As Global.System.Data.DataColumn
         
+        Private columnIsDelete As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "SalesOrder"
+            Me.TableName = "SalesOrderView"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -2336,6 +2338,14 @@ Partial Public Class OrderDetail
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property IsDeleteColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIsDelete
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2346,50 +2356,66 @@ Partial Public Class OrderDetail
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As SalesOrderRow
+        Public Default ReadOnly Property Item(ByVal index As Integer) As SalesOrderViewRow
             Get
-                Return CType(Me.Rows(index),SalesOrderRow)
+                Return CType(Me.Rows(index),SalesOrderViewRow)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event SalesOrderRowChanging As SalesOrderRowChangeEventHandler
+        Public Event SalesOrderViewRowChanging As SalesOrderViewRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event SalesOrderRowChanged As SalesOrderRowChangeEventHandler
+        Public Event SalesOrderViewRowChanged As SalesOrderViewRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event SalesOrderRowDeleting As SalesOrderRowChangeEventHandler
+        Public Event SalesOrderViewRowDeleting As SalesOrderViewRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event SalesOrderRowDeleted As SalesOrderRowChangeEventHandler
+        Public Event SalesOrderViewRowDeleted As SalesOrderViewRowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Sub AddSalesOrderRow(ByVal row As SalesOrderRow)
+        Public Overloads Sub AddSalesOrderViewRow(ByVal row As SalesOrderViewRow)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddSalesOrderRow(ByVal CustomerName As String, ByVal OrderDate As Date, ByVal ShipDate As Date, ByVal ShipAddress As String, ByVal StatusId As Integer, ByVal ShipPrice As Decimal, ByVal TotalPrice As Decimal, ByVal PrivateDiscount As Double, ByVal PaymentMethodId As Integer, ByVal ShipperId As Long, ByVal Note As String, ByVal PaymentMethodName As String, ByVal ShipperName As String, ByVal StatusName As String) As SalesOrderRow
-            Dim rowSalesOrderRow As SalesOrderRow = CType(Me.NewRow,SalesOrderRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, CustomerName, OrderDate, ShipDate, ShipAddress, StatusId, ShipPrice, TotalPrice, PrivateDiscount, PaymentMethodId, ShipperId, Note, PaymentMethodName, ShipperName, StatusName}
-            rowSalesOrderRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowSalesOrderRow)
-            Return rowSalesOrderRow
+        Public Overloads Function AddSalesOrderViewRow( _
+                    ByVal OrderId As Long,  _
+                    ByVal CustomerName As String,  _
+                    ByVal OrderDate As Date,  _
+                    ByVal ShipDate As Date,  _
+                    ByVal ShipAddress As String,  _
+                    ByVal StatusId As Integer,  _
+                    ByVal ShipPrice As Decimal,  _
+                    ByVal TotalPrice As Decimal,  _
+                    ByVal PrivateDiscount As Double,  _
+                    ByVal PaymentMethodId As Integer,  _
+                    ByVal ShipperId As Long,  _
+                    ByVal Note As String,  _
+                    ByVal PaymentMethodName As String,  _
+                    ByVal ShipperName As String,  _
+                    ByVal StatusName As String,  _
+                    ByVal IsDelete As Boolean) As SalesOrderViewRow
+            Dim rowSalesOrderViewRow As SalesOrderViewRow = CType(Me.NewRow,SalesOrderViewRow)
+            Dim columnValuesArray() As Object = New Object() {OrderId, CustomerName, OrderDate, ShipDate, ShipAddress, StatusId, ShipPrice, TotalPrice, PrivateDiscount, PaymentMethodId, ShipperId, Note, PaymentMethodName, ShipperName, StatusName, IsDelete}
+            rowSalesOrderViewRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowSalesOrderViewRow)
+            Return rowSalesOrderViewRow
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function FindByOrderId(ByVal OrderId As Long) As SalesOrderRow
-            Return CType(Me.Rows.Find(New Object() {OrderId}),SalesOrderRow)
+        Public Function FindByOrderId(ByVal OrderId As Long) As SalesOrderViewRow
+            Return CType(Me.Rows.Find(New Object() {OrderId}),SalesOrderViewRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As SalesOrderDataTable = CType(MyBase.Clone,SalesOrderDataTable)
+            Dim cln As SalesOrderViewDataTable = CType(MyBase.Clone,SalesOrderViewDataTable)
             cln.InitVars
             Return cln
         End Function
@@ -2397,7 +2423,7 @@ Partial Public Class OrderDetail
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New SalesOrderDataTable()
+            Return New SalesOrderViewDataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2418,6 +2444,7 @@ Partial Public Class OrderDetail
             Me.columnPaymentMethodName = MyBase.Columns("PaymentMethodName")
             Me.columnShipperName = MyBase.Columns("ShipperName")
             Me.columnStatusName = MyBase.Columns("StatusName")
+            Me.columnIsDelete = MyBase.Columns("IsDelete")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2453,12 +2480,10 @@ Partial Public Class OrderDetail
             MyBase.Columns.Add(Me.columnShipperName)
             Me.columnStatusName = New Global.System.Data.DataColumn("StatusName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnStatusName)
+            Me.columnIsDelete = New Global.System.Data.DataColumn("IsDelete", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIsDelete)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnOrderId}, true))
-            Me.columnOrderId.AutoIncrement = true
-            Me.columnOrderId.AutoIncrementSeed = -1
-            Me.columnOrderId.AutoIncrementStep = -1
             Me.columnOrderId.AllowDBNull = false
-            Me.columnOrderId.ReadOnly = true
             Me.columnOrderId.Unique = true
             Me.columnCustomerName.AllowDBNull = false
             Me.columnCustomerName.MaxLength = 40
@@ -2481,28 +2506,28 @@ Partial Public Class OrderDetail
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function NewSalesOrderRow() As SalesOrderRow
-            Return CType(Me.NewRow,SalesOrderRow)
+        Public Function NewSalesOrderViewRow() As SalesOrderViewRow
+            Return CType(Me.NewRow,SalesOrderViewRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New SalesOrderRow(builder)
+            Return New SalesOrderViewRow(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(SalesOrderRow)
+            Return GetType(SalesOrderViewRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.SalesOrderRowChangedEvent) Is Nothing) Then
-                RaiseEvent SalesOrderRowChanged(Me, New SalesOrderRowChangeEvent(CType(e.Row,SalesOrderRow), e.Action))
+            If (Not (Me.SalesOrderViewRowChangedEvent) Is Nothing) Then
+                RaiseEvent SalesOrderViewRowChanged(Me, New SalesOrderViewRowChangeEvent(CType(e.Row,SalesOrderViewRow), e.Action))
             End If
         End Sub
         
@@ -2510,8 +2535,8 @@ Partial Public Class OrderDetail
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.SalesOrderRowChangingEvent) Is Nothing) Then
-                RaiseEvent SalesOrderRowChanging(Me, New SalesOrderRowChangeEvent(CType(e.Row,SalesOrderRow), e.Action))
+            If (Not (Me.SalesOrderViewRowChangingEvent) Is Nothing) Then
+                RaiseEvent SalesOrderViewRowChanging(Me, New SalesOrderViewRowChangeEvent(CType(e.Row,SalesOrderViewRow), e.Action))
             End If
         End Sub
         
@@ -2519,8 +2544,8 @@ Partial Public Class OrderDetail
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.SalesOrderRowDeletedEvent) Is Nothing) Then
-                RaiseEvent SalesOrderRowDeleted(Me, New SalesOrderRowChangeEvent(CType(e.Row,SalesOrderRow), e.Action))
+            If (Not (Me.SalesOrderViewRowDeletedEvent) Is Nothing) Then
+                RaiseEvent SalesOrderViewRowDeleted(Me, New SalesOrderViewRowChangeEvent(CType(e.Row,SalesOrderViewRow), e.Action))
             End If
         End Sub
         
@@ -2528,14 +2553,14 @@ Partial Public Class OrderDetail
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.SalesOrderRowDeletingEvent) Is Nothing) Then
-                RaiseEvent SalesOrderRowDeleting(Me, New SalesOrderRowChangeEvent(CType(e.Row,SalesOrderRow), e.Action))
+            If (Not (Me.SalesOrderViewRowDeletingEvent) Is Nothing) Then
+                RaiseEvent SalesOrderViewRowDeleting(Me, New SalesOrderViewRowChangeEvent(CType(e.Row,SalesOrderViewRow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub RemoveSalesOrderRow(ByVal row As SalesOrderRow)
+        Public Sub RemoveSalesOrderViewRow(ByVal row As SalesOrderViewRow)
             Me.Rows.Remove(row)
         End Sub
         
@@ -2562,7 +2587,7 @@ Partial Public Class OrderDetail
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "SalesOrderDataTable"
+            attribute2.FixedValue = "SalesOrderViewDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -3256,26 +3281,26 @@ Partial Public Class OrderDetail
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class SalesOrderRow
+    Partial Public Class SalesOrderViewRow
         Inherits Global.System.Data.DataRow
         
-        Private tableSalesOrder As SalesOrderDataTable
+        Private tableSalesOrderView As SalesOrderViewDataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tableSalesOrder = CType(Me.Table,SalesOrderDataTable)
+            Me.tableSalesOrderView = CType(Me.Table,SalesOrderViewDataTable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property OrderId() As Long
             Get
-                Return CType(Me(Me.tableSalesOrder.OrderIdColumn),Long)
+                Return CType(Me(Me.tableSalesOrderView.OrderIdColumn),Long)
             End Get
             Set
-                Me(Me.tableSalesOrder.OrderIdColumn) = value
+                Me(Me.tableSalesOrderView.OrderIdColumn) = value
             End Set
         End Property
         
@@ -3283,10 +3308,10 @@ Partial Public Class OrderDetail
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property CustomerName() As String
             Get
-                Return CType(Me(Me.tableSalesOrder.CustomerNameColumn),String)
+                Return CType(Me(Me.tableSalesOrderView.CustomerNameColumn),String)
             End Get
             Set
-                Me(Me.tableSalesOrder.CustomerNameColumn) = value
+                Me(Me.tableSalesOrderView.CustomerNameColumn) = value
             End Set
         End Property
         
@@ -3294,10 +3319,10 @@ Partial Public Class OrderDetail
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property OrderDate() As Date
             Get
-                Return CType(Me(Me.tableSalesOrder.OrderDateColumn),Date)
+                Return CType(Me(Me.tableSalesOrderView.OrderDateColumn),Date)
             End Get
             Set
-                Me(Me.tableSalesOrder.OrderDateColumn) = value
+                Me(Me.tableSalesOrderView.OrderDateColumn) = value
             End Set
         End Property
         
@@ -3306,13 +3331,13 @@ Partial Public Class OrderDetail
         Public Property ShipDate() As Date
             Get
                 Try 
-                    Return CType(Me(Me.tableSalesOrder.ShipDateColumn),Date)
+                    Return CType(Me(Me.tableSalesOrderView.ShipDateColumn),Date)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'ShipDate' in table 'SalesOrder' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ShipDate' in table 'SalesOrderView' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableSalesOrder.ShipDateColumn) = value
+                Me(Me.tableSalesOrderView.ShipDateColumn) = value
             End Set
         End Property
         
@@ -3320,10 +3345,10 @@ Partial Public Class OrderDetail
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property ShipAddress() As String
             Get
-                Return CType(Me(Me.tableSalesOrder.ShipAddressColumn),String)
+                Return CType(Me(Me.tableSalesOrderView.ShipAddressColumn),String)
             End Get
             Set
-                Me(Me.tableSalesOrder.ShipAddressColumn) = value
+                Me(Me.tableSalesOrderView.ShipAddressColumn) = value
             End Set
         End Property
         
@@ -3331,10 +3356,10 @@ Partial Public Class OrderDetail
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property StatusId() As Integer
             Get
-                Return CType(Me(Me.tableSalesOrder.StatusIdColumn),Integer)
+                Return CType(Me(Me.tableSalesOrderView.StatusIdColumn),Integer)
             End Get
             Set
-                Me(Me.tableSalesOrder.StatusIdColumn) = value
+                Me(Me.tableSalesOrderView.StatusIdColumn) = value
             End Set
         End Property
         
@@ -3342,10 +3367,10 @@ Partial Public Class OrderDetail
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property ShipPrice() As Decimal
             Get
-                Return CType(Me(Me.tableSalesOrder.ShipPriceColumn),Decimal)
+                Return CType(Me(Me.tableSalesOrderView.ShipPriceColumn),Decimal)
             End Get
             Set
-                Me(Me.tableSalesOrder.ShipPriceColumn) = value
+                Me(Me.tableSalesOrderView.ShipPriceColumn) = value
             End Set
         End Property
         
@@ -3353,10 +3378,10 @@ Partial Public Class OrderDetail
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property TotalPrice() As Decimal
             Get
-                Return CType(Me(Me.tableSalesOrder.TotalPriceColumn),Decimal)
+                Return CType(Me(Me.tableSalesOrderView.TotalPriceColumn),Decimal)
             End Get
             Set
-                Me(Me.tableSalesOrder.TotalPriceColumn) = value
+                Me(Me.tableSalesOrderView.TotalPriceColumn) = value
             End Set
         End Property
         
@@ -3365,13 +3390,13 @@ Partial Public Class OrderDetail
         Public Property PrivateDiscount() As Double
             Get
                 Try 
-                    Return CType(Me(Me.tableSalesOrder.PrivateDiscountColumn),Double)
+                    Return CType(Me(Me.tableSalesOrderView.PrivateDiscountColumn),Double)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'PrivateDiscount' in table 'SalesOrder' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PrivateDiscount' in table 'SalesOrderView' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableSalesOrder.PrivateDiscountColumn) = value
+                Me(Me.tableSalesOrderView.PrivateDiscountColumn) = value
             End Set
         End Property
         
@@ -3379,10 +3404,10 @@ Partial Public Class OrderDetail
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property PaymentMethodId() As Integer
             Get
-                Return CType(Me(Me.tableSalesOrder.PaymentMethodIdColumn),Integer)
+                Return CType(Me(Me.tableSalesOrderView.PaymentMethodIdColumn),Integer)
             End Get
             Set
-                Me(Me.tableSalesOrder.PaymentMethodIdColumn) = value
+                Me(Me.tableSalesOrderView.PaymentMethodIdColumn) = value
             End Set
         End Property
         
@@ -3390,10 +3415,10 @@ Partial Public Class OrderDetail
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property ShipperId() As Long
             Get
-                Return CType(Me(Me.tableSalesOrder.ShipperIdColumn),Long)
+                Return CType(Me(Me.tableSalesOrderView.ShipperIdColumn),Long)
             End Get
             Set
-                Me(Me.tableSalesOrder.ShipperIdColumn) = value
+                Me(Me.tableSalesOrderView.ShipperIdColumn) = value
             End Set
         End Property
         
@@ -3402,13 +3427,13 @@ Partial Public Class OrderDetail
         Public Property Note() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableSalesOrder.NoteColumn),String)
+                    Return CType(Me(Me.tableSalesOrderView.NoteColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Note' in table 'SalesOrder' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Note' in table 'SalesOrderView' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableSalesOrder.NoteColumn) = value
+                Me(Me.tableSalesOrderView.NoteColumn) = value
             End Set
         End Property
         
@@ -3416,10 +3441,10 @@ Partial Public Class OrderDetail
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property PaymentMethodName() As String
             Get
-                Return CType(Me(Me.tableSalesOrder.PaymentMethodNameColumn),String)
+                Return CType(Me(Me.tableSalesOrderView.PaymentMethodNameColumn),String)
             End Get
             Set
-                Me(Me.tableSalesOrder.PaymentMethodNameColumn) = value
+                Me(Me.tableSalesOrderView.PaymentMethodNameColumn) = value
             End Set
         End Property
         
@@ -3428,13 +3453,13 @@ Partial Public Class OrderDetail
         Public Property ShipperName() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableSalesOrder.ShipperNameColumn),String)
+                    Return CType(Me(Me.tableSalesOrderView.ShipperNameColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'ShipperName' in table 'SalesOrder' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ShipperName' in table 'SalesOrderView' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableSalesOrder.ShipperNameColumn) = value
+                Me(Me.tableSalesOrderView.ShipperNameColumn) = value
             End Set
         End Property
         
@@ -3442,59 +3467,86 @@ Partial Public Class OrderDetail
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property StatusName() As String
             Get
-                Return CType(Me(Me.tableSalesOrder.StatusNameColumn),String)
+                Return CType(Me(Me.tableSalesOrderView.StatusNameColumn),String)
             End Get
             Set
-                Me(Me.tableSalesOrder.StatusNameColumn) = value
+                Me(Me.tableSalesOrderView.StatusNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property IsDelete() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableSalesOrderView.IsDeleteColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'IsDelete' in table 'SalesOrderView' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSalesOrderView.IsDeleteColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsShipDateNull() As Boolean
-            Return Me.IsNull(Me.tableSalesOrder.ShipDateColumn)
+            Return Me.IsNull(Me.tableSalesOrderView.ShipDateColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetShipDateNull()
-            Me(Me.tableSalesOrder.ShipDateColumn) = Global.System.Convert.DBNull
+            Me(Me.tableSalesOrderView.ShipDateColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsPrivateDiscountNull() As Boolean
-            Return Me.IsNull(Me.tableSalesOrder.PrivateDiscountColumn)
+            Return Me.IsNull(Me.tableSalesOrderView.PrivateDiscountColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetPrivateDiscountNull()
-            Me(Me.tableSalesOrder.PrivateDiscountColumn) = Global.System.Convert.DBNull
+            Me(Me.tableSalesOrderView.PrivateDiscountColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsNoteNull() As Boolean
-            Return Me.IsNull(Me.tableSalesOrder.NoteColumn)
+            Return Me.IsNull(Me.tableSalesOrderView.NoteColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetNoteNull()
-            Me(Me.tableSalesOrder.NoteColumn) = Global.System.Convert.DBNull
+            Me(Me.tableSalesOrderView.NoteColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsShipperNameNull() As Boolean
-            Return Me.IsNull(Me.tableSalesOrder.ShipperNameColumn)
+            Return Me.IsNull(Me.tableSalesOrderView.ShipperNameColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetShipperNameNull()
-            Me(Me.tableSalesOrder.ShipperNameColumn) = Global.System.Convert.DBNull
+            Me(Me.tableSalesOrderView.ShipperNameColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsIsDeleteNull() As Boolean
+            Return Me.IsNull(Me.tableSalesOrderView.IsDeleteColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetIsDeleteNull()
+            Me(Me.tableSalesOrderView.IsDeleteColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -3682,16 +3734,16 @@ Partial Public Class OrderDetail
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Class SalesOrderRowChangeEvent
+    Public Class SalesOrderViewRowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As SalesOrderRow
+        Private eventRow As SalesOrderViewRow
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub New(ByVal row As SalesOrderRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As SalesOrderViewRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -3699,7 +3751,7 @@ Partial Public Class OrderDetail
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property Row() As SalesOrderRow
+        Public ReadOnly Property Row() As SalesOrderViewRow
             Get
                 Return Me.eventRow
             End Get
@@ -5269,7 +5321,7 @@ Namespace OrderDetailTableAdapters
                 "OrderDetail.TotalPriceOfProducts, Status.StatusName"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   OrderDetail INNER JO"& _ 
                 "IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             Product ON OrderDetail.ProductId = Product.Id INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
                 "        Status ON Product.ProductStatusId = Status.Id"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (OrderDetail.OrderI"& _ 
-                "d = @OrderId)"
+                "d = @OrderId) "
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OrderId", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "OrderId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
@@ -5643,7 +5695,7 @@ Namespace OrderDetailTableAdapters
      Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
      Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-    Partial Public Class SalesOrderTableAdapter
+    Partial Public Class SalesOrderViewTableAdapter
         Inherits Global.System.ComponentModel.Component
         
         Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
@@ -5760,7 +5812,7 @@ Namespace OrderDetailTableAdapters
             Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "SalesOrder"
+            tableMapping.DataSetTable = "SalesOrderView"
             tableMapping.ColumnMappings.Add("OrderId", "OrderId")
             tableMapping.ColumnMappings.Add("CustomerName", "CustomerName")
             tableMapping.ColumnMappings.Add("OrderDate", "OrderDate")
@@ -5776,6 +5828,7 @@ Namespace OrderDetailTableAdapters
             tableMapping.ColumnMappings.Add("PaymentMethodName", "PaymentMethodName")
             tableMapping.ColumnMappings.Add("ShipperName", "ShipperName")
             tableMapping.ColumnMappings.Add("StatusName", "StatusName")
+            tableMapping.ColumnMappings.Add("IsDelete", "IsDelete")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -5789,59 +5842,28 @@ Namespace OrderDetailTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT [Order].Id AS OrderId, [Order].CustomerName, [Order].OrderDate, [Order].Sh"& _ 
-                "ipDate, [Order].ShipAddress, [Order].StatusId, [Order].ShipPrice, [Order].TotalP"& _ 
-                "rice, [Order].PrivateDiscount, [Order].PaymentMethodId, [Order].ShipperId, [Orde"& _ 
-                "r].Note, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             PaymentMethod.PaymentMethodName, Person.LastName + ' ' +"& _ 
-                " Person.FirstName AS ShipperName, Status.StatusName"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   [Order] INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
-                "             PaymentMethod ON [Order].PaymentMethodId = PaymentMethod.Id INNER J"& _ 
-                "OIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             Person ON [Order].ShipperId = Person.Id INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"          "& _ 
-                "   Status ON [Order].StatusId = Status.Id"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE ([Order].IsDelete = 'False')"
+            Me._commandCollection(0).CommandText = "SELECT OrderId, CustomerName, OrderDate, ShipDate, ShipAddress, StatusId, ShipPri"& _ 
+                "ce, TotalPrice, PrivateDiscount, PaymentMethodId, ShipperId, Note, PaymentMethod"& _ 
+                "Name, ShipperName, StatusName, IsDelete"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   SalesOrderView"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT [Order].Id AS OrderId, [Order].CustomerName, [Order].OrderDate, [Order].Sh"& _ 
-                "ipDate, [Order].ShipAddress, [Order].StatusId, [Order].ShipPrice, [Order].TotalP"& _ 
-                "rice, [Order].PrivateDiscount, [Order].PaymentMethodId, [Order].ShipperId, [Orde"& _ 
-                "r].Note, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             PaymentMethod.PaymentMethodName, Person.LastName + ' ' +"& _ 
-                " Person.FirstName AS ShipperName, Status.StatusName"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   [Order] INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
-                "             PaymentMethod ON [Order].PaymentMethodId = PaymentMethod.Id INNER J"& _ 
-                "OIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             Person ON [Order].ShipperId = Person.Id INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"          "& _ 
-                "   Status ON [Order].StatusId = Status.Id"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE ([Order].IsDelete = 'False') AN"& _ 
-                "D ([Order].Id = @Id) AND ([Order].ShipperId = @ShipperId) AND ([Order].PaymentMe"& _ 
-                "thodId = @PaymentMethodId) AND ([Order].CustomerName = @CustomerName) AND ([Orde"& _ 
-                "r].OrderDate = @OrderDate) AND ([Order].ShipDate = @ShipDate) AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            "& _ 
-                " ([Order].ShipAddress = [Order].ShipAddress) AND ([Order].StatusId = @StatusId)"
+            Me._commandCollection(1).CommandText = "SELECT OrderId, CustomerName, OrderDate, ShipDate, ShipAddress, StatusId, ShipPri"& _ 
+                "ce, TotalPrice, PrivateDiscount, PaymentMethodId, ShipperId, Note, PaymentMethod"& _ 
+                "Name, ShipperName, StatusName, IsDelete"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   SalesOrderView"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE OrderId = "& _ 
+                "@OrderId"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "OrderId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipperId", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "ShipperId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PaymentMethodId", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "PaymentMethodId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CustomerName", Global.System.Data.SqlDbType.NVarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "CustomerName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OrderDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "OrderDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShipDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "ShipDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@StatusId", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "StatusId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT [Order].Id AS OrderId, [Order].CustomerName, [Order].OrderDate, [Order].Sh"& _ 
-                "ipDate, [Order].ShipAddress, [Order].StatusId, [Order].ShipPrice, [Order].TotalP"& _ 
-                "rice, [Order].PrivateDiscount, [Order].PaymentMethodId, [Order].ShipperId, [Orde"& _ 
-                "r].Note, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             PaymentMethod.PaymentMethodName, Person.LastName + ' ' +"& _ 
-                " Person.FirstName AS ShipperName, Status.StatusName"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   [Order] INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
-                "             PaymentMethod ON [Order].PaymentMethodId = PaymentMethod.Id INNER J"& _ 
-                "OIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             Person ON [Order].ShipperId = Person.Id INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"          "& _ 
-                "   Status ON [Order].StatusId = Status.Id"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE ([Order].Id = @Id)"
-            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "OrderId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OrderId", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "OrderId", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As OrderDetail.SalesOrderDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As OrderDetail.SalesOrderViewDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -5854,9 +5876,9 @@ Namespace OrderDetailTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As OrderDetail.SalesOrderDataTable
+        Public Overloads Overridable Function GetData() As OrderDetail.SalesOrderViewDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As OrderDetail.SalesOrderDataTable = New OrderDetail.SalesOrderDataTable()
+            Dim dataTable As OrderDetail.SalesOrderViewDataTable = New OrderDetail.SalesOrderViewDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -5865,23 +5887,9 @@ Namespace OrderDetailTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillBy(ByVal dataTable As OrderDetail.SalesOrderDataTable, ByVal Id As Long, ByVal ShipperId As Long, ByVal PaymentMethodId As Integer, ByVal CustomerName As String, ByVal OrderDate As Date, ByVal ShipDate As Global.System.Nullable(Of Date), ByVal StatusId As Integer) As Integer
+        Public Overloads Overridable Function FillBy(ByVal dataTable As OrderDetail.SalesOrderViewDataTable, ByVal OrderId As Long) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
-            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Id,Long)
-            Me.Adapter.SelectCommand.Parameters(1).Value = CType(ShipperId,Long)
-            Me.Adapter.SelectCommand.Parameters(2).Value = CType(PaymentMethodId,Integer)
-            If (CustomerName Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("CustomerName")
-            Else
-                Me.Adapter.SelectCommand.Parameters(3).Value = CType(CustomerName,String)
-            End If
-            Me.Adapter.SelectCommand.Parameters(4).Value = CType(OrderDate,Date)
-            If (ShipDate.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(5).Value = CType(ShipDate.Value,Date)
-            Else
-                Me.Adapter.SelectCommand.Parameters(5).Value = Global.System.DBNull.Value
-            End If
-            Me.Adapter.SelectCommand.Parameters(6).Value = CType(StatusId,Integer)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(OrderId,Long)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -5893,50 +5901,10 @@ Namespace OrderDetailTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBy(ByVal Id As Long, ByVal ShipperId As Long, ByVal PaymentMethodId As Integer, ByVal CustomerName As String, ByVal OrderDate As Date, ByVal ShipDate As Global.System.Nullable(Of Date), ByVal StatusId As Integer) As OrderDetail.SalesOrderDataTable
+        Public Overloads Overridable Function GetSalesOrderById(ByVal OrderId As Long) As OrderDetail.SalesOrderViewDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
-            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Id,Long)
-            Me.Adapter.SelectCommand.Parameters(1).Value = CType(ShipperId,Long)
-            Me.Adapter.SelectCommand.Parameters(2).Value = CType(PaymentMethodId,Integer)
-            If (CustomerName Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("CustomerName")
-            Else
-                Me.Adapter.SelectCommand.Parameters(3).Value = CType(CustomerName,String)
-            End If
-            Me.Adapter.SelectCommand.Parameters(4).Value = CType(OrderDate,Date)
-            If (ShipDate.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(5).Value = CType(ShipDate.Value,Date)
-            Else
-                Me.Adapter.SelectCommand.Parameters(5).Value = Global.System.DBNull.Value
-            End If
-            Me.Adapter.SelectCommand.Parameters(6).Value = CType(StatusId,Integer)
-            Dim dataTable As OrderDetail.SalesOrderDataTable = New OrderDetail.SalesOrderDataTable()
-            Me.Adapter.Fill(dataTable)
-            Return dataTable
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillBy1(ByVal dataTable As OrderDetail.SalesOrderDataTable, ByVal Id As Long) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(2)
-            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Id,Long)
-            If (Me.ClearBeforeFill = true) Then
-                dataTable.Clear
-            End If
-            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
-            Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetSalesOrderById(ByVal Id As Long) As OrderDetail.SalesOrderDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(2)
-            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Id,Long)
-            Dim dataTable As OrderDetail.SalesOrderDataTable = New OrderDetail.SalesOrderDataTable()
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(OrderId,Long)
+            Dim dataTable As OrderDetail.SalesOrderViewDataTable = New OrderDetail.SalesOrderViewDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function

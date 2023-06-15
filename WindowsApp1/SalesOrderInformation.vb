@@ -214,9 +214,13 @@ Public Class SalesOrderInformation
 
     Private Sub listBuyProduct_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles listBuyProduct.CellDoubleClick
         If (e.ColumnIndex > 0 And e.RowIndex >= 0) Then
-            Dim frmProductInformation = New ProductInformation()
-            frmProductInformation.LoadData(listBuyProduct.CurrentRow.Cells("ProductId").Value.ToString(), True)
-            frmProductInformation.ShowDialog()
+            If clsProduct.CheckProductWasDeleted(listBuyProduct.CurrentRow.Cells("ProductId").Value.ToString()) Then
+                MsgBox("This product was deleted! You can't to see product's detail information!")
+            Else
+                Dim frmProductInformation = New ProductInformation()
+                frmProductInformation.LoadData(listBuyProduct.CurrentRow.Cells("ProductId").Value.ToString(), True)
+                frmProductInformation.ShowDialog()
+            End If
         End If
         If (e.ColumnIndex = CheckTest.ColumnIndex And e.RowIndex <> -1) Then
             'A DoubleClick event is treated separate from a MouseUp event.

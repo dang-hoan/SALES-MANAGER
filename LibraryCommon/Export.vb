@@ -72,6 +72,10 @@ Public Class Export
             Next
         End If
 
+        For k As Integer = 0 To listPrintedColumn.Count - 1
+            xlWorkSheet.Cells(startRow, k + startColumn).HorizontalAlignment = XlHAlign.xlHAlignCenter
+        Next
+
         xlApp.DisplayAlerts = False
 
         Dim saved = True

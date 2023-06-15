@@ -85,15 +85,16 @@ Partial Class SalesOrderCategory
         Me.ShipDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ShipAddressDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ShipPriceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TotalPriceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PrivateDiscountDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NoteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TotalPriceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PaymentMethodNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ShipperNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NoteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.StatusNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PaymentMethodIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.StatusIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ShipperIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StatusIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PaymentMethodIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IsDeleteDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.groupBox1.SuspendLayout()
         CType(Me.bindingNav, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.bindingNav.SuspendLayout()
@@ -497,8 +498,8 @@ Partial Class SalesOrderCategory
         Me.dgvSalesOrderSearch.AutoGenerateColumns = False
         Me.dgvSalesOrderSearch.BackgroundColor = System.Drawing.Color.White
         Me.dgvSalesOrderSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvSalesOrderSearch.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CheckBoxColumn, Me.OrderIdDataGridViewTextBoxColumn, Me.CustomerNameDataGridViewTextBoxColumn, Me.OrderDateDataGridViewTextBoxColumn, Me.ShipDateDataGridViewTextBoxColumn, Me.ShipAddressDataGridViewTextBoxColumn, Me.ShipPriceDataGridViewTextBoxColumn, Me.TotalPriceDataGridViewTextBoxColumn, Me.PrivateDiscountDataGridViewTextBoxColumn, Me.NoteDataGridViewTextBoxColumn, Me.PaymentMethodNameDataGridViewTextBoxColumn, Me.ShipperNameDataGridViewTextBoxColumn, Me.StatusNameDataGridViewTextBoxColumn, Me.PaymentMethodIdDataGridViewTextBoxColumn, Me.StatusIdDataGridViewTextBoxColumn, Me.ShipperIdDataGridViewTextBoxColumn})
-        Me.dgvSalesOrderSearch.DataMember = "SalesOrder"
+        Me.dgvSalesOrderSearch.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CheckBoxColumn, Me.OrderIdDataGridViewTextBoxColumn, Me.CustomerNameDataGridViewTextBoxColumn, Me.OrderDateDataGridViewTextBoxColumn, Me.ShipDateDataGridViewTextBoxColumn, Me.ShipAddressDataGridViewTextBoxColumn, Me.ShipPriceDataGridViewTextBoxColumn, Me.PrivateDiscountDataGridViewTextBoxColumn, Me.TotalPriceDataGridViewTextBoxColumn, Me.PaymentMethodNameDataGridViewTextBoxColumn, Me.ShipperNameDataGridViewTextBoxColumn, Me.NoteDataGridViewTextBoxColumn, Me.StatusNameDataGridViewTextBoxColumn, Me.ShipperIdDataGridViewTextBoxColumn, Me.StatusIdDataGridViewTextBoxColumn, Me.PaymentMethodIdDataGridViewTextBoxColumn, Me.IsDeleteDataGridViewCheckBoxColumn})
+        Me.dgvSalesOrderSearch.DataMember = "SalesOrderView"
         Me.dgvSalesOrderSearch.DataSource = Me.OrderDetail
         Me.dgvSalesOrderSearch.Location = New System.Drawing.Point(54, 408)
         Me.dgvSalesOrderSearch.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
@@ -704,20 +705,11 @@ Partial Class SalesOrderCategory
         'ShipPriceDataGridViewTextBoxColumn
         '
         Me.ShipPriceDataGridViewTextBoxColumn.DataPropertyName = "ShipPrice"
-        Me.ShipPriceDataGridViewTextBoxColumn.HeaderText = "Ship price"
+        Me.ShipPriceDataGridViewTextBoxColumn.HeaderText = "Ship fee"
         Me.ShipPriceDataGridViewTextBoxColumn.MinimumWidth = 8
         Me.ShipPriceDataGridViewTextBoxColumn.Name = "ShipPriceDataGridViewTextBoxColumn"
         Me.ShipPriceDataGridViewTextBoxColumn.ReadOnly = True
         Me.ShipPriceDataGridViewTextBoxColumn.Width = 150
-        '
-        'TotalPriceDataGridViewTextBoxColumn
-        '
-        Me.TotalPriceDataGridViewTextBoxColumn.DataPropertyName = "TotalPrice"
-        Me.TotalPriceDataGridViewTextBoxColumn.HeaderText = "Total price"
-        Me.TotalPriceDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.TotalPriceDataGridViewTextBoxColumn.Name = "TotalPriceDataGridViewTextBoxColumn"
-        Me.TotalPriceDataGridViewTextBoxColumn.ReadOnly = True
-        Me.TotalPriceDataGridViewTextBoxColumn.Width = 150
         '
         'PrivateDiscountDataGridViewTextBoxColumn
         '
@@ -728,14 +720,14 @@ Partial Class SalesOrderCategory
         Me.PrivateDiscountDataGridViewTextBoxColumn.ReadOnly = True
         Me.PrivateDiscountDataGridViewTextBoxColumn.Width = 150
         '
-        'NoteDataGridViewTextBoxColumn
+        'TotalPriceDataGridViewTextBoxColumn
         '
-        Me.NoteDataGridViewTextBoxColumn.DataPropertyName = "Note"
-        Me.NoteDataGridViewTextBoxColumn.HeaderText = "Note"
-        Me.NoteDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.NoteDataGridViewTextBoxColumn.Name = "NoteDataGridViewTextBoxColumn"
-        Me.NoteDataGridViewTextBoxColumn.ReadOnly = True
-        Me.NoteDataGridViewTextBoxColumn.Width = 150
+        Me.TotalPriceDataGridViewTextBoxColumn.DataPropertyName = "TotalPrice"
+        Me.TotalPriceDataGridViewTextBoxColumn.HeaderText = "Total price"
+        Me.TotalPriceDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.TotalPriceDataGridViewTextBoxColumn.Name = "TotalPriceDataGridViewTextBoxColumn"
+        Me.TotalPriceDataGridViewTextBoxColumn.ReadOnly = True
+        Me.TotalPriceDataGridViewTextBoxColumn.Width = 150
         '
         'PaymentMethodNameDataGridViewTextBoxColumn
         '
@@ -749,11 +741,20 @@ Partial Class SalesOrderCategory
         'ShipperNameDataGridViewTextBoxColumn
         '
         Me.ShipperNameDataGridViewTextBoxColumn.DataPropertyName = "ShipperName"
-        Me.ShipperNameDataGridViewTextBoxColumn.HeaderText = "Shipper name"
+        Me.ShipperNameDataGridViewTextBoxColumn.HeaderText = "Shipper"
         Me.ShipperNameDataGridViewTextBoxColumn.MinimumWidth = 8
         Me.ShipperNameDataGridViewTextBoxColumn.Name = "ShipperNameDataGridViewTextBoxColumn"
         Me.ShipperNameDataGridViewTextBoxColumn.ReadOnly = True
         Me.ShipperNameDataGridViewTextBoxColumn.Width = 150
+        '
+        'NoteDataGridViewTextBoxColumn
+        '
+        Me.NoteDataGridViewTextBoxColumn.DataPropertyName = "Note"
+        Me.NoteDataGridViewTextBoxColumn.HeaderText = "Note"
+        Me.NoteDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.NoteDataGridViewTextBoxColumn.Name = "NoteDataGridViewTextBoxColumn"
+        Me.NoteDataGridViewTextBoxColumn.ReadOnly = True
+        Me.NoteDataGridViewTextBoxColumn.Width = 150
         '
         'StatusNameDataGridViewTextBoxColumn
         '
@@ -764,15 +765,15 @@ Partial Class SalesOrderCategory
         Me.StatusNameDataGridViewTextBoxColumn.ReadOnly = True
         Me.StatusNameDataGridViewTextBoxColumn.Width = 150
         '
-        'PaymentMethodIdDataGridViewTextBoxColumn
+        'ShipperIdDataGridViewTextBoxColumn
         '
-        Me.PaymentMethodIdDataGridViewTextBoxColumn.DataPropertyName = "PaymentMethodId"
-        Me.PaymentMethodIdDataGridViewTextBoxColumn.HeaderText = "PaymentMethodId"
-        Me.PaymentMethodIdDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.PaymentMethodIdDataGridViewTextBoxColumn.Name = "PaymentMethodIdDataGridViewTextBoxColumn"
-        Me.PaymentMethodIdDataGridViewTextBoxColumn.ReadOnly = True
-        Me.PaymentMethodIdDataGridViewTextBoxColumn.Visible = False
-        Me.PaymentMethodIdDataGridViewTextBoxColumn.Width = 150
+        Me.ShipperIdDataGridViewTextBoxColumn.DataPropertyName = "ShipperId"
+        Me.ShipperIdDataGridViewTextBoxColumn.HeaderText = "ShipperId"
+        Me.ShipperIdDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.ShipperIdDataGridViewTextBoxColumn.Name = "ShipperIdDataGridViewTextBoxColumn"
+        Me.ShipperIdDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ShipperIdDataGridViewTextBoxColumn.Visible = False
+        Me.ShipperIdDataGridViewTextBoxColumn.Width = 150
         '
         'StatusIdDataGridViewTextBoxColumn
         '
@@ -784,15 +785,25 @@ Partial Class SalesOrderCategory
         Me.StatusIdDataGridViewTextBoxColumn.Visible = False
         Me.StatusIdDataGridViewTextBoxColumn.Width = 150
         '
-        'ShipperIdDataGridViewTextBoxColumn
+        'PaymentMethodIdDataGridViewTextBoxColumn
         '
-        Me.ShipperIdDataGridViewTextBoxColumn.DataPropertyName = "ShipperId"
-        Me.ShipperIdDataGridViewTextBoxColumn.HeaderText = "ShipperId"
-        Me.ShipperIdDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.ShipperIdDataGridViewTextBoxColumn.Name = "ShipperIdDataGridViewTextBoxColumn"
-        Me.ShipperIdDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ShipperIdDataGridViewTextBoxColumn.Visible = False
-        Me.ShipperIdDataGridViewTextBoxColumn.Width = 150
+        Me.PaymentMethodIdDataGridViewTextBoxColumn.DataPropertyName = "PaymentMethodId"
+        Me.PaymentMethodIdDataGridViewTextBoxColumn.HeaderText = "PaymentMethodId"
+        Me.PaymentMethodIdDataGridViewTextBoxColumn.MinimumWidth = 8
+        Me.PaymentMethodIdDataGridViewTextBoxColumn.Name = "PaymentMethodIdDataGridViewTextBoxColumn"
+        Me.PaymentMethodIdDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PaymentMethodIdDataGridViewTextBoxColumn.Visible = False
+        Me.PaymentMethodIdDataGridViewTextBoxColumn.Width = 150
+        '
+        'IsDeleteDataGridViewCheckBoxColumn
+        '
+        Me.IsDeleteDataGridViewCheckBoxColumn.DataPropertyName = "IsDelete"
+        Me.IsDeleteDataGridViewCheckBoxColumn.HeaderText = "IsDelete"
+        Me.IsDeleteDataGridViewCheckBoxColumn.MinimumWidth = 8
+        Me.IsDeleteDataGridViewCheckBoxColumn.Name = "IsDeleteDataGridViewCheckBoxColumn"
+        Me.IsDeleteDataGridViewCheckBoxColumn.ReadOnly = True
+        Me.IsDeleteDataGridViewCheckBoxColumn.Visible = False
+        Me.IsDeleteDataGridViewCheckBoxColumn.Width = 150
         '
         'SalesOrderCategory
         '
@@ -883,13 +894,14 @@ Partial Class SalesOrderCategory
     Friend WithEvents ShipDateDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ShipAddressDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ShipPriceDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents TotalPriceDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PrivateDiscountDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents NoteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TotalPriceDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PaymentMethodNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ShipperNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents NoteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents StatusNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PaymentMethodIdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents StatusIdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ShipperIdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents StatusIdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PaymentMethodIdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents IsDeleteDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
 End Class
