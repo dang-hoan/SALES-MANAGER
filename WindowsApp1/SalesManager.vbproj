@@ -124,6 +124,12 @@
     <Compile Include="AccountInformation.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CustomerInformation.Designer.vb">
+      <DependentUpon>CustomerInformation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerInformation.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DataGridViewCheckBoxHeaderCell.vb" />
     <Compile Include="DecentralizationForm.Designer.vb">
       <DependentUpon>DecentralizationForm.vb</DependentUpon>
@@ -237,6 +243,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AccountInformation.resx">
       <DependentUpon>AccountInformation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerInformation.resx">
+      <DependentUpon>CustomerInformation.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DecentralizationForm.resx">
       <DependentUpon>DecentralizationForm.vb</DependentUpon>

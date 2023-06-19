@@ -205,7 +205,10 @@ Public Class EmployeeCategory
                 sqlCommand &= $" AND Id = {txtCode.Text}"
             End If
 
-            sqlCommand &= $" AND Username LIKE N'%{txtUsername.Text}%'"
+            If Not String.IsNullOrWhiteSpace(txtUsername.Text) Then
+                sqlCommand &= $" AND Username LIKE N'%{txtUsername.Text}%'"
+            End If
+
             sqlCommand &= $" AND (LastName + ' ' + FirstName) LIKE N'%{txtName.Text}%'"
 
             If cbGender.Checked Then
@@ -228,7 +231,7 @@ Public Class EmployeeCategory
         End If
 
     End Sub
-    'BUG: phone too long, notify when have 2 checkvalue false, update status of account when delete employee
+
     Private Function checkLogicData() As Boolean
         If Not (CheckValue("Employee code", txtCode.Text, "Long") And CheckValue("Phone", txtPhone.Text, "Long")) Then
             Return False

@@ -34,7 +34,7 @@ Public Class EmployeeInformation
             mode = "Add"
 
             labTitle.Text = "ADD EMPLOYEE"
-            labTitle.Location = New Point(Me.Width / 2 - labTitle.Width / 2, 30)
+            labTitle.Location = New Point(Me.Width / 2 - labTitle.Width / 2, labTitle.Location.Y)
 
             Dim x As Integer = (Me.Width - bSave.Width) / 2
 
@@ -48,7 +48,7 @@ Public Class EmployeeInformation
         Else
             setEnable(False)
 
-            Dim data = clsPMSAnalysis.GetEmployeeById(employeeCode)
+            Dim data = clsPMSAnalysis.GetPersonById(employeeCode)
             txtCode.Text = employeeCode
             txtLastName.Text = data("LastName")
             txtFirstName.Text = data("FirstName")
@@ -304,7 +304,7 @@ Public Class EmployeeInformation
     End Function
 
     Private Function checkAccountInfor() As Boolean
-        'BUG: Check username exits and process save employee
+
         If cbEditAccount.Checked Then
             If txtAccountName.Text = "" Or txtPassword.Text = "" Then
                 MsgBox("You need to enter all the fields in employee's account!", Nothing, "Notification")

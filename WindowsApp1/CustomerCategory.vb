@@ -1,23 +1,135 @@
 ﻿Imports LibraryDataset
 Imports LibraryCommon
+Imports System.ComponentModel
+Imports System.IO
 
-Public Class frmCustomerCategory
+Public Class CustomerCategory
     Dim conn As New connCommon()
     Dim clsPMSAnalysis As New clsPerson(conn.connSales.ConnectionString)
     Dim clsAccount As New clsAccount(conn.connSales.ConnectionString)
     Dim clsRolePermission As New clsRolePermission(conn.connSales.ConnectionString)
 
-    Private isAddFirstName As Boolean = False
-    Private isAddLastName As Boolean = False
+    Private _recordsPerPage As Integer = 5
+    Private bs As BindingSource = New BindingSource()
+    Private tables As BindingList(Of DataTable)
+    Private listCheckboxValue As New List(Of Long)
+
+    Private WithEvents CheckTest As New DataGridViewCheckBoxHeaderCell()
     Private Sub CustomerCategory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Reload()
+        'Dim HeaderCellCollection As System.Drawing.Point = Me.dgvProductSearch.GetCellDisplayRectangle(0, -1, True).Location
+        'CheckboxHeader.Location = New System.Drawing.Point(HeaderCellCollection.X + 17, HeaderCellCollection.Y + 2)
+        'CheckboxHeader.Size = New Size(18, 18)
+        'CheckboxHeader.BackColor = Color.White
+        'dgvProductSearch.Controls.Add(CheckboxHeader)
+        'AddHandler CheckboxHeader.Click, AddressOf CheckboxHeader_Click
+        'AddHandler dgvProductSearch.CellContentClick, AddressOf dgvProductSearch_CellClick
+        dgvCustomerSearch.Columns(0).HeaderCell = CheckTest
+
+        'InitPlaceHolderText()
         SetVisibleForPermission()
+        Reload()
+    End Sub
+    Private cellContentValueChangedByUser = False  'Remark cell content datagridview value change cause code or cause user click
+    Public Sub SetPagedDataSource(ByVal dataTable As DataTable)
+        tables = New BindingList(Of DataTable)()
+        Dim dt As DataTable = Nothing
+        Dim counter As Integer = 1           'Count number of records of a page
+
+        For Each dr As DataRow In dataTable.Rows
+            If counter = 1 Then
+                dt = dataTable.Clone()
+                tables.Add(dt)
+            End If
+
+            dt.Rows.Add(dr.ItemArray)
+
+            counter += 1
+            If _recordsPerPage < counter Then
+                counter = 1
+            End If
+        Next
+
+        bindingNav.BindingSource = bs
+        bs.DataSource = tables
+        AddHandler bs.PositionChanged, AddressOf bs_PositionChanged
+        bs_PositionChanged(bs, EventArgs.Empty)
+
+        dgvCustomerSearch.ReadOnly = False
+        For i = 1 To dgvCustomerSearch.Columns.Count - 1
+            dgvCustomerSearch.Columns(i).ReadOnly = True
+        Next
+        listCheckboxValue.Clear()
+        cellContentValueChangedByUser = False
+        CheckTest.CheckUncheckEntireColumn(listCheckboxValue)
+        CheckTest.Checked = False
+    End Sub
+    Private Sub bs_PositionChanged(ByVal sender As Object, ByVal e As EventArgs)
+        If bs.Position >= 0 Then
+            Me.dgvCustomerSearch.DataSource = tables(bs.Position)
+        Else
+            Me.dgvCustomerSearch.DataSource = Nothing
+            'If TypeOf Me.dgvCustomerSearch.DataSource Is DataTable Then
+            '    Dim dt = Me.dgvCustomerSearch.DataSource
+            '    dt.Rows.Clear()
+            '    Me.dgvCustomerSearch.DataSource = dt
+            'End If
+        End If
+        cellContentValueChangedByUser = False
+        CheckTest.CheckUncheckEntireColumn(listCheckboxValue)
+    End Sub
+
+    Private Sub CheckBoxHeaderCell_CheckBoxClicked(sender As Object, e As DataGridViewCheckBoxHeaderCellEventArgs) Handles CheckTest.CheckBoxClicked
+        listCheckboxValue.Clear()
+        If e.Checked Then
+            For Each dt In tables.ToList
+                For Each row In dt.Rows
+                    listCheckboxValue.Add(row(1))
+                Next
+            Next
+        End If
+        cellContentValueChangedByUser = False
+        CheckTest.CheckUncheckEntireColumn(listCheckboxValue)
+    End Sub
+    Private Sub dgvCustomerSearch_CellContentClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvCustomerSearch.CellContentClick
+        'dgvCustomerSearch.CommitEdit(DataGridViewDataErrorContexts.Commit)
+        cellContentValueChangedByUser = True
+    End Sub
+    Private Sub dgvCustomerSearch_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCustomerSearch.CellValueChanged
+        If e.ColumnIndex = 0 And e.RowIndex <> -1 And cellContentValueChangedByUser Then
+            'Console.WriteLine("check " & dgvCustomerSearch.Rows(e.RowIndex).Cells(e.ColumnIndex).Value)
+            If dgvCustomerSearch.Rows(e.RowIndex).Cells(e.ColumnIndex).Value Then
+                listCheckboxValue.Add(dgvCustomerSearch.Rows(e.RowIndex).Cells(1).Value.ToString())
+            Else
+                listCheckboxValue.Remove(dgvCustomerSearch.Rows(e.RowIndex).Cells(1).Value.ToString())
+            End If
+            'Console.WriteLine(listCheckboxValue.Count)
+            If listCheckboxValue.Count = tables.Sum(Function(l) l.Rows.Count) Then
+                CheckTest.Checked = True
+            Else
+                CheckTest.Checked = False
+            End If
+        End If
+    End Sub
+    Private Sub dgvCustomerSearch_CellMouseUp(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgvCustomerSearch.CellMouseUp
+        If e.ColumnIndex = 0 And e.RowIndex <> -1 Then
+            dgvCustomerSearch.EndEdit()       'Notification datagridview to start value change event
+        End If
+    End Sub
+    Private Sub dgvCustomerSearch_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCustomerSearch.CellDoubleClick
+        If (e.ColumnIndex > 0 And e.RowIndex >= 0) Then
+            Dim frmCustomerInformation = New CustomerInformation()
+            frmCustomerInformation.LoadData(dgvCustomerSearch.SelectedRows(0).Cells(1).Value.ToString())
+            frmCustomerInformation.ShowDialog()
+        End If
+        If (e.ColumnIndex = CheckTest.ColumnIndex And e.RowIndex <> -1) Then
+            'A DoubleClick event is treated separate from a MouseUp event.
+            'If a DoubleClick event is detected, the application will ignore the first MouseUp event entirely.
+            dgvCustomerSearch.EndEdit()   'So add this code to notification datagridview to start value change event
+        End If
     End Sub
     Private Sub SetVisibleForPermission()
         bAdd.Visible = False
-        bEdit.Visible = False
         bDelete.Visible = False
-        bSave.Visible = False
         Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
         For Each permission In dataPermission
             Dim form = permission(1).split(":")(0)
@@ -27,10 +139,6 @@ Public Class frmCustomerCategory
                     Select Case p
                         Case "Add"
                             bAdd.Visible = True
-                            bSave.Visible = True
-                        Case "Edit"
-                            bEdit.Visible = True
-                            bSave.Visible = True
                         Case "Delete"
                             bDelete.Visible = True
                     End Select
@@ -42,7 +150,7 @@ Public Class frmCustomerCategory
     End Sub
 
     Private Sub CenterButtons()
-        Dim listButtons = New List(Of Button) From {bAdd, bEdit, bDelete, bSave}
+        Dim listButtons = New List(Of Button) From {bAdd, bDelete}
         Dim totalWidth As Integer = 0
         Dim count = 0
 
@@ -55,7 +163,7 @@ Public Class frmCustomerCategory
 
         Dim offset_between = 30
         Dim x As Integer = (Me.Width - totalWidth - offset_between * (count - 1)) / 2
-        Dim y As Integer = 450
+        Dim y As Integer = 495
 
         For Each btn As Button In listButtons
             If btn.Visible = True Then
@@ -65,129 +173,51 @@ Public Class frmCustomerCategory
         Next
     End Sub
 
-    Private Sub Reload()
-        dgvCategory.DataSource = clsPMSAnalysis.GetCustomers()
-        dgvCategory.Columns(1).Visible = False
-        dgvCategory.Columns(9).Visible = False
-        setEnable(False)
-        setValue()
+    Public Sub Reload()
+        SetPagedDataSource(clsPMSAnalysis.SearchPerson("", False))
     End Sub
-
-    Private Sub bEdit_Click(sender As Object, e As EventArgs) Handles bEdit.Click
-        addEditDeleteEnabled(False)
-        bDelete.Enabled = True
-        setEnable(True)
-    End Sub
-
-    Private Sub setEnable(valBoolean As Boolean)
-        txtCustomerFirstName.Enabled = valBoolean
-        txtCustomerLastName.Enabled = valBoolean
-        txtPhone.Enabled = valBoolean
-        txtAddress.Enabled = valBoolean
-        dtBirthDay.Enabled = valBoolean
-        rdMale.Enabled = valBoolean
-        rdFemale.Enabled = valBoolean
-        txtEmail.Enabled = valBoolean
-        bSave.Enabled = valBoolean
-    End Sub
-
-    Private Sub addEditDeleteEnabled(valBoolean As Boolean)
-        bAdd.Enabled = valBoolean
-        bEdit.Enabled = valBoolean
-        bDelete.Enabled = valBoolean
-    End Sub
-
-    Private Sub clearValue()
-        txtCustomerFirstName.Text = "First name"
-        txtCustomerLastName.Text = "Last name"
-        txtCustomerCode.Text = ""
-        rdMale.Checked = True
-        txtPhone.Text = ""
-        txtAddress.Text = ""
-        dtBirthDay.Value = DateTime.Now
-        txtEmail.Text = ""
-        setPlaceHolderEnable(True)
-    End Sub
-
-    Private Sub bAdd_Click(sender As Object, e As EventArgs) Handles bAdd.Click
-        addEditDeleteEnabled(False)
-        clearValue()
-        setEnable(True)
-    End Sub
-
-    Private Sub dgvCategory_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCategory.CellClick
-        addEditDeleteEnabled(True)
-        setEnable(False)
-        setValue()
-        setPlaceHolderEnable(False)
-    End Sub
-
-    Private Sub setValue()
-        If dgvCategory.Rows.Count = 0 Then
-            addEditDeleteEnabled(False)
-            bAdd.Enabled = True
-            Return
-        Else
-            Dim row As DataGridViewRow = dgvCategory.CurrentRow
-            txtCustomerCode.Text = row.Cells(0).Value.ToString
-            txtCustomerLastName.Text = row.Cells(2).Value.ToString
-            txtCustomerFirstName.Text = row.Cells(3).Value.ToString
-            dtBirthDay.Text = row.Cells(5).Value.ToString
-            txtPhone.Text = row.Cells(6).Value.ToString
-            txtEmail.Text = row.Cells(7).Value.ToString
-            txtAddress.Text = row.Cells(8).Value.ToString
-            If row.Cells(4).Value.ToString() = "True" Then
-                rdMale.Checked = True
-            Else
-                rdFemale.Checked = True
-            End If
-        End If
-    End Sub
-
-    Private Sub bSave_Click(sender As Object, e As EventArgs) Handles bSave.Click
+    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        'AND (LastName = @LastName) AND (FirstName = @FirstName)
+        'AND (Gender = @Gender) AND (BirthDate = @BirthDate) AND (Phone = @Phone)
+        'AND (Email = @Email) AND (Address = @Address) AND (Id = @Id)
         If checkLogicData() Then
-            Dim result As Integer
-            Dim type As String = "Update"
-            If txtCustomerCode.Text <> "" Then          'Edit
-                result = clsPMSAnalysis.EditCustomer(txtCustomerLastName.Text,
-                                            txtCustomerFirstName.Text, rdMale.Checked, dtBirthDay.Value,
-                                            txtPhone.Text, txtEmail.Text, txtAddress.Text, LoginForm.PropUsername, txtCustomerCode.Text)
-            Else                                             'Add new
-                result = clsPMSAnalysis.AddCustomer(txtCustomerLastName.Text,
-                                            txtCustomerFirstName.Text, rdMale.Checked, dtBirthDay.Value,
-                                            txtPhone.Text, txtEmail.Text, txtAddress.Text, LoginForm.PropUsername)
-                type = "Add"
+            Dim sqlCommand = ""
+
+            If Not String.IsNullOrWhiteSpace(txtCode.Text) Then
+                sqlCommand &= $" AND Id = {txtCode.Text}"
             End If
 
-            If result = 1 Then
-                setEnable(False)
-                MsgBox(type & " customer information successful!", Nothing, "Notification")
-                Reload()
-                addEditDeleteEnabled(True)
-                setPlaceHolderEnable(False)
-            Else
-                MsgBox("There is an error when interact with database!", Nothing, "Notification")
+            sqlCommand &= $" AND (LastName + ' ' + FirstName) LIKE N'%{txtName.Text}%'"
+
+            If cbGender.Checked Then
+                sqlCommand &= $" AND Gender = '{rdMale.Checked}'"
             End If
+
+            '103 is format code of 'dd/MM/yyyy'
+            If cbBirthDay.Checked Then
+                sqlCommand &= $" AND CONVERT(VARCHAR(10), BirthDate, 103) = '{dtBirthDay.Value.ToString(dtBirthDay.CustomFormat)}'"
+            End If
+
+            sqlCommand &= $" AND Phone LIKE N'%{txtPhone.Text}%'"
+            sqlCommand &= $" AND Email LIKE N'%{txtEmail.Text}%'"
+            sqlCommand &= $" AND Address LIKE N'%{txtAddress.Text}%'"
+
+            SetPagedDataSource(clsPMSAnalysis.SearchPerson(sqlCommand, False))
         End If
+
     End Sub
-
     Private Function checkLogicData() As Boolean
-        If txtCustomerFirstName.Text = "" Or isAddFirstName = True Or isAddLastName = True Or txtCustomerLastName.Text = "" Or txtPhone.Text = "" Or txtAddress.Text = "" Or
-            txtEmail.Text = "" Then
-
-            MsgBox("You need to enter all the fields!", Nothing, "Notification")
+        If Not (CheckValue("Customer code", txtCode.Text, "Long") And CheckValue("Phone", txtPhone.Text, "Long")) Then
             Return False
 
-        ElseIf Not CheckValue("Phone", txtPhone.Text, "Long") Then
+        ElseIf cbGender.Checked And Not (rdMale.Checked Or rdFemale.Checked) Then
+            MsgBox("You need to select gender to search!", Nothing, "Notification")
             Return False
 
-        ElseIf Not txtPhone.Text.StartsWith("0") Then
-            MsgBox("Phone number must be started with '0'!", Nothing, "Notification")
+        ElseIf txtPhone.Text.Length > 17 Then
+            MsgBox("Phone number length can't be greater than 17!")
             Return False
 
-        ElseIf countString(txtEmail.Text, "gmail.com") <> 1 Or Not txtEmail.Text.EndsWith("@gmail.com") Then
-            MsgBox("Email invalidate!", Nothing, "Notification")
-            Return False
         End If
 
         Return True
@@ -206,7 +236,7 @@ Public Class frmCustomerCategory
                 Try
                     Number = Long.Parse(value)
                 Catch ex As FormatException
-                    MsgBox(label & " must be a integer number!", Nothing, "Notification")
+                    MsgBox(label & " must be a number!", Nothing, "Notification")
                     returnVal = False
                 Catch ex As OverflowException
                     MsgBox(label & " is too big to handle!", Nothing, "Notification")
@@ -231,67 +261,127 @@ Public Class frmCustomerCategory
 
     End Function
 
-
     Public Function countString(ByVal inputString As String, ByVal subString As String) As Integer
         Return System.Text.RegularExpressions.Regex.Split(inputString, subString).Length - 1
-
     End Function
-
-    Private Sub bDelete_Click(sender As Object, e As EventArgs) Handles bDelete.Click
-        If txtCustomerCode.Text <> "" Then
-            Dim username As String = txtCustomerCode.Text
-            Dim isDelete = clsAccount.CheckUserWasDeleted(username)
-            If Not isDelete Then
-                Dim result = clsPMSAnalysis.DeleteUser(LoginForm.PropUsername, username)
-                If result = 1 Then
-                    setEnable(False)
-                    MsgBox("Delete customer information successful!", Nothing, "Notification")
-                    Reload()
-                Else
-                    MsgBox("There is an error when interact with database!", Nothing, "Notification")
-                End If
-            Else
-                MsgBox("User was deleted before!", Nothing, "Notification")
-            End If
-
+    Private Sub btnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
+        If tables Is Nothing Then
+            MsgBox("No data to export!", Nothing, "Notification")
+            Return
         End If
-    End Sub
 
-    Private Sub txtCustomerFirstName_Click(sender As Object, e As EventArgs) Handles txtCustomerFirstName.Click
-        If isAddFirstName Then
-            txtCustomerFirstName.Text = ""
-            txtCustomerFirstName.ForeColor = Color.Black
-            isAddFirstName = False
+        If tables.Sum(Function(l) l.Rows.Count) = 0 Then
+            MsgBox("No data to export!", Nothing, "Notification")
+            Return
         End If
-    End Sub
 
-    Private Sub txtCustomerLastName_Click(sender As Object, e As EventArgs) Handles txtCustomerLastName.Click
-        If isAddLastName Then
-            txtCustomerLastName.Text = ""
-            txtCustomerLastName.ForeColor = Color.Black
-            isAddLastName = False
-        End If
-    End Sub
-    Private Sub dgvCategory_KeyUp(sender As Object, e As KeyEventArgs) Handles dgvCategory.KeyUp
-        If e.KeyCode.Equals(Keys.Up) Or e.KeyCode.Equals(Keys.Down) Then
-            If dgvCategory.CurrentRow IsNot Nothing And bSave.Enabled = False Then
-                addEditDeleteEnabled(True)
-                setEnable(False)
-                setValue()
-            End If
-        End If
-    End Sub
-    Public Sub setPlaceHolderEnable(ByVal valBoolean As Boolean)
-        If valBoolean = False Then
-            txtCustomerLastName.ForeColor = Color.Black
-            isAddLastName = False
-            txtCustomerFirstName.ForeColor = Color.Black
-            isAddFirstName = False
+
+        For Each col In tables(0).Columns
+            Console.WriteLine(col.ToString() & "  ")
+        Next
+
+        Dim sfd As SaveFileDialog = New SaveFileDialog()
+        sfd.Title = "Select export data path"
+        Dim defaultPath = Environ$("USERPROFILE") & "\Downloads"
+        If Directory.Exists(defaultPath) Then
+            sfd.InitialDirectory = defaultPath
         Else
-            txtCustomerLastName.ForeColor = Color.Gray
-            isAddLastName = True
-            txtCustomerFirstName.ForeColor = Color.Gray
-            isAddFirstName = True
+            sfd.InitialDirectory = "C:\"
+        End If
+        sfd.Filter = "All files (*.*)|*.*|All files (*.*)|*.*"
+        sfd.FilterIndex = 2
+        sfd.RestoreDirectory = True
+        Dim result = sfd.ShowDialog()
+        If result = DialogResult.OK Then
+            Dim fileName = Path.GetDirectoryName(sfd.FileName) & Path.AltDirectorySeparatorChar & Path.GetFileNameWithoutExtension(sfd.FileName)
+            Dim ext = Path.GetExtension(sfd.FileName)
+            If ext = "" Then
+                ext += ".xlsx"
+                sfd.FileName += ".xlsx"
+            End If
+            'If File.Exists(sfd.FileName) Then
+            '    Dim i = 0
+            '    Do
+            '        sfd.FileName = fileName & "(" & i & ")" & ext
+            '        i += 1
+            '    Loop While File.Exists(sfd.FileName)
+            'End If
+            Dim exportObject As New Export()
+
+            Dim listPrintedColumn As New List(Of KeyValuePair(Of Integer, String))
+            For Each column In dgvCustomerSearch.Columns
+                If column.Visible And Not column.Name.Equals("CheckBoxColumn") Then
+                    Dim count = 0
+                    For Each col In tables(0).Columns
+                        If col.ToString().Equals(column.DataPropertyName) Then
+                            listPrintedColumn.Add(New KeyValuePair(Of Integer, String)(count, column.HeaderText))
+                        End If
+                        count += 1
+                    Next
+                End If
+            Next
+
+            Dim listLeftFormat As New ArrayList() From {1, 2, 5, 6}       'list left format of datagridview column (excluding column Checkbox)
+            Dim listDateTimeFormat As New ArrayList() From {3}            'list datetime format of datagridview column (excluding column Checkbox)
+            exportObject.exportToExcel(sfd.FileName, tables, listPrintedColumn, listLeftFormat, "Customer search", listDateTimeFormat, "DD/MM/YYYY")
         End If
     End Sub
+    Private Sub dgvCustomerSearch_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dgvCustomerSearch.CellFormatting
+        If e.ColumnIndex = dgvCustomerSearch.Columns("BirthDate").Index AndAlso e.Value IsNot Nothing Then
+            Dim dateValue As DateTime
+            If DateTime.TryParse(e.Value.ToString(), dateValue) Then
+                e.Value = dateValue.ToString("dd/MM/yyyy")
+                e.FormattingApplied = True
+            End If
+        End If
+    End Sub
+    Private Sub cbGender_CheckedChanged(sender As Object, e As EventArgs) Handles cbGender.CheckedChanged
+        rdMale.Enabled = cbGender.Checked
+        rdFemale.Enabled = cbGender.Checked
+    End Sub
+    Private Sub cbBirthDay_CheckedChanged(sender As Object, e As EventArgs) Handles cbBirthDay.CheckedChanged
+        dtBirthDay.Enabled = cbBirthDay.Checked
+    End Sub
+    Private Sub bAdd_Click(sender As Object, e As EventArgs) Handles bAdd.Click
+        Dim frmCustomerInformation = New CustomerInformation()
+        frmCustomerInformation.LoadData(-1)
+        frmCustomerInformation.ShowDialog()
+    End Sub
+    Private Sub bDelete_Click(sender As Object, e As EventArgs) Handles bDelete.Click
+        If listCheckboxValue.Count > 0 Then
+            Dim result = 1
+            Dim err = False
+
+            For Each id In listCheckboxValue
+
+                If result = 1 Then
+                    result = clsPMSAnalysis.DeleteUser(LoginForm.PropUsername, id)
+                End If
+
+                If result <> 1 Then
+                    MsgBox("There is an error when interact with database!", Nothing, "Notification")
+                    err = True
+                    Exit For
+                End If
+            Next
+
+            If Not err Then
+                MsgBox("Delete selected customers information successful!", Nothing, "Notification")
+                Reload()
+            Else
+            End If
+
+        Else
+            MsgBox("Please check first cell of customers you want to delete!")
+        End If
+    End Sub
+    Private Sub clearValue()
+        txtName.Text = ""
+        rdMale.Checked = True
+        txtPhone.Text = ""
+        txtAddress.Text = ""
+        dtBirthDay.Value = DateTime.Now
+        txtEmail.Text = ""
+    End Sub
+
 End Class

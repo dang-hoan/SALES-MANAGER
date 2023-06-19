@@ -2675,7 +2675,7 @@ Namespace PersonTableAdapters
             Me._commandCollection(3).CommandText = "SELECT Address, BirthDate, CreateBy, CreateDate, DeleteBy, DeleteDate, Email, Fir"& _ 
                 "stName, Gender, GenderName, Id, IsDelete, LastName, Password, Phone, RoleId, Rol"& _ 
                 "eName, StatusId, UpdateBy, UpdateDate, Username FROM PersonView WHERE (RoleName "& _ 
-                "NOT IN ('Customer', 'Admin')) AND (IsDelete = 'False')"
+                "NOT IN ('Customer')) AND (IsDelete = 'False')"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(4).Connection = Me.Connection
@@ -2977,7 +2977,7 @@ Namespace PersonTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetEmployeeById(ByVal Id As Long) As Person.PersonViewDataTable
+        Public Overloads Overridable Function GetPersonById(ByVal Id As Long) As Person.PersonViewDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(5)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(Id,Long)
             Dim dataTable As Person.PersonViewDataTable = New Person.PersonViewDataTable()

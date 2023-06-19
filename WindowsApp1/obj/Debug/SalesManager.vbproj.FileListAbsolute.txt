@@ -90,7 +90,6 @@ D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.AccountInformati
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.DecentralizationForm.resources
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.EmployeeCategory.resources
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.SupplierCategory.resources
-D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.frmCustomerCategory.resources
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.LoginForm.resources
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.MainForm.resources
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.Resources.resources
@@ -109,3 +108,5 @@ D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.WarehouseInforma
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.SalesOrderInformation.resources
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.SalesOrderCategory.resources
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.EmployeeInformation.resources
+D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.CustomerInformation.resources
+D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.CustomerCategory.resources

@@ -90,7 +90,7 @@ Public Class MainForm
         End If
     End Sub
     Private Sub btnCategoryCustomer_Click(sender As Object, e As EventArgs) Handles btnCustomer.Click
-        Dim frmCustomer As New frmCustomerCategory
+        Dim frmCustomer As New CustomerCategory
         ShowForm(frmCustomer)
     End Sub
 

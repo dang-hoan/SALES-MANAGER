@@ -25,9 +25,9 @@ Public Class clsPerson
         ta.Connection = conn
         Return ta.GetAllEmployees()
     End Function
-    Public Function GetEmployeeById(ByVal employeeId As Long) As DataRow
+    Public Function GetPersonById(ByVal id As Long) As DataRow
         ta.Connection = conn
-        Return ta.GetEmployeeById(employeeId).Rows(0)
+        Return ta.GetPersonById(id).Rows(0)
     End Function
 
     Public Function GetAccountNameById(ByVal id As Long) As String
@@ -35,7 +35,7 @@ Public Class clsPerson
         Return ta.GetAccountNameById(id)
     End Function
 
-    Public Function EditCustomer(lastName As String, firstName As String,
+    Public Function UpdateCustomer(lastName As String, firstName As String,
                                 gender As Boolean, birthDate As DateTime, phone As String,
                                 email As String, address As String, updateUser As String, id As Long) As Integer
         ta.Connection = conn
@@ -81,7 +81,11 @@ Public Class clsPerson
         Dim result1 = ta.DeleteUser(DateTime.Now, deleteUsername, Id)
 
         'Update into account table
-        Dim result2 = taAccount.DeleteAccount(ta.GetAccountNameById(Id))
+        Dim result2 = 1
+        Dim accountName = ta.GetAccountNameById(Id)
+        If accountName IsNot Nothing Then
+            result2 = taAccount.DeleteAccount(accountName)
+        End If
 
         If result1 = 1 And result2 = 1 Then
             Return 1
@@ -89,14 +93,14 @@ Public Class clsPerson
             Return 0
         End If
     End Function
-    Public Function SearchPerson(ByVal sqlCommand As String) As Person.PersonViewDataTable
+    Public Function SearchPerson(ByVal sqlCommand As String, Optional isEmployee As Boolean = True) As Person.PersonViewDataTable
         Dim ds As New Person
 
         Dim cmd = conn.CreateCommand()
 
-        cmd.CommandText = "SELECT *
+        cmd.CommandText = $"SELECT *
                             FROM PersonView
-                            WHERE IsDelete = 'False'" & sqlCommand
+                            WHERE IsDelete = 'False' AND {If(isEmployee, "RoleName NOT IN ('Customer')", "RoleName = 'Customer'")}" & sqlCommand
 
         ta.Connection = conn
 

@@ -41,7 +41,7 @@ Public Class ProductInformation
             mode = "Add"
 
             labTitle.Text = "ADD PRODUCT"
-            labTitle.Location = New Point(Me.Width / 2 - labTitle.Width / 2, 30)
+            labTitle.Location = New Point(Me.Width / 2 - labTitle.Width / 2, labTitle.Location.Y)
 
             Dim x As Integer = (Me.Width - bSave.Width) / 2
 

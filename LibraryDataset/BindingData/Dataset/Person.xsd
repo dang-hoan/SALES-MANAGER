@@ -114,7 +114,7 @@ WHERE (Id = @Id);  </CommandText>
               <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="SalesManagerDB.dbo.PersonView" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillBy1" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetAllEmployees" GeneratorSourceName="FillBy1" GetMethodModifier="Public" GetMethodName="GetAllEmployees" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetAllEmployees" UserSourceName="FillBy1">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Address, BirthDate, CreateBy, CreateDate, DeleteBy, DeleteDate, Email, FirstName, Gender, GenderName, Id, IsDelete, LastName, Password, Phone, RoleId, RoleName, StatusId, UpdateBy, UpdateDate, Username FROM PersonView WHERE (RoleName NOT IN ('Customer', 'Admin')) AND (IsDelete = 'False')</CommandText>
+                    <CommandText>SELECT Address, BirthDate, CreateBy, CreateDate, DeleteBy, DeleteDate, Email, FirstName, Gender, GenderName, Id, IsDelete, LastName, Password, Phone, RoleId, RoleName, StatusId, UpdateBy, UpdateDate, Username FROM PersonView WHERE (RoleName NOT IN ('Customer')) AND (IsDelete = 'False')</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -138,7 +138,7 @@ WHERE (Id = @Id);  </CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="SalesManagerDB.dbo.PersonView" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillBy3" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetEmployeeById" GeneratorSourceName="FillBy3" GetMethodModifier="Public" GetMethodName="GetEmployeeById" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetEmployeeById" UserSourceName="FillBy3">
+              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="SalesManagerDB.dbo.PersonView" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillBy3" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetPersonById" GeneratorSourceName="FillBy3" GetMethodModifier="Public" GetMethodName="GetPersonById" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetPersonById" UserSourceName="FillBy3">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT Address, BirthDate, CreateBy, CreateDate, DeleteBy, DeleteDate, Email, FirstName, Gender, GenderName, Id, IsDelete, LastName, Password, Phone, RoleId, RoleName, StatusId, UpdateBy, UpdateDate, Username FROM PersonView WHERE (Id = @Id)</CommandText>
@@ -372,7 +372,7 @@ WHERE (Id = @Id);   </CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_UserColumnName="Id" msprop:Generator_ColumnVarNameInTable="columnId" type="xs:long" />
-              <xs:element name="GenderName" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="GenderName" msprop:Generator_ColumnPropNameInTable="GenderNameColumn" msprop:Generator_ColumnVarNameInTable="columnGenderName" msprop:Generator_UserColumnName="GenderName" minOccurs="0">
+              <xs:element name="GenderName" msdata:ReadOnly="true" msprop:Generator_UserColumnName="GenderName" msprop:Generator_ColumnPropNameInTable="GenderNameColumn" msprop:Generator_ColumnPropNameInRow="GenderName" msprop:Generator_ColumnVarNameInTable="columnGenderName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="3" />
