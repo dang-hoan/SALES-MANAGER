@@ -103,11 +103,11 @@ Partial Class EmployeeInformation
         Me.labTitle.AutoSize = True
         Me.labTitle.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
         Me.labTitle.ForeColor = System.Drawing.Color.Blue
-        Me.labTitle.Location = New System.Drawing.Point(284, 36)
+        Me.labTitle.Location = New System.Drawing.Point(262, 36)
         Me.labTitle.Name = "labTitle"
-        Me.labTitle.Size = New System.Drawing.Size(398, 37)
+        Me.labTitle.Size = New System.Drawing.Size(445, 37)
         Me.labTitle.TabIndex = 8
-        Me.labTitle.Text = "EMPLOYEE CATEGORY"
+        Me.labTitle.Text = "EMPLOYEE INFORMATION"
         '
         'Label11
         '

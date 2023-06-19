@@ -41,10 +41,13 @@ Public Class LoginForm
         End If
     End Sub
 
-    Public ReadOnly Property PropUsername As String
+    Public Property PropUsername As String
         Get
             Return username
         End Get
+        Set(ByVal NewUsername As String)
+            username = NewUsername
+        End Set
     End Property
 
     Private Sub labShowPassword_Click(sender As Object, e As EventArgs) Handles labShowPassword.Click

@@ -42,6 +42,9 @@ Public Class EmployeeInformation
             bEdit.Visible = False
             bDelete.Visible = False
 
+            txtFirstName_Leave(txtFirstName, EventArgs.Empty)
+            txtLastName_Leave(txtLastName, EventArgs.Empty)
+
         Else
             setEnable(False)
 
@@ -233,10 +236,19 @@ Public Class EmployeeInformation
                 If checkAccountInfor() Then
                     'If employyee had account then update account else add account
                     If hasAccount Then
+                        Dim temp = LoginForm.PropUsername
+
+                        If String.Compare(LoginForm.PropUsername, clsPMSAnalysis.GetAccountNameById(employeeCode), StringComparison.OrdinalIgnoreCase) = 0 Then
+                            LoginForm.PropUsername = txtAccountName.Text
+                        End If
                         If txtPassword.Text.Equals(clsAccount.GetPasswordByUsername(clsPMSAnalysis.GetAccountNameById(employeeCode))) Then
                             result = clsAccount.UpdateAccountExceptPassword(employeeCode, clsPMSAnalysis.GetAccountNameById(employeeCode), txtAccountName.Text, CType(cbbStatus.SelectedItem, CBBItem).PropItemId, LoginForm.PropUsername)
                         Else
                             result = clsAccount.UpdateAccount(employeeCode, clsPMSAnalysis.GetAccountNameById(employeeCode), txtAccountName.Text, txtPassword.Text, CType(cbbStatus.SelectedItem, CBBItem).PropItemId, LoginForm.PropUsername)
+                        End If
+
+                        If result <> 1 Then
+                            LoginForm.PropUsername = temp
                         End If
 
                     Else
@@ -260,7 +272,7 @@ Public Class EmployeeInformation
     End Sub
 
     Private Function checkLogicData() As Boolean
-        If txtFirstName.Text = "" Or txtLastName.Text = "" Or txtPhone.Text = "" Or txtAddress.Text = "" Or
+        If txtFirstName.Text = "First name" Or txtLastName.Text = "Last name" Or txtPhone.Text = "" Or txtAddress.Text = "" Or
             txtEmail.Text = "" Or cbbRole.SelectedIndex = -1 Or Not (rdMale.Checked Or rdFemale.Checked) Then
 
             MsgBox("You need to enter all the fields in employee's profile!", Nothing, "Notification")
@@ -382,34 +394,45 @@ Public Class EmployeeInformation
         End If
     End Sub
 
-    'Private Sub txtFirstName_Click(sender As Object, e As EventArgs)
-    '    If isAddFirstName Then
-    '        txtFirstName.Text = ""
-    '        txtFirstName.ForeColor = Color.Black
-    '        isAddFirstName = False
-    '    End If
-    'End Sub
+    Private Sub txtFirstName_MouseDown(sender As Object, e As MouseEventArgs) Handles txtFirstName.MouseDown
+        If txtFirstName.ForeColor = Color.Gray Then
+            txtFirstName.Select(0, 0)
+        End If
+    End Sub
 
-    'Private Sub txtLastName_Click(sender As Object, e As EventArgs)
-    '    If isAddLastName Then
-    '        txtLastName.Text = ""
-    '        txtLastName.ForeColor = Color.Black
-    '        isAddLastName = False
-    '    End If
-    'End Sub
-    'Public Sub setPlaceHolderEnable(ByVal valBoolean As Boolean)
-    '    If valBoolean = False Then
-    '        txtLastName.ForeColor = Color.Black
-    '        isAddLastName = False
-    '        txtFirstName.ForeColor = Color.Black
-    '        isAddFirstName = False
-    '    Else
-    '        txtLastName.ForeColor = Color.Gray
-    '        isAddLastName = True
-    '        txtFirstName.ForeColor = Color.Gray
-    '        isAddFirstName = True
-    '    End If
-    'End Sub
+    Private Sub txtLastName_MouseDown(sender As Object, e As MouseEventArgs) Handles txtLastName.MouseDown
+        If txtLastName.ForeColor = Color.Gray Then
+            txtLastName.Select(0, 0)
+        End If
+    End Sub
+
+    Private Sub txtFirstName_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles txtFirstName.PreviewKeyDown
+        If txtFirstName.ForeColor = Color.Gray Then
+            txtFirstName.Text = ""
+            txtFirstName.ForeColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub txtLastName_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles txtLastName.PreviewKeyDown
+        If txtLastName.ForeColor = Color.Gray Then
+            txtLastName.Text = ""
+            txtLastName.ForeColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub txtFirstName_Leave(sender As Object, e As EventArgs) Handles txtFirstName.Leave
+        If String.IsNullOrWhiteSpace(txtFirstName.Text) Then
+            txtFirstName.Text = "First name"
+            txtFirstName.ForeColor = Color.Gray
+        End If
+    End Sub
+
+    Private Sub txtLastName_Leave(sender As Object, e As EventArgs) Handles txtLastName.Leave
+        If String.IsNullOrWhiteSpace(txtLastName.Text) Then
+            txtLastName.Text = "Last name"
+            txtLastName.ForeColor = Color.Gray
+        End If
+    End Sub
     Private Sub cbEditAccount_CheckedChanged(sender As Object, e As EventArgs) Handles cbEditAccount.CheckedChanged
         txtAccountName.Enabled = cbEditAccount.Checked
         txtPassword.Enabled = cbEditAccount.Checked
@@ -427,4 +450,5 @@ Public Class EmployeeInformation
             txtPassword.UseSystemPasswordChar = True
         End If
     End Sub
+
 End Class
