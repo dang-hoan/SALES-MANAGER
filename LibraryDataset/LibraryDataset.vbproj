@@ -95,6 +95,11 @@
     <Compile Include="BindingData\Dataset\CBB.vb">
       <DependentUpon>CBB.xsd</DependentUpon>
     </Compile>
+    <Compile Include="BindingData\Dataset\Person.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Person.xsd</DependentUpon>
+    </Compile>
     <Compile Include="BindingData\Dataset\OrderDetail.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -102,11 +107,6 @@
     </Compile>
     <Compile Include="BindingData\Dataset\OrderDetail.vb">
       <DependentUpon>OrderDetail.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="BindingData\Dataset\Person.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Person.xsd</DependentUpon>
     </Compile>
     <Compile Include="BindingData\Dataset\Person.vb">
       <DependentUpon>Person.xsd</DependentUpon>
@@ -196,17 +196,6 @@
     <None Include="BindingData\Dataset\CBB.xss">
       <DependentUpon>CBB.xsd</DependentUpon>
     </None>
-    <None Include="BindingData\Dataset\OrderDetail.xsc">
-      <DependentUpon>OrderDetail.xsd</DependentUpon>
-    </None>
-    <None Include="BindingData\Dataset\OrderDetail.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>OrderDetail.Designer.vb</LastGenOutput>
-    </None>
-    <None Include="BindingData\Dataset\OrderDetail.xss">
-      <DependentUpon>OrderDetail.xsd</DependentUpon>
-    </None>
     <None Include="BindingData\Dataset\Person.xsc">
       <DependentUpon>Person.xsd</DependentUpon>
     </None>
@@ -217,6 +206,17 @@
     </None>
     <None Include="BindingData\Dataset\Person.xss">
       <DependentUpon>Person.xsd</DependentUpon>
+    </None>
+    <None Include="BindingData\Dataset\OrderDetail.xsc">
+      <DependentUpon>OrderDetail.xsd</DependentUpon>
+    </None>
+    <None Include="BindingData\Dataset\OrderDetail.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OrderDetail.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="BindingData\Dataset\OrderDetail.xss">
+      <DependentUpon>OrderDetail.xsd</DependentUpon>
     </None>
     <None Include="BindingData\Dataset\Product.xsc">
       <DependentUpon>Product.xsd</DependentUpon>

@@ -1,2 +1,2 @@
-﻿Partial Class _Person
+﻿Partial Class Person
 End Class

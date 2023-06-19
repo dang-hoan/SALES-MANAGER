@@ -66,8 +66,7 @@ Public Class frmCustomerCategory
     End Sub
 
     Private Sub Reload()
-        Dim data = clsPMSAnalysis.GetCustomers()
-        dgvCategory.DataSource = data.Person
+        dgvCategory.DataSource = clsPMSAnalysis.GetCustomers()
         dgvCategory.Columns(1).Visible = False
         dgvCategory.Columns(9).Visible = False
         setEnable(False)
@@ -150,11 +149,11 @@ Public Class frmCustomerCategory
             Dim result As Integer
             Dim type As String = "Update"
             If txtCustomerCode.Text <> "" Then          'Edit
-                result = clsPMSAnalysis.EditCustomer(Nothing, txtCustomerLastName.Text,
+                result = clsPMSAnalysis.EditCustomer(txtCustomerLastName.Text,
                                             txtCustomerFirstName.Text, rdMale.Checked, dtBirthDay.Value,
                                             txtPhone.Text, txtEmail.Text, txtAddress.Text, LoginForm.PropUsername, txtCustomerCode.Text)
             Else                                             'Add new
-                result = clsPMSAnalysis.AddCustomer(Nothing, txtCustomerLastName.Text,
+                result = clsPMSAnalysis.AddCustomer(txtCustomerLastName.Text,
                                             txtCustomerFirstName.Text, rdMale.Checked, dtBirthDay.Value,
                                             txtPhone.Text, txtEmail.Text, txtAddress.Text, LoginForm.PropUsername)
                 type = "Add"

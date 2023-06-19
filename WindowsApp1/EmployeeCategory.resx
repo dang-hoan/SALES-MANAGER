@@ -118,17 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="bSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        0AAADdABEGw9BwAAAThJREFUSEvV1U8rRGEUx/HZeC80yWJSXgALKxtlLC2sJEyy9A4szETdshCShs0s
-        hFJk1mYyQtFg3Gm4d+50w2jmeebUcWd0mZNz/XlcyqnP9rv61QlElmp3kWXAurEFif1h01Nnj050jNjY
-        GoUXsxAPadgScM+N/jjsaIvCxmvczzCJ+x1uiEH8d8KOvwlPLNZwcLiE4SGLFeorEO1Tj2y0joQ/wwW8
-        /PPw5ArgbkZi8ow3n7xnzew9YDD2QXh6HVAI4ekqb3rq0uQ3wtUn4lovEGphcxPlyQABiSBRTGsK4YqN
-        wk4Rt6dbRC53qRAu36AwEoR1OEfo2bRCuHSA8mKcqOz0EsbxmkKY4UY4Xw9b+yjPR4nqdjdhZFYVwuV8
-        YxnNiintjbMIPXukEGa4Ec77cNMz9S8MxjN3FsAMy+Z7pgAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="bAdd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAM
@@ -167,14 +156,8 @@
         w+BByzavZA2iqP+IDR4etq3zI/OItFp3+CQhwETXfYeES78BijdUgBmUe20AAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="CheckBoxColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="CheckBoxColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="bindingNav.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>138, 22</value>
   </metadata>
   <data name="BindingNavigatorMoveFirstItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -216,4 +199,25 @@
         8l/FYwIYQ4UGBWBgAAC+0b+zuQxOnAAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="bDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DAAACwwBP0AiyAAAAg1JREFUOE+NVM9LG0EYnZYe2lMvWntszz0XPNVTj0I3M7EKQvCSg83MohZUKOTU
+        f6B/gXj00P4D/sB7D94EKQRCZif1ECtUi1qI722Mmd2su/vBxybf7Pf2fW/mjbCfgvdRQ55ERratVrpX
+        rz4XQjxC5kazKR6fhR9fOa12rK5cOi2PujqYFgRzRvWZkVZnUai+uLXgRT8H9KA586RtgreRUQfouRn1
+        y2NBZsNCnAB1ofr6+3P1ZRZoH2BROPcOYPvovfZ7rZYtgR8NMvMXkOd4+VvXzE8B4x6UzAjWNXLPGXmV
+        7JGneC4JahaPmQIF/b+obf3C+ASjZndj7o+BaRWBwGJ7RT2Lv0zNOCYWz/0XAfoPAD9OtJp0DfU61iw1
+        Jv5ba1TQqtWexmAMakXNOGbMzGsgG0iyCxaH/gYwCdbRldlWbWYENgyCUjMcnS0ySzX+Z/o1jtkN5z5k
+        gvkRbapJaPp9XHQ/5Sk+sJgYMy/s6sIExxxjNcieNZXwfgOKgrvJDYg1ywBE7Q9k2eytl3DUQw5IJ89t
+        oaPyHIDskVmilueoIgdQM2eqG2SWXMtwVFkHULMyjhK8gh5ywOCcjY5GkaNsfWFCAH2nrAOKHIXntogv
+        R38BYw68me2AoaM4ZtpRHVO5AEN5NCqWdwAdhfGTjmrIn4LXNr50zMsRxaXSDkBQM/RskxnB3LJ8cwuY
+        HLBkvhBQZwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="CheckBoxColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Person.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>23, 20</value>
+  </metadata>
 </root>

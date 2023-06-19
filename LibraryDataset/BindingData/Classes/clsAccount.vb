@@ -1,10 +1,9 @@
 ﻿
 Imports System.Data.SqlClient
-
 Public Class clsAccount
     Dim ta As New AccountTableAdapters.AccountTableAdapter
     Dim taAccountStatus As New AccountTableAdapters.StatusTableAdapter
-    Dim taPerson As New _PersonTableAdapters.PersonTableAdapter
+    Dim taPerson As New PersonTableAdapters.PersonViewTableAdapter
 
     Private strConnTrans As String
     Private strAuditTrans As String
@@ -19,11 +18,11 @@ Public Class clsAccount
 
     Public Function CheckUserExists(ByVal username As String, ByVal password As String) As Boolean
         ta.Connection = conn
-        Dim account = ta.GetAccountByUsername(username)
+        Dim OldPassword = ta.GetPasswordByUsername(username)
 
-        If account.Rows.Count > 0 Then
+        If OldPassword IsNot Nothing Then
             'Verify
-            Return SecurePasswordHasher.Verify(password, account.Rows(0)(1))
+            Return SecurePasswordHasher.Verify(password, OldPassword)
         Else
             Return False
         End If
@@ -37,9 +36,9 @@ Public Class clsAccount
             Return True
         End If
     End Function
-    Public Function GetAccountByUsername(ByVal username As String) As Account.AccountDataTable
+    Public Function GetPasswordByUsername(ByVal username As String) As String
         ta.Connection = conn
-        Return ta.GetAccountByUsername(username)
+        Return ta.GetPasswordByUsername(username)
     End Function
     Public Function CheckUserWasDeleted(ByVal username As String) As Integer
         ta.Connection = conn
@@ -55,12 +54,12 @@ Public Class clsAccount
         taPerson.Connection = conn
         Dim now = DateTime.Now
         Dim hash = SecurePasswordHasher.Hash(password)
-        Dim result = ta.InsertAccount(username, hash, statusId, now, createUser)
-        Dim result2 = 1
-        If id <> -1 Then
-            result2 = taPerson.UpdateUsername(username, now, createUser, id)
-        End If
-        If result = 1 And result2 = 1 Then
+        Dim result1 = ta.InsertAccount(username, hash, statusId, now, createUser)
+
+        'Update into person table
+        Dim result2 = taPerson.UpdateUsername(username, now, createUser, id)
+
+        If result1 = 1 And result2 = 1 Then
             Return 1
         Else
             Return 0
@@ -68,14 +67,39 @@ Public Class clsAccount
 
 
     End Function
-    Public Function UpdateAccount(ByVal username As String, ByVal password As String, ByVal statusId As Integer, ByVal updateUser As String) As Integer
+    Public Function UpdateAccount(ByVal id As Long, ByVal username As String, ByVal newUsername As String, ByVal password As String, ByVal statusId As Integer, ByVal updateUser As String) As Integer
         ta.Connection = conn
+        taPerson.Connection = conn
+        Dim now = DateTime.Now
         Dim hash = SecurePasswordHasher.Hash(password)
-        Return ta.UpdateAccount(hash, statusId, DateTime.Now, updateUser, username)
+        Dim result1 = ta.UpdateAccount(newUsername, hash, statusId, now, updateUser, username)
+
+        'Update into person table
+        Dim result2 = taPerson.UpdateUsername(newUsername, now, updateUser, id)
+
+        If result1 = 1 And result2 = 1 Then
+            Return 1
+        Else
+            Return 0
+        End If
+
     End Function
-    Public Function UpdateAccountStatus(ByVal username As String, ByVal statusId As Integer, ByVal updateUser As String) As Integer
+    Public Function UpdateAccountExceptPassword(ByVal id As Long, ByVal username As String, ByVal newUsername As String, ByVal statusId As Integer, ByVal updateUser As String) As Integer
+        'BUG: update in person table
         ta.Connection = conn
-        Return ta.UpdateAccountStatus(statusId, DateTime.Now, updateUser, username)
+        taPerson.Connection = conn
+        Dim now = DateTime.Now
+        Dim result1 = ta.UpdateAccountExceptPassword(newUsername, statusId, DateTime.Now, updateUser, username)
+
+        'Update into person table
+        Dim result2 = taPerson.UpdateUsername(newUsername, now, updateUser, id)
+
+        If result1 = 1 And result2 = 1 Then
+            Return 1
+        Else
+            Return 0
+        End If
+
     End Function
     Public Function DeleteCompletelyAccount(ByVal username As String) As Integer
         If username IsNot Nothing Then

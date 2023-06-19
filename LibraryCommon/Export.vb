@@ -6,7 +6,7 @@ Public Class Export
     Public Function exportToExcel(ByVal path As String, ByVal tables As BindingList(Of Data.DataTable),
                                   ByVal listPrintedColumn As List(Of KeyValuePair(Of Integer, String)),
                                   ByVal listLeftFormat As ArrayList,
-                                  ByVal title As String, Optional ByVal listDateTimeFormat As ArrayList = Nothing, Optional ByVal formatString As String = "MM/DD/YYYY HH:mm") As Integer
+                                  ByVal title As String, Optional ByVal listDateTimeFormat As ArrayList = Nothing, Optional ByVal formatString As String = "DD/MM/YYYY HH:mm") As Integer
 
         Dim xlApp As Application
         Dim xlWorkBook As Workbook

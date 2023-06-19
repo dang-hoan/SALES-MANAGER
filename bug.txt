@@ -28,3 +28,4 @@ V duyệt qua tất cả product khi khởi tạo combobox cbbProduct
 V double click vào order information
 V add remove order khi dgv rỗng
 - out of stock
+- xuất cột sdt mất số 0 ở đầu

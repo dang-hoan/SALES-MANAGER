@@ -121,7 +121,9 @@
     <Compile Include="AccountInformation.Designer.vb">
       <DependentUpon>AccountInformation.vb</DependentUpon>
     </Compile>
-    <Compile Include="AccountInformation.vb" />
+    <Compile Include="AccountInformation.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DataGridViewCheckBoxHeaderCell.vb" />
     <Compile Include="DecentralizationForm.Designer.vb">
       <DependentUpon>DecentralizationForm.vb</DependentUpon>
@@ -132,11 +134,15 @@
     <Compile Include="EmployeeInformation.Designer.vb">
       <DependentUpon>EmployeeInformation.vb</DependentUpon>
     </Compile>
-    <Compile Include="EmployeeInformation.vb" />
+    <Compile Include="EmployeeInformation.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="EmployeeCategory.Designer.vb">
       <DependentUpon>EmployeeCategory.vb</DependentUpon>
     </Compile>
-    <Compile Include="EmployeeCategory.vb" />
+    <Compile Include="EmployeeCategory.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SalesOrderInformation.Designer.vb">
       <DependentUpon>SalesOrderInformation.vb</DependentUpon>
     </Compile>

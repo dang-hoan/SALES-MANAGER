@@ -167,6 +167,10 @@ Public Class SupplierInformation
             MsgBox("Phone number must be started with '0'!", Nothing, "Notification")
             Return False
 
+        ElseIf txtPhone.Text.Length > 17 Then
+            MsgBox("Phone number length can't be greater than 17!")
+            Return False
+
         ElseIf countString(txtEmail.Text, "gmail.com") <> 1 Or Not txtEmail.Text.EndsWith("@gmail.com") Then
             MsgBox("Email invalidate!", Nothing, "Notification")
             Return False

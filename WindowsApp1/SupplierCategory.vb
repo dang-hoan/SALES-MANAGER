@@ -192,6 +192,11 @@ Public Class SupplierCategory
     Private Function checkLogicData() As Boolean
         If Not (CheckValue("Supplier code", txtCode.Text, "Long") And CheckValue("Phone", txtPhone.Text, "Long")) Then
             Return False
+
+        ElseIf txtPhone.Text.Length > 17 Then
+            MsgBox("Phone number length can't be greater than 17!")
+            Return False
+
         End If
         Return True
     End Function
