@@ -406,7 +406,7 @@ Public Class ProductCategory
             For Each id In listCheckboxValue
                 Dim product = clsProduct.GetProductById(id)
                 Dim warehouseId = product("WareHouseId")
-                Dim total = product("Total")
+                Dim total = product("Total") - product("SellNumber")
                 Dim oldImports = clsWarehouse.GetWarehouseById(warehouseId)("NumberOfImport")
                 Dim result = clsWarehouse.UpdateImportsOfWarehouse(oldImports - total, warehouseId)
 

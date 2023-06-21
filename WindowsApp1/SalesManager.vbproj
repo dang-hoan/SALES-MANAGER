@@ -118,12 +118,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountInformation.Designer.vb">
-      <DependentUpon>AccountInformation.vb</DependentUpon>
-    </Compile>
-    <Compile Include="AccountInformation.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="CustomerInformation.Designer.vb">
       <DependentUpon>CustomerInformation.vb</DependentUpon>
     </Compile>
@@ -241,9 +235,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AccountInformation.resx">
-      <DependentUpon>AccountInformation.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="CustomerInformation.resx">
       <DependentUpon>CustomerInformation.vb</DependentUpon>
     </EmbeddedResource>

@@ -1,15 +1,15 @@
 - forget password (gởi mk mới qua email), register account
 - xuất đồ thị báo cáo theo ngày chọn
-- gộp search + danh mục
+V gộp search + danh mục
 V thêm bảng paymentMethod để lưu combobox
 - thêm chú thích cho các trường	
-- sửa lại định dạng ngày
-- xoá nhiều row trong grid view (thêm cột checkbox ở đầu để chọn row muốn xoá)
-- hiển thị trường tên không hiển thị trường id
-- sửa lại code sql search
-- thêm check box search hay không
-- thêm phân trang trong datagridview
-- thay so sánh khác rỗng thành hàm check rỗng của thư viện
+V sửa lại định dạng ngày
+V xoá nhiều row trong grid view (thêm cột checkbox ở đầu để chọn row muốn xoá)
+V hiển thị trường tên không hiển thị trường id
+V sửa lại code sql search
+V thêm check box search hay không
+V thêm phân trang trong datagridview
+V thay so sánh khác rỗng thành hàm check rỗng của thư viện
 V sửa discount trong order??
 V ship date > order date??
 V ship date, order date chỉ hiện ngày tháng năm, k format thêm giờ
@@ -17,7 +17,7 @@ V ship date, order date chỉ hiện ngày tháng năm, k format thêm giờ
 - ẩn panel nền đồ thị khi trống dữ liệu trong report warehouse
 - refresh datagridview?? có nên k
 V number, -, export
-- bỏ chữ interger trong cảnh báo
+V bỏ chữ interger trong cảnh báo
 - xoá 1 đối tượng (xoá row trong category này có ảnh hưởng tới việc hiển thị trong các category khác?)
 V sửa txtNumber -> txtTotal
 - khi nhà kho bị xoá -> sản phẩm của kho cũng bị xoá
@@ -31,3 +31,9 @@ V add remove order khi dgv rỗng
 V phone too long, notify when have 2 checkvalue false, update status of account when delete employee
 V Check username exits and process save employee
 - xuất cột sdt mất số 0 ở đầu, sort, reload
+
+
+
+V thêm thông tin statistic (sales của các tháng trong năm 2022)
+V xem lại chart khi chỉ có 1 point
+V chỉnh lại giao diện để không bị che khuất nhau

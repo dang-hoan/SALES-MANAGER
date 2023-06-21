@@ -42,18 +42,25 @@ Partial Class WarehouseReport
         Me.labTotalSales = New System.Windows.Forms.Label()
         Me.labelSales = New System.Windows.Forms.Label()
         Me.chartReport = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.labTitle = New System.Windows.Forms.Label()
         Me.btnExport = New System.Windows.Forms.Button()
-        Me.cbbFromYear = New System.Windows.Forms.ComboBox()
-        Me.cbbToYear = New System.Windows.Forms.ComboBox()
+        Me.dtMonth = New System.Windows.Forms.DateTimePicker()
+        Me.rdByMonth = New System.Windows.Forms.RadioButton()
+        Me.rdByYear = New System.Windows.Forms.RadioButton()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.bStatistic = New System.Windows.Forms.Button()
+        Me.dtYear = New System.Windows.Forms.DateTimePicker()
+        Me.rdByDate = New System.Windows.Forms.RadioButton()
+        Me.dtDate = New System.Windows.Forms.DateTimePicker()
+        Me.labNotice = New System.Windows.Forms.Label()
         CType(Me.pictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panel1.SuspendLayout()
         Me.panel2.SuspendLayout()
         Me.panel3.SuspendLayout()
         CType(Me.chartReport, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'label1
@@ -117,7 +124,7 @@ Partial Class WarehouseReport
         Me.labelTotal.AutoSize = True
         Me.labelTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold)
         Me.labelTotal.ForeColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.labelTotal.Location = New System.Drawing.Point(37, 74)
+        Me.labelTotal.Location = New System.Drawing.Point(37, 75)
         Me.labelTotal.Name = "labelTotal"
         Me.labelTotal.Size = New System.Drawing.Size(162, 26)
         Me.labelTotal.TabIndex = 8
@@ -128,7 +135,7 @@ Partial Class WarehouseReport
         Me.labTotalProducts.AutoSize = True
         Me.labTotalProducts.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.labTotalProducts.ForeColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.labTotalProducts.Location = New System.Drawing.Point(74, 19)
+        Me.labTotalProducts.Location = New System.Drawing.Point(85, 20)
         Me.labTotalProducts.Name = "labTotalProducts"
         Me.labTotalProducts.Size = New System.Drawing.Size(66, 46)
         Me.labTotalProducts.TabIndex = 9
@@ -144,7 +151,7 @@ Partial Class WarehouseReport
         Me.panel1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.panel1.Location = New System.Drawing.Point(68, 152)
         Me.panel1.Name = "panel1"
-        Me.panel1.Size = New System.Drawing.Size(238, 129)
+        Me.panel1.Size = New System.Drawing.Size(238, 123)
         Me.panel1.TabIndex = 14
         '
         'panel2
@@ -156,7 +163,7 @@ Partial Class WarehouseReport
         Me.panel2.Cursor = System.Windows.Forms.Cursors.Hand
         Me.panel2.Location = New System.Drawing.Point(371, 152)
         Me.panel2.Name = "panel2"
-        Me.panel2.Size = New System.Drawing.Size(238, 129)
+        Me.panel2.Size = New System.Drawing.Size(238, 123)
         Me.panel2.TabIndex = 15
         '
         'labRemainProducts
@@ -164,7 +171,7 @@ Partial Class WarehouseReport
         Me.labRemainProducts.AutoSize = True
         Me.labRemainProducts.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.labRemainProducts.ForeColor = System.Drawing.Color.Red
-        Me.labRemainProducts.Location = New System.Drawing.Point(74, 19)
+        Me.labRemainProducts.Location = New System.Drawing.Point(85, 20)
         Me.labRemainProducts.Name = "labRemainProducts"
         Me.labRemainProducts.Size = New System.Drawing.Size(66, 46)
         Me.labRemainProducts.TabIndex = 9
@@ -176,7 +183,7 @@ Partial Class WarehouseReport
         Me.labelRemain.AutoSize = True
         Me.labelRemain.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold)
         Me.labelRemain.ForeColor = System.Drawing.Color.Red
-        Me.labelRemain.Location = New System.Drawing.Point(22, 74)
+        Me.labelRemain.Location = New System.Drawing.Point(22, 75)
         Me.labelRemain.Name = "labelRemain"
         Me.labelRemain.Size = New System.Drawing.Size(192, 26)
         Me.labelRemain.TabIndex = 8
@@ -191,7 +198,7 @@ Partial Class WarehouseReport
         Me.panel3.Cursor = System.Windows.Forms.Cursors.Hand
         Me.panel3.Location = New System.Drawing.Point(663, 152)
         Me.panel3.Name = "panel3"
-        Me.panel3.Size = New System.Drawing.Size(238, 129)
+        Me.panel3.Size = New System.Drawing.Size(238, 123)
         Me.panel3.TabIndex = 15
         '
         'labTotalSales
@@ -199,7 +206,7 @@ Partial Class WarehouseReport
         Me.labTotalSales.AutoSize = True
         Me.labTotalSales.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.labTotalSales.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.labTotalSales.Location = New System.Drawing.Point(74, 19)
+        Me.labTotalSales.Location = New System.Drawing.Point(85, 20)
         Me.labTotalSales.Name = "labTotalSales"
         Me.labTotalSales.Size = New System.Drawing.Size(66, 46)
         Me.labTotalSales.TabIndex = 9
@@ -211,7 +218,7 @@ Partial Class WarehouseReport
         Me.labelSales.AutoSize = True
         Me.labelSales.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold)
         Me.labelSales.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.labelSales.Location = New System.Drawing.Point(55, 74)
+        Me.labelSales.Location = New System.Drawing.Point(55, 75)
         Me.labelSales.Name = "labelSales"
         Me.labelSales.Size = New System.Drawing.Size(127, 26)
         Me.labelSales.TabIndex = 8
@@ -223,84 +230,154 @@ Partial Class WarehouseReport
         Me.chartReport.ChartAreas.Add(ChartArea1)
         Legend1.Name = "Legend1"
         Me.chartReport.Legends.Add(Legend1)
-        Me.chartReport.Location = New System.Drawing.Point(68, 359)
+        Me.chartReport.Location = New System.Drawing.Point(68, 423)
         Me.chartReport.Name = "chartReport"
         Series1.ChartArea = "ChartArea1"
         Series1.Legend = "Legend1"
         Series1.Name = "Series1"
         Me.chartReport.Series.Add(Series1)
-        Me.chartReport.Size = New System.Drawing.Size(833, 388)
+        Me.chartReport.Size = New System.Drawing.Size(833, 343)
         Me.chartReport.TabIndex = 16
         Me.chartReport.Text = "Chart1"
         '
-        'Label3
+        'labTitle
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.LightSeaGreen
-        Me.Label3.Location = New System.Drawing.Point(240, 763)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(488, 32)
-        Me.Label3.TabIndex = 17
-        Me.Label3.Text = "Chart showing sales over the years"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(236, 308)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(84, 20)
-        Me.Label4.TabIndex = 20
-        Me.Label4.Text = "From year:"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(575, 308)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(65, 20)
-        Me.Label5.TabIndex = 21
-        Me.Label5.Text = "To year:"
+        Me.labTitle.AutoSize = True
+        Me.labTitle.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labTitle.ForeColor = System.Drawing.Color.LightSeaGreen
+        Me.labTitle.Location = New System.Drawing.Point(340, 782)
+        Me.labTitle.Name = "labTitle"
+        Me.labTitle.Size = New System.Drawing.Size(288, 32)
+        Me.labTitle.TabIndex = 17
+        Me.labTitle.Text = "Chart showing sales"
         '
         'btnExport
         '
         Me.btnExport.BackColor = System.Drawing.Color.SandyBrown
-        Me.btnExport.Location = New System.Drawing.Point(793, 763)
+        Me.btnExport.Location = New System.Drawing.Point(793, 782)
         Me.btnExport.Name = "btnExport"
         Me.btnExport.Size = New System.Drawing.Size(108, 41)
         Me.btnExport.TabIndex = 22
         Me.btnExport.Text = "Export"
         Me.btnExport.UseVisualStyleBackColor = False
         '
-        'cbbFromYear
+        'dtMonth
         '
-        Me.cbbFromYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbbFromYear.FormattingEnabled = True
-        Me.cbbFromYear.Location = New System.Drawing.Point(326, 305)
-        Me.cbbFromYear.Name = "cbbFromYear"
-        Me.cbbFromYear.Size = New System.Drawing.Size(86, 28)
-        Me.cbbFromYear.TabIndex = 23
+        Me.dtMonth.CustomFormat = "MM/yyyy"
+        Me.dtMonth.Enabled = False
+        Me.dtMonth.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtMonth.Location = New System.Drawing.Point(276, 58)
+        Me.dtMonth.Name = "dtMonth"
+        Me.dtMonth.Size = New System.Drawing.Size(233, 26)
+        Me.dtMonth.TabIndex = 27
         '
-        'cbbToYear
+        'rdByMonth
         '
-        Me.cbbToYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbbToYear.FormattingEnabled = True
-        Me.cbbToYear.Location = New System.Drawing.Point(646, 305)
-        Me.cbbToYear.Name = "cbbToYear"
-        Me.cbbToYear.Size = New System.Drawing.Size(86, 28)
-        Me.cbbToYear.TabIndex = 25
+        Me.rdByMonth.AutoSize = True
+        Me.rdByMonth.Location = New System.Drawing.Point(144, 58)
+        Me.rdByMonth.Name = "rdByMonth"
+        Me.rdByMonth.Size = New System.Drawing.Size(101, 24)
+        Me.rdByMonth.TabIndex = 30
+        Me.rdByMonth.Text = "By month"
+        Me.rdByMonth.UseVisualStyleBackColor = True
+        '
+        'rdByYear
+        '
+        Me.rdByYear.AutoSize = True
+        Me.rdByYear.Location = New System.Drawing.Point(144, 25)
+        Me.rdByYear.Name = "rdByYear"
+        Me.rdByYear.Size = New System.Drawing.Size(86, 24)
+        Me.rdByYear.TabIndex = 31
+        Me.rdByYear.Text = "By year"
+        Me.rdByYear.UseVisualStyleBackColor = True
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.Label4)
+        Me.GroupBox1.Controls.Add(Me.bStatistic)
+        Me.GroupBox1.Controls.Add(Me.dtYear)
+        Me.GroupBox1.Controls.Add(Me.rdByDate)
+        Me.GroupBox1.Controls.Add(Me.dtDate)
+        Me.GroupBox1.Controls.Add(Me.rdByYear)
+        Me.GroupBox1.Controls.Add(Me.rdByMonth)
+        Me.GroupBox1.Controls.Add(Me.dtMonth)
+        Me.GroupBox1.Location = New System.Drawing.Point(68, 281)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(833, 136)
+        Me.GroupBox1.TabIndex = 32
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Mode"
+        '
+        'Label4
+        '
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.MediumSeaGreen
+        Me.Label4.Location = New System.Drawing.Point(531, 27)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(264, 45)
+        Me.Label4.TabIndex = 35
+        Me.Label4.Text = "*Select a value for mode then click ""Statistic"" button to reload chart!"
+        '
+        'bStatistic
+        '
+        Me.bStatistic.BackColor = System.Drawing.Color.SandyBrown
+        Me.bStatistic.Location = New System.Drawing.Point(581, 85)
+        Me.bStatistic.Name = "bStatistic"
+        Me.bStatistic.Size = New System.Drawing.Size(108, 41)
+        Me.bStatistic.TabIndex = 33
+        Me.bStatistic.Text = "Statistic"
+        Me.bStatistic.UseVisualStyleBackColor = False
+        '
+        'dtYear
+        '
+        Me.dtYear.CustomFormat = "yyyy"
+        Me.dtYear.Enabled = False
+        Me.dtYear.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtYear.Location = New System.Drawing.Point(276, 22)
+        Me.dtYear.Name = "dtYear"
+        Me.dtYear.Size = New System.Drawing.Size(233, 26)
+        Me.dtYear.TabIndex = 34
+        '
+        'rdByDate
+        '
+        Me.rdByDate.AutoSize = True
+        Me.rdByDate.Location = New System.Drawing.Point(144, 93)
+        Me.rdByDate.Name = "rdByDate"
+        Me.rdByDate.Size = New System.Drawing.Size(88, 24)
+        Me.rdByDate.TabIndex = 33
+        Me.rdByDate.Text = "By date"
+        Me.rdByDate.UseVisualStyleBackColor = True
+        '
+        'dtDate
+        '
+        Me.dtDate.CustomFormat = "dd/MM/yyyy"
+        Me.dtDate.Enabled = False
+        Me.dtDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtDate.Location = New System.Drawing.Point(276, 93)
+        Me.dtDate.Name = "dtDate"
+        Me.dtDate.Size = New System.Drawing.Size(233, 26)
+        Me.dtDate.TabIndex = 32
+        '
+        'labNotice
+        '
+        Me.labNotice.AutoSize = True
+        Me.labNotice.BackColor = System.Drawing.Color.Transparent
+        Me.labNotice.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labNotice.Location = New System.Drawing.Point(436, 580)
+        Me.labNotice.Name = "labNotice"
+        Me.labNotice.Size = New System.Drawing.Size(96, 25)
+        Me.labNotice.TabIndex = 33
+        Me.labNotice.Text = "No sales"
         '
         'WarehouseReport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(969, 816)
-        Me.Controls.Add(Me.cbbToYear)
-        Me.Controls.Add(Me.cbbFromYear)
+        Me.ClientSize = New System.Drawing.Size(969, 840)
+        Me.Controls.Add(Me.labNotice)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnExport)
-        Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.labTitle)
         Me.Controls.Add(Me.chartReport)
         Me.Controls.Add(Me.panel3)
         Me.Controls.Add(Me.panel2)
@@ -322,6 +399,8 @@ Partial Class WarehouseReport
         Me.panel3.ResumeLayout(False)
         Me.panel3.PerformLayout()
         CType(Me.chartReport, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -343,10 +422,16 @@ Partial Class WarehouseReport
     Private labTotalSales As System.Windows.Forms.Label
     Private labelSales As System.Windows.Forms.Label
     Friend WithEvents chartReport As DataVisualization.Charting.Chart
-    Friend WithEvents Label3 As Label
-    Private WithEvents Label4 As Label
-    Private WithEvents Label5 As Label
+    Friend WithEvents labTitle As Label
     Friend WithEvents btnExport As Button
-    Friend WithEvents cbbFromYear As ComboBox
-    Friend WithEvents cbbToYear As ComboBox
+    Private WithEvents dtMonth As DateTimePicker
+    Friend WithEvents rdByMonth As RadioButton
+    Friend WithEvents rdByYear As RadioButton
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents rdByDate As RadioButton
+    Private WithEvents dtDate As DateTimePicker
+    Private WithEvents dtYear As DateTimePicker
+    Friend WithEvents bStatistic As Button
+    Friend WithEvents Label4 As Label
+    Friend WithEvents labNotice As Label
 End Class

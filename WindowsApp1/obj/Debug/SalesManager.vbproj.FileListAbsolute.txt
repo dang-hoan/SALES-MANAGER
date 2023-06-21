@@ -86,7 +86,6 @@ D:\Code\vs data\SalesManager2\WindowsApp1\bin\Debug\LibraryDataset.dll.config
 D:\Code\vs data\SalesManager2\WindowsApp1\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\SalesManager.vbproj.AssemblyReference.cache
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\SalesManager.vbproj.ResolveComReference.cache
-D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.AccountInformation.resources
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.DecentralizationForm.resources
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.EmployeeCategory.resources
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.SupplierCategory.resources

@@ -48,7 +48,15 @@ Public Class Export
 
         For i = 0 To dtAll.Rows.Count - 1
             For j = 0 To listPrintedColumn.Count - 1
-                xlWorkSheet.Cells(i + startRow + 1, j + startColumn) = dtAll.Rows(i)(listPrintedColumn(j).Key)
+                'xlWorkSheet.Cells(i + startRow + 1, j + startColumn) = dtAll.Rows(i)(listPrintedColumn(j).Key)
+                'xlWorkSheet.Cells(i + startRow + 1, j + startColumn).Style = If((i + 1) Mod 2 = 0, "evenStyle", "oddStyle")
+
+                If listPrintedColumn(j).Value = "Phone" Then
+                    xlWorkSheet.Cells(i + startRow + 1, j + startColumn).NumberFormat = "@"
+                    xlWorkSheet.Cells(i + startRow + 1, j + startColumn) = "'" & dtAll.Rows(i)(listPrintedColumn(j).Key)
+                Else
+                    xlWorkSheet.Cells(i + startRow + 1, j + startColumn) = dtAll.Rows(i)(listPrintedColumn(j).Key)
+                End If
                 xlWorkSheet.Cells(i + startRow + 1, j + startColumn).Style = If((i + 1) Mod 2 = 0, "evenStyle", "oddStyle")
             Next
         Next

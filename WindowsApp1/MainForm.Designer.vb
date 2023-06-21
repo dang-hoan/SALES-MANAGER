@@ -30,14 +30,8 @@ Partial Class MainForm
         Me.btnOrder = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnSupplier = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnWarehouse = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnTool = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnSearch = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnEmployeeSearch = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnProductSearch = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnOrderSearch = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnDecentralization = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnDecentralize = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnStatistic = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnWarehouseReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnExit = New System.Windows.Forms.ToolStripMenuItem()
         Me.srcMain = New System.Windows.Forms.Panel()
         Me.panelWelcome = New System.Windows.Forms.Panel()
@@ -57,7 +51,7 @@ Partial Class MainForm
         Me.menuStrip.Dock = System.Windows.Forms.DockStyle.Left
         Me.menuStrip.GripMargin = New System.Windows.Forms.Padding(2, 2, 0, 2)
         Me.menuStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.menuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnHome, Me.btnCategory, Me.btnTool, Me.btnStatistic, Me.btnExit})
+        Me.menuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnHome, Me.btnCategory, Me.btnDecentralize, Me.btnStatistic, Me.btnExit})
         Me.menuStrip.Location = New System.Drawing.Point(0, 0)
         Me.menuStrip.Name = "menuStrip"
         Me.menuStrip.Padding = New System.Windows.Forms.Padding(6, 6, 0, 2)
@@ -138,55 +132,22 @@ Partial Class MainForm
         Me.btnWarehouse.Size = New System.Drawing.Size(202, 34)
         Me.btnWarehouse.Text = "Warehouse"
         '
-        'btnTool
+        'btnDecentralize
         '
-        Me.btnTool.AutoSize = False
-        Me.btnTool.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnTool.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnSearch, Me.btnDecentralization})
-        Me.btnTool.Image = CType(resources.GetObject("btnTool.Image"), System.Drawing.Image)
-        Me.btnTool.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.btnTool.Name = "btnTool"
-        Me.btnTool.Size = New System.Drawing.Size(80, 100)
-        Me.btnTool.Text = "Decentralize"
-        Me.btnTool.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btnTool.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        '
-        'btnSearch
-        '
-        Me.btnSearch.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnEmployeeSearch, Me.btnProductSearch, Me.btnOrderSearch})
-        Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(240, 34)
-        Me.btnSearch.Text = "Search"
-        '
-        'btnEmployeeSearch
-        '
-        Me.btnEmployeeSearch.Name = "btnEmployeeSearch"
-        Me.btnEmployeeSearch.Size = New System.Drawing.Size(234, 34)
-        Me.btnEmployeeSearch.Text = "Search client"
-        '
-        'btnProductSearch
-        '
-        Me.btnProductSearch.Name = "btnProductSearch"
-        Me.btnProductSearch.Size = New System.Drawing.Size(234, 34)
-        Me.btnProductSearch.Text = "Search product"
-        '
-        'btnOrderSearch
-        '
-        Me.btnOrderSearch.Name = "btnOrderSearch"
-        Me.btnOrderSearch.Size = New System.Drawing.Size(234, 34)
-        Me.btnOrderSearch.Text = "Search order "
-        '
-        'btnDecentralization
-        '
-        Me.btnDecentralization.Name = "btnDecentralization"
-        Me.btnDecentralization.Size = New System.Drawing.Size(240, 34)
-        Me.btnDecentralization.Text = "Decentralization"
+        Me.btnDecentralize.AutoSize = False
+        Me.btnDecentralize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnDecentralize.Image = CType(resources.GetObject("btnDecentralize.Image"), System.Drawing.Image)
+        Me.btnDecentralize.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.btnDecentralize.Name = "btnDecentralize"
+        Me.btnDecentralize.Size = New System.Drawing.Size(80, 100)
+        Me.btnDecentralize.Text = "Decentralize"
+        Me.btnDecentralize.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnDecentralize.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
         'btnStatistic
         '
         Me.btnStatistic.AutoSize = False
         Me.btnStatistic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnStatistic.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnWarehouseReport})
         Me.btnStatistic.Image = CType(resources.GetObject("btnStatistic.Image"), System.Drawing.Image)
         Me.btnStatistic.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.btnStatistic.Name = "btnStatistic"
@@ -194,12 +155,6 @@ Partial Class MainForm
         Me.btnStatistic.Text = "Statistic"
         Me.btnStatistic.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnStatistic.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        '
-        'btnWarehouseReport
-        '
-        Me.btnWarehouseReport.Name = "btnWarehouseReport"
-        Me.btnWarehouseReport.Size = New System.Drawing.Size(202, 34)
-        Me.btnWarehouseReport.Text = "Warehouse"
         '
         'btnExit
         '
@@ -302,18 +257,12 @@ Partial Class MainForm
     Private WithEvents btnCustomer As ToolStripMenuItem
     Private WithEvents btnEmployee As ToolStripMenuItem
     Private WithEvents btnOrder As ToolStripMenuItem
-    Private WithEvents btnTool As ToolStripMenuItem
-    Private WithEvents btnSearch As ToolStripMenuItem
-    Private WithEvents btnEmployeeSearch As ToolStripMenuItem
-    Private WithEvents btnProductSearch As ToolStripMenuItem
-    Private WithEvents btnOrderSearch As ToolStripMenuItem
+    Private WithEvents btnDecentralize As ToolStripMenuItem
     Private WithEvents btnStatistic As ToolStripMenuItem
-    Private WithEvents btnWarehouseReport As ToolStripMenuItem
     Private WithEvents btnExit As ToolStripMenuItem
     Friend WithEvents Label1 As Label
     Friend WithEvents pictureMain As PictureBox
     Friend WithEvents labHello As Label
     Friend WithEvents panelWelcome As Panel
     Friend WithEvents btnWarehouse As ToolStripMenuItem
-    Friend WithEvents btnDecentralization As ToolStripMenuItem
 End Class

@@ -20,11 +20,8 @@ Public Class MainForm
         btnOrder.Visible = False
         btnSupplier.Visible = False
         btnWarehouse.Visible = False
-        btnEmployeeSearch.Visible = False
-        btnProductSearch.Visible = False
-        btnOrderSearch.Visible = False
-        btnWarehouseReport.Visible = False
-        btnDecentralization.Visible = False
+        btnStatistic.Visible = False
+        btnDecentralize.Visible = False
         Dim listNumber As New List(Of Integer) From {0, 0, 0, 0}        'Category, Search, Statistic, Tool
         Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
         For Each permission In dataPermission
@@ -48,23 +45,14 @@ Public Class MainForm
                 Case "Warehouse category"
                     btnWarehouse.Visible = True
                     listNumber(0) += 1
-                Case "Employee search"
-                    btnEmployeeSearch.Visible = True
-                    listNumber(1) += 1
-                Case "Product search"
-                    btnProductSearch.Visible = True
-                    listNumber(1) += 1
-                Case "Order search"
-                    btnOrderSearch.Visible = True
-                    listNumber(1) += 1
                 Case "Inventory report"
-                    btnWarehouseReport.Visible = True
+                    btnStatistic.Visible = True
                     listNumber(2) += 1
                 Case "Sales report"
                     'btnSalesReport.Visible = True
                     'listNumber(2) += 1
                 Case "Decentralization"
-                    btnDecentralization.Visible = True
+                    btnDecentralize.Visible = True
                     listNumber(3) += 1
             End Select
         Next
@@ -73,20 +61,15 @@ Public Class MainForm
         Else
             btnCategory.Visible = True
         End If
-        If listNumber(1) = 0 Then
-            btnSearch.Visible = False
-        Else
-            btnSearch.Visible = True
-        End If
         If listNumber(2) = 0 Then
             btnStatistic.Visible = False
         Else
             btnStatistic.Visible = True
         End If
         If listNumber(3) = 0 And listNumber(1) = 0 Then
-            btnTool.Visible = False
+            btnDecentralize.Visible = False
         Else
-            btnTool.Visible = True
+            btnDecentralize.Visible = True
         End If
     End Sub
     Private Sub btnCategoryCustomer_Click(sender As Object, e As EventArgs) Handles btnCustomer.Click
@@ -130,7 +113,7 @@ Public Class MainForm
         ShowForm(frmSalesOrder)
     End Sub
 
-    Private Sub inventoryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles btnWarehouseReport.Click
+    Private Sub btnStatistic_Click(sender As Object, e As EventArgs) Handles btnStatistic.Click
         Dim frmWarehouseReport As New WarehouseReport
         ShowForm(frmWarehouseReport)
     End Sub
@@ -149,7 +132,7 @@ Public Class MainForm
         LoginForm.Show()
     End Sub
 
-    Private Sub btnProductSearch_Click(sender As Object, e As EventArgs) Handles btnProductSearch.Click
+    Private Sub btnProductSearch_Click(sender As Object, e As EventArgs)
         ShowForm(New ProductCategory)
     End Sub
 
@@ -165,7 +148,7 @@ Public Class MainForm
         ShowForm(New EmployeeCategory)
     End Sub
 
-    Private Sub btnDecentralization_Click(sender As Object, e As EventArgs) Handles btnDecentralization.Click
+    Private Sub btnDecentralize_Click(sender As Object, e As EventArgs) Handles btnDecentralize.Click
         ShowForm(New DecentralizationForm)
     End Sub
 End Class

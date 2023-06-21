@@ -216,7 +216,7 @@ Public Class EmployeeCategory
             End If
 
             If cbBirthDay.Checked Then
-                sqlCommand &= $" AND CONVERT(VARCHAR(10), BirthDate, 103) = '{dtBirthDay.Value.ToString(dtBirthDay.CustomFormat)}'"
+                sqlCommand &= $" AND FORMAT(BirthDate, '{dtBirthDay.CustomFormat}') = '{dtBirthDay.Value.ToString(dtBirthDay.CustomFormat)}'"
             End If
 
             sqlCommand &= $" AND Phone LIKE N'%{txtPhone.Text}%'"

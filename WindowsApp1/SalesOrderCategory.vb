@@ -228,15 +228,12 @@ Public Class SalesOrderCategory
                 sqlCommand &= $" AND PaymentMethodId = {CType(cbbPaymentMethod.SelectedItem, CBBItem).PropItemId}"
             End If
 
-            'Get custom format and code format from https://learn.microsoft.com/en-us/sql/t-sql/functions/cast-and-convert-transact-sql?view=sql-server-ver15#date-and-time-styles
-            Dim customFormat = dtOrderDate.CustomFormat
-
             If cbOrderDate.Checked Then
-                sqlCommand &= $" AND CONVERT(VARCHAR(10), OrderDate, 103) = '{dtOrderDate.Value.ToString(customFormat)}'"
+                sqlCommand &= $" AND FORMAT(OrderDate, '{dtOrderDate.CustomFormat}') = '{dtOrderDate.Value.ToString(dtOrderDate.CustomFormat)}'"
             End If
 
             If cbShipDate.Checked Then
-                sqlCommand &= $" AND CONVERT(VARCHAR(10), ShipDate, 103) = '{dtShipDate.Value.ToString(customFormat)}'"
+                sqlCommand &= $" AND FORMAT(ShipDate, '{dtShipDate.CustomFormat}') = '{dtShipDate.Value.ToString(dtShipDate.CustomFormat)}'"
             End If
 
             If cbShipStatus.Checked Then

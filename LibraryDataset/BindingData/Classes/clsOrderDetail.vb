@@ -79,10 +79,6 @@ Public Class clsOrderDetail
         taSalesDetail.Connection = conn
         Return taSalesDetail.UpdateSalesDetail(WareHouseId, ProductId, Total, SellNumber, SalesTotal)
     End Function
-    Public Function GetOrderView() As OrderDetail.OrderViewDataTable
-        taOrderView.Connection = conn
-        Return taOrderView.GetData()
-    End Function
     Public Function GetOrderDetailView() As OrderDetail.OrderDetailViewDataTable
         taOrderDetailView.Connection = conn
         Return taOrderDetailView.GetData()
@@ -116,5 +112,64 @@ Public Class clsOrderDetail
         Return ds.SalesOrderView
 
     End Function
+
+    Public Function GetMaxYear() As Integer
+        taOrderView.Connection = conn
+        Return taOrderView.GetMaxYear()
+    End Function
+    Public Function GetMinYear() As Integer
+        taOrderView.Connection = conn
+        Return taOrderView.GetMinYear()
+    End Function
+    Public Function GetSalesByDate(ByVal shipDate As String) As OrderDetail.OrderViewDataTable
+        taOrderView.Connection = conn
+        Return taOrderView.GetSalesByDate(shipDate)
+    End Function
+    Public Function GetSalesByDateAndProductId(ByVal shipDate As String, ByVal productId As Long) As OrderDetail.OrderDetailViewDataTable
+        taOrderDetailView.Connection = conn
+        Return taOrderDetailView.GetSalesByDateAndProductId(shipDate, productId)
+    End Function
+    Public Function GetSalesByDateAndWarehouseId(ByVal shipDate As String, ByVal warehouseId As Long) As OrderDetail.OrderDetailViewDataTable
+        taOrderDetailView.Connection = conn
+        Return taOrderDetailView.GetSalesByDateAndWarehouseId(shipDate, warehouseId)
+    End Function
+    Public Function GetSalesByDateAndProductName(ByVal shipDate As String, ByVal productName As String) As OrderDetail.OrderDetailViewDataTable
+        taOrderDetailView.Connection = conn
+        Return taOrderDetailView.GetSalesByDateAndProductName(shipDate, productName)
+    End Function
+    Public Function GetSalesByMonth(ByVal shipMonth As String) As OrderDetail.OrderViewDataTable
+        taOrderView.Connection = conn
+        Return taOrderView.GetSalesByMonth(shipMonth)
+    End Function
+    Public Function GetSalesByMonthAndProductId(ByVal shipMonth As String, ByVal productId As Long) As OrderDetail.OrderDetailViewDataTable
+        taOrderDetailView.Connection = conn
+        Return taOrderDetailView.GetSalesByMonthAndProductId(shipMonth, productId)
+    End Function
+    Public Function GetSalesByMonthAndWareHouseId(ByVal shipMonth As String, ByVal warehouseId As Long) As OrderDetail.OrderDetailViewDataTable
+        taOrderDetailView.Connection = conn
+        Return taOrderDetailView.GetSalesByMonthAndWareHouseId(shipMonth, warehouseId)
+    End Function
+    Public Function GetSalesByMonthAndProductName(ByVal shipMonth As String, ByVal productName As String) As OrderDetail.OrderDetailViewDataTable
+        taOrderDetailView.Connection = conn
+        Return taOrderDetailView.GetSalesByMonthAndProductName(shipMonth, productName)
+    End Function
+
+    Public Function GetSalesByYear(ByVal shipYear As String) As OrderDetail.OrderViewDataTable
+        taOrderView.Connection = conn
+        Return taOrderView.GetSalesByYear(shipYear)
+    End Function
+    Public Function GetSalesByYearAndProductId(ByVal shipYear As String, ByVal productId As Long) As OrderDetail.OrderDetailViewDataTable
+        taOrderDetailView.Connection = conn
+        Return taOrderDetailView.GetSalesByYearAndProductId(shipYear, productId)
+    End Function
+    Public Function GetSalesByYearAndWareHouseId(ByVal shipYear As String, ByVal warehouseId As Long) As OrderDetail.OrderDetailViewDataTable
+        taOrderDetailView.Connection = conn
+        Return taOrderDetailView.GetSalesByYearAndWarehouseId(shipYear, warehouseId)
+    End Function
+    Public Function GetSalesByYearAndProductName(ByVal shipYear As String, ByVal productName As String) As OrderDetail.OrderDetailViewDataTable
+        taOrderDetailView.Connection = conn
+        Return taOrderDetailView.GetSalesByYearAndProductName(shipYear, productName)
+    End Function
+
 
 End Class
