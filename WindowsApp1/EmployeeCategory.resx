@@ -127,7 +127,7 @@
         NdgBJWo9JcGkY3HxzbksYp/fE3/t14Rg4VnO34Fx+XMhegLCQbGyNmT+UwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnExport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="bExport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
         0AAADdABEGw9BwAAAaNJREFUOE9jIASM04xZ9epNdHRrDEJUJqqwQ4WJA2b1Znx61cY2OrWGObo1RnP0
@@ -140,7 +140,7 @@
         gD7QBfogmHAVwMAAAOjNN3QjRee0AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="btnSearch.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="bSearch.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
         0AAADdABEGw9BwAAAm5JREFUOE+dU11rE0EUjYoI/gVfs9kIIoIv/o+uImoVE/FB2hobqT6ooYoPRYpU

@@ -109,3 +109,6 @@ D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.SalesOrderCatego
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.EmployeeInformation.resources
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.CustomerInformation.resources
 D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.CustomerCategory.resources
+D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.EnterCode.resources
+D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.ResetPassword.resources
+D:\Code\vs data\SalesManager2\WindowsApp1\obj\Debug\WindowsApp1.EnterEmail.resources

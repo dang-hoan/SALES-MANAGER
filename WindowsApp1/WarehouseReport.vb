@@ -11,10 +11,13 @@ Public Class WarehouseReport
     Dim clsPMSAnalysis As New clsCBB(conn.connSales.ConnectionString)
     Dim clsOrderDetail As New clsOrderDetail(conn.connSales.ConnectionString)
     Dim clsWarehouse As New clsWarehouse(conn.connSales.ConnectionString)
+    Dim clsRolePermission As New clsRolePermission(conn.connSales.ConnectionString)
 
     Dim lastSelectedIndex = 0
 
     Private Sub WarehouseReport_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SetVisibleForPermission()
+
         Dim dataProduct = clsPMSAnalysis.GetCBBProduct().CBBProduct
         Dim dataWareHouse = clsPMSAnalysis.GetCBBWareHouse().CBBWareHouse
 
@@ -32,6 +35,25 @@ Public Class WarehouseReport
         cbbProduct.SelectedIndex = 0
 
         rdByYear.Checked = True
+    End Sub
+    Private Sub SetVisibleForPermission()
+        bExport.Visible = False
+
+        Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
+
+        For Each permission In dataPermission
+            Dim form = permission(1).split(":")(0)
+            Dim permiss = Strings.Split(Strings.Split(permission(1), ": ")(1), ", ")
+            Select Case form
+                Case "Warehouse report"
+                    For Each p In permiss
+                        Select Case p
+                            Case "Export"
+                                bExport.Visible = True
+                        End Select
+                    Next
+            End Select
+        Next
     End Sub
 
     Private Sub cbbProduct_Click(sender As Object, e As EventArgs) Handles cbbProduct.Click
@@ -404,7 +426,7 @@ Public Class WarehouseReport
         GetValue()
     End Sub
 
-    Private Sub btnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
+    Private Sub bExport_Click(sender As Object, e As EventArgs) Handles bExport.Click
         If labNotice.Visible Then
             MsgBox("No data to export!", Nothing, "Notification")
             Return
@@ -512,8 +534,8 @@ Public Class WarehouseReport
                 xlWorkSheet.Cells(i + 1, j) = "Sales"
                 Dim point As DataPoint = chartReport.Series("Sales").Points(0)
                 i += 1
-                Dim xValue As String = Point.AxisLabel
-                Dim yValue As String = Point.YValues(0)
+                Dim xValue As String = point.AxisLabel
+                Dim yValue As String = point.YValues(0)
                 xlWorkSheet.Cells(i, j).NumberFormat = "@"
                 xlWorkSheet.Cells(i - 1, j + 1) = xValue
                 xlWorkSheet.Cells(i, j + 1) = yValue

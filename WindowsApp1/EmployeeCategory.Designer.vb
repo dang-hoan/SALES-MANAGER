@@ -31,8 +31,8 @@ Partial Class EmployeeCategory
         Me.cbGender = New System.Windows.Forms.CheckBox()
         Me.cbRole = New System.Windows.Forms.CheckBox()
         Me.cbBirthDay = New System.Windows.Forms.CheckBox()
-        Me.btnExport = New System.Windows.Forms.Button()
-        Me.btnSearch = New System.Windows.Forms.Button()
+        Me.bExport = New System.Windows.Forms.Button()
+        Me.bSearch = New System.Windows.Forms.Button()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.txtUsername = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -72,7 +72,6 @@ Partial Class EmployeeCategory
         Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewCheckBoxColumn3 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.dgvEmployeeSearch = New System.Windows.Forms.DataGridView()
-        Me.Person = New LibraryDataset.Person()
         Me.CheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -95,6 +94,7 @@ Partial Class EmployeeCategory
         Me.DeleteDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DeleteByDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Person = New LibraryDataset.Person()
         Me.groupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.bindingNav, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -193,8 +193,8 @@ Partial Class EmployeeCategory
         Me.groupBox1.Controls.Add(Me.cbGender)
         Me.groupBox1.Controls.Add(Me.cbRole)
         Me.groupBox1.Controls.Add(Me.cbBirthDay)
-        Me.groupBox1.Controls.Add(Me.btnExport)
-        Me.groupBox1.Controls.Add(Me.btnSearch)
+        Me.groupBox1.Controls.Add(Me.bExport)
+        Me.groupBox1.Controls.Add(Me.bSearch)
         Me.groupBox1.Controls.Add(Me.Label10)
         Me.groupBox1.Controls.Add(Me.txtUsername)
         Me.groupBox1.Controls.Add(Me.Label9)
@@ -247,35 +247,35 @@ Partial Class EmployeeCategory
         Me.cbBirthDay.TabIndex = 30
         Me.cbBirthDay.UseVisualStyleBackColor = True
         '
-        'btnExport
+        'bExport
         '
-        Me.btnExport.BackColor = System.Drawing.Color.SandyBrown
-        Me.btnExport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnExport.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnExport.Image = CType(resources.GetObject("btnExport.Image"), System.Drawing.Image)
-        Me.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnExport.Location = New System.Drawing.Point(448, 265)
-        Me.btnExport.Name = "btnExport"
-        Me.btnExport.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnExport.Size = New System.Drawing.Size(139, 48)
-        Me.btnExport.TabIndex = 29
-        Me.btnExport.Text = "Export"
-        Me.btnExport.UseVisualStyleBackColor = False
+        Me.bExport.BackColor = System.Drawing.Color.SandyBrown
+        Me.bExport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.bExport.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.bExport.Image = CType(resources.GetObject("bExport.Image"), System.Drawing.Image)
+        Me.bExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.bExport.Location = New System.Drawing.Point(448, 265)
+        Me.bExport.Name = "bExport"
+        Me.bExport.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.bExport.Size = New System.Drawing.Size(139, 48)
+        Me.bExport.TabIndex = 29
+        Me.bExport.Text = "Export"
+        Me.bExport.UseVisualStyleBackColor = False
         '
-        'btnSearch
+        'bSearch
         '
-        Me.btnSearch.BackColor = System.Drawing.Color.SandyBrown
-        Me.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnSearch.Image = CType(resources.GetObject("btnSearch.Image"), System.Drawing.Image)
-        Me.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSearch.Location = New System.Drawing.Point(265, 265)
-        Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnSearch.Size = New System.Drawing.Size(139, 48)
-        Me.btnSearch.TabIndex = 28
-        Me.btnSearch.Text = "Search"
-        Me.btnSearch.UseVisualStyleBackColor = False
+        Me.bSearch.BackColor = System.Drawing.Color.SandyBrown
+        Me.bSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.bSearch.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.bSearch.Image = CType(resources.GetObject("bSearch.Image"), System.Drawing.Image)
+        Me.bSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.bSearch.Location = New System.Drawing.Point(265, 265)
+        Me.bSearch.Name = "bSearch"
+        Me.bSearch.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.bSearch.Size = New System.Drawing.Size(139, 48)
+        Me.bSearch.TabIndex = 28
+        Me.bSearch.Text = "Search"
+        Me.bSearch.UseVisualStyleBackColor = False
         '
         'Label10
         '
@@ -642,11 +642,6 @@ Partial Class EmployeeCategory
         Me.dgvEmployeeSearch.Size = New System.Drawing.Size(853, 265)
         Me.dgvEmployeeSearch.TabIndex = 33
         '
-        'Person
-        '
-        Me.Person.DataSetName = "Person"
-        Me.Person.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'CheckBoxColumn
         '
         Me.CheckBoxColumn.HeaderText = ""
@@ -856,6 +851,11 @@ Partial Class EmployeeCategory
         Me.DataGridViewCheckBoxColumn1.Visible = False
         Me.DataGridViewCheckBoxColumn1.Width = 150
         '
+        'Person
+        '
+        Me.Person.DataSetName = "Person"
+        Me.Person.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'EmployeeCategory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -916,8 +916,8 @@ Partial Class EmployeeCategory
     Friend WithEvents cbbRole As ComboBox
     Private WithEvents Label10 As Label
     Friend WithEvents txtUsername As TextBox
-    Private WithEvents btnExport As Button
-    Private WithEvents btnSearch As Button
+    Private WithEvents bExport As Button
+    Private WithEvents bSearch As Button
     Friend WithEvents cbRole As CheckBox
     Friend WithEvents cbBirthDay As CheckBox
     Friend WithEvents cbGender As CheckBox

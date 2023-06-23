@@ -8,8 +8,6 @@ Public Class CustomerInformation
 
     Dim mode As String = "Update"
     Public Sub LoadData(customerCode As Long)
-        SetVisibleForPermission()
-
         If customerCode = -1 Then
             setEnable(True)
             mode = "Add"
@@ -48,6 +46,9 @@ Public Class CustomerInformation
         'InitPlaceHolderText()
 
     End Sub
+    Private Sub CustomerInformation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SetVisibleForPermission()
+    End Sub
     Private Sub SetVisibleForPermission()
         bEdit.Visible = False
         bDelete.Visible = False
@@ -69,11 +70,10 @@ Public Class CustomerInformation
                 Exit For
             End If
         Next
-        CenterButtons()
+        CenterButtons({bEdit, bDelete, bSave}.ToList(), 30)
     End Sub
 
-    Private Sub CenterButtons()
-        Dim listButtons = New List(Of Button) From {bEdit, bDelete, bSave}
+    Private Sub CenterButtons(ByRef listButtons As List(Of Button), ByVal offset_between As Integer)
         Dim totalWidth As Integer = 0
         Dim count = 0
 
@@ -84,13 +84,11 @@ Public Class CustomerInformation
             End If
         Next
 
-        Dim offset_between = 30
-        Dim x As Integer = (Me.Width - totalWidth - offset_between * (count - 1)) / 2
-        Dim y As Integer = 450
+        Dim x As Integer = (listButtons(0).Parent.Width - totalWidth - offset_between * (count - 1)) / 2
 
         For Each btn As Button In listButtons
             If btn.Visible = True Then
-                btn.Location = New Point(x, y)
+                btn.Location = New Point(x, btn.Location.Y)
                 x += btn.Width + offset_between
             End If
         Next

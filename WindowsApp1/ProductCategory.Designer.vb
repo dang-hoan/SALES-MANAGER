@@ -24,13 +24,13 @@ Partial Class ProductCategory
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ProductCategory))
-        Me.btnSearch = New System.Windows.Forms.Button()
+        Me.bSearch = New System.Windows.Forms.Button()
         Me.groupBox1 = New System.Windows.Forms.GroupBox()
         Me.cbSupplier = New System.Windows.Forms.CheckBox()
         Me.cbCategory = New System.Windows.Forms.CheckBox()
         Me.cbProductStatus = New System.Windows.Forms.CheckBox()
         Me.cbWarehouse = New System.Windows.Forms.CheckBox()
-        Me.btnExport = New System.Windows.Forms.Button()
+        Me.bExport = New System.Windows.Forms.Button()
         Me.txtUnitDiscount = New System.Windows.Forms.TextBox()
         Me.txtNumber = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -83,7 +83,6 @@ Partial Class ProductCategory
         Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dgvProductSearch = New System.Windows.Forms.DataGridView()
-        Me.Product = New LibraryDataset.Product()
         Me.CheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProductNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -99,6 +98,7 @@ Partial Class ProductCategory
         Me.RatingDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ImageIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.IsDeleteDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Product = New LibraryDataset.Product()
         Me.groupBox1.SuspendLayout()
         CType(Me.bindingNav, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.bindingNav.SuspendLayout()
@@ -106,20 +106,20 @@ Partial Class ProductCategory
         CType(Me.Product, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'btnSearch
+        'bSearch
         '
-        Me.btnSearch.BackColor = System.Drawing.Color.SandyBrown
-        Me.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnSearch.Image = CType(resources.GetObject("btnSearch.Image"), System.Drawing.Image)
-        Me.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSearch.Location = New System.Drawing.Point(265, 257)
-        Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnSearch.Size = New System.Drawing.Size(139, 48)
-        Me.btnSearch.TabIndex = 5
-        Me.btnSearch.Text = "Search"
-        Me.btnSearch.UseVisualStyleBackColor = False
+        Me.bSearch.BackColor = System.Drawing.Color.SandyBrown
+        Me.bSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.bSearch.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.bSearch.Image = CType(resources.GetObject("bSearch.Image"), System.Drawing.Image)
+        Me.bSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.bSearch.Location = New System.Drawing.Point(265, 257)
+        Me.bSearch.Name = "bSearch"
+        Me.bSearch.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.bSearch.Size = New System.Drawing.Size(139, 48)
+        Me.bSearch.TabIndex = 5
+        Me.bSearch.Text = "Search"
+        Me.bSearch.UseVisualStyleBackColor = False
         '
         'groupBox1
         '
@@ -127,10 +127,10 @@ Partial Class ProductCategory
         Me.groupBox1.Controls.Add(Me.cbCategory)
         Me.groupBox1.Controls.Add(Me.cbProductStatus)
         Me.groupBox1.Controls.Add(Me.cbWarehouse)
-        Me.groupBox1.Controls.Add(Me.btnExport)
+        Me.groupBox1.Controls.Add(Me.bExport)
         Me.groupBox1.Controls.Add(Me.txtUnitDiscount)
         Me.groupBox1.Controls.Add(Me.txtNumber)
-        Me.groupBox1.Controls.Add(Me.btnSearch)
+        Me.groupBox1.Controls.Add(Me.bSearch)
         Me.groupBox1.Controls.Add(Me.Label10)
         Me.groupBox1.Controls.Add(Me.cbbWarehouse)
         Me.groupBox1.Controls.Add(Me.Label9)
@@ -192,20 +192,20 @@ Partial Class ProductCategory
         Me.cbWarehouse.TabIndex = 24
         Me.cbWarehouse.UseVisualStyleBackColor = True
         '
-        'btnExport
+        'bExport
         '
-        Me.btnExport.BackColor = System.Drawing.Color.SandyBrown
-        Me.btnExport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnExport.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnExport.Image = CType(resources.GetObject("btnExport.Image"), System.Drawing.Image)
-        Me.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnExport.Location = New System.Drawing.Point(448, 257)
-        Me.btnExport.Name = "btnExport"
-        Me.btnExport.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnExport.Size = New System.Drawing.Size(139, 48)
-        Me.btnExport.TabIndex = 23
-        Me.btnExport.Text = "Export"
-        Me.btnExport.UseVisualStyleBackColor = False
+        Me.bExport.BackColor = System.Drawing.Color.SandyBrown
+        Me.bExport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.bExport.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.bExport.Image = CType(resources.GetObject("bExport.Image"), System.Drawing.Image)
+        Me.bExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.bExport.Location = New System.Drawing.Point(448, 257)
+        Me.bExport.Name = "bExport"
+        Me.bExport.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.bExport.Size = New System.Drawing.Size(139, 48)
+        Me.bExport.TabIndex = 23
+        Me.bExport.Text = "Export"
+        Me.bExport.UseVisualStyleBackColor = False
         '
         'txtUnitDiscount
         '
@@ -470,6 +470,7 @@ Partial Class ProductCategory
         '
         Me.BindingNavigatorPositionItem.AccessibleName = "Position"
         Me.BindingNavigatorPositionItem.AutoSize = False
+        Me.BindingNavigatorPositionItem.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.BindingNavigatorPositionItem.Name = "BindingNavigatorPositionItem"
         Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(50, 31)
         Me.BindingNavigatorPositionItem.Text = "0"
@@ -692,11 +693,6 @@ Partial Class ProductCategory
         Me.dgvProductSearch.Size = New System.Drawing.Size(853, 265)
         Me.dgvProductSearch.TabIndex = 1
         '
-        'Product
-        '
-        Me.Product.DataSetName = "Product"
-        Me.Product.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'CheckBoxColumn
         '
         Me.CheckBoxColumn.HeaderText = ""
@@ -835,6 +831,11 @@ Partial Class ProductCategory
         Me.IsDeleteDataGridViewCheckBoxColumn.Visible = False
         Me.IsDeleteDataGridViewCheckBoxColumn.Width = 150
         '
+        'Product
+        '
+        Me.Product.DataSetName = "Product"
+        Me.Product.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'ProductCategory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -861,7 +862,7 @@ Partial Class ProductCategory
 
     End Sub
 
-    Private WithEvents btnSearch As System.Windows.Forms.Button
+    Private WithEvents bSearch As System.Windows.Forms.Button
     Friend WithEvents dgvProductSearch As DataGridView
     Private WithEvents groupBox1 As GroupBox
     Private WithEvents txtUnitDiscount As TextBox
@@ -884,7 +885,7 @@ Partial Class ProductCategory
     Private WithEvents label6 As Label
     Private WithEvents label3 As Label
     Private WithEvents label5 As Label
-    Private WithEvents btnExport As Button
+    Private WithEvents bExport As Button
     Private WithEvents label7 As Label
     Friend WithEvents cbSupplier As CheckBox
     Friend WithEvents cbCategory As CheckBox

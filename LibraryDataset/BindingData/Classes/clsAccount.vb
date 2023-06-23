@@ -113,4 +113,9 @@ Public Class clsAccount
         taAccountStatus.Connection = conn
         Return taAccountStatus.GetData(username)
     End Function
+    Public Function UpdatePasswordByEmail(ByVal newPassword As String, ByVal email As String, ByVal updateUser As String) As Integer
+        ta.Connection = conn
+        Dim hash = SecurePasswordHasher.Hash(newPassword)
+        Return ta.UpdatePasswordByEmail(hash, DateTime.Now, updateUser, email)
+    End Function
 End Class

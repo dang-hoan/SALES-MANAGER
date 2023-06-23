@@ -68,4 +68,9 @@ Public Class LoginForm
             login()
         End If
     End Sub
+
+    Private Sub linkForget_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkForget.LinkClicked
+        Dim frmEnterEmail = New EnterEmail()
+        frmEnterEmail.ShowDialog()
+    End Sub
 End Class

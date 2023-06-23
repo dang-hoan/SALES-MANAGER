@@ -1,5 +1,5 @@
 - forget password (gởi mk mới qua email), register account
-- xuất đồ thị báo cáo theo ngày chọn
+V xuất đồ thị báo cáo theo ngày chọn
 V gộp search + danh mục
 V thêm bảng paymentMethod để lưu combobox
 - thêm chú thích cho các trường	
@@ -14,7 +14,7 @@ V sửa discount trong order??
 V ship date > order date??
 V ship date, order date chỉ hiện ngày tháng năm, k format thêm giờ
 - thêm tiêu đề cho file excel
-- ẩn panel nền đồ thị khi trống dữ liệu trong report warehouse
+V ẩn panel nền đồ thị khi trống dữ liệu trong report warehouse
 - refresh datagridview?? có nên k
 V number, -, export
 V bỏ chữ interger trong cảnh báo
@@ -31,7 +31,7 @@ V add remove order khi dgv rỗng
 V phone too long, notify when have 2 checkvalue false, update status of account when delete employee
 V Check username exits and process save employee
 - xuất cột sdt mất số 0 ở đầu, sort, reload
-
+- kiểm tra nếu email trùng
 
 
 V thêm thông tin statistic (sales của các tháng trong năm 2022)

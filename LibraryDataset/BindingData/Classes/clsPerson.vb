@@ -34,6 +34,10 @@ Public Class clsPerson
         ta.Connection = conn
         Return ta.GetAccountNameById(id)
     End Function
+    Public Function GetAccountNameByEmail(ByVal email As String) As String
+        ta.Connection = conn
+        Return ta.GetAccountNameByEmail(email)
+    End Function
 
     Public Function UpdateCustomer(lastName As String, firstName As String,
                                 gender As Boolean, birthDate As DateTime, phone As String,
@@ -76,22 +80,14 @@ Public Class clsPerson
         End If
         Return False
     End Function
-    Public Function DeleteUser(ByVal deleteUsername As String, ByVal Id As Long) As Integer
+    Public Function CheckEmailExists(ByVal email As String) As Boolean
+        Dim ds As New Person
         ta.Connection = conn
-        Dim result1 = ta.DeleteUser(DateTime.Now, deleteUsername, Id)
-
-        'Update into account table
-        Dim result2 = 1
-        Dim accountName = ta.GetAccountNameById(Id)
-        If accountName IsNot Nothing Then
-            result2 = taAccount.DeleteAccount(accountName)
+        Dim count = ta.CheckEmailExists(email).Rows.Count
+        If count > 0 Then
+            Return True
         End If
-
-        If result1 = 1 And result2 = 1 Then
-            Return 1
-        Else
-            Return 0
-        End If
+        Return False
     End Function
     Public Function SearchPerson(ByVal sqlCommand As String, Optional isEmployee As Boolean = True) As Person.PersonViewDataTable
         Dim ds As New Person
@@ -114,4 +110,21 @@ Public Class clsPerson
 
     End Function
 
+    Public Function DeleteUser(ByVal deleteUsername As String, ByVal Id As Long) As Integer
+        ta.Connection = conn
+        Dim result1 = ta.DeleteUser(DateTime.Now, deleteUsername, Id)
+
+        'Update into account table
+        Dim result2 = 1
+        Dim accountName = ta.GetAccountNameById(Id)
+        If accountName IsNot Nothing Then
+            result2 = taAccount.DeleteAccount(accountName)
+        End If
+
+        If result1 = 1 And result2 = 1 Then
+            Return 1
+        Else
+            Return 0
+        End If
+    End Function
 End Class

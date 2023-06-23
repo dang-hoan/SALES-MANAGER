@@ -60,7 +60,7 @@ SELECT Username, Password, StatusId FROM Account WHERE (Username = @Username)</C
               <Mapping SourceColumn="StatusId" DataSetColumn="StatusId" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteAccount" Modifier="Public" Name="DeleteAccount" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="DeleteAccount">
+              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteAccount" Modifier="Public" Name="DeleteAccount" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteAccount">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE Account
@@ -76,7 +76,7 @@ SELECT Username, Password, StatusId FROM Account WHERE (Username = @Username)</C
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteCompletelyAccount" Modifier="Public" Name="DeleteCompletelyAccount" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteCompletelyAccount">
+              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteCompletelyAccount" Modifier="Public" Name="DeleteCompletelyAccount" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="DeleteCompletelyAccount">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM Account
@@ -123,7 +123,7 @@ WHERE (Username = @Username)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="SalesManagerDB.dbo.Account" DbObjectType="Table" GenerateShortCommands="true" GeneratorGetMethodName="GetAccountByUsername" GeneratorSourceName="GetPasswordByUsername" Modifier="Public" Name="GetPasswordByUsername" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="GetPasswordByUsername">
+              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="SalesManagerDB.dbo.Account" DbObjectType="Table" GenerateShortCommands="true" GeneratorGetMethodName="GetAccountByUsername" GeneratorSourceName="GetPasswordByUsername" Modifier="Public" Name="GetPasswordByUsername" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="GetPasswordByUsername">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT Password
@@ -135,7 +135,7 @@ WHERE (Username = @Username)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertAccount" Modifier="Public" Name="InsertAccount" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="InsertAccount">
+              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertAccount" Modifier="Public" Name="InsertAccount" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="InsertAccount">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO Account
@@ -152,7 +152,7 @@ SELECT Username, Password, StatusId FROM Account WHERE (Username = @Username)</C
                   </DbCommand>
                 </InsertCommand>
               </DbSource>
-              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateAccount" Modifier="Public" Name="UpdateAccount" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="UpdateAccount">
+              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateAccount" Modifier="Public" Name="UpdateAccount" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="UpdateAccount">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE Account
@@ -170,7 +170,7 @@ SELECT Username, Password, StatusId FROM Account WHERE (Username = @Username)</C
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateAccountExceptPassword" Modifier="Public" Name="UpdateAccountExceptPassword" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="UpdateAccountExceptPassword">
+              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateAccountExceptPassword" Modifier="Public" Name="UpdateAccountExceptPassword" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="UpdateAccountExceptPassword">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE Account
@@ -183,6 +183,23 @@ SELECT Username, Password, StatusId FROM Account WHERE (Username = @Username)</C
                       <Parameter AllowDbNull="true" AutogeneratedName="UpdateDate" ColumnName="UpdateDate" DataSourceName="SalesManagerDB.dbo.Account" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@UpdateDate" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="UpdateDate" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="UpdateBy" ColumnName="UpdateBy" DataSourceName="SalesManagerDB.dbo.Account" DataTypeServer="varchar(40)" DbType="AnsiString" Direction="Input" ParameterName="@UpdateBy" Precision="0" ProviderType="VarChar" Scale="0" Size="40" SourceColumn="UpdateBy" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="Username" ColumnName="Username" DataSourceName="SalesManagerDB.dbo.Account" DataTypeServer="varchar(40)" DbType="AnsiString" Direction="Input" ParameterName="@Username" Precision="0" ProviderType="VarChar" Scale="0" Size="40" SourceColumn="Username" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+              <DbSource ConnectionRef="SalesManagerDBConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdatePasswordByEmail" Modifier="Public" Name="UpdatePasswordByEmail" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="UpdatePasswordByEmail">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE Account
+SET       Password = @NewPassword, UpdateDate = @UpdateDate, UpdateBy = @UpdateBy
+FROM   Account INNER JOIN
+             Person ON Account.Username = Person.Username
+WHERE (Person.Email = @Email);  </CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="NewPassword" ColumnName="Password" DataSourceName="SalesManagerDB.dbo.Account" DataTypeServer="varchar(200)" DbType="AnsiString" Direction="Input" ParameterName="@NewPassword" Precision="0" ProviderType="VarChar" Scale="0" Size="200" SourceColumn="Password" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="UpdateDate" ColumnName="UpdateDate" DataSourceName="SalesManagerDB.dbo.Account" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@UpdateDate" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="UpdateDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="UpdateBy" ColumnName="UpdateBy" DataSourceName="SalesManagerDB.dbo.Account" DataTypeServer="varchar(40)" DbType="AnsiString" Direction="Input" ParameterName="@UpdateBy" Precision="0" ProviderType="VarChar" Scale="0" Size="40" SourceColumn="UpdateBy" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Email" ColumnName="Email" DataSourceName="SalesManagerDB.dbo.Person" DataTypeServer="varchar(40)" DbType="AnsiString" Direction="Input" ParameterName="@Email" Precision="0" ProviderType="VarChar" Scale="0" Size="40" SourceColumn="Email" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>

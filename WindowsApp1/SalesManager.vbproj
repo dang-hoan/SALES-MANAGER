@@ -143,6 +143,24 @@
     <Compile Include="EmployeeCategory.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="EnterCode.Designer.vb">
+      <DependentUpon>EnterCode.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EnterCode.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResetPassword.Designer.vb">
+      <DependentUpon>ResetPassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ResetPassword.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnterEmail.Designer.vb">
+      <DependentUpon>EnterEmail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EnterEmail.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SalesOrderInformation.Designer.vb">
       <DependentUpon>SalesOrderInformation.vb</DependentUpon>
     </Compile>
@@ -246,6 +264,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeCategory.resx">
       <DependentUpon>EmployeeCategory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EnterCode.resx">
+      <DependentUpon>EnterCode.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResetPassword.resx">
+      <DependentUpon>ResetPassword.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EnterEmail.resx">
+      <DependentUpon>EnterEmail.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SalesOrderInformation.resx">
       <DependentUpon>SalesOrderInformation.vb</DependentUpon>

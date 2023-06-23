@@ -43,7 +43,7 @@ Partial Class WarehouseReport
         Me.labelSales = New System.Windows.Forms.Label()
         Me.chartReport = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.labTitle = New System.Windows.Forms.Label()
-        Me.btnExport = New System.Windows.Forms.Button()
+        Me.bExport = New System.Windows.Forms.Button()
         Me.dtMonth = New System.Windows.Forms.DateTimePicker()
         Me.rdByMonth = New System.Windows.Forms.RadioButton()
         Me.rdByYear = New System.Windows.Forms.RadioButton()
@@ -251,15 +251,15 @@ Partial Class WarehouseReport
         Me.labTitle.TabIndex = 17
         Me.labTitle.Text = "Chart showing sales"
         '
-        'btnExport
+        'bExport
         '
-        Me.btnExport.BackColor = System.Drawing.Color.SandyBrown
-        Me.btnExport.Location = New System.Drawing.Point(793, 782)
-        Me.btnExport.Name = "btnExport"
-        Me.btnExport.Size = New System.Drawing.Size(108, 41)
-        Me.btnExport.TabIndex = 22
-        Me.btnExport.Text = "Export"
-        Me.btnExport.UseVisualStyleBackColor = False
+        Me.bExport.BackColor = System.Drawing.Color.SandyBrown
+        Me.bExport.Location = New System.Drawing.Point(793, 782)
+        Me.bExport.Name = "bExport"
+        Me.bExport.Size = New System.Drawing.Size(108, 41)
+        Me.bExport.TabIndex = 22
+        Me.bExport.Text = "Export"
+        Me.bExport.UseVisualStyleBackColor = False
         '
         'dtMonth
         '
@@ -376,7 +376,7 @@ Partial Class WarehouseReport
         Me.ClientSize = New System.Drawing.Size(969, 840)
         Me.Controls.Add(Me.labNotice)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.btnExport)
+        Me.Controls.Add(Me.bExport)
         Me.Controls.Add(Me.labTitle)
         Me.Controls.Add(Me.chartReport)
         Me.Controls.Add(Me.panel3)
@@ -423,7 +423,7 @@ Partial Class WarehouseReport
     Private labelSales As System.Windows.Forms.Label
     Friend WithEvents chartReport As DataVisualization.Charting.Chart
     Friend WithEvents labTitle As Label
-    Friend WithEvents btnExport As Button
+    Friend WithEvents bExport As Button
     Private WithEvents dtMonth As DateTimePicker
     Friend WithEvents rdByMonth As RadioButton
     Friend WithEvents rdByYear As RadioButton

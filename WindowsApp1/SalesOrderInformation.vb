@@ -21,7 +21,6 @@ Public Class SalesOrderInformation
     Dim mode As String = "Update"
 
     Public Sub LoadData(orderCode As Long)
-        SetVisibleForPermission()
         txtOrderCode.Enabled = False
         txtTotalCosts.Enabled = False
         txtCosts.Enabled = False
@@ -101,11 +100,11 @@ Public Class SalesOrderInformation
             End If
 
         End If
-            InitPlaceHolderText()
+        InitPlaceHolderText()
 
     End Sub
-
     Private Sub SalesOrderInformation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SetVisibleForPermission()
         If mode <> "Add" Then
             SetPagedDataSource(clsPMSAnalysis.GetProductsInforByOrderId(txtOrderCode.Text))
         Else
@@ -279,7 +278,6 @@ Public Class SalesOrderInformation
     End Sub
 
     Private Sub SetVisibleForPermission()
-        'bAdd.Visible = False
         bEdit.Visible = False
         bDelete.Visible = False
         bSave.Visible = False
@@ -290,9 +288,6 @@ Public Class SalesOrderInformation
             If form = "Order category" Then
                 For Each p In permiss
                     Select Case p
-                        Case "Add"
-                            'bAdd.Visible = True
-                            bSave.Visible = True
                         Case "Edit"
                             bEdit.Visible = True
                             bSave.Visible = True
@@ -303,11 +298,10 @@ Public Class SalesOrderInformation
                 Exit For
             End If
         Next
-        CenterButtons()
+        CenterButtons({bEdit, bDelete, bSave}.ToList, 30)
     End Sub
 
-    Private Sub CenterButtons()
-        Dim listButtons = New List(Of Button) From {bEdit, bDelete, bSave}
+    Private Sub CenterButtons(ByRef listButtons As List(Of Button), ByVal offset_between As Integer)
         Dim totalWidth As Integer = 0
         Dim count = 0
 
@@ -318,13 +312,11 @@ Public Class SalesOrderInformation
             End If
         Next
 
-        Dim offset_between = 30
-        Dim x As Integer = (Me.Width - totalWidth - offset_between * (count - 1)) / 2
-        Dim y As Integer = 480
+        Dim x As Integer = (listButtons(0).Parent.Width - totalWidth - offset_between * (count - 1)) / 2
 
         For Each btn As Button In listButtons
             If btn.Visible = True Then
-                btn.Location = New Point(x, y)
+                btn.Location = New Point(x, btn.Location.Y)
                 x += btn.Width + offset_between
             End If
         Next
@@ -655,7 +647,7 @@ Public Class SalesOrderInformation
             If currentRow IsNot Nothing Then
                 If currentRow.Cells("ProductId").Value IsNot Nothing Then
                     Dim productId = currentRow.Cells("ProductId").Value.ToString()
-                    Dim productName = currentRow.Cells("ProductName").Value.ToString()
+                    Dim productName = currentRow.Cells("ProductNameColumn").Value.ToString()
                     Dim numberOfProducts = currentRow.Cells("NumberOfProducts").Value.ToString()
                     Dim totalPriceOfProducts = currentRow.Cells("TotalPriceOfProducts").Value.ToString()
                     Dim statusName = currentRow.Cells("StatusName").Value.ToString()
@@ -697,7 +689,7 @@ Public Class SalesOrderInformation
         If currentRow IsNot Nothing Then
             If currentRow.Cells("ProductId").Value IsNot Nothing Then
                 Dim productId = currentRow.Cells("ProductId").Value.ToString()
-                Dim productName = currentRow.Cells("ProductName").Value.ToString()
+                Dim productName = currentRow.Cells("ProductNameColumn").Value.ToString()
                 Dim numberOfProducts = currentRow.Cells("NumberOfProducts").Value.ToString()
                 Dim totalPriceOfProducts = currentRow.Cells("TotalPriceOfProducts").Value.ToString()
                 Dim statusName = currentRow.Cells("StatusName").Value.ToString()
@@ -778,7 +770,7 @@ Public Class SalesOrderInformation
                     Dim newDatable = lastDataTable.Clone()
                     Dim newRow = newDatable.NewRow()
                     newRow("ProductId") = selectedProduct.PropItemId
-                    newRow("ProductName") = selectedProduct.PropItemName
+                    newRow("ProductNameColumn") = selectedProduct.PropItemName
                     newRow("NumberOfProducts") = number
                     newRow("TotalPriceOfProducts") = If(number = "0", "0", txtCosts.Text)
                     newRow("StatusName") = "AVAILABLE"
@@ -787,7 +779,7 @@ Public Class SalesOrderInformation
                 Else
                     Dim newRow = lastDataTable.NewRow()
                     newRow("ProductId") = selectedProduct.PropItemId
-                    newRow("ProductName") = selectedProduct.PropItemName
+                    newRow("ProductNameColumn") = selectedProduct.PropItemName
                     newRow("NumberOfProducts") = number
                     newRow("TotalPriceOfProducts") = If(number = "0", "0", txtCosts.Text)
                     newRow("StatusName") = "AVAILABLE"
@@ -798,7 +790,7 @@ Public Class SalesOrderInformation
                 Dim dt = CType(listBuyProduct.DataSource, DataTable)
                 Dim newRow = dt.NewRow()
                 newRow("ProductId") = selectedProduct.PropItemId
-                newRow("ProductName") = selectedProduct.PropItemName
+                newRow("ProductNameColumn") = selectedProduct.PropItemName
                 newRow("NumberOfProducts") = number
                 newRow("TotalPriceOfProducts") = If(number = "0", "0", txtCosts.Text)
                 newRow("StatusName") = "AVAILABLE"
@@ -826,7 +818,7 @@ Public Class SalesOrderInformation
 
                     For Each product In dt.Rows
                         If id = product("ProductId") Then
-                            cbbProduct.Items.Add(New CBBItem(id, product("ProductName")))
+                            cbbProduct.Items.Add(New CBBItem(id, product("ProductNameColumn")))
                             needRemoveRows.Add(product)
                         End If
                     Next

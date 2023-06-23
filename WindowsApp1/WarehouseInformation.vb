@@ -8,8 +8,6 @@ Public Class WarehouseInformation
 
     Dim mode As String = "Update"
     Public Sub LoadData(warehouseCode As Long)
-        SetVisibleForPermission()
-
         If warehouseCode = -1 Then
             setEnable(True)
             mode = "Add"
@@ -40,14 +38,15 @@ Public Class WarehouseInformation
 
     End Sub
 
+    Private Sub WarehouseInformation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SetVisibleForPermission()
+    End Sub
     Private Sub SetVisibleForPermission()
-        'bAdd.Visible = False
         bEdit.Visible = False
         bDelete.Visible = False
         bSave.Visible = False
 
         Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
-        'Dim viewDetail = False
 
         For Each permission In dataPermission
             Dim form = permission(1).split(":")(0)
@@ -56,9 +55,6 @@ Public Class WarehouseInformation
                 Case "Warehouse category"
                     For Each p In permiss
                         Select Case p
-                            Case "Add"
-                                'bAdd.Visible = True
-                                bSave.Visible = True
                             Case "Edit"
                                 bEdit.Visible = True
                                 bSave.Visible = True
@@ -66,30 +62,12 @@ Public Class WarehouseInformation
                                 bDelete.Visible = True
                         End Select
                     Next
-                    'Case "Detail product of warehouse"
-                    '    For Each p In permiss
-                    '        Select Case p
-                    '            Case "Add"
-                    '                bAddProduct.Visible = True
-                    '            Case "Edit"
-                    '                allowEditProduct = True
-                    '            Case "Delete"
-                    '                allowDeleteProduct = True
-                    '        End Select
-                    '    Next
-                    'viewDetail = True
             End Select
         Next
-        'If Not viewDetail Then
-        '    gbProducts.Visible = False
-        '    dgvCategory.Location = New Point(gbProducts.Location.X, gbProducts.Location.Y + 10)
-        '    dgvCategory.Size = New Size(555, 280)
-        'End If
-        CenterButtons()
+        CenterButtons({bEdit, bDelete, bSave}.ToList, 30)
     End Sub
 
-    Private Sub CenterButtons()
-        Dim listButtons = New List(Of Button) From {bEdit, bDelete, bSave}
+    Private Sub CenterButtons(ByRef listButtons As List(Of Button), ByVal offset_between As Integer)
         Dim totalWidth As Integer = 0
         Dim count = 0
 
@@ -100,13 +78,11 @@ Public Class WarehouseInformation
             End If
         Next
 
-        Dim offset_between = 30
-        Dim x As Integer = (Me.Width - totalWidth - offset_between * (count - 1)) / 2
-        Dim y As Integer = 290
+        Dim x As Integer = (listButtons(0).Parent.Width - totalWidth - offset_between * (count - 1)) / 2
 
         For Each btn As Button In listButtons
             If btn.Visible = True Then
-                btn.Location = New Point(x, y)
+                btn.Location = New Point(x, btn.Location.Y)
                 x += btn.Width + offset_between
             End If
         Next

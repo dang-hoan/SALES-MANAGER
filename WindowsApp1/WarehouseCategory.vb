@@ -121,6 +121,8 @@ Public Class WarehouseCategory
         End If
     End Sub
     Private Sub SetVisibleForPermission()
+        bSearch.Visible = False
+        bExport.Visible = False
         bAdd.Visible = False
         bDelete.Visible = False
 
@@ -134,6 +136,10 @@ Public Class WarehouseCategory
                 Case "Warehouse category"
                     For Each p In permiss
                         Select Case p
+                            Case "Search"
+                                bSearch.Visible = True
+                            Case "Export"
+                                bExport.Visible = True
                             Case "Add"
                                 bAdd.Visible = True
                             Case "Delete"
@@ -142,11 +148,11 @@ Public Class WarehouseCategory
                     Next
             End Select
         Next
-        CenterButtons()
+        CenterButtons({bSearch, bExport}.ToList, 20)
+        CenterButtons({bAdd, bDelete}.ToList, 30)
     End Sub
 
-    Private Sub CenterButtons()
-        Dim listButtons = New List(Of Button) From {bAdd, bDelete}
+    Private Sub CenterButtons(ByRef listButtons As List(Of Button), ByVal offset_between As Integer)
         Dim totalWidth As Integer = 0
         Dim count = 0
 
@@ -157,13 +163,11 @@ Public Class WarehouseCategory
             End If
         Next
 
-        Dim offset_between = 30
-        Dim x As Integer = (Me.Width - totalWidth - offset_between * (count - 1)) / 2
-        Dim y As Integer = 490
+        Dim x As Integer = (listButtons(0).Parent.Width - totalWidth - offset_between * (count - 1)) / 2
 
         For Each btn As Button In listButtons
             If btn.Visible = True Then
-                btn.Location = New Point(x, y)
+                btn.Location = New Point(x, btn.Location.Y)
                 x += btn.Width + offset_between
             End If
         Next
@@ -172,7 +176,7 @@ Public Class WarehouseCategory
     Public Sub Reload()
         SetPagedDataSource(clsPMSAnalysis.GetWarehouse())
     End Sub
-    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+    Private Sub bSearch_Click(sender As Object, e As EventArgs) Handles bSearch.Click
         'And (Id = @Id) And (WareHouseName = @WareHouseName) And (Address = @Address)
         'And (NumberOfImport = @NumberOfImport) And (NumberOfExport = @NumberOfExport)
         If checkLogicData() Then
@@ -242,7 +246,7 @@ Public Class WarehouseCategory
         Return returnVal
 
     End Function
-    Private Sub btnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
+    Private Sub bExport_Click(sender As Object, e As EventArgs) Handles bExport.Click
         If tables Is Nothing Then
             MsgBox("No data to export!", Nothing, "Notification")
             Return

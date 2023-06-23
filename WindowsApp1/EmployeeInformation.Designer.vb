@@ -20,7 +20,6 @@ Partial Class EmployeeInformation
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EmployeeInformation))
         Me.bSave = New System.Windows.Forms.Button()
         Me.bDelete = New System.Windows.Forms.Button()
-        Me.bEdit = New System.Windows.Forms.Button()
         Me.labTitle = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.cbbStatus = New System.Windows.Forms.ComboBox()
@@ -28,7 +27,7 @@ Partial Class EmployeeInformation
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.txtAccountName = New System.Windows.Forms.TextBox()
-        Me.Label10 = New System.Windows.Forms.Label()
+        Me.lineSeparate = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.cbbRole = New System.Windows.Forms.ComboBox()
         Me.txtLastName = New System.Windows.Forms.TextBox()
@@ -49,11 +48,12 @@ Partial Class EmployeeInformation
         Me.rdFemale = New System.Windows.Forms.RadioButton()
         Me.rdMale = New System.Windows.Forms.RadioButton()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.gbAccount = New System.Windows.Forms.GroupBox()
         Me.labShowPassword = New System.Windows.Forms.Label()
         Me.cbEditAccount = New System.Windows.Forms.CheckBox()
+        Me.bEdit = New System.Windows.Forms.Button()
         Me.GroupBox2.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
+        Me.gbAccount.SuspendLayout()
         Me.SuspendLayout()
         '
         'bSave
@@ -62,7 +62,7 @@ Partial Class EmployeeInformation
         Me.bSave.Cursor = System.Windows.Forms.Cursors.Hand
         Me.bSave.Image = CType(resources.GetObject("bSave.Image"), System.Drawing.Image)
         Me.bSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bSave.Location = New System.Drawing.Point(616, 659)
+        Me.bSave.Location = New System.Drawing.Point(624, 659)
         Me.bSave.Name = "bSave"
         Me.bSave.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.bSave.Size = New System.Drawing.Size(150, 55)
@@ -76,27 +76,13 @@ Partial Class EmployeeInformation
         Me.bDelete.Cursor = System.Windows.Forms.Cursors.Hand
         Me.bDelete.Image = CType(resources.GetObject("bDelete.Image"), System.Drawing.Image)
         Me.bDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bDelete.Location = New System.Drawing.Point(398, 659)
+        Me.bDelete.Location = New System.Drawing.Point(409, 659)
         Me.bDelete.Name = "bDelete"
         Me.bDelete.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.bDelete.Size = New System.Drawing.Size(150, 55)
         Me.bDelete.TabIndex = 3
         Me.bDelete.Text = "Delete"
         Me.bDelete.UseVisualStyleBackColor = False
-        '
-        'bEdit
-        '
-        Me.bEdit.BackColor = System.Drawing.Color.SandyBrown
-        Me.bEdit.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.bEdit.Image = CType(resources.GetObject("bEdit.Image"), System.Drawing.Image)
-        Me.bEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bEdit.Location = New System.Drawing.Point(180, 659)
-        Me.bEdit.Name = "bEdit"
-        Me.bEdit.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.bEdit.Size = New System.Drawing.Size(150, 55)
-        Me.bEdit.TabIndex = 4
-        Me.bEdit.Text = "Edit"
-        Me.bEdit.UseVisualStyleBackColor = False
         '
         'labTitle
         '
@@ -166,13 +152,13 @@ Partial Class EmployeeInformation
         Me.txtAccountName.Size = New System.Drawing.Size(257, 26)
         Me.txtAccountName.TabIndex = 40
         '
-        'Label10
+        'lineSeparate
         '
-        Me.Label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label10.Location = New System.Drawing.Point(105, 373)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(756, 1)
-        Me.Label10.TabIndex = 63
+        Me.lineSeparate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lineSeparate.Location = New System.Drawing.Point(105, 373)
+        Me.lineSeparate.Name = "lineSeparate"
+        Me.lineSeparate.Size = New System.Drawing.Size(756, 1)
+        Me.lineSeparate.TabIndex = 63
         '
         'Label9
         '
@@ -368,21 +354,21 @@ Partial Class EmployeeInformation
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Employee profile"
         '
-        'GroupBox3
+        'gbAccount
         '
-        Me.GroupBox3.Controls.Add(Me.labShowPassword)
-        Me.GroupBox3.Controls.Add(Me.Label11)
-        Me.GroupBox3.Controls.Add(Me.Label14)
-        Me.GroupBox3.Controls.Add(Me.cbbStatus)
-        Me.GroupBox3.Controls.Add(Me.txtAccountName)
-        Me.GroupBox3.Controls.Add(Me.txtPassword)
-        Me.GroupBox3.Controls.Add(Me.Label13)
-        Me.GroupBox3.Location = New System.Drawing.Point(64, 429)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(472, 199)
-        Me.GroupBox3.TabIndex = 65
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Employee account"
+        Me.gbAccount.Controls.Add(Me.labShowPassword)
+        Me.gbAccount.Controls.Add(Me.Label11)
+        Me.gbAccount.Controls.Add(Me.Label14)
+        Me.gbAccount.Controls.Add(Me.cbbStatus)
+        Me.gbAccount.Controls.Add(Me.txtAccountName)
+        Me.gbAccount.Controls.Add(Me.txtPassword)
+        Me.gbAccount.Controls.Add(Me.Label13)
+        Me.gbAccount.Location = New System.Drawing.Point(64, 429)
+        Me.gbAccount.Name = "gbAccount"
+        Me.gbAccount.Size = New System.Drawing.Size(472, 199)
+        Me.gbAccount.TabIndex = 65
+        Me.gbAccount.TabStop = False
+        Me.gbAccount.Text = "Employee account"
         '
         'labShowPassword
         '
@@ -404,6 +390,20 @@ Partial Class EmployeeInformation
         Me.cbEditAccount.Text = "Edit account information"
         Me.cbEditAccount.UseVisualStyleBackColor = True
         '
+        'bEdit
+        '
+        Me.bEdit.BackColor = System.Drawing.Color.SandyBrown
+        Me.bEdit.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.bEdit.Image = CType(resources.GetObject("bEdit.Image"), System.Drawing.Image)
+        Me.bEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.bEdit.Location = New System.Drawing.Point(194, 659)
+        Me.bEdit.Name = "bEdit"
+        Me.bEdit.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.bEdit.Size = New System.Drawing.Size(150, 55)
+        Me.bEdit.TabIndex = 67
+        Me.bEdit.Text = "Edit"
+        Me.bEdit.UseVisualStyleBackColor = False
+        '
         'EmployeeInformation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -411,8 +411,9 @@ Partial Class EmployeeInformation
         Me.AutoSize = True
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(969, 748)
+        Me.Controls.Add(Me.bEdit)
         Me.Controls.Add(Me.cbEditAccount)
-        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.lineSeparate)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.cbbRole)
         Me.Controls.Add(Me.txtLastName)
@@ -432,23 +433,21 @@ Partial Class EmployeeInformation
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.bSave)
         Me.Controls.Add(Me.bDelete)
-        Me.Controls.Add(Me.bEdit)
         Me.Controls.Add(Me.labTitle)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.GroupBox3)
+        Me.Controls.Add(Me.gbAccount)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "EmployeeInformation"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
+        Me.gbAccount.ResumeLayout(False)
+        Me.gbAccount.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Private WithEvents bEdit As System.Windows.Forms.Button
     Private WithEvents bSave As System.Windows.Forms.Button
     Private WithEvents bDelete As System.Windows.Forms.Button
     Private labTitle As System.Windows.Forms.Label
@@ -466,7 +465,7 @@ Partial Class EmployeeInformation
     Private WithEvents Label13 As Label
     Private WithEvents Label14 As Label
     Friend WithEvents txtAccountName As TextBox
-    Friend WithEvents Label10 As Label
+    Friend WithEvents lineSeparate As Label
     Private WithEvents Label9 As Label
     Friend WithEvents cbbRole As ComboBox
     Private WithEvents txtLastName As TextBox
@@ -487,7 +486,8 @@ Partial Class EmployeeInformation
     Private WithEvents rdFemale As RadioButton
     Private WithEvents rdMale As RadioButton
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents gbAccount As GroupBox
     Friend WithEvents labShowPassword As Label
     Friend WithEvents cbEditAccount As CheckBox
+    Private WithEvents bEdit As Button
 End Class

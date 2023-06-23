@@ -30,7 +30,6 @@ Partial Class LoginForm
         Me.linkForget = New System.Windows.Forms.LinkLabel()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtPassword = New System.Windows.Forms.TextBox()
-        Me.linkRegister = New System.Windows.Forms.LinkLabel()
         Me.labShowPassword = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -81,7 +80,7 @@ Partial Class LoginForm
         Me.linkForget.BackColor = System.Drawing.Color.Transparent
         Me.linkForget.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.linkForget.ForeColor = System.Drawing.Color.Lime
-        Me.linkForget.LinkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.linkForget.LinkColor = System.Drawing.Color.White
         Me.linkForget.Location = New System.Drawing.Point(288, 390)
         Me.linkForget.Name = "linkForget"
         Me.linkForget.Size = New System.Drawing.Size(153, 20)
@@ -109,20 +108,6 @@ Partial Class LoginForm
         Me.txtPassword.TabIndex = 3
         Me.txtPassword.UseSystemPasswordChar = True
         '
-        'linkRegister
-        '
-        Me.linkRegister.AutoSize = True
-        Me.linkRegister.BackColor = System.Drawing.Color.Transparent
-        Me.linkRegister.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.linkRegister.ForeColor = System.Drawing.Color.Lime
-        Me.linkRegister.LinkColor = System.Drawing.Color.White
-        Me.linkRegister.Location = New System.Drawing.Point(163, 439)
-        Me.linkRegister.Name = "linkRegister"
-        Me.linkRegister.Size = New System.Drawing.Size(198, 20)
-        Me.linkRegister.TabIndex = 6
-        Me.linkRegister.TabStop = True
-        Me.linkRegister.Text = "Register a new account"
-        '
         'labShowPassword
         '
         Me.labShowPassword.BackColor = System.Drawing.Color.White
@@ -131,6 +116,7 @@ Partial Class LoginForm
         Me.labShowPassword.Name = "labShowPassword"
         Me.labShowPassword.Size = New System.Drawing.Size(33, 22)
         Me.labShowPassword.TabIndex = 7
+        Me.labShowPassword.Text = "s"
         '
         'LoginForm
         '
@@ -140,7 +126,6 @@ Partial Class LoginForm
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(498, 530)
         Me.Controls.Add(Me.labShowPassword)
-        Me.Controls.Add(Me.linkRegister)
         Me.Controls.Add(Me.txtPassword)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.linkForget)
@@ -167,6 +152,5 @@ Partial Class LoginForm
     Friend WithEvents linkForget As LinkLabel
     Friend WithEvents Label2 As Label
     Friend WithEvents txtPassword As TextBox
-    Friend WithEvents linkRegister As LinkLabel
     Friend WithEvents labShowPassword As Label
 End Class

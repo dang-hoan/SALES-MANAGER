@@ -122,6 +122,8 @@ Public Class SupplierCategory
     End Sub
 
     Private Sub SetVisibleForPermission()
+        bSearch.Visible = False
+        bExport.Visible = False
         bAdd.Visible = False
         bDelete.Visible = False
         Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
@@ -131,6 +133,10 @@ Public Class SupplierCategory
             If form = "Supplier category" Then
                 For Each p In permiss
                     Select Case p
+                        Case "Search"
+                            bSearch.Visible = True
+                        Case "Export"
+                            bExport.Visible = True
                         Case "Add"
                             bAdd.Visible = True
                         Case "Delete"
@@ -140,11 +146,11 @@ Public Class SupplierCategory
                 Exit For
             End If
         Next
-        CenterButtons()
+        CenterButtons({bSearch, bExport}.ToList, 20)
+        CenterButtons({bAdd, bDelete}.ToList, 30)
     End Sub
 
-    Private Sub CenterButtons()
-        Dim listButtons = New List(Of Button) From {bAdd, bDelete}
+    Private Sub CenterButtons(ByRef listButtons As List(Of Button), ByVal offset_between As Integer)
         Dim totalWidth As Integer = 0
         Dim count = 0
 
@@ -155,13 +161,11 @@ Public Class SupplierCategory
             End If
         Next
 
-        Dim offset_between = 30
-        Dim x As Integer = (Me.Width - totalWidth - offset_between * (count - 1)) / 2
-        Dim y As Integer = 490
+        Dim x As Integer = (listButtons(0).Parent.Width - totalWidth - offset_between * (count - 1)) / 2
 
         For Each btn As Button In listButtons
             If btn.Visible = True Then
-                btn.Location = New Point(x, y)
+                btn.Location = New Point(x, btn.Location.Y)
                 x += btn.Width + offset_between
             End If
         Next
@@ -169,7 +173,7 @@ Public Class SupplierCategory
     Public Sub Reload()
         SetPagedDataSource(clsPMSAnalysis.GetAllSuppliers())
     End Sub
-    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+    Private Sub bSearch_Click(sender As Object, e As EventArgs) Handles bSearch.Click
         ' AND (Id = @Id) AND (CompanyName = @CompanyName) AND (Address = @Address) AND (Phone = @Phone)
         ' AND (Email = @Email) AND (Webpage = @Webpage) AND (Description = @Description)
         If checkLogicData() Then
@@ -241,7 +245,7 @@ Public Class SupplierCategory
 
     End Function
 
-    Private Sub btnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
+    Private Sub bExport_Click(sender As Object, e As EventArgs) Handles bExport.Click
         If tables Is Nothing Then
             MsgBox("No data to export!", Nothing, "Notification")
             Return

@@ -23,8 +23,8 @@ Partial Class CustomerCategory
         Me.groupBox1 = New System.Windows.Forms.GroupBox()
         Me.cbGender = New System.Windows.Forms.CheckBox()
         Me.cbBirthDay = New System.Windows.Forms.CheckBox()
-        Me.btnExport = New System.Windows.Forms.Button()
-        Me.btnSearch = New System.Windows.Forms.Button()
+        Me.bExport = New System.Windows.Forms.Button()
+        Me.bSearch = New System.Windows.Forms.Button()
         Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.dtBirthDay = New System.Windows.Forms.DateTimePicker()
@@ -100,8 +100,8 @@ Partial Class CustomerCategory
         '
         Me.groupBox1.Controls.Add(Me.cbGender)
         Me.groupBox1.Controls.Add(Me.cbBirthDay)
-        Me.groupBox1.Controls.Add(Me.btnExport)
-        Me.groupBox1.Controls.Add(Me.btnSearch)
+        Me.groupBox1.Controls.Add(Me.bExport)
+        Me.groupBox1.Controls.Add(Me.bSearch)
         Me.groupBox1.Controls.Add(Me.txtEmail)
         Me.groupBox1.Controls.Add(Me.Label8)
         Me.groupBox1.Controls.Add(Me.dtBirthDay)
@@ -141,35 +141,35 @@ Partial Class CustomerCategory
         Me.cbBirthDay.TabIndex = 30
         Me.cbBirthDay.UseVisualStyleBackColor = True
         '
-        'btnExport
+        'bExport
         '
-        Me.btnExport.BackColor = System.Drawing.Color.SandyBrown
-        Me.btnExport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnExport.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnExport.Image = CType(resources.GetObject("btnExport.Image"), System.Drawing.Image)
-        Me.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnExport.Location = New System.Drawing.Point(448, 218)
-        Me.btnExport.Name = "btnExport"
-        Me.btnExport.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnExport.Size = New System.Drawing.Size(139, 48)
-        Me.btnExport.TabIndex = 29
-        Me.btnExport.Text = "Export"
-        Me.btnExport.UseVisualStyleBackColor = False
+        Me.bExport.BackColor = System.Drawing.Color.SandyBrown
+        Me.bExport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.bExport.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.bExport.Image = CType(resources.GetObject("bExport.Image"), System.Drawing.Image)
+        Me.bExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.bExport.Location = New System.Drawing.Point(448, 218)
+        Me.bExport.Name = "bExport"
+        Me.bExport.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.bExport.Size = New System.Drawing.Size(139, 48)
+        Me.bExport.TabIndex = 29
+        Me.bExport.Text = "Export"
+        Me.bExport.UseVisualStyleBackColor = False
         '
-        'btnSearch
+        'bSearch
         '
-        Me.btnSearch.BackColor = System.Drawing.Color.SandyBrown
-        Me.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnSearch.Image = CType(resources.GetObject("btnSearch.Image"), System.Drawing.Image)
-        Me.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSearch.Location = New System.Drawing.Point(265, 218)
-        Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnSearch.Size = New System.Drawing.Size(139, 48)
-        Me.btnSearch.TabIndex = 28
-        Me.btnSearch.Text = "Search"
-        Me.btnSearch.UseVisualStyleBackColor = False
+        Me.bSearch.BackColor = System.Drawing.Color.SandyBrown
+        Me.bSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.bSearch.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.bSearch.Image = CType(resources.GetObject("bSearch.Image"), System.Drawing.Image)
+        Me.bSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.bSearch.Location = New System.Drawing.Point(265, 218)
+        Me.bSearch.Name = "bSearch"
+        Me.bSearch.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.bSearch.Size = New System.Drawing.Size(139, 48)
+        Me.bSearch.TabIndex = 28
+        Me.bSearch.Text = "Search"
+        Me.bSearch.UseVisualStyleBackColor = False
         '
         'txtEmail
         '
@@ -404,7 +404,6 @@ Partial Class CustomerCategory
         '
         Me.BindingNavigatorPositionItem.AccessibleName = "Position"
         Me.BindingNavigatorPositionItem.AutoSize = False
-        Me.BindingNavigatorPositionItem.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.BindingNavigatorPositionItem.Name = "BindingNavigatorPositionItem"
         Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(50, 31)
         Me.BindingNavigatorPositionItem.Text = "0"
@@ -715,8 +714,8 @@ Partial Class CustomerCategory
     Private WithEvents groupBox1 As GroupBox
     Friend WithEvents cbGender As CheckBox
     Friend WithEvents cbBirthDay As CheckBox
-    Private WithEvents btnExport As Button
-    Private WithEvents btnSearch As Button
+    Private WithEvents bExport As Button
+    Private WithEvents bSearch As Button
     Private WithEvents txtEmail As TextBox
     Private WithEvents Label8 As Label
     Private WithEvents dtBirthDay As DateTimePicker

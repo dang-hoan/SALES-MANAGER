@@ -158,6 +158,8 @@ Public Class SalesOrderCategory
     End Sub
 
     Private Sub SetVisibleForPermission()
+        bSearch.Visible = False
+        bExport.Visible = False
         bAdd.Visible = False
         bDelete.Visible = False
         Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
@@ -167,6 +169,10 @@ Public Class SalesOrderCategory
             If form = "Order category" Then
                 For Each p In permiss
                     Select Case p
+                        Case "Search"
+                            bSearch.Visible = True
+                        Case "Export"
+                            bExport.Visible = True
                         Case "Add"
                             bAdd.Visible = True
                         Case "Delete"
@@ -176,11 +182,11 @@ Public Class SalesOrderCategory
                 Exit For
             End If
         Next
-        CenterButtons()
+        CenterButtons({bSearch, bExport}.ToList, 20)
+        CenterButtons({bAdd, bDelete}.ToList, 30)
     End Sub
 
-    Private Sub CenterButtons()
-        Dim listButtons = New List(Of Button) From {bAdd, bDelete}
+    Private Sub CenterButtons(ByRef listButtons As List(Of Button), ByVal offset_between As Integer)
         Dim totalWidth As Integer = 0
         Dim count = 0
 
@@ -191,13 +197,11 @@ Public Class SalesOrderCategory
             End If
         Next
 
-        Dim offset_between = 30
-        Dim x As Integer = (Me.Width - totalWidth - offset_between * (count - 1)) / 2
-        Dim y As Integer = 495
+        Dim x As Integer = (listButtons(0).Parent.Width - totalWidth - offset_between * (count - 1)) / 2
 
         For Each btn As Button In listButtons
             If btn.Visible = True Then
-                btn.Location = New Point(x, y)
+                btn.Location = New Point(x, btn.Location.Y)
                 x += btn.Width + offset_between
             End If
         Next
@@ -206,7 +210,7 @@ Public Class SalesOrderCategory
         SetPagedDataSource(clsPMSAnalysis.SearchSalesOrder(""))
     End Sub
 
-    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+    Private Sub bSearch_Click(sender As Object, e As EventArgs) Handles bSearch.Click
         'AND (OrderId = @OrderId) AND (CustomerName = @CustomerName) AND (OrderDate = @OrderDate)
         'AND (ShipDate = @ShipDate) AND (ShipAddress = @ShipAddress) AND (StatusId = @StatusId)
         'AND (PaymentMethodId = @PaymentMethodId) AND (ShipperId = @ShipperId)   
@@ -306,7 +310,7 @@ Public Class SalesOrderCategory
 
     End Function
 
-    Private Sub btnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
+    Private Sub bExport_Click(sender As Object, e As EventArgs) Handles bExport.Click
         If tables Is Nothing Then
             MsgBox("No data to export!", Nothing, "Notification")
             Return

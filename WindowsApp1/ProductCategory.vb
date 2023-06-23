@@ -193,19 +193,50 @@ Public Class ProductCategory
     'End Sub
 
     Private Sub SetVisibleForPermission()
-        btnExport.Visible = False
+        bSearch.Visible = False
+        bExport.Visible = False
+        bAdd.Visible = False
+        bDelete.Visible = False
         Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
         For Each permission In dataPermission
             Dim form = permission(1).split(":")(0)
             Dim permiss = Strings.Split(Strings.Split(permission(1), ": ")(1), ", ")
-            If form = "Product search" Then
+            If form = "Product category" Then
                 For Each p In permiss
                     Select Case p
+                        Case "Search"
+                            bSearch.Visible = True
                         Case "Export"
-                            btnExport.Visible = True
+                            bExport.Visible = True
+                        Case "Add"
+                            bAdd.Visible = True
+                        Case "Delete"
+                            bDelete.Visible = True
                     End Select
                 Next
                 Exit For
+            End If
+        Next
+        CenterButtons({bSearch, bExport}.ToList(), 20)
+        CenterButtons({bAdd, bDelete}.ToList(), 30)
+    End Sub
+    Private Sub CenterButtons(ByRef listButtons As List(Of Button), ByVal offset_between As Integer)
+        Dim totalWidth As Integer = 0
+        Dim count = 0
+
+        For Each btn As Button In listButtons
+            If btn.Visible = True Then
+                totalWidth += btn.Width
+                count += 1
+            End If
+        Next
+
+        Dim x As Integer = (listButtons(0).Parent.Width - totalWidth - offset_between * (count - 1)) / 2
+
+        For Each btn As Button In listButtons
+            If btn.Visible = True Then
+                btn.Location = New Point(x, btn.Location.Y)
+                x += btn.Width + offset_between
             End If
         Next
     End Sub
@@ -214,7 +245,7 @@ Public Class ProductCategory
         'dgvProductSearch.DataSource = clsProduct.SearchProduct("")
         SetPagedDataSource(clsProduct.SearchProduct(""))
     End Sub
-    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+    Private Sub bSearch_Click(sender As Object, e As EventArgs) Handles bSearch.Click
         'AND Id AND ProductName LIKE N'%%'
         'AND SupplierId AND CategoryId
         'AND ProductStatusId AND WareHouseId
@@ -316,7 +347,7 @@ Public Class ProductCategory
         Return returnVal
 
     End Function
-    Private Sub btnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
+    Private Sub bExport_Click(sender As Object, e As EventArgs) Handles bExport.Click
         If tables Is Nothing Then
             MsgBox("No data to export!", Nothing, "Notification")
             Return

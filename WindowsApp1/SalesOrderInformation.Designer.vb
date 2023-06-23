@@ -82,7 +82,7 @@ Partial Class SalesOrderInformation
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.ProductId = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProductName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProductNameColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NumberOfProducts = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TotalPriceOfProducts = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.StatusName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -458,7 +458,6 @@ Partial Class SalesOrderInformation
         '
         Me.BindingNavigatorPositionItem.AccessibleName = "Position"
         Me.BindingNavigatorPositionItem.AutoSize = False
-        Me.BindingNavigatorPositionItem.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.BindingNavigatorPositionItem.Name = "BindingNavigatorPositionItem"
         Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(50, 31)
         Me.BindingNavigatorPositionItem.Text = "0"
@@ -499,7 +498,7 @@ Partial Class SalesOrderInformation
         Me.listBuyProduct.AutoGenerateColumns = False
         Me.listBuyProduct.BackgroundColor = System.Drawing.Color.White
         Me.listBuyProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.listBuyProduct.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CheckBoxColumn, Me.ProductId, Me.ProductName, Me.NumberOfProducts, Me.TotalPriceOfProducts, Me.StatusName})
+        Me.listBuyProduct.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CheckBoxColumn, Me.ProductId, Me.ProductNameColumn, Me.NumberOfProducts, Me.TotalPriceOfProducts, Me.StatusName})
         Me.listBuyProduct.DataMember = "OrderDetail"
         Me.listBuyProduct.DataSource = Me.OrderDetail
         Me.listBuyProduct.Location = New System.Drawing.Point(299, 21)
@@ -718,14 +717,14 @@ Partial Class SalesOrderInformation
         Me.ProductId.ReadOnly = True
         Me.ProductId.Width = 150
         '
-        'ProductName
+        'ProductNameColumn
         '
-        Me.ProductName.DataPropertyName = "ProductName"
-        Me.ProductName.HeaderText = "Product name"
-        Me.ProductName.MinimumWidth = 8
-        Me.ProductName.Name = "ProductName"
-        Me.ProductName.ReadOnly = True
-        Me.ProductName.Width = 150
+        Me.ProductNameColumn.DataPropertyName = "ProductName"
+        Me.ProductNameColumn.HeaderText = "Product name"
+        Me.ProductNameColumn.MinimumWidth = 8
+        Me.ProductNameColumn.Name = "ProductNameColumn"
+        Me.ProductNameColumn.ReadOnly = True
+        Me.ProductNameColumn.Width = 150
         '
         'NumberOfProducts
         '
@@ -846,7 +845,7 @@ Partial Class SalesOrderInformation
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents CheckBoxColumn As DataGridViewCheckBoxColumn
     Friend WithEvents ProductId As DataGridViewTextBoxColumn
-    Friend WithEvents ProductName As DataGridViewTextBoxColumn
+    Friend WithEvents ProductNameColumn As DataGridViewTextBoxColumn
     Friend WithEvents NumberOfProducts As DataGridViewTextBoxColumn
     Friend WithEvents TotalPriceOfProducts As DataGridViewTextBoxColumn
     Friend WithEvents StatusName As DataGridViewTextBoxColumn

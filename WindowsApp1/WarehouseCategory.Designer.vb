@@ -27,8 +27,8 @@ Partial Class WarehouseCategory
         Me.label2 = New System.Windows.Forms.Label()
         Me.label7 = New System.Windows.Forms.Label()
         Me.groupBox1 = New System.Windows.Forms.GroupBox()
-        Me.btnExport = New System.Windows.Forms.Button()
-        Me.btnSearch = New System.Windows.Forms.Button()
+        Me.bExport = New System.Windows.Forms.Button()
+        Me.bSearch = New System.Windows.Forms.Button()
         Me.txtAddress = New System.Windows.Forms.TextBox()
         Me.txtNumberOfImport = New System.Windows.Forms.TextBox()
         Me.txtNumberOfExport = New System.Windows.Forms.TextBox()
@@ -95,8 +95,8 @@ Partial Class WarehouseCategory
         '
         'groupBox1
         '
-        Me.groupBox1.Controls.Add(Me.btnExport)
-        Me.groupBox1.Controls.Add(Me.btnSearch)
+        Me.groupBox1.Controls.Add(Me.bExport)
+        Me.groupBox1.Controls.Add(Me.bSearch)
         Me.groupBox1.Controls.Add(Me.txtAddress)
         Me.groupBox1.Controls.Add(Me.txtNumberOfImport)
         Me.groupBox1.Controls.Add(Me.txtNumberOfExport)
@@ -114,35 +114,35 @@ Partial Class WarehouseCategory
         Me.groupBox1.TabStop = False
         Me.groupBox1.Text = "Detail"
         '
-        'btnExport
+        'bExport
         '
-        Me.btnExport.BackColor = System.Drawing.Color.SandyBrown
-        Me.btnExport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnExport.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnExport.Image = CType(resources.GetObject("btnExport.Image"), System.Drawing.Image)
-        Me.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnExport.Location = New System.Drawing.Point(438, 178)
-        Me.btnExport.Name = "btnExport"
-        Me.btnExport.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnExport.Size = New System.Drawing.Size(139, 48)
-        Me.btnExport.TabIndex = 27
-        Me.btnExport.Text = "Export"
-        Me.btnExport.UseVisualStyleBackColor = False
+        Me.bExport.BackColor = System.Drawing.Color.SandyBrown
+        Me.bExport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.bExport.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.bExport.Image = CType(resources.GetObject("bExport.Image"), System.Drawing.Image)
+        Me.bExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.bExport.Location = New System.Drawing.Point(438, 178)
+        Me.bExport.Name = "bExport"
+        Me.bExport.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.bExport.Size = New System.Drawing.Size(139, 48)
+        Me.bExport.TabIndex = 27
+        Me.bExport.Text = "Export"
+        Me.bExport.UseVisualStyleBackColor = False
         '
-        'btnSearch
+        'bSearch
         '
-        Me.btnSearch.BackColor = System.Drawing.Color.SandyBrown
-        Me.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnSearch.Image = CType(resources.GetObject("btnSearch.Image"), System.Drawing.Image)
-        Me.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSearch.Location = New System.Drawing.Point(255, 178)
-        Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnSearch.Size = New System.Drawing.Size(139, 48)
-        Me.btnSearch.TabIndex = 26
-        Me.btnSearch.Text = "Search"
-        Me.btnSearch.UseVisualStyleBackColor = False
+        Me.bSearch.BackColor = System.Drawing.Color.SandyBrown
+        Me.bSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.bSearch.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.bSearch.Image = CType(resources.GetObject("bSearch.Image"), System.Drawing.Image)
+        Me.bSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.bSearch.Location = New System.Drawing.Point(255, 178)
+        Me.bSearch.Name = "bSearch"
+        Me.bSearch.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.bSearch.Size = New System.Drawing.Size(139, 48)
+        Me.bSearch.TabIndex = 26
+        Me.bSearch.Text = "Search"
+        Me.bSearch.UseVisualStyleBackColor = False
         '
         'txtAddress
         '
@@ -442,8 +442,8 @@ Partial Class WarehouseCategory
     Private WithEvents txtNumberOfImport As TextBox
     Private WithEvents txtAddress As TextBox
     Friend WithEvents Warehouse As LibraryDataset.Warehouse
-    Private WithEvents btnExport As Button
-    Private WithEvents btnSearch As Button
+    Private WithEvents bExport As Button
+    Private WithEvents bSearch As Button
     Friend WithEvents dgvWarehouseSearch As DataGridView
     Friend WithEvents bindingNav As BindingNavigator
     Friend WithEvents BindingNavigatorCountItem As ToolStripLabel

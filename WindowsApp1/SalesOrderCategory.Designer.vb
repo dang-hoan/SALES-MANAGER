@@ -36,8 +36,8 @@ Partial Class SalesOrderCategory
         Me.cbOrderDate = New System.Windows.Forms.CheckBox()
         Me.cbShipper = New System.Windows.Forms.CheckBox()
         Me.cbShipStatus = New System.Windows.Forms.CheckBox()
-        Me.btnExport = New System.Windows.Forms.Button()
-        Me.btnSearch = New System.Windows.Forms.Button()
+        Me.bExport = New System.Windows.Forms.Button()
+        Me.bSearch = New System.Windows.Forms.Button()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.cbbShipper = New System.Windows.Forms.ComboBox()
         Me.label15 = New System.Windows.Forms.Label()
@@ -61,23 +61,6 @@ Partial Class SalesOrderCategory
         Me.bDelete = New System.Windows.Forms.Button()
         Me.bAdd = New System.Windows.Forms.Button()
         Me.dgvSalesOrderSearch = New System.Windows.Forms.DataGridView()
-        Me.OrderDetail = New LibraryDataset.OrderDetail()
-        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.OrderIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CustomerNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -95,6 +78,23 @@ Partial Class SalesOrderCategory
         Me.StatusIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PaymentMethodIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.IsDeleteDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.OrderDetail = New LibraryDataset.OrderDetail()
+        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.groupBox1.SuspendLayout()
         CType(Me.bindingNav, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.bindingNav.SuspendLayout()
@@ -176,8 +176,8 @@ Partial Class SalesOrderCategory
         Me.groupBox1.Controls.Add(Me.cbOrderDate)
         Me.groupBox1.Controls.Add(Me.cbShipper)
         Me.groupBox1.Controls.Add(Me.cbShipStatus)
-        Me.groupBox1.Controls.Add(Me.btnExport)
-        Me.groupBox1.Controls.Add(Me.btnSearch)
+        Me.groupBox1.Controls.Add(Me.bExport)
+        Me.groupBox1.Controls.Add(Me.bSearch)
         Me.groupBox1.Controls.Add(Me.Label12)
         Me.groupBox1.Controls.Add(Me.cbbShipper)
         Me.groupBox1.Controls.Add(Me.label15)
@@ -255,35 +255,35 @@ Partial Class SalesOrderCategory
         Me.cbShipStatus.TabIndex = 34
         Me.cbShipStatus.UseVisualStyleBackColor = True
         '
-        'btnExport
+        'bExport
         '
-        Me.btnExport.BackColor = System.Drawing.Color.SandyBrown
-        Me.btnExport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnExport.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnExport.Image = CType(resources.GetObject("btnExport.Image"), System.Drawing.Image)
-        Me.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnExport.Location = New System.Drawing.Point(448, 222)
-        Me.btnExport.Name = "btnExport"
-        Me.btnExport.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnExport.Size = New System.Drawing.Size(139, 48)
-        Me.btnExport.TabIndex = 25
-        Me.btnExport.Text = "Export"
-        Me.btnExport.UseVisualStyleBackColor = False
+        Me.bExport.BackColor = System.Drawing.Color.SandyBrown
+        Me.bExport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.bExport.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.bExport.Image = CType(resources.GetObject("bExport.Image"), System.Drawing.Image)
+        Me.bExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.bExport.Location = New System.Drawing.Point(448, 222)
+        Me.bExport.Name = "bExport"
+        Me.bExport.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.bExport.Size = New System.Drawing.Size(139, 48)
+        Me.bExport.TabIndex = 25
+        Me.bExport.Text = "Export"
+        Me.bExport.UseVisualStyleBackColor = False
         '
-        'btnSearch
+        'bSearch
         '
-        Me.btnSearch.BackColor = System.Drawing.Color.SandyBrown
-        Me.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnSearch.Image = CType(resources.GetObject("btnSearch.Image"), System.Drawing.Image)
-        Me.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSearch.Location = New System.Drawing.Point(265, 222)
-        Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnSearch.Size = New System.Drawing.Size(139, 48)
-        Me.btnSearch.TabIndex = 24
-        Me.btnSearch.Text = "Search"
-        Me.btnSearch.UseVisualStyleBackColor = False
+        Me.bSearch.BackColor = System.Drawing.Color.SandyBrown
+        Me.bSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.bSearch.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.bSearch.Image = CType(resources.GetObject("bSearch.Image"), System.Drawing.Image)
+        Me.bSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.bSearch.Location = New System.Drawing.Point(265, 222)
+        Me.bSearch.Name = "bSearch"
+        Me.bSearch.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.bSearch.Size = New System.Drawing.Size(139, 48)
+        Me.bSearch.TabIndex = 24
+        Me.bSearch.Text = "Search"
+        Me.bSearch.UseVisualStyleBackColor = False
         '
         'Label12
         '
@@ -430,6 +430,7 @@ Partial Class SalesOrderCategory
         '
         Me.BindingNavigatorPositionItem.AccessibleName = "Position"
         Me.BindingNavigatorPositionItem.AutoSize = False
+        Me.BindingNavigatorPositionItem.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.BindingNavigatorPositionItem.Name = "BindingNavigatorPositionItem"
         Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(50, 31)
         Me.BindingNavigatorPositionItem.Text = "0"
@@ -511,142 +512,6 @@ Partial Class SalesOrderCategory
         Me.dgvSalesOrderSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvSalesOrderSearch.Size = New System.Drawing.Size(853, 302)
         Me.dgvSalesOrderSearch.TabIndex = 9
-        '
-        'OrderDetail
-        '
-        Me.OrderDetail.DataSetName = "OrderDetail"
-        Me.OrderDetail.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'DataGridViewCheckBoxColumn1
-        '
-        Me.DataGridViewCheckBoxColumn1.HeaderText = ""
-        Me.DataGridViewCheckBoxColumn1.MinimumWidth = 8
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
-        Me.DataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.DataGridViewCheckBoxColumn1.Width = 48
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "OrderId"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Order code"
-        Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.Width = 150
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "CustomerName"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Customer name"
-        Me.DataGridViewTextBoxColumn2.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.Width = 150
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "OrderDate"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Order date"
-        Me.DataGridViewTextBoxColumn3.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.Width = 150
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "ShipDate"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Ship date"
-        Me.DataGridViewTextBoxColumn4.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.Width = 150
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "ShipAddress"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Ship address"
-        Me.DataGridViewTextBoxColumn5.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.Width = 150
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "ShipPrice"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Ship price"
-        Me.DataGridViewTextBoxColumn6.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.Width = 150
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "TotalPrice"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "Total price"
-        Me.DataGridViewTextBoxColumn7.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.Width = 150
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "PrivateDiscount"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "Private discount"
-        Me.DataGridViewTextBoxColumn8.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        Me.DataGridViewTextBoxColumn8.Width = 150
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.DataPropertyName = "Note"
-        Me.DataGridViewTextBoxColumn9.HeaderText = "Note"
-        Me.DataGridViewTextBoxColumn9.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        Me.DataGridViewTextBoxColumn9.Width = 150
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.DataPropertyName = "PaymentMethodName"
-        Me.DataGridViewTextBoxColumn10.HeaderText = "PaymentMethodName"
-        Me.DataGridViewTextBoxColumn10.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        Me.DataGridViewTextBoxColumn10.Width = 150
-        '
-        'DataGridViewTextBoxColumn11
-        '
-        Me.DataGridViewTextBoxColumn11.DataPropertyName = "ShipperName"
-        Me.DataGridViewTextBoxColumn11.HeaderText = "ShipperName"
-        Me.DataGridViewTextBoxColumn11.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        Me.DataGridViewTextBoxColumn11.Width = 150
-        '
-        'DataGridViewTextBoxColumn12
-        '
-        Me.DataGridViewTextBoxColumn12.DataPropertyName = "StatusName"
-        Me.DataGridViewTextBoxColumn12.HeaderText = "StatusName"
-        Me.DataGridViewTextBoxColumn12.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
-        Me.DataGridViewTextBoxColumn12.Width = 150
-        '
-        'DataGridViewTextBoxColumn13
-        '
-        Me.DataGridViewTextBoxColumn13.DataPropertyName = "PaymentMethodId"
-        Me.DataGridViewTextBoxColumn13.HeaderText = "PaymentMethodId"
-        Me.DataGridViewTextBoxColumn13.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
-        Me.DataGridViewTextBoxColumn13.Visible = False
-        Me.DataGridViewTextBoxColumn13.Width = 150
-        '
-        'DataGridViewTextBoxColumn14
-        '
-        Me.DataGridViewTextBoxColumn14.DataPropertyName = "StatusId"
-        Me.DataGridViewTextBoxColumn14.HeaderText = "StatusId"
-        Me.DataGridViewTextBoxColumn14.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
-        Me.DataGridViewTextBoxColumn14.Visible = False
-        Me.DataGridViewTextBoxColumn14.Width = 150
-        '
-        'DataGridViewTextBoxColumn15
-        '
-        Me.DataGridViewTextBoxColumn15.DataPropertyName = "ShipperId"
-        Me.DataGridViewTextBoxColumn15.HeaderText = "ShipperId"
-        Me.DataGridViewTextBoxColumn15.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
-        Me.DataGridViewTextBoxColumn15.Visible = False
-        Me.DataGridViewTextBoxColumn15.Width = 150
         '
         'CheckBoxColumn
         '
@@ -805,6 +670,142 @@ Partial Class SalesOrderCategory
         Me.IsDeleteDataGridViewCheckBoxColumn.Visible = False
         Me.IsDeleteDataGridViewCheckBoxColumn.Width = 150
         '
+        'OrderDetail
+        '
+        Me.OrderDetail.DataSetName = "OrderDetail"
+        Me.OrderDetail.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'DataGridViewCheckBoxColumn1
+        '
+        Me.DataGridViewCheckBoxColumn1.HeaderText = ""
+        Me.DataGridViewCheckBoxColumn1.MinimumWidth = 8
+        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
+        Me.DataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.DataGridViewCheckBoxColumn1.Width = 48
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "OrderId"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Order code"
+        Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.Width = 150
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "CustomerName"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Customer name"
+        Me.DataGridViewTextBoxColumn2.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.Width = 150
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "OrderDate"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Order date"
+        Me.DataGridViewTextBoxColumn3.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.Width = 150
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "ShipDate"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Ship date"
+        Me.DataGridViewTextBoxColumn4.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.Width = 150
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "ShipAddress"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Ship address"
+        Me.DataGridViewTextBoxColumn5.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.Width = 150
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "ShipPrice"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "Ship price"
+        Me.DataGridViewTextBoxColumn6.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.Width = 150
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "TotalPrice"
+        Me.DataGridViewTextBoxColumn7.HeaderText = "Total price"
+        Me.DataGridViewTextBoxColumn7.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.Width = 150
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.DataPropertyName = "PrivateDiscount"
+        Me.DataGridViewTextBoxColumn8.HeaderText = "Private discount"
+        Me.DataGridViewTextBoxColumn8.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        Me.DataGridViewTextBoxColumn8.Width = 150
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.DataPropertyName = "Note"
+        Me.DataGridViewTextBoxColumn9.HeaderText = "Note"
+        Me.DataGridViewTextBoxColumn9.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        Me.DataGridViewTextBoxColumn9.Width = 150
+        '
+        'DataGridViewTextBoxColumn10
+        '
+        Me.DataGridViewTextBoxColumn10.DataPropertyName = "PaymentMethodName"
+        Me.DataGridViewTextBoxColumn10.HeaderText = "PaymentMethodName"
+        Me.DataGridViewTextBoxColumn10.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        Me.DataGridViewTextBoxColumn10.Width = 150
+        '
+        'DataGridViewTextBoxColumn11
+        '
+        Me.DataGridViewTextBoxColumn11.DataPropertyName = "ShipperName"
+        Me.DataGridViewTextBoxColumn11.HeaderText = "ShipperName"
+        Me.DataGridViewTextBoxColumn11.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
+        Me.DataGridViewTextBoxColumn11.Width = 150
+        '
+        'DataGridViewTextBoxColumn12
+        '
+        Me.DataGridViewTextBoxColumn12.DataPropertyName = "StatusName"
+        Me.DataGridViewTextBoxColumn12.HeaderText = "StatusName"
+        Me.DataGridViewTextBoxColumn12.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
+        Me.DataGridViewTextBoxColumn12.Width = 150
+        '
+        'DataGridViewTextBoxColumn13
+        '
+        Me.DataGridViewTextBoxColumn13.DataPropertyName = "PaymentMethodId"
+        Me.DataGridViewTextBoxColumn13.HeaderText = "PaymentMethodId"
+        Me.DataGridViewTextBoxColumn13.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
+        Me.DataGridViewTextBoxColumn13.Visible = False
+        Me.DataGridViewTextBoxColumn13.Width = 150
+        '
+        'DataGridViewTextBoxColumn14
+        '
+        Me.DataGridViewTextBoxColumn14.DataPropertyName = "StatusId"
+        Me.DataGridViewTextBoxColumn14.HeaderText = "StatusId"
+        Me.DataGridViewTextBoxColumn14.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
+        Me.DataGridViewTextBoxColumn14.Visible = False
+        Me.DataGridViewTextBoxColumn14.Width = 150
+        '
+        'DataGridViewTextBoxColumn15
+        '
+        Me.DataGridViewTextBoxColumn15.DataPropertyName = "ShipperId"
+        Me.DataGridViewTextBoxColumn15.HeaderText = "ShipperId"
+        Me.DataGridViewTextBoxColumn15.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
+        Me.DataGridViewTextBoxColumn15.Visible = False
+        Me.DataGridViewTextBoxColumn15.Width = 150
+        '
         'SalesOrderCategory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -847,8 +848,8 @@ Partial Class SalesOrderCategory
     Private WithEvents cbbShipStatus As System.Windows.Forms.ComboBox
     Private dtShipDate As System.Windows.Forms.DateTimePicker
     Private WithEvents Label12 As Label
-    Private WithEvents btnExport As Button
-    Private WithEvents btnSearch As Button
+    Private WithEvents bExport As Button
+    Private WithEvents bSearch As Button
     Friend WithEvents dgvSalesOrderSearch As DataGridView
     Friend WithEvents bindingNav As BindingNavigator
     Friend WithEvents BindingNavigatorCountItem As ToolStripLabel

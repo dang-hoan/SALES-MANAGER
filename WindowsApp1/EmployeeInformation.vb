@@ -14,7 +14,6 @@ Public Class EmployeeInformation
     Private hasAccount As Boolean = False
 
     Public Sub LoadData(employeeCode As Long)
-        SetVisibleForPermission()
         Dim dataRole = clsCBB.GetCBBRole().CBBRole
         Dim dataStatus = clsCBB.GetCBBStatusOfAccount().CBBStatus
 
@@ -85,6 +84,9 @@ Public Class EmployeeInformation
         InitPlaceHolderText()
 
     End Sub
+    Private Sub EmployeeInformation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SetVisibleForPermission()
+    End Sub
 
     'Set up placeholder text for comboboxes
 
@@ -125,6 +127,14 @@ Public Class EmployeeInformation
         bEdit.Visible = False
         bDelete.Visible = False
         bSave.Visible = False
+        cbEditAccount.Visible = False
+        gbAccount.Visible = False
+        lineSeparate.Visible = False
+
+        Me.AutoSize = False
+        Dim oldHeight = Me.Height
+        Me.Size = New Size(Me.Width, Me.Height - gbAccount.Height - lineSeparate.Height - cbEditAccount.Height)
+
         Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
         For Each permission In dataPermission
             Dim form = permission(1).split(":")(0)
@@ -136,28 +146,23 @@ Public Class EmployeeInformation
                             Case "Edit"
                                 bEdit.Visible = True
                                 bSave.Visible = True
+                                Console.WriteLine(bEdit.Visible.ToString())
                             Case "Delete"
                                 bDelete.Visible = True
+                            Case "CRUD account"
+                                cbEditAccount.Visible = True
+                                gbAccount.Visible = True
+                                lineSeparate.Visible = True
+                                Me.AutoSize = True
+                                Me.Size = New Size(Me.Width, oldHeight)
                         End Select
                     Next
-                    'Case "Employee's account information"
-                    '    bAccountInfor.Visible = True
-                    '    allowViewAccount = True
-                    '    For Each p In permiss
-                    '        Select Case p
-                    '            Case "Add"
-                    '                allowAddAccount = True
-                    '            Case "Edit"
-                    '                allowEditAccount = True
-                    '        End Select
-                    '    Next
             End Select
         Next
-        CenterButtons()
+        CenterButtons({bEdit, bDelete, bSave}.ToList(), 30)
     End Sub
 
-    Private Sub CenterButtons()
-        Dim listButtons = New List(Of Button) From {bEdit, bDelete, bSave}
+    Private Sub CenterButtons(ByRef listButtons As List(Of Button), ByVal offset_between As Integer)
         Dim totalWidth As Integer = 0
         Dim count = 0
 
@@ -168,9 +173,8 @@ Public Class EmployeeInformation
             End If
         Next
 
-        Dim offset_between = 30
-        Dim x As Integer = (Me.Width - totalWidth - offset_between * (count - 1)) / 2
-        Dim y As Integer = 450
+        Dim x As Integer = (listButtons(0).Parent.Width - totalWidth - offset_between * (count - 1)) / 2
+        Dim y = If(gbAccount.Visible, bEdit.Location.Y, lineSeparate.Location.Y)
 
         For Each btn As Button In listButtons
             If btn.Visible = True Then

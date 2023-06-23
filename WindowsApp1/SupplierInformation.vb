@@ -8,8 +8,6 @@ Public Class SupplierInformation
 
     Dim mode As String = "Update"
     Public Sub LoadData(supplierCode As Long)
-        SetVisibleForPermission()
-
         If supplierCode = -1 Then
             setEnable(True)
             mode = "Add"
@@ -39,8 +37,10 @@ Public Class SupplierInformation
         'InitPlaceHolderText()
 
     End Sub
+    Private Sub SupplierInformation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SetVisibleForPermission()
+    End Sub
     Private Sub SetVisibleForPermission()
-        'bAdd.Visible = False
         bEdit.Visible = False
         bDelete.Visible = False
         bSave.Visible = False
@@ -51,9 +51,6 @@ Public Class SupplierInformation
             If form = "Supplier category" Then
                 For Each p In permiss
                     Select Case p
-                        Case "Add"
-                            'bAdd.Visible = True
-                            bSave.Visible = True
                         Case "Edit"
                             bEdit.Visible = True
                             bSave.Visible = True
@@ -64,11 +61,10 @@ Public Class SupplierInformation
                 Exit For
             End If
         Next
-        CenterButtons()
+        CenterButtons({bEdit, bDelete, bSave}.ToList, 30)
     End Sub
 
-    Private Sub CenterButtons()
-        Dim listButtons = New List(Of Button) From {bEdit, bDelete, bSave}
+    Private Sub CenterButtons(ByRef listButtons As List(Of Button), ByVal offset_between As Integer)
         Dim totalWidth As Integer = 0
         Dim count = 0
 
@@ -79,13 +75,11 @@ Public Class SupplierInformation
             End If
         Next
 
-        Dim offset_between = 30
-        Dim x As Integer = (Me.Width - totalWidth - offset_between * (count - 1)) / 2
-        Dim y As Integer = 450
+        Dim x As Integer = (listButtons(0).Parent.Width - totalWidth - offset_between * (count - 1)) / 2
 
         For Each btn As Button In listButtons
             If btn.Visible = True Then
-                btn.Location = New Point(x, y)
+                btn.Location = New Point(x, btn.Location.Y)
                 x += btn.Width + offset_between
             End If
         Next

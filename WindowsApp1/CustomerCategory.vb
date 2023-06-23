@@ -128,6 +128,8 @@ Public Class CustomerCategory
         End If
     End Sub
     Private Sub SetVisibleForPermission()
+        bSearch.Visible = False
+        bExport.Visible = False
         bAdd.Visible = False
         bDelete.Visible = False
         Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
@@ -137,6 +139,10 @@ Public Class CustomerCategory
             If form = "Customer category" Then
                 For Each p In permiss
                     Select Case p
+                        Case "Search"
+                            bSearch.Visible = True
+                        Case "Export"
+                            bExport.Visible = True
                         Case "Add"
                             bAdd.Visible = True
                         Case "Delete"
@@ -146,11 +152,11 @@ Public Class CustomerCategory
                 Exit For
             End If
         Next
-        CenterButtons()
+        CenterButtons({bSearch, bExport}.ToList(), 20)
+        CenterButtons({bAdd, bDelete}.ToList(), 30)
     End Sub
 
-    Private Sub CenterButtons()
-        Dim listButtons = New List(Of Button) From {bAdd, bDelete}
+    Private Sub CenterButtons(ByRef listButtons As List(Of Button), ByVal offset_between As Integer)
         Dim totalWidth As Integer = 0
         Dim count = 0
 
@@ -161,13 +167,11 @@ Public Class CustomerCategory
             End If
         Next
 
-        Dim offset_between = 30
-        Dim x As Integer = (Me.Width - totalWidth - offset_between * (count - 1)) / 2
-        Dim y As Integer = 495
+        Dim x As Integer = (listButtons(0).Parent.Width - totalWidth - offset_between * (count - 1)) / 2
 
         For Each btn As Button In listButtons
             If btn.Visible = True Then
-                btn.Location = New Point(x, y)
+                btn.Location = New Point(x, btn.Location.Y)
                 x += btn.Width + offset_between
             End If
         Next
@@ -176,7 +180,7 @@ Public Class CustomerCategory
     Public Sub Reload()
         SetPagedDataSource(clsPMSAnalysis.SearchPerson("", False))
     End Sub
-    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+    Private Sub bSearch_Click(sender As Object, e As EventArgs) Handles bSearch.Click
         'AND (LastName = @LastName) AND (FirstName = @FirstName)
         'AND (Gender = @Gender) AND (BirthDate = @BirthDate) AND (Phone = @Phone)
         'AND (Email = @Email) AND (Address = @Address) AND (Id = @Id)
@@ -264,7 +268,7 @@ Public Class CustomerCategory
     Public Function countString(ByVal inputString As String, ByVal subString As String) As Integer
         Return System.Text.RegularExpressions.Regex.Split(inputString, subString).Length - 1
     End Function
-    Private Sub btnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
+    Private Sub bExport_Click(sender As Object, e As EventArgs) Handles bExport.Click
         If tables Is Nothing Then
             MsgBox("No data to export!", Nothing, "Notification")
             Return
