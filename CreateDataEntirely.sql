@@ -4,37 +4,43 @@ INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [Creat
 GO
 INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'bao', N'$MYHASH$V1$10000$I+5xF1SWQfu8Ikjoga8wUPMW1Msg2mKqXVpCiT8neOmN9Mq+AA==', 1, CAST(N'2023-05-12T13:28:39.347' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'CaoH', N'$MYHASH$V1$10000$cjbPmtgUwJnIoecqLKghWOoU5AocoO+KjGN15UZ317Ug4nsYAA==', 1, CAST(N'2023-04-20T10:09:02.650' AS DateTime), N'VanB', NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'binh', N'$MYHASH$V1$10000$/QsC0aASYDmu86ccU5jhFHVI1htuELsmSRm02xu0E1zPwlsuAA==', 1, CAST(N'2023-06-19T10:21:40.823' AS DateTime), N'danghoan', CAST(N'2023-06-19T10:22:00.920' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
-INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'DangHoan', N'$MYHASH$V1$10000$Y4c3oKYI5lLSU1bzbeWPNq7lGldyLJwX1v6+IlAof4GLiOy7AA==', 1, CAST(N'2023-04-20T10:09:02.650' AS DateTime), N'VanB', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'CaoHH', N'$MYHASH$V1$10000$cjbPmtgUwJnIoecqLKghWOoU5AocoO+KjGN15UZ317Ug4nsYAA==', 11, CAST(N'2023-04-20T10:09:02.650' AS DateTime), N'VanB', CAST(N'2023-06-19T09:51:32.953' AS DateTime), N'DangHoa123', NULL, NULL, NULL)
 GO
-INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'hahahuhu', N'$MYHASH$V1$10000$kkKIbGHD2q2Y5TJ/NekFxPpIABlBK/MrvX9RSZ3sYsHV9UceAA==', 2, CAST(N'2023-04-20T10:09:02.650' AS DateTime), N'VanB', NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'danghan', N'$MYHASH$V1$10000$0faWnIDFm7PqHa4fNoKnm5dTEyjpufjK68ZYar8EOcff69/jAA==', 1, CAST(N'2023-06-18T09:38:49.857' AS DateTime), N'admin2', CAST(N'2023-06-24T10:03:33.880' AS DateTime), N'danghan', NULL, NULL, 0)
 GO
-INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'hehe', N'$MYHASH$V1$10000$NpkiZeuri6+J/mqOnJCBSY9ZAB4beJxcykjAYEZTNKWhV4AnAA==', 1, CAST(N'2023-04-20T10:09:02.650' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'DangHoan', N'$MYHASH$V1$10000$fm0MOD076NjWYNa20YIKm5t/eb9J44212Gxz8EUZFm/5RguCAA==', 1, CAST(N'2023-04-20T10:09:02.650' AS DateTime), N'VanB', CAST(N'2023-06-23T16:59:17.457' AS DateTime), N'DangHoan', NULL, NULL, 0)
+GO
+INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'hahahuhu', N'$MYHASH$V1$10000$kkKIbGHD2q2Y5TJ/NekFxPpIABlBK/MrvX9RSZ3sYsHV9UceAA==', 11, CAST(N'2023-04-20T10:09:02.650' AS DateTime), N'VanB', NULL, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'hehe', N'$MYHASH$V1$10000$NpkiZeuri6+J/mqOnJCBSY9ZAB4beJxcykjAYEZTNKWhV4AnAA==', 11, CAST(N'2023-04-20T10:09:02.650' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
 INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'hello', N'$MYHASH$V1$10000$p1tN68tfpo8uaM48LyS6HZpZ8JtxmoGgV9iicc+08tjpDYNfAA==', 1, CAST(N'2023-04-24T11:25:34.823' AS DateTime), N'vanb', CAST(N'2023-04-24T11:27:30.743' AS DateTime), N'hello', NULL, NULL, 0)
 GO
-INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'huyen', N'$MYHASH$V1$10000$XnPyQhbFKAs8u4cRXahmfn4QAApgFGJ6EQacL53Vr1Lg/8GGAA==', 1, CAST(N'2023-05-12T11:16:21.517' AS DateTime), N'danghoan', CAST(N'2023-05-12T13:29:13.390' AS DateTime), N'danghoan', NULL, NULL, 0)
+INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'huyen', N'$MYHASH$V1$10000$XnPyQhbFKAs8u4cRXahmfn4QAApgFGJ6EQacL53Vr1Lg/8GGAA==', 11, CAST(N'2023-05-12T11:16:21.517' AS DateTime), N'danghoan', CAST(N'2023-05-12T13:29:13.390' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
-INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'lala', N'$MYHASH$V1$10000$3MOFuD5jNLn5yCsXOhh41V2eW3l3v4YF97kuVrUG5jlhG2X1AA==', 1, CAST(N'2023-04-20T10:11:13.950' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'lala2', N'$MYHASH$V1$10000$hxja57lJWfbUl7L8JPzYi5ZARATk8cS9gKm+eAZMKO91Mu20AA==', 1, CAST(N'2023-04-20T10:11:13.950' AS DateTime), N'danghoan', CAST(N'2023-06-18T09:14:07.090' AS DateTime), N'admin2', NULL, NULL, 0)
 GO
-INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'let go', N'$MYHASH$V1$10000$dh2DzudLS1F/jOR7Rcr7IZ+UpN9CK8gtRnMqywCWlH1mVqPhAA==', 2, CAST(N'2023-04-20T09:42:43.697' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'let go', N'$MYHASH$V1$10000$dh2DzudLS1F/jOR7Rcr7IZ+UpN9CK8gtRnMqywCWlH1mVqPhAA==', 11, CAST(N'2023-04-20T09:42:43.697' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'moihon', N'$MYHASH$V1$10000$u3yBumRSc0V97qqFLJEyP3tyc/UiXlknCRXx1FonvUKZ6zqPAA==', 2, CAST(N'2023-04-20T10:25:53.977' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'moihon', N'$MYHASH$V1$10000$u3yBumRSc0V97qqFLJEyP3tyc/UiXlknCRXx1FonvUKZ6zqPAA==', 11, CAST(N'2023-04-20T10:25:53.977' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'nhat', N'$MYHASH$V1$10000$mfhMwUxCPj7/WRwYF79TrQxYZ1KKek/94urBlS+b35spcrATAA==', 1, CAST(N'2023-06-19T10:23:07.177' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
 INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'nickname', N'$MYHASH$V1$10000$SiehE9Nax3whV7sdKbhxDJ4gLRVgMRaiUMFHzMvDXFaPxqaFAA==', 1, CAST(N'2023-04-20T10:19:06.420' AS DateTime), N'danghoan', CAST(N'2023-04-20T10:21:08.703' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
-INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'quang', N'$MYHASH$V1$10000$Cox0vIHqFPHrhEVLvvM1dFW2noP6iXF4sSTRj2sZ1T9olFEBAA==', 1, CAST(N'2023-05-12T14:12:20.647' AS DateTime), N'danghoan', CAST(N'2023-05-12T14:13:00.850' AS DateTime), N'danghoan', NULL, NULL, 0)
+INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'quangg', N'$MYHASH$V1$10000$8jBROHJhvi6XUdZJBshh1L5Wo03yZcGH/C4KMCs2Y6BSU6WzAA==', 1, CAST(N'2023-05-12T14:12:20.647' AS DateTime), N'danghoan', CAST(N'2023-06-18T09:12:04.600' AS DateTime), N'admin2', NULL, NULL, 0)
 GO
 INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'schocolate', N'$MYHASH$V1$10000$/3f1X1POkdilFbB/xcH06EAsehyOwYT1E8FM1b/lGGGy8d6uAA==', 12, CAST(N'2023-04-20T10:09:02.650' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'ThanhTuan', N'$MYHASH$V1$10000$aI/N7WK9wfSL8v7xzAM8iFAefD3xTkdEzsmSaTuDAsp+4WwvAA==', 1, CAST(N'2023-04-20T10:09:02.650' AS DateTime), N'VanB', CAST(N'2023-04-20T08:48:15.040' AS DateTime), N'danghoan', NULL, NULL, NULL)
+INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'thanhtuan', N'$MYHASH$V1$10000$aI/N7WK9wfSL8v7xzAM8iFAefD3xTkdEzsmSaTuDAsp+4WwvAA==', 11, CAST(N'2023-04-20T10:09:02.650' AS DateTime), N'VanB', CAST(N'2023-04-19T13:46:46.000' AS DateTime), N'DangHoan', NULL, NULL, NULL)
 GO
 INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'ThiB', N'$MYHASH$V1$10000$rw46LJzsaLdapBg02+Q9NjZ7bWaAKbba6p6OAQJLgXkXFFnzAA==', 1, CAST(N'2023-04-20T10:09:02.650' AS DateTime), NULL, NULL, NULL, NULL, NULL, 0)
 GO
 INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'VanA', N'$MYHASH$V1$10000$FKwZH0UlLsJOd9mo6GUx76llym7cjzsXx3xSK3w9FJcRDJ/3AA==', 1, CAST(N'2023-04-20T10:09:02.650' AS DateTime), NULL, NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'VanB', N'$MYHASH$V1$10000$uPTVovgBZ1hPxqLWT8XRdpEEA3TUrymDc/6AYP+j4P1RvEfnAA==', 1, CAST(N'2023-04-20T10:09:02.650' AS DateTime), NULL, CAST(N'2023-05-12T14:10:09.513' AS DateTime), N'danghoan', NULL, NULL, NULL)
+INSERT [dbo].[Account] ([Username], [Password], [StatusId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (N'VanBB', N'$MYHASH$V1$10000$20ndpxRUbq5kiUD9DkSRmHZ16wUPf3wYkwZp7NlP345WJ4AfAA==', 1, CAST(N'2023-04-20T10:09:02.650' AS DateTime), NULL, CAST(N'2023-06-18T09:08:42.603' AS DateTime), N'admin2', NULL, NULL, NULL)
 GO
 SET IDENTITY_INSERT [dbo].[Category] ON 
 GO
@@ -68,7 +74,7 @@ SET IDENTITY_INSERT [dbo].[Order] ON
 GO
 INSERT [dbo].[Order] ([Id], [CustomerName], [OrderDate], [ShipperId], [ShipDate], [ShipAddress], [ShipPostalCode], [ShipPrice], [StatusId], [PrivateDiscount], [TotalPrice], [PaymentMethodId], [Note], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1, N'VanG', CAST(N'2023-04-11T08:14:09.000' AS DateTime), 10, CAST(N'2023-04-11T08:14:09.000' AS DateTime), N'02 Tôn Đản, Hoà Phát, Cẩm Lệ, ĐN', NULL, CAST(31.00 AS Decimal(8, 2)), 8, 38, CAST(5622.74 AS Decimal(8, 2)), 1, N'', CAST(N'2023-04-10T10:43:59.963' AS DateTime), N'danghoan', CAST(N'2023-06-15T11:04:27.610' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
-INSERT [dbo].[Order] ([Id], [CustomerName], [OrderDate], [ShipperId], [ShipDate], [ShipAddress], [ShipPostalCode], [ShipPrice], [StatusId], [PrivateDiscount], [TotalPrice], [PaymentMethodId], [Note], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (3, N'VanA', CAST(N'2023-04-03T00:00:00.000' AS DateTime), 10, CAST(N'2023-04-05T00:00:00.000' AS DateTime), N'54 Nguyễn Lương Bằng', NULL, CAST(5.00 AS Decimal(8, 2)), 8, 5, CAST(3332.56 AS Decimal(8, 2)), 2, N'', CAST(N'2023-04-10T10:43:59.963' AS DateTime), N'danghoan', CAST(N'2023-05-09T14:31:18.080' AS DateTime), N'danghoan', CAST(N'2023-06-15T09:23:11.773' AS DateTime), N'danghoan', 1)
+INSERT [dbo].[Order] ([Id], [CustomerName], [OrderDate], [ShipperId], [ShipDate], [ShipAddress], [ShipPostalCode], [ShipPrice], [StatusId], [PrivateDiscount], [TotalPrice], [PaymentMethodId], [Note], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (3, N'VanA', CAST(N'2023-04-03T00:00:00.000' AS DateTime), 10, CAST(N'2023-04-05T00:00:00.000' AS DateTime), N'54 Nguyễn Lương Bằng', NULL, CAST(5.00 AS Decimal(8, 2)), 8, 5, CAST(3332.56 AS Decimal(8, 2)), 2, N'', CAST(N'2023-04-10T10:43:59.963' AS DateTime), N'danghoan', CAST(N'2023-05-09T14:31:18.080' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
 INSERT [dbo].[Order] ([Id], [CustomerName], [OrderDate], [ShipperId], [ShipDate], [ShipAddress], [ShipPostalCode], [ShipPrice], [StatusId], [PrivateDiscount], [TotalPrice], [PaymentMethodId], [Note], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (6, N'DangHan', CAST(N'2023-04-10T10:42:37.000' AS DateTime), 2, CAST(N'2023-04-11T10:42:37.000' AS DateTime), N'02 Lý Thái Tổ', NULL, CAST(12.00 AS Decimal(8, 2)), 9, 12, CAST(214270.59 AS Decimal(8, 2)), 2, N'', CAST(N'2023-04-10T10:43:59.963' AS DateTime), N'danghoan', CAST(N'2023-05-12T14:25:12.073' AS DateTime), N'danghoan', CAST(N'2023-06-15T09:23:11.777' AS DateTime), N'danghoan', 1)
 GO
@@ -115,6 +121,8 @@ GO
 INSERT [dbo].[Order] ([Id], [CustomerName], [OrderDate], [ShipperId], [ShipDate], [ShipAddress], [ShipPostalCode], [ShipPrice], [StatusId], [PrivateDiscount], [TotalPrice], [PaymentMethodId], [Note], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (32, N'KHG', CAST(N'2022-06-15T11:28:15.000' AS DateTime), 20, CAST(N'2022-06-20T11:28:15.000' AS DateTime), N'Cao Bằng', NULL, CAST(32.00 AS Decimal(8, 2)), 8, 22, CAST(56.16 AS Decimal(8, 2)), 1, N'', CAST(N'2023-06-15T11:28:53.787' AS DateTime), N'danghoan', CAST(N'2023-06-15T11:29:24.733' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
 INSERT [dbo].[Order] ([Id], [CustomerName], [OrderDate], [ShipperId], [ShipDate], [ShipAddress], [ShipPostalCode], [ShipPrice], [StatusId], [PrivateDiscount], [TotalPrice], [PaymentMethodId], [Note], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (33, N'KHI', CAST(N'2021-06-15T15:23:55.000' AS DateTime), 1, CAST(N'2021-06-18T15:23:55.000' AS DateTime), N'Đại Cường', NULL, CAST(12.00 AS Decimal(8, 2)), 9, 21, CAST(9.48 AS Decimal(8, 2)), 1, N'', CAST(N'2023-06-15T15:24:38.207' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Order] ([Id], [CustomerName], [OrderDate], [ShipperId], [ShipDate], [ShipAddress], [ShipPostalCode], [ShipPrice], [StatusId], [PrivateDiscount], [TotalPrice], [PaymentMethodId], [Note], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (34, N'Anh A', CAST(N'2023-06-24T09:52:47.253' AS DateTime), 10, CAST(N'2023-06-24T09:52:47.000' AS DateTime), N'Quảng Nam', NULL, CAST(32.00 AS Decimal(8, 2)), 8, 43, CAST(5653.96 AS Decimal(8, 2)), 1, N'', CAST(N'2023-06-24T09:54:01.200' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
 SET IDENTITY_INSERT [dbo].[Order] OFF
 GO
@@ -200,6 +208,10 @@ INSERT [dbo].[OrderDetail] ([OrderId], [ProductId], [NumberOfProducts], [TotalPr
 GO
 INSERT [dbo].[OrderDetail] ([OrderId], [ProductId], [NumberOfProducts], [TotalPriceOfProducts]) VALUES (32, 52, 2, CAST(40.00 AS Decimal(8, 2)))
 GO
+INSERT [dbo].[OrderDetail] ([OrderId], [ProductId], [NumberOfProducts], [TotalPriceOfProducts]) VALUES (34, 53, 23, CAST(5743.10 AS Decimal(8, 2)))
+GO
+INSERT [dbo].[OrderDetail] ([OrderId], [ProductId], [NumberOfProducts], [TotalPriceOfProducts]) VALUES (34, 82, 23, CAST(4144.14 AS Decimal(8, 2)))
+GO
 SET IDENTITY_INSERT [dbo].[PaymentMethod] ON 
 GO
 INSERT [dbo].[PaymentMethod] ([Id], [PaymentMethodName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1, N'Online', CAST(N'2023-04-18T13:27:13.047' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
@@ -210,135 +222,131 @@ SET IDENTITY_INSERT [dbo].[PaymentMethod] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Permission] ON 
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (8, N'Customer category: View', CAST(N'2023-04-28T09:27:40.640' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1060, N'Decentralization: View, Add role, Edit, Delete role', CAST(N'2023-06-21T00:00:00.000' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (9, N'Customer category: Edit', CAST(N'2023-04-28T11:27:23.947' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1061, N'Customer category: Search, Export, Add, Delete, Edit', CAST(N'2023-06-21T16:36:24.527' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (11, N'Product category: Add', CAST(N'2023-04-28T11:27:23.957' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1062, N'Employee category: Search, Export, Add, Delete, Edit, CRUD account', CAST(N'2023-06-21T16:36:24.537' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (12, N'Product category: View', CAST(N'2023-04-28T11:58:18.837' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1064, N'Employee category: Search, Export, Add, Delete, Edit', CAST(N'2023-06-21T16:37:43.170' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (15, N'Employee''s account information: View', CAST(N'2023-05-04T09:44:55.033' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1065, N'Employee category: Search, Export, Delete, Edit', CAST(N'2023-06-21T17:03:16.617' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (16, N'Decentralization: View, Edit', CAST(N'2023-05-04T10:10:48.247' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1066, N'Employee category: Search, Export, Add, Delete, CRUD account', CAST(N'2023-06-21T17:20:03.283' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (18, N'Employee''s account information: View, Add, Edit', CAST(N'2023-05-04T10:21:20.610' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1067, N'Employee category: Search, Export, Add, CRUD account', CAST(N'2023-06-21T17:20:24.927' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (19, N'Customer category: View, Add, Edit, Delete', CAST(N'2023-05-04T10:22:52.480' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1068, N'Employee category: Search, Export, Add, Delete', CAST(N'2023-06-21T17:20:40.020' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (20, N'Employee category: View, Add, Edit, Delete', CAST(N'2023-05-04T10:22:52.480' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1069, N'Employee category: Search, Export, Add, Edit', CAST(N'2023-06-21T17:21:53.527' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (21, N'Product category: View, Add, Edit, Delete', CAST(N'2023-05-04T10:22:52.490' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1070, N'Employee category: Search, Export, Add, Edit, CRUD account', CAST(N'2023-06-21T17:22:31.653' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (22, N'Order category: View, Add, Edit, Delete', CAST(N'2023-05-04T10:25:28.257' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1071, N'Product category: Search, Export, Add, Delete, Edit', CAST(N'2023-06-21T17:23:04.300' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (23, N'Supplier category: View, Add, Edit, Delete', CAST(N'2023-05-04T10:25:28.257' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1072, N'Product category: Search, Export, Add, Edit', CAST(N'2023-06-21T17:25:06.010' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (24, N'Warehouse category: View, Add, Edit, Delete', CAST(N'2023-05-04T10:25:28.257' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1073, N'Customer category: Search, Export, Add, Edit', CAST(N'2023-06-21T17:25:37.560' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (25, N'Employee search: Search, Export', CAST(N'2023-05-04T10:25:28.267' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1074, N'Customer category: Search, Export', CAST(N'2023-06-21T17:48:01.010' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (26, N'Product search: Search, Export', CAST(N'2023-05-04T10:25:28.267' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1075, N'Order category: Search, Export, Add, Delete, Edit', CAST(N'2023-06-21T17:59:31.830' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (27, N'Order search: Search, Export', CAST(N'2023-05-04T10:25:28.267' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1076, N'Supplier category: Search, Export, Add, Delete, Edit', CAST(N'2023-06-21T17:59:31.840' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (28, N'Inventory report: Search', CAST(N'2023-05-04T10:25:28.267' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1077, N'Warehouse category: Search, Export, Add, Delete, Edit', CAST(N'2023-06-21T17:59:31.840' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (29, N'Sales report: Search', CAST(N'2023-05-04T10:25:28.277' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1079, N'Warehouse report: Statistic, Export', CAST(N'2023-06-21T17:59:31.840' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (30, N'Decentralization: View', CAST(N'2023-05-04T10:25:28.277' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1080, N'Warehouse report: Statistic', CAST(N'2023-06-21T18:00:50.247' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (31, N'Detail product of warehouse: View', CAST(N'2023-05-04T10:25:28.277' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1081, N'Customer category: Search', CAST(N'2023-06-23T08:03:28.987' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (32, N'Inventory report: Search, Export', CAST(N'2023-05-04T10:25:51.830' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1082, N'Employee category: Search', CAST(N'2023-06-23T08:03:28.997' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (33, N'Sales report: Search, Export', CAST(N'2023-05-04T10:25:51.837' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1083, N'Product category: Search', CAST(N'2023-06-23T08:03:28.997' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (34, N'Detail product of warehouse: View, Add, Edit', CAST(N'2023-05-04T10:25:51.843' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1084, N'Order category: Search', CAST(N'2023-06-23T08:03:29.007' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (35, N'Customer category: View, Add, Delete', CAST(N'2023-05-05T14:35:58.033' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1085, N'Supplier category: Search', CAST(N'2023-06-23T08:03:29.007' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (36, N'Customer category: View, Add', CAST(N'2023-05-05T14:38:04.623' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1086, N'Warehouse category: Search', CAST(N'2023-06-23T08:03:29.007' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (37, N'Customer category: View, Edit', CAST(N'2023-05-05T14:38:56.440' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1087, N'Decentralization: View', CAST(N'2023-06-23T08:03:29.007' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (38, N'Customer category: View, Delete', CAST(N'2023-05-05T14:39:14.517' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1088, N'Decentralization: View, Edit, Add role', CAST(N'2023-06-23T08:07:01.807' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (39, N'Customer category: View, Add, Edit', CAST(N'2023-05-05T14:42:20.163' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1089, N'Decentralization: View, Edit, Delete role', CAST(N'2023-06-23T08:07:09.500' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (40, N'Employee category: View', CAST(N'2023-05-05T15:11:10.260' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1090, N'Decentralization: View, Edit, Add role, Delete role', CAST(N'2023-06-23T08:07:19.117' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (41, N'Order category: View', CAST(N'2023-05-05T15:11:10.267' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1091, N'Customer category: Search, Add', CAST(N'2023-06-23T08:07:31.767' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (42, N'Supplier category: View', CAST(N'2023-05-05T15:11:10.267' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1092, N'Employee category: Search, Add', CAST(N'2023-06-23T08:07:31.767' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1038, N'Decentralization: View, Edit', CAST(N'2023-05-05T15:11:10.267' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1093, N'Product category: Search, Add', CAST(N'2023-06-23T08:07:31.777' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1039, N'Decentralization: View, Add, Edit', CAST(N'2023-05-06T08:20:24.423' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1094, N'Supplier category: Search, Add', CAST(N'2023-06-23T08:07:31.777' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1040, N'Decentralization: View, Add, Edit, Delete', CAST(N'2023-05-06T08:23:31.360' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1095, N'Warehouse category: Search, Delete', CAST(N'2023-06-23T08:07:31.777' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1041, N'Decentralization: View, Edit, Delete', CAST(N'2023-05-06T08:23:44.557' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1096, N'Order category: Search, Add', CAST(N'2023-06-23T08:11:58.390' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1042, N'Decentralization: View, Add, Delete', CAST(N'2023-05-06T08:25:13.897' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1097, N'Customer category: Search, Add, Edit', CAST(N'2023-06-24T08:01:42.540' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1043, N'Employee category: View, Add, Delete', CAST(N'2023-05-06T08:45:23.393' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1098, N'Customer category: Search, Add, Delete, Edit', CAST(N'2023-06-24T08:16:39.017' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1044, N'Product category: View, Add, Edit', CAST(N'2023-05-06T08:45:23.397' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1099, N'Customer category: Search, Add, Delete', CAST(N'2023-06-24T08:16:57.870' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1045, N'Order category: View, Add, Edit', CAST(N'2023-05-06T08:45:23.397' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1100, N'Customer category: Search, Export, Delete', CAST(N'2023-06-24T08:17:53.710' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1046, N'Supplier category: View, Add, Edit', CAST(N'2023-05-06T08:45:23.400' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1101, N'Employee category: Search, Add, Edit', CAST(N'2023-06-24T08:26:11.833' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1047, N'Warehouse category: View, Edit, Delete', CAST(N'2023-05-06T08:45:23.400' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1102, N'Employee category: Search, Add, Edit, CRUD account', CAST(N'2023-06-24T08:57:14.427' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1048, N'Employee search: Search', CAST(N'2023-05-06T08:47:23.937' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1103, N'Customer category: Search, Export, Add, Delete', CAST(N'2023-06-24T09:38:43.753' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1049, N'Product search: Search', CAST(N'2023-05-06T08:47:23.940' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1104, N'Customer category: Search, Export, Add', CAST(N'2023-06-24T09:42:43.557' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1050, N'Order search: Search', CAST(N'2023-05-06T08:47:23.940' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1105, N'Warehouse category: Search, Add', CAST(N'2023-06-24T09:42:43.563' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1051, N'Detail product of warehouse: View, Add, Edit, Delete', CAST(N'2023-05-06T14:36:33.833' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1106, N'Order category: Search, Add, Edit', CAST(N'2023-06-24T09:54:29.290' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1052, N'Detail product of warehouse: View, Add', CAST(N'2023-05-06T14:45:51.650' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1107, N'Product category: Search, Add, Delete', CAST(N'2023-06-24T09:55:55.483' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1053, N'Detail product of warehouse: View, Add, Delete', CAST(N'2023-05-06T14:46:18.820' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1108, N'Order category: Search, Add, Delete, Edit', CAST(N'2023-06-24T09:55:55.487' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1054, N'Employee''s account information: View, Add', CAST(N'2023-05-06T15:40:53.250' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1109, N'Supplier category: Search, Add, Delete', CAST(N'2023-06-24T09:55:55.487' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1055, N'Employee''s account information: View, Edit', CAST(N'2023-05-06T15:41:36.543' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1110, N'Warehouse category: Search, Add, Delete', CAST(N'2023-06-24T09:55:55.487' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1056, N'Employee category: View, Add, Edit', CAST(N'2023-05-12T13:30:24.517' AS DateTime), N'bao', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1111, N'Order category: Search, Add, Delete', CAST(N'2023-06-24T09:56:47.783' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1057, N'Customer category: View, Edit, Delete', CAST(N'2023-05-12T14:55:31.053' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
-GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1058, N'Decentralization: View, Delete', CAST(N'2023-05-12T14:56:45.147' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
-GO
-INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1059, N'Warehouse category: View', CAST(N'2023-05-12T16:40:49.713' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Permission] ([Id], [PermissionName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1112, N'Decentralization: View, Add role, Delete role', CAST(N'2023-06-24T09:57:11.817' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
 SET IDENTITY_INSERT [dbo].[Permission] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Person] ON 
 GO
-INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1, N'ThanhTuan', N'Nguyễn Thế', N'Lực', 1, CAST(N'2023-04-19T13:46:46.000' AS DateTime), N'0867854654', N'gho@gmail.com', N'Bắc Giang', 3, CAST(N'2023-04-19T13:47:24.107' AS DateTime), N'danghoan', CAST(N'2023-05-12T11:12:57.593' AS DateTime), N'danghoan', NULL, NULL, 0)
+INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (1, N'ThanhTuan', N'Nguyễn Thế', N'Lực', 1, CAST(N'2023-04-19T13:46:46.000' AS DateTime), N'0867854654', N'gho@gmail.com', N'Bắc Giang', 3, CAST(N'2023-04-19T13:47:24.107' AS DateTime), N'danghoan', CAST(N'2023-06-24T09:02:16.223' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
-INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (2, N'CaoH', N'Cao Thị', N'H', 0, CAST(N'2023-05-12T11:10:01.000' AS DateTime), N'0573475893', N'caoH@gmail.com', N'Lạng Sơn', 3, NULL, NULL, CAST(N'2023-05-12T11:10:39.543' AS DateTime), N'danghoan', NULL, NULL, 0)
+INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (2, N'CaoHH', N'Cao Thị', N'H', 0, CAST(N'2023-06-12T11:10:01.000' AS DateTime), N'0573475893', N'caoH@gmail.com', N'Lạng Sơn', 3, NULL, NULL, CAST(N'2023-06-24T09:36:20.870' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
-INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (3, NULL, N'Nguyễn Thế', N'Đăng Hân', 1, CAST(N'2002-02-03T22:23:04.000' AS DateTime), N'0889207876', N'danghannguyen09@gmail.com', N'Quảng Nam', 4, CAST(N'2023-04-04T22:24:16.933' AS DateTime), N'danghoan', CAST(N'2023-04-19T15:57:47.883' AS DateTime), N'danghoan', NULL, NULL, 0)
+INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (3, N'danghan', N'Nguyễn Thế', N'Đăng Hân', 1, CAST(N'2002-02-03T22:23:04.000' AS DateTime), N'0889207876', N'danghannguyen09@gmail.com', N'Quảng Nam', 10, CAST(N'2023-04-04T22:24:16.933' AS DateTime), N'danghoan', CAST(N'2023-06-24T09:42:01.297' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
-INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (4, N'danghan123', N'sf', N'f', 1, CAST(N'2023-02-03T08:31:21.000' AS DateTime), N'058498594', N'abc@gmail.com', N'Quảng Ngãi', 4, CAST(N'2023-04-05T08:32:03.480' AS DateTime), N'danghoan', CAST(N'2023-04-05T08:54:24.727' AS DateTime), N'danghoan', CAST(N'2023-04-05T08:55:34.710' AS DateTime), N'danghoan', 1)
+INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (4, NULL, N'sf', N'f', 1, CAST(N'2023-02-03T08:31:21.000' AS DateTime), N'058498594', N'abc@gmail.com', N'Quảng Ngãi', 2, CAST(N'2023-04-05T08:32:03.480' AS DateTime), N'danghoan', CAST(N'2023-06-24T09:36:34.493' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
-INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (5, N'DangHoan', N'Nguyễn Thế', N'Đăng Hoan', 1, CAST(N'2002-02-03T00:00:00.000' AS DateTime), N'0852556258', N'nguyenthedanghoan@gmail.com', N'Quảng Nam', 1, NULL, NULL, NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (5, N'DangHoan', N'Nguyễn Thế', N'Đăng Hoan', 1, CAST(N'2002-02-03T00:00:00.000' AS DateTime), N'0852556258', N'nguyenthedanghoan@gmail.com', N'Quảng Nam', 1, NULL, NULL, CAST(N'2023-06-19T09:51:54.923' AS DateTime), N'DangHoan', NULL, NULL, 0)
 GO
-INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (6, NULL, N'Lê', N'Thanh Huyền', 0, CAST(N'2023-04-23T13:41:33.000' AS DateTime), N'0587685743', N'gwg@gmail.com', N'Bình Định', 4, CAST(N'2023-04-19T13:42:17.160' AS DateTime), N'danghoan', CAST(N'2023-04-19T15:54:43.397' AS DateTime), N'danghoan', NULL, NULL, 0)
+INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (6, NULL, N'Lê', N'Thanh Huyền', 0, CAST(N'2023-04-23T13:41:33.000' AS DateTime), N'0587685743', N'gwg@gmail.com', N'Bình Định', 4, CAST(N'2023-04-19T13:42:17.160' AS DateTime), N'danghoan', CAST(N'2023-06-24T08:16:07.403' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
-INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (7, NULL, N'Customer', N'The New', 1, CAST(N'2023-04-05T09:35:10.000' AS DateTime), N'0904874532', N'newCustomer@gmail.com', N'Quảng Trị', 4, CAST(N'2023-04-05T09:35:41.207' AS DateTime), N'danghoan', CAST(N'2023-05-12T11:02:25.890' AS DateTime), N'danghoan', NULL, NULL, 0)
+INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (7, NULL, N'Customer', N'The New', 1, CAST(N'2023-04-05T09:35:10.000' AS DateTime), N'0904874532', N'newCustomer@gmail.com', N'Quảng Trị', 4, CAST(N'2023-04-05T09:35:41.207' AS DateTime), N'danghoan', CAST(N'2023-06-24T08:16:16.527' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
-INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (8, NULL, N'Trần Văn', N'User2', 1, CAST(N'2023-04-13T10:28:58.000' AS DateTime), N'0478275076', N'user2@gmail.com', N'Đà Nẵng', 4, CAST(N'2023-04-13T10:30:08.753' AS DateTime), N'danghoan', CAST(N'2023-05-12T11:02:43.213' AS DateTime), N'danghoan', NULL, NULL, 0)
+INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (8, NULL, N'Trần Văn', N'User2', 1, CAST(N'2023-04-13T10:28:58.000' AS DateTime), N'0478275076', N'user2@gmail.com', N'Đà Nẵng', 4, CAST(N'2023-04-13T10:30:08.753' AS DateTime), N'danghoan', CAST(N'2023-05-12T11:02:43.213' AS DateTime), N'danghoan', CAST(N'2023-06-24T09:40:18.473' AS DateTime), N'danghan', 1)
 GO
-INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (9, N'VanA', N'Nguyễn Văn', N'A', 1, CAST(N'2002-11-15T00:00:00.000' AS DateTime), N'0428752807', N'vân@gmail.com', N'Quảng Nam', 4, NULL, NULL, CAST(N'2023-04-04T22:22:56.103' AS DateTime), N'danghoan', CAST(N'2023-04-05T08:55:03.413' AS DateTime), N'danghoan', 1)
+INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (9, N'VanA', N'Nguyễn Văn', N'A', 1, CAST(N'2002-11-15T00:00:00.000' AS DateTime), N'0428752807', N'vân@gmail.com', N'Quảng Nam', 4, NULL, NULL, CAST(N'2023-04-04T22:22:56.103' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
-INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (10, N'VanB', N'Trần Văn', N'B', 0, CAST(N'2001-08-09T00:00:00.000' AS DateTime), N'05747583', N'b@gmail.com', N'Quảng Trị', 3, NULL, NULL, CAST(N'2023-04-24T11:11:09.063' AS DateTime), N'danghoan', NULL, NULL, 0)
+INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (10, N'VanBB', N'Trần Văn', N'B', 0, CAST(N'2001-08-09T00:00:00.000' AS DateTime), N'05747583', N'b@gmail.com', N'Quảng Trị', 3, NULL, NULL, CAST(N'2023-06-18T09:08:42.573' AS DateTime), N'admin2', NULL, NULL, 0)
 GO
 INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (11, NULL, N'Đinh Minh', N'Nhất', 0, CAST(N'2023-04-19T15:57:50.000' AS DateTime), N'0654676953', N'moi@gmail.com', N'Quảng Ngãi', 4, CAST(N'2023-04-19T15:58:14.827' AS DateTime), N'danghoan', CAST(N'2023-05-12T11:03:14.697' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
@@ -350,17 +358,17 @@ INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [Bir
 GO
 INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (15, N'moihon', N'Đoàn', N'Quốc', 1, CAST(N'2002-04-20T10:04:26.000' AS DateTime), N'065743', N'DoanQuoc@gmail.com', N'Hoàng Sa', 2, CAST(N'2023-04-20T10:05:04.697' AS DateTime), N'danghoan', CAST(N'2023-05-12T11:12:06.643' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
-INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (16, N'lala', N'grg', N'ggr', 0, CAST(N'2023-04-20T10:10:53.720' AS DateTime), N'05454', N'gr@gmail.com', N'hrth', 1, CAST(N'2023-04-20T10:11:16.440' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (16, NULL, N'grg', N'ggr', 0, CAST(N'2023-04-20T10:10:53.000' AS DateTime), N'05454', N'gr@gmail.com', N'hrth', 1, CAST(N'2023-04-20T10:11:16.440' AS DateTime), N'danghoan', CAST(N'2023-06-18T09:14:01.623' AS DateTime), N'admin2', NULL, NULL, 0)
 GO
-INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (17, NULL, N'tret', N'heh', 0, CAST(N'2023-04-20T10:12:23.000' AS DateTime), N'06546', N'g@gmail.com', N'he', 4, CAST(N'2023-04-20T10:12:51.817' AS DateTime), N'danghoan', CAST(N'2023-04-20T10:13:05.137' AS DateTime), N'danghoan', CAST(N'2023-05-05T14:37:48.653' AS DateTime), N'danghoan', 1)
+INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (17, NULL, N'tret', N'heh', 0, CAST(N'2023-04-20T10:12:23.000' AS DateTime), N'06546', N'g@gmail.com', N'he', 4, CAST(N'2023-04-20T10:12:51.817' AS DateTime), N'danghoan', CAST(N'2023-04-20T10:13:05.137' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
 INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (18, N'nickname', N'do', N'doremiphas', 0, CAST(N'2002-04-20T10:17:34.000' AS DateTime), N'0543543897', N'song@gmail.com', N'Trường Sa', 2, CAST(N'2023-04-20T10:19:08.930' AS DateTime), N'danghoan', CAST(N'2023-05-12T11:11:25.507' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
-INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (19, NULL, N'gưg', N'toi la ngu', 1, CAST(N'2023-04-20T10:30:35.947' AS DateTime), N'06565', N'guggu@gmail.com', N'ge', 2, CAST(N'2023-04-20T10:30:57.570' AS DateTime), N'danghoan', NULL, NULL, CAST(N'2023-04-20T10:31:02.387' AS DateTime), N'danghoan', 1)
+INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (19, NULL, N'gưg', N'toi la ngu', 1, CAST(N'2023-04-20T10:30:35.947' AS DateTime), N'06565', N'guggu@gmail.com', N'ge', 2, CAST(N'2023-04-20T10:30:57.570' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
 INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (20, N'hello', N'Đặng', N'Minh Thư', 1, CAST(N'2023-04-24T11:24:58.000' AS DateTime), N'0583495', N'mai@gmail.com', N'Cà Mau', 3, CAST(N'2023-04-24T11:25:18.240' AS DateTime), N'vanb', CAST(N'2023-05-12T11:14:56.830' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
-INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (21, NULL, N'hona', N'helo', 1, CAST(N'2023-05-05T14:37:15.107' AS DateTime), N'0593475', N'haon@gmail.com', N'gw', 4, CAST(N'2023-05-05T14:37:42.080' AS DateTime), N'danghoan', NULL, NULL, CAST(N'2023-05-05T14:37:45.893' AS DateTime), N'danghoan', 1)
+INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (21, NULL, N'hona', N'helo', 1, CAST(N'2023-05-05T14:37:15.107' AS DateTime), N'0593475', N'haon@gmail.com', N'gw', 4, CAST(N'2023-05-05T14:37:42.080' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
 INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (10021, NULL, N'Nguyễn', N'Thành Đạt', 1, CAST(N'2002-05-06T15:32:41.000' AS DateTime), N'057438756', N'dat@gmail.com', N'Quảng Đại, Đại Cường, Đại Lộc, Quảng Nam', 2, CAST(N'2023-05-06T15:33:25.837' AS DateTime), N'danghoan', CAST(N'2023-05-12T11:11:00.300' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
@@ -372,11 +380,19 @@ INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [Bir
 GO
 INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (10025, N'bao', N'Trần', N'Minh Bảo', 1, CAST(N'2000-05-12T13:27:43.000' AS DateTime), N'0489578342', N'bao@gmail.com', N'Hà Tĩnh', 1, CAST(N'2023-05-12T13:28:42.057' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (10026, NULL, N'Truong', N'Quang Do', 1, CAST(N'2023-05-12T14:05:51.517' AS DateTime), N'0876867', N'do@gmail.com', N'gwg', 4, CAST(N'2023-05-12T14:08:17.797' AS DateTime), N'danghoan', NULL, NULL, CAST(N'2023-05-12T14:08:59.217' AS DateTime), N'danghoan', 1)
+INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (10026, NULL, N'Truong', N'Quang Do', 1, CAST(N'2023-05-12T14:05:51.517' AS DateTime), N'0876867', N'do@gmail.com', N'gwg', 4, CAST(N'2023-05-12T14:08:17.797' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (10027, N'quang', N'gerg', N'agsg', 1, CAST(N'2002-05-01T14:10:37.000' AS DateTime), N'0605685784', N'ee@gmail.com', N'tyty', 2, CAST(N'2023-05-12T14:12:29.350' AS DateTime), N'danghoan', CAST(N'2023-05-12T14:13:12.627' AS DateTime), N'danghoan', NULL, NULL, 0)
+INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (10027, N'quangg', N'gerg', N'agsg', 1, CAST(N'2002-05-01T14:10:37.000' AS DateTime), N'0605685784', N'ee@gmail.com', N'tyty', 2, CAST(N'2023-05-12T14:12:29.350' AS DateTime), N'danghoan', CAST(N'2023-06-18T09:10:55.933' AS DateTime), N'admin2', NULL, NULL, 0)
 GO
 INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (10028, N'admin2', N'master', N'admin1', 1, CAST(N'2023-05-12T16:59:52.773' AS DateTime), N'0543578493', N'admin1@gmail.com', N'Huế', 22, CAST(N'2023-05-12T17:01:40.647' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (10029, NULL, N'nguyen', N'danghan', 1, CAST(N'2002-02-03T09:18:28.000' AS DateTime), N'0889207876', N'danghannguyen09@gmail.com', N'Dai Cuong', 1, CAST(N'2023-06-18T09:19:16.023' AS DateTime), N'admin2', NULL, NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (10030, N'nhat', N'Trần Minh', N'Nhật', 1, CAST(N'2002-02-12T08:39:40.000' AS DateTime), N'04567', N'minnhat@gmail.com', N'ừ', 2, CAST(N'2023-06-19T08:40:45.967' AS DateTime), N'danghoan', CAST(N'2023-06-19T10:23:20.640' AS DateTime), N'danghoan', NULL, NULL, 0)
+GO
+INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (10031, N'binh', N'binh', N'cam', 0, CAST(N'2023-06-19T10:20:18.000' AS DateTime), N'09876543', N'binh@gmail.com', N'Quảng Bình', 3, CAST(N'2023-06-19T10:21:19.593' AS DateTime), N'danghoan', CAST(N'2023-06-19T10:22:00.920' AS DateTime), N'danghoan', NULL, NULL, 0)
+GO
+INSERT [dbo].[Person] ([Id], [Username], [LastName], [FirstName], [Gender], [BirthDate], [Phone], [Email], [Address], [RoleId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (10032, NULL, N'KH', N'C', 0, CAST(N'2002-01-12T11:49:59.000' AS DateTime), N'0432', N'khC@gmail.com', N'Quảng Trị', 4, CAST(N'2023-06-19T11:51:40.643' AS DateTime), N'danghoan', CAST(N'2023-06-19T11:52:49.520' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
 SET IDENTITY_INSERT [dbo].[Person] OFF
 GO
@@ -470,7 +486,7 @@ INSERT [dbo].[Product] ([Id], [ProductName], [SupplierId], [CategoryId], [Produc
 GO
 INSERT [dbo].[Product] ([Id], [ProductName], [SupplierId], [CategoryId], [ProductPrice], [UnitPrice], [ProductStatusId], [DiscountPercent], [Rating], [ImageId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (69, N'hah', 1, 3, CAST(675.00 AS Decimal(30, 2)), N'$', 3, 54, 0, 0, CAST(N'2023-05-06T14:38:12.423' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Product] ([Id], [ProductName], [SupplierId], [CategoryId], [ProductPrice], [UnitPrice], [ProductStatusId], [DiscountPercent], [Rating], [ImageId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (70, N'Dầu gội đầu', 1, 4, CAST(754.00 AS Decimal(30, 2)), N'$', 3, 32, 0, 0, CAST(N'2023-05-12T12:59:16.113' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
+INSERT [dbo].[Product] ([Id], [ProductName], [SupplierId], [CategoryId], [ProductPrice], [UnitPrice], [ProductStatusId], [DiscountPercent], [Rating], [ImageId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (70, N'Dầu gội đầu', 1, 4, CAST(754.00 AS Decimal(30, 2)), N'$', 3, 32, 0, 0, CAST(N'2023-05-12T12:59:16.113' AS DateTime), N'danghoan', NULL, NULL, CAST(N'2023-06-19T13:25:24.673' AS DateTime), N'danghoan', 1)
 GO
 INSERT [dbo].[Product] ([Id], [ProductName], [SupplierId], [CategoryId], [ProductPrice], [UnitPrice], [ProductStatusId], [DiscountPercent], [Rating], [ImageId], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (71, N'getge', 2, 2, CAST(534.00 AS Decimal(30, 2)), N'$', 3, 34, 0, 0, CAST(N'2023-05-12T14:38:43.547' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
@@ -548,113 +564,33 @@ INSERT [dbo].[Role] ([Id], [RoleName], [CreateDate], [CreateBy], [UpdateDate], [
 GO
 INSERT [dbo].[Role] ([Id], [RoleName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (22, N'Admin2', CAST(N'2023-05-12T16:40:26.617' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
+INSERT [dbo].[Role] ([Id], [RoleName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (23, N'roleNew', CAST(N'2023-06-24T09:38:33.923' AS DateTime), N'danghoan', NULL, NULL, CAST(N'2023-06-24T09:41:37.590' AS DateTime), N'danghoan', 1)
+GO
+INSERT [dbo].[Role] ([Id], [RoleName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (24, N'role2', CAST(N'2023-06-24T09:38:52.453' AS DateTime), N'danghoan', NULL, NULL, CAST(N'2023-06-24T09:41:31.650' AS DateTime), N'danghoan', 1)
+GO
+INSERT [dbo].[Role] ([Id], [RoleName], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (25, N'sdfg', CAST(N'2023-06-24T09:57:19.483' AS DateTime), N'danghoan', NULL, NULL, CAST(N'2023-06-24T09:57:26.860' AS DateTime), N'danghoan', 1)
+GO
 SET IDENTITY_INSERT [dbo].[Role] OFF
 GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (1, 18)
+INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (1, 1066)
 GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (1, 19)
+INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (1, 1079)
 GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (1, 20)
+INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (1, 1090)
 GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (1, 21)
+INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (1, 1103)
 GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (1, 22)
+INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (1, 1107)
 GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (1, 23)
+INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (1, 1109)
 GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (1, 24)
+INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (1, 1110)
 GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (1, 25)
+INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (1, 1111)
 GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (1, 26)
+INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (1, 1112)
 GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (1, 27)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (1, 32)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (1, 33)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (1, 1040)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (1, 1051)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (2, 27)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (3, 41)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (5, 9)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (7, 9)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (7, 12)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (9, 16)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (9, 18)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (9, 19)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (9, 20)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (9, 21)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (9, 22)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (9, 23)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (9, 24)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (9, 25)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (9, 26)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (9, 27)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (9, 32)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (9, 33)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (9, 34)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (10, 39)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (10, 1056)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (11, 24)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (11, 34)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (20, 8)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (20, 1056)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (22, 8)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (22, 12)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (22, 15)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (22, 28)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (22, 29)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (22, 31)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (22, 40)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (22, 41)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (22, 42)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (22, 1040)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (22, 1048)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (22, 1049)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (22, 1050)
-GO
-INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (22, 1059)
+INSERT [dbo].[RolePermission] ([RoleId], [PermissionId]) VALUES (23, 1103)
 GO
 SET IDENTITY_INSERT [dbo].[SalesDetail] ON 
 GO
@@ -704,7 +640,7 @@ INSERT [dbo].[SalesDetail] ([Id], [WareHouseId], [ProductId], [Total], [SellNumb
 GO
 INSERT [dbo].[SalesDetail] ([Id], [WareHouseId], [ProductId], [Total], [SellNumber], [SalesTotal]) VALUES (40, 17, 52, 300, 294, CAST(5880.00 AS Decimal(8, 2)))
 GO
-INSERT [dbo].[SalesDetail] ([Id], [WareHouseId], [ProductId], [Total], [SellNumber], [SalesTotal]) VALUES (41, 19, 53, 454, 15, CAST(3745.50 AS Decimal(8, 2)))
+INSERT [dbo].[SalesDetail] ([Id], [WareHouseId], [ProductId], [Total], [SellNumber], [SalesTotal]) VALUES (41, 19, 53, 454, 38, CAST(9488.60 AS Decimal(8, 2)))
 GO
 INSERT [dbo].[SalesDetail] ([Id], [WareHouseId], [ProductId], [Total], [SellNumber], [SalesTotal]) VALUES (42, 17, 50, 535, 0, CAST(0.00 AS Decimal(8, 2)))
 GO
@@ -742,7 +678,7 @@ INSERT [dbo].[SalesDetail] ([Id], [WareHouseId], [ProductId], [Total], [SellNumb
 GO
 INSERT [dbo].[SalesDetail] ([Id], [WareHouseId], [ProductId], [Total], [SellNumber], [SalesTotal]) VALUES (70, 3, 81, 54, 0, CAST(0.00 AS Decimal(8, 2)))
 GO
-INSERT [dbo].[SalesDetail] ([Id], [WareHouseId], [ProductId], [Total], [SellNumber], [SalesTotal]) VALUES (71, 45, 82, 2345, 123, CAST(22162.14 AS Decimal(8, 2)))
+INSERT [dbo].[SalesDetail] ([Id], [WareHouseId], [ProductId], [Total], [SellNumber], [SalesTotal]) VALUES (71, 45, 82, 2345, 146, CAST(26306.28 AS Decimal(8, 2)))
 GO
 INSERT [dbo].[SalesDetail] ([Id], [WareHouseId], [ProductId], [Total], [SellNumber], [SalesTotal]) VALUES (72, 45, 83, 15, 0, CAST(0.00 AS Decimal(8, 2)))
 GO
@@ -824,7 +760,7 @@ INSERT [dbo].[WareHouse] ([Id], [WareHouseName], [Address], [NumberOfImport], [N
 GO
 INSERT [dbo].[WareHouse] ([Id], [WareHouseName], [Address], [NumberOfImport], [NumberOfExport], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (2, N'Kho dụng cụ thể thao', N'K34 đường Tôn Đức Thắng', -2337, 337, CAST(N'2023-04-17T11:13:56.160' AS DateTime), N'danghoan', CAST(N'2023-04-17T11:15:45.630' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
-INSERT [dbo].[WareHouse] ([Id], [WareHouseName], [Address], [NumberOfImport], [NumberOfExport], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (3, N'Kho đồ dùng gia đình', N'345 đường Trường Chinh, Cẩm Lệ, Đà Nẵng', 78122, 42, CAST(N'2023-04-17T11:13:56.160' AS DateTime), N'danghoan', CAST(N'2023-04-18T15:09:22.540' AS DateTime), N'danghoan', NULL, NULL, 0)
+INSERT [dbo].[WareHouse] ([Id], [WareHouseName], [Address], [NumberOfImport], [NumberOfExport], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (3, N'Kho đồ dùng gia đình', N'345 đường Trường Chinh, Cẩm Lệ, Đà Nẵng', 2298, 42, CAST(N'2023-04-17T11:13:56.160' AS DateTime), N'danghoan', CAST(N'2023-04-18T15:09:22.540' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
 INSERT [dbo].[WareHouse] ([Id], [WareHouseName], [Address], [NumberOfImport], [NumberOfExport], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (4, N'hoan', N'gwghwoi', 0, 0, CAST(N'2023-04-18T08:34:37.607' AS DateTime), N'danghoan', NULL, NULL, CAST(N'2023-06-10T15:59:41.013' AS DateTime), N'danghoan', 1)
 GO
@@ -838,7 +774,7 @@ INSERT [dbo].[WareHouse] ([Id], [WareHouseName], [Address], [NumberOfImport], [N
 GO
 INSERT [dbo].[WareHouse] ([Id], [WareHouseName], [Address], [NumberOfImport], [NumberOfExport], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (18, N'warehouse', N'Núi Thành', 0, 0, CAST(N'2023-04-18T11:37:48.033' AS DateTime), N'danghoan', CAST(N'2023-06-10T16:35:39.523' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
-INSERT [dbo].[WareHouse] ([Id], [WareHouseName], [Address], [NumberOfImport], [NumberOfExport], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (19, N'kho mới thứ 2', N'địa điểm chưa biết', -343, 110, CAST(N'2023-04-18T11:40:21.960' AS DateTime), N'danghoan', CAST(N'2023-04-18T13:28:19.013' AS DateTime), N'danghoan', NULL, NULL, 0)
+INSERT [dbo].[WareHouse] ([Id], [WareHouseName], [Address], [NumberOfImport], [NumberOfExport], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (19, N'kho mới thứ 2', N'địa điểm chưa biết', -343, 133, CAST(N'2023-04-18T11:40:21.960' AS DateTime), N'danghoan', CAST(N'2023-04-18T13:28:19.013' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
 INSERT [dbo].[WareHouse] ([Id], [WareHouseName], [Address], [NumberOfImport], [NumberOfExport], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (21, N'', N'', 0, 0, CAST(N'2023-04-18T11:51:25.517' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
@@ -854,7 +790,7 @@ INSERT [dbo].[WareHouse] ([Id], [WareHouseName], [Address], [NumberOfImport], [N
 GO
 INSERT [dbo].[WareHouse] ([Id], [WareHouseName], [Address], [NumberOfImport], [NumberOfExport], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (44, N'Kho dược phẩm', N'Hà Nội', 0, 0, CAST(N'2023-06-10T16:41:04.423' AS DateTime), N'danghoan', NULL, NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[WareHouse] ([Id], [WareHouseName], [Address], [NumberOfImport], [NumberOfExport], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (45, N'kho cây trồng 2', N'Vườn Bách Thảo 2', 5831, 132, CAST(N'2023-06-10T16:42:41.167' AS DateTime), N'danghoan', CAST(N'2023-06-10T16:49:06.400' AS DateTime), N'danghoan', NULL, NULL, 0)
+INSERT [dbo].[WareHouse] ([Id], [WareHouseName], [Address], [NumberOfImport], [NumberOfExport], [CreateDate], [CreateBy], [UpdateDate], [UpdateBy], [DeleteDate], [DeleteBy], [IsDelete]) VALUES (45, N'kho cây trồng 2', N'Vườn Bách Thảo 2', 5831, 155, CAST(N'2023-06-10T16:42:41.167' AS DateTime), N'danghoan', CAST(N'2023-06-10T16:49:06.400' AS DateTime), N'danghoan', NULL, NULL, 0)
 GO
 SET IDENTITY_INSERT [dbo].[WareHouse] OFF
 GO
