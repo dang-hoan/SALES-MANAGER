@@ -1,53 +1,23 @@
-﻿Imports LibraryDataset
-Imports LibraryCommon
+﻿Imports LibraryCommon
+Imports LibraryDataset
 
 Public Class CustomerInformation
     Dim conn As New connCommon()
     Dim clsPMSAnalysis As New clsPerson(conn.connSales.ConnectionString)
     Dim clsRolePermission As New clsRolePermission(conn.connSales.ConnectionString)
 
-    Dim mode As String = "Update"
-    Public Sub LoadData(customerCode As Long)
-        If customerCode = -1 Then
-            setEnable(True)
-            mode = "Add"
+    Dim mode As String = "Add"
+    Dim customerCode = -1
 
-            labTitle.Text = "ADD CUSTOMER"
-            labTitle.Location = New Point(Me.Width / 2 - labTitle.Width / 2, labTitle.Location.Y)
-
-            Dim x As Integer = (Me.Width - bSave.Width) / 2
-
-            bSave.Location = New Point(x, bSave.Location.Y)
-            bEdit.Visible = False
-            bDelete.Visible = False
-
-            txtFirstName_Leave(txtFirstName, EventArgs.Empty)
-            txtLastName_Leave(txtLastName, EventArgs.Empty)
-
-        Else
-            setEnable(False)
-
-            Dim data = clsPMSAnalysis.GetPersonById(customerCode)
-            txtCode.Text = customerCode
-            txtLastName.Text = data("LastName")
-            txtFirstName.Text = data("FirstName")
-            dtBirthDay.Text = data("BirthDate")
-            txtPhone.Text = data("Phone")
-            txtEmail.Text = data("Email")
-            txtAddress.Text = data("Address")
-
-            If data("Gender") Then
-                rdMale.Checked = True
-            Else
-                rdFemale.Checked = True
-            End If
-
+    Public Sub Init(ByVal customerCode As Long)
+        If customerCode <> -1 Then
+            mode = "Update"
+            Me.customerCode = customerCode
         End If
-        'InitPlaceHolderText()
-
     End Sub
     Private Sub CustomerInformation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SetVisibleForPermission()
+        LoadData()
     End Sub
     Private Sub SetVisibleForPermission()
         bEdit.Visible = False
@@ -94,6 +64,45 @@ Public Class CustomerInformation
         Next
     End Sub
 
+    Public Sub LoadData()
+        If mode = "Add" Then
+            setEnable(True)
+
+            labTitle.Text = "ADD CUSTOMER"
+            labTitle.Location = New Point(Me.Width / 2 - labTitle.Width / 2, labTitle.Location.Y)
+
+            Dim x As Integer = (Me.Width - bSave.Width) / 2
+
+            bSave.Location = New Point(x, bSave.Location.Y)
+            bSave.Visible = True
+            bEdit.Visible = False
+            bDelete.Visible = False
+
+            txtFirstName_Leave(txtFirstName, EventArgs.Empty)
+            txtLastName_Leave(txtLastName, EventArgs.Empty)
+
+        Else
+            setEnable(False)
+
+            Dim data = clsPMSAnalysis.GetPersonById(customerCode)
+            txtCode.Text = customerCode
+            txtLastName.Text = data("LastName")
+            txtFirstName.Text = data("FirstName")
+            dtBirthDay.Text = data("BirthDate")
+            txtPhone.Text = data("Phone")
+            txtEmail.Text = data("Email")
+            txtAddress.Text = data("Address")
+
+            If data("Gender") Then
+                rdMale.Checked = True
+            Else
+                rdFemale.Checked = True
+            End If
+
+        End If
+        'InitPlaceHolderText()
+
+    End Sub
     Private Sub bEdit_Click(sender As Object, e As EventArgs) Handles bEdit.Click
         bEdit.Enabled = False
         setEnable(True)
@@ -154,6 +163,8 @@ Public Class CustomerInformation
     End Sub
 
     Private Function checkLogicData() As Boolean
+        txtEmail.Text = txtEmail.Text.Trim()
+
         If txtFirstName.Text = "First name" Or txtLastName.Text = "Last name" Or txtPhone.Text = "" Or txtAddress.Text = "" Or
             txtEmail.Text = "" Or Not (rdMale.Checked Or rdFemale.Checked) Then
 
@@ -173,6 +184,10 @@ Public Class CustomerInformation
 
         ElseIf countString(txtEmail.Text, "gmail.com") <> 1 Or Not txtEmail.Text.EndsWith("@gmail.com") Then
             MsgBox("Email invalidate!", Nothing, "Notification")
+            Return False
+
+        ElseIf clsPMSAnalysis.CheckEmailExists(txtEmail.Text) AndAlso (mode = "Update" AndAlso Not txtEmail.Text.Equals(clsPMSAnalysis.GetEmailById(txtCode.Text))) Then
+            MsgBox("Email you entered already exists in the system! Please enter a other email!")
             Return False
 
         End If

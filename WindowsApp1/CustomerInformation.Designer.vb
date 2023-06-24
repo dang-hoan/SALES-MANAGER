@@ -300,7 +300,7 @@ Partial Class CustomerInformation
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "CustomerInformation"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)

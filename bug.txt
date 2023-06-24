@@ -1,4 +1,4 @@
-- forget password (gởi mk mới qua email), register account
+V forget password (gởi mk mới qua email), register account
 V xuất đồ thị báo cáo theo ngày chọn
 V gộp search + danh mục
 V thêm bảng paymentMethod để lưu combobox
@@ -31,7 +31,7 @@ V add remove order khi dgv rỗng
 V phone too long, notify when have 2 checkvalue false, update status of account when delete employee
 V Check username exits and process save employee
 - xuất cột sdt mất số 0 ở đầu, sort, reload
-- kiểm tra nếu email trùng
+V kiểm tra nếu email trùng
 
 
 V thêm thông tin statistic (sales của các tháng trong năm 2022)

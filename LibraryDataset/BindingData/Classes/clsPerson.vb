@@ -38,7 +38,10 @@ Public Class clsPerson
         ta.Connection = conn
         Return ta.GetAccountNameByEmail(email)
     End Function
-
+    Public Function GetEmailById(ByVal id As Long) As String
+        ta.Connection = conn
+        Return ta.GetEmailById(id)
+    End Function
     Public Function UpdateCustomer(lastName As String, firstName As String,
                                 gender As Boolean, birthDate As DateTime, phone As String,
                                 email As String, address As String, updateUser As String, id As Long) As Integer

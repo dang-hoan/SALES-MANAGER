@@ -340,7 +340,7 @@ Partial Class ProductInformation
         Me.Controls.Add(Me.groupBox1)
         Me.Controls.Add(Me.labTitle)
         Me.Name = "ProductInformation"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Product Category"
         Me.groupBox1.ResumeLayout(False)
         Me.groupBox1.PerformLayout()

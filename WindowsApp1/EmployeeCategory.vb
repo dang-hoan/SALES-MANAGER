@@ -129,7 +129,7 @@ Public Class EmployeeCategory
     Private Sub dgvEmployeeSearch_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvEmployeeSearch.CellDoubleClick
         If (e.ColumnIndex > 0 And e.RowIndex >= 0) Then
             Dim frmEmployeeInformation = New EmployeeInformation()
-            frmEmployeeInformation.LoadData(dgvEmployeeSearch.SelectedRows(0).Cells(1).Value.ToString())
+            frmEmployeeInformation.Init(dgvEmployeeSearch.SelectedRows(0).Cells(1).Value.ToString())
             frmEmployeeInformation.ShowDialog()
         End If
         If (e.ColumnIndex = CheckTest.ColumnIndex And e.RowIndex <> -1) Then
@@ -151,6 +151,8 @@ Public Class EmployeeCategory
         bAdd.Visible = False
         bDelete.Visible = False
         Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
+        Dim hasCRUD = False
+
         For Each permission In dataPermission
             Dim form = permission(1).split(":")(0)
             Dim permiss = Strings.Split(Strings.Split(permission(1), ": ")(1), ", ")
@@ -166,10 +168,15 @@ Public Class EmployeeCategory
                                 bAdd.Visible = True
                             Case "Delete"
                                 bDelete.Visible = True
+                            Case "CRUD account"
+                                hasCRUD = True
                         End Select
                     Next
             End Select
         Next
+        If Not hasCRUD Then
+            dgvEmployeeSearch.Columns("Username").Visible = False
+        End If
         CenterButtons({bSearch, bExport}.ToList(), 20)
         CenterButtons({bAdd, bDelete}.ToList(), 30)
     End Sub
@@ -355,8 +362,15 @@ Public Class EmployeeCategory
                 End If
             Next
 
-            Dim listLeftFormat As New ArrayList() From {1, 2, 3, 6, 7, 9}       'list left format of datagridview column (excluding column Checkbox)
-            Dim listDateTimeFormat As New ArrayList() From {4}                  'list datetime format of datagridview column (excluding column Checkbox)
+            Dim listLeftFormat  'list left format of datagridview column (excluding column Checkbox)
+
+            If dgvEmployeeSearch.Columns("Username").Visible Then
+                listLeftFormat = New ArrayList() From {1, 2, 5, 6, 8, 9}
+            Else
+                listLeftFormat = New ArrayList() From {1, 2, 5, 6, 8}                'Ignore Username column
+            End If
+
+            Dim listDateTimeFormat As New ArrayList() From {3}                  'list datetime format of datagridview column (excluding column Checkbox)
             exportObject.exportToExcel(sfd.FileName, tables, listPrintedColumn, listLeftFormat, "Employee search", listDateTimeFormat, "DD/MM/YYYY")
         End If
     End Sub
@@ -383,7 +397,7 @@ Public Class EmployeeCategory
 
     Private Sub bAdd_Click(sender As Object, e As EventArgs) Handles bAdd.Click
         Dim frmEmployeeInformation = New EmployeeInformation()
-        frmEmployeeInformation.LoadData(-1)
+        frmEmployeeInformation.Init(-1)
         frmEmployeeInformation.ShowDialog()
     End Sub
     Private Sub bDelete_Click(sender As Object, e As EventArgs) Handles bDelete.Click

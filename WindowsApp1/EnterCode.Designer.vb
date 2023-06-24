@@ -158,7 +158,7 @@ Partial Class EnterCode
         Me.Controls.Add(Me.labCount)
         Me.KeyPreview = True
         Me.Name = "EnterCode"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Forget password"
         Me.ResumeLayout(False)
         Me.PerformLayout()

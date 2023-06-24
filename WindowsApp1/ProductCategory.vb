@@ -152,7 +152,7 @@ Public Class ProductCategory
     Private Sub dgvProductSearch_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvProductSearch.CellDoubleClick
         If (e.ColumnIndex > 0 And e.RowIndex >= 0) Then
             Dim frmProductInformation = New ProductInformation()
-            frmProductInformation.LoadData(dgvProductSearch.SelectedRows(0).Cells(1).Value.ToString())
+            frmProductInformation.Init(dgvProductSearch.SelectedRows(0).Cells(1).Value.ToString())
             frmProductInformation.ShowDialog()
         End If
         If (e.ColumnIndex = CheckTest.ColumnIndex And e.RowIndex <> -1) Then
@@ -426,7 +426,7 @@ Public Class ProductCategory
 
     Private Sub bAdd_Click(sender As Object, e As EventArgs) Handles bAdd.Click
         Dim frmProductInformation = New ProductInformation()
-        frmProductInformation.LoadData(-1)
+        frmProductInformation.Init(-1)
         frmProductInformation.ShowDialog()
     End Sub
 

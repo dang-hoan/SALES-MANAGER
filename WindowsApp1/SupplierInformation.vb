@@ -6,39 +6,18 @@ Public Class SupplierInformation
     Dim clsPMSAnalysis As New clsSupplier(conn.connSales.ConnectionString)
     Dim clsRolePermission As New clsRolePermission(conn.connSales.ConnectionString)
 
-    Dim mode As String = "Update"
-    Public Sub LoadData(supplierCode As Long)
-        If supplierCode = -1 Then
-            setEnable(True)
-            mode = "Add"
+    Dim mode As String = "Add"
+    Dim supplierCode = -1
 
-            labTitle.Text = "ADD SUPPLIER"
-            labTitle.Location = New Point(Me.Width / 2 - labTitle.Width / 2, labTitle.Location.Y)
-
-            Dim x As Integer = (Me.Width - bSave.Width) / 2
-
-            bSave.Location = New Point(x, bSave.Location.Y)
-            bEdit.Visible = False
-            bDelete.Visible = False
-
-        Else
-            setEnable(False)
-
-            Dim data = clsPMSAnalysis.GetSuppliertById(supplierCode)
-            txtCode.Text = supplierCode
-            txtName.Text = data("CompanyName")
-            txtAddress.Text = data("Address")
-            txtPhone.Text = data("Phone")
-            txtEmail.Text = data("Email")
-            txtWebpage.Text = data("Webpage")
-            txtDescription.Text = data("Description")
-
+    Public Sub Init(ByVal supplierCode As Long)
+        If supplierCode <> -1 Then
+            mode = "Update"
+            Me.supplierCode = supplierCode
         End If
-        'InitPlaceHolderText()
-
     End Sub
     Private Sub SupplierInformation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SetVisibleForPermission()
+        LoadData()
     End Sub
     Private Sub SetVisibleForPermission()
         bEdit.Visible = False
@@ -83,6 +62,36 @@ Public Class SupplierInformation
                 x += btn.Width + offset_between
             End If
         Next
+    End Sub
+    Public Sub LoadData()
+        If mode = "Add" Then
+            setEnable(True)
+
+            labTitle.Text = "ADD SUPPLIER"
+            labTitle.Location = New Point(Me.Width / 2 - labTitle.Width / 2, labTitle.Location.Y)
+
+            Dim x As Integer = (Me.Width - bSave.Width) / 2
+
+            bSave.Location = New Point(x, bSave.Location.Y)
+            bSave.Visible = True
+            bEdit.Visible = False
+            bDelete.Visible = False
+
+        Else
+            setEnable(False)
+
+            Dim data = clsPMSAnalysis.GetSuppliertById(supplierCode)
+            txtCode.Text = supplierCode
+            txtName.Text = data("CompanyName")
+            txtAddress.Text = data("Address")
+            txtPhone.Text = data("Phone")
+            txtEmail.Text = data("Email")
+            txtWebpage.Text = data("Webpage")
+            txtDescription.Text = data("Description")
+
+        End If
+        'InitPlaceHolderText()
+
     End Sub
 
     Private Sub bEdit_Click(sender As Object, e As EventArgs) Handles bEdit.Click

@@ -439,7 +439,7 @@ Partial Class EmployeeInformation
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "EmployeeInformation"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.gbAccount.ResumeLayout(False)

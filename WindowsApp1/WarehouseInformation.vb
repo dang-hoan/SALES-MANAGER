@@ -6,40 +6,18 @@ Public Class WarehouseInformation
     Dim clsProduct As New clsProduct(conn.connSales.ConnectionString)
     Dim clsRolePermission As New clsRolePermission(conn.connSales.ConnectionString)
 
-    Dim mode As String = "Update"
-    Public Sub LoadData(warehouseCode As Long)
-        If warehouseCode = -1 Then
-            setEnable(True)
-            mode = "Add"
+    Dim mode As String = "Add"
+    Dim warehouseCode = -1
 
-            labTitle.Text = "ADD WAREHOUSE"
-            labTitle.Location = New Point(Me.Width / 2 - labTitle.Width / 2, labTitle.Location.Y)
-
-            Dim x As Integer = (Me.Width - bSave.Width) / 2
-
-            bSave.Location = New Point(x, bSave.Location.Y)
-            bEdit.Visible = False
-            bDelete.Visible = False
-
-            txtNumberOfImport.Text = "0"
-            txtNumberOfExport.Text = "0"
-        Else
-            setEnable(False)
-
-            Dim data = clsPMSAnalysis.GetWarehouseById(warehouseCode)
-            txtCode.Text = warehouseCode
-            txtName.Text = data("WareHouseName")
-            txtAddress.Text = data("Address")
-            txtNumberOfImport.Text = data("NumberOfImport")
-            txtNumberOfExport.Text = data("NumberOfExport")
-
+    Public Sub Init(ByVal warehouseCode As Long)
+        If warehouseCode <> -1 Then
+            mode = "Update"
+            Me.warehouseCode = warehouseCode
         End If
-        'InitPlaceHolderText()
-
     End Sub
-
     Private Sub WarehouseInformation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SetVisibleForPermission()
+        LoadData()
     End Sub
     Private Sub SetVisibleForPermission()
         bEdit.Visible = False
@@ -86,6 +64,36 @@ Public Class WarehouseInformation
                 x += btn.Width + offset_between
             End If
         Next
+    End Sub
+    Public Sub LoadData()
+        If mode = "Add" Then
+            setEnable(True)
+
+            labTitle.Text = "ADD WAREHOUSE"
+            labTitle.Location = New Point(Me.Width / 2 - labTitle.Width / 2, labTitle.Location.Y)
+
+            Dim x As Integer = (Me.Width - bSave.Width) / 2
+
+            bSave.Location = New Point(x, bSave.Location.Y)
+            bSave.Visible = True
+            bEdit.Visible = False
+            bDelete.Visible = False
+
+            txtNumberOfImport.Text = "0"
+            txtNumberOfExport.Text = "0"
+        Else
+            setEnable(False)
+
+            Dim data = clsPMSAnalysis.GetWarehouseById(warehouseCode)
+            txtCode.Text = warehouseCode
+            txtName.Text = data("WareHouseName")
+            txtAddress.Text = data("Address")
+            txtNumberOfImport.Text = data("NumberOfImport")
+            txtNumberOfExport.Text = data("NumberOfExport")
+
+        End If
+        'InitPlaceHolderText()
+
     End Sub
 
     Private Sub bEdit_Click(sender As Object, e As EventArgs) Handles bEdit.Click

@@ -61,6 +61,12 @@ Partial Class SalesOrderInformation
         Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.listBuyProduct = New System.Windows.Forms.DataGridView()
+        Me.CheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.ProductId = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProductNameColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NumberOfProducts = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TotalPriceOfProducts = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StatusName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.OrderDetail = New LibraryDataset.OrderDetail()
         Me.labWarning = New System.Windows.Forms.Label()
         Me.txtCosts = New System.Windows.Forms.TextBox()
@@ -80,12 +86,6 @@ Partial Class SalesOrderInformation
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.ProductId = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProductNameColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NumberOfProducts = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TotalPriceOfProducts = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.StatusName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.groupBox1.SuspendLayout()
         Me.groupBox2.SuspendLayout()
         CType(Me.bindingNav, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -458,6 +458,7 @@ Partial Class SalesOrderInformation
         '
         Me.BindingNavigatorPositionItem.AccessibleName = "Position"
         Me.BindingNavigatorPositionItem.AutoSize = False
+        Me.BindingNavigatorPositionItem.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.BindingNavigatorPositionItem.Name = "BindingNavigatorPositionItem"
         Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(50, 31)
         Me.BindingNavigatorPositionItem.Text = "0"
@@ -511,6 +512,61 @@ Partial Class SalesOrderInformation
         Me.listBuyProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.listBuyProduct.Size = New System.Drawing.Size(537, 286)
         Me.listBuyProduct.TabIndex = 27
+        '
+        'CheckBoxColumn
+        '
+        Me.CheckBoxColumn.HeaderText = ""
+        Me.CheckBoxColumn.MinimumWidth = 8
+        Me.CheckBoxColumn.Name = "CheckBoxColumn"
+        Me.CheckBoxColumn.ReadOnly = True
+        Me.CheckBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.CheckBoxColumn.Visible = False
+        Me.CheckBoxColumn.Width = 48
+        '
+        'ProductId
+        '
+        Me.ProductId.DataPropertyName = "ProductId"
+        Me.ProductId.HeaderText = "Product code"
+        Me.ProductId.MinimumWidth = 8
+        Me.ProductId.Name = "ProductId"
+        Me.ProductId.ReadOnly = True
+        Me.ProductId.Width = 150
+        '
+        'ProductNameColumn
+        '
+        Me.ProductNameColumn.DataPropertyName = "ProductName"
+        Me.ProductNameColumn.HeaderText = "Product name"
+        Me.ProductNameColumn.MinimumWidth = 8
+        Me.ProductNameColumn.Name = "ProductNameColumn"
+        Me.ProductNameColumn.ReadOnly = True
+        Me.ProductNameColumn.Width = 150
+        '
+        'NumberOfProducts
+        '
+        Me.NumberOfProducts.DataPropertyName = "NumberOfProducts"
+        Me.NumberOfProducts.HeaderText = "Number of products"
+        Me.NumberOfProducts.MinimumWidth = 8
+        Me.NumberOfProducts.Name = "NumberOfProducts"
+        Me.NumberOfProducts.ReadOnly = True
+        Me.NumberOfProducts.Width = 150
+        '
+        'TotalPriceOfProducts
+        '
+        Me.TotalPriceOfProducts.DataPropertyName = "TotalPriceOfProducts"
+        Me.TotalPriceOfProducts.HeaderText = "Total price of products"
+        Me.TotalPriceOfProducts.MinimumWidth = 8
+        Me.TotalPriceOfProducts.Name = "TotalPriceOfProducts"
+        Me.TotalPriceOfProducts.ReadOnly = True
+        Me.TotalPriceOfProducts.Width = 150
+        '
+        'StatusName
+        '
+        Me.StatusName.DataPropertyName = "StatusName"
+        Me.StatusName.HeaderText = "Status"
+        Me.StatusName.MinimumWidth = 8
+        Me.StatusName.Name = "StatusName"
+        Me.StatusName.ReadOnly = True
+        Me.StatusName.Width = 150
         '
         'OrderDetail
         '
@@ -698,61 +754,6 @@ Partial Class SalesOrderInformation
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
         Me.DataGridViewTextBoxColumn5.Width = 150
         '
-        'CheckBoxColumn
-        '
-        Me.CheckBoxColumn.HeaderText = ""
-        Me.CheckBoxColumn.MinimumWidth = 8
-        Me.CheckBoxColumn.Name = "CheckBoxColumn"
-        Me.CheckBoxColumn.ReadOnly = True
-        Me.CheckBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.CheckBoxColumn.Visible = False
-        Me.CheckBoxColumn.Width = 48
-        '
-        'ProductId
-        '
-        Me.ProductId.DataPropertyName = "ProductId"
-        Me.ProductId.HeaderText = "Product code"
-        Me.ProductId.MinimumWidth = 8
-        Me.ProductId.Name = "ProductId"
-        Me.ProductId.ReadOnly = True
-        Me.ProductId.Width = 150
-        '
-        'ProductNameColumn
-        '
-        Me.ProductNameColumn.DataPropertyName = "ProductName"
-        Me.ProductNameColumn.HeaderText = "Product name"
-        Me.ProductNameColumn.MinimumWidth = 8
-        Me.ProductNameColumn.Name = "ProductNameColumn"
-        Me.ProductNameColumn.ReadOnly = True
-        Me.ProductNameColumn.Width = 150
-        '
-        'NumberOfProducts
-        '
-        Me.NumberOfProducts.DataPropertyName = "NumberOfProducts"
-        Me.NumberOfProducts.HeaderText = "Number of products"
-        Me.NumberOfProducts.MinimumWidth = 8
-        Me.NumberOfProducts.Name = "NumberOfProducts"
-        Me.NumberOfProducts.ReadOnly = True
-        Me.NumberOfProducts.Width = 150
-        '
-        'TotalPriceOfProducts
-        '
-        Me.TotalPriceOfProducts.DataPropertyName = "TotalPriceOfProducts"
-        Me.TotalPriceOfProducts.HeaderText = "Total price of products"
-        Me.TotalPriceOfProducts.MinimumWidth = 8
-        Me.TotalPriceOfProducts.Name = "TotalPriceOfProducts"
-        Me.TotalPriceOfProducts.ReadOnly = True
-        Me.TotalPriceOfProducts.Width = 150
-        '
-        'StatusName
-        '
-        Me.StatusName.DataPropertyName = "StatusName"
-        Me.StatusName.HeaderText = "Status"
-        Me.StatusName.MinimumWidth = 8
-        Me.StatusName.Name = "StatusName"
-        Me.StatusName.ReadOnly = True
-        Me.StatusName.Width = 150
-        '
         'SalesOrderInformation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -767,7 +768,7 @@ Partial Class SalesOrderInformation
         Me.Controls.Add(Me.groupBox1)
         Me.Controls.Add(Me.labTitle)
         Me.Name = "SalesOrderInformation"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Sales Order"
         Me.groupBox1.ResumeLayout(False)
         Me.groupBox1.PerformLayout()

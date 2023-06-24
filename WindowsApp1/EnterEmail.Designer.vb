@@ -102,7 +102,7 @@ Partial Class EnterEmail
         Me.Controls.Add(Me.label7)
         Me.KeyPreview = True
         Me.Name = "EnterEmail"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Forget password"
         Me.ResumeLayout(False)
         Me.PerformLayout()

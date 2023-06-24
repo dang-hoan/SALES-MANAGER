@@ -321,7 +321,7 @@ Partial Class SupplierInformation
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "SupplierInformation"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.groupBox1.ResumeLayout(False)
         Me.groupBox1.PerformLayout()
         CType(Me.ds_Supplier, System.ComponentModel.ISupportInitialize).EndInit()

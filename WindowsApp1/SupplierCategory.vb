@@ -104,7 +104,7 @@ Public Class SupplierCategory
     Private Sub dgvSupplierSearch_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvSupplierSearch.CellDoubleClick
         If (e.ColumnIndex > 0 And e.RowIndex >= 0) Then
             Dim frmSupplierInformation = New SupplierInformation()
-            frmSupplierInformation.LoadData(dgvSupplierSearch.SelectedRows(0).Cells(1).Value.ToString())
+            frmSupplierInformation.Init(dgvSupplierSearch.SelectedRows(0).Cells(1).Value.ToString())
             frmSupplierInformation.ShowDialog()
         End If
         If (e.ColumnIndex = CheckTest.ColumnIndex And e.RowIndex <> -1) Then
@@ -308,7 +308,7 @@ Public Class SupplierCategory
     End Sub
     Private Sub bAdd_Click(sender As Object, e As EventArgs) Handles bAdd.Click
         Dim frmSupplierInformation = New SupplierInformation()
-        frmSupplierInformation.LoadData(-1)
+        frmSupplierInformation.Init(-1)
         frmSupplierInformation.ShowDialog()
     End Sub
 

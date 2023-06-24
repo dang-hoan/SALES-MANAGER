@@ -104,7 +104,7 @@ Public Class WarehouseCategory
     Private Sub dgvWarehouseSearch_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvWarehouseSearch.CellDoubleClick
         If (e.ColumnIndex > 0 And e.RowIndex >= 0) Then
             Dim frmWarehouseInformation = New WarehouseInformation()
-            frmWarehouseInformation.LoadData(dgvWarehouseSearch.SelectedRows(0).Cells(1).Value.ToString())
+            frmWarehouseInformation.Init(dgvWarehouseSearch.SelectedRows(0).Cells(1).Value.ToString())
             frmWarehouseInformation.ShowDialog()
         End If
         If (e.ColumnIndex = CheckTest.ColumnIndex And e.RowIndex <> -1) Then
@@ -309,7 +309,7 @@ Public Class WarehouseCategory
     End Sub
     Private Sub bAdd_Click(sender As Object, e As EventArgs) Handles bAdd.Click
         Dim frmWarehouseInformation = New WarehouseInformation()
-        frmWarehouseInformation.LoadData(-1)
+        frmWarehouseInformation.Init(-1)
         frmWarehouseInformation.ShowDialog()
     End Sub
     Private Sub bDelete_Click(sender As Object, e As EventArgs) Handles bDelete.Click

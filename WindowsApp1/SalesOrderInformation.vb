@@ -18,9 +18,65 @@ Public Class SalesOrderInformation
 
     Private WithEvents CheckTest As New DataGridViewCheckBoxHeaderCell()
 
-    Dim mode As String = "Update"
+    Dim mode As String = "Add"
+    Dim orderCode = -1
 
-    Public Sub LoadData(orderCode As Long)
+    Public Sub Init(ByVal orderCode As Long)
+        If orderCode <> -1 Then
+            mode = "Update"
+            Me.orderCode = orderCode
+        End If
+    End Sub
+    Private Sub SalesOrderInformation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SetVisibleForPermission()
+        LoadData()
+    End Sub
+    Private Sub SetVisibleForPermission()
+        bEdit.Visible = False
+        bDelete.Visible = False
+        bSave.Visible = False
+        Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
+        For Each permission In dataPermission
+            Dim form = permission(1).split(":")(0)
+            Dim permiss = Strings.Split(Strings.Split(permission(1), ": ")(1), ", ")
+            If form = "Order category" Then
+                For Each p In permiss
+                    Select Case p
+                        Case "Edit"
+                            bEdit.Visible = True
+                            bSave.Visible = True
+                        Case "Delete"
+                            bDelete.Visible = True
+                    End Select
+                Next
+                Exit For
+            End If
+        Next
+        CenterButtons({bEdit, bDelete, bSave}.ToList, 30)
+    End Sub
+
+    Private Sub CenterButtons(ByRef listButtons As List(Of Button), ByVal offset_between As Integer)
+        Dim totalWidth As Integer = 0
+        Dim count = 0
+
+        For Each btn As Button In listButtons
+            If btn.Visible = True Then
+                totalWidth += btn.Width
+                count += 1
+            End If
+        Next
+
+        Dim x As Integer = (listButtons(0).Parent.Width - totalWidth - offset_between * (count - 1)) / 2
+
+        For Each btn As Button In listButtons
+            If btn.Visible = True Then
+                btn.Location = New Point(x, btn.Location.Y)
+                x += btn.Width + offset_between
+            End If
+        Next
+    End Sub
+
+    Public Sub LoadData()
         txtOrderCode.Enabled = False
         txtTotalCosts.Enabled = False
         txtCosts.Enabled = False
@@ -53,9 +109,8 @@ Public Class SalesOrderInformation
 
         listBuyProduct.Columns(0).HeaderCell = CheckTest
 
-        If orderCode = -1 Then
+        If mode = "Add" Then
             setEnable(True)
-            mode = "Add"
 
             labTitle.Text = "ADD SALES ORDER"
             labTitle.Location = New Point(Me.Width / 2 - labTitle.Width / 2, labTitle.Location.Y)
@@ -63,6 +118,7 @@ Public Class SalesOrderInformation
             Dim x As Integer = (Me.Width - bSave.Width) / 2
 
             bSave.Location = New Point(x, bSave.Location.Y)
+            bSave.Visible = True
             bEdit.Visible = False
             bDelete.Visible = False
 
@@ -101,15 +157,8 @@ Public Class SalesOrderInformation
 
         End If
         InitPlaceHolderText()
+        SetPagedDataSource(clsPMSAnalysis.GetProductsInforByOrderId(orderCode))
 
-    End Sub
-    Private Sub SalesOrderInformation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        SetVisibleForPermission()
-        If mode <> "Add" Then
-            SetPagedDataSource(clsPMSAnalysis.GetProductsInforByOrderId(txtOrderCode.Text))
-        Else
-            SetPagedDataSource(clsPMSAnalysis.GetProductsInforByOrderId(-1))
-        End If
     End Sub
 
     Private cellContentValueChangedByUser = False  'Remark cell content datagridview value change cause code or cause user click
@@ -217,7 +266,7 @@ Public Class SalesOrderInformation
                 MsgBox("This product was deleted! You can't to see product's detail information!")
             Else
                 Dim frmProductInformation = New ProductInformation()
-                frmProductInformation.LoadData(listBuyProduct.CurrentRow.Cells("ProductId").Value.ToString(), True)
+                frmProductInformation.Init(listBuyProduct.CurrentRow.Cells("ProductId").Value.ToString(), True)
                 frmProductInformation.ShowDialog()
             End If
         End If
@@ -276,52 +325,6 @@ Public Class SalesOrderInformation
     Private Sub cbbShipStatus_DropDownClosed(sender As Object, e As EventArgs) Handles cbbShipStatus.DropDownClosed
         DropDownClosed(cbbShipStatus, shipStatusPlhTxt)
     End Sub
-
-    Private Sub SetVisibleForPermission()
-        bEdit.Visible = False
-        bDelete.Visible = False
-        bSave.Visible = False
-        Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
-        For Each permission In dataPermission
-            Dim form = permission(1).split(":")(0)
-            Dim permiss = Strings.Split(Strings.Split(permission(1), ": ")(1), ", ")
-            If form = "Order category" Then
-                For Each p In permiss
-                    Select Case p
-                        Case "Edit"
-                            bEdit.Visible = True
-                            bSave.Visible = True
-                        Case "Delete"
-                            bDelete.Visible = True
-                    End Select
-                Next
-                Exit For
-            End If
-        Next
-        CenterButtons({bEdit, bDelete, bSave}.ToList, 30)
-    End Sub
-
-    Private Sub CenterButtons(ByRef listButtons As List(Of Button), ByVal offset_between As Integer)
-        Dim totalWidth As Integer = 0
-        Dim count = 0
-
-        For Each btn As Button In listButtons
-            If btn.Visible = True Then
-                totalWidth += btn.Width
-                count += 1
-            End If
-        Next
-
-        Dim x As Integer = (listButtons(0).Parent.Width - totalWidth - offset_between * (count - 1)) / 2
-
-        For Each btn As Button In listButtons
-            If btn.Visible = True Then
-                btn.Location = New Point(x, btn.Location.Y)
-                x += btn.Width + offset_between
-            End If
-        Next
-    End Sub
-
     Private Sub bEdit_Click(sender As Object, e As EventArgs) Handles bEdit.Click
         bEdit.Enabled = False
         setEnable(True)
@@ -770,7 +773,7 @@ Public Class SalesOrderInformation
                     Dim newDatable = lastDataTable.Clone()
                     Dim newRow = newDatable.NewRow()
                     newRow("ProductId") = selectedProduct.PropItemId
-                    newRow("ProductNameColumn") = selectedProduct.PropItemName
+                    newRow("ProductName") = selectedProduct.PropItemName
                     newRow("NumberOfProducts") = number
                     newRow("TotalPriceOfProducts") = If(number = "0", "0", txtCosts.Text)
                     newRow("StatusName") = "AVAILABLE"
@@ -779,7 +782,7 @@ Public Class SalesOrderInformation
                 Else
                     Dim newRow = lastDataTable.NewRow()
                     newRow("ProductId") = selectedProduct.PropItemId
-                    newRow("ProductNameColumn") = selectedProduct.PropItemName
+                    newRow("ProductName") = selectedProduct.PropItemName
                     newRow("NumberOfProducts") = number
                     newRow("TotalPriceOfProducts") = If(number = "0", "0", txtCosts.Text)
                     newRow("StatusName") = "AVAILABLE"
@@ -790,7 +793,7 @@ Public Class SalesOrderInformation
                 Dim dt = CType(listBuyProduct.DataSource, DataTable)
                 Dim newRow = dt.NewRow()
                 newRow("ProductId") = selectedProduct.PropItemId
-                newRow("ProductNameColumn") = selectedProduct.PropItemName
+                newRow("ProductName") = selectedProduct.PropItemName
                 newRow("NumberOfProducts") = number
                 newRow("TotalPriceOfProducts") = If(number = "0", "0", txtCosts.Text)
                 newRow("StatusName") = "AVAILABLE"
@@ -818,7 +821,7 @@ Public Class SalesOrderInformation
 
                     For Each product In dt.Rows
                         If id = product("ProductId") Then
-                            cbbProduct.Items.Add(New CBBItem(id, product("ProductNameColumn")))
+                            cbbProduct.Items.Add(New CBBItem(id, product("ProductName")))
                             needRemoveRows.Add(product)
                         End If
                     Next

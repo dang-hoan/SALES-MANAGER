@@ -9,11 +9,86 @@ Public Class EmployeeInformation
     Dim clsAccount As New clsAccount(conn.connSales.ConnectionString)
     Dim clsRolePermission As New clsRolePermission(conn.connSales.ConnectionString)
 
-    Dim mode As String = "Update"
     Private isShow As Boolean = False
     Private hasAccount As Boolean = False
+    Dim mode As String = "Add"
+    Dim employeeCode = -1
 
-    Public Sub LoadData(employeeCode As Long)
+    Public Sub Init(ByVal employeeCode As Long)
+        If employeeCode <> -1 Then
+            mode = "Update"
+            Me.employeeCode = employeeCode
+        End If
+    End Sub
+    Private Sub EmployeeInformation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SetVisibleForPermission()
+        LoadData()
+    End Sub
+
+    Private Sub SetVisibleForPermission()
+        bEdit.Visible = False
+        bDelete.Visible = False
+        bSave.Visible = False
+        cbEditAccount.Visible = False
+        gbAccount.Visible = False
+        lineSeparate.Visible = False
+
+        Dim hasCRUD = False
+
+        Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
+        For Each permission In dataPermission
+            Dim form = permission(1).split(":")(0)
+            Dim permiss = Strings.Split(Strings.Split(permission(1), ": ")(1), ", ")
+            Select Case form
+                Case "Employee category"
+                    For Each p In permiss
+                        Select Case p
+                            Case "Edit"
+                                bEdit.Visible = True
+                                bSave.Visible = True
+                            Case "Delete"
+                                bDelete.Visible = True
+                            Case "CRUD account"
+                                cbEditAccount.Visible = True
+                                gbAccount.Visible = True
+                                lineSeparate.Visible = True
+                                hasCRUD = True
+                        End Select
+                    Next
+            End Select
+        Next
+        If Not hasCRUD Then
+            Me.AutoSize = False
+            Me.Size = New Size(Me.Width, Me.Height - gbAccount.Height - lineSeparate.Height - cbEditAccount.Height)
+            Me.CenterToParent()
+
+        End If
+        CenterButtons({bEdit, bDelete, bSave}.ToList(), 30)
+    End Sub
+
+    Private Sub CenterButtons(ByRef listButtons As List(Of Button), ByVal offset_between As Integer)
+        Dim totalWidth As Integer = 0
+        Dim count = 0
+
+        For Each btn As Button In listButtons
+            If btn.Visible = True Then
+                totalWidth += btn.Width
+                count += 1
+            End If
+        Next
+
+        Dim x As Integer = (listButtons(0).Parent.Width - totalWidth - offset_between * (count - 1)) / 2
+        Dim y = If(gbAccount.Visible, bEdit.Location.Y, lineSeparate.Location.Y)
+
+        For Each btn As Button In listButtons
+            If btn.Visible = True Then
+                btn.Location = New Point(x, y)
+                x += btn.Width + offset_between
+            End If
+        Next
+    End Sub
+
+    Public Sub LoadData()
         Dim dataRole = clsCBB.GetCBBRole().CBBRole
         Dim dataStatus = clsCBB.GetCBBStatusOfAccount().CBBStatus
 
@@ -28,9 +103,8 @@ Public Class EmployeeInformation
             cbbStatus.Items.Add(New CBBItem(row(0), row(1)))
         Next
 
-        If employeeCode = -1 Then
+        If mode = "Add" Then
             setEnable(True)
-            mode = "Add"
 
             labTitle.Text = "ADD EMPLOYEE"
             labTitle.Location = New Point(Me.Width / 2 - labTitle.Width / 2, labTitle.Location.Y)
@@ -38,6 +112,7 @@ Public Class EmployeeInformation
             Dim x As Integer = (Me.Width - bSave.Width) / 2
 
             bSave.Location = New Point(x, bSave.Location.Y)
+            bSave.Visible = True
             bEdit.Visible = False
             bDelete.Visible = False
 
@@ -84,9 +159,6 @@ Public Class EmployeeInformation
         InitPlaceHolderText()
 
     End Sub
-    Private Sub EmployeeInformation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        SetVisibleForPermission()
-    End Sub
 
     'Set up placeholder text for comboboxes
 
@@ -122,68 +194,6 @@ Public Class EmployeeInformation
     Private Sub cbbStatus_DropDownClosed(sender As Object, e As EventArgs) Handles cbbStatus.DropDownClosed
         DropDownClosed(cbbStatus, statusPlhTxt)
     End Sub
-
-    Private Sub SetVisibleForPermission()
-        bEdit.Visible = False
-        bDelete.Visible = False
-        bSave.Visible = False
-        cbEditAccount.Visible = False
-        gbAccount.Visible = False
-        lineSeparate.Visible = False
-
-        Me.AutoSize = False
-        Dim oldHeight = Me.Height
-        Me.Size = New Size(Me.Width, Me.Height - gbAccount.Height - lineSeparate.Height - cbEditAccount.Height)
-
-        Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
-        For Each permission In dataPermission
-            Dim form = permission(1).split(":")(0)
-            Dim permiss = Strings.Split(Strings.Split(permission(1), ": ")(1), ", ")
-            Select Case form
-                Case "Employee category"
-                    For Each p In permiss
-                        Select Case p
-                            Case "Edit"
-                                bEdit.Visible = True
-                                bSave.Visible = True
-                                Console.WriteLine(bEdit.Visible.ToString())
-                            Case "Delete"
-                                bDelete.Visible = True
-                            Case "CRUD account"
-                                cbEditAccount.Visible = True
-                                gbAccount.Visible = True
-                                lineSeparate.Visible = True
-                                Me.AutoSize = True
-                                Me.Size = New Size(Me.Width, oldHeight)
-                        End Select
-                    Next
-            End Select
-        Next
-        CenterButtons({bEdit, bDelete, bSave}.ToList(), 30)
-    End Sub
-
-    Private Sub CenterButtons(ByRef listButtons As List(Of Button), ByVal offset_between As Integer)
-        Dim totalWidth As Integer = 0
-        Dim count = 0
-
-        For Each btn As Button In listButtons
-            If btn.Visible = True Then
-                totalWidth += btn.Width
-                count += 1
-            End If
-        Next
-
-        Dim x As Integer = (listButtons(0).Parent.Width - totalWidth - offset_between * (count - 1)) / 2
-        Dim y = If(gbAccount.Visible, bEdit.Location.Y, lineSeparate.Location.Y)
-
-        For Each btn As Button In listButtons
-            If btn.Visible = True Then
-                btn.Location = New Point(x, y)
-                x += btn.Width + offset_between
-            End If
-        Next
-    End Sub
-
     Private Sub bEdit_Click(sender As Object, e As EventArgs) Handles bEdit.Click
         bEdit.Enabled = False
         setEnable(True)
@@ -276,6 +286,8 @@ Public Class EmployeeInformation
     End Sub
 
     Private Function checkLogicData() As Boolean
+        txtEmail.Text = txtEmail.Text.Trim()
+
         If txtFirstName.Text = "First name" Or txtLastName.Text = "Last name" Or txtPhone.Text = "" Or txtAddress.Text = "" Or
             txtEmail.Text = "" Or cbbRole.SelectedIndex = -1 Or Not (rdMale.Checked Or rdFemale.Checked) Then
 
@@ -300,6 +312,10 @@ Public Class EmployeeInformation
 
         ElseIf countString(txtEmail.Text, "gmail.com") <> 1 Or Not txtEmail.Text.EndsWith("@gmail.com") Then
             MsgBox("Email invalidate!", Nothing, "Notification")
+            Return False
+
+        ElseIf clsPMSAnalysis.CheckEmailExists(txtEmail.Text) AndAlso (mode = "Update" AndAlso Not txtEmail.Text.Equals(clsPMSAnalysis.GetEmailById(txtCode.Text))) Then
+            MsgBox("Email you entered already exists in the system! Please enter a other email!")
             Return False
 
         End If

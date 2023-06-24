@@ -58,11 +58,20 @@ Partial Class EmployeeCategory
         Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.bDelete = New System.Windows.Forms.Button()
+        Me.dgvEmployeeSearch = New System.Windows.Forms.DataGridView()
+        Me.Person = New LibraryDataset.Person()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -70,19 +79,19 @@ Partial Class EmployeeCategory
         Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewCheckBoxColumn3 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.dgvEmployeeSearch = New System.Windows.Forms.DataGridView()
         Me.CheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LastName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FirstName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BirthDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.GenderNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.RoleNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Phone = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Email = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Address = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GenderName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RoleName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Username = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RoleIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.IsDeleteDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.PasswordDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -94,7 +103,6 @@ Partial Class EmployeeCategory
         Me.DeleteDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DeleteByDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.Person = New LibraryDataset.Person()
         Me.groupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.bindingNav, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -506,121 +514,6 @@ Partial Class EmployeeCategory
         Me.bDelete.Text = "Delete"
         Me.bDelete.UseVisualStyleBackColor = False
         '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "Username"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "Username"
-        Me.DataGridViewTextBoxColumn8.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        Me.DataGridViewTextBoxColumn8.Width = 150
-        '
-        'DataGridViewCheckBoxColumn2
-        '
-        Me.DataGridViewCheckBoxColumn2.DataPropertyName = "Gender"
-        Me.DataGridViewCheckBoxColumn2.HeaderText = "Gender"
-        Me.DataGridViewCheckBoxColumn2.MinimumWidth = 8
-        Me.DataGridViewCheckBoxColumn2.Name = "DataGridViewCheckBoxColumn2"
-        Me.DataGridViewCheckBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.DataGridViewCheckBoxColumn2.Width = 150
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.DataPropertyName = "RoleName"
-        Me.DataGridViewTextBoxColumn9.HeaderText = "Role name"
-        Me.DataGridViewTextBoxColumn9.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        Me.DataGridViewTextBoxColumn9.Width = 150
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.DataPropertyName = "RoleId"
-        Me.DataGridViewTextBoxColumn10.HeaderText = "RoleId"
-        Me.DataGridViewTextBoxColumn10.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        Me.DataGridViewTextBoxColumn10.Visible = False
-        Me.DataGridViewTextBoxColumn10.Width = 150
-        '
-        'DataGridViewTextBoxColumn11
-        '
-        Me.DataGridViewTextBoxColumn11.DataPropertyName = "Password"
-        Me.DataGridViewTextBoxColumn11.HeaderText = "Password"
-        Me.DataGridViewTextBoxColumn11.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        Me.DataGridViewTextBoxColumn11.Visible = False
-        Me.DataGridViewTextBoxColumn11.Width = 150
-        '
-        'DataGridViewTextBoxColumn12
-        '
-        Me.DataGridViewTextBoxColumn12.DataPropertyName = "StatusId"
-        Me.DataGridViewTextBoxColumn12.HeaderText = "StatusId"
-        Me.DataGridViewTextBoxColumn12.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
-        Me.DataGridViewTextBoxColumn12.Visible = False
-        Me.DataGridViewTextBoxColumn12.Width = 150
-        '
-        'DataGridViewTextBoxColumn13
-        '
-        Me.DataGridViewTextBoxColumn13.DataPropertyName = "CreateDate"
-        Me.DataGridViewTextBoxColumn13.HeaderText = "CreateDate"
-        Me.DataGridViewTextBoxColumn13.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
-        Me.DataGridViewTextBoxColumn13.Visible = False
-        Me.DataGridViewTextBoxColumn13.Width = 150
-        '
-        'DataGridViewTextBoxColumn14
-        '
-        Me.DataGridViewTextBoxColumn14.DataPropertyName = "CreateBy"
-        Me.DataGridViewTextBoxColumn14.HeaderText = "CreateBy"
-        Me.DataGridViewTextBoxColumn14.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
-        Me.DataGridViewTextBoxColumn14.Visible = False
-        Me.DataGridViewTextBoxColumn14.Width = 150
-        '
-        'DataGridViewTextBoxColumn15
-        '
-        Me.DataGridViewTextBoxColumn15.DataPropertyName = "UpdateDate"
-        Me.DataGridViewTextBoxColumn15.HeaderText = "UpdateDate"
-        Me.DataGridViewTextBoxColumn15.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
-        Me.DataGridViewTextBoxColumn15.Visible = False
-        Me.DataGridViewTextBoxColumn15.Width = 150
-        '
-        'DataGridViewTextBoxColumn16
-        '
-        Me.DataGridViewTextBoxColumn16.DataPropertyName = "UpdateBy"
-        Me.DataGridViewTextBoxColumn16.HeaderText = "UpdateBy"
-        Me.DataGridViewTextBoxColumn16.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
-        Me.DataGridViewTextBoxColumn16.Visible = False
-        Me.DataGridViewTextBoxColumn16.Width = 150
-        '
-        'DataGridViewTextBoxColumn17
-        '
-        Me.DataGridViewTextBoxColumn17.DataPropertyName = "DeleteDate"
-        Me.DataGridViewTextBoxColumn17.HeaderText = "DeleteDate"
-        Me.DataGridViewTextBoxColumn17.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
-        Me.DataGridViewTextBoxColumn17.Visible = False
-        Me.DataGridViewTextBoxColumn17.Width = 150
-        '
-        'DataGridViewTextBoxColumn18
-        '
-        Me.DataGridViewTextBoxColumn18.DataPropertyName = "DeleteBy"
-        Me.DataGridViewTextBoxColumn18.HeaderText = "DeleteBy"
-        Me.DataGridViewTextBoxColumn18.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
-        Me.DataGridViewTextBoxColumn18.Visible = False
-        Me.DataGridViewTextBoxColumn18.Width = 150
-        '
-        'DataGridViewCheckBoxColumn3
-        '
-        Me.DataGridViewCheckBoxColumn3.DataPropertyName = "IsDelete"
-        Me.DataGridViewCheckBoxColumn3.HeaderText = "IsDelete"
-        Me.DataGridViewCheckBoxColumn3.MinimumWidth = 8
-        Me.DataGridViewCheckBoxColumn3.Name = "DataGridViewCheckBoxColumn3"
-        Me.DataGridViewCheckBoxColumn3.Visible = False
-        Me.DataGridViewCheckBoxColumn3.Width = 150
-        '
         'dgvEmployeeSearch
         '
         Me.dgvEmployeeSearch.AllowUserToAddRows = False
@@ -628,7 +521,7 @@ Partial Class EmployeeCategory
         Me.dgvEmployeeSearch.AutoGenerateColumns = False
         Me.dgvEmployeeSearch.BackgroundColor = System.Drawing.Color.White
         Me.dgvEmployeeSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvEmployeeSearch.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CheckBoxColumn, Me.IdDataGridViewTextBoxColumn, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.BirthDate, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.GenderNameDataGridViewTextBoxColumn, Me.RoleNameDataGridViewTextBoxColumn, Me.RoleIdDataGridViewTextBoxColumn, Me.IsDeleteDataGridViewCheckBoxColumn, Me.PasswordDataGridViewTextBoxColumn, Me.StatusIdDataGridViewTextBoxColumn, Me.CreateDateDataGridViewTextBoxColumn, Me.CreateByDataGridViewTextBoxColumn, Me.UpdateDateDataGridViewTextBoxColumn, Me.UpdateByDataGridViewTextBoxColumn, Me.DeleteDateDataGridViewTextBoxColumn, Me.DeleteByDataGridViewTextBoxColumn, Me.DataGridViewCheckBoxColumn1})
+        Me.dgvEmployeeSearch.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CheckBoxColumn, Me.IdColumn, Me.LastName, Me.FirstName, Me.BirthDate, Me.Phone, Me.Email, Me.Address, Me.GenderName, Me.RoleName, Me.Username, Me.RoleIdDataGridViewTextBoxColumn, Me.IsDeleteDataGridViewCheckBoxColumn, Me.PasswordDataGridViewTextBoxColumn, Me.StatusIdDataGridViewTextBoxColumn, Me.CreateDateDataGridViewTextBoxColumn, Me.CreateByDataGridViewTextBoxColumn, Me.UpdateDateDataGridViewTextBoxColumn, Me.UpdateByDataGridViewTextBoxColumn, Me.DeleteDateDataGridViewTextBoxColumn, Me.DeleteByDataGridViewTextBoxColumn, Me.DataGridViewCheckBoxColumn1})
         Me.dgvEmployeeSearch.DataMember = "PersonView"
         Me.dgvEmployeeSearch.DataSource = Me.Person
         Me.dgvEmployeeSearch.Location = New System.Drawing.Point(54, 445)
@@ -642,6 +535,214 @@ Partial Class EmployeeCategory
         Me.dgvEmployeeSearch.Size = New System.Drawing.Size(853, 265)
         Me.dgvEmployeeSearch.TabIndex = 33
         '
+        'Person
+        '
+        Me.Person.DataSetName = "Person"
+        Me.Person.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "Id"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Id"
+        Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Width = 150
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Username"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Username"
+        Me.DataGridViewTextBoxColumn2.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DataGridViewTextBoxColumn2.Width = 150
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "LastName"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Last name"
+        Me.DataGridViewTextBoxColumn3.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DataGridViewTextBoxColumn3.Width = 150
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "FirstName"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "First name"
+        Me.DataGridViewTextBoxColumn4.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        Me.DataGridViewTextBoxColumn4.Width = 150
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "BirthDate"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Birthday"
+        Me.DataGridViewTextBoxColumn5.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        Me.DataGridViewTextBoxColumn5.Width = 150
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "Phone"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "Phone"
+        Me.DataGridViewTextBoxColumn6.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        Me.DataGridViewTextBoxColumn6.Width = 150
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "Email"
+        Me.DataGridViewTextBoxColumn7.HeaderText = "Email"
+        Me.DataGridViewTextBoxColumn7.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.ReadOnly = True
+        Me.DataGridViewTextBoxColumn7.Width = 150
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.DataPropertyName = "Username"
+        Me.DataGridViewTextBoxColumn8.HeaderText = "Username"
+        Me.DataGridViewTextBoxColumn8.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        Me.DataGridViewTextBoxColumn8.ReadOnly = True
+        Me.DataGridViewTextBoxColumn8.Width = 150
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.DataPropertyName = "RoleName"
+        Me.DataGridViewTextBoxColumn9.HeaderText = "Role name"
+        Me.DataGridViewTextBoxColumn9.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        Me.DataGridViewTextBoxColumn9.ReadOnly = True
+        Me.DataGridViewTextBoxColumn9.Width = 150
+        '
+        'DataGridViewTextBoxColumn10
+        '
+        Me.DataGridViewTextBoxColumn10.DataPropertyName = "RoleId"
+        Me.DataGridViewTextBoxColumn10.HeaderText = "RoleId"
+        Me.DataGridViewTextBoxColumn10.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        Me.DataGridViewTextBoxColumn10.ReadOnly = True
+        Me.DataGridViewTextBoxColumn10.Visible = False
+        Me.DataGridViewTextBoxColumn10.Width = 150
+        '
+        'DataGridViewTextBoxColumn11
+        '
+        Me.DataGridViewTextBoxColumn11.DataPropertyName = "Password"
+        Me.DataGridViewTextBoxColumn11.HeaderText = "Password"
+        Me.DataGridViewTextBoxColumn11.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
+        Me.DataGridViewTextBoxColumn11.ReadOnly = True
+        Me.DataGridViewTextBoxColumn11.Visible = False
+        Me.DataGridViewTextBoxColumn11.Width = 150
+        '
+        'DataGridViewCheckBoxColumn2
+        '
+        Me.DataGridViewCheckBoxColumn2.DataPropertyName = "Gender"
+        Me.DataGridViewCheckBoxColumn2.HeaderText = "Gender"
+        Me.DataGridViewCheckBoxColumn2.MinimumWidth = 8
+        Me.DataGridViewCheckBoxColumn2.Name = "DataGridViewCheckBoxColumn2"
+        Me.DataGridViewCheckBoxColumn2.ReadOnly = True
+        Me.DataGridViewCheckBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.DataGridViewCheckBoxColumn2.Visible = False
+        Me.DataGridViewCheckBoxColumn2.Width = 150
+        '
+        'DataGridViewTextBoxColumn12
+        '
+        Me.DataGridViewTextBoxColumn12.DataPropertyName = "StatusId"
+        Me.DataGridViewTextBoxColumn12.HeaderText = "StatusId"
+        Me.DataGridViewTextBoxColumn12.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
+        Me.DataGridViewTextBoxColumn12.ReadOnly = True
+        Me.DataGridViewTextBoxColumn12.Visible = False
+        Me.DataGridViewTextBoxColumn12.Width = 150
+        '
+        'DataGridViewTextBoxColumn13
+        '
+        Me.DataGridViewTextBoxColumn13.DataPropertyName = "CreateDate"
+        Me.DataGridViewTextBoxColumn13.HeaderText = "CreateDate"
+        Me.DataGridViewTextBoxColumn13.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
+        Me.DataGridViewTextBoxColumn13.ReadOnly = True
+        Me.DataGridViewTextBoxColumn13.Visible = False
+        Me.DataGridViewTextBoxColumn13.Width = 150
+        '
+        'DataGridViewTextBoxColumn14
+        '
+        Me.DataGridViewTextBoxColumn14.DataPropertyName = "CreateBy"
+        Me.DataGridViewTextBoxColumn14.HeaderText = "CreateBy"
+        Me.DataGridViewTextBoxColumn14.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
+        Me.DataGridViewTextBoxColumn14.ReadOnly = True
+        Me.DataGridViewTextBoxColumn14.Visible = False
+        Me.DataGridViewTextBoxColumn14.Width = 150
+        '
+        'DataGridViewTextBoxColumn15
+        '
+        Me.DataGridViewTextBoxColumn15.DataPropertyName = "UpdateDate"
+        Me.DataGridViewTextBoxColumn15.HeaderText = "UpdateDate"
+        Me.DataGridViewTextBoxColumn15.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
+        Me.DataGridViewTextBoxColumn15.ReadOnly = True
+        Me.DataGridViewTextBoxColumn15.Visible = False
+        Me.DataGridViewTextBoxColumn15.Width = 150
+        '
+        'DataGridViewTextBoxColumn16
+        '
+        Me.DataGridViewTextBoxColumn16.DataPropertyName = "UpdateBy"
+        Me.DataGridViewTextBoxColumn16.HeaderText = "UpdateBy"
+        Me.DataGridViewTextBoxColumn16.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
+        Me.DataGridViewTextBoxColumn16.ReadOnly = True
+        Me.DataGridViewTextBoxColumn16.Visible = False
+        Me.DataGridViewTextBoxColumn16.Width = 150
+        '
+        'DataGridViewTextBoxColumn17
+        '
+        Me.DataGridViewTextBoxColumn17.DataPropertyName = "DeleteDate"
+        Me.DataGridViewTextBoxColumn17.HeaderText = "DeleteDate"
+        Me.DataGridViewTextBoxColumn17.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
+        Me.DataGridViewTextBoxColumn17.ReadOnly = True
+        Me.DataGridViewTextBoxColumn17.Visible = False
+        Me.DataGridViewTextBoxColumn17.Width = 150
+        '
+        'DataGridViewTextBoxColumn18
+        '
+        Me.DataGridViewTextBoxColumn18.DataPropertyName = "DeleteBy"
+        Me.DataGridViewTextBoxColumn18.HeaderText = "DeleteBy"
+        Me.DataGridViewTextBoxColumn18.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
+        Me.DataGridViewTextBoxColumn18.ReadOnly = True
+        Me.DataGridViewTextBoxColumn18.Visible = False
+        Me.DataGridViewTextBoxColumn18.Width = 150
+        '
+        'DataGridViewTextBoxColumn19
+        '
+        Me.DataGridViewTextBoxColumn19.DataPropertyName = "DeleteBy"
+        Me.DataGridViewTextBoxColumn19.HeaderText = "DeleteBy"
+        Me.DataGridViewTextBoxColumn19.MinimumWidth = 8
+        Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
+        Me.DataGridViewTextBoxColumn19.ReadOnly = True
+        Me.DataGridViewTextBoxColumn19.Visible = False
+        Me.DataGridViewTextBoxColumn19.Width = 150
+        '
+        'DataGridViewCheckBoxColumn3
+        '
+        Me.DataGridViewCheckBoxColumn3.DataPropertyName = "IsDelete"
+        Me.DataGridViewCheckBoxColumn3.HeaderText = "IsDelete"
+        Me.DataGridViewCheckBoxColumn3.MinimumWidth = 8
+        Me.DataGridViewCheckBoxColumn3.Name = "DataGridViewCheckBoxColumn3"
+        Me.DataGridViewCheckBoxColumn3.ReadOnly = True
+        Me.DataGridViewCheckBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.DataGridViewCheckBoxColumn3.Visible = False
+        Me.DataGridViewCheckBoxColumn3.Width = 150
+        '
         'CheckBoxColumn
         '
         Me.CheckBoxColumn.HeaderText = ""
@@ -651,41 +752,32 @@ Partial Class EmployeeCategory
         Me.CheckBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.CheckBoxColumn.Width = 48
         '
-        'IdDataGridViewTextBoxColumn
+        'IdColumn
         '
-        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "Id"
-        Me.IdDataGridViewTextBoxColumn.HeaderText = "Id"
-        Me.IdDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
-        Me.IdDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IdDataGridViewTextBoxColumn.Width = 150
+        Me.IdColumn.DataPropertyName = "Id"
+        Me.IdColumn.HeaderText = "Id"
+        Me.IdColumn.MinimumWidth = 8
+        Me.IdColumn.Name = "IdColumn"
+        Me.IdColumn.ReadOnly = True
+        Me.IdColumn.Width = 150
         '
-        'DataGridViewTextBoxColumn1
+        'LastName
         '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "Username"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Username"
-        Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Width = 150
+        Me.LastName.DataPropertyName = "LastName"
+        Me.LastName.HeaderText = "Last name"
+        Me.LastName.MinimumWidth = 8
+        Me.LastName.Name = "LastName"
+        Me.LastName.ReadOnly = True
+        Me.LastName.Width = 150
         '
-        'DataGridViewTextBoxColumn2
+        'FirstName
         '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "LastName"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Last name"
-        Me.DataGridViewTextBoxColumn2.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Width = 150
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "FirstName"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "First name"
-        Me.DataGridViewTextBoxColumn3.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        Me.DataGridViewTextBoxColumn3.Width = 150
+        Me.FirstName.DataPropertyName = "FirstName"
+        Me.FirstName.HeaderText = "First name"
+        Me.FirstName.MinimumWidth = 8
+        Me.FirstName.Name = "FirstName"
+        Me.FirstName.ReadOnly = True
+        Me.FirstName.Width = 150
         '
         'BirthDate
         '
@@ -696,50 +788,59 @@ Partial Class EmployeeCategory
         Me.BirthDate.ReadOnly = True
         Me.BirthDate.Width = 150
         '
-        'DataGridViewTextBoxColumn5
+        'Phone
         '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "Phone"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Phone"
-        Me.DataGridViewTextBoxColumn5.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        Me.DataGridViewTextBoxColumn5.Width = 150
+        Me.Phone.DataPropertyName = "Phone"
+        Me.Phone.HeaderText = "Phone"
+        Me.Phone.MinimumWidth = 8
+        Me.Phone.Name = "Phone"
+        Me.Phone.ReadOnly = True
+        Me.Phone.Width = 150
         '
-        'DataGridViewTextBoxColumn6
+        'Email
         '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "Email"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Email"
-        Me.DataGridViewTextBoxColumn6.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
-        Me.DataGridViewTextBoxColumn6.Width = 150
+        Me.Email.DataPropertyName = "Email"
+        Me.Email.HeaderText = "Email"
+        Me.Email.MinimumWidth = 8
+        Me.Email.Name = "Email"
+        Me.Email.ReadOnly = True
+        Me.Email.Width = 150
         '
-        'DataGridViewTextBoxColumn7
+        'Address
         '
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "Address"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "Address"
-        Me.DataGridViewTextBoxColumn7.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.ReadOnly = True
-        Me.DataGridViewTextBoxColumn7.Width = 150
+        Me.Address.DataPropertyName = "Address"
+        Me.Address.HeaderText = "Address"
+        Me.Address.MinimumWidth = 8
+        Me.Address.Name = "Address"
+        Me.Address.ReadOnly = True
+        Me.Address.Width = 150
         '
-        'GenderNameDataGridViewTextBoxColumn
+        'GenderName
         '
-        Me.GenderNameDataGridViewTextBoxColumn.DataPropertyName = "GenderName"
-        Me.GenderNameDataGridViewTextBoxColumn.HeaderText = "Gender"
-        Me.GenderNameDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.GenderNameDataGridViewTextBoxColumn.Name = "GenderNameDataGridViewTextBoxColumn"
-        Me.GenderNameDataGridViewTextBoxColumn.ReadOnly = True
-        Me.GenderNameDataGridViewTextBoxColumn.Width = 150
+        Me.GenderName.DataPropertyName = "GenderName"
+        Me.GenderName.HeaderText = "Gender"
+        Me.GenderName.MinimumWidth = 8
+        Me.GenderName.Name = "GenderName"
+        Me.GenderName.ReadOnly = True
+        Me.GenderName.Width = 150
         '
-        'RoleNameDataGridViewTextBoxColumn
+        'RoleName
         '
-        Me.RoleNameDataGridViewTextBoxColumn.DataPropertyName = "RoleName"
-        Me.RoleNameDataGridViewTextBoxColumn.HeaderText = "Role name"
-        Me.RoleNameDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.RoleNameDataGridViewTextBoxColumn.Name = "RoleNameDataGridViewTextBoxColumn"
-        Me.RoleNameDataGridViewTextBoxColumn.ReadOnly = True
-        Me.RoleNameDataGridViewTextBoxColumn.Width = 150
+        Me.RoleName.DataPropertyName = "RoleName"
+        Me.RoleName.HeaderText = "Role name"
+        Me.RoleName.MinimumWidth = 8
+        Me.RoleName.Name = "RoleName"
+        Me.RoleName.ReadOnly = True
+        Me.RoleName.Width = 150
+        '
+        'Username
+        '
+        Me.Username.DataPropertyName = "Username"
+        Me.Username.HeaderText = "Username"
+        Me.Username.MinimumWidth = 8
+        Me.Username.Name = "Username"
+        Me.Username.ReadOnly = True
+        Me.Username.Width = 150
         '
         'RoleIdDataGridViewTextBoxColumn
         '
@@ -848,13 +949,9 @@ Partial Class EmployeeCategory
         Me.DataGridViewCheckBoxColumn1.MinimumWidth = 8
         Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
         Me.DataGridViewCheckBoxColumn1.ReadOnly = True
+        Me.DataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.DataGridViewCheckBoxColumn1.Visible = False
         Me.DataGridViewCheckBoxColumn1.Width = 150
-        '
-        'Person
-        '
-        Me.Person.DataSetName = "Person"
-        Me.Person.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'EmployeeCategory
         '
@@ -948,16 +1045,16 @@ Partial Class EmployeeCategory
     Friend WithEvents DataGridViewTextBoxColumn17 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn18 As DataGridViewTextBoxColumn
     Friend WithEvents CheckBoxColumn As DataGridViewCheckBoxColumn
-    Friend WithEvents IdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents IdColumn As DataGridViewTextBoxColumn
+    Friend WithEvents LastName As DataGridViewTextBoxColumn
+    Friend WithEvents FirstName As DataGridViewTextBoxColumn
     Friend WithEvents BirthDate As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
-    Friend WithEvents GenderNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents RoleNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Phone As DataGridViewTextBoxColumn
+    Friend WithEvents Email As DataGridViewTextBoxColumn
+    Friend WithEvents Address As DataGridViewTextBoxColumn
+    Friend WithEvents GenderName As DataGridViewTextBoxColumn
+    Friend WithEvents RoleName As DataGridViewTextBoxColumn
+    Friend WithEvents Username As DataGridViewTextBoxColumn
     Friend WithEvents RoleIdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents IsDeleteDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
     Friend WithEvents PasswordDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
@@ -969,4 +1066,12 @@ Partial Class EmployeeCategory
     Friend WithEvents DeleteDateDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents DeleteByDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn19 As DataGridViewTextBoxColumn
 End Class

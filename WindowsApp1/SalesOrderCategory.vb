@@ -140,7 +140,7 @@ Public Class SalesOrderCategory
     Private Sub dgvSalesOrderSearch_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvSalesOrderSearch.CellDoubleClick
         If (e.ColumnIndex > 0 And e.RowIndex >= 0) Then
             Dim frmSalesOrderInformation = New SalesOrderInformation()
-            frmSalesOrderInformation.LoadData(dgvSalesOrderSearch.SelectedRows(0).Cells(1).Value.ToString())
+            frmSalesOrderInformation.Init(dgvSalesOrderSearch.SelectedRows(0).Cells(1).Value.ToString())
             frmSalesOrderInformation.ShowDialog()
         End If
         If (e.ColumnIndex = CheckTest.ColumnIndex And e.RowIndex <> -1) Then
@@ -394,7 +394,7 @@ Public Class SalesOrderCategory
 
     Private Sub bAdd_Click(sender As Object, e As EventArgs) Handles bAdd.Click
         Dim frmSalesOrderInformation = New SalesOrderInformation()
-        frmSalesOrderInformation.LoadData(-1)
+        frmSalesOrderInformation.Init(-1)
         frmSalesOrderInformation.ShowDialog()
     End Sub
 

@@ -118,7 +118,7 @@ Public Class CustomerCategory
     Private Sub dgvCustomerSearch_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCustomerSearch.CellDoubleClick
         If (e.ColumnIndex > 0 And e.RowIndex >= 0) Then
             Dim frmCustomerInformation = New CustomerInformation()
-            frmCustomerInformation.LoadData(dgvCustomerSearch.SelectedRows(0).Cells(1).Value.ToString())
+            frmCustomerInformation.Init(dgvCustomerSearch.SelectedRows(0).Cells(1).Value.ToString())
             frmCustomerInformation.ShowDialog()
         End If
         If (e.ColumnIndex = CheckTest.ColumnIndex And e.RowIndex <> -1) Then
@@ -348,7 +348,7 @@ Public Class CustomerCategory
     End Sub
     Private Sub bAdd_Click(sender As Object, e As EventArgs) Handles bAdd.Click
         Dim frmCustomerInformation = New CustomerInformation()
-        frmCustomerInformation.LoadData(-1)
+        frmCustomerInformation.Init(-1)
         frmCustomerInformation.ShowDialog()
     End Sub
     Private Sub bDelete_Click(sender As Object, e As EventArgs) Handles bDelete.Click

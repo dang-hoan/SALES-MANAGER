@@ -7,8 +7,67 @@ Public Class ProductInformation
     Dim clsWarehouse As New clsWarehouse(conn.connSales.ConnectionString)
     Dim clsRolePermission As New clsRolePermission(conn.connSales.ConnectionString)
 
-    Dim mode As String = "Update"
-    Public Sub LoadData(productCode As Long, Optional onlyView As Boolean = False)
+    Dim mode As String = "Add"
+    Dim productCode = -1
+    Dim onlyView = False
+
+    Public Sub Init(ByVal productCode As Long, Optional onlyView As Boolean = False)
+        If productCode <> -1 Then
+            mode = "Update"
+            Me.productCode = productCode
+            Me.onlyView = onlyView
+        End If
+    End Sub
+    Private Sub ProductInformation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SetVisibleForPermission()
+        LoadData()
+    End Sub
+    Private Sub SetVisibleForPermission()
+        bEdit.Visible = False
+        bDelete.Visible = False
+        bSave.Visible = False
+        Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
+        For Each permission In dataPermission
+            Dim form = permission(1).split(":")(0)
+            Dim permiss = Strings.Split(Strings.Split(permission(1), ": ")(1), ", ")
+            If form = "Product category" Then
+                For Each p In permiss
+                    Select Case p
+                        Case "Edit"
+                            bEdit.Visible = True
+                            bSave.Visible = True
+                        Case "Delete"
+                            bDelete.Visible = True
+                    End Select
+                Next
+                Exit For
+            End If
+        Next
+        CenterButtons({bEdit, bDelete, bSave}.ToList, 30)
+    End Sub
+
+    Private Sub CenterButtons(ByRef listButtons As List(Of Button), ByVal offset_between As Integer)
+        Dim totalWidth As Integer = 0
+        Dim count = 0
+
+        For Each btn As Button In listButtons
+            If btn.Visible = True Then
+                totalWidth += btn.Width
+                count += 1
+            End If
+        Next
+
+        Dim x As Integer = (listButtons(0).Parent.Width - totalWidth - offset_between * (count - 1)) / 2
+
+        For Each btn As Button In listButtons
+            If btn.Visible = True Then
+                btn.Location = New Point(x, btn.Location.Y)
+                x += btn.Width + offset_between
+            End If
+        Next
+    End Sub
+
+    Public Sub LoadData()
         Dim dataCategory = clsCBB.GetCBBCategory().CBBCategory
         Dim dataSupplier = clsCBB.GetCBBSupplier().CBBSupplier
         Dim dataStatus = clsCBB.GetCBBStatusOfProduct().CBBStatus
@@ -35,9 +94,8 @@ Public Class ProductInformation
             cbbWarehouse.Items.Add(New CBBItem(row(0), row(1)))
         Next
 
-        If productCode = -1 Then
+        If mode = "Add" Then
             setEnable(True)
-            mode = "Add"
 
             labTitle.Text = "ADD PRODUCT"
             labTitle.Location = New Point(Me.Width / 2 - labTitle.Width / 2, labTitle.Location.Y)
@@ -45,6 +103,7 @@ Public Class ProductInformation
             Dim x As Integer = (Me.Width - bSave.Width) / 2
 
             bSave.Location = New Point(x, bSave.Location.Y)
+            bSave.Visible = True
             bEdit.Visible = False
             bDelete.Visible = False
 
@@ -92,9 +151,6 @@ Public Class ProductInformation
         InitPlaceHolderText()
 
     End Sub
-    Private Sub ProductInformation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        SetVisibleForPermission()
-    End Sub
 
     'Set up placeholder text for comboboxes
 
@@ -108,51 +164,6 @@ Public Class ProductInformation
         DropDownClosed(cbbSupplier, supplierPlhTxt)
         DropDownClosed(cbbWarehouse, warehousePlhTxt)
         DropDownClosed(cbbStatus, statusPlhTxt)
-    End Sub
-
-    Private Sub SetVisibleForPermission()
-        bEdit.Visible = False
-        bDelete.Visible = False
-        bSave.Visible = False
-        Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
-        For Each permission In dataPermission
-            Dim form = permission(1).split(":")(0)
-            Dim permiss = Strings.Split(Strings.Split(permission(1), ": ")(1), ", ")
-            If form = "Product category" Then
-                For Each p In permiss
-                    Select Case p
-                        Case "Edit"
-                            bEdit.Visible = True
-                            bSave.Visible = True
-                        Case "Delete"
-                            bDelete.Visible = True
-                    End Select
-                Next
-                Exit For
-            End If
-        Next
-        CenterButtons({bEdit, bDelete, bSave}.ToList, 30)
-    End Sub
-
-    Private Sub CenterButtons(ByRef listButtons As List(Of Button), ByVal offset_between As Integer)
-        Dim totalWidth As Integer = 0
-        Dim count = 0
-
-        For Each btn As Button In listButtons
-            If btn.Visible = True Then
-                totalWidth += btn.Width
-                count += 1
-            End If
-        Next
-
-        Dim x As Integer = (listButtons(0).Parent.Width - totalWidth - offset_between * (count - 1)) / 2
-
-        For Each btn As Button In listButtons
-            If btn.Visible = True Then
-                btn.Location = New Point(x, btn.Location.Y)
-                x += btn.Width + offset_between
-            End If
-        Next
     End Sub
 
     Private Sub bEdit_Click(sender As Object, e As EventArgs) Handles bEdit.Click
