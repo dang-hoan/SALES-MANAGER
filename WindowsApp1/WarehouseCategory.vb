@@ -1,26 +1,130 @@
 ﻿Imports LibraryDataset
 Imports LibraryCommon
+Imports System.ComponentModel
+Imports System.IO
 Public Class WarehouseCategory
     Dim conn As New connCommon()
     Dim clsPMSAnalysis As New clsWarehouse(conn.connSales.ConnectionString)
     Dim clsProduct As New clsProduct(conn.connSales.ConnectionString)
     Dim clsRolePermission As New clsRolePermission(conn.connSales.ConnectionString)
 
-    Private warehouseId As Long
-    Private isSaved As Boolean = False
-    Private allowEditProduct As Boolean = False
-    Private allowDeleteProduct As Boolean = False
+    Private _recordsPerPage As Integer = 5
+    Private bs As BindingSource = New BindingSource()
+    Private tables As BindingList(Of DataTable)
+    Private listCheckboxValue As New List(Of Long)
+
+    Private WithEvents CheckTest As New DataGridViewCheckBoxHeaderCell()
     Private Sub WarehouseCategory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Reload()
+        dgvWarehouseSearch.Columns(0).HeaderCell = CheckTest
+
+        'InitPlaceHolderText()
         SetVisibleForPermission()
+        Reload()
     End Sub
 
+    Private cellContentValueChangedByUser = False  'Remark cell content datagridview value change cause code or cause user click
+    Public Sub SetPagedDataSource(ByVal dataTable As DataTable)
+        tables = New BindingList(Of DataTable)()
+        Dim dt As DataTable = Nothing
+        Dim counter As Integer = 1          'Count number of records of a page
+
+        For Each dr As DataRow In dataTable.Rows
+            If counter = 1 Then
+                dt = dataTable.Clone()
+                tables.Add(dt)
+            End If
+
+            dt.Rows.Add(dr.ItemArray)
+
+            counter += 1
+            If _recordsPerPage < counter Then
+                counter = 1
+            End If
+        Next
+
+        bindingNav.BindingSource = bs
+        bs.DataSource = tables
+        AddHandler bs.PositionChanged, AddressOf bs_PositionChanged
+        bs_PositionChanged(bs, EventArgs.Empty)
+
+        dgvWarehouseSearch.ReadOnly = False
+        For i = 1 To dgvWarehouseSearch.Columns.Count - 1
+            dgvWarehouseSearch.Columns(i).ReadOnly = True
+        Next
+        listCheckboxValue.Clear()
+        cellContentValueChangedByUser = False
+        CheckTest.CheckUncheckEntireColumn(listCheckboxValue)
+        CheckTest.Checked = False
+    End Sub
+    Private Sub bs_PositionChanged(ByVal sender As Object, ByVal e As EventArgs)
+        If bs.Position >= 0 Then
+            Me.dgvWarehouseSearch.DataSource = tables(bs.Position)
+        Else
+            Me.dgvWarehouseSearch.DataSource = Nothing
+        End If
+        cellContentValueChangedByUser = False
+        CheckTest.CheckUncheckEntireColumn(listCheckboxValue)
+    End Sub
+    Private Sub CheckBoxHeaderCell_CheckBoxClicked(sender As Object, e As DataGridViewCheckBoxHeaderCellEventArgs) Handles CheckTest.CheckBoxClicked
+        listCheckboxValue.Clear()
+        If e.Checked Then
+            For Each dt In tables.ToList
+                For Each row In dt.Rows
+                    listCheckboxValue.Add(row(0))
+                Next
+            Next
+        End If
+        cellContentValueChangedByUser = False
+        CheckTest.CheckUncheckEntireColumn(listCheckboxValue)
+    End Sub
+    Private Sub dgvWarehouseSearch_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvWarehouseSearch.CellContentClick
+        cellContentValueChangedByUser = True
+    End Sub
+    Private Sub dgvWarehouseSearch_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles dgvWarehouseSearch.CellValueChanged
+        If e.ColumnIndex = 0 And e.RowIndex <> -1 And cellContentValueChangedByUser Then
+
+            If dgvWarehouseSearch.Rows(e.RowIndex).Cells(e.ColumnIndex).Value Then
+                listCheckboxValue.Add(dgvWarehouseSearch.Rows(e.RowIndex).Cells(1).Value.ToString())
+            Else
+                listCheckboxValue.Remove(dgvWarehouseSearch.Rows(e.RowIndex).Cells(1).Value.ToString())
+            End If
+
+            If listCheckboxValue.Count = tables.Sum(Function(l) l.Rows.Count) Then
+                CheckTest.Checked = True
+            Else
+                CheckTest.Checked = False
+            End If
+        End If
+    End Sub
+    Private Sub dgvWarehouseSearch_CellMouseUp(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgvWarehouseSearch.CellMouseUp
+        If e.ColumnIndex = 0 And e.RowIndex <> -1 Then
+            dgvWarehouseSearch.EndEdit()       'Notification datagridview to start value change event
+        End If
+    End Sub
+    Private Sub dgvWarehouseSearch_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvWarehouseSearch.CellDoubleClick
+        If (e.ColumnIndex > 0 And e.RowIndex >= 0) Then
+            Dim frmWarehouseInformation = New WarehouseInformation()
+            frmWarehouseInformation.Init(dgvWarehouseSearch.SelectedRows(0).Cells(1).Value.ToString())
+            frmWarehouseInformation.ShowDialog()
+        End If
+        If (e.ColumnIndex = CheckTest.ColumnIndex And e.RowIndex <> -1) Then
+            'A DoubleClick event is treated separate from a MouseUp event.
+            'If a DoubleClick event is detected, the application will ignore the first MouseUp event entirely.
+            dgvWarehouseSearch.EndEdit()   'So add this code to notification datagridview to start value change event
+        End If
+    End Sub
+
+    Private Sub dgvWarehouseSearch_ColumnHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgvWarehouseSearch.ColumnHeaderMouseClick
+        If (e.ColumnIndex <> CheckTest.ColumnIndex) Then
+            cellContentValueChangedByUser = False
+            CheckTest.CheckUncheckEntireColumn(listCheckboxValue)
+        End If
+    End Sub
     Private Sub SetVisibleForPermission()
+        bSearch.Visible = False
+        bExport.Visible = False
         bAdd.Visible = False
-        bEdit.Visible = False
         bDelete.Visible = False
-        bSave.Visible = False
-        bAddProduct.Visible = False
 
         Dim dataPermission = clsRolePermission.GetPermissionOfUser(LoginForm.PropUsername)
         Dim viewDetail = False
@@ -32,40 +136,23 @@ Public Class WarehouseCategory
                 Case "Warehouse category"
                     For Each p In permiss
                         Select Case p
+                            Case "Search"
+                                bSearch.Visible = True
+                            Case "Export"
+                                bExport.Visible = True
                             Case "Add"
                                 bAdd.Visible = True
-                                bSave.Visible = True
-                            Case "Edit"
-                                bEdit.Visible = True
-                                bSave.Visible = True
                             Case "Delete"
                                 bDelete.Visible = True
                         End Select
                     Next
-                Case "Detail product of warehouse"
-                    For Each p In permiss
-                        Select Case p
-                            Case "Add"
-                                bAddProduct.Visible = True
-                            Case "Edit"
-                                allowEditProduct = True
-                            Case "Delete"
-                                allowDeleteProduct = True
-                        End Select
-                    Next
-                    viewDetail = True
             End Select
         Next
-        If Not viewDetail Then
-            gbProducts.Visible = False
-            dgvCategory.Location = New Point(gbProducts.Location.X, gbProducts.Location.Y + 10)
-            dgvCategory.Size = New Size(555, 280)
-        End If
-        CenterButtons()
+        CenterButtons({bSearch, bExport}.ToList, 20)
+        CenterButtons({bAdd, bDelete}.ToList, 30)
     End Sub
 
-    Private Sub CenterButtons()
-        Dim listButtons = New List(Of Button) From {bAdd, bEdit, bDelete, bSave}
+    Private Sub CenterButtons(ByRef listButtons As List(Of Button), ByVal offset_between As Integer)
         Dim totalWidth As Integer = 0
         Dim count = 0
 
@@ -76,137 +163,47 @@ Public Class WarehouseCategory
             End If
         Next
 
-        Dim offset_between = 30
-        Dim x As Integer = (Me.Width - totalWidth - offset_between * (count - 1)) / 2
-        Dim y As Integer = 490
+        Dim x As Integer = (listButtons(0).Parent.Width - totalWidth - offset_between * (count - 1)) / 2
 
         For Each btn As Button In listButtons
             If btn.Visible = True Then
-                btn.Location = New Point(x, y)
+                btn.Location = New Point(x, btn.Location.Y)
                 x += btn.Width + offset_between
             End If
         Next
     End Sub
 
     Public Sub Reload()
-        dgvCategory.DataSource = clsPMSAnalysis.GetWarehouse()
-        setEnable(False)
-        setValue()
+        SetPagedDataSource(clsPMSAnalysis.GetWarehouse())
     End Sub
-
-    Private Sub setValue()
-        If dgvCategory.Rows.Count = 0 Then
-            addEditDeleteEnabled(False)
-            bAdd.Enabled = True
-            Return
-        Else
-            Dim row As DataGridViewRow = dgvCategory.CurrentRow
-            If row Is Nothing Then
-                row = dgvCategory.Rows(0)
-            End If
-
-            txtCode.Text = row.Cells(0).Value.ToString
-            txtName.Text = row.Cells(1).Value.ToString
-            txtAddress.Text = row.Cells(2).Value.ToString
-            txtNumberOfImport.Text = row.Cells(3).Value.ToString
-            txtNumberOfExport.Text = row.Cells(4).Value.ToString
-
-            Warehouse.Clear()
-            Warehouse.Merge(clsPMSAnalysis.GetProductsOfWarehouse(txtCode.Text))
-
-        End If
-    End Sub
-
-    Private Sub bEdit_Click(sender As Object, e As EventArgs) Handles bEdit.Click
-        If dgvCategory.Rows.Count = 0 Then
-            MsgBox("There isn't any warehouse information to edit!", Nothing, "Notification")
-        Else
-            addEditDeleteEnabled(False)
-            bDelete.Enabled = True
-            setEnable(True)
-        End If
-    End Sub
-
-    Private Sub setEnable(valBoolean As Boolean)
-        txtName.Enabled = valBoolean
-        txtAddress.Enabled = valBoolean
-        bAddProduct.Enabled = valBoolean
-        'txtNumberOfImport.Enabled = valBoolean
-        'txtNumberOfExport.Enabled = valBoolean
-        dgvProduct.Columns(3).Visible = valBoolean And allowEditProduct
-        dgvProduct.Columns(4).Visible = valBoolean And allowDeleteProduct
-        bSave.Enabled = valBoolean
-    End Sub
-
-    Private Sub addEditDeleteEnabled(valBoolean As Boolean)
-        bAdd.Enabled = valBoolean
-        bEdit.Enabled = valBoolean
-        bDelete.Enabled = valBoolean
-    End Sub
-    Private Sub clearValue()
-        txtCode.Text = ""
-        txtName.Text = ""
-        txtAddress.Text = ""
-        txtNumberOfImport.Text = "0"
-        txtNumberOfExport.Text = "0"
-        Warehouse.Clear()
-    End Sub
-
-    Private Sub bAdd_Click(sender As Object, e As EventArgs) Handles bAdd.Click
-        clearValue()
-        setEnable(True)
-        addEditDeleteEnabled(False)
-        warehouseId = clsPMSAnalysis.AddWarehouse("", "", 0, 0, LoginForm.PropUsername)
-        isSaved = False
-    End Sub
-
-    Private Sub dgvCategory_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCategory.CellClick
-        setEnable(False)
-        setValue()
-        addEditDeleteEnabled(True)
-        If Not isSaved Then
-            clsPMSAnalysis.DeleteCompletelyWarehouse(warehouseId)
-            Dim products = clsPMSAnalysis.GetProductsOfWarehouse(warehouseId)
-            For Each product In products
-                clsProduct.DeleteCompletelyProduct(product.ProductId)
-            Next
-            clsPMSAnalysis.DeleteCompletelySalesDetail(warehouseId)
-        End If
-    End Sub
-
-    Private Sub bSave_Click(sender As Object, e As EventArgs) Handles bSave.Click
+    Private Sub bSearch_Click(sender As Object, e As EventArgs) Handles bSearch.Click
+        'And (Id = @Id) And (WareHouseName = @WareHouseName) And (Address = @Address)
+        'And (NumberOfImport = @NumberOfImport) And (NumberOfExport = @NumberOfExport)
         If checkLogicData() Then
-            Dim result As Integer
-            Dim selectedWarehouse = txtCode.Text
-            Dim type As String = "Update"
+            Dim sqlCommand = ""
 
-            If txtCode.Text = "" Then          'Add new
-                type = "Add"
-                selectedWarehouse = warehouseId
+            If Not String.IsNullOrWhiteSpace(txtCode.Text) Then
+                sqlCommand &= $" AND Id = {txtCode.Text}"
             End If
-            result = clsPMSAnalysis.UpdateWarehouse(selectedWarehouse, txtName.Text, txtAddress.Text, txtNumberOfImport.Text, txtNumberOfExport.Text, LoginForm.PropUsername)
-            If result = 1 Then
-                setEnable(False)
-                MsgBox(type & " warehouse information successful!", Nothing, "Notification")
-                Reload()
-                addEditDeleteEnabled(True)
-                isSaved = True
-            Else
-                MsgBox("There is an error when interact with database!", Nothing, "Notification")
+
+            sqlCommand &= $" AND WareHouseName LIKE N'%{txtName.Text}%'"
+            sqlCommand &= $" AND Address LIKE N'%{txtAddress.Text}%'"
+
+            If Not String.IsNullOrWhiteSpace(txtNumberOfImport.Text) Then
+                sqlCommand &= $" AND NumberOfImport = {txtNumberOfImport.Text}"
             End If
+
+            If Not String.IsNullOrWhiteSpace(txtNumberOfExport.Text) Then
+                sqlCommand &= $" AND NumberOfExport = {txtNumberOfExport.Text}"
+            End If
+
+            SetPagedDataSource(clsPMSAnalysis.SearchWarehouse(sqlCommand))
         End If
     End Sub
-
     Private Function checkLogicData() As Boolean
-        If txtName.Text = "" Or txtAddress.Text = "" Or txtNumberOfImport.Text = "" Or
-            txtNumberOfExport.Text = "" Then
-
-            MsgBox("You need to enter all the fields!", Nothing, "Notification")
-            Return False
-
-        ElseIf Not CheckValue("Warehouse code", txtCode.Text, "Long") Or
-            Not CheckValue("Number of import", txtNumberOfImport.Text, "Long") Or
-            Not CheckValue("Number of export", txtNumberOfExport.Text, "Long") Then
+        If Not (CheckValue("Warehouse code", txtCode.Text, "Long") And
+            CheckValue("Number of import", txtNumberOfImport.Text, "Long") And
+            CheckValue("Number of export", txtNumberOfExport.Text, "Long")) Then
             Return False
         End If
         Return True
@@ -225,7 +222,7 @@ Public Class WarehouseCategory
                 Try
                     Number = Long.Parse(value)
                 Catch ex As FormatException
-                    MsgBox(label & " must be a integer number!", Nothing, "Notification")
+                    MsgBox(label & " must be a number!", Nothing, "Notification")
                     returnVal = False
                 Catch ex As OverflowException
                     MsgBox(label & " is too big to handle!", Nothing, "Notification")
@@ -249,83 +246,94 @@ Public Class WarehouseCategory
         Return returnVal
 
     End Function
+    Private Sub bExport_Click(sender As Object, e As EventArgs) Handles bExport.Click
+        If tables Is Nothing Then
+            MsgBox("No data to export!", Nothing, "Notification")
+            Return
+        End If
 
+        If tables.Sum(Function(l) l.Rows.Count) = 0 Then
+            MsgBox("No data to export!", Nothing, "Notification")
+            Return
+        End If
+
+
+        For Each col In tables(0).Columns
+            Console.WriteLine(col.ToString() & "  ")
+        Next
+
+        Dim sfd As SaveFileDialog = New SaveFileDialog()
+        sfd.Title = "Select export data path"
+        Dim defaultPath = Environ$("USERPROFILE") & "\Downloads"
+        If Directory.Exists(defaultPath) Then
+            sfd.InitialDirectory = defaultPath
+        Else
+            sfd.InitialDirectory = "C:\"
+        End If
+        sfd.Filter = "All files (*.*)|*.*|All files (*.*)|*.*"
+        sfd.FilterIndex = 2
+        sfd.RestoreDirectory = True
+        Dim result = sfd.ShowDialog()
+        If result = DialogResult.OK Then
+            Dim fileName = Path.GetDirectoryName(sfd.FileName) & Path.AltDirectorySeparatorChar & Path.GetFileNameWithoutExtension(sfd.FileName)
+            Dim ext = Path.GetExtension(sfd.FileName)
+            If ext = "" Then
+                ext += ".xlsx"
+                sfd.FileName += ".xlsx"
+            End If
+            'If File.Exists(sfd.FileName) Then
+            '    Dim i = 0
+            '    Do
+            '        sfd.FileName = fileName & "(" & i & ")" & ext
+            '        i += 1
+            '    Loop While File.Exists(sfd.FileName)
+            'End If
+            Dim exportObject As New Export()
+
+            Dim listPrintedColumn As New List(Of KeyValuePair(Of Integer, String))
+            For Each column In dgvWarehouseSearch.Columns
+                If column.Visible And Not column.Name.Equals("CheckBoxColumn") Then
+                    Dim count = 0
+                    For Each col In tables(0).Columns
+                        If col.ToString().Equals(column.DataPropertyName) Then
+                            listPrintedColumn.Add(New KeyValuePair(Of Integer, String)(count, column.HeaderText))
+                        End If
+                        count += 1
+                    Next
+                End If
+            Next
+
+            Dim listLeftFormat As New ArrayList() From {1, 2}       'list left format of datagridview column (excluding column Checkbox)
+            exportObject.exportToExcel(sfd.FileName, tables, listPrintedColumn, listLeftFormat, "Warehouse search")
+        End If
+    End Sub
+    Private Sub bAdd_Click(sender As Object, e As EventArgs) Handles bAdd.Click
+        Dim frmWarehouseInformation = New WarehouseInformation()
+        frmWarehouseInformation.Init(-1)
+        frmWarehouseInformation.ShowDialog()
+    End Sub
     Private Sub bDelete_Click(sender As Object, e As EventArgs) Handles bDelete.Click
-        If txtCode.Text <> "" Then
-            Dim warehouseId = txtCode.Text
-            Dim result = clsPMSAnalysis.DeleteWarehouse(warehouseId, LoginForm.PropUsername)
-            If result = 1 Then
-                MsgBox("Delete warehouse information successful!", Nothing, "Notification")
+        If listCheckboxValue.Count > 0 Then
+            Dim err = False
+
+            For Each id In listCheckboxValue
+                Dim result = clsPMSAnalysis.DeleteWarehouse(id, LoginForm.PropUsername)
+
+                If result <> 1 Then
+                    MsgBox("There is an error when interact with database!", Nothing, "Notification")
+                    err = True
+                    Exit For
+                End If
+            Next
+
+            If Not err Then
+                MsgBox("Delete selected warehouses information successful!", Nothing, "Notification")
                 Reload()
             Else
-                MsgBox("There is an error when interact with database!", Nothing, "Notification")
             End If
 
-        End If
-    End Sub
-
-    Private Sub bAddProduct_Click(sender As Object, e As EventArgs) Handles bAddProduct.Click
-        Dim newForm As New AddEditProductForm
-        newForm.warehouseId = warehouseId
-        If txtCode.Text <> "" Then
-            newForm.warehouseId = txtCode.Text
-        End If
-
-        If newForm.ShowDialog() = DialogResult.OK Then
-            txtNumberOfImport.Text = clsPMSAnalysis.GetWarehouseById(newForm.warehouseId).Rows(0)(3)
-        End If
-    End Sub
-
-    Private Sub dgvProduct_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvProduct.CellContentClick
-        Select Case dgvProduct.Columns(e.ColumnIndex).Name
-            Case "Edit"
-                Dim newForm As New AddEditProductForm
-                If (txtCode.Text <> "") Then
-                    newForm.warehouseId = txtCode.Text
-                Else
-                    newForm.warehouseId = warehouseId
-                End If
-                newForm.productId = dgvProduct.CurrentRow.Cells(0).Value.ToString
-                If newForm.ShowDialog() = DialogResult.OK Then
-
-                End If
-
-            Case "Delete"
-                Dim result = clsProduct.DeleteProduct(LoginForm.PropUsername, dgvProduct.CurrentRow.Cells(0).Value.ToString)
-                If result = 1 Then
-                    result = clsProduct.DeleteSalesDetail(dgvProduct.CurrentRow.Cells(0).Value.ToString)
-                End If
-                If result = 1 Then
-                    MsgBox("Delete product information successful!", Nothing, "Notification")
-                    Dim selectedWarehouse = If(txtCode.Text = "", warehouseId, txtCode.Text)
-                    Warehouse.Clear()
-                    Warehouse.Merge(clsPMSAnalysis.GetProductsOfWarehouse(selectedWarehouse))
-                Else
-                    MsgBox("There is an error when interact with database!", Nothing, "Notification")
-                End If
-        End Select
-    End Sub
-
-    Private Sub WarehouseCategory_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        If Not isSaved Then
-            clsPMSAnalysis.DeleteCompletelyWarehouse(warehouseId)
-            Dim products = clsPMSAnalysis.GetProductsOfWarehouse(warehouseId)
-            For Each product In products
-                clsProduct.DeleteCompletelyProduct(product.ProductId)
-            Next
-            clsPMSAnalysis.DeleteCompletelySalesDetail(warehouseId)
-        End If
-    End Sub
-    Public Sub SetImports(warehouseId)
-        txtNumberOfImport.Text = clsPMSAnalysis.GetWarehouseById(warehouseId).Rows(0)(3)
-    End Sub
-    Private Sub dgvCategory_KeyUp(sender As Object, e As KeyEventArgs) Handles dgvCategory.KeyUp
-        If e.KeyCode.Equals(Keys.Up) Or e.KeyCode.Equals(Keys.Down) Then
-            If dgvCategory.CurrentRow IsNot Nothing And bSave.Enabled = False Then
-                addEditDeleteEnabled(True)
-                setEnable(False)
-                setValue()
-            End If
+        Else
+            MsgBox("Please check first cell of warehouses you want to delete!")
         End If
     End Sub
 

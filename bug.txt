@@ -1,0 +1,39 @@
+V forget password (gởi mk mới qua email), register account
+V xuất đồ thị báo cáo theo ngày chọn
+V gộp search + danh mục
+V thêm bảng paymentMethod để lưu combobox
+- thêm chú thích cho các trường	
+V sửa lại định dạng ngày
+V xoá nhiều row trong grid view (thêm cột checkbox ở đầu để chọn row muốn xoá)
+V hiển thị trường tên không hiển thị trường id
+V sửa lại code sql search
+V thêm check box search hay không
+V thêm phân trang trong datagridview
+V thay so sánh khác rỗng thành hàm check rỗng của thư viện
+V sửa discount trong order??
+V ship date > order date??
+V ship date, order date chỉ hiện ngày tháng năm, k format thêm giờ
+- thêm tiêu đề cho file excel
+V ẩn panel nền đồ thị khi trống dữ liệu trong report warehouse
+- refresh datagridview?? có nên k
+V number, -, export
+V bỏ chữ interger trong cảnh báo
+- xoá 1 đối tượng (xoá row trong category này có ảnh hưởng tới việc hiển thị trong các category khác?)
+V sửa txtNumber -> txtTotal
+- khi nhà kho bị xoá -> sản phẩm của kho cũng bị xoá
+- đổi hàm reload thành hàm search
+- in hoá đơn
+V save và xoá (được chọn), add, calculate tất cả các product có trong bindlist of order information form
+V duyệt qua tất cả product khi khởi tạo combobox cbbProduct
+V double click vào order information
+V add remove order khi dgv rỗng
+- out of stock
+V phone too long, notify when have 2 checkvalue false, update status of account when delete employee
+V Check username exits and process save employee
+- xuất cột sdt mất số 0 ở đầu, sort, reload
+V kiểm tra nếu email trùng
+
+
+V thêm thông tin statistic (sales của các tháng trong năm 2022)
+V xem lại chart khi chỉ có 1 point
+V chỉnh lại giao diện để không bị che khuất nhau

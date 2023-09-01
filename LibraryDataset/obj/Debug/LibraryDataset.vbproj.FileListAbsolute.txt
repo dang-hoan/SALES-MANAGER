@@ -20,3 +20,14 @@ D:\Code\vs data\SalesManager\LibraryDataset\obj\Debug\LibraryDataset.vbproj.Core
 D:\Code\vs data\SalesManager\LibraryDataset\obj\Debug\LibraryDataset.dll
 D:\Code\vs data\SalesManager\LibraryDataset\obj\Debug\LibraryDataset.xml
 D:\Code\vs data\SalesManager\LibraryDataset\obj\Debug\LibraryDataset.pdb
+D:\Code\vs data\SalesManager2\LibraryDataset\bin\Debug\LibraryDataset.dll.config
+D:\Code\vs data\SalesManager2\LibraryDataset\bin\Debug\LibraryDataset.dll
+D:\Code\vs data\SalesManager2\LibraryDataset\bin\Debug\LibraryDataset.pdb
+D:\Code\vs data\SalesManager2\LibraryDataset\bin\Debug\LibraryDataset.xml
+D:\Code\vs data\SalesManager2\LibraryDataset\obj\Debug\LibraryDataset.vbproj.AssemblyReference.cache
+D:\Code\vs data\SalesManager2\LibraryDataset\obj\Debug\LibraryDataset.Resources.resources
+D:\Code\vs data\SalesManager2\LibraryDataset\obj\Debug\LibraryDataset.vbproj.GenerateResource.cache
+D:\Code\vs data\SalesManager2\LibraryDataset\obj\Debug\LibraryDataset.vbproj.CoreCompileInputs.cache
+D:\Code\vs data\SalesManager2\LibraryDataset\obj\Debug\LibraryDataset.dll
+D:\Code\vs data\SalesManager2\LibraryDataset\obj\Debug\LibraryDataset.xml
+D:\Code\vs data\SalesManager2\LibraryDataset\obj\Debug\LibraryDataset.pdb
